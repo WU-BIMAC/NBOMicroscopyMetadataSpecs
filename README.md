@@ -3,8 +3,7 @@ Adequate record keeping is essential for most experiments as it is necessary in 
 
 Metadata automatically recorded by microscopes from different companies vary widely and pose a substantial challenge for microscope users to create a good faith record of their work. Similarly, the complexity and aim of experiments using microscopes varies leading to different reporting requirements from the simple description of a sample to the need to document the complexities of sub-diffraction resolution imaging in living cells and beyond.
 
-In 2005 the Open Microscopy Environment (OME) initiative defined the OME data model "to
-o serve as an informatics framework for imaging in biological microscopy experiments, including representation of acquisition parameters, annotations and image analysis results." (verbatim from: [Goldberg et al., 2005](https://genomebiology.biomedcentral.com/articles/10.1186/gb-2005-6-5-r47)).
+In 2005 the Open Microscopy Environment (OME) initiative defined the OME data model "to serve as an informatics framework for imaging in biological microscopy experiments, including representation of acquisition parameters, annotations and image analysis results." (verbatim from: [Goldberg et al., 2005](https://genomebiology.biomedcentral.com/articles/10.1186/gb-2005-6-5-r47)).
 The OME model forms the basis of the [BioFormats library](https://www.openmicroscopy.org/bio-formats/) and is implemented in the [OME-TIFF](https://docs.openmicroscopy.org/ome-model/6.0.0/index.html#ome-tiff) file format and in the [OMERO](https://www.openmicroscopy.org/omero/scientists/) image data repository.
 
 Despite the this very successful efforts, there remains a substantial gap between the OME data model and its wide adoption by the wide bio-imaging community as a bona fide Microscopy Data and Metadata Standard, dictating the set of metadata descriptors to be recorded or published with imaging datasets.
