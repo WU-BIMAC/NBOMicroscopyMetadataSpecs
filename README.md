@@ -14,10 +14,10 @@ In so doing the guidelines lie the foundation for the birth of a microscopy data
 
 In order to foster the wide usability of the guidelines, the proposal aim at providing detailed explanations of why these values matter. Finally, in order to aide their adoption by software developers, the guidelines are expressed in the Extensible Markup Language (XML) Schema Definition ([XSD](https://www.w3.org/XML/Schema)) format that can be utilized to generate code for both traditional databases and other software utilizing the data model.
 
-# Repository content
-The proposed guidelines are available in four different formats:
+# Repository content and documentation
+The proposed Microscopy Metadata guidelines are available as follows:
 
 1. An .xsd file providing the XML-schema for the proposed OME extension.
 2. A .graphml providing an rendering of the INSTRUMENT Specifications and IMAGE ACQUISITION Settings sections of the model using the Entity-Relationship (ER) formalism. In order to open the file you can use the [yED application](https://www.yworks.com/products/yed).
 3. A PDF version of the same ER schema.
-4. A table providing a comprehensive list of metadata key-value pairs that should be recorded for each tier, which can be found [here -->](https://docs.google.com/spreadsheets/d/16IQl-K8UIStsdlkNzJTA7LzMCan9qyS3KKcmEJ5wu28/edit?usp=sharing)
+4. A .xsl worksheet providing a comprehensive list of metadata key-value pairs that should be recorded for each tier, which can be found [here -->](https://docs.google.com/spreadsheets/d/16IQl-K8UIStsdlkNzJTA7LzMCan9qyS3KKcmEJ5wu28/edit?usp=sharing)
