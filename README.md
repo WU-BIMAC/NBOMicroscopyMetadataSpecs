@@ -3,12 +3,12 @@ Adequate recordkeeping is essential for most experiments as it is necessary in o
 Here we present a tiered system of guidelines for describing and documenting microscopy experiments developed by the 4DN Imaging Standards Working Group, a comprehensive list of metadata key-value pairs that should be recorded for each tier, a detailed explanation of why these values matter and a OME data model extension that captures these guidelines.
 
 # Repository content
-In this repository you can find the proposed guidelines in four different forms:
+The proposed guidelines are available in four different formats:
 
-1) An xsd file providing the XML-schema for the proposed OME extension.
-2) A graphml providing an rendering of the INSTRUMENT Specifications and IMAGE ACQUISITION Settings sections of the model using the Entity-Relationship (ER) formalism (please download the yED applicaiton here to visualize this file >> https://www.yworks.com/products/yed
-3) A PDF version of the same ER schema.
+1. An xsd file providing the XML-schema for the proposed OME extension.
+2. A graphml providing an rendering of the INSTRUMENT Specifications and IMAGE ACQUISITION Settings sections of the model using the Entity-Relationship (ER) formalism. In order to open the file you can use the [yED applicaiton](https://www.yworks.com/products/yed).
+3. A PDF version of the same ER schema.
+4. Finally, a table providing a comprehensive list of metadata key-value pairs that should be recorded for each tier can be found following [this link -->](https://docs.google.com/spreadsheets/d/16IQl-K8UIStsdlkNzJTA7LzMCan9qyS3KKcmEJ5wu28/edit?usp=sharing)
 
-In addition a table providing a comprehensive list of metadata key-value pairs that should be recorded for each tier can be found following this link --> https://docs.google.com/spreadsheets/d/16IQl-K8UIStsdlkNzJTA7LzMCan9qyS3KKcmEJ5wu28/edit?usp=sharing
 
     
