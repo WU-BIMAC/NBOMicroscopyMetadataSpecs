@@ -13,8 +13,7 @@ Here we present a tiered system of guidelines for describing and documenting mic
 As a consequence, these guidelines not only provide an OME-based comprehensive list of metadata key-value pairs that should be recorded, but also details which subset of the full list should be recorded depending on the specific Tier the experiment belongs to.
 In so doing the guidelines lie the foundation for the birth of a microscopy data standard that could serve the same purpose the Encode guidelines serve in the genomic community.
 
-In order to foster the wide usability of the guidelines, the proposal aim at providing detailed explanations of why these values matter.
-Finally, in order to aide their adoption by software developers, the guidelines are expressed as Extensible Markup Language (XML) schema (xsd) that can be utilized to generate code and to serve the basis for traditional database schemas.
+In order to foster the wide usability of the guidelines, the proposal aim at providing detailed explanations of why these values matter. Finally, in order to aide their adoption by software developers, the guidelines are expressed in the Extensible Markup Language (XML) Schema Definition ([XSD](https://www.w3.org/XML/Schema)) format that can be utilized to generate code for both traditional databases and other software utilizing the data model.
 
 # Repository content
 The proposed guidelines are available in four different formats:
