@@ -19,8 +19,7 @@ In order to foster the wide usability of the guidelines, the proposal aim at pro
 ![Alt text](?raw=true "The proposed organization of different imaging experiments in a set of five tiers corresponding to increasing annotation complexity.")
 
 <p align="center">
-  <img src="MicroscopyMetadata4DNGuidelines/4DN-Metadata Tier System_2019-3-22_v01-00.png" width="350" title="hover text">
-  <img src="your_relative_path_here_number_2_large_name" width="350" alt="accessibility text">
+  <img src="https://github.com/WU-BIMAC/MicroscopyMetadata4DNGuidelines/blob/master/4DN-Metadata%20Tier%20System_2019-3-22_v01-00.png" title="Tier System">
 </p>
 
 # Repository content and documentation
