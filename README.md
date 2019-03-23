@@ -16,8 +16,7 @@ In order to foster the wide usability of the guidelines, the proposal aim at pro
 
 # Tier System Proposal
 
-![alt text](MicroscopyMetadata4DNGuidelines/4DN-Metadata Tier System_2019-3-22_v01-00.png)
-
+![Alt text](MicroscopyMetadata4DNGuidelines/4DN-Metadata Tier System_2019-3-22_v01-00.png?raw=true "The proposed organization of different imaging experiments in a set of five tiers corresponding to increasing annotation complexity.")
 
 # Repository content and documentation
 The proposed Microscopy Metadata guidelines are available as follows:
