@@ -15,9 +15,6 @@ In so doing the guidelines lie the foundation for the birth of a microscopy data
 In order to foster the wide usability of the guidelines, the proposal aim at providing detailed explanations of why these values matter. Finally, in order to aide their adoption by software developers, the guidelines are expressed in the Extensible Markup Language (XML) Schema Definition ([XSD](https://www.w3.org/XML/Schema)) format that can be utilized to generate code for both traditional databases and other software utilizing the data model.
 
 # Tier System Proposal
-
-![Alt text](?raw=true "The proposed organization of different imaging experiments in a set of five tiers corresponding to increasing annotation complexity.")
-
 <p align="center">
   <img src="https://github.com/WU-BIMAC/MicroscopyMetadata4DNGuidelines/blob/master/4DN-Metadata%20Tier%20System_2019-3-22_v01-00.png" title="Tier System">
 </p>
