@@ -16,7 +16,7 @@ In order to foster the wide usability of the guidelines, the proposal aim at pro
 
 # Tier System Proposal
 <p align="center">
-  <img src="https://github.com/WU-BIMAC/MicroscopyMetadata4DNGuidelines/blob/master/4DN-Metadata%20Tier%20System_2019-3-22_v01-00.png" title="Tier System">
+  <img src="https://raw.githubusercontent.com/WU-BIMAC/MicroscopyMetadata4DNGuidelines/master/Tier%20System/v01-00/4DN-Metadata%20Tier%20System_2019-3-22_v01-00.png" title="Tier System">
 </p>
 
 # Repository content and documentation
