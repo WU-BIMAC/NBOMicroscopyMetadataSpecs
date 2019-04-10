@@ -1,9 +1,11 @@
 <?xml version = "1.0" encoding = "UTF-8"?>
 <!--
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-#	4D Nucleome Imaging Standards Working Group OME Data Model extension proposal
+#	Microscope Metadata 4DN Guidelines proposal
 #
-# This is a modification of the OME schema which was originally released in June 2016 by the Open Microscopy Environment 
+# This is a proposal put forth by the 4D Nucleome (4DN) Imaging Standards Working 
+# Group for an extension of the OME data model schema which was originally released 
+# in June 2016 by the Open Microscopy Environment 
 # Copyright (C) 2002 - 2016 Open Microscopy Environment
 #       Massachusetts Institute of Technology,
 #       National Institutes of Health,
@@ -28,8 +30,11 @@
 #       Mountain View, California, 94041, USA.
 # For attribution instructions, visit
 #       http://www.openmicroscopy.org/info/attribution
+# or contact:
+#       Caterina Strambio De Castillia, caterina.strambio@umassmed.edu
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 -->
+
 <xsd:schema xmlns="http://www.openmicroscopy.org/Schemas/OME/2016-06"
   targetNamespace="http://www.openmicroscopy.org/Schemas/OME/2016-06"
   xmlns:xsd="http://www.w3.org/2001/XMLSchema"
