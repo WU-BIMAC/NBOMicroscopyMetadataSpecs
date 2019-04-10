@@ -1,16 +1,32 @@
 cff-version: 1.0.3
-message: If you use the Microscopy Metadata 4DN-OME Guidelines (also referred to as 4DN-Micro-Meta, please cite the standard as indicated in the scope of each reference.
+message: If you use the Microscopy Metadata 4D Nucleome Guidelines (also referred to as 4DN-Micro-Meta), please cite the standard as indicated in the scope of each reference.
 authors:
+  - family-names: Maximiliaan
+    given-names: Huisman
+    affiliation: University of Massachusetts Medical School
+    email: Maximiliaan.Huisman@umassmed.edu
+  - family-names: Mathias
+    given-names: Hammer
+    affiliation: University of Massachusetts Medical School
+    email: Mathias.Hammer@umassmed.edu
   - family-names: Rigano
     given-names: Alessandro
     affiliation: University of Massachusetts Medical School
     email: alessandro.rigano@umassmed.edu
+  - family-names: Carlas
+    given-names: Smith
+    affiliation: Merton College Oxford
+    email: Carlas.Smith@dpag.ox.ac.uk     
+  - family-names: David
+    given-names: Grunwald
+    affiliation: University of Massachusetts Medical School
+    email: David.Grunwald@umassmed.edu    
   - family-names: Strambio-De-Castillia
     given-names: Caterina
     affiliation: University of Massachusetts Medical School
     email: caterina.strambio@umassmed.edu
     orcid: https://orcid.org/0000-0002-1069-1816
-title: Minimum Information About Particle Tracking Experiments (MIAPTE)
+title: Microscopy Metadata 4D Nucleome Guidelines
 version: v01.00
 doi: 
 date-released: 2019-03-25
