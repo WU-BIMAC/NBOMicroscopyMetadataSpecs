@@ -2393,6 +2393,12 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
               <xsd:documentation>Tier=1</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
+          <xsd:attribute name="LensRefractiveIndex" type="xsd:float">
+            <xsd:annotation>
+              <xsd:documentation>Description = The nominal refractive index of this objective lens.</xsd:documentation>
+              <xsd:documentation>Tier = 1</xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
           <xsd:attribute name="NominalMagnification" use="optional" type="xsd:float">
             <xsd:annotation>
               <xsd:documentation>Descrption=The magnification of the lens as specified by the manufacturer - i.e. '60' is a 60X lens. Note: The type of this has been changed from int to float to allow the specification of additional lenses e.g. 0.5X lens
@@ -3869,30 +3875,20 @@ For each fluorescence Image there should be at least one filter element specifie
             <xsd:documentation>Tier=2</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
-        <xsd:attribute name="Gain" use="optional" type="xsd:float">
+        <xsd:attribute default="C-mount" name="Mount" type="DetectorMount">
           <xsd:annotation>
-            <xsd:documentation>Description=The analog gain is the conversion unit for this Detector. It specifies how many electrons correspond to 1 signal unit. It is expressed in  e-/Analog-to-Digit-Unit (ADU)
-            </xsd:documentation>
-            <xsd:documentation>Tier=3</xsd:documentation>
+            <xsd:documentation>Description=The type of mount used for the camera.</xsd:documentation>
+            <xsd:documentation>Tier=2</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
-        <xsd:attribute name="Offset" use="optional" type="xsd:float">
-          <xsd:annotation>
-            <xsd:documentation>Description=The offset is an electronic baseline added to the output signal from the EMCCD sensor to ensure that the displayed signal level is always a positive number of counts. This the maximal nominal Offset of this detector
-            </xsd:documentation>
-            <xsd:documentation>Tier=3</xsd:documentation>
-          </xsd:annotation>
-        </xsd:attribute>
-        <xsd:attribute name="Zoom" use="optional" type="xsd:float">
-          <xsd:annotation>
-            <xsd:documentation>Description=The maximal nominal Zoom factor utilized for this detector
-            </xsd:documentation>
-            <xsd:documentation>Tier=3</xsd:documentation>
-          </xsd:annotation>
-        </xsd:attribute>
-        <xsd:attribute name="ReadNoise">
+        <xsd:attribute name="ReadNoise" type="xsd:float">
           <xsd:annotation>
             <xsd:documentation>Description=Read noise includes thermal noise build-up and clock induced charge. This is generally expressed in e- rms</xsd:documentation>
+            <xsd:documentation>Tier=5</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute default="e- rms" name="ReadNoiseUnit" type="UnitsElectricCurrent">
+          <xsd:annotation>
             <xsd:documentation>Tier=5</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
@@ -3908,8 +3904,7 @@ For each fluorescence Image there should be at least one filter element specifie
             <xsd:documentation>Tier=5</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
-        <xsd:attribute default=" e-/pixel/sec" name="DarkCurrentRateUnit"
-          type="UnitsElectricCurrent">
+        <xsd:attribute default="e-/pixel/sec" name="DarkCurrentRateUnit" type="UnitsElectricCurrent">
           <xsd:annotation>
             <xsd:documentation>Tier=5</xsd:documentation>
           </xsd:annotation>
@@ -3987,7 +3982,7 @@ For each fluorescence Image there should be at least one filter element specifie
     </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="Detector">
-        <xsd:attribute name="Illumination" type="CameraIllumination">
+        <xsd:attribute name="Illumination" type="CameraIllumination" default="Back">
           <xsd:annotation>
             <xsd:documentation>Detector=The type of illumination the camera chip receives</xsd:documentation>
             <xsd:documentation>Tier=3</xsd:documentation>
@@ -4055,9 +4050,19 @@ For each fluorescence Image there should be at least one filter element specifie
             <xsd:documentation>Tier=5</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
+        <xsd:attribute default="e-" name="PixelWellCapacityUnit" type="UnitsElectricCharge">
+          <xsd:annotation>
+            <xsd:documentation>Tier=5</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
         <xsd:attribute name="RegisterWellCapacity" type="xsd:int">
           <xsd:annotation>
-            <xsd:documentation>Description=The maximum amount of charge each detector pixel can hold, measured in electron counts</xsd:documentation>
+            <xsd:documentation>Description=The maximum amount of charge each register well can hold, measured in electron counts</xsd:documentation>
+            <xsd:documentation>Tier=5</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute default="e-" name="RegisterWellCapacityUnit" type="UnitsElectricCharge">
+          <xsd:annotation>
             <xsd:documentation>Tier=5</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
@@ -4072,9 +4077,26 @@ For each fluorescence Image there should be at least one filter element specifie
             <xsd:documentation>Tier=5</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
-        <xsd:attribute name="MaximumReadoutRate">
+        <xsd:attribute name="MaximumFrameRate" type="xsd:float">
+          <xsd:annotation>
+            <xsd:documentation>Description=The maximal rate this camera can acquire a single frame</xsd:documentation>
+            <xsd:documentation>Tier=5</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute default="fps" name="MaximumFrameRateUnit" type="UnitsFrequency">
+          <xsd:annotation>
+            <xsd:documentation>Tier=5</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="MaximumReadoutRate" type="xsd:float">
           <xsd:annotation>
             <xsd:documentation>Description=The maximal pixel read out rate allowed by this camera</xsd:documentation>
+            <xsd:documentation>Tier=5</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute default="pixel per second" name="MaximumReadoutRateUnit"
+          type="UnitsFrequency">
+          <xsd:annotation>
             <xsd:documentation>Tier=5</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
@@ -4309,7 +4331,7 @@ is unit-less. [units:none]
               <xsd:documentation>Tier=2</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="RefractiveIndex" use="required" type="xsd:float">
+          <xsd:attribute name="ImmersionRefractiveIndex" use="required" type="xsd:float">
             <xsd:annotation>
               <xsd:documentation>Description=The nominal RefractiveIndex of ther immersion medium utilized in this case. This is a ratio so it also unit-less. [units:none]
               </xsd:documentation>
@@ -7417,141 +7439,6 @@ PlaneInfo (as Plane)
       </xsd:enumeration>
     </xsd:restriction>
   </xsd:simpleType>
-  <xsd:simpleType name="UnitsElectricPotential">
-    <xsd:annotation>
-      <xsd:documentation>
-        The units used to represent an electric potential
-      </xsd:documentation>
-    </xsd:annotation>
-    <xsd:restriction base="xsd:string">
-      <xsd:enumeration value="YV">
-        <xsd:annotation>
-          <xsd:documentation>yottavolt unit.</xsd:documentation>
-          <xsd:appinfo><xsdfu xmlns=""><enum name="yottavolt" plural="yottavolts" unitsystem="SI.VOLT" enum="YOTTAVOLT"/></xsdfu></xsd:appinfo>
-        </xsd:annotation>
-      </xsd:enumeration>
-      <xsd:enumeration value="ZV">
-        <xsd:annotation>
-          <xsd:documentation>zettavolt unit.</xsd:documentation>
-          <xsd:appinfo><xsdfu xmlns=""><enum name="zettavolt" plural="zettavolts" unitsystem="SI.VOLT" enum="ZETTAVOLT"/></xsdfu></xsd:appinfo>
-        </xsd:annotation>
-      </xsd:enumeration>
-      <xsd:enumeration value="EV">
-        <xsd:annotation>
-          <xsd:documentation>exavolt unit.</xsd:documentation>
-          <xsd:appinfo><xsdfu xmlns=""><enum name="exavolt" plural="exavolts" unitsystem="SI.VOLT" enum="EXAVOLT"/></xsdfu></xsd:appinfo>
-        </xsd:annotation>
-      </xsd:enumeration>
-      <xsd:enumeration value="PV">
-        <xsd:annotation>
-          <xsd:documentation>petavolt unit.</xsd:documentation>
-          <xsd:appinfo><xsdfu xmlns=""><enum name="petavolt" plural="petavolts" unitsystem="SI.VOLT" enum="PETAVOLT"/></xsdfu></xsd:appinfo>
-        </xsd:annotation>
-      </xsd:enumeration>
-      <xsd:enumeration value="TV">
-        <xsd:annotation>
-          <xsd:documentation>teravolt unit.</xsd:documentation>
-          <xsd:appinfo><xsdfu xmlns=""><enum name="teravolt" plural="teravolts" unitsystem="SI.VOLT" enum="TERAVOLT"/></xsdfu></xsd:appinfo>
-        </xsd:annotation>
-      </xsd:enumeration>
-      <xsd:enumeration value="GV">
-        <xsd:annotation>
-          <xsd:documentation>gigavolt unit.</xsd:documentation>
-          <xsd:appinfo><xsdfu xmlns=""><enum name="gigavolt" plural="gigavolts" unitsystem="SI.VOLT" enum="GIGAVOLT"/></xsdfu></xsd:appinfo>
-        </xsd:annotation>
-      </xsd:enumeration>
-      <xsd:enumeration value="MV">
-        <xsd:annotation>
-          <xsd:documentation>megavolt unit.</xsd:documentation>
-          <xsd:appinfo><xsdfu xmlns=""><enum name="megavolt" plural="megavolts" unitsystem="SI.VOLT" enum="MEGAVOLT"/></xsdfu></xsd:appinfo>
-        </xsd:annotation>
-      </xsd:enumeration>
-      <xsd:enumeration value="kV">
-        <xsd:annotation>
-          <xsd:documentation>kilovolt unit.</xsd:documentation>
-          <xsd:appinfo><xsdfu xmlns=""><enum name="kilovolt" plural="kilovolts" unitsystem="SI.VOLT" enum="KILOVOLT"/></xsdfu></xsd:appinfo>
-        </xsd:annotation>
-      </xsd:enumeration>
-      <xsd:enumeration value="hV">
-        <xsd:annotation>
-          <xsd:documentation>hectovolt unit.</xsd:documentation>
-          <xsd:appinfo><xsdfu xmlns=""><enum name="hectovolt" plural="hectovolts" unitsystem="SI.VOLT" enum="HECTOVOLT"/></xsdfu></xsd:appinfo>
-        </xsd:annotation>
-      </xsd:enumeration>
-      <xsd:enumeration value="daV">
-        <xsd:annotation>
-          <xsd:documentation>decavolt unit.</xsd:documentation>
-          <xsd:appinfo><xsdfu xmlns=""><enum name="decavolt" plural="decavolts" unitsystem="SI.VOLT" enum="DECAVOLT"/></xsdfu></xsd:appinfo>
-        </xsd:annotation>
-      </xsd:enumeration>
-      <xsd:enumeration value="V">
-        <xsd:annotation>
-          <xsd:documentation>volt unit.</xsd:documentation>
-          <xsd:appinfo><xsdfu xmlns=""><enum name="volt" plural="volts" unitsystem="SI.VOLT" enum="VOLT"/></xsdfu></xsd:appinfo>
-        </xsd:annotation>
-      </xsd:enumeration>
-      <xsd:enumeration value="dV">
-        <xsd:annotation>
-          <xsd:documentation>decivolt unit.</xsd:documentation>
-          <xsd:appinfo><xsdfu xmlns=""><enum name="decivolt" plural="decivolts" unitsystem="SI.VOLT" enum="DECIVOLT"/></xsdfu></xsd:appinfo>
-        </xsd:annotation>
-      </xsd:enumeration>
-      <xsd:enumeration value="cV">
-        <xsd:annotation>
-          <xsd:documentation>centivolt unit.</xsd:documentation>
-          <xsd:appinfo><xsdfu xmlns=""><enum name="centivolt" plural="centivolts" unitsystem="SI.VOLT" enum="CENTIVOLT"/></xsdfu></xsd:appinfo>
-        </xsd:annotation>
-      </xsd:enumeration>
-      <xsd:enumeration value="mV">
-        <xsd:annotation>
-          <xsd:documentation>millivolt unit.</xsd:documentation>
-          <xsd:appinfo><xsdfu xmlns=""><enum name="millivolt" plural="millivolts" unitsystem="SI.VOLT" enum="MILLIVOLT"/></xsdfu></xsd:appinfo>
-        </xsd:annotation>
-      </xsd:enumeration>
-      <xsd:enumeration value="µV">
-        <xsd:annotation>
-          <xsd:documentation>microvolt unit.</xsd:documentation>
-          <xsd:appinfo><xsdfu xmlns=""><enum name="microvolt" plural="microvolts" unitsystem="SI.VOLT" enum="MICROVOLT"/></xsdfu></xsd:appinfo>
-        </xsd:annotation>
-      </xsd:enumeration>
-      <xsd:enumeration value="nV">
-        <xsd:annotation>
-          <xsd:documentation>nanovolt unit.</xsd:documentation>
-          <xsd:appinfo><xsdfu xmlns=""><enum name="nanovolt" plural="nanovolts" unitsystem="SI.VOLT" enum="NANOVOLT"/></xsdfu></xsd:appinfo>
-        </xsd:annotation>
-      </xsd:enumeration>
-      <xsd:enumeration value="pV">
-        <xsd:annotation>
-          <xsd:documentation>picovolt unit.</xsd:documentation>
-          <xsd:appinfo><xsdfu xmlns=""><enum name="picovolt" plural="picovolts" unitsystem="SI.VOLT" enum="PICOVOLT"/></xsdfu></xsd:appinfo>
-        </xsd:annotation>
-      </xsd:enumeration>
-      <xsd:enumeration value="fV">
-        <xsd:annotation>
-          <xsd:documentation>femtovolt unit.</xsd:documentation>
-          <xsd:appinfo><xsdfu xmlns=""><enum name="femtovolt" plural="femtovolts" unitsystem="SI.VOLT" enum="FEMTOVOLT"/></xsdfu></xsd:appinfo>
-        </xsd:annotation>
-      </xsd:enumeration>
-      <xsd:enumeration value="aV">
-        <xsd:annotation>
-          <xsd:documentation>attovolt unit.</xsd:documentation>
-          <xsd:appinfo><xsdfu xmlns=""><enum name="attovolt" plural="attovolts" unitsystem="SI.VOLT" enum="ATTOVOLT"/></xsdfu></xsd:appinfo>
-        </xsd:annotation>
-      </xsd:enumeration>
-      <xsd:enumeration value="zV">
-        <xsd:annotation>
-          <xsd:documentation>zeptovolt unit.</xsd:documentation>
-          <xsd:appinfo><xsdfu xmlns=""><enum name="zeptovolt" plural="zeptovolts" unitsystem="SI.VOLT" enum="ZEPTOVOLT"/></xsdfu></xsd:appinfo>
-        </xsd:annotation>
-      </xsd:enumeration>
-      <xsd:enumeration value="yV">
-        <xsd:annotation>
-          <xsd:documentation>yoctovolt unit.</xsd:documentation>
-          <xsd:appinfo><xsdfu xmlns=""><enum name="yoctovolt" plural="yoctovolts" unitsystem="SI.VOLT" enum="YOCTOVOLT"/></xsdfu></xsd:appinfo>
-        </xsd:annotation>
-      </xsd:enumeration>
-    </xsd:restriction>
-  </xsd:simpleType>
   <xsd:simpleType name="UnitsPower">
     <xsd:annotation>
       <xsd:documentation>
@@ -7821,6 +7708,7 @@ PlaneInfo (as Plane)
         </xsd:annotation>
       </xsd:enumeration>
       <xsd:enumeration value="fps"/>
+      <xsd:enumeration value="pixel per second"/>
     </xsd:restriction>
   </xsd:simpleType>
   <xsd:simpleType name="UnitsVelocity">
@@ -7851,14 +7739,157 @@ PlaneInfo (as Plane)
       <xsd:enumeration value="µg/ng"/>
     </xsd:restriction>
   </xsd:simpleType>
+  <xsd:simpleType name="UnitsElectricPotential">
+    <xsd:annotation>
+      <xsd:documentation>
+        The units used to represent an electric potential
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="YV">
+        <xsd:annotation>
+          <xsd:documentation>yottavolt unit.</xsd:documentation>
+          <xsd:appinfo><xsdfu xmlns=""><enum name="yottavolt" plural="yottavolts" unitsystem="SI.VOLT" enum="YOTTAVOLT"/></xsdfu></xsd:appinfo>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="ZV">
+        <xsd:annotation>
+          <xsd:documentation>zettavolt unit.</xsd:documentation>
+          <xsd:appinfo><xsdfu xmlns=""><enum name="zettavolt" plural="zettavolts" unitsystem="SI.VOLT" enum="ZETTAVOLT"/></xsdfu></xsd:appinfo>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="EV">
+        <xsd:annotation>
+          <xsd:documentation>exavolt unit.</xsd:documentation>
+          <xsd:appinfo><xsdfu xmlns=""><enum name="exavolt" plural="exavolts" unitsystem="SI.VOLT" enum="EXAVOLT"/></xsdfu></xsd:appinfo>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="PV">
+        <xsd:annotation>
+          <xsd:documentation>petavolt unit.</xsd:documentation>
+          <xsd:appinfo><xsdfu xmlns=""><enum name="petavolt" plural="petavolts" unitsystem="SI.VOLT" enum="PETAVOLT"/></xsdfu></xsd:appinfo>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="TV">
+        <xsd:annotation>
+          <xsd:documentation>teravolt unit.</xsd:documentation>
+          <xsd:appinfo><xsdfu xmlns=""><enum name="teravolt" plural="teravolts" unitsystem="SI.VOLT" enum="TERAVOLT"/></xsdfu></xsd:appinfo>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="GV">
+        <xsd:annotation>
+          <xsd:documentation>gigavolt unit.</xsd:documentation>
+          <xsd:appinfo><xsdfu xmlns=""><enum name="gigavolt" plural="gigavolts" unitsystem="SI.VOLT" enum="GIGAVOLT"/></xsdfu></xsd:appinfo>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="MV">
+        <xsd:annotation>
+          <xsd:documentation>megavolt unit.</xsd:documentation>
+          <xsd:appinfo><xsdfu xmlns=""><enum name="megavolt" plural="megavolts" unitsystem="SI.VOLT" enum="MEGAVOLT"/></xsdfu></xsd:appinfo>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="kV">
+        <xsd:annotation>
+          <xsd:documentation>kilovolt unit.</xsd:documentation>
+          <xsd:appinfo><xsdfu xmlns=""><enum name="kilovolt" plural="kilovolts" unitsystem="SI.VOLT" enum="KILOVOLT"/></xsdfu></xsd:appinfo>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="hV">
+        <xsd:annotation>
+          <xsd:documentation>hectovolt unit.</xsd:documentation>
+          <xsd:appinfo><xsdfu xmlns=""><enum name="hectovolt" plural="hectovolts" unitsystem="SI.VOLT" enum="HECTOVOLT"/></xsdfu></xsd:appinfo>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="daV">
+        <xsd:annotation>
+          <xsd:documentation>decavolt unit.</xsd:documentation>
+          <xsd:appinfo><xsdfu xmlns=""><enum name="decavolt" plural="decavolts" unitsystem="SI.VOLT" enum="DECAVOLT"/></xsdfu></xsd:appinfo>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="V">
+        <xsd:annotation>
+          <xsd:documentation>volt unit.</xsd:documentation>
+          <xsd:appinfo><xsdfu xmlns=""><enum name="volt" plural="volts" unitsystem="SI.VOLT" enum="VOLT"/></xsdfu></xsd:appinfo>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="dV">
+        <xsd:annotation>
+          <xsd:documentation>decivolt unit.</xsd:documentation>
+          <xsd:appinfo><xsdfu xmlns=""><enum name="decivolt" plural="decivolts" unitsystem="SI.VOLT" enum="DECIVOLT"/></xsdfu></xsd:appinfo>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="cV">
+        <xsd:annotation>
+          <xsd:documentation>centivolt unit.</xsd:documentation>
+          <xsd:appinfo><xsdfu xmlns=""><enum name="centivolt" plural="centivolts" unitsystem="SI.VOLT" enum="CENTIVOLT"/></xsdfu></xsd:appinfo>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="mV">
+        <xsd:annotation>
+          <xsd:documentation>millivolt unit.</xsd:documentation>
+          <xsd:appinfo><xsdfu xmlns=""><enum name="millivolt" plural="millivolts" unitsystem="SI.VOLT" enum="MILLIVOLT"/></xsdfu></xsd:appinfo>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="µV">
+        <xsd:annotation>
+          <xsd:documentation>microvolt unit.</xsd:documentation>
+          <xsd:appinfo><xsdfu xmlns=""><enum name="microvolt" plural="microvolts" unitsystem="SI.VOLT" enum="MICROVOLT"/></xsdfu></xsd:appinfo>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="nV">
+        <xsd:annotation>
+          <xsd:documentation>nanovolt unit.</xsd:documentation>
+          <xsd:appinfo><xsdfu xmlns=""><enum name="nanovolt" plural="nanovolts" unitsystem="SI.VOLT" enum="NANOVOLT"/></xsdfu></xsd:appinfo>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="pV">
+        <xsd:annotation>
+          <xsd:documentation>picovolt unit.</xsd:documentation>
+          <xsd:appinfo><xsdfu xmlns=""><enum name="picovolt" plural="picovolts" unitsystem="SI.VOLT" enum="PICOVOLT"/></xsdfu></xsd:appinfo>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="fV">
+        <xsd:annotation>
+          <xsd:documentation>femtovolt unit.</xsd:documentation>
+          <xsd:appinfo><xsdfu xmlns=""><enum name="femtovolt" plural="femtovolts" unitsystem="SI.VOLT" enum="FEMTOVOLT"/></xsdfu></xsd:appinfo>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="aV">
+        <xsd:annotation>
+          <xsd:documentation>attovolt unit.</xsd:documentation>
+          <xsd:appinfo><xsdfu xmlns=""><enum name="attovolt" plural="attovolts" unitsystem="SI.VOLT" enum="ATTOVOLT"/></xsdfu></xsd:appinfo>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="zV">
+        <xsd:annotation>
+          <xsd:documentation>zeptovolt unit.</xsd:documentation>
+          <xsd:appinfo><xsdfu xmlns=""><enum name="zeptovolt" plural="zeptovolts" unitsystem="SI.VOLT" enum="ZEPTOVOLT"/></xsdfu></xsd:appinfo>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="yV">
+        <xsd:annotation>
+          <xsd:documentation>yoctovolt unit.</xsd:documentation>
+          <xsd:appinfo><xsdfu xmlns=""><enum name="yoctovolt" plural="yoctovolts" unitsystem="SI.VOLT" enum="YOCTOVOLT"/></xsdfu></xsd:appinfo>
+        </xsd:annotation>
+      </xsd:enumeration>
+    </xsd:restriction>
+  </xsd:simpleType>
   <xsd:simpleType name="UnitsElectricCurrent">
     <xsd:restriction base="xsd:string">
       <xsd:enumeration value="A"/>
-      <xsd:enumeration value=" e-/pixel/sec"/>
+      <xsd:enumeration value="e-/pixel/sec"/>
+      <xsd:enumeration value="e- rms"/>
     </xsd:restriction>
   </xsd:simpleType>
 
   <!-- 4DN specific enumeration types -->
+  <xsd:simpleType name="UnitsElectricCharge">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="e-"/>
+      <xsd:enumeration value="Coulomb"/>
+      <xsd:enumeration value="Other"/>
+    </xsd:restriction>
+  </xsd:simpleType>
   <xsd:simpleType name="MicroscopeType">
     <xsd:restriction base="xsd:string">
       <xsd:enumeration value="Upright"/>
@@ -8256,6 +8287,15 @@ PlaneInfo (as Plane)
       <xsd:enumeration value="Other"/>
     </xsd:restriction>
   </xsd:simpleType>
+  <xsd:simpleType name="DetectorMount">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="C-mount"/>
+      <xsd:enumeration value="T-mount"/>
+      <xsd:enumeration value="SLR adapter"/>
+      <xsd:enumeration value="D-SLR adapter"/>
+      <xsd:enumeration value="Other"/>
+    </xsd:restriction>
+  </xsd:simpleType>
   <xsd:simpleType name="DetectorNoiseModel">
     <xsd:restriction base="xsd:string">
       <xsd:enumeration value="Poisson"/>
@@ -8264,7 +8304,11 @@ PlaneInfo (as Plane)
     </xsd:restriction>
   </xsd:simpleType>
   <xsd:simpleType name="CameraIllumination">
-    <xsd:restriction base="xsd:string"/>
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Front"/>
+      <xsd:enumeration value="Back"/>
+      <xsd:enumeration value="Other"/>
+    </xsd:restriction>
   </xsd:simpleType>
   <xsd:simpleType name="CCDType">
     <xsd:restriction base="xsd:string">
