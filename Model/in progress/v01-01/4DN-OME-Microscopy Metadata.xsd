@@ -2107,6 +2107,11 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
 
   <!-- Sample holder and focusing elements -->
   <xsd:element name="SampleHolder">
+    <xsd:annotation>
+      <xsd:documentation>Category=SampleHolderAndFocusing</xsd:documentation>
+      <xsd:documentation>Description=This element describes an optional sample holder mounted on the microscope stage.</xsd:documentation>
+      <xsd:documentation>Tier=3</xsd:documentation>
+    </xsd:annotation>
     <xsd:complexType>
       <xsd:complexContent>
         <xsd:extension base="Stage">
@@ -2158,7 +2163,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
         </xsd:attribute>
         <xsd:attribute name="PositionLinearityError" type="xsd:float">
           <xsd:annotation>
-            <xsd:documentation>Description=The positioning error associated with this device</xsd:documentation>
+            <xsd:documentation>Description=The positioning error associated with this device. Typically expressed as % error.</xsd:documentation>
             <xsd:documentation>Tier=5</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
@@ -2218,7 +2223,19 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
       </xsd:complexContent>
     </xsd:complexType>
   </xsd:element>
-  <xsd:element name="PiezoElectricGroup" substitutionGroup="FocusingGroup">
+  <xsd:element name="ObjectiveTurret" substitutionGroup="FocusingGroup">
+    <xsd:annotation>
+      <xsd:documentation>Category=SampleHolderAndFocusing.Focusing</xsd:documentation>
+      <xsd:documentation>Description=This is a objective turret positoning device.</xsd:documentation>
+      <xsd:documentation>Tier=3</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:complexContent>
+        <xsd:extension base="Focusing"/>
+      </xsd:complexContent>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="PiezoElectricObjective" substitutionGroup="FocusingGroup">
     <xsd:annotation>
       <xsd:documentation>Category=SampleHolderAndFocusing.Focusing</xsd:documentation>
       <xsd:documentation>Description=This is a piezoelectric objective-lens positioning device</xsd:documentation>
@@ -2299,8 +2316,8 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
   </xsd:complexType>
   <xsd:element name="AutoFucus">
     <xsd:annotation>
-      <xsd:documentation>Catergory=Sample holder and focusing</xsd:documentation>
-      <xsd:documentation>Description=This element describes the focus stabilization device(s) available for this microscope</xsd:documentation>
+      <xsd:documentation>Catergory=SampleHolderAndFocusing</xsd:documentation>
+      <xsd:documentation>Description=This element describes the focus stabilization device(s) available for this microscope.</xsd:documentation>
       <xsd:documentation>Tier=3</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
@@ -2379,26 +2396,6 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
               <xsd:documentation>Tier=2</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="NominalImmersionMedium" use="optional"
-            type="ObjectiveNominalImmersionMedium">
-            <xsd:annotation>
-              <xsd:documentation>Description=The immersion medium the lens is designed for</xsd:documentation>
-              <xsd:documentation>Tier=2</xsd:documentation>
-            </xsd:annotation>
-          </xsd:attribute>
-          <xsd:attribute name="LensNA" use="optional" type="xsd:float">
-            <xsd:annotation>
-              <xsd:documentation>Description=The numerical aperture of the lens expressed as a floating point (real) number. Expected range 0.02 - 1.5
-              </xsd:documentation>
-              <xsd:documentation>Tier=1</xsd:documentation>
-            </xsd:annotation>
-          </xsd:attribute>
-          <xsd:attribute name="LensRefractiveIndex" type="xsd:float">
-            <xsd:annotation>
-              <xsd:documentation>Description = The nominal refractive index of this objective lens.</xsd:documentation>
-              <xsd:documentation>Tier = 1</xsd:documentation>
-            </xsd:annotation>
-          </xsd:attribute>
           <xsd:attribute name="NominalMagnification" use="optional" type="xsd:float">
             <xsd:annotation>
               <xsd:documentation>Descrption=The magnification of the lens as specified by the manufacturer - i.e. '60' is a 60X lens. Note: The type of this has been changed from int to float to allow the specification of additional lenses e.g. 0.5X lens
@@ -2410,6 +2407,32 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
             <xsd:annotation>
               <xsd:documentation>Description=The magnification of the lens as measured by a calibration process- i.e. '59.987' for a 60X lens</xsd:documentation>
               <xsd:documentation>Tier=5</xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
+          <xsd:attribute name="LensNA" use="optional" type="xsd:float">
+            <xsd:annotation>
+              <xsd:documentation>Description=The numerical aperture of the lens expressed as a floating point (real) number. Expected range 0.02 - 1.5
+              </xsd:documentation>
+              <xsd:documentation>Tier=1</xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
+          <xsd:attribute name="NominalImmersionMedium" use="optional"
+            type="ObjectiveNominalImmersionMedium">
+            <xsd:annotation>
+              <xsd:documentation>Description=The immersion medium the lens is designed for</xsd:documentation>
+              <xsd:documentation>Tier=2</xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
+          <xsd:attribute name="Infinity" type="xsd:boolean">
+            <xsd:annotation>
+              <xsd:documentation>Description=Records whether or not the objective is infinity corrected</xsd:documentation>
+              <xsd:documentation>Tier=3</xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
+          <xsd:attribute name="CoverslipTickness" type="xsd:float">
+            <xsd:annotation>
+              <xsd:documentation>Description = The coverlip thickness this objective is recommended for.</xsd:documentation>
+              <xsd:documentation>Tier=2</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
           <xsd:attribute name="WorkingDistance" use="optional" type="xsd:float">
@@ -2431,6 +2454,26 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
               <xsd:documentation>Tier=4</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
+          <xsd:attribute name="ObjectiveFieldNumber" type="xsd:float">
+            <xsd:annotation>
+              <xsd:documentation>Description=The maximal diameter of the viewfield allowed by this objective expressed in mm and measured at the intermediate image plane. NB: The field of view is influenced by the magnification and diameter of the ocular (eyepiece) field diaphragm, but also by the limits imposed by the design of the objective.</xsd:documentation>
+              <xsd:documentation>Tier=3</xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
+          <xsd:attribute name="ParfocalizingDistance" type="xsd:float">
+            <xsd:annotation>
+              <xsd:documentation>Description=The distance between the objective lens mounting plane and the specimen.</xsd:documentation>
+              <xsd:documentation>Tier=5</xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
+          <xsd:attribute name="BackFocalPlanePosition" type="xsd:float">
+            <xsd:annotation>
+              <xsd:documentation>Description=The position of the back focal plane with respect to the specimen position.</xsd:documentation>
+              <xsd:documentation>Tier=5</xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
+          <xsd:attribute default="mm" name="ParfocalizingDistanceUnit" type="UnitsLength"/>
+          <xsd:attribute default="mm" name="BackFocalPlanePositionUnit" type="UnitsLength"/>
         </xsd:extension>
       </xsd:complexContent>
     </xsd:complexType>
@@ -7913,7 +7956,9 @@ PlaneInfo (as Plane)
     <xsd:restriction base="xsd:string">
       <xsd:enumeration value="Gas"/>
       <xsd:enumeration value="MetalVapor"/>
-      <xsd:enumeration value="SolidState"/>
+      <xsd:enumeration value="LaserDiode"/>
+      <xsd:enumeration value="DiodePumpedSolidState"/>
+      <xsd:enumeration value="LED"/>
       <xsd:enumeration value="Dye"/>
       <xsd:enumeration value="Semiconductor"/>
       <xsd:enumeration value="FreeElectron"/>
@@ -8067,20 +8112,24 @@ PlaneInfo (as Plane)
   </xsd:simpleType>
   <xsd:simpleType name="ObjectiveCorrection">
     <xsd:restriction base="xsd:string">
-      <xsd:enumeration value="UV"/>
-      <xsd:enumeration value="PlanApo"/>
-      <xsd:enumeration value="PlanFluor"/>
-      <xsd:enumeration value="SuperFluor"/>
-      <xsd:enumeration value="VioletCorrected"/>
       <xsd:enumeration value="Achro"/>
       <xsd:enumeration value="Achromat"/>
-      <xsd:enumeration value="Fluor"/>
+      <xsd:enumeration value="Achroplan"/>
+      <xsd:enumeration value="Apo"/>
       <xsd:enumeration value="Fl"/>
       <xsd:enumeration value="Fluar"/>
-      <xsd:enumeration value="Neofluar"/>
+      <xsd:enumeration value="Fluor"/>
       <xsd:enumeration value="Fluotar"/>
-      <xsd:enumeration value="Apo"/>
+      <xsd:enumeration value="Neofluar"/>
+      <xsd:enumeration value="Pl"/>
+      <xsd:enumeration value="Plan"/>
+      <xsd:enumeration value="Plano"/>
+      <xsd:enumeration value="PlanApo"/>
+      <xsd:enumeration value="PlanFluor"/>
       <xsd:enumeration value="PlanNeofluar"/>
+      <xsd:enumeration value="SuperFluor"/>
+      <xsd:enumeration value="UV"/>
+      <xsd:enumeration value="VioletCorrected"/>
       <xsd:enumeration value="Other"/>
     </xsd:restriction>
   </xsd:simpleType>
