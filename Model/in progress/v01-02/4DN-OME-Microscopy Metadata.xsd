@@ -124,7 +124,6 @@
           <xsd:documentation>
             This unique identifier is used to keep track of multi part files.
             It allows the links between files to survive renaming.
-
             While OPTIONAL in the general case this is REQUIRED in a
             MetadataOnly Companion to a collection of BinaryOnly files.
           </xsd:documentation>
@@ -134,10 +133,8 @@
         <xsd:annotation>
           <xsd:documentation>
             This is the name of the creating application of the OME-XML
-            and preferably its full version.
-            e.g "CompanyName, SoftwareName, V2.6.3456"
-            This is optional but we hope it will be set by applications
-            writing out OME-XML from scratch.
+            and preferably its full version. e.g "CompanyName, SoftwareName, V2.6.3456"
+            This is optional but we hope it will be set by applications writing out OME-XML from scratch.
           </xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
@@ -663,8 +660,7 @@
           <xsd:annotation>
             <xsd:appinfo><xsdfu xmlns=""><manytomany/></xsdfu></xsd:appinfo>
             <xsd:documentation>
-              The PlateRef element is a reference to a Plate element.
-              Screen elements may have one or more PlateRef elements to define the plates that are part of the screen.
+              The PlateRef element is a reference to a Plate element. Screen elements may have one or more PlateRef elements to define the plates that are part of the screen.
               Plates may belong to more than one screen.
             </xsd:documentation>
           </xsd:annotation>
@@ -701,18 +697,12 @@
       </xsd:attribute>
       <xsd:attribute name="ReagentSetDescription" use="optional" type="xsd:string">
         <xsd:annotation>
-          <xsd:documentation>
-            A description of the set of reagents; may contain very detailed information to
-            reproduce some of that information found in a screening database.
-          </xsd:documentation>
+          <xsd:documentation>A description of the set of reagents; may contain very detailed information to reproduce some of that information found in a screening database.</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
       <xsd:attribute name="ReagentSetIdentifier" use="optional" type="xsd:string">
         <xsd:annotation>
-          <xsd:documentation>
-            A pointer to an externally defined set of reagents, usually in a screening
-            database/automation database.
-          </xsd:documentation>
+          <xsd:documentation>A pointer to an externally defined set of reagents, usually in a screeningdatabase/automation database.</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
       <xsd:attribute name="Type" use="optional" type="xsd:string">
@@ -726,14 +716,7 @@
     <!-- top level definition -->
     <xsd:annotation>
       <xsd:appinfo><xsdfu xmlns=""><plural>Plates</plural></xsdfu></xsd:appinfo>
-      <xsd:documentation>
-        This element identifies microtiter plates within a screen.
-        A plate can belong to more than one screen.
-        The Screen(s) that a plate belongs to are specified by the ScreenRef element.
-        The Plate ID and Name attributes are required.
-        The Wells in a plate are numbers from the top-left corner in a grid starting at zero.
-        i.e. The top-left well of a plate is index (0,0)
-      </xsd:documentation>
+      <xsd:documentation>This element identifies microtiter plates within a screen. A plate can belong to more than one screen. The Screen(s) that a plate belongs to are specified by the ScreenRef element. The Plate ID and Name attributes are required. The Wells in a plate are numbers from the top-left corner in a grid starting at zero. i.e. The top-left well of a plate is index (0,0).</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
       <xsd:sequence>
@@ -764,7 +747,6 @@
             The Name identifies the plate to the user.
             It is used much like the ID, and so must be
             unique within the document.
-            
             If a plate name is not available when one is needed
             it will be constructed in the following order:
             1. If name is available use it.
@@ -1042,22 +1024,7 @@
     <!-- top level definition -->
     <xsd:annotation>
       <xsd:appinfo><xsdfu xmlns=""><plural>Images</plural></xsdfu></xsd:appinfo>
-      <xsd:documentation>
-        This element describes the actual image and its meta-data.
-        The elements that are references (ending in Ref or Settings) refer to
-        elements defined outside of the Image element. Ref elements are simple
-        links, while Settings elements are links with additional values.
-
-        If any of the required Image attributes or elements are missing, its
-        guaranteed to be an invalid document. The required attributes and
-        elements are ID and Pixels.
-
-        ExperimenterRef is required for all Images with well formed LSIDs.
-        ImageType is a vendor-specific designation of the type of image this is.
-        Examples of ImageType include 'STK', 'SoftWorx', etc.
-        The Name attributes are in all cases the name of the element
-        instance. In this case, the name of the image, not necessarily the filename.
-        Physical size of pixels are microns[µm].
+      <xsd:documentation>This element describes the actual image and its meta-data. The elements that are references (ending in Ref or Settings) refer to elements defined outside of the Image element. Ref elements are simple links, while Settings elements are links with additional values. If any of the required Image attributes or elements are missing, its guaranteed to be an invalid document. The required attributes and elements are ID and Pixels. ExperimenterRef is required for all Images with well formed LSIDs. ImageType is a vendor-specific designation of the type of image this is. Examples of ImageType include 'STK', 'SoftWorx', etc. The Name attributes are in all cases the name of the element instance. In this case, the name of the image, not necessarily the filename. Physical size of pixels are microns[µm].
       </xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
@@ -1299,7 +1266,7 @@
             <xsd:documentation>Tier=3</xsd:documentation>
           </xsd:annotation>
         </xsd:element>
-        <xsd:element maxOccurs="unbounded" minOccurs="0" ref="AutoFucus">
+        <xsd:element maxOccurs="unbounded" minOccurs="0" ref="AutoFocus">
           <xsd:annotation>
             <xsd:documentation>Category=SampleHolderAndFocusing</xsd:documentation>
             <xsd:documentation>Description=This element describes the focus stabilization device(s) available for this microscope</xsd:documentation>
@@ -2321,7 +2288,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
-  <xsd:element name="AutoFucus">
+  <xsd:element name="AutoFocus">
     <xsd:annotation>
       <xsd:documentation>Category=SampleHolderAndFocusing.Focusing</xsd:documentation>
       <xsd:documentation>Description=This element describes the focus stabilization device(s) available for this microscope.</xsd:documentation>
@@ -2418,8 +2385,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
           </xsd:attribute>
           <xsd:attribute name="LensNA" use="optional" type="xsd:float">
             <xsd:annotation>
-              <xsd:documentation>Description=The numerical aperture of the lens expressed as a floating point (real) number. Expected range 0.02 - 1.5
-              </xsd:documentation>
+              <xsd:documentation>Description=The numerical aperture of the lens expressed as a floating point (real) number. Expected range 0.02 - 1.5.</xsd:documentation>
               <xsd:documentation>Tier=1</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
@@ -2444,8 +2410,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
           </xsd:attribute>
           <xsd:attribute name="WorkingDistance" use="optional" type="xsd:float">
             <xsd:annotation>
-              <xsd:documentation>Description=The working distance of the lens expressed as a floating point (real) number. Units are set by WorkingDistanceUnit
-              </xsd:documentation>
+              <xsd:documentation>Description=The working distance of the lens expressed as a floating point (real) number.</xsd:documentation>
               <xsd:documentation>Tier=3</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
@@ -2539,8 +2504,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
         </xsd:sequence>
         <xsd:attribute name="ID" use="required" type="LightSourceID">
           <xsd:annotation>
-            <xsd:documentation>Description=A LightSource ID must be specified for each light source, and the individual light sources can be referred to by their LightSource IDs (eg from Channel).
-            </xsd:documentation>
+            <xsd:documentation>Description=A LightSource ID must be specified for each light source, and the individual light sources can be referred to by their LightSource IDs (eg from Channel).</xsd:documentation>
             <xsd:documentation>Tier=1</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
@@ -2661,7 +2625,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
         <xsd:extension base="LightSource">
           <xsd:attribute name="Type" use="optional" type="ArcType">
             <xsd:annotation>
-              <xsd:documentation>Description=The type of Arc lamp.      </xsd:documentation>
+              <xsd:documentation>Description=The type of Arc lamp.</xsd:documentation>
               <xsd:documentation>Tier=3</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
@@ -2682,8 +2646,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
         <xsd:extension base="LightSource">
           <xsd:attribute name="Type" use="optional" type="FilamentType">
             <xsd:annotation>
-              <xsd:documentation>Description=The type of filament.
-              </xsd:documentation>
+              <xsd:documentation>Description=The type of filament.</xsd:documentation>
               <xsd:documentation>Tier=3</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
@@ -2753,8 +2716,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
     <xsd:annotation>
       <xsd:appinfo><xsdfu xmlns=""><plural>GenericExcitationSources</plural></xsdfu></xsd:appinfo>
       <xsd:documentation>Category=LightSource</xsd:documentation>
-      <xsd:documentation>Description=The GenericExcitationSource element is used to represent a source as a collection of key/value pairs, stored in a Map. The other lightsource objects should always be used in preference to this if possible.
-      </xsd:documentation>
+      <xsd:documentation>Description=The GenericExcitationSource element is used to represent a source as a collection of key/value pairs, stored in a Map. The other lightsource objects should always be used in preference to this if possible.</xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
@@ -2771,9 +2733,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
     <!-- top level definition -->
     <xsd:annotation>
       <xsd:appinfo><xsdfu xmlns=""><plural>Pumps</plural></xsdfu></xsd:appinfo>
-      <xsd:documentation>
-        The Pump element is a reference to a LightSource.  It is used within the Laser element to specify the light source for the laser's pump (if any).
-      </xsd:documentation>
+      <xsd:documentation>The Pump element is a reference to a LightSource. It is used within the Laser element to specify the light source for the laser's pump (if any).</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
       <xsd:complexContent>
@@ -3194,7 +3154,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
 
   <xsd:element name="ExcitationFilter" substitutionGroup="FilterGroup">
     <xsd:annotation>
-      <xsd:documentation>Catergory=LightPath</xsd:documentation>
+      <xsd:documentation>Category=LightPath</xsd:documentation>
       <xsd:documentation>Description=An optical filter is a device that selectively transmits light of different wavelengths.This element refers to an excitation filter. This element can be associated with an optional FilterWheel - Note: FilterWheel is not the same as a FilterSet.</xsd:documentation>
       <xsd:documentation>Tier=2</xsd:documentation>
     </xsd:annotation>
@@ -3218,7 +3178,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
   </xsd:element>
   <xsd:element name="AdditionalFilter" substitutionGroup="FilterGroup">
     <xsd:annotation>
-      <xsd:documentation>Catergory=AdditinalOptics</xsd:documentation>
+      <xsd:documentation>Category=AdditinalOptics</xsd:documentation>
       <xsd:documentation>Description=An optical filter is a device that selectively transmits light of different wavelengths.This element refers to a filter positioned along the light path in addition to the excitation and the emission filters.This element can be associated with an optional FilterWheel - Note: FilterWheel is not the same as a FilterSet.</xsd:documentation>
       <xsd:documentation>Tier=2</xsd:documentation>
     </xsd:annotation>
@@ -4072,7 +4032,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
         <xsd:attribute name="QuantumEfficiencyatPeakWavelength" type="xsd:float" use="required">
           <xsd:annotation>
             <xsd:documentation>Description=The Quantum Efficiency observed at peak wavelength. Quantum Efficiency is generally defined as is the ratio of incident photon to converted electrons. Typically expressed as a number between 0 and 1.</xsd:documentation>
-            <xsd:documentation>Tier=5	</xsd:documentation>
+            <xsd:documentation>Tier=5</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
         <xsd:attribute name="AmbientOperatingTemperature" type="xsd:float">
@@ -4431,10 +4391,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
           <xsd:attribute name="ID" use="required" type="LightSourceID"/>
           <xsd:attribute name="Attenuation" use="optional" type="PercentFraction">
             <xsd:annotation>
-              <xsd:documentation>
-                The Attenuation of the light source [units:none]
-                A fraction, as a value from 0.0 to 1.0.
-              </xsd:documentation>
+              <xsd:documentation>The Attenuation of the light source. A fraction, as a value from 0.0 to 1.0.</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
           <xsd:attribute name="Wavelength" use="required" type="PositiveFloat">
@@ -4472,9 +4429,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
           </xsd:attribute>
           <xsd:attribute name="CorrectionCollar" use="optional" type="xsd:float">
             <xsd:annotation>
-              <xsd:documentation>Description=The CorrectionCollar is normally an adjustable ring on the objective. Each has an arbitrary scale on it so the values
-is unit-less. [units:none]
-              </xsd:documentation>
+              <xsd:documentation>Description=The CorrectionCollar is normally an adjustable ring on the objective. Each has an arbitrary scale on it so the values is unit-less.[units:none]</xsd:documentation>
               <xsd:documentation>Tier=5</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
@@ -4662,9 +4617,7 @@ is unit-less. [units:none]
     <!-- top level definition -->
     <xsd:annotation>
       <xsd:appinfo><xsdfu xmlns=""><plural>Externals</plural></xsdfu></xsd:appinfo>
-      <xsd:documentation>Describes a file location.  Can optionally specify a portion of a file using Offset and a ReadLength.
-      If Offset and ReadLength are specified in conjuction with Compression, then they point into the uncompressed file.
-      </xsd:documentation>
+      <xsd:documentation>Describes a file location. Can optionally specify a portion of a file using Offset and a ReadLength. If Offset and ReadLength are specified in conjuction with Compression, then they point into the uncompressed file.</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
       <xsd:attribute name="href" use="required" type="xsd:anyURI">
@@ -4715,16 +4668,12 @@ is unit-less. [units:none]
           </xsd:attribute>
           <xsd:attribute name="BigEndian" use="required" type="xsd:boolean">
             <xsd:annotation>
-              <xsd:documentation>
-                This is true if the binary data was written in BigEndian order. This is dependent on the system architecture of the machine that wrote the pixels. True for essentially all modern CPUs other than Intel and Alpha. All Binary data must be written in the same endian order.
-              </xsd:documentation>
+              <xsd:documentation>This is true if the binary data was written in BigEndian order. This is dependent on the system architecture of the machine that wrote the pixels. True for essentially all modern CPUs other than Intel and Alpha. All Binary data must be written in the same endian order.</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
           <xsd:attribute name="Length" use="required">
             <xsd:annotation>
-              <xsd:documentation>
-                Character count attribute for the BinData field. This is the length of the base-64 encoded block. It allows easy skipping of the block when parsing the file. [unit:bytes]
-              </xsd:documentation>
+              <xsd:documentation>Character count attribute for the BinData field. This is the length of the base-64 encoded block. It allows easy skipping of the block when parsing the file. [unit:bytes]</xsd:documentation>
             </xsd:annotation>
             <xsd:simpleType>
               <xsd:restriction base="NonNegativeLong"> </xsd:restriction>
@@ -4834,16 +4783,12 @@ PlaneInfo (as Plane)
     <!-- top level definition -->
     <xsd:annotation>
       <xsd:appinfo><xsdfu xmlns=""><plural>Annotations</plural><abstract/></xsdfu></xsd:appinfo>
-      <xsd:documentation>
-        An annotation from which all others are ultimately derived.
-      </xsd:documentation>
+      <xsd:documentation>An annotation from which all others are ultimately derived.</xsd:documentation>
     </xsd:annotation>
     <xsd:sequence>
       <xsd:element name="Description" minOccurs="0" maxOccurs="1">
         <xsd:annotation>
-          <xsd:documentation>
-            A description for the annotation. [plain-text multi-line string]
-          </xsd:documentation>
+          <xsd:documentation>A description for the annotation.[plain-text multi-line string]</xsd:documentation>
         </xsd:annotation>
         <xsd:simpleType>
           <xsd:restriction base="xsd:string">
@@ -4862,11 +4807,7 @@ PlaneInfo (as Plane)
     <xsd:attribute name="ID" use="required" type="AnnotationID"/>
     <xsd:attribute name="Namespace" use="optional" type="xsd:anyURI">
       <xsd:annotation>
-        <xsd:documentation>
-          We recommend the inclusion of a namespace for annotations you
-          define. If it is absent then we assume the annotation is to
-          use our (OME's) default interpretation for this type.
-        </xsd:documentation>
+        <xsd:documentation>We recommend the inclusion of a namespace for annotations you define. If it is absent then we assume the annotation is to use our (OME's) default interpretation for this type.</xsd:documentation>
       </xsd:annotation>
     </xsd:attribute>
     <xsd:attribute name="Annotator" use="optional" type="ExperimenterID">
@@ -5284,11 +5225,7 @@ PlaneInfo (as Plane)
     <xsd:attribute name="ID" use="required" type="ShapeID"/>
     <xsd:attribute name="TheZ" use="optional" type="NonNegativeInt">
       <xsd:annotation>
-        <xsd:documentation>
-          The z-section the ROI applies to. If not specified then
-          the ROI applies to all the z-sections of the image. [units:none]
-          This is numbered from 0.
-        </xsd:documentation>
+        <xsd:documentation>The z-section the ROI applies to. If not specified then the ROI applies to all the z-sections of the image. [units:none] This is numbered from 0.</xsd:documentation>
       </xsd:annotation>
     </xsd:attribute>
     <xsd:attribute name="TheT" use="optional" type="NonNegativeInt">
@@ -5877,18 +5814,12 @@ PlaneInfo (as Plane)
       </xsd:attribute>
       <xsd:attribute name="Type" use="optional" type="xsd:string">
         <xsd:annotation>
-          <xsd:documentation>
-            A human readable identifier for the screening status.
-            e.g. empty, positive control, negative control, control, experimental, etc.
-          </xsd:documentation>
+          <xsd:documentation>A human readable identifier for the screening status. e.g. empty, positive control, negative control, control, experimental, etc.</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
       <xsd:attribute name="Color" use="optional" type="Color" default="-1">
         <xsd:annotation>
-          <xsd:documentation>
-            A marker color used to highlight the well - encoded as RGBA
-            The default value "-1" is #FFFFFFFF so solid white (it is a signed 32 bit value)
-            NOTE: Prior to the 2012-06 schema the default value was incorrect and produced a transparent red not solid white.
+          <xsd:documentation>A marker color used to highlight the well - encoded as RGBA The default value "-1" is #FFFFFFFF so solid white (it is a signed 32 bit value) NOTE: Prior to the 2012-06 schema the default value was incorrect and produced a transparent red not solid white.
           </xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
@@ -6122,8 +6053,7 @@ PlaneInfo (as Plane)
   <xsd:element name="InstrumentRef">
     <!-- top level definition -->
     <xsd:annotation>
-      <xsd:documentation>Description=This empty element can be used (via the required Instrument ID attribute) to refer to an Instrument defined within OME
-      </xsd:documentation>
+      <xsd:documentation>Description=This empty element can be used (via the required Instrument ID attribute) to refer to an Instrument defined within OME</xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
@@ -6137,11 +6067,7 @@ PlaneInfo (as Plane)
   <xsd:element name="DatasetRef">
     <!-- top level definition -->
     <xsd:annotation>
-      <xsd:documentation>
-        The DatasetRef element refers to a Dataset by specifying the Dataset ID attribute.
-        One or more DatasetRef elements may be listed within the Image element to specify what Datasets
-        the Image belongs to.
-      </xsd:documentation>
+      <xsd:documentation>The DatasetRef element refers to a Dataset by specifying the Dataset ID attribute. One or more DatasetRef elements may be listed within the Image element to specify what Datasetsthe Image belongs to.</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
       <xsd:complexContent>
@@ -6154,11 +6080,7 @@ PlaneInfo (as Plane)
   <xsd:element name="FolderRef">
     <!-- top level definition -->
     <xsd:annotation>
-      <xsd:documentation>
-        The FolderRef element refers to a Folder by specifying the Folder ID attribute.
-        One or more FolderRef elements may be listed within the Folder element to specify what Folders
-        the Folder contains. This tree hierarchy must be acyclic.
-      </xsd:documentation>
+      <xsd:documentation>The FolderRef element refers to a Folder by specifying the Folder ID attribute. One or more FolderRef elements may be listed within the Folder element to specify what Folders the Folder contains. This tree hierarchy must be acyclic.</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
       <xsd:complexContent>
@@ -6286,8 +6208,7 @@ PlaneInfo (as Plane)
     </xsd:attribute>
     <xsd:attribute name="Model" use="required" type="xsd:string">
       <xsd:annotation>
-        <xsd:documentation>Description=The Model of the component
-        </xsd:documentation>
+        <xsd:documentation>Description=The Model of the component.</xsd:documentation>
         <xsd:documentation>Tier=3</xsd:documentation>
       </xsd:annotation>
     </xsd:attribute>
@@ -8903,7 +8824,7 @@ length at the expense of readability as they are likely to occur many times. </x
         <xsd:extension base="OpticalStandard">
           <xsd:attribute name="Type" type="xsd:string">
             <xsd:annotation>
-              <xsd:documentation>Description=This field describes the  type of DNA origami-based optical standard used in this case. Currently this is fild is a simple string. However it might be substituted by an enumeration at a later stage.</xsd:documentation>
+              <xsd:documentation>Description=This field describes the type of DNA origami-based optical standard used in this case. Currently this is fild is a simple string. However it might be substituted by an enumeration at a later stage.</xsd:documentation>
               <xsd:documentation>Tier=3</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
