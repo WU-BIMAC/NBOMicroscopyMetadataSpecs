@@ -2668,13 +2668,13 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
           <xsd:sequence>
             <xsd:element ref="LEDWavelengthRange" maxOccurs="unbounded"/>
           </xsd:sequence>
-          <xsd:attribute name="Type" type="LightEmittingDiodeType">
+          <xsd:attribute name="Type" type="LightEmittingDiodeType" use="required">
             <xsd:annotation>
               <xsd:documentation>Description=The type of LightEmittingDiode light source.</xsd:documentation>
               <xsd:documentation>Tier=3</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="PeakWavelenght" type="xsd:float">
+          <xsd:attribute name="PeakWavelenght" type="xsd:float" use="required">
             <xsd:annotation>
               <xsd:documentation>The wavelength at which there is maximal response rate</xsd:documentation>
               <xsd:documentation>Tier=2</xsd:documentation>
@@ -2685,7 +2685,13 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
               <xsd:documentation>Tier=3</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="LumenPower" type="xsd:float">
+          <xsd:attribute name="WavelenghtProfile" type="xsd:anyURI">
+            <xsd:annotation>
+              <xsd:documentation>Description=The location of a file containing the wavelenght profile of this component</xsd:documentation>
+              <xsd:documentation>Tier=5</xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
+          <xsd:attribute name="LumenPower" type="xsd:float" use="required">
             <xsd:annotation>
               <xsd:documentation>Description=The amount of light this light source generate at maximum expressed in lumen. The lumen is the SI derived unit of luminous flux, a measure of the total quantity of visible light emitted by a source.</xsd:documentation>
               <xsd:documentation>Tier=3</xsd:documentation>
@@ -2752,13 +2758,13 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
     <xsd:complexContent>
       <xsd:extension base="ManufacturerSpec">
         <xsd:sequence>
-          <xsd:element name="CouplingLensRef" type="LensRef">
+          <xsd:element name="CouplingLensRef" type="LensRef" minOccurs="0">
             <xsd:annotation>
               <xsd:documentation>Description=This element is a reference to a Lens element</xsd:documentation>
               <xsd:documentation>Tier=5</xsd:documentation>
             </xsd:annotation>
           </xsd:element>
-          <xsd:element ref="AnnotationRef"/>
+          <xsd:element ref="AnnotationRef" maxOccurs="1" minOccurs="0"/>
         </xsd:sequence>
         <xsd:attribute name="ID" type="LightSourceCouplingID">
           <xsd:annotation>
@@ -2790,9 +2796,9 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
       <xsd:complexContent>
         <xsd:extension base="LightSourceCoupling">
           <xsd:sequence>
-            <xsd:element maxOccurs="unbounded" ref="LightGuideWavelengthRange"/>
+            <xsd:element maxOccurs="1" ref="LightGuideWavelengthRange" minOccurs="1"/>
           </xsd:sequence>
-          <xsd:attribute name="Type" type="LightGuideType">
+          <xsd:attribute name="Type" type="LightGuideType" use="required">
             <xsd:annotation>
               <xsd:documentation>Description=The type of light guide used in this case.</xsd:documentation>
               <xsd:documentation>Tier=5</xsd:documentation>
@@ -2810,7 +2816,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
               <xsd:documentation>Tier=5</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="PeakWavelength" type="xsd:float">
+          <xsd:attribute name="PeakWavelength" type="xsd:float" use="required">
             <xsd:annotation>
               <xsd:documentation>Description=The wavelength associated with maximum light intensity transmitted by this light guide</xsd:documentation>
               <xsd:documentation>Tier=5</xsd:documentation>
@@ -2839,13 +2845,13 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
               <xsd:documentation>Tier=5</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="NumericalAperture">
+          <xsd:attribute name="NumericalAperture" type="xsd:float" use="required">
             <xsd:annotation>
               <xsd:documentation>Description=The numerical aperture of the light guide expressed as a floating point (real) number. Expected range 0.02 - 1.5</xsd:documentation>
               <xsd:documentation>Tier=5</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="AcceptanceAngle">
+          <xsd:attribute name="AcceptanceAngle" type="xsd:float" use="required">
             <xsd:annotation>
               <xsd:documentation>Description=The angle within which light beam may be coupled into the bound modes of an optical fiber.</xsd:documentation>
               <xsd:documentation>Tier=5</xsd:documentation>
@@ -2856,7 +2862,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
               <xsd:documentation>Tier=5</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="Diameter">
+          <xsd:attribute name="Diameter" type="xsd:float">
             <xsd:annotation>
               <xsd:documentation>Description=The outer diameter of the light guide</xsd:documentation>
               <xsd:documentation>Tier=5</xsd:documentation>
@@ -2905,7 +2911,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
       <xsd:documentation>Tier=2</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
-      <xsd:attribute name="CutIn" use="optional" type="PositiveFloat">
+      <xsd:attribute name="CutIn" use="required" type="PositiveFloat">
         <xsd:annotation>
           <xsd:documentation>Description=CutIn is the wavelength below which the response rate is below 50%
           </xsd:documentation>
@@ -2918,7 +2924,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
           <xsd:documentation>Tier=2</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
-      <xsd:attribute name="CutOut" use="optional" type="PositiveFloat">
+      <xsd:attribute name="CutOut" use="required" type="PositiveFloat">
         <xsd:annotation>
           <xsd:documentation>Description=CutOut is the wavelength above which the response rate is below 50%</xsd:documentation>
           <xsd:documentation>Tier=2</xsd:documentation>
@@ -2928,12 +2934,6 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
         <xsd:annotation>
           <xsd:documentation>The units of the CutOut - default:nanometres[nm]</xsd:documentation>
           <xsd:documentation>Tier=2</xsd:documentation>
-        </xsd:annotation>
-      </xsd:attribute>
-      <xsd:attribute name="WavelenghtProfile" type="xsd:anyURI">
-        <xsd:annotation>
-          <xsd:documentation>Description=The location of a file containing the wavelenght profile of this component</xsd:documentation>
-          <xsd:documentation>Tier=5</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
     </xsd:complexType>
@@ -3104,6 +3104,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
       <xsd:extension base="ManufacturerSpec">
         <xsd:sequence>
           <xsd:element ref="TransmittanceRange" minOccurs="1" maxOccurs="unbounded"/>
+          <xsd:element minOccurs="0" ref="TransmittanceProfileRef"/>
           <xsd:element ref="AnnotationRef" minOccurs="0" maxOccurs="unbounded">
             <xsd:annotation>
               <xsd:appinfo><xsdfu xmlns=""><manytomany/></xsdfu></xsd:appinfo>
@@ -3178,7 +3179,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
   </xsd:element>
   <xsd:element name="AdditionalFilter" substitutionGroup="FilterGroup">
     <xsd:annotation>
-      <xsd:documentation>Category=AdditinalOptics</xsd:documentation>
+      <xsd:documentation>Category=AdditionalOptics</xsd:documentation>
       <xsd:documentation>Description=An optical filter is a device that selectively transmits light of different wavelengths.This element refers to a filter positioned along the light path in addition to the excitation and the emission filters.This element can be associated with an optional FilterWheel - Note: FilterWheel is not the same as a FilterSet.</xsd:documentation>
       <xsd:documentation>Tier=2</xsd:documentation>
     </xsd:annotation>
@@ -3197,25 +3198,6 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
       <xsd:documentation>Tier=3</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
-      <xsd:sequence>
-        <xsd:element name="TransmittanceProfileRef" minOccurs="0">
-          <xsd:annotation>
-            <xsd:documentation>Description=This empty element has a reference (the FileID attribute) to a file in .csv or other suitable formats containing the wavelenght profile of this component.</xsd:documentation>
-            <xsd:documentation>Tier=5</xsd:documentation>
-          </xsd:annotation>
-          <xsd:complexType>
-            <xsd:complexContent>
-              <xsd:extension base="Reference">
-                <xsd:attribute name="ID" type="TransmittanceProfileID">
-                  <xsd:annotation>
-                    <xsd:documentation>Tier=5</xsd:documentation>
-                  </xsd:annotation>
-                </xsd:attribute>
-              </xsd:extension>
-            </xsd:complexContent>
-          </xsd:complexType>
-        </xsd:element>
-      </xsd:sequence>
       <xsd:attribute name="CutIn" use="required" type="PositiveFloat">
         <xsd:annotation>
           <xsd:documentation>Description=CutIn is the wavelength below which the response rate is below 50%.
@@ -3391,7 +3373,25 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
         <xsd:extension base="Mirror">
           <xsd:sequence>
             <xsd:element maxOccurs="unbounded" ref="TransmittanceRange"/>
+            <xsd:element minOccurs="0" ref="TransmittanceProfileRef"/>
             <xsd:element maxOccurs="unbounded" ref="ReflectanceRange" minOccurs="0"/>
+            <xsd:element name="ReflectanceProfileRef" maxOccurs="1" minOccurs="0">
+              <xsd:annotation>
+                <xsd:documentation>Description=This empty element has a reference (the FileID attribute) to a file in .csv or other suitable formats containing the wavelenght profile of this component.</xsd:documentation>
+                <xsd:documentation>Tier=5</xsd:documentation>
+              </xsd:annotation>
+              <xsd:complexType>
+                <xsd:complexContent>
+                  <xsd:extension base="Reference">
+                    <xsd:attribute name="ID" type="ReflectanceProfileID">
+                      <xsd:annotation>
+                        <xsd:documentation>Tier=5</xsd:documentation>
+                      </xsd:annotation>
+                    </xsd:attribute>
+                  </xsd:extension>
+                </xsd:complexContent>
+              </xsd:complexType>
+            </xsd:element>
           </xsd:sequence>
           <xsd:attribute name="DichroicType" type="DichroicType">
             <xsd:annotation>
@@ -3448,25 +3448,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
       <xsd:documentation>Tier=3</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
-      <xsd:sequence>
-        <xsd:element name="ReflectanceProfileRef" maxOccurs="1" minOccurs="0">
-          <xsd:annotation>
-            <xsd:documentation>Description=This empty element has a reference (the FileID attribute) to a file in .csv or other suitable formats containing the wavelenght profile of this component.</xsd:documentation>
-            <xsd:documentation>Tier=5</xsd:documentation>
-          </xsd:annotation>
-          <xsd:complexType>
-            <xsd:complexContent>
-              <xsd:extension base="Reference">
-                <xsd:attribute name="ID" type="ReflectanceProfileID">
-                  <xsd:annotation>
-                    <xsd:documentation>Tier=5</xsd:documentation>
-                  </xsd:annotation>
-                </xsd:attribute>
-              </xsd:extension>
-            </xsd:complexContent>
-          </xsd:complexType>
-        </xsd:element>
-      </xsd:sequence>
+      <xsd:sequence> </xsd:sequence>
       <xsd:attribute name="CutIn" use="required" type="PositiveFloat">
         <xsd:annotation>
           <xsd:documentation>Description=CutIn is the wavelength below which the response rate is below 50%.
@@ -3704,21 +3686,21 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
       <xsd:complexContent>
         <xsd:extension base="ManufacturerSpec">
           <xsd:sequence>
-            <xsd:element maxOccurs="unbounded" ref="PrismWavelengthRange"/>
+            <xsd:element maxOccurs="1" ref="PrismWavelengthRange" minOccurs="0"/>
             <xsd:element ref="AnnotationRef"/>
           </xsd:sequence>
-          <xsd:attribute name="ID" type="PrismID">
+          <xsd:attribute name="ID" type="PrismID" use="required">
             <xsd:annotation>
               <xsd:documentation>Tier=2</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="Name" type="Denomination">
+          <xsd:attribute name="Name" type="Denomination" use="required">
             <xsd:annotation>
               <xsd:documentation>Description=A user defined name for this Prism</xsd:documentation>
               <xsd:documentation>Tier=2</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="Type" type="PrismType">
+          <xsd:attribute name="Type" type="PrismType" use="required">
             <xsd:annotation>
               <xsd:documentation>Description=The category to which this prism belongs.</xsd:documentation>
               <xsd:documentation>Tier=3</xsd:documentation>
@@ -3730,7 +3712,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
               <xsd:documentation>Tier=5</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="Reflectance" type="xsd:float">
+          <xsd:attribute name="Reflectance" type="xsd:float" use="required">
             <xsd:annotation>
               <xsd:documentation>Description=The amount of light the prism reflects at a maximum. It is represented as a fraction, as a value from 0.0 to 1.0</xsd:documentation>
               <xsd:documentation>Tier=5</xsd:documentation>
@@ -3747,18 +3729,18 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
               <xsd:documentation>Tier=5</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="AngleOfIncidence" type="xsd:float">
+          <xsd:attribute name="AngleOfIncidence" type="xsd:float" use="required">
             <xsd:annotation>
               <xsd:documentation>Description=The angle of incidence (AOI) is the angle between a beam of light incident on the prism surface and the line perpendicular to the surface at the point of incidence, called the normal.</xsd:documentation>
               <xsd:documentation>Tier=5</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="IncidenceAngleUnit" type="UnitsAngle">
+          <xsd:attribute name="AngleOfIncidenceUnit" type="UnitsAngle">
             <xsd:annotation>
               <xsd:documentation>Tier=5</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="DeviationAngle" type="xsd:float">
+          <xsd:attribute name="DeviationAngle" type="xsd:float" use="required">
             <xsd:annotation>
               <xsd:documentation>Description=A beam passing through an object like a prism is deflected twice: once entering, and again when exiting. The sum of these two deflections is called the deviation angle and is measured with respect to the incident ray</xsd:documentation>
               <xsd:documentation>Tier=5</xsd:documentation>
@@ -3769,7 +3751,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
               <xsd:documentation>Tier=5</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="MaterialName" type="PrismMaterialName">
+          <xsd:attribute name="MaterialName" type="PrismMaterialName" use="required">
             <xsd:annotation>
               <xsd:documentation>Description=This records the chemical composition or the nonproprietary trade designation of the glass</xsd:documentation>
               <xsd:documentation>Tier=5</xsd:documentation>
@@ -3781,13 +3763,13 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
               <xsd:documentation>Tier=5</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="RefractiveIndex">
+          <xsd:attribute name="RefractiveIndex" type="xsd:float" use="required">
             <xsd:annotation>
               <xsd:documentation>Description=The refractive index of the material of which the prism is made</xsd:documentation>
               <xsd:documentation>Tier=5</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="AbbeNumber">
+          <xsd:attribute name="AbbeNumber" type="xsd:float" use="required">
             <xsd:annotation>
               <xsd:documentation>Description=The Abbe Number is a measure of the material's dispersion (variation of refractive index versus wavelength), with high values indicating low dispersion</xsd:documentation>
               <xsd:documentation>Tier=5</xsd:documentation>
@@ -3795,7 +3777,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
           </xsd:attribute>
           <xsd:attribute name="Density" type="xsd:float">
             <xsd:annotation>
-              <xsd:documentation>The density of the material of which the prism is made</xsd:documentation>
+              <xsd:documentation>Description=The density of the material of which the prism is made</xsd:documentation>
               <xsd:documentation>Tier=5</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
@@ -3818,7 +3800,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
       <xsd:complexContent>
         <xsd:extension base="ManufacturerSpec">
           <xsd:sequence>
-            <xsd:element maxOccurs="unbounded" ref="PolarizerWavelengthRange"/>
+            <xsd:element maxOccurs="1" ref="PolarizerWavelengthRange" minOccurs="0"/>
             <xsd:element ref="AnnotationRef"/>
           </xsd:sequence>
           <xsd:attribute name="ID" type="PolarizationOpticsID">
@@ -3958,7 +3940,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
     <xsd:complexContent>
       <xsd:extension base="ManufacturerSpec">
         <xsd:sequence>
-          <xsd:element maxOccurs="unbounded" ref="DetectorWavelengthRange" minOccurs="1"/>
+          <xsd:element maxOccurs="1" ref="DetectorWavelengthRange" minOccurs="0"/>
           <xsd:element name="RelayLensRef" type="LensRef" minOccurs="0" maxOccurs="unbounded">
             <xsd:annotation>
               <xsd:documentation>Description=This element refers to a lens positioned at this mount connecting this detector to the microscope body.</xsd:documentation>
@@ -3978,7 +3960,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
             <xsd:documentation>Tier=2</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
-        <xsd:attribute name="Gain" type="xsd:float">
+        <xsd:attribute name="Gain" type="xsd:float" use="optional">
           <xsd:annotation>
             <xsd:documentation>Description=The analog gain is the conversion unit for this detector. It specifies how many electrons correspond to 1 signal unit. It is expressed in e-/Analog-to-Digit-Unit (ADU).</xsd:documentation>
             <xsd:documentation>Tier=3</xsd:documentation>
@@ -3990,7 +3972,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
             <xsd:documentation>Tier=5</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
-        <xsd:attribute name="ReadNoise" type="xsd:float">
+        <xsd:attribute name="ReadNoise" type="xsd:float" use="required">
           <xsd:annotation>
             <xsd:documentation>Description=Read noise includes thermal noise build-up and clock induced charge. This is generally expressed in e- rms</xsd:documentation>
             <xsd:documentation>Tier=5</xsd:documentation>
@@ -4001,13 +3983,13 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
             <xsd:documentation>Tier=5</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
-        <xsd:attribute name="DetectorNoiseModel" type="DetectorNoiseModel">
+        <xsd:attribute name="DetectorNoiseModel" type="DetectorNoiseModel" use="required">
           <xsd:annotation>
             <xsd:documentation>Description=The noise contribution that comes from the detector</xsd:documentation>
             <xsd:documentation>Tier=5</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
-        <xsd:attribute name="DarkCurrentRate" type="xsd:float">
+        <xsd:attribute name="DarkCurrentRate" type="xsd:float" use="required">
           <xsd:annotation>
             <xsd:documentation>Description=Median current detected in the absence of light. Generally expressed in e-/pixel/sec</xsd:documentation>
             <xsd:documentation>Tier=5</xsd:documentation>
@@ -4297,7 +4279,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
       <xsd:documentation>Tier=5</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
-      <xsd:attribute name="CutIn" use="optional" type="PositiveFloat">
+      <xsd:attribute name="CutIn" use="required" type="PositiveFloat">
         <xsd:annotation>
           <xsd:documentation>Description=CutIn is the wavelength below which the response rate is below 50%.
           </xsd:documentation>
@@ -4309,7 +4291,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
           <xsd:documentation>Tier=5</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
-      <xsd:attribute name="CutOut" use="optional" type="PositiveFloat">
+      <xsd:attribute name="CutOut" use="required" type="PositiveFloat">
         <xsd:annotation>
           <xsd:documentation>Description=CutOut is the wavelength above which the response rate is below 50%.</xsd:documentation>
           <xsd:documentation>Tier=5</xsd:documentation>
@@ -6194,6 +6176,23 @@ PlaneInfo (as Plane)
   </xsd:element>
 
   <!-- Miscellaneous complex types -->
+  <xsd:element name="TransmittanceProfileRef">
+    <xsd:annotation>
+      <xsd:documentation>Description=This empty element has a reference (the FileID attribute) to a file in .csv or other suitable formats containing the wavelenght profile of this component.</xsd:documentation>
+      <xsd:documentation>Tier=5</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:complexContent>
+        <xsd:extension base="Reference">
+          <xsd:attribute name="ID" type="TransmittanceProfileID">
+            <xsd:annotation>
+              <xsd:documentation>Tier=5</xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
+        </xsd:extension>
+      </xsd:complexContent>
+    </xsd:complexType>
+  </xsd:element>
   <xsd:complexType name="ManufacturerSpec">
     <xsd:annotation>
       <xsd:appinfo><xsdfu xmlns=""><abstract/></xsdfu></xsd:appinfo>
@@ -9051,6 +9050,4 @@ length at the expense of readability as they are likely to occur many times. </x
       <xsd:enumeration value=""/>
     </xsd:restriction>
   </xsd:simpleType>
-
-
 </xsd:schema>
