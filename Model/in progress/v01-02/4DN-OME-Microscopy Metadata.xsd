@@ -993,7 +993,12 @@
             </xsd:restriction>
           </xsd:simpleType>
         </xsd:element>
-        <xsd:element maxOccurs="1" minOccurs="0" ref="AnnotationRef"/>
+        <xsd:element minOccurs="0" ref="AnnotationRef">
+          <xsd:annotation>
+            <xsd:documentation>Description=The AnnotationRef element is a reference to an element derived from the CommentAnnotation element, which consists of a simple comment multi-line annotation.</xsd:documentation>
+            <xsd:documentation>Tier=2</xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
       </xsd:sequence>
       <xsd:attribute name="ID" use="required" type="ExperimentID">
         <xsd:annotation>
@@ -1274,7 +1279,7 @@
         </xsd:element>
         <xsd:element maxOccurs="unbounded" minOccurs="0" ref="Optovar"/>
         <xsd:element ref="Objective" minOccurs="1" maxOccurs="unbounded"/>
-        <xsd:element maxOccurs="unbounded" minOccurs="0" ref="Lens"/>
+        <xsd:element maxOccurs="unbounded" minOccurs="0" ref="LensGroup"/>
         <xsd:element maxOccurs="unbounded" minOccurs="0" ref="Prism"/>
         <xsd:element maxOccurs="unbounded" minOccurs="0" ref="PolarizationOptics"/>
         <xsd:element ref="FilterSet" minOccurs="0" maxOccurs="unbounded"/>
@@ -1332,10 +1337,16 @@
             <xsd:documentation>Tier=4</xsd:documentation>
           </xsd:annotation>
         </xsd:element>
-        <xsd:element ref="AnnotationRef" minOccurs="0" maxOccurs="1">
+        <xsd:element minOccurs="0" name="AnnotationRef">
           <xsd:annotation>
-            <xsd:appinfo><xsdfu xmlns=""><manytomany/></xsdfu></xsd:appinfo>
+            <xsd:documentation>Description=The AnnotationRef element is a reference to an element derived from the CommentAnnotation element, which consists of a simple comment multi-line annotation.</xsd:documentation>
+            <xsd:documentation>Tier=3</xsd:documentation>
           </xsd:annotation>
+          <xsd:complexType>
+            <xsd:complexContent>
+              <xsd:extension base="Reference"/>
+            </xsd:complexContent>
+          </xsd:complexType>
         </xsd:element>
         <xsd:choice minOccurs="0" maxOccurs="1">
           <xsd:annotation>
@@ -1415,10 +1426,16 @@
         <xsd:element ref="DetectorSettingsGroup" minOccurs="1" maxOccurs="unbounded"/>
         <xsd:element maxOccurs="unbounded" minOccurs="0" ref="ExcitationCalibration"/>
         <xsd:element maxOccurs="unbounded" minOccurs="0" ref="FIeldCalibration"/>
-        <xsd:element ref="AnnotationRef" minOccurs="0" maxOccurs="1">
+        <xsd:element minOccurs="0" name="AnnotationRef">
           <xsd:annotation>
-            <xsd:appinfo><xsdfu xmlns=""><manytomany/></xsdfu></xsd:appinfo>
+            <xsd:documentation>Description=The AnnotationRef element is a reference to an element derived from the CommentAnnotation element, which consists of a simple comment multi-line annotation.</xsd:documentation>
+            <xsd:documentation>Tier=3</xsd:documentation>
           </xsd:annotation>
+          <xsd:complexType>
+            <xsd:complexContent>
+              <xsd:extension base="Reference"/>
+            </xsd:complexContent>
+          </xsd:complexType>
         </xsd:element>
       </xsd:sequence>
       <xsd:attribute name="ID" use="required" type="ChannelID">
@@ -1708,7 +1725,17 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
             </xsd:restriction>
           </xsd:simpleType>
         </xsd:element>
-        <xsd:element ref="AnnotationRef" maxOccurs="1" minOccurs="0"/>
+        <xsd:element minOccurs="0" name="AnnotationRef">
+          <xsd:annotation>
+            <xsd:documentation>Description=The AnnotationRef element is a reference to an element derived from the CommentAnnotation element, which consists of a simple comment multi-line annotation.</xsd:documentation>
+            <xsd:documentation>Tier=3</xsd:documentation>
+          </xsd:annotation>
+          <xsd:complexType>
+            <xsd:complexContent>
+              <xsd:extension base="Reference"/>
+            </xsd:complexContent>
+          </xsd:complexType>
+        </xsd:element>
       </xsd:sequence>
       <xsd:attribute name="ID" use="required" type="MicrobeamManipulationID">
         <xsd:annotation>
@@ -1745,7 +1772,17 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
                 </xsd:restriction>
               </xsd:simpleType>
             </xsd:element>
-            <xsd:element minOccurs="0" ref="AnnotationRef" maxOccurs="1"/>
+            <xsd:element minOccurs="0" name="AnnotationRef">
+              <xsd:annotation>
+                <xsd:documentation>Description=The AnnotationRef element is a reference to an element derived from the CommentAnnotation element, which consists of a simple comment multi-line annotation.</xsd:documentation>
+                <xsd:documentation>Tier=3</xsd:documentation>
+              </xsd:annotation>
+              <xsd:complexType>
+                <xsd:complexContent>
+                  <xsd:extension base="Reference"/>
+                </xsd:complexContent>
+              </xsd:complexType>
+            </xsd:element>
           </xsd:sequence>
           <xsd:attribute name="ID" type="TIRFSettingsID">
             <xsd:annotation>
@@ -1797,7 +1834,12 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
             <xsd:restriction base="xsd:string"/>
           </xsd:simpleType>
         </xsd:element>
-        <xsd:element ref="AnnotationRef" maxOccurs="1" minOccurs="0"/>
+        <xsd:element minOccurs="0" ref="AnnotationRef">
+          <xsd:annotation>
+            <xsd:documentation>Description=The AnnotationRef element is a reference to an element derived from the CommentAnnotation element, which consists of a simple comment multi-line annotation.</xsd:documentation>
+            <xsd:documentation>Tier=2</xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
       </xsd:sequence>
       <xsd:attribute name="ID" type="LSID">
         <xsd:annotation>
@@ -2110,7 +2152,17 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
       <xsd:complexContent>
         <xsd:extension base="Stage">
           <xsd:sequence>
-            <xsd:element ref="AnnotationRef" maxOccurs="1" minOccurs="0"/>
+            <xsd:element minOccurs="0" name="AnnotationRef">
+              <xsd:annotation>
+                <xsd:documentation>Description=The AnnotationRef element is a reference to an element derived from the CommentAnnotation element, which consists of a simple comment multi-line annotation.</xsd:documentation>
+                <xsd:documentation>Tier=3</xsd:documentation>
+              </xsd:annotation>
+              <xsd:complexType>
+                <xsd:complexContent>
+                  <xsd:extension base="Reference"/>
+                </xsd:complexContent>
+              </xsd:complexType>
+            </xsd:element>
           </xsd:sequence>
           <xsd:attribute name="Type" type="SampleHolderType" use="required">
             <xsd:annotation>
@@ -2309,7 +2361,17 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
       <xsd:complexContent>
         <xsd:extension base="ManufacturerSpec">
           <xsd:sequence>
-            <xsd:element ref="AnnotationRef" maxOccurs="1" minOccurs="0"/>
+            <xsd:element minOccurs="0" name="AnnotationRef">
+              <xsd:annotation>
+                <xsd:documentation>Description=The AnnotationRef element is a reference to an element derived from the CommentAnnotation element, which consists of a simple comment multi-line annotation.</xsd:documentation>
+                <xsd:documentation>Tier=3</xsd:documentation>
+              </xsd:annotation>
+              <xsd:complexType>
+                <xsd:complexContent>
+                  <xsd:extension base="Reference"/>
+                </xsd:complexContent>
+              </xsd:complexType>
+            </xsd:element>
           </xsd:sequence>
           <xsd:attribute name="ID" type="LSID" use="required">
             <xsd:annotation>
@@ -3047,10 +3109,16 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
           </xsd:annotation>
         </xsd:element>
         <xsd:element minOccurs="0" ref="AdditionalOptics"/>
-        <xsd:element ref="AnnotationRef" minOccurs="0" maxOccurs="1">
+        <xsd:element minOccurs="0" name="AnnotationRef">
           <xsd:annotation>
-            <xsd:appinfo><xsdfu xmlns=""><manytomany/></xsdfu></xsd:appinfo>
+            <xsd:documentation>Description=The AnnotationRef element is a reference to an element derived from the CommentAnnotation element, which consists of a simple comment multi-line annotation.</xsd:documentation>
+            <xsd:documentation>Tier=3</xsd:documentation>
           </xsd:annotation>
+          <xsd:complexType>
+            <xsd:complexContent>
+              <xsd:extension base="Reference"/>
+            </xsd:complexContent>
+          </xsd:complexType>
         </xsd:element>
       </xsd:sequence>
       <xsd:attribute name="ID">
@@ -3262,11 +3330,6 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
   </xsd:element>
 
   <!-- Mirror elements -->
-  <xsd:element name="MirrorGroup" abstract="true" type="Mirror">
-    <xsd:annotation>
-      <xsd:documentation>Description=This element describes mirror component(s) available in this microscope.</xsd:documentation>
-    </xsd:annotation>
-  </xsd:element>
   <xsd:complexType name="Mirror">
     <xsd:complexContent>
       <xsd:extension base="ManufacturerSpec">
@@ -3352,6 +3415,11 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
+  <xsd:element name="MirrorGroup" abstract="true" type="Mirror">
+    <xsd:annotation>
+      <xsd:documentation>Description=This element describes mirror component(s) available in this microscope.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
   <xsd:element name="BeamSplitter" substitutionGroup="MirrorGroup">
     <xsd:annotation>
       <xsd:documentation>Category=Mirror</xsd:documentation>
@@ -3539,7 +3607,17 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
             <xsd:documentation>Tier=3</xsd:documentation>
           </xsd:annotation>
         </xsd:element>
-        <xsd:element minOccurs="0" ref="AnnotationRef"/>
+        <xsd:element minOccurs="0" name="AnnotationRef">
+          <xsd:annotation>
+            <xsd:documentation>Description=The AnnotationRef element is a reference to an element derived from the CommentAnnotation element, which consists of a simple comment multi-line annotation.</xsd:documentation>
+            <xsd:documentation>Tier=3</xsd:documentation>
+          </xsd:annotation>
+          <xsd:complexType>
+            <xsd:complexContent>
+              <xsd:extension base="Reference"/>
+            </xsd:complexContent>
+          </xsd:complexType>
+        </xsd:element>
       </xsd:sequence>
       <xsd:attribute name="ID" type="LSID" use="required">
         <xsd:annotation>
@@ -3554,150 +3632,191 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
       </xsd:attribute>
     </xsd:complexType>
   </xsd:element>
-  <xsd:element name="Lens">
+
+  <xsd:complexType name="Lens">
     <xsd:annotation>
       <xsd:documentation>Category=AdditionalOptics</xsd:documentation>
       <xsd:documentation>Description=A lens is a component of glass or transparent plastic material, usually circular in diameter, which has two primary surfaces that are ground and polished in a specific manner designed to produce either a convergence or divergence of light passing through the material. This element describes a lens utilized in this microscope</xsd:documentation>
       <xsd:documentation>Tier=2</xsd:documentation>
     </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="ManufacturerSpec">
+        <xsd:sequence>
+          <xsd:element ref="AnnotationRef" maxOccurs="1" minOccurs="0"/>
+        </xsd:sequence>
+        <xsd:attribute name="ID" type="LensID" use="required">
+          <xsd:annotation>
+            <xsd:documentation>Tier=2</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="Name" type="Denomination" use="required">
+          <xsd:annotation>
+            <xsd:documentation>Description=A user defined name for this Lens</xsd:documentation>
+            <xsd:documentation>Tier=2</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="Type" type="LensType" use="required">
+          <xsd:annotation>
+            <xsd:documentation>Description=The general category to which this lens belongs.</xsd:documentation>
+            <xsd:documentation>Tier=5</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="Geometry" type="LensGeometry">
+          <xsd:annotation>
+            <xsd:documentation>Description=The geometrical shape of the lens surfaces</xsd:documentation>
+            <xsd:documentation>Tier=5</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="Construction" type="LensConstruction" use="required">
+          <xsd:annotation>
+            <xsd:documentation>Description=Whether or not the lens is simple or composite</xsd:documentation>
+            <xsd:documentation>Tier=5</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="Magnification" type="xsd:int" use="required">
+          <xsd:annotation>
+            <xsd:documentation>Description=The nominal magnification provided by this lens</xsd:documentation>
+            <xsd:documentation>Tier=2</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="AttenuationCoefficient" type="xsd:float" use="required">
+          <xsd:annotation>
+            <xsd:documentation>Description=The attenuation coefficient (aka blocking coefficient) is a material property that characterizes the degree of transparency of a lens. The attenuation coefficient is often defined in units of optical density (OD), wherease OD= -log10(T), and T=Transmittance (0≤T≤1).</xsd:documentation>
+            <xsd:documentation>Tier=5</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="RadiusOfCurvature" type="xsd:float">
+          <xsd:annotation>
+            <xsd:documentation>Description=A spherical lens or mirror surface has a center of curvature located either along or decentered from the system local optical axis. The vertex of the lens surface is located on the local optical axis. The distance from the vertex to the center of curvature is the radius of curvature of the surface</xsd:documentation>
+            <xsd:documentation>Tier=5</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="RadiusOfCurvatureUnit" type="UnitsLength">
+          <xsd:annotation>
+            <xsd:documentation>Tier=5</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="FocalDistanceToObject" type="xsd:float" use="required">
+          <xsd:annotation>
+            <xsd:documentation>Description=The distance between the front principal plane of the lens and the specimen</xsd:documentation>
+            <xsd:documentation>Tier=5</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="FocalDistanceToObjectUnit" type="UnitsLength">
+          <xsd:annotation>
+            <xsd:documentation>Tier=5</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="FocalDistanceToImage" type="xsd:float" use="required">
+          <xsd:annotation>
+            <xsd:documentation>Description=The distance from the rear principal plane to the image</xsd:documentation>
+            <xsd:documentation>Tier=5</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="FocalDistanceToImageUnits" type="UnitsLength">
+          <xsd:annotation>
+            <xsd:documentation>Tier=5</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="FocalLength" type="xsd:float" use="required">
+          <xsd:annotation>
+            <xsd:documentation>Description=The distance from the rear principal plane of the lens and its focal point</xsd:documentation>
+            <xsd:documentation>Tier=5</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="FocalLengthUnit" type="UnitsLength">
+          <xsd:annotation>
+            <xsd:documentation>Tier=5</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="MaterialName" type="LensMaterialName">
+          <xsd:annotation>
+            <xsd:documentation>Description=This records the chemical composition or the nonproprietary trade designation of the glass</xsd:documentation>
+            <xsd:documentation>Tier=5</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="GlassCode" type="xsd:short">
+          <xsd:annotation>
+            <xsd:documentation>Description=If available provide the international glass code. This is based on U.S. military standard MIL-G-174, and is a six-digit number specifying the glass according to its refractive index nd at the Fraunhofer d- (or D3-) line, and its Abbe number Vd also taken at that line. The resulting glass code is the value of nd-1 rounded to three digits, followed by Vd rounded to three digits, with all decimal points ignored. For example, BK7 has nd = 1.5168 and Vd = 64.17, giving a six-digit glass code of 517642</xsd:documentation>
+            <xsd:documentation>Tier=5</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="RefractiveIndex" type="xsd:float" use="required">
+          <xsd:annotation>
+            <xsd:documentation>Description=The refractive index of the material the prism is made of</xsd:documentation>
+            <xsd:documentation>Tier=5</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="AbbeNumber" type="xsd:float" use="required">
+          <xsd:annotation>
+            <xsd:documentation>Description=The Abbe Number is a measure of the material's dispersion (variation of refractive index versus wavelength), with high values indicating low dispersion</xsd:documentation>
+            <xsd:documentation>Tier=5</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="Density" type="xsd:float" use="optional">
+          <xsd:annotation>
+            <xsd:documentation>Description=The density of the material this lens is made of</xsd:documentation>
+            <xsd:documentation>Tier=5</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="DensityUnit" type="UnitsDensity">
+          <xsd:annotation>
+            <xsd:documentation>Tier=5</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="Diameter" type="xsd:float">
+          <xsd:annotation>
+            <xsd:documentation>Description=The physical diamter of this lens</xsd:documentation>
+            <xsd:documentation>Tier=5</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="DiameterUnit" type="UnitsLength">
+          <xsd:annotation>
+            <xsd:documentation>Tier=5</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+
+  <xsd:element name="LensGroup" abstract="true" type="Lens">
+    <xsd:annotation>
+      <xsd:documentation>Category=AdditionalOptics</xsd:documentation>
+      <xsd:documentation>Description=A lens is a component of glass or transparent plastic material, usually circular in diameter, which has two primary surfaces that are ground and polished in a specific manner designed to produce either a convergence or divergence of light passing through the material. This element describes a lens utilized in this microscope</xsd:documentation>
+      <xsd:documentation>Tier=2</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+
+  <xsd:element name="AdditionalLens" substitutionGroup="LensGroup">
+    <xsd:annotation>
+      <xsd:documentation>Description=A lens poistioned in the light path in the light path for a given channel.</xsd:documentation>
+      <xsd:documentation>Tier=2</xsd:documentation>
+    </xsd:annotation>
     <xsd:complexType>
       <xsd:complexContent>
-        <xsd:extension base="ManufacturerSpec">
-          <xsd:sequence>
-            <xsd:element ref="AnnotationRef" maxOccurs="1" minOccurs="0"/>
-          </xsd:sequence>
-          <xsd:attribute name="ID" type="LensID" use="required">
-            <xsd:annotation>
-              <xsd:documentation>Tier=2</xsd:documentation>
-            </xsd:annotation>
-          </xsd:attribute>
-          <xsd:attribute name="Name" type="Denomination" use="required">
-            <xsd:annotation>
-              <xsd:documentation>Description=A user defined name for this Lens</xsd:documentation>
-              <xsd:documentation>Tier=2</xsd:documentation>
-            </xsd:annotation>
-          </xsd:attribute>
-          <xsd:attribute name="Type" type="LensType" use="required">
-            <xsd:annotation>
-              <xsd:documentation>Description=The general category to which this lens belongs.</xsd:documentation>
-              <xsd:documentation>Tier=5</xsd:documentation>
-            </xsd:annotation>
-          </xsd:attribute>
-          <xsd:attribute name="Geometry" type="LensGeometry">
-            <xsd:annotation>
-              <xsd:documentation>Description=The geometrical shape of the lens surfaces</xsd:documentation>
-              <xsd:documentation>Tier=5</xsd:documentation>
-            </xsd:annotation>
-          </xsd:attribute>
-          <xsd:attribute name="Construction" type="LensConstruction" use="required">
-            <xsd:annotation>
-              <xsd:documentation>Description=Whether or not the lens is simple or composite</xsd:documentation>
-              <xsd:documentation>Tier=5</xsd:documentation>
-            </xsd:annotation>
-          </xsd:attribute>
-          <xsd:attribute name="Magnification" type="xsd:int" use="required">
-            <xsd:annotation>
-              <xsd:documentation>Description=The nominal magnification provided by this lens</xsd:documentation>
-              <xsd:documentation>Tier=2</xsd:documentation>
-            </xsd:annotation>
-          </xsd:attribute>
-          <xsd:attribute name="AttenuationCoefficient" type="xsd:float" use="required">
-            <xsd:annotation>
-              <xsd:documentation>Description=The attenuation coefficient (aka blocking coefficient) is a material property that characterizes the degree of transparency of a lens. The attenuation coefficient is often defined in units of optical density (OD), wherease OD= -log10(T), and T=Transmittance (0≤T≤1).</xsd:documentation>
-              <xsd:documentation>Tier=5</xsd:documentation>
-            </xsd:annotation>
-          </xsd:attribute>
-          <xsd:attribute name="RadiusOfCurvature" type="xsd:float">
-            <xsd:annotation>
-              <xsd:documentation>Description=A spherical lens or mirror surface has a center of curvature located either along or decentered from the system local optical axis. The vertex of the lens surface is located on the local optical axis. The distance from the vertex to the center of curvature is the radius of curvature of the surface</xsd:documentation>
-              <xsd:documentation>Tier=5</xsd:documentation>
-            </xsd:annotation>
-          </xsd:attribute>
-          <xsd:attribute name="RadiusOfCurvatureUnit" type="UnitsLength">
-            <xsd:annotation>
-              <xsd:documentation>Tier=5</xsd:documentation>
-            </xsd:annotation>
-          </xsd:attribute>
-          <xsd:attribute name="FocalDistanceToObject" type="xsd:float" use="required">
-            <xsd:annotation>
-              <xsd:documentation>Description=The distance between the front principal plane of the lens and the specimen</xsd:documentation>
-              <xsd:documentation>Tier=5</xsd:documentation>
-            </xsd:annotation>
-          </xsd:attribute>
-          <xsd:attribute name="FocalDistanceToObjectUnit" type="UnitsLength">
-            <xsd:annotation>
-              <xsd:documentation>Tier=5</xsd:documentation>
-            </xsd:annotation>
-          </xsd:attribute>
-          <xsd:attribute name="FocalDistanceToImage" type="xsd:float" use="required">
-            <xsd:annotation>
-              <xsd:documentation>Description=The distance from the rear principal plane to the image</xsd:documentation>
-              <xsd:documentation>Tier=5</xsd:documentation>
-            </xsd:annotation>
-          </xsd:attribute>
-          <xsd:attribute name="FocalDistanceToImageUnits" type="UnitsLength">
-            <xsd:annotation>
-              <xsd:documentation>Tier=5</xsd:documentation>
-            </xsd:annotation>
-          </xsd:attribute>
-          <xsd:attribute name="FocalLength" type="xsd:float" use="required">
-            <xsd:annotation>
-              <xsd:documentation>Description=The distance from the rear principal plane of the lens and its focal point</xsd:documentation>
-              <xsd:documentation>Tier=5</xsd:documentation>
-            </xsd:annotation>
-          </xsd:attribute>
-          <xsd:attribute name="FocalLengthUnit" type="UnitsLength">
-            <xsd:annotation>
-              <xsd:documentation>Tier=5</xsd:documentation>
-            </xsd:annotation>
-          </xsd:attribute>
-          <xsd:attribute name="MaterialName" type="LensMaterialName">
-            <xsd:annotation>
-              <xsd:documentation>Description=This records the chemical composition or the nonproprietary trade designation of the glass</xsd:documentation>
-              <xsd:documentation>Tier=5</xsd:documentation>
-            </xsd:annotation>
-          </xsd:attribute>
-          <xsd:attribute name="GlassCode" type="xsd:short">
-            <xsd:annotation>
-              <xsd:documentation>Description=If available provide the international glass code. This is based on U.S. military standard MIL-G-174, and is a six-digit number specifying the glass according to its refractive index nd at the Fraunhofer d- (or D3-) line, and its Abbe number Vd also taken at that line. The resulting glass code is the value of nd-1 rounded to three digits, followed by Vd rounded to three digits, with all decimal points ignored. For example, BK7 has nd = 1.5168 and Vd = 64.17, giving a six-digit glass code of 517642</xsd:documentation>
-              <xsd:documentation>Tier=5</xsd:documentation>
-            </xsd:annotation>
-          </xsd:attribute>
-          <xsd:attribute name="RefractiveIndex" type="xsd:float" use="required">
-            <xsd:annotation>
-              <xsd:documentation>Description=The refractive index of the material the prism is made of</xsd:documentation>
-              <xsd:documentation>Tier=5</xsd:documentation>
-            </xsd:annotation>
-          </xsd:attribute>
-          <xsd:attribute name="AbbeNumber" type="xsd:float" use="required">
-            <xsd:annotation>
-              <xsd:documentation>Description=The Abbe Number is a measure of the material's dispersion (variation of refractive index versus wavelength), with high values indicating low dispersion</xsd:documentation>
-              <xsd:documentation>Tier=5</xsd:documentation>
-            </xsd:annotation>
-          </xsd:attribute>
-          <xsd:attribute name="Density" type="xsd:float" use="optional">
-            <xsd:annotation>
-              <xsd:documentation>Description=The density of the material this lens is made of</xsd:documentation>
-              <xsd:documentation>Tier=5</xsd:documentation>
-            </xsd:annotation>
-          </xsd:attribute>
-          <xsd:attribute name="DensityUnit" type="UnitsDensity">
-            <xsd:annotation>
-              <xsd:documentation>Tier=5</xsd:documentation>
-            </xsd:annotation>
-          </xsd:attribute>
-          <xsd:attribute name="Diameter" type="xsd:float">
-            <xsd:annotation>
-              <xsd:documentation>Description=The physical diamter of this lens</xsd:documentation>
-              <xsd:documentation>Tier=5</xsd:documentation>
-            </xsd:annotation>
-          </xsd:attribute>
-          <xsd:attribute name="DiameterUnit" type="UnitsLength">
-            <xsd:annotation>
-              <xsd:documentation>Tier=5</xsd:documentation>
-            </xsd:annotation>
-          </xsd:attribute>
-        </xsd:extension>
+        <xsd:extension base="Lens"/>
+      </xsd:complexContent>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="CouplingLens" substitutionGroup="LensGroup">
+    <xsd:annotation>
+      <xsd:documentation>Description=A lens positioned at connector between this light source coupling element and the microscope body.</xsd:documentation>
+      <xsd:documentation>Tier=5</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:complexContent>
+        <xsd:extension base="Lens"/>
+      </xsd:complexContent>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="RelayLens" substitutionGroup="LensGroup">
+    <xsd:annotation>
+      <xsd:documentation>Description=A lens positioned at the mount connecting this detector to the microscope body.</xsd:documentation>
+      <xsd:documentation>Tier=3</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:complexContent>
+        <xsd:extension base="Lens"/>
       </xsd:complexContent>
     </xsd:complexType>
   </xsd:element>
@@ -3815,6 +3934,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
       </xsd:complexContent>
     </xsd:complexType>
   </xsd:element>
+
   <xsd:element name="PolarizationOptics">
     <xsd:annotation>
       <xsd:documentation>Category=AdditionalOptics</xsd:documentation>
@@ -8421,7 +8541,17 @@ length at the expense of readability as they are likely to occur many times. </x
             </xsd:complexContent>
           </xsd:complexType>
         </xsd:element>
-        <xsd:element maxOccurs="1" minOccurs="0" ref="AnnotationRef"/>
+        <xsd:element minOccurs="0" name="AnnotationRef">
+          <xsd:annotation>
+            <xsd:documentation>Description=The AnnotationRef element is a reference to an element derived from the CommentAnnotation element, which consists of a simple comment multi-line annotation.</xsd:documentation>
+            <xsd:documentation>Tier=3</xsd:documentation>
+          </xsd:annotation>
+          <xsd:complexType>
+            <xsd:complexContent>
+              <xsd:extension base="Reference"/>
+            </xsd:complexContent>
+          </xsd:complexType>
+        </xsd:element>
       </xsd:sequence>
       <xsd:attribute name="ID" type="LSID" use="required">
         <xsd:annotation>
@@ -8485,7 +8615,17 @@ length at the expense of readability as they are likely to occur many times. </x
             </xsd:complexContent>
           </xsd:complexType>
         </xsd:element>
-        <xsd:element minOccurs="0" ref="AnnotationRef" maxOccurs="1"/>
+        <xsd:element minOccurs="0" name="AnnotationRef">
+          <xsd:annotation>
+            <xsd:documentation>Description=The AnnotationRef element is a reference to an element derived from the CommentAnnotation element, which consists of a simple comment multi-line annotation.</xsd:documentation>
+            <xsd:documentation>Tier=3</xsd:documentation>
+          </xsd:annotation>
+          <xsd:complexType>
+            <xsd:complexContent>
+              <xsd:extension base="Reference"/>
+            </xsd:complexContent>
+          </xsd:complexType>
+        </xsd:element>
       </xsd:sequence>
       <xsd:attribute name="ID" type="LSID" use="required">
         <xsd:annotation>
@@ -8754,7 +8894,17 @@ length at the expense of readability as they are likely to occur many times. </x
       <xsd:complexContent>
         <xsd:extension base="ManufacturerSpec">
           <xsd:sequence>
-            <xsd:element maxOccurs="1" minOccurs="0" ref="AnnotationRef"/>
+            <xsd:element minOccurs="0" name="AnnotationRef">
+              <xsd:annotation>
+                <xsd:documentation>Description=The AnnotationRef element is a reference to an element derived from the CommentAnnotation element, which consists of a simple comment multi-line annotation.</xsd:documentation>
+                <xsd:documentation>Tier=3</xsd:documentation>
+              </xsd:annotation>
+              <xsd:complexType>
+                <xsd:complexContent>
+                  <xsd:extension base="Reference"/>
+                </xsd:complexContent>
+              </xsd:complexType>
+            </xsd:element>
           </xsd:sequence>
           <xsd:attribute name="ID" type="LSID" use="required">
             <xsd:annotation>
@@ -8786,7 +8936,17 @@ length at the expense of readability as they are likely to occur many times. </x
           <xsd:documentation>Tier=3</xsd:documentation>
         </xsd:annotation>
       </xsd:element>
-      <xsd:element ref="AnnotationRef" minOccurs="0"/>
+      <xsd:element minOccurs="0" name="AnnotationRef">
+        <xsd:annotation>
+          <xsd:documentation>Description=The AnnotationRef element is a reference to an element derived from the CommentAnnotation element, which consists of a simple comment multi-line annotation.</xsd:documentation>
+          <xsd:documentation>Tier=3</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType>
+          <xsd:complexContent>
+            <xsd:extension base="Reference"/>
+          </xsd:complexContent>
+        </xsd:complexType>
+      </xsd:element>
     </xsd:sequence>
     <xsd:attribute name="ID" type="LSID" use="required">
       <xsd:annotation>
@@ -8954,7 +9114,17 @@ length at the expense of readability as they are likely to occur many times. </x
         <xsd:element maxOccurs="1" minOccurs="0" ref="SampleHolderRef"/>
         <xsd:element minOccurs="0" ref="FocusingRef"/>
         <xsd:element minOccurs="0" ref="AutoFocusRef"/>
-        <xsd:element minOccurs="0" ref="AnnotationRef"/>
+        <xsd:element minOccurs="0" name="AnnotationRef">
+          <xsd:annotation>
+            <xsd:documentation>Description=The AnnotationRef element is a reference to an element derived from the CommentAnnotation element, which consists of a simple comment multi-line annotation.</xsd:documentation>
+            <xsd:documentation>Tier=4</xsd:documentation>
+          </xsd:annotation>
+          <xsd:complexType>
+            <xsd:complexContent>
+              <xsd:extension base="Reference"/>
+            </xsd:complexContent>
+          </xsd:complexType>
+        </xsd:element>
       </xsd:sequence>
       <xsd:attribute name="ID" type="LSID" use="required"/>
       <xsd:attribute name="Date" type="xsd:date" use="required">
