@@ -1289,6 +1289,8 @@
         <xsd:element ref="AnnotationRef" minOccurs="0" maxOccurs="1">
           <xsd:annotation>
             <xsd:appinfo><xsdfu xmlns=""><manytomany/></xsdfu></xsd:appinfo>
+            <xsd:documentation>Description=The AnnotationRef element is a reference to an element derived from the CommentAnnotation element, which consists of a simple comment multi-line annotation.</xsd:documentation>
+            <xsd:documentation>Tier=2</xsd:documentation>
           </xsd:annotation>
         </xsd:element>
       </xsd:sequence>
@@ -2041,7 +2043,17 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
       <xsd:complexContent>
         <xsd:extension base="ManufacturerSpec">
           <xsd:sequence>
-            <xsd:element minOccurs="0" ref="AnnotationRef"/>
+            <xsd:element minOccurs="0" name="AnnotationRef">
+              <xsd:annotation>
+                <xsd:documentation>Description=The AnnotationRef element is a reference to an element derived from the CommentAnnotation element, which consists of a simple comment multi-line annotation.</xsd:documentation>
+                <xsd:documentation>Tier=4</xsd:documentation>
+              </xsd:annotation>
+              <xsd:complexType>
+                <xsd:complexContent>
+                  <xsd:extension base="Reference"/>
+                </xsd:complexContent>
+              </xsd:complexType>
+            </xsd:element>
           </xsd:sequence>
           <xsd:attribute name="ID" type="LSID" use="required">
             <xsd:annotation>
@@ -2492,6 +2504,8 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
           <xsd:element ref="AnnotationRef" minOccurs="0" maxOccurs="1">
             <xsd:annotation>
               <xsd:appinfo><xsdfu xmlns=""><manytomany/></xsdfu></xsd:appinfo>
+              <xsd:documentation>Description=The AnnotationRef element is a reference to an element derived from the CommentAnnotation element, which consists of a simple comment multi-line annotation.</xsd:documentation>
+              <xsd:documentation>Tier=2</xsd:documentation>
             </xsd:annotation>
           </xsd:element>
         </xsd:sequence>
@@ -2799,7 +2813,17 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
               <xsd:documentation>Tier=5</xsd:documentation>
             </xsd:annotation>
           </xsd:element>
-          <xsd:element ref="AnnotationRef" maxOccurs="1" minOccurs="0"/>
+          <xsd:element minOccurs="0" name="AnnotationRef">
+            <xsd:annotation>
+              <xsd:documentation>Description=The AnnotationRef element is a reference to an element derived from the CommentAnnotation element, which consists of a simple comment multi-line annotation.</xsd:documentation>
+              <xsd:documentation>Tier=4</xsd:documentation>
+            </xsd:annotation>
+            <xsd:complexType>
+              <xsd:complexContent>
+                <xsd:extension base="Reference"/>
+              </xsd:complexContent>
+            </xsd:complexType>
+          </xsd:element>
         </xsd:sequence>
         <xsd:attribute name="ID" type="LightSourceCouplingID" use="required">
           <xsd:annotation>

@@ -2793,7 +2793,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
     <xsd:complexContent>
       <xsd:extension base="ManufacturerSpec">
         <xsd:sequence>
-          <xsd:element name="CouplingLensRef" type="LensRef" minOccurs="0">
+          <xsd:element name="LensRef" type="LensRef" minOccurs="0">
             <xsd:annotation>
               <xsd:documentation>Description=This is a reference to a lens positioned at connector between this light source coupling element and the microscope body.</xsd:documentation>
               <xsd:documentation>Tier=5</xsd:documentation>
@@ -3862,7 +3862,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
       <xsd:extension base="ManufacturerSpec">
         <xsd:sequence>
           <xsd:element maxOccurs="1" ref="WavelengthRange" minOccurs="1"/>
-          <xsd:element name="RelayLensRef" type="LensRef" minOccurs="0" maxOccurs="1">
+          <xsd:element name="LensRef" type="LensRef" minOccurs="0" maxOccurs="1">
             <xsd:annotation>
               <xsd:documentation>Description=This is a reference to a lens positioned at the mount connecting this detector to the microscope body.</xsd:documentation>
               <xsd:documentation>Tier=3</xsd:documentation>
