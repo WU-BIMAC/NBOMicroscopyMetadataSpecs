@@ -981,8 +981,7 @@
         </xsd:element>
         <xsd:element maxOccurs="1" ref="Sample"/>
         <xsd:element ref="MicrobeamManipulation" minOccurs="0" maxOccurs="unbounded"/>
-        <xsd:element maxOccurs="unbounded" minOccurs="0" ref="AnnotationRef"/>
-        <xsd:element name="Description" minOccurs="0" maxOccurs="unbounded">
+        <xsd:element name="Description" minOccurs="0" maxOccurs="1">
           <xsd:annotation>
             <xsd:documentation>Description=A description for the experiment. [plain-text multi-line string]
             </xsd:documentation>
@@ -994,6 +993,7 @@
             </xsd:restriction>
           </xsd:simpleType>
         </xsd:element>
+        <xsd:element maxOccurs="1" minOccurs="0" ref="AnnotationRef"/>
       </xsd:sequence>
       <xsd:attribute name="ID" use="required" type="ExperimentID">
         <xsd:annotation>
@@ -1073,7 +1073,7 @@
             <xsd:element ref="MetadataOnly" minOccurs="1" maxOccurs="unbounded"/>
           </xsd:choice>
         </xsd:sequence>
-        <xsd:element name="Description" minOccurs="0" maxOccurs="unbounded">
+        <xsd:element name="Description" minOccurs="0" maxOccurs="1">
           <xsd:annotation>
             <xsd:documentation>Description=A description for the image [plain-text multi-line string]
             </xsd:documentation>
@@ -1085,7 +1085,7 @@
             </xsd:restriction>
           </xsd:simpleType>
         </xsd:element>
-        <xsd:element ref="AnnotationRef" minOccurs="0" maxOccurs="unbounded">
+        <xsd:element ref="AnnotationRef" minOccurs="0" maxOccurs="1">
           <xsd:annotation>
             <xsd:appinfo><xsdfu xmlns=""><manytomany/></xsdfu></xsd:appinfo>
           </xsd:annotation>
@@ -1126,7 +1126,7 @@
           <xsd:documentation>Tier=1</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
-      <xsd:attribute name="SizeC" use="required" type="PositiveInt">
+      <xsd:attribute name="SizeC" use="optional" type="PositiveInt">
         <xsd:annotation>
           <xsd:documentation>Description=Dimensional size of pixel data array</xsd:documentation>
           <xsd:documentation>Tier=1</xsd:documentation>
@@ -1236,8 +1236,7 @@
     <xsd:complexType>
       <xsd:sequence>
         <xsd:element ref="MicroscopeBody" minOccurs="1" maxOccurs="unbounded"/>
-        <xsd:element minOccurs="0" ref="MicroscopeTable"/>
-        <xsd:element maxOccurs="unbounded" minOccurs="0" ref="IntensityCalibrationTool"/>
+        <xsd:element minOccurs="1" ref="MicroscopeTable"/>
         <xsd:element ref="LightSourceGroup" minOccurs="1" maxOccurs="unbounded">
           <xsd:annotation>
             <xsd:documentation>Category=LightSource</xsd:documentation>
@@ -1286,7 +1285,8 @@
           </xsd:annotation>
         </xsd:element>
         <xsd:element ref="DetectorGroup" minOccurs="1" maxOccurs="unbounded"/>
-        <xsd:element ref="AnnotationRef" minOccurs="0" maxOccurs="unbounded">
+        <xsd:element maxOccurs="unbounded" minOccurs="0" ref="IntensityCalibrationTool"/>
+        <xsd:element ref="AnnotationRef" minOccurs="0" maxOccurs="1">
           <xsd:annotation>
             <xsd:appinfo><xsdfu xmlns=""><manytomany/></xsdfu></xsd:appinfo>
           </xsd:annotation>
@@ -1297,7 +1297,7 @@
           <xsd:documentation>Tier=1</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
-      <xsd:attribute name="Name" type="Denomination">
+      <xsd:attribute name="Name" type="Denomination" use="required">
         <xsd:annotation>
           <xsd:documentation>Description=A user defined name for this Instrument.</xsd:documentation>
           <xsd:documentation>Tier=1</xsd:documentation>
@@ -1317,14 +1317,20 @@
     </xsd:annotation>
     <xsd:complexType>
       <xsd:sequence>
-        <xsd:element minOccurs="0" ref="SamplePosition"/>
+        <xsd:element minOccurs="0" ref="SamplePosition" maxOccurs="1"/>
         <xsd:element ref="FocalPosition" minOccurs="1" maxOccurs="1">
           <xsd:annotation>
             <xsd:documentation>Description=This element is used to record the Z-axis position of a Plane with respect to the microscope's reference frame</xsd:documentation>
             <xsd:documentation>Tier=3</xsd:documentation>
           </xsd:annotation>
         </xsd:element>
-        <xsd:element ref="AnnotationRef" minOccurs="0" maxOccurs="unbounded">
+        <xsd:element maxOccurs="unbounded" minOccurs="0" ref="MechanicalCalibration">
+          <xsd:annotation>
+            <xsd:documentation>Description=This describes the procedures that were used for mechanical calibration and the resulting calibration results.</xsd:documentation>
+            <xsd:documentation>Tier=4</xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element ref="AnnotationRef" minOccurs="0" maxOccurs="1">
           <xsd:annotation>
             <xsd:appinfo><xsdfu xmlns=""><manytomany/></xsdfu></xsd:appinfo>
           </xsd:annotation>
@@ -1407,7 +1413,7 @@
         <xsd:element ref="DetectorSettingsGroup" minOccurs="1" maxOccurs="unbounded"/>
         <xsd:element maxOccurs="unbounded" minOccurs="0" ref="ExcitationCalibration"/>
         <xsd:element maxOccurs="unbounded" minOccurs="0" ref="FIeldCalibration"/>
-        <xsd:element ref="AnnotationRef" minOccurs="0" maxOccurs="unbounded">
+        <xsd:element ref="AnnotationRef" minOccurs="0" maxOccurs="1">
           <xsd:annotation>
             <xsd:appinfo><xsdfu xmlns=""><manytomany/></xsdfu></xsd:appinfo>
           </xsd:annotation>
@@ -1688,7 +1694,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
             <xsd:documentation>Tier=3</xsd:documentation>
           </xsd:annotation>
         </xsd:element>
-        <xsd:element name="Description" minOccurs="0" maxOccurs="unbounded">
+        <xsd:element name="Description" minOccurs="0" maxOccurs="1">
           <xsd:annotation>
             <xsd:documentation>Description=A description for the Microbeam Manipulation. [plain-text multi-line string]
             </xsd:documentation>
@@ -1700,7 +1706,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
             </xsd:restriction>
           </xsd:simpleType>
         </xsd:element>
-        <xsd:element ref="AnnotationRef" maxOccurs="unbounded" minOccurs="0"/>
+        <xsd:element ref="AnnotationRef" maxOccurs="1" minOccurs="0"/>
       </xsd:sequence>
       <xsd:attribute name="ID" use="required" type="MicrobeamManipulationID">
         <xsd:annotation>
@@ -1725,7 +1731,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
       <xsd:complexContent>
         <xsd:extension base="Settings">
           <xsd:sequence>
-            <xsd:element name="Description" minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="Description" minOccurs="0" maxOccurs="1">
               <xsd:annotation>
                 <xsd:documentation>Description=A description for the settings used for this TIRF experiment [plain-text multi-line string]
                 </xsd:documentation>
@@ -1737,7 +1743,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
                 </xsd:restriction>
               </xsd:simpleType>
             </xsd:element>
-            <xsd:element minOccurs="0" ref="AnnotationRef" maxOccurs="unbounded"/>
+            <xsd:element minOccurs="0" ref="AnnotationRef" maxOccurs="1"/>
           </xsd:sequence>
           <xsd:attribute name="ID" type="TIRFSettingsID">
             <xsd:annotation>
@@ -1780,7 +1786,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
     </xsd:annotation>
     <xsd:complexType>
       <xsd:sequence>
-        <xsd:element name="Description" maxOccurs="unbounded" minOccurs="0">
+        <xsd:element name="Description" maxOccurs="1" minOccurs="0">
           <xsd:annotation>
             <xsd:documentation>Description=A description for the Sample. [plain-text multi-line string]</xsd:documentation>
             <xsd:documentation>Tier=1</xsd:documentation>
@@ -1789,7 +1795,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
             <xsd:restriction base="xsd:string"/>
           </xsd:simpleType>
         </xsd:element>
-        <xsd:element ref="AnnotationRef" maxOccurs="unbounded" minOccurs="0"/>
+        <xsd:element ref="AnnotationRef" maxOccurs="1" minOccurs="0"/>
       </xsd:sequence>
       <xsd:attribute name="ID" type="LSID">
         <xsd:annotation>
@@ -1996,20 +2002,20 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
       <xsd:complexContent>
         <xsd:extension base="ManufacturerSpec">
           <xsd:sequence>
-            <xsd:element ref="AnnotationRef" maxOccurs="unbounded" minOccurs="0"/>
+            <xsd:element ref="AnnotationRef" maxOccurs="1" minOccurs="0"/>
           </xsd:sequence>
-          <xsd:attribute name="ID" type="LSID">
+          <xsd:attribute name="ID" type="LSID" use="required">
             <xsd:annotation>
               <xsd:documentation>Tier=1</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="Name" type="Denomination">
+          <xsd:attribute name="Name" type="Denomination" use="required">
             <xsd:annotation>
               <xsd:documentation>Description=A user defined name for this element</xsd:documentation>
               <xsd:documentation>Tier=1</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="Type" use="optional" type="MicroscopeType">
+          <xsd:attribute name="Type" use="required" type="MicroscopeType">
             <xsd:annotation>
               <xsd:documentation>Description=This element describes the type of this microscope.</xsd:documentation>
               <xsd:documentation>Tier=1</xsd:documentation>
@@ -2034,18 +2040,21 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
     <xsd:complexType>
       <xsd:complexContent>
         <xsd:extension base="ManufacturerSpec">
-          <xsd:attribute name="ID" type="LSID">
+          <xsd:sequence>
+            <xsd:element minOccurs="0" ref="AnnotationRef"/>
+          </xsd:sequence>
+          <xsd:attribute name="ID" type="LSID" use="required">
             <xsd:annotation>
               <xsd:documentation>Tier=4</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="Name" type="Denomination">
+          <xsd:attribute name="Name" type="Denomination" use="required">
             <xsd:annotation>
               <xsd:documentation>Description=A user defined name for this element.</xsd:documentation>
               <xsd:documentation>Tier=4</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="Type" type="MicroscopeTableType">
+          <xsd:attribute name="Type" type="MicroscopeTableType" use="required">
             <xsd:annotation>
               <xsd:documentation>Description=This element describes the type of microscope table available for this instrument.</xsd:documentation>
               <xsd:documentation>Tier=4</xsd:documentation>
@@ -2089,9 +2098,9 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
       <xsd:complexContent>
         <xsd:extension base="Stage">
           <xsd:sequence>
-            <xsd:element ref="AnnotationRef" maxOccurs="unbounded" minOccurs="0"/>
+            <xsd:element ref="AnnotationRef" maxOccurs="1" minOccurs="0"/>
           </xsd:sequence>
-          <xsd:attribute name="Type" type="SampleHolderType">
+          <xsd:attribute name="Type" type="SampleHolderType" use="required">
             <xsd:annotation>
               <xsd:documentation>Description=The type of sample holder.</xsd:documentation>
               <xsd:documentation>Tier=5</xsd:documentation>
@@ -2124,11 +2133,11 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
     <xsd:complexContent>
       <xsd:extension base="Stage">
         <xsd:sequence>
-          <xsd:element ref="AnnotationRef" maxOccurs="unbounded" minOccurs="0"/>
+          <xsd:element ref="AnnotationRef" maxOccurs="1" minOccurs="0"/>
         </xsd:sequence>
-        <xsd:attribute name="Resolution" type="xsd:float">
+        <xsd:attribute name="Resolution" type="xsd:float" use="required">
           <xsd:annotation>
-            <xsd:documentation>Description=The motion resolution of this device</xsd:documentation>
+            <xsd:documentation>Description=The expected motion resolution of this device.</xsd:documentation>
             <xsd:documentation>Tier=5</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
@@ -2137,35 +2146,25 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
             <xsd:documentation>Tier=5</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
-        <xsd:attribute name="PositionLinearityError" type="xsd:float">
+        <xsd:attribute name="PositionLinearityError" type="xsd:float" use="required">
           <xsd:annotation>
-            <xsd:documentation>Description=The positioning error associated with this device. Typically expressed as % error.</xsd:documentation>
+            <xsd:documentation>Description=The expected positioning error associated with this device. Typically expressed as % error.</xsd:documentation>
             <xsd:documentation>Tier=5</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
-        <xsd:attribute default="nm" name="PositionLinearityErrorUnit" type="UnitsLength">
+        <xsd:attribute name="Repetability" type="xsd:float" use="required">
           <xsd:annotation>
+            <xsd:documentation>Description=The expected precision with which this device is capable of returning to a previously visited position. Typically expressed in % error.</xsd:documentation>
             <xsd:documentation>Tier=5</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
-        <xsd:attribute name="SettingTime" type="xsd:float">
+        <xsd:attribute name="SettingTime" type="xsd:float" use="required">
           <xsd:annotation>
-            <xsd:documentation>Description=Measures the time it takes for this device to stabilize at the target position</xsd:documentation>
+            <xsd:documentation>Description=The expected time it takes for this device to stabilize at the target position.</xsd:documentation>
             <xsd:documentation>Tier=5</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
         <xsd:attribute default="ms" name="SettlingTimeUnit" type="UnitsTime">
-          <xsd:annotation>
-            <xsd:documentation>Tier=5</xsd:documentation>
-          </xsd:annotation>
-        </xsd:attribute>
-        <xsd:attribute name="Repetability" type="xsd:float">
-          <xsd:annotation>
-            <xsd:documentation>Description=Measures the precision with which this device is capable of returning to a previously visited position</xsd:documentation>
-            <xsd:documentation>Tier=5</xsd:documentation>
-          </xsd:annotation>
-        </xsd:attribute>
-        <xsd:attribute name="RepeatabilityUnit" default="nm" type="UnitsLength">
           <xsd:annotation>
             <xsd:documentation>Tier=5</xsd:documentation>
           </xsd:annotation>
@@ -2224,12 +2223,12 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
   <xsd:complexType abstract="false" name="Stage">
     <xsd:complexContent>
       <xsd:extension base="ManufacturerSpec">
-        <xsd:attribute name="ID" type="LSID">
+        <xsd:attribute name="ID" type="LSID" use="required">
           <xsd:annotation>
             <xsd:documentation>Tier=3</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
-        <xsd:attribute name="Name" type="Denomination">
+        <xsd:attribute name="Name" type="Denomination" use="required">
           <xsd:annotation>
             <xsd:documentation>Description=A user defined name for this element</xsd:documentation>
             <xsd:documentation>Tier=3</xsd:documentation>
@@ -2241,7 +2240,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
             <xsd:documentation>Tier=5</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
-        <xsd:attribute name="XTravelRange" type="xsd:float">
+        <xsd:attribute name="XTravelRange" type="xsd:float" use="required">
           <xsd:annotation>
             <xsd:documentation>Description=The X axis range this device is capable of moving in</xsd:documentation>
             <xsd:documentation>Tier=5</xsd:documentation>
@@ -2252,7 +2251,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
             <xsd:documentation>Tier=5</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
-        <xsd:attribute name="YTravelRange" type="xsd:float">
+        <xsd:attribute name="YTravelRange" type="xsd:float" use="required">
           <xsd:annotation>
             <xsd:documentation>Description=The Y axis range this device is capable of moving in</xsd:documentation>
             <xsd:documentation>Tier=5</xsd:documentation>
@@ -2263,7 +2262,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
             <xsd:documentation>Tier=5</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
-        <xsd:attribute name="ZTravelRange" type="xsd:float">
+        <xsd:attribute name="ZTravelRange" type="xsd:float" use="required">
           <xsd:annotation>
             <xsd:documentation>Description=The Z axis range this device is capable of moving in</xsd:documentation>
             <xsd:documentation>Tier=5</xsd:documentation>
@@ -2298,18 +2297,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
       <xsd:complexContent>
         <xsd:extension base="ManufacturerSpec">
           <xsd:sequence>
-            <xsd:element name="Description" maxOccurs="unbounded" minOccurs="0">
-              <xsd:annotation>
-                <xsd:documentation>Description=A description for this autofocus device</xsd:documentation>
-                <xsd:documentation>Tier=5</xsd:documentation>
-              </xsd:annotation>
-              <xsd:complexType>
-                <xsd:simpleContent>
-                  <xsd:extension base="xsd:string"/>
-                </xsd:simpleContent>
-              </xsd:complexType>
-            </xsd:element>
-            <xsd:element ref="AnnotationRef" maxOccurs="unbounded" minOccurs="0"/>
+            <xsd:element ref="AnnotationRef" maxOccurs="1" minOccurs="0"/>
           </xsd:sequence>
           <xsd:attribute name="ID" type="LSID" use="required">
             <xsd:annotation>
@@ -2322,7 +2310,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
               <xsd:documentation>Tier=3</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="Type" type="AutoFocusType">
+          <xsd:attribute name="Type" type="AutoFocusType" use="required">
             <xsd:annotation>
               <xsd:documentation>Description=The type of this autofocus device.</xsd:documentation>
               <xsd:documentation>Tier=3</xsd:documentation>
@@ -2346,7 +2334,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
       <xsd:complexContent>
         <xsd:extension base="ManufacturerSpec">
           <xsd:sequence>
-            <xsd:element ref="AnnotationRef" minOccurs="0" maxOccurs="unbounded">
+            <xsd:element ref="AnnotationRef" minOccurs="0" maxOccurs="1">
               <xsd:annotation>
                 <xsd:appinfo><xsdfu xmlns=""><manytomany/></xsdfu></xsd:appinfo>
               </xsd:annotation>
@@ -2357,20 +2345,20 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
               <xsd:documentation>Tier=1</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="Name" type="Denomination">
+          <xsd:attribute name="Name" type="Denomination" use="required">
             <xsd:annotation>
               <xsd:documentation>A user defined name for this element</xsd:documentation>
               <xsd:documentation>Tier=1</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="Correction" use="optional" form="unqualified"
+          <xsd:attribute name="Correction" use="required" form="unqualified"
             type="ObjectiveCorrection">
             <xsd:annotation>
               <xsd:documentation>Description=The correction applied to the lens</xsd:documentation>
               <xsd:documentation>Tier=2</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="NominalMagnification" use="optional" type="xsd:float">
+          <xsd:attribute name="NominalMagnification" use="required" type="xsd:float">
             <xsd:annotation>
               <xsd:documentation>Descrption=The magnification of the lens as specified by the manufacturer - i.e. '60' is a 60X lens. Note: The type of this has been changed from int to float to allow the specification of additional lenses e.g. 0.5X lens
               </xsd:documentation>
@@ -2383,32 +2371,32 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
               <xsd:documentation>Tier=5</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="LensNA" use="optional" type="xsd:float">
+          <xsd:attribute name="LensNA" use="required" type="xsd:float">
             <xsd:annotation>
               <xsd:documentation>Description=The numerical aperture of the lens expressed as a floating point (real) number. Expected range 0.02 - 1.5.</xsd:documentation>
               <xsd:documentation>Tier=1</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="NominalImmersionMedium" use="optional"
+          <xsd:attribute name="NominalImmersionMedium" use="required"
             type="ObjectiveNominalImmersionMedium">
             <xsd:annotation>
               <xsd:documentation>Description=The immersion medium the lens is designed for</xsd:documentation>
               <xsd:documentation>Tier=2</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="Infinity" type="xsd:boolean">
+          <xsd:attribute name="Infinity" type="xsd:boolean" use="required">
             <xsd:annotation>
               <xsd:documentation>Description=Records whether or not the objective is infinity corrected</xsd:documentation>
               <xsd:documentation>Tier=3</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="CoverslipTickness" type="xsd:float">
+          <xsd:attribute name="CoverslipTickness" type="xsd:float" use="required">
             <xsd:annotation>
               <xsd:documentation>Description = The coverlip thickness this objective is recommended for.</xsd:documentation>
               <xsd:documentation>Tier=2</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="WorkingDistance" use="optional" type="xsd:float">
+          <xsd:attribute name="WorkingDistance" use="required" type="xsd:float">
             <xsd:annotation>
               <xsd:documentation>Description=The working distance of the lens expressed as a floating point (real) number.</xsd:documentation>
               <xsd:documentation>Tier=3</xsd:documentation>
@@ -2420,32 +2408,34 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
               <xsd:documentation>Tier=3</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="Iris" use="optional" type="xsd:boolean">
+          <xsd:attribute name="Iris" use="required" type="xsd:boolean">
             <xsd:annotation>
               <xsd:documentation>Description=Records whether or not the objective was fitted with an Iris</xsd:documentation>
               <xsd:documentation>Tier=4</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="ObjectiveFieldNumber" type="xsd:float">
+          <xsd:attribute name="ObjectiveFieldNumber" type="xsd:float" use="required">
             <xsd:annotation>
               <xsd:documentation>Description=The maximal diameter of the viewfield allowed by this objective expressed in mm and measured at the intermediate image plane. NB: The field of view is influenced by the magnification and diameter of the ocular (eyepiece) field diaphragm, but also by the limits imposed by the design of the objective.</xsd:documentation>
               <xsd:documentation>Tier=3</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="ParfocalizingDistance" type="xsd:float">
+          <xsd:attribute name="ParfocalizingDistance" type="xsd:float" use="required">
             <xsd:annotation>
               <xsd:documentation>Description=The distance between the objective lens mounting plane and the specimen.</xsd:documentation>
               <xsd:documentation>Tier=5</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="BackFocalPlanePosition" type="xsd:float">
+          <xsd:attribute default="mm" name="ParfocalizingDistanceUnit" type="UnitsLength"
+            use="optional"/>
+          <xsd:attribute name="BackFocalPlanePosition" type="xsd:float" use="required">
             <xsd:annotation>
               <xsd:documentation>Description=The position of the back focal plane with respect to the specimen position.</xsd:documentation>
               <xsd:documentation>Tier=5</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute default="mm" name="ParfocalizingDistanceUnit" type="UnitsLength"/>
-          <xsd:attribute default="mm" name="BackFocalPlanePositionUnit" type="UnitsLength"/>
+          <xsd:attribute default="mm" name="BackFocalPlanePositionUnit" type="UnitsLength"
+            use="optional"/>
         </xsd:extension>
       </xsd:complexContent>
     </xsd:complexType>
@@ -2459,18 +2449,21 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
     <xsd:complexType>
       <xsd:complexContent>
         <xsd:extension base="ManufacturerSpec">
-          <xsd:attribute name="ID" type="LSID">
+          <xsd:sequence>
+            <xsd:element ref="AnnotationRef" minOccurs="0"/>
+          </xsd:sequence>
+          <xsd:attribute name="ID" type="LSID" use="required">
             <xsd:annotation>
               <xsd:documentation>Tier=1</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="Name" type="Denomination">
+          <xsd:attribute name="Name" type="Denomination" use="required">
             <xsd:annotation>
               <xsd:documentation>Description=A user defined name for this element</xsd:documentation>
               <xsd:documentation>Tier=1</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="LensType" type="LensType">
+          <xsd:attribute name="LensType" type="LensType" use="optional">
             <xsd:annotation>
               <xsd:documentation>Description=The type of lens used by the Magnification Changer available with this microscope</xsd:documentation>
               <xsd:documentation>Tier=3</xsd:documentation>
@@ -2496,7 +2489,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
     <xsd:complexContent>
       <xsd:extension base="ManufacturerSpec">
         <xsd:sequence>
-          <xsd:element ref="AnnotationRef" minOccurs="0" maxOccurs="unbounded">
+          <xsd:element ref="AnnotationRef" minOccurs="0" maxOccurs="1">
             <xsd:annotation>
               <xsd:appinfo><xsdfu xmlns=""><manytomany/></xsdfu></xsd:appinfo>
             </xsd:annotation>
@@ -2508,13 +2501,13 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
             <xsd:documentation>Tier=1</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
-        <xsd:attribute name="Name" type="Denomination">
+        <xsd:attribute name="Name" type="Denomination" use="required">
           <xsd:annotation>
             <xsd:documentation>Description=A user defined name for this element</xsd:documentation>
             <xsd:documentation>Tier=1</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
-        <xsd:attribute name="NominalPower" use="optional" type="xsd:float">
+        <xsd:attribute name="NominalPower" use="required" type="xsd:float">
           <xsd:annotation>
             <xsd:documentation>Description=The nominal power of the light-source</xsd:documentation>
             <xsd:documentation>Tier=3</xsd:documentation>
@@ -2548,19 +2541,19 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
               </xsd:annotation>
             </xsd:element>
           </xsd:sequence>
-          <xsd:attribute name="Type" use="optional" type="LaserType">
+          <xsd:attribute name="Type" use="required" type="LaserType">
             <xsd:annotation>
               <xsd:documentation>Description=Type is the general category of laser.</xsd:documentation>
               <xsd:documentation>Tier=5</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="LaserMedium" use="optional" type="LaserMedium">
+          <xsd:attribute name="LaserMedium" use="required" type="LaserMedium">
             <xsd:annotation>
               <xsd:documentation>Description=The Medium attribute specifies the actual lasing medium for a given laser type.           </xsd:documentation>
               <xsd:documentation>Tier=5</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="Wavelength" use="optional" type="PositiveFloat">
+          <xsd:attribute name="Wavelength" use="required" type="PositiveFloat">
             <xsd:annotation>
               <xsd:documentation>Description=The Wavelength of the laser</xsd:documentation>
               <xsd:documentation>Tier=2</xsd:documentation>
@@ -2578,13 +2571,13 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
               <xsd:documentation>Tier=5</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="Tuneable" use="optional" type="xsd:boolean">
+          <xsd:attribute name="Tuneable" use="required" type="xsd:boolean">
             <xsd:annotation>
               <xsd:documentation>Description=Whether or not the laser is Tuneable.</xsd:documentation>
               <xsd:documentation>Tier=5</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="Pulse" use="optional" type="LaserPulse">
+          <xsd:attribute name="Pulse" use="required" type="LaserPulse">
             <xsd:annotation>
               <xsd:documentation>Description=The Pulse mode of the laser.</xsd:documentation>
               <xsd:documentation>Tier=5</xsd:documentation>
@@ -2623,7 +2616,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
     <xsd:complexType>
       <xsd:complexContent>
         <xsd:extension base="LightSource">
-          <xsd:attribute name="Type" use="optional" type="ArcType">
+          <xsd:attribute name="Type" use="required" type="ArcType">
             <xsd:annotation>
               <xsd:documentation>Description=The type of Arc lamp.</xsd:documentation>
               <xsd:documentation>Tier=3</xsd:documentation>
@@ -2644,7 +2637,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
     <xsd:complexType>
       <xsd:complexContent>
         <xsd:extension base="LightSource">
-          <xsd:attribute name="Type" use="optional" type="FilamentType">
+          <xsd:attribute name="Type" use="required" type="FilamentType">
             <xsd:annotation>
               <xsd:documentation>Description=The type of filament.</xsd:documentation>
               <xsd:documentation>Tier=3</xsd:documentation>
@@ -2666,7 +2659,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
       <xsd:complexContent>
         <xsd:extension base="LightSource">
           <xsd:sequence>
-            <xsd:element ref="LEDWavelengthRange" maxOccurs="unbounded"/>
+            <xsd:element ref="LEDModule" maxOccurs="unbounded"/>
           </xsd:sequence>
           <xsd:attribute name="Type" type="LightEmittingDiodeType" use="required">
             <xsd:annotation>
@@ -2674,49 +2667,88 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
               <xsd:documentation>Tier=3</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="PeakWavelenght" type="xsd:float" use="required">
-            <xsd:annotation>
-              <xsd:documentation>The wavelength at which there is maximal response rate</xsd:documentation>
-              <xsd:documentation>Tier=2</xsd:documentation>
-            </xsd:annotation>
-          </xsd:attribute>
-          <xsd:attribute default="nm" name="PeakWavelenghtUnit" type="UnitsLength">
-            <xsd:annotation>
-              <xsd:documentation>Tier=3</xsd:documentation>
-            </xsd:annotation>
-          </xsd:attribute>
-          <xsd:attribute name="WavelenghtProfile" type="xsd:anyURI">
-            <xsd:annotation>
-              <xsd:documentation>Description=The location of a file containing the wavelenght profile of this component</xsd:documentation>
-              <xsd:documentation>Tier=5</xsd:documentation>
-            </xsd:annotation>
-          </xsd:attribute>
-          <xsd:attribute name="LumenPower" type="xsd:float" use="required">
-            <xsd:annotation>
-              <xsd:documentation>Description=The amount of light this light source generate at maximum expressed in lumen. The lumen is the SI derived unit of luminous flux, a measure of the total quantity of visible light emitted by a source.</xsd:documentation>
-              <xsd:documentation>Tier=3</xsd:documentation>
-            </xsd:annotation>
-          </xsd:attribute>
-          <xsd:attribute name="LumenPowerUnit" type="UnitsPower">
-            <xsd:annotation>
-              <xsd:documentation>Tier=3</xsd:documentation>
-            </xsd:annotation>
-          </xsd:attribute>
-          <xsd:attribute name="ProjectionAngle" type="xsd:float">
-            <xsd:annotation>
-              <xsd:documentation>The angle at which this light source projects light</xsd:documentation>
-              <xsd:documentation>Tier=5</xsd:documentation>
-            </xsd:annotation>
-          </xsd:attribute>
-          <xsd:attribute name="ProjectionAngleUnit" type="UnitsAngle">
-            <xsd:annotation>
-              <xsd:documentation>Tier=5</xsd:documentation>
-            </xsd:annotation>
-          </xsd:attribute>
         </xsd:extension>
       </xsd:complexContent>
     </xsd:complexType>
   </xsd:element>
+
+  <xsd:element name="LEDModule">
+    <!-- top level definition -->
+    <xsd:annotation>
+      <xsd:appinfo><xsdfu xmlns=""><plural>TransmittanceRanges</plural></xsdfu></xsd:appinfo>
+      <xsd:documentation>Category=ChildrenElement</xsd:documentation>
+      <xsd:documentation>Description=A Light Emitting Diode (LED) light source is often composed of multiple modules each with its own wavelenght characteristics. This element describes an individual LED module. Multiple of this elements may be used.</xsd:documentation>
+      <xsd:documentation>Tier=2</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:attribute name="PeakWavelenght" type="xsd:float" use="required">
+        <xsd:annotation>
+          <xsd:documentation>The wavelength at which there is maximal response rate</xsd:documentation>
+          <xsd:documentation>Tier=2</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute default="nm" name="PeakWavelenghtUnit" type="UnitsLength">
+        <xsd:annotation>
+          <xsd:documentation>Tier=2</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="LumenPower" type="xsd:float" use="required">
+        <xsd:annotation>
+          <xsd:documentation>Description=The amount of light this light source generate at maximum expressed in lumen. The lumen is the SI derived unit of luminous flux, a measure of the total quantity of visible light emitted by a source.</xsd:documentation>
+          <xsd:documentation>Tier=3</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="LumenPowerUnit" type="UnitsPower">
+        <xsd:annotation>
+          <xsd:documentation>Tier=3</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="ProjectionAngle" type="xsd:float">
+        <xsd:annotation>
+          <xsd:documentation>The angle at which this light source projects light</xsd:documentation>
+          <xsd:documentation>Tier=5</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="ProjectionAngleUnit" type="UnitsAngle">
+        <xsd:annotation>
+          <xsd:documentation>Tier=5</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="CutIn" use="required" type="PositiveFloat">
+        <xsd:annotation>
+          <xsd:documentation>Description=CutIn is the wavelength below which the response rate is below 50%
+          </xsd:documentation>
+          <xsd:documentation>Tier=3</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="CutInUnit" use="optional" default="nm" type="UnitsLength">
+        <xsd:annotation>
+          <xsd:documentation>The units of the CutIn - default:nanometres[nm]</xsd:documentation>
+          <xsd:documentation>Tier=3</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="CutOut" use="required" type="PositiveFloat">
+        <xsd:annotation>
+          <xsd:documentation>Description=CutOut is the wavelength above which the response rate is below 50%</xsd:documentation>
+          <xsd:documentation>Tier=3</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="CutOutUnit" use="optional" default="nm" type="UnitsLength">
+        <xsd:annotation>
+          <xsd:documentation>The units of the CutOut - default:nanometres[nm]</xsd:documentation>
+          <xsd:documentation>Tier=3</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="WavelenghtProfile" type="xsd:anyURI" use="required">
+        <xsd:annotation>
+          <xsd:documentation>Description=The location of a file containing the wavelenght profile of this component.</xsd:documentation>
+          <xsd:documentation>Tier=5</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+    </xsd:complexType>
+  </xsd:element>
+
+
   <xsd:element name="GenericExcitationSource" substitutionGroup="LightSourceGroup">
     <!-- top level definition -->
     <xsd:annotation>
@@ -2735,11 +2767,14 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
       </xsd:complexContent>
     </xsd:complexType>
   </xsd:element>
+
   <xsd:element name="Pump">
     <!-- top level definition -->
     <xsd:annotation>
       <xsd:appinfo><xsdfu xmlns=""><plural>Pumps</plural></xsdfu></xsd:appinfo>
-      <xsd:documentation>The Pump element is a reference to a LightSource. It is used within the Laser element to specify the light source for the laser's pump (if any).</xsd:documentation>
+      <xsd:documentation>Category=ChildrenElement</xsd:documentation>
+      <xsd:documentation>Description=The Pump element is a reference to a LightSource. It is used within the Laser element to specify the light source for the laser's pump (if any).</xsd:documentation>
+      <xsd:documentation>Tier=5</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
       <xsd:complexContent>
@@ -2760,24 +2795,24 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
         <xsd:sequence>
           <xsd:element name="CouplingLensRef" type="LensRef" minOccurs="0">
             <xsd:annotation>
-              <xsd:documentation>Description=This element is a reference to a Lens element</xsd:documentation>
+              <xsd:documentation>Description=This is a reference to a lens positioned at connector between this light source coupling element and the microscope body.</xsd:documentation>
               <xsd:documentation>Tier=5</xsd:documentation>
             </xsd:annotation>
           </xsd:element>
           <xsd:element ref="AnnotationRef" maxOccurs="1" minOccurs="0"/>
         </xsd:sequence>
-        <xsd:attribute name="ID" type="LightSourceCouplingID">
+        <xsd:attribute name="ID" type="LightSourceCouplingID" use="required">
           <xsd:annotation>
             <xsd:documentation>Tier=4</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
-        <xsd:attribute name="Name" type="Denomination">
+        <xsd:attribute name="Name" type="Denomination" use="required">
           <xsd:annotation>
             <xsd:documentation>Description=A user defined name for this LightSourceCoupling device</xsd:documentation>
             <xsd:documentation>Tier=4</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
-        <xsd:attribute name="Transmittance" type="xsd:float">
+        <xsd:attribute name="Transmittance" type="xsd:float" use="required">
           <xsd:annotation>
             <xsd:documentation>Description=The amount of light this LightSourceCoupling apparatus transmits at a maximum. A fraction, as a value from 0.0 to 1.0</xsd:documentation>
             <xsd:documentation>Tier=5</xsd:documentation>
@@ -2796,23 +2831,11 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
       <xsd:complexContent>
         <xsd:extension base="LightSourceCoupling">
           <xsd:sequence>
-            <xsd:element maxOccurs="1" ref="LightGuideWavelengthRange" minOccurs="1"/>
+            <xsd:element maxOccurs="1" ref="WavelengthRange" minOccurs="1"/>
           </xsd:sequence>
           <xsd:attribute name="Type" type="LightGuideType" use="required">
             <xsd:annotation>
               <xsd:documentation>Description=The type of light guide used in this case.</xsd:documentation>
-              <xsd:documentation>Tier=5</xsd:documentation>
-            </xsd:annotation>
-          </xsd:attribute>
-          <xsd:attribute name="Geometry" type="LightGuideGeometry">
-            <xsd:annotation>
-              <xsd:documentation>Description=The shape of this LightGuide</xsd:documentation>
-              <xsd:documentation>Tier=5</xsd:documentation>
-            </xsd:annotation>
-          </xsd:attribute>
-          <xsd:attribute name="MaterialName" type="LightGuideMaterialName">
-            <xsd:annotation>
-              <xsd:documentation>Description=This records the chemical composition or the nonproprietary trade designation of the material used for this light guide</xsd:documentation>
               <xsd:documentation>Tier=5</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
@@ -2827,19 +2850,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
               <xsd:documentation>Tier=5</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="SingleMode" type="xsd:boolean">
-            <xsd:annotation>
-              <xsd:documentation>Description=Records whether or not the light guide is single-mode. If not, then the guide is assumend to be multi-modal</xsd:documentation>
-              <xsd:documentation>Tier=5</xsd:documentation>
-            </xsd:annotation>
-          </xsd:attribute>
-          <xsd:attribute name="WaveguideMode" type="LightGuideWaveguideMode">
-            <xsd:annotation>
-              <xsd:documentation>Description=When boundary conditions are imposed by a physical structure, a wave of a particular frequency can be described in terms of a transverse mode (or superposition of such modes). These modes generally follow different propagation constants</xsd:documentation>
-              <xsd:documentation>Tier=5</xsd:documentation>
-            </xsd:annotation>
-          </xsd:attribute>
-          <xsd:attribute name="RefractiveIndex" type="xsd:float">
+          <xsd:attribute name="RefractiveIndex" type="xsd:float" use="required">
             <xsd:annotation>
               <xsd:documentation>Description=The refractive index of the material this light guide is made of</xsd:documentation>
               <xsd:documentation>Tier=5</xsd:documentation>
@@ -2862,6 +2873,30 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
               <xsd:documentation>Tier=5</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
+          <xsd:attribute name="Geometry" type="LightGuideGeometry">
+            <xsd:annotation>
+              <xsd:documentation>Description=The shape of this LightGuide</xsd:documentation>
+              <xsd:documentation>Tier=5</xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
+          <xsd:attribute name="MaterialName" type="LightGuideMaterialName">
+            <xsd:annotation>
+              <xsd:documentation>Description=This records the chemical composition or the nonproprietary trade designation of the material used for this light guide</xsd:documentation>
+              <xsd:documentation>Tier=5</xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
+          <xsd:attribute name="SingleMode" type="xsd:boolean">
+            <xsd:annotation>
+              <xsd:documentation>Description=Records whether or not the light guide is single-mode. If not, then the guide is assumend to be multi-modal</xsd:documentation>
+              <xsd:documentation>Tier=5</xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
+          <xsd:attribute name="WaveguideMode" type="LightGuideWaveguideMode">
+            <xsd:annotation>
+              <xsd:documentation>Description=When boundary conditions are imposed by a physical structure, a wave of a particular frequency can be described in terms of a transverse mode (or superposition of such modes). These modes generally follow different propagation constants</xsd:documentation>
+              <xsd:documentation>Tier=5</xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
           <xsd:attribute name="Diameter" type="xsd:float">
             <xsd:annotation>
               <xsd:documentation>Description=The outer diameter of the light guide</xsd:documentation>
@@ -2877,6 +2912,48 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
       </xsd:complexContent>
     </xsd:complexType>
   </xsd:element>
+  <xsd:element name="WavelengthRange">
+    <!-- top level definition -->
+    <xsd:annotation>
+      <xsd:appinfo><xsdfu xmlns=""><plural>TransmittanceRanges</plural></xsdfu></xsd:appinfo>
+      <xsd:documentation>Category=ChildrenElement</xsd:documentation>
+      <xsd:documentation>Description=This records a range of wavelengths associated with the associated microscope component. Multiple of this elements may be used.</xsd:documentation>
+      <xsd:documentation>Tier=5</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:attribute name="CutIn" use="required" type="PositiveFloat">
+        <xsd:annotation>
+          <xsd:documentation>Description=CutIn is the wavelength below which the response rate is below 50%
+          </xsd:documentation>
+          <xsd:documentation>Tier=5</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="CutInUnit" use="optional" default="nm" type="UnitsLength">
+        <xsd:annotation>
+          <xsd:documentation>The units of the CutIn - default:nanometres[nm]</xsd:documentation>
+          <xsd:documentation>Tier=5</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="CutOut" use="required" type="PositiveFloat">
+        <xsd:annotation>
+          <xsd:documentation>Description=CutOut is the wavelength above which the response rate is below 50%</xsd:documentation>
+          <xsd:documentation>Tier=5</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="CutOutUnit" use="optional" default="nm" type="UnitsLength">
+        <xsd:annotation>
+          <xsd:documentation>The units of the CutOut - default:nanometres[nm]</xsd:documentation>
+          <xsd:documentation>Tier=5</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="WavelenghtProfile" type="xsd:anyURI" use="required">
+        <xsd:annotation>
+          <xsd:documentation>Description=The location of a file containing the wavelenght profile of this component.</xsd:documentation>
+          <xsd:documentation>Tier=5</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+    </xsd:complexType>
+  </xsd:element>
   <xsd:element name="Direct" substitutionGroup="LightSourceCouplingGroup">
     <xsd:annotation>
       <xsd:documentation>Category=LightSourceCoupling</xsd:documentation>
@@ -2886,13 +2963,13 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
     <xsd:complexType>
       <xsd:complexContent>
         <xsd:extension base="LightSourceCoupling">
-          <xsd:attribute name="Type" type="DirectType">
+          <xsd:attribute name="Type" type="DirectType" use="required">
             <xsd:annotation>
               <xsd:documentation>Description=The type of direct coupling available for this Instrument.</xsd:documentation>
               <xsd:documentation>Tier=5</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="Mount" type="xsd:string">
+          <xsd:attribute name="Mount" type="xsd:string" use="required">
             <xsd:annotation>
               <xsd:documentation>Description=The mount utilized to attach a LightSource to the microscope</xsd:documentation>
               <xsd:documentation>Tier=5</xsd:documentation>
@@ -2900,82 +2977,6 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
           </xsd:attribute>
         </xsd:extension>
       </xsd:complexContent>
-    </xsd:complexType>
-  </xsd:element>
-  <xsd:element name="LEDWavelengthRange">
-    <!-- top level definition -->
-    <xsd:annotation>
-      <xsd:appinfo><xsdfu xmlns=""><plural>TransmittanceRanges</plural></xsdfu></xsd:appinfo>
-      <xsd:documentation>Description=This records a range of wavelengths. Multiple of this elements can be used
-      </xsd:documentation>
-      <xsd:documentation>Tier=2</xsd:documentation>
-    </xsd:annotation>
-    <xsd:complexType>
-      <xsd:attribute name="CutIn" use="required" type="PositiveFloat">
-        <xsd:annotation>
-          <xsd:documentation>Description=CutIn is the wavelength below which the response rate is below 50%
-          </xsd:documentation>
-          <xsd:documentation>Tier=2</xsd:documentation>
-        </xsd:annotation>
-      </xsd:attribute>
-      <xsd:attribute name="CutInUnit" use="optional" default="nm" type="UnitsLength">
-        <xsd:annotation>
-          <xsd:documentation>The units of the CutIn - default:nanometres[nm]</xsd:documentation>
-          <xsd:documentation>Tier=2</xsd:documentation>
-        </xsd:annotation>
-      </xsd:attribute>
-      <xsd:attribute name="CutOut" use="required" type="PositiveFloat">
-        <xsd:annotation>
-          <xsd:documentation>Description=CutOut is the wavelength above which the response rate is below 50%</xsd:documentation>
-          <xsd:documentation>Tier=2</xsd:documentation>
-        </xsd:annotation>
-      </xsd:attribute>
-      <xsd:attribute name="CutOutUnit" use="optional" default="nm" type="UnitsLength">
-        <xsd:annotation>
-          <xsd:documentation>The units of the CutOut - default:nanometres[nm]</xsd:documentation>
-          <xsd:documentation>Tier=2</xsd:documentation>
-        </xsd:annotation>
-      </xsd:attribute>
-    </xsd:complexType>
-  </xsd:element>
-  <xsd:element name="LightGuideWavelengthRange">
-    <!-- top level definition -->
-    <xsd:annotation>
-      <xsd:appinfo><xsdfu xmlns=""><plural>TransmittanceRanges</plural></xsdfu></xsd:appinfo>
-      <xsd:documentation>Description=This records a range of wavelengths. Multiple of this elements can be used
-      </xsd:documentation>
-      <xsd:documentation>Tier=5</xsd:documentation>
-    </xsd:annotation>
-    <xsd:complexType>
-      <xsd:attribute name="CutIn" use="required" type="PositiveFloat">
-        <xsd:annotation>
-          <xsd:documentation>Description=CutIn is the wavelength below which the response rate is below 50%.
-          </xsd:documentation>
-          <xsd:documentation>Tier=5</xsd:documentation>
-        </xsd:annotation>
-      </xsd:attribute>
-      <xsd:attribute name="CutInUnit" use="optional" default="nm" type="UnitsLength">
-        <xsd:annotation>
-          <xsd:documentation>Tier=5</xsd:documentation>
-        </xsd:annotation>
-      </xsd:attribute>
-      <xsd:attribute name="CutOut" use="required" type="PositiveFloat">
-        <xsd:annotation>
-          <xsd:documentation>Description=CutOut is the wavelength above which the response rate is below 50%.</xsd:documentation>
-          <xsd:documentation>Tier=5</xsd:documentation>
-        </xsd:annotation>
-      </xsd:attribute>
-      <xsd:attribute name="CutOutUnit" use="optional" default="nm" type="UnitsLength">
-        <xsd:annotation>
-          <xsd:documentation>Tier=5</xsd:documentation>
-        </xsd:annotation>
-      </xsd:attribute>
-      <xsd:attribute name="WavelenghtProfile" type="xsd:anyURI">
-        <xsd:annotation>
-          <xsd:documentation>Description=The location of a file containing the wavelenght profile of this component.</xsd:documentation>
-          <xsd:documentation>Tier=5</xsd:documentation>
-        </xsd:annotation>
-      </xsd:attribute>
     </xsd:complexType>
   </xsd:element>
 
@@ -3022,7 +3023,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
           </xsd:annotation>
         </xsd:element>
         <xsd:element minOccurs="0" ref="AdditionalOptics"/>
-        <xsd:element ref="AnnotationRef" minOccurs="0" maxOccurs="unbounded">
+        <xsd:element ref="AnnotationRef" minOccurs="0" maxOccurs="1">
           <xsd:annotation>
             <xsd:appinfo><xsdfu xmlns=""><manytomany/></xsdfu></xsd:appinfo>
           </xsd:annotation>
@@ -3055,8 +3056,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
       <xsd:complexContent>
         <xsd:extension base="ManufacturerSpec">
           <xsd:sequence>
-            <xsd:element name="ExcitationFilterRef" type="FilterRef" minOccurs="1"
-              maxOccurs="unbounded">
+            <xsd:element name="ExcitationFilterRef" type="FilterRef" minOccurs="1" maxOccurs="1">
               <xsd:annotation>
                 <xsd:appinfo><xsdfu xmlns=""><plural>ExcitationFilters</plural><manytomany/></xsdfu></xsd:appinfo>
                 <xsd:documentation>Description=This empty element has a reference (the Filter ID attribute) to the Filters placed in the Excitation light path
@@ -3064,14 +3064,13 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
                 <xsd:documentation>Tier=3</xsd:documentation>
               </xsd:annotation>
             </xsd:element>
-            <xsd:element ref="DichroicRef" minOccurs="1" maxOccurs="unbounded">
+            <xsd:element ref="DichroicRef" minOccurs="1" maxOccurs="1">
               <xsd:annotation>
                 <xsd:documentation>Description=This empty element has a reference (the Mirror ID attribute) to the Mirror/Dichroic placed in the light path</xsd:documentation>
                 <xsd:documentation>Tier=3</xsd:documentation>
               </xsd:annotation>
             </xsd:element>
-            <xsd:element name="EmissionFilterRef" type="FilterRef" minOccurs="1"
-              maxOccurs="unbounded">
+            <xsd:element name="EmissionFilterRef" type="FilterRef" minOccurs="1" maxOccurs="1">
               <xsd:annotation>
                 <xsd:appinfo><xsdfu xmlns=""><plural>EmissionFilters</plural><manytomany/></xsdfu></xsd:appinfo>
                 <xsd:documentation>Description=This empty element has a reference (the Filter ID attribute) to the Filters placed in the Emission light path</xsd:documentation>
@@ -3085,7 +3084,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
               <xsd:documentation>Tier=2</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="Name" type="Denomination">
+          <xsd:attribute name="Name" type="Denomination" use="required">
             <xsd:annotation>
               <xsd:documentation>Description=A user defined name for this FilterSet element</xsd:documentation>
               <xsd:documentation>Tier=2</xsd:documentation>
@@ -3104,8 +3103,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
       <xsd:extension base="ManufacturerSpec">
         <xsd:sequence>
           <xsd:element ref="TransmittanceRange" minOccurs="1" maxOccurs="unbounded"/>
-          <xsd:element minOccurs="0" ref="TransmittanceProfileRef"/>
-          <xsd:element ref="AnnotationRef" minOccurs="0" maxOccurs="unbounded">
+          <xsd:element ref="AnnotationRef" minOccurs="0" maxOccurs="1">
             <xsd:annotation>
               <xsd:appinfo><xsdfu xmlns=""><manytomany/></xsdfu></xsd:appinfo>
             </xsd:annotation>
@@ -3116,7 +3114,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
             <xsd:documentation>Tier=2</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
-        <xsd:attribute name="Name" type="Denomination">
+        <xsd:attribute name="Name" type="Denomination" use="required">
           <xsd:annotation>
             <xsd:documentation>Description=A user defined name for this Filter</xsd:documentation>
             <xsd:documentation>Tier=2</xsd:documentation>
@@ -3128,15 +3126,21 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
             <xsd:documentation>Tier=3</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
+        <xsd:attribute name="ReflectionCoating" type="xsd:string" use="required">
+          <xsd:annotation>
+            <xsd:documentation>Description=An optical coating is one or more thin layers of material deposited on an optical component such as a lens or mirror, which alters the way in which the optic reflects and transmits light</xsd:documentation>
+            <xsd:documentation>Tier=5</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
         <xsd:attribute name="FilterWheel" use="optional" type="xsd:string">
           <xsd:annotation>
             <xsd:documentation>Description=A filter 'wheel' in OME can refer to any arrangement of filters in a filter holder of any shape. It could, for example, be a filter slider.</xsd:documentation>
             <xsd:documentation>Tier=3</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
-        <xsd:attribute name="ReflectionCoating" type="xsd:string">
+        <xsd:attribute name="TransmittanceProfileFile" type="xsd:anyURI" use="required">
           <xsd:annotation>
-            <xsd:documentation>Description=An optical coating is one or more thin layers of material deposited on an optical component such as a lens or mirror, which alters the way in which the optic reflects and transmits light</xsd:documentation>
+            <xsd:documentation>Description=This contains the location of file in .csv or other suitable formats containing the wavelenght profile of this component.</xsd:documentation>
             <xsd:documentation>Tier=5</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
@@ -3193,6 +3197,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
     <!-- top level definition -->
     <xsd:annotation>
       <xsd:appinfo><xsdfu xmlns=""><plural>TransmittanceRanges</plural></xsdfu></xsd:appinfo>
+      <xsd:documentation>Category=ChildrenElement</xsd:documentation>
       <xsd:documentation>Description=This records the range of wavelengths that are transmitted by the filter. It also records the maximum amount of light transmitted. Multiple of this elements can be used
       </xsd:documentation>
       <xsd:documentation>Tier=3</xsd:documentation>
@@ -3222,7 +3227,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
           <xsd:documentation>Tier=3</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
-      <xsd:attribute name="Transmittance" use="optional" type="PercentFraction">
+      <xsd:attribute name="Transmittance" use="required" type="PercentFraction">
         <xsd:annotation>
           <xsd:documentation>Description=The amount of light the filter transmits at a maximum. A fraction, as a value from 0.0 to 1.0.
           </xsd:documentation>
@@ -3242,20 +3247,20 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
     <xsd:complexContent>
       <xsd:extension base="ManufacturerSpec">
         <xsd:sequence>
-          <xsd:element ref="AnnotationRef" maxOccurs="unbounded" minOccurs="0"/>
+          <xsd:element ref="AnnotationRef" maxOccurs="1" minOccurs="0"/>
         </xsd:sequence>
-        <xsd:attribute name="ID" type="MirrorID">
+        <xsd:attribute name="ID" type="MirrorID" use="required">
           <xsd:annotation>
             <xsd:documentation>Tier=2</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
-        <xsd:attribute name="Name" type="Denomination">
+        <xsd:attribute name="Name" type="Denomination" use="required">
           <xsd:annotation>
             <xsd:documentation>Description=A user defined name for this Mirror</xsd:documentation>
             <xsd:documentation>Tier=2</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
-        <xsd:attribute name="Reflectance" type="xsd:float">
+        <xsd:attribute name="Reflectance" type="xsd:float" use="required">
           <xsd:annotation>
             <xsd:documentation>Description=The amount of light the mirror reflects at a maximum. It is represented as a fraction, as a value from 0.0 to 1.0</xsd:documentation>
             <xsd:documentation>Tier=4</xsd:documentation>
@@ -3273,7 +3278,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
             <xsd:documentation>Tier=5</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
-        <xsd:attribute name="AngleOfIncidence" type="xsd:float">
+        <xsd:attribute name="AngleOfIncidence" type="xsd:float" use="required">
           <xsd:annotation>
             <xsd:documentation>Description=This field records the optimal angle of incidence (AOI) for this mirror. TheAOI is the angle between the optical axis of the incident light and the axis normal to the surface of the mirror. In specular reflection AOI is by definition equal to the Angle Of Reflection (AOR).</xsd:documentation>
             <xsd:documentation>Tier=5</xsd:documentation>
@@ -3332,13 +3337,13 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
     <xsd:complexType>
       <xsd:complexContent>
         <xsd:extension base="Mirror">
-          <xsd:attribute name="Transmittance" type="xsd:float">
+          <xsd:attribute name="Transmittance" type="xsd:float" use="required">
             <xsd:annotation>
               <xsd:documentation>Description=The amount of light the beamsplitter transmits at a maximum. A fraction, as a value from 0.0 to 1.0</xsd:documentation>
               <xsd:documentation>Tier=4</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="TransmissionAngle" type="xsd:float">
+          <xsd:attribute name="TransmissionAngle" type="xsd:float" use="required">
             <xsd:annotation>
               <xsd:documentation>Description=The angle at which light is transmitted by this beamsplitter</xsd:documentation>
               <xsd:documentation>Tier=5</xsd:documentation>
@@ -3373,48 +3378,24 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
         <xsd:extension base="Mirror">
           <xsd:sequence>
             <xsd:element maxOccurs="unbounded" ref="TransmittanceRange"/>
-            <xsd:element minOccurs="0" ref="TransmittanceProfileRef"/>
             <xsd:element maxOccurs="unbounded" ref="ReflectanceRange" minOccurs="0"/>
-            <xsd:element name="ReflectanceProfileRef" maxOccurs="1" minOccurs="0">
-              <xsd:annotation>
-                <xsd:documentation>Description=This empty element has a reference (the FileID attribute) to a file in .csv or other suitable formats containing the wavelenght profile of this component.</xsd:documentation>
-                <xsd:documentation>Tier=5</xsd:documentation>
-              </xsd:annotation>
-              <xsd:complexType>
-                <xsd:complexContent>
-                  <xsd:extension base="Reference">
-                    <xsd:attribute name="ID" type="ReflectanceProfileID">
-                      <xsd:annotation>
-                        <xsd:documentation>Tier=5</xsd:documentation>
-                      </xsd:annotation>
-                    </xsd:attribute>
-                  </xsd:extension>
-                </xsd:complexContent>
-              </xsd:complexType>
-            </xsd:element>
           </xsd:sequence>
-          <xsd:attribute name="DichroicType" type="DichroicType">
+          <xsd:attribute name="DichroicType" type="DichroicType" use="required">
             <xsd:annotation>
               <xsd:documentation>Description=The type of dichroic mirror used in this case.</xsd:documentation>
               <xsd:documentation>Tier=3</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="HardSputtered" type="xsd:boolean">
+          <xsd:attribute name="HardSputtered" type="xsd:boolean" use="required">
             <xsd:annotation>
               <xsd:documentation>Description=This field records whether this coating of this dichroic is hard-sputtered or traditional.</xsd:documentation>
               <xsd:documentation>Tier=3</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="AttenuationLevel" type="xsd:float">
+          <xsd:attribute name="AttenuationLevel" type="xsd:float" use="required">
             <xsd:annotation>
               <xsd:documentation>Description=The attenuation level, aka blocking level, is used as a measure of the out-of-band attenuation of an optical filter or dichroic mirror over an extended range of the spectrum. The attenuation level is often defined in units of optical density (OD), wherease OD= -log10(T), and T=Transmittance (0≤T≤1).</xsd:documentation>
               <xsd:documentation>Tier=3</xsd:documentation>
-            </xsd:annotation>
-          </xsd:attribute>
-          <xsd:attribute name="FilterWheel" type="xsd:string">
-            <xsd:annotation>
-              <xsd:documentation>Description=A filter 'wheel' in OME can refer to any arrangement of filters in a filter holder of any shape. It could, for example, be a filter slider</xsd:documentation>
-              <xsd:documentation>Tier=4</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
           <xsd:attribute default="Reflection" name="AttenuationMethod" type="AttenuationMethod">
@@ -3431,7 +3412,25 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
           </xsd:attribute>
           <xsd:attribute name="Polarization" type="DichroicPolarization">
             <xsd:annotation>
-              <xsd:documentation>Description=The polarization state of this dichroic</xsd:documentation>
+              <xsd:documentation>Description=The polarization state of this dichroic.</xsd:documentation>
+              <xsd:documentation>Tier=5</xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
+          <xsd:attribute name="FilterWheel" type="xsd:string">
+            <xsd:annotation>
+              <xsd:documentation>Description=A filter 'wheel' in OME can refer to any arrangement of filters in a filter holder of any shape. It could, for example, be a filter slider</xsd:documentation>
+              <xsd:documentation>Tier=4</xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
+          <xsd:attribute name="TransmittanceProfileFile" type="xsd:anyURI" use="required">
+            <xsd:annotation>
+              <xsd:documentation>Description=This contains the location of file in .csv or other suitable formats containing the wavelenght profile of this component.</xsd:documentation>
+              <xsd:documentation>Tier=5</xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
+          <xsd:attribute name="ReflectanceProfileFile" type="xsd:anyURI" use="required">
+            <xsd:annotation>
+              <xsd:documentation>Description=This contains the location of file in .csv or other suitable formats containing the wavelenght profile of this component.</xsd:documentation>
               <xsd:documentation>Tier=5</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
@@ -3443,6 +3442,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
     <!-- top level definition -->
     <xsd:annotation>
       <xsd:appinfo><xsdfu xmlns=""><plural>TransmittanceRanges</plural></xsdfu></xsd:appinfo>
+      <xsd:documentation>Category=ChildrenElement</xsd:documentation>
       <xsd:documentation>Description=This records the range of wavelengths that are reflected by the mirror
       </xsd:documentation>
       <xsd:documentation>Tier=3</xsd:documentation>
@@ -3515,6 +3515,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
             <xsd:documentation>Tier=3</xsd:documentation>
           </xsd:annotation>
         </xsd:element>
+        <xsd:element minOccurs="0" ref="AnnotationRef"/>
       </xsd:sequence>
       <xsd:attribute name="ID" type="LSID" use="required">
         <xsd:annotation>
@@ -3539,20 +3540,20 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
       <xsd:complexContent>
         <xsd:extension base="ManufacturerSpec">
           <xsd:sequence>
-            <xsd:element ref="AnnotationRef" maxOccurs="unbounded" minOccurs="0"/>
+            <xsd:element ref="AnnotationRef" maxOccurs="1" minOccurs="0"/>
           </xsd:sequence>
-          <xsd:attribute name="ID" type="LensID">
+          <xsd:attribute name="ID" type="LensID" use="required">
             <xsd:annotation>
               <xsd:documentation>Tier=2</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="Name" type="Denomination">
+          <xsd:attribute name="Name" type="Denomination" use="required">
             <xsd:annotation>
               <xsd:documentation>Description=A user defined name for this Lens</xsd:documentation>
               <xsd:documentation>Tier=2</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="Type" type="LensType">
+          <xsd:attribute name="Type" type="LensType" use="required">
             <xsd:annotation>
               <xsd:documentation>Description=The general category to which this lens belongs.</xsd:documentation>
               <xsd:documentation>Tier=5</xsd:documentation>
@@ -3564,19 +3565,19 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
               <xsd:documentation>Tier=5</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="Construction" type="LensConstruction">
+          <xsd:attribute name="Construction" type="LensConstruction" use="required">
             <xsd:annotation>
               <xsd:documentation>Description=Whether or not the lens is simple or composite</xsd:documentation>
               <xsd:documentation>Tier=5</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="Magnification" type="xsd:int">
+          <xsd:attribute name="Magnification" type="xsd:int" use="required">
             <xsd:annotation>
               <xsd:documentation>Description=The nominal magnification provided by this lens</xsd:documentation>
               <xsd:documentation>Tier=2</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="AttenuationCoefficient" type="xsd:float">
+          <xsd:attribute name="AttenuationCoefficient" type="xsd:float" use="required">
             <xsd:annotation>
               <xsd:documentation>Description=The attenuation coefficient (aka blocking coefficient) is a material property that characterizes the degree of transparency of a lens. The attenuation coefficient is often defined in units of optical density (OD), wherease OD= -log10(T), and T=Transmittance (0≤T≤1).</xsd:documentation>
               <xsd:documentation>Tier=5</xsd:documentation>
@@ -3593,7 +3594,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
               <xsd:documentation>Tier=5</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="FocalDistanceToObject" type="xsd:float">
+          <xsd:attribute name="FocalDistanceToObject" type="xsd:float" use="required">
             <xsd:annotation>
               <xsd:documentation>Description=The distance between the front principal plane of the lens and the specimen</xsd:documentation>
               <xsd:documentation>Tier=5</xsd:documentation>
@@ -3604,7 +3605,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
               <xsd:documentation>Tier=5</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="FocalDistanceToImage" type="xsd:float">
+          <xsd:attribute name="FocalDistanceToImage" type="xsd:float" use="required">
             <xsd:annotation>
               <xsd:documentation>Description=The distance from the rear principal plane to the image</xsd:documentation>
               <xsd:documentation>Tier=5</xsd:documentation>
@@ -3615,7 +3616,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
               <xsd:documentation>Tier=5</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="FocalLength" type="xsd:float">
+          <xsd:attribute name="FocalLength" type="xsd:float" use="required">
             <xsd:annotation>
               <xsd:documentation>Description=The distance from the rear principal plane of the lens and its focal point</xsd:documentation>
               <xsd:documentation>Tier=5</xsd:documentation>
@@ -3638,19 +3639,19 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
               <xsd:documentation>Tier=5</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="RefractiveIndex" type="xsd:float">
+          <xsd:attribute name="RefractiveIndex" type="xsd:float" use="required">
             <xsd:annotation>
               <xsd:documentation>Description=The refractive index of the material the prism is made of</xsd:documentation>
               <xsd:documentation>Tier=5</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="AbbeNumber" type="xsd:float">
+          <xsd:attribute name="AbbeNumber" type="xsd:float" use="required">
             <xsd:annotation>
               <xsd:documentation>Description=The Abbe Number is a measure of the material's dispersion (variation of refractive index versus wavelength), with high values indicating low dispersion</xsd:documentation>
               <xsd:documentation>Tier=5</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="Density" type="xsd:float">
+          <xsd:attribute name="Density" type="xsd:float" use="optional">
             <xsd:annotation>
               <xsd:documentation>Description=The density of the material this lens is made of</xsd:documentation>
               <xsd:documentation>Tier=5</xsd:documentation>
@@ -3686,8 +3687,8 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
       <xsd:complexContent>
         <xsd:extension base="ManufacturerSpec">
           <xsd:sequence>
-            <xsd:element maxOccurs="1" ref="PrismWavelengthRange" minOccurs="0"/>
-            <xsd:element ref="AnnotationRef"/>
+            <xsd:element ref="WavelengthRange"/>
+            <xsd:element ref="AnnotationRef" maxOccurs="1" minOccurs="0"/>
           </xsd:sequence>
           <xsd:attribute name="ID" type="PrismID" use="required">
             <xsd:annotation>
@@ -3751,7 +3752,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
               <xsd:documentation>Tier=5</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="MaterialName" type="PrismMaterialName" use="required">
+          <xsd:attribute name="MaterialName" type="PrismMaterialName" use="optional">
             <xsd:annotation>
               <xsd:documentation>Description=This records the chemical composition or the nonproprietary trade designation of the glass</xsd:documentation>
               <xsd:documentation>Tier=5</xsd:documentation>
@@ -3800,21 +3801,21 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
       <xsd:complexContent>
         <xsd:extension base="ManufacturerSpec">
           <xsd:sequence>
-            <xsd:element maxOccurs="1" ref="PolarizerWavelengthRange" minOccurs="0"/>
-            <xsd:element ref="AnnotationRef"/>
+            <xsd:element maxOccurs="1" ref="WavelengthRange" minOccurs="1"/>
+            <xsd:element ref="AnnotationRef" minOccurs="0"/>
           </xsd:sequence>
-          <xsd:attribute name="ID" type="PolarizationOpticsID">
+          <xsd:attribute name="ID" type="PolarizationOpticsID" use="required">
             <xsd:annotation>
               <xsd:documentation>Tier=2</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="Name" type="Denomination">
+          <xsd:attribute name="Name" type="Denomination" use="required">
             <xsd:annotation>
               <xsd:documentation>Description=A user defined name for this Polarization Optics element</xsd:documentation>
               <xsd:documentation>Tier=2</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="Function" type="PolarizationOpticsFunction">
+          <xsd:attribute name="Function" type="PolarizationOpticsFunction" use="required">
             <xsd:annotation>
               <xsd:documentation>Description=This records whether this polarizer optics is used to generate polarized light or to analyze polarized light</xsd:documentation>
               <xsd:documentation>Tier=2</xsd:documentation>
@@ -3854,100 +3855,20 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
       </xsd:complexContent>
     </xsd:complexType>
   </xsd:element>
-  <xsd:element name="PrismWavelengthRange">
-    <!-- top level definition -->
-    <xsd:annotation>
-      <xsd:appinfo><xsdfu xmlns=""><plural>TransmittanceRanges</plural></xsdfu></xsd:appinfo>
-      <xsd:documentation>Description=This records a range of wavelengths. Multiple of this elements can be used
-      </xsd:documentation>
-      <xsd:documentation>Tier=5</xsd:documentation>
-    </xsd:annotation>
-    <xsd:complexType>
-      <xsd:attribute name="CutIn" use="required" type="PositiveFloat">
-        <xsd:annotation>
-          <xsd:documentation>Description=CutIn is the wavelength below which the response rate is below 50%.
-          </xsd:documentation>
-          <xsd:documentation>Tier=5</xsd:documentation>
-        </xsd:annotation>
-      </xsd:attribute>
-      <xsd:attribute name="CutInUnit" use="optional" default="nm" type="UnitsLength">
-        <xsd:annotation>
-          <xsd:documentation>Tier=5</xsd:documentation>
-        </xsd:annotation>
-      </xsd:attribute>
-      <xsd:attribute name="CutOut" use="required" type="PositiveFloat">
-        <xsd:annotation>
-          <xsd:documentation>Description=CutOut is the wavelength above which the response rate is below 50%.</xsd:documentation>
-          <xsd:documentation>Tier=5</xsd:documentation>
-        </xsd:annotation>
-      </xsd:attribute>
-      <xsd:attribute name="CutOutUnit" use="optional" default="nm" type="UnitsLength">
-        <xsd:annotation>
-          <xsd:documentation>Tier=5</xsd:documentation>
-        </xsd:annotation>
-      </xsd:attribute>
-      <xsd:attribute name="WavelenghtProfile" type="xsd:anyURI">
-        <xsd:annotation>
-          <xsd:documentation>Description=The location of a file containing the wavelenght profile of this component.</xsd:documentation>
-          <xsd:documentation>Tier=5</xsd:documentation>
-        </xsd:annotation>
-      </xsd:attribute>
-    </xsd:complexType>
-  </xsd:element>
-  <xsd:element name="PolarizerWavelengthRange">
-    <!-- top level definition -->
-    <xsd:annotation>
-      <xsd:appinfo><xsdfu xmlns=""><plural>TransmittanceRanges</plural></xsdfu></xsd:appinfo>
-      <xsd:documentation>Description=This records a range of wavelengths. Multiple of this elements can be used
-      </xsd:documentation>
-      <xsd:documentation>Tier=3</xsd:documentation>
-    </xsd:annotation>
-    <xsd:complexType>
-      <xsd:attribute name="CutIn" use="required" type="PositiveFloat">
-        <xsd:annotation>
-          <xsd:documentation>Description=CutIn is the wavelength below which the response rate is below 50%.
-          </xsd:documentation>
-          <xsd:documentation>Tier=3</xsd:documentation>
-        </xsd:annotation>
-      </xsd:attribute>
-      <xsd:attribute name="CutInUnit" use="optional" default="nm" type="UnitsLength">
-        <xsd:annotation>
-          <xsd:documentation>Tier=3</xsd:documentation>
-        </xsd:annotation>
-      </xsd:attribute>
-      <xsd:attribute name="CutOut" use="required" type="PositiveFloat">
-        <xsd:annotation>
-          <xsd:documentation>Description=CutOut is the wavelength above which the response rate is below 50%.</xsd:documentation>
-          <xsd:documentation>Tier=3</xsd:documentation>
-        </xsd:annotation>
-      </xsd:attribute>
-      <xsd:attribute name="CutOutUnit" use="optional" default="nm" type="UnitsLength">
-        <xsd:annotation>
-          <xsd:documentation>Tier=3</xsd:documentation>
-        </xsd:annotation>
-      </xsd:attribute>
-      <xsd:attribute name="WavelenghtProfile" type="xsd:anyURI">
-        <xsd:annotation>
-          <xsd:documentation>Description=The location of a file containing the wavelenght profile of this component.</xsd:documentation>
-          <xsd:documentation>Tier=5</xsd:documentation>
-        </xsd:annotation>
-      </xsd:attribute>
-    </xsd:complexType>
-  </xsd:element>
 
   <!-- Detector elements -->
   <xsd:complexType name="Detector">
     <xsd:complexContent>
       <xsd:extension base="ManufacturerSpec">
         <xsd:sequence>
-          <xsd:element maxOccurs="1" ref="DetectorWavelengthRange" minOccurs="0"/>
-          <xsd:element name="RelayLensRef" type="LensRef" minOccurs="0" maxOccurs="unbounded">
+          <xsd:element maxOccurs="1" ref="WavelengthRange" minOccurs="1"/>
+          <xsd:element name="RelayLensRef" type="LensRef" minOccurs="0" maxOccurs="1">
             <xsd:annotation>
-              <xsd:documentation>Description=This element refers to a lens positioned at this mount connecting this detector to the microscope body.</xsd:documentation>
+              <xsd:documentation>Description=This is a reference to a lens positioned at the mount connecting this detector to the microscope body.</xsd:documentation>
               <xsd:documentation>Tier=3</xsd:documentation>
             </xsd:annotation>
           </xsd:element>
-          <xsd:element ref="AnnotationRef" maxOccurs="unbounded" minOccurs="0"/>
+          <xsd:element ref="AnnotationRef" maxOccurs="1" minOccurs="0"/>
         </xsd:sequence>
         <xsd:attribute name="ID" type="DetectorID" use="required">
           <xsd:annotation>
@@ -3960,7 +3881,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
             <xsd:documentation>Tier=2</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
-        <xsd:attribute name="Gain" type="xsd:float" use="optional">
+        <xsd:attribute name="Gain" type="xsd:float" use="required">
           <xsd:annotation>
             <xsd:documentation>Description=The analog gain is the conversion unit for this detector. It specifies how many electrons correspond to 1 signal unit. It is expressed in e-/Analog-to-Digit-Unit (ADU).</xsd:documentation>
             <xsd:documentation>Tier=3</xsd:documentation>
@@ -4069,6 +3990,20 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
       </xsd:complexContent>
     </xsd:complexType>
   </xsd:element>
+  <xsd:element name="GenericDetector" substitutionGroup="DetectorGroup">
+    <!-- top level definition -->
+    <xsd:annotation>
+      <xsd:appinfo><xsdfu xmlns=""><plural>GenericExcitationSources</plural></xsdfu></xsd:appinfo>
+      <xsd:documentation>Category=Detector</xsd:documentation>
+      <xsd:documentation>Description=The GenericDetector element is used to represent a detector as a collection of key/value pairs, stored in a Map. The other detector objects should always be used in preference to this if possible.</xsd:documentation>
+      <xsd:documentation>Tier=1</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:complexContent>
+        <xsd:extension base="Detector"> </xsd:extension>
+      </xsd:complexContent>
+    </xsd:complexType>
+  </xsd:element>
   <xsd:element name="CameraGroup" abstract="true" type="Camera" substitutionGroup="DetectorGroup">
     <xsd:annotation>
       <xsd:documentation>Description=This element describes the camera(s) devices available in this microscope. A camera is device that converts optical brightness into an electrical signal using a CCD(a semiconductor chip, which converts the intensity of light falling onto its surface at different points into a charge) and then reproduces an image of the specimen.</xsd:documentation>
@@ -4086,19 +4021,19 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
             <xsd:documentation>Tier=3</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
-        <xsd:attribute name="ArrayWidth" type="xsd:int">
+        <xsd:attribute name="ArrayWidth" type="xsd:int" use="required">
           <xsd:annotation>
             <xsd:documentation>Description=The width of this camera chip expressed in pixel</xsd:documentation>
             <xsd:documentation>Tier=3</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
-        <xsd:attribute name="ArrayHeight" type="xsd:int">
+        <xsd:attribute name="ArrayHeight" type="xsd:int" use="required">
           <xsd:annotation>
             <xsd:documentation>Description=The height of this camera chip expressed in pixel</xsd:documentation>
             <xsd:documentation>Tier=3</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
-        <xsd:attribute name="PixelWidth" type="xsd:float">
+        <xsd:attribute name="PixelWidth" type="xsd:float" use="required">
           <xsd:annotation>
             <xsd:documentation>Description=The physical width of each pixel</xsd:documentation>
             <xsd:documentation>Tier=3</xsd:documentation>
@@ -4109,7 +4044,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
             <xsd:documentation>Tier=3</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
-        <xsd:attribute name="PixelHeight" type="xsd:float">
+        <xsd:attribute name="PixelHeight" type="xsd:float" use="required">
           <xsd:annotation>
             <xsd:documentation>Description=The physical height of each pixel</xsd:documentation>
             <xsd:documentation>Tier=3</xsd:documentation>
@@ -4142,7 +4077,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
             <xsd:documentation>Tier=3</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
-        <xsd:attribute name="PixelWellCapacity" type="xsd:int">
+        <xsd:attribute name="PixelWellCapacity" type="xsd:int" use="required">
           <xsd:annotation>
             <xsd:documentation>Description=The maximum amount of charge each pixel well can hold, measured in electron counts</xsd:documentation>
             <xsd:documentation>Tier=5</xsd:documentation>
@@ -4164,7 +4099,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
             <xsd:documentation>Tier=5</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
-        <xsd:attribute name="VerticalClockSpeed">
+        <xsd:attribute name="VerticalClockSpeed" type="xsd:float">
           <xsd:annotation>
             <xsd:documentation>Description=The maximal speed each vertical colunm of pixels in the camera chip, can be shifted down and read</xsd:documentation>
             <xsd:documentation>Tier=5</xsd:documentation>
@@ -4175,7 +4110,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
             <xsd:documentation>Tier=5</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
-        <xsd:attribute name="MaximumFrameRate" type="xsd:float">
+        <xsd:attribute name="MaximumFrameRate" type="xsd:float" use="required">
           <xsd:annotation>
             <xsd:documentation>Description=The maximal rate this camera can acquire a single frame</xsd:documentation>
             <xsd:documentation>Tier=5</xsd:documentation>
@@ -4186,7 +4121,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
             <xsd:documentation>Tier=5</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
-        <xsd:attribute name="MaximumReadoutRate" type="xsd:float">
+        <xsd:attribute name="MaximumReadoutRate" type="xsd:float" use="required">
           <xsd:annotation>
             <xsd:documentation>Description=The maximal pixel read out rate allowed by this camera</xsd:documentation>
             <xsd:documentation>Tier=5</xsd:documentation>
@@ -4210,7 +4145,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
     <xsd:complexType>
       <xsd:complexContent>
         <xsd:extension base="Camera">
-          <xsd:attribute name="Type" type="CCDType">
+          <xsd:attribute name="Type" type="CCDType" use="required">
             <xsd:annotation>
               <xsd:documentation>Description=The type of CCD camera used.</xsd:documentation>
               <xsd:documentation>Tier=3</xsd:documentation>
@@ -4229,7 +4164,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
     <xsd:complexType>
       <xsd:complexContent>
         <xsd:extension base="Camera">
-          <xsd:attribute name="Type" type="IntensifiedCCDType">
+          <xsd:attribute name="Type" type="IntensifiedCCDType" use="required">
             <xsd:annotation>
               <xsd:documentation>Description=The type of intensifiedCCD camera used.</xsd:documentation>
               <xsd:documentation>Tier=3</xsd:documentation>
@@ -4260,7 +4195,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
     <xsd:complexType>
       <xsd:complexContent>
         <xsd:extension base="Camera">
-          <xsd:attribute name="Type" type="CMOSType">
+          <xsd:attribute name="Type" type="CMOSType" use="required">
             <xsd:annotation>
               <xsd:documentation>Description=The type of CCD camera used.</xsd:documentation>
               <xsd:documentation>Tier=3</xsd:documentation>
@@ -4720,9 +4655,7 @@ PlaneInfo (as Plane)
   <xsd:element name="StructuredAnnotations">
     <!-- top level definition -->
     <xsd:annotation>
-      <xsd:documentation>
-        An unordered collection of annotation attached to objects in the OME data model.
-      </xsd:documentation>
+      <xsd:documentation>An unordered collection of annotation attached to objects in the OME data model.</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
       <xsd:choice minOccurs="0" maxOccurs="unbounded">
@@ -4743,16 +4676,15 @@ PlaneInfo (as Plane)
   <xsd:element name="AnnotationRef">
     <!-- top level definition -->
     <xsd:annotation>
-      <xsd:documentation>Description=The AnnotationRef element is a reference to an element derived from the CommonAnnotation element.
-      </xsd:documentation>
-      <xsd:documentation>Tier=3</xsd:documentation>
+      <xsd:documentation>Description=The AnnotationRef element is a reference to an element derived from the CommentAnnotation element, which consists of a simple comment multi-line annotation.</xsd:documentation>
+      <xsd:documentation>Tier=2</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
       <xsd:complexContent>
         <xsd:extension base="Reference">
           <xsd:attribute name="ID" use="required" type="AnnotationID">
             <xsd:annotation>
-              <xsd:documentation>Tier=3</xsd:documentation>
+              <xsd:documentation>Tier=2</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
         </xsd:extension>
@@ -4770,7 +4702,8 @@ PlaneInfo (as Plane)
     <xsd:sequence>
       <xsd:element name="Description" minOccurs="0" maxOccurs="1">
         <xsd:annotation>
-          <xsd:documentation>A description for the annotation.[plain-text multi-line string]</xsd:documentation>
+          <xsd:documentation>Description=This element contains a description for the annotation.[plain-text multi-line string]</xsd:documentation>
+          <xsd:documentation>Tier=2</xsd:documentation>
         </xsd:annotation>
         <xsd:simpleType>
           <xsd:restriction base="xsd:string">
@@ -4786,19 +4719,21 @@ PlaneInfo (as Plane)
         </xsd:element>
       </xsd:sequence>
     </xsd:sequence>
-    <xsd:attribute name="ID" use="required" type="AnnotationID"/>
-    <xsd:attribute name="Namespace" use="optional" type="xsd:anyURI">
+    <xsd:attribute name="ID" use="required" type="AnnotationID">
       <xsd:annotation>
-        <xsd:documentation>We recommend the inclusion of a namespace for annotations you define. If it is absent then we assume the annotation is to use our (OME's) default interpretation for this type.</xsd:documentation>
+        <xsd:documentation>Tier=2</xsd:documentation>
+      </xsd:annotation>
+    </xsd:attribute>
+    <xsd:attribute name="Namespace" use="required" type="xsd:anyURI">
+      <xsd:annotation>
+        <xsd:documentation>Description=We recommend the inclusion of a namespace for annotations you define. If it is absent then we assume the annotation is to use our (OME's) default interpretation for this type.</xsd:documentation>
+        <xsd:documentation>Tier=5</xsd:documentation>
       </xsd:annotation>
     </xsd:attribute>
     <xsd:attribute name="Annotator" use="optional" type="ExperimenterID">
       <xsd:annotation>
-        <xsd:documentation>
-          The Annotator is the person who attached this annotation.
-          e.g. If UserA annotates something with TagB, owned by UserB,
-          UserA is still the Annotator.
-        </xsd:documentation>
+        <xsd:documentation>Description=The Annotator is the person who attached this annotation.e.g. If UserA annotates something with TagB, owned by UserB, UserA is still the Annotator.</xsd:documentation>
+        <xsd:documentation>Tier=2</xsd:documentation>
       </xsd:annotation>
     </xsd:attribute>
   </xsd:complexType>
@@ -4813,9 +4748,7 @@ PlaneInfo (as Plane)
     <!-- top level definition -->
     <xsd:annotation>
       <xsd:appinfo><xsdfu xmlns=""><plural>BasicAnnotations</plural><abstract/></xsdfu></xsd:appinfo>
-      <xsd:documentation>
-        An abstract Basic Annotation from which some others are derived.
-      </xsd:documentation>
+      <xsd:documentation>An abstract Basic Annotation from which some others are derived.</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="Annotation"/>
@@ -4825,8 +4758,7 @@ PlaneInfo (as Plane)
     <!-- top level definition -->
     <xsd:annotation>
       <xsd:appinfo><xsdfu xmlns=""><plural>NumericAnnotations</plural><abstract/></xsdfu></xsd:appinfo>
-      <xsd:documentation>
-        An abstract Numeric Annotation from which some others are derived.
+      <xsd:documentation>An abstract Basic Annotation from which some others are derived.
       </xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
@@ -4837,8 +4769,7 @@ PlaneInfo (as Plane)
     <!-- top level definition -->
     <xsd:annotation>
       <xsd:appinfo><xsdfu xmlns=""><plural>TextAnnotations</plural><abstract/></xsdfu></xsd:appinfo>
-      <xsd:documentation>
-        An abstract Text Annotation from which some others are derived.
+      <xsd:documentation>An abstract Basic Annotation from which some others are derived.
       </xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
@@ -4849,8 +4780,7 @@ PlaneInfo (as Plane)
     <!-- top level definition -->
     <xsd:annotation>
       <xsd:appinfo><xsdfu xmlns=""><plural>TypeAnnotations</plural><abstract/></xsdfu></xsd:appinfo>
-      <xsd:documentation>
-        An abstract Type Annotation from which some others are derived.
+      <xsd:documentation>An abstract Type Annotation from which some others are derived.
       </xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
@@ -4864,9 +4794,7 @@ PlaneInfo (as Plane)
     <!-- top level definition -->
     <xsd:annotation>
       <xsd:appinfo><xsdfu xmlns=""><plural>FileAnnotations</plural></xsdfu></xsd:appinfo>
-      <xsd:documentation>
-        A file object annotation
-      </xsd:documentation>
+      <xsd:documentation>An annotation that consists of a file object.</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
       <xsd:complexContent>
@@ -4882,9 +4810,7 @@ PlaneInfo (as Plane)
     <!-- top level definition -->
     <xsd:annotation>
       <xsd:appinfo><xsdfu xmlns=""><plural>XMLAnnotations</plural></xsdfu></xsd:appinfo>
-      <xsd:documentation>
-        An general xml annotation. The contents of this is not processed as OME XML but should still be well-formed XML.
-      </xsd:documentation>
+      <xsd:documentation>An general xml annotation. The contents of this is not processed as OME XML but should still be well-formed XML.</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
       <xsd:complexContent>
@@ -4906,10 +4832,8 @@ PlaneInfo (as Plane)
     <!-- top level definition -->
     <xsd:annotation>
       <xsd:appinfo><xsdfu xmlns=""><plural>ListAnnotations</plural></xsdfu></xsd:appinfo>
-      <xsd:documentation>
-        This annotation is a grouping object. It uses the sequence of
-        annotation refs from the base Annotation to form the list.
-      </xsd:documentation>
+      <xsd:documentation>This annotation is a grouping object. It uses the sequence of
+annotation refs from the base Annotation to form the list.</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
       <xsd:complexContent>
@@ -4921,15 +4845,20 @@ PlaneInfo (as Plane)
     <!-- top level definition -->
     <xsd:annotation>
       <xsd:appinfo><xsdfu xmlns=""><plural>CommentAnnotations</plural></xsdfu></xsd:appinfo>
-      <xsd:documentation>
-        A simple comment annotation
+      <xsd:documentation>Description=An annotation that consists of a simple multi-line comment.
       </xsd:documentation>
+      <xsd:documentation>Tier=2</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
       <xsd:complexContent>
         <xsd:extension base="TextAnnotation">
           <xsd:sequence>
-            <xsd:element name="Value" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="Value" type="xsd:string" minOccurs="1" maxOccurs="1">
+              <xsd:annotation>
+                <xsd:documentation>Description=This element contains the actual content of this annotation. [multi-line string]</xsd:documentation>
+                <xsd:documentation>Tier=2</xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
           </xsd:sequence>
         </xsd:extension>
       </xsd:complexContent>
@@ -4939,9 +4868,7 @@ PlaneInfo (as Plane)
     <!-- top level definition -->
     <xsd:annotation>
       <xsd:appinfo><xsdfu xmlns=""><plural>LongAnnotations</plural></xsdfu></xsd:appinfo>
-      <xsd:documentation>
-        A simple numerical annotation of type xsd:long
-      </xsd:documentation>
+      <xsd:documentation>A simple numerical annotation of type xsd:long.</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
       <xsd:complexContent>
@@ -4957,9 +4884,7 @@ PlaneInfo (as Plane)
     <!-- top level definition -->
     <xsd:annotation>
       <xsd:appinfo><xsdfu xmlns=""><plural>DoubleAnnotations</plural></xsdfu></xsd:appinfo>
-      <xsd:documentation>
-        A simple numerical annotation of type xsd:double
-      </xsd:documentation>
+      <xsd:documentation>A simple numerical annotation of type xsd:double.</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
       <xsd:complexContent>
@@ -4975,9 +4900,7 @@ PlaneInfo (as Plane)
     <!-- top level definition -->
     <xsd:annotation>
       <xsd:appinfo><xsdfu xmlns=""><plural>BooleanAnnotations</plural></xsdfu></xsd:appinfo>
-      <xsd:documentation>
-        A simple boolean annotation of type xsd:boolean
-      </xsd:documentation>
+      <xsd:documentation>A simple boolean annotation of type xsd:boolean.</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
       <xsd:complexContent>
@@ -4993,9 +4916,7 @@ PlaneInfo (as Plane)
     <!-- top level definition -->
     <xsd:annotation>
       <xsd:appinfo><xsdfu xmlns=""><plural>TimestampAnnotations</plural></xsdfu></xsd:appinfo>
-      <xsd:documentation>
-        A date/time annotation of type xsd:dateTime
-      </xsd:documentation>
+      <xsd:documentation>A date/time annotation of type xsd:dateTime.</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
       <xsd:complexContent>
@@ -5029,9 +4950,7 @@ PlaneInfo (as Plane)
     <!-- top level definition -->
     <xsd:annotation>
       <xsd:appinfo><xsdfu xmlns=""><plural>TermAnnotations</plural></xsdfu></xsd:appinfo>
-      <xsd:documentation>
-        A ontology term annotation
-      </xsd:documentation>
+      <xsd:documentation>An annotation that consists of an ontology term.</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
       <xsd:complexContent>
@@ -5047,9 +4966,7 @@ PlaneInfo (as Plane)
     <!-- top level definition -->
     <xsd:annotation>
       <xsd:appinfo><xsdfu xmlns=""><plural>MapAnnotations</plural></xsdfu></xsd:appinfo>
-      <xsd:documentation>
-        An map annotation. The contents of this is a list of key/value pairs.
-      </xsd:documentation>
+      <xsd:documentation>A map annotation. The contents of this is a list of key/value pairs.</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
       <xsd:complexContent>
@@ -6211,7 +6128,7 @@ PlaneInfo (as Plane)
         <xsd:documentation>Tier=3</xsd:documentation>
       </xsd:annotation>
     </xsd:attribute>
-    <xsd:attribute name="SerialNumber" use="optional" type="xsd:string">
+    <xsd:attribute name="SerialNumber" use="required" type="xsd:string">
       <xsd:annotation>
         <xsd:documentation>Description=The serial number of the component</xsd:documentation>
         <xsd:documentation>Tier=5</xsd:documentation>
@@ -6223,9 +6140,9 @@ PlaneInfo (as Plane)
         <xsd:documentation>Tier=5</xsd:documentation>
       </xsd:annotation>
     </xsd:attribute>
-    <xsd:attribute name="SpecsFile" use="optional" type="xsd:anyURI">
+    <xsd:attribute name="SpecsFile" use="required" type="xsd:anyURI">
       <xsd:annotation>
-        <xsd:documentation>Description=Attach a PDF file with the specifications for the component as provided by the manufacturer</xsd:documentation>
+        <xsd:documentation>Description=Provide the location of a PDF file with the specifications for the component as provided by the manufacturer.</xsd:documentation>
         <xsd:documentation>Tier=5</xsd:documentation>
       </xsd:annotation>
     </xsd:attribute>
@@ -8463,15 +8380,6 @@ length at the expense of readability as they are likely to occur many times. </x
     </xsd:annotation>
     <xsd:complexType>
       <xsd:sequence>
-        <xsd:element maxOccurs="unbounded" minOccurs="0" name="Description">
-          <xsd:annotation>
-            <xsd:documentation>Description=A pertinent description of this calibration procedure.</xsd:documentation>
-            <xsd:documentation>Tier=3</xsd:documentation>
-          </xsd:annotation>
-          <xsd:simpleType>
-            <xsd:restriction base="xsd:string"/>
-          </xsd:simpleType>
-        </xsd:element>
         <xsd:element maxOccurs="unbounded" name="FlatFieldImageRef">
           <xsd:annotation>
             <xsd:documentation>Description=An image describing field dependent variations in the pixel-to-pixel sensitivity of the detector and/or by distortions in the optical path.</xsd:documentation>
@@ -8489,14 +8397,14 @@ length at the expense of readability as they are likely to occur many times. </x
             </xsd:complexContent>
           </xsd:complexType>
         </xsd:element>
-        <xsd:element maxOccurs="unbounded" minOccurs="0" ref="AnnotationRef"/>
+        <xsd:element maxOccurs="1" minOccurs="0" ref="AnnotationRef"/>
       </xsd:sequence>
-      <xsd:attribute name="ID" type="LSID">
+      <xsd:attribute name="ID" type="LSID" use="required">
         <xsd:annotation>
           <xsd:documentation>Tier=3</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
-      <xsd:attribute name="Date" type="xsd:date">
+      <xsd:attribute name="Date" type="xsd:date" use="required">
         <xsd:annotation>
           <xsd:documentation>Description=The date in which this calibration procedure was performed.</xsd:documentation>
           <xsd:documentation>Tier=3</xsd:documentation>
@@ -8512,17 +8420,6 @@ length at the expense of readability as they are likely to occur many times. </x
     </xsd:annotation>
     <xsd:complexType>
       <xsd:sequence>
-        <xsd:element name="Description" minOccurs="0" maxOccurs="unbounded">
-          <xsd:annotation>
-            <xsd:documentation>Description=A pertinent description of this calibration procedure.</xsd:documentation>
-            <xsd:documentation>Tier=3</xsd:documentation>
-          </xsd:annotation>
-          <xsd:simpleType>
-            <xsd:restriction base="xsd:string">
-              <xsd:whiteSpace value="preserve"/>
-            </xsd:restriction>
-          </xsd:simpleType>
-        </xsd:element>
         <xsd:element maxOccurs="unbounded" minOccurs="1" name="OpticalCalibrationImageRef">
           <xsd:annotation>
             <xsd:documentation>Description=An image (typically a z-stack) obtained by observing the optical standard used in this instance and acquired using the same instrument and settings employed to acquire the image this calibration refers to.</xsd:documentation>
@@ -8564,9 +8461,9 @@ length at the expense of readability as they are likely to occur many times. </x
             </xsd:complexContent>
           </xsd:complexType>
         </xsd:element>
-        <xsd:element minOccurs="0" ref="AnnotationRef" maxOccurs="unbounded"/>
+        <xsd:element minOccurs="0" ref="AnnotationRef" maxOccurs="1"/>
       </xsd:sequence>
-      <xsd:attribute name="ID" type="LSID">
+      <xsd:attribute name="ID" type="LSID" use="required">
         <xsd:annotation>
           <xsd:documentation>Tier=3</xsd:documentation>
         </xsd:annotation>
@@ -8713,15 +8610,6 @@ length at the expense of readability as they are likely to occur many times. </x
     <xsd:complexContent>
       <xsd:extension base="ManufacturerSpec">
         <xsd:sequence>
-          <xsd:element maxOccurs="unbounded" minOccurs="0" name="Description">
-            <xsd:annotation>
-              <xsd:documentation>Description=A pertinent description of this optical standard.</xsd:documentation>
-              <xsd:documentation>Tier=3</xsd:documentation>
-            </xsd:annotation>
-            <xsd:simpleType>
-              <xsd:restriction base="xsd:string"/>
-            </xsd:simpleType>
-          </xsd:element>
           <xsd:element maxOccurs="unbounded" minOccurs="0" ref="AnnotationRef"/>
         </xsd:sequence>
         <xsd:attribute name="ID" type="LSID" use="required">
@@ -8842,29 +8730,20 @@ length at the expense of readability as they are likely to occur many times. </x
       <xsd:complexContent>
         <xsd:extension base="ManufacturerSpec">
           <xsd:sequence>
-            <xsd:element maxOccurs="unbounded" minOccurs="0" name="Description">
-              <xsd:annotation>
-                <xsd:documentation>Description=A pertinent description of this calibration tool.</xsd:documentation>
-                <xsd:documentation>Tier=3</xsd:documentation>
-              </xsd:annotation>
-              <xsd:simpleType>
-                <xsd:restriction base="xsd:string"/>
-              </xsd:simpleType>
-            </xsd:element>
-            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="AnnotationRef"/>
+            <xsd:element maxOccurs="1" minOccurs="0" ref="AnnotationRef"/>
           </xsd:sequence>
-          <xsd:attribute name="ID" type="LSID">
+          <xsd:attribute name="ID" type="LSID" use="required">
             <xsd:annotation>
               <xsd:documentation>Tier=3</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="Name" type="Denomination">
+          <xsd:attribute name="Name" type="Denomination" use="required">
             <xsd:annotation>
               <xsd:documentation>Description=A user defined name for this Intensity Calibration Tool.</xsd:documentation>
               <xsd:documentation>Tier=3</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="Type" type="IntensityCalibrationType">
+          <xsd:attribute name="Type" type="IntensityCalibrationType" use="required">
             <xsd:annotation>
               <xsd:documentation>Description=The type of calibration proceudure this tool is intended to perform.</xsd:documentation>
               <xsd:documentation>Tier=3</xsd:documentation>
@@ -8876,29 +8755,21 @@ length at the expense of readability as they are likely to occur many times. </x
   </xsd:element>
   <xsd:complexType name="IntensityCalibration">
     <xsd:sequence>
-      <xsd:element name="Description">
-        <xsd:annotation>
-          <xsd:documentation>Description=A pertinent description of this calibration procedure.</xsd:documentation>
-          <xsd:documentation>Tier=3</xsd:documentation>
-        </xsd:annotation>
-        <xsd:simpleType>
-          <xsd:restriction base="xsd:string"/>
-        </xsd:simpleType>
-      </xsd:element>
-      <xsd:element name="IntensityCalibrationToolRef" type="Reference">
+      <xsd:element name="IntensityCalibrationToolRef" type="Reference" maxOccurs="unbounded"
+        minOccurs="0">
         <xsd:annotation>
           <xsd:documentation>Description=This element is a reference to the tool, if any, used to perform this calibratin procdure.</xsd:documentation>
           <xsd:documentation>Tier=3</xsd:documentation>
         </xsd:annotation>
       </xsd:element>
-      <xsd:element ref="AnnotationRef"/>
+      <xsd:element ref="AnnotationRef" minOccurs="0"/>
     </xsd:sequence>
-    <xsd:attribute name="ID" type="LSID">
+    <xsd:attribute name="ID" type="LSID" use="required">
       <xsd:annotation>
         <xsd:documentation>Tier=3</xsd:documentation>
       </xsd:annotation>
     </xsd:attribute>
-    <xsd:attribute name="Date">
+    <xsd:attribute name="Date" type="xsd:date" use="required">
       <xsd:annotation>
         <xsd:documentation>Description=The date in which this calibration procedure was performed.</xsd:documentation>
         <xsd:documentation>Tier=3</xsd:documentation>
@@ -8934,7 +8805,7 @@ length at the expense of readability as they are likely to occur many times. </x
   </xsd:complexType>
   <xsd:element abstract="true" name="IntensityCalibrationGroup" type="IntensityCalibration">
     <xsd:annotation>
-      <xsd:documentation>Description=This describes the procedures that were used for field, excitation and detector calibration and the resulting calibration results.</xsd:documentation>
+      <xsd:documentation>Description=This describes the procedures that were used for excitation and detector calibration and the resulting calibration results.</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
 
@@ -8952,7 +8823,6 @@ length at the expense of readability as they are likely to occur many times. </x
 
   <xsd:element name="DetectorCalibration" substitutionGroup="IntensityCalibrationGroup">
     <xsd:annotation>
-      <xsd:documentation>Category=Calibration</xsd:documentation>
       <xsd:documentation>Description=This procedure measures the performance of the dectector.</xsd:documentation>
       <xsd:documentation>Tier=3</xsd:documentation>
     </xsd:annotation>
@@ -9050,4 +8920,47 @@ length at the expense of readability as they are likely to occur many times. </x
       <xsd:enumeration value=""/>
     </xsd:restriction>
   </xsd:simpleType>
+  <xsd:element name="MechanicalCalibration">
+    <xsd:annotation>
+      <xsd:documentation>Description=This describes the procedures that were used for mechanical calibration and the resulting calibration results.</xsd:documentation>
+      <xsd:documentation>Tier=4</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element maxOccurs="1" minOccurs="0" ref="SampleHolderRef"/>
+        <xsd:element minOccurs="0" ref="FocusingRef"/>
+        <xsd:element minOccurs="0" ref="AutoFocusRef"/>
+        <xsd:element minOccurs="0" ref="AnnotationRef"/>
+      </xsd:sequence>
+      <xsd:attribute name="ID" type="LSID" use="required"/>
+      <xsd:attribute name="Date" type="xsd:date" use="required">
+        <xsd:annotation>
+          <xsd:documentation>Description=The date in which this calibration was performed.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="MeasuredLateralDrift" type="xsd:float">
+        <xsd:annotation>
+          <xsd:documentation>Description=Measured shift in (x, y) position over time.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="MeasuredLateralDriftUnit" type="UnitsLength"/>
+      <xsd:attribute name="MeasuredFocalDrift">
+        <xsd:annotation>
+          <xsd:documentation>Description=Measured shift in z position over time.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="MeasuredFocalDriftUnit" type="UnitsLength"/>
+      <xsd:attribute name="MeasuredRepeatability">
+        <xsd:annotation>
+          <xsd:documentation>Description=Measured precision with which this device is capable of returning to a previously visited position (useful for tiling). Typically expressed in % error.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="MeasuredSettlingTime">
+        <xsd:annotation>
+          <xsd:documentation>Description=Measured time it takes for this device to stabilize at the target position.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="MeasuredSettlingTimeUnit"/>
+    </xsd:complexType>
+  </xsd:element>
 </xsd:schema>
