@@ -3064,7 +3064,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
                 <xsd:documentation>Tier=3</xsd:documentation>
               </xsd:annotation>
             </xsd:element>
-            <xsd:element ref="DichroicRef" minOccurs="1" maxOccurs="1">
+            <xsd:element minOccurs="1" maxOccurs="1" name="DichroicRef" type="MirrorRef">
               <xsd:annotation>
                 <xsd:documentation>Description=This empty element has a reference (the Mirror ID attribute) to the Mirror/Dichroic placed in the light path</xsd:documentation>
                 <xsd:documentation>Tier=3</xsd:documentation>
