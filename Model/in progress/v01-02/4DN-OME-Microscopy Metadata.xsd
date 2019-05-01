@@ -1317,11 +1317,17 @@
     </xsd:annotation>
     <xsd:complexType>
       <xsd:sequence>
-        <xsd:element minOccurs="0" ref="SamplePosition"/>
+        <xsd:element minOccurs="0" ref="SamplePosition" maxOccurs="1"/>
         <xsd:element ref="FocalPosition" minOccurs="1" maxOccurs="1">
           <xsd:annotation>
             <xsd:documentation>Description=This element is used to record the Z-axis position of a Plane with respect to the microscope's reference frame</xsd:documentation>
             <xsd:documentation>Tier=3</xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element maxOccurs="unbounded" minOccurs="0" ref="MechanicalCalibration">
+          <xsd:annotation>
+            <xsd:documentation>Description=This describes the procedures that were used for mechanical calibration and the resulting calibration results.</xsd:documentation>
+            <xsd:documentation>Tier=4</xsd:documentation>
           </xsd:annotation>
         </xsd:element>
         <xsd:element ref="AnnotationRef" minOccurs="0" maxOccurs="1">
@@ -2129,9 +2135,9 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
         <xsd:sequence>
           <xsd:element ref="AnnotationRef" maxOccurs="1" minOccurs="0"/>
         </xsd:sequence>
-        <xsd:attribute name="Resolution" type="xsd:float">
+        <xsd:attribute name="Resolution" type="xsd:float" use="required">
           <xsd:annotation>
-            <xsd:documentation>Description=The motion resolution of this device.</xsd:documentation>
+            <xsd:documentation>Description=The expected motion resolution of this device.</xsd:documentation>
             <xsd:documentation>Tier=5</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
@@ -2142,33 +2148,23 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
         </xsd:attribute>
         <xsd:attribute name="PositionLinearityError" type="xsd:float" use="required">
           <xsd:annotation>
-            <xsd:documentation>Description=The positioning error associated with this device. Typically expressed as % error.</xsd:documentation>
-            <xsd:documentation>Tier=5</xsd:documentation>
-          </xsd:annotation>
-        </xsd:attribute>
-        <xsd:attribute default="nm" name="PositionLinearityErrorUnit" type="UnitsLength">
-          <xsd:annotation>
-            <xsd:documentation>Tier=5</xsd:documentation>
-          </xsd:annotation>
-        </xsd:attribute>
-        <xsd:attribute name="SettingTime" type="xsd:float">
-          <xsd:annotation>
-            <xsd:documentation>Description=Measures the time it takes for this device to stabilize at the target position.</xsd:documentation>
-            <xsd:documentation>Tier=5</xsd:documentation>
-          </xsd:annotation>
-        </xsd:attribute>
-        <xsd:attribute default="ms" name="SettlingTimeUnit" type="UnitsTime">
-          <xsd:annotation>
+            <xsd:documentation>Description=The expected positioning error associated with this device. Typically expressed as % error.</xsd:documentation>
             <xsd:documentation>Tier=5</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
         <xsd:attribute name="Repetability" type="xsd:float" use="required">
           <xsd:annotation>
-            <xsd:documentation>Description=Measures the precision with which this device is capable of returning to a previously visited position</xsd:documentation>
+            <xsd:documentation>Description=The expected precision with which this device is capable of returning to a previously visited position. Typically expressed in % error.</xsd:documentation>
             <xsd:documentation>Tier=5</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
-        <xsd:attribute name="RepeatabilityUnit" default="nm" type="UnitsLength">
+        <xsd:attribute name="SettingTime" type="xsd:float" use="required">
+          <xsd:annotation>
+            <xsd:documentation>Description=The expected time it takes for this device to stabilize at the target position.</xsd:documentation>
+            <xsd:documentation>Tier=5</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute default="ms" name="SettlingTimeUnit" type="UnitsTime">
           <xsd:annotation>
             <xsd:documentation>Tier=5</xsd:documentation>
           </xsd:annotation>
@@ -8401,23 +8397,14 @@ length at the expense of readability as they are likely to occur many times. </x
             </xsd:complexContent>
           </xsd:complexType>
         </xsd:element>
-        <xsd:element maxOccurs="1" minOccurs="0" name="Description">
-          <xsd:annotation>
-            <xsd:documentation>Description=A pertinent description of this calibration procedure.</xsd:documentation>
-            <xsd:documentation>Tier=3</xsd:documentation>
-          </xsd:annotation>
-          <xsd:simpleType>
-            <xsd:restriction base="xsd:string"/>
-          </xsd:simpleType>
-        </xsd:element>
         <xsd:element maxOccurs="1" minOccurs="0" ref="AnnotationRef"/>
       </xsd:sequence>
-      <xsd:attribute name="ID" type="LSID">
+      <xsd:attribute name="ID" type="LSID" use="required">
         <xsd:annotation>
           <xsd:documentation>Tier=3</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
-      <xsd:attribute name="Date" type="xsd:date">
+      <xsd:attribute name="Date" type="xsd:date" use="required">
         <xsd:annotation>
           <xsd:documentation>Description=The date in which this calibration procedure was performed.</xsd:documentation>
           <xsd:documentation>Tier=3</xsd:documentation>
@@ -8474,20 +8461,9 @@ length at the expense of readability as they are likely to occur many times. </x
             </xsd:complexContent>
           </xsd:complexType>
         </xsd:element>
-        <xsd:element name="Description" minOccurs="0" maxOccurs="1">
-          <xsd:annotation>
-            <xsd:documentation>Description=A pertinent description of this calibration procedure.</xsd:documentation>
-            <xsd:documentation>Tier=3</xsd:documentation>
-          </xsd:annotation>
-          <xsd:simpleType>
-            <xsd:restriction base="xsd:string">
-              <xsd:whiteSpace value="preserve"/>
-            </xsd:restriction>
-          </xsd:simpleType>
-        </xsd:element>
         <xsd:element minOccurs="0" ref="AnnotationRef" maxOccurs="1"/>
       </xsd:sequence>
-      <xsd:attribute name="ID" type="LSID">
+      <xsd:attribute name="ID" type="LSID" use="required">
         <xsd:annotation>
           <xsd:documentation>Tier=3</xsd:documentation>
         </xsd:annotation>
@@ -8634,15 +8610,6 @@ length at the expense of readability as they are likely to occur many times. </x
     <xsd:complexContent>
       <xsd:extension base="ManufacturerSpec">
         <xsd:sequence>
-          <xsd:element maxOccurs="unbounded" minOccurs="0" name="Description">
-            <xsd:annotation>
-              <xsd:documentation>Description=A pertinent description of this optical standard.</xsd:documentation>
-              <xsd:documentation>Tier=3</xsd:documentation>
-            </xsd:annotation>
-            <xsd:simpleType>
-              <xsd:restriction base="xsd:string"/>
-            </xsd:simpleType>
-          </xsd:element>
           <xsd:element maxOccurs="unbounded" minOccurs="0" ref="AnnotationRef"/>
         </xsd:sequence>
         <xsd:attribute name="ID" type="LSID" use="required">
@@ -8788,29 +8755,21 @@ length at the expense of readability as they are likely to occur many times. </x
   </xsd:element>
   <xsd:complexType name="IntensityCalibration">
     <xsd:sequence>
-      <xsd:element name="IntensityCalibrationToolRef" type="Reference">
+      <xsd:element name="IntensityCalibrationToolRef" type="Reference" maxOccurs="unbounded"
+        minOccurs="0">
         <xsd:annotation>
           <xsd:documentation>Description=This element is a reference to the tool, if any, used to perform this calibratin procdure.</xsd:documentation>
           <xsd:documentation>Tier=3</xsd:documentation>
         </xsd:annotation>
       </xsd:element>
-      <xsd:element name="Description" minOccurs="0">
-        <xsd:annotation>
-          <xsd:documentation>Description=A pertinent description of this calibration procedure.</xsd:documentation>
-          <xsd:documentation>Tier=3</xsd:documentation>
-        </xsd:annotation>
-        <xsd:simpleType>
-          <xsd:restriction base="xsd:string"/>
-        </xsd:simpleType>
-      </xsd:element>
       <xsd:element ref="AnnotationRef" minOccurs="0"/>
     </xsd:sequence>
-    <xsd:attribute name="ID" type="LSID">
+    <xsd:attribute name="ID" type="LSID" use="required">
       <xsd:annotation>
         <xsd:documentation>Tier=3</xsd:documentation>
       </xsd:annotation>
     </xsd:attribute>
-    <xsd:attribute name="Date">
+    <xsd:attribute name="Date" type="xsd:date" use="required">
       <xsd:annotation>
         <xsd:documentation>Description=The date in which this calibration procedure was performed.</xsd:documentation>
         <xsd:documentation>Tier=3</xsd:documentation>
@@ -8846,7 +8805,7 @@ length at the expense of readability as they are likely to occur many times. </x
   </xsd:complexType>
   <xsd:element abstract="true" name="IntensityCalibrationGroup" type="IntensityCalibration">
     <xsd:annotation>
-      <xsd:documentation>Description=This describes the procedures that were used for field, excitation and detector calibration and the resulting calibration results.</xsd:documentation>
+      <xsd:documentation>Description=This describes the procedures that were used for excitation and detector calibration and the resulting calibration results.</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
 
@@ -8961,4 +8920,47 @@ length at the expense of readability as they are likely to occur many times. </x
       <xsd:enumeration value=""/>
     </xsd:restriction>
   </xsd:simpleType>
+  <xsd:element name="MechanicalCalibration">
+    <xsd:annotation>
+      <xsd:documentation>Description=This describes the procedures that were used for mechanical calibration and the resulting calibration results.</xsd:documentation>
+      <xsd:documentation>Tier=4</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element maxOccurs="1" minOccurs="0" ref="SampleHolderRef"/>
+        <xsd:element minOccurs="0" ref="FocusingRef"/>
+        <xsd:element minOccurs="0" ref="AutoFocusRef"/>
+        <xsd:element minOccurs="0" ref="AnnotationRef"/>
+      </xsd:sequence>
+      <xsd:attribute name="ID" type="LSID" use="required"/>
+      <xsd:attribute name="Date" type="xsd:date" use="required">
+        <xsd:annotation>
+          <xsd:documentation>Description=The date in which this calibration was performed.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="MeasuredLateralDrift" type="xsd:float">
+        <xsd:annotation>
+          <xsd:documentation>Description=Measured shift in (x, y) position over time.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="MeasuredLateralDriftUnit" type="UnitsLength"/>
+      <xsd:attribute name="MeasuredFocalDrift">
+        <xsd:annotation>
+          <xsd:documentation>Description=Measured shift in z position over time.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="MeasuredFocalDriftUnit" type="UnitsLength"/>
+      <xsd:attribute name="MeasuredRepeatability">
+        <xsd:annotation>
+          <xsd:documentation>Description=Measured precision with which this device is capable of returning to a previously visited position (useful for tiling). Typically expressed in % error.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="MeasuredSettlingTime">
+        <xsd:annotation>
+          <xsd:documentation>Description=Measured time it takes for this device to stabilize at the target position.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="MeasuredSettlingTimeUnit"/>
+    </xsd:complexType>
+  </xsd:element>
 </xsd:schema>
