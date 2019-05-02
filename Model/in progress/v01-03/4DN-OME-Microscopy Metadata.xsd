@@ -3078,8 +3078,8 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
       <xsd:sequence>
         <xsd:element maxOccurs="unbounded" minOccurs="0" ref="LightSourceCouplingRef">
           <xsd:annotation>
-            <xsd:documentation>Description=This empty element can be used (via the required LightSourceCouplingID attribute) to refer to a LightSourceCoupling element defined within OME</xsd:documentation>
-            <xsd:documentation>Tier=3</xsd:documentation>
+            <xsd:documentation>Description=This empty element can be used (via the required LightSourceCouplingID attribute) to refer to a LightSourceCoupling element defined within OME.</xsd:documentation>
+            <xsd:documentation>Tier=4</xsd:documentation>
           </xsd:annotation>
         </xsd:element>
         <xsd:element maxOccurs="unbounded" minOccurs="0" ref="FilterSetRef">
@@ -3153,20 +3153,20 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
                 <xsd:appinfo><xsdfu xmlns=""><plural>ExcitationFilters</plural><manytomany/></xsdfu></xsd:appinfo>
                 <xsd:documentation>Description=This empty element has a reference (the Filter ID attribute) to the Filters placed in the Excitation light path
                 </xsd:documentation>
-                <xsd:documentation>Tier=3</xsd:documentation>
+                <xsd:documentation>Tier=2</xsd:documentation>
               </xsd:annotation>
             </xsd:element>
             <xsd:element minOccurs="1" maxOccurs="1" name="DichroicRef" type="MirrorRef">
               <xsd:annotation>
                 <xsd:documentation>Description=This empty element has a reference (the Mirror ID attribute) to the Mirror/Dichroic placed in the light path</xsd:documentation>
-                <xsd:documentation>Tier=3</xsd:documentation>
+                <xsd:documentation>Tier=2</xsd:documentation>
               </xsd:annotation>
             </xsd:element>
             <xsd:element name="EmissionFilterRef" type="FilterRef" minOccurs="1" maxOccurs="1">
               <xsd:annotation>
                 <xsd:appinfo><xsdfu xmlns=""><plural>EmissionFilters</plural><manytomany/></xsdfu></xsd:appinfo>
                 <xsd:documentation>Description=This empty element has a reference (the Filter ID attribute) to the Filters placed in the Emission light path</xsd:documentation>
-                <xsd:documentation>Tier=3</xsd:documentation>
+                <xsd:documentation>Tier=2</xsd:documentation>
               </xsd:annotation>
             </xsd:element>
             <xsd:element minOccurs="0" ref="AnnotationRef"/>
@@ -3579,45 +3579,35 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
         <xsd:element name="AdditionalLensRef" type="LensRef" maxOccurs="unbounded" minOccurs="0">
           <xsd:annotation>
             <xsd:documentation>Description=This empty element has a reference (the LensID attribute) to the an additional Lens placed in the light path</xsd:documentation>
-            <xsd:documentation>Tier=3</xsd:documentation>
+            <xsd:documentation>Tier=2</xsd:documentation>
           </xsd:annotation>
         </xsd:element>
         <xsd:element name="PrimsRef" type="PrismRef" maxOccurs="unbounded" minOccurs="0">
           <xsd:annotation>
             <xsd:documentation>Description=This empty element has a reference (the PrismID attribute) to the a Prism placed in the light path</xsd:documentation>
-            <xsd:documentation>Tier=3</xsd:documentation>
+            <xsd:documentation>Tier=2</xsd:documentation>
           </xsd:annotation>
         </xsd:element>
         <xsd:element name="PolarizationOpticsRef" type="PolarizationOpticsRef" maxOccurs="unbounded"
           minOccurs="0">
           <xsd:annotation>
             <xsd:documentation>Description=This empty element has a reference (the PorarizationOpticsID attribute) to the a PolarizationOptics placed in the light path</xsd:documentation>
-            <xsd:documentation>Tier=3</xsd:documentation>
+            <xsd:documentation>Tier=2</xsd:documentation>
           </xsd:annotation>
         </xsd:element>
         <xsd:element name="AdditionalFilterRef" type="FilterRef" maxOccurs="unbounded" minOccurs="0">
           <xsd:annotation>
             <xsd:documentation>Desription=This empty element has a reference (the FilterID attribute) to the an additional Filter placed in the light path</xsd:documentation>
-            <xsd:documentation>Tier=3</xsd:documentation>
+            <xsd:documentation>Tier=2</xsd:documentation>
           </xsd:annotation>
         </xsd:element>
         <xsd:element name="AdditionalMirrorRef" type="MirrorRef" maxOccurs="unbounded" minOccurs="0">
           <xsd:annotation>
             <xsd:documentation>Description=This empty element has a reference (the MirrorID attribute) to the an additional Mirror placed in the light path</xsd:documentation>
-            <xsd:documentation>Tier=3</xsd:documentation>
+            <xsd:documentation>Tier=2</xsd:documentation>
           </xsd:annotation>
         </xsd:element>
-        <xsd:element minOccurs="0" name="AnnotationRef">
-          <xsd:annotation>
-            <xsd:documentation>Description=The AnnotationRef element is a reference to an element derived from the CommentAnnotation element, which consists of a simple comment multi-line annotation.</xsd:documentation>
-            <xsd:documentation>Tier=3</xsd:documentation>
-          </xsd:annotation>
-          <xsd:complexType>
-            <xsd:complexContent>
-              <xsd:extension base="Reference"/>
-            </xsd:complexContent>
-          </xsd:complexType>
-        </xsd:element>
+        <xsd:element ref="AnnotationRef"/>
       </xsd:sequence>
       <xsd:attribute name="ID" type="LSID" use="required">
         <xsd:annotation>
