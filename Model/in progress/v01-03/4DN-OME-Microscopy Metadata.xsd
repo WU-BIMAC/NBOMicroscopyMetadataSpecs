@@ -1256,7 +1256,7 @@
             <xsd:documentation>Tier=4</xsd:documentation>
           </xsd:annotation>
         </xsd:element>
-        <xsd:element maxOccurs="unbounded" minOccurs="1" ref="SampleHolder">
+        <xsd:element maxOccurs="unbounded" minOccurs="0" ref="SampleHolder">
           <xsd:annotation>
             <xsd:documentation>Category=SampleHolderAndFocusing</xsd:documentation>
             <xsd:documentation>Description=This element describes an optional sample holder mounted on the microscope stage</xsd:documentation>
