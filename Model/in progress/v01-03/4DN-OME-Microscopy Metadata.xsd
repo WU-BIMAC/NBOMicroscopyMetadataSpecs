@@ -974,7 +974,7 @@
       <xsd:sequence>
         <xsd:element ref="ExperimenterRef" minOccurs="1" maxOccurs="unbounded">
           <xsd:annotation>
-            <xsd:documentation>Description=This is a link to the Experimenter(s) who conducted the experiment
+            <xsd:documentation>Description=This empty element has a required reference (the ExperimenterID attribute) to a predefined Experimenter.
             </xsd:documentation>
             <xsd:documentation>Tier=1</xsd:documentation>
           </xsd:annotation>
@@ -983,7 +983,7 @@
         <xsd:element ref="MicrobeamManipulation" minOccurs="0" maxOccurs="unbounded"/>
         <xsd:element name="Description" minOccurs="0" maxOccurs="1">
           <xsd:annotation>
-            <xsd:documentation>Description=A description for the experiment. [plain-text multi-line string]
+            <xsd:documentation>Description=A description for this imaging Experiment. [plain-text multi-line string]
             </xsd:documentation>
             <xsd:documentation>Tier=1</xsd:documentation>
           </xsd:annotation>
@@ -1002,12 +1002,13 @@
       </xsd:sequence>
       <xsd:attribute name="ID" use="required" type="ExperimentID">
         <xsd:annotation>
+          <xsd:documentation>Description=A unique identifier for this Experiment.</xsd:documentation>
           <xsd:documentation>Tier=1</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
-      <xsd:attribute name="Name" type="xsd:string">
+      <xsd:attribute name="Name" type="Denomination" use="required">
         <xsd:annotation>
-          <xsd:documentation>Description=A user assigned name for this Experiment</xsd:documentation>
+          <xsd:documentation>Description=A user assigned name for this Experiment.</xsd:documentation>
           <xsd:documentation>Tier=1</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
@@ -1046,7 +1047,7 @@
         <xsd:element ref="MicrobeamManipulationRef" minOccurs="0" maxOccurs="unbounded">
           <xsd:annotation>
             <xsd:appinfo><xsdfu xmlns=""><manytomany/></xsdfu></xsd:appinfo>
-            <xsd:documentation>Description=This empty element has a reference (the MicroBeamManipulationID attribute) to a Microbeam Manipulation defined into OME. E.g. a microbeam operation, such as a laser used for photobleaching</xsd:documentation>
+            <xsd:documentation>Description=This empty element has a reference (the MicroBeamManipulationID attribute) to a predefined Microbeam Manipulation (e.g. a microbeam operation, such as a laser used for photobleaching).</xsd:documentation>
             <xsd:documentation>Tier=3</xsd:documentation>
           </xsd:annotation>
         </xsd:element>
@@ -1068,7 +1069,7 @@
           <xsd:element ref="Channel" minOccurs="1" maxOccurs="unbounded">
             <xsd:annotation>
               <xsd:appinfo><xsdfu xmlns=""><ordered/></xsdfu></xsd:appinfo>
-              <xsd:documentation>Description=There must be one per Channel in the Image, even for a single-plane image. Information about how each of the Channel was acquired is stored in the various optional *Ref elements. One useful feature of the model, is that this design allows to create LogicalChannels which are composed of one or more ChannelComponents. For example, an entire spectrum in an FTIR experiment may be stored in a single Logical Channel with each discrete wavenumber of the spectrum constituting a ChannelComponent of the FTIR Logical Channel. An RGB image where the Red, Green and Blue components do not reflect discrete probes but are instead the output of a color camera would be treated similarly - one Logical channel with three ChannelComponents in this case. The total number of ChannelComponents for a set of pixels must equal SizeC. The IlluminationType attribute is a string enumeration which may be set to 'Transmitted', 'Epifluorescence', 'Oblique', or 'NonLinear'. The user interface logic for labeling a given channel for the user should use the first existing attribute in the following sequence: Name -> Fluor -> EmissionWavelength -> ChannelComponent/Index</xsd:documentation>
+              <xsd:documentation>Description=Each Image has to have at least one Plane and one Channel. The Channel object stores information about how the each image channel was acquired. The total number of Channel elements for a given Image must equal to SizeC. One useful feature of the model, is that this design allows to create LogicalChannels which are composed of one or more ChannelComponents. For example, an entire spectrum in an FTIR experiment may be stored in a single Logical Channel with each discrete wavenumber of the spectrum constituting a ChannelComponent of the FTIR Logical Channel. An RGB image where the Red, Green and Blue components do not reflect discrete probes but are instead the output of a color camera would be treated similarly - one Logical channel with three ChannelComponents in this case. The IlluminationType attribute is a string enumeration which may be set to 'Transmitted', 'Epifluorescence', 'Oblique', or 'NonLinear'. The user interface logic for labeling a given channel for the user should use the first existing attribute in the following sequence: Name -> Fluor -> EmissionWavelength -> ChannelComponent/Index.</xsd:documentation>
               <xsd:documentation>Tier=1</xsd:documentation>
             </xsd:annotation>
           </xsd:element>
@@ -1098,54 +1099,55 @@
       </xsd:sequence>
       <xsd:attribute name="ID" use="required" type="ImageID">
         <xsd:annotation>
+          <xsd:documentation>Description=A unique identifier for this Image.</xsd:documentation>
           <xsd:documentation>Tier=1</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
-      <xsd:attribute name="Name" use="required" type="xsd:string">
+      <xsd:attribute name="Name" use="required" type="Denomination">
         <xsd:annotation>
-          <xsd:documentation>Description=A user assigned name for this Image</xsd:documentation>
+          <xsd:documentation>Description=A user assigned name for this Image.</xsd:documentation>
           <xsd:documentation>Tier=1</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
       <xsd:attribute name="AcquisitionDate" type="xsd:date" use="required">
         <xsd:annotation>
-          <xsd:documentation>Description=The acquisition date of the Image</xsd:documentation>
+          <xsd:documentation>Description=The acquisition date of the Image.</xsd:documentation>
           <xsd:documentation>Tier=1</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
       <xsd:attribute name="SizeX" use="required" type="PositiveInt">
         <xsd:annotation>
-          <xsd:documentation>Description=Dimensional size of pixel data array</xsd:documentation>
+          <xsd:documentation>Description=Dimensional size of pixel data array.</xsd:documentation>
           <xsd:documentation>Tier=1</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
       <xsd:attribute name="SizeY" use="required" type="PositiveInt">
         <xsd:annotation>
-          <xsd:documentation>Desciption=Dimensional size of pixel data array</xsd:documentation>
+          <xsd:documentation>Desciption=Dimensional size of pixel data array.</xsd:documentation>
           <xsd:documentation>Tier=1</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
       <xsd:attribute name="SizeZ" use="required" type="PositiveInt">
         <xsd:annotation>
-          <xsd:documentation>Description=Dimensional size of pixel data array</xsd:documentation>
+          <xsd:documentation>Description=Dimensional size of pixel data array.</xsd:documentation>
           <xsd:documentation>Tier=1</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
       <xsd:attribute name="SizeC" use="optional" type="PositiveInt">
         <xsd:annotation>
-          <xsd:documentation>Description=Dimensional size of pixel data array</xsd:documentation>
+          <xsd:documentation>Description=Dimensional size of pixel data array.</xsd:documentation>
           <xsd:documentation>Tier=1</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
       <xsd:attribute name="SizeT" use="required" type="PositiveInt">
         <xsd:annotation>
-          <xsd:documentation>Description=Dimensional size of pixel data array</xsd:documentation>
+          <xsd:documentation>Description=Dimensional size of pixel data array.</xsd:documentation>
           <xsd:documentation>Tier=4</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
       <xsd:attribute name="PhysicalSizeX" use="optional" type="PositiveFloat">
         <xsd:annotation>
-          <xsd:documentation>Description=Physical size of a pixel</xsd:documentation>
+          <xsd:documentation>Description=Physical size of a pixel.</xsd:documentation>
           <xsd:documentation>Tier=1</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
@@ -1156,7 +1158,7 @@
       </xsd:attribute>
       <xsd:attribute name="PhysicalSizeY" use="optional" type="PositiveFloat">
         <xsd:annotation>
-          <xsd:documentation>Description=Physical size of a pixel</xsd:documentation>
+          <xsd:documentation>Description=Physical size of a pixel.</xsd:documentation>
           <xsd:documentation>Tier=1</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
@@ -1167,7 +1169,7 @@
       </xsd:attribute>
       <xsd:attribute name="PhysicalSizeZ" use="optional" type="PositiveFloat">
         <xsd:annotation>
-          <xsd:documentation>Description=Physical size of a pixel</xsd:documentation>
+          <xsd:documentation>Description=Physical size of a pixel.</xsd:documentation>
           <xsd:documentation>Tier=1</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
@@ -1178,7 +1180,7 @@
       </xsd:attribute>
       <xsd:attribute name="TimeIncrement" use="optional" type="xsd:float">
         <xsd:annotation>
-          <xsd:documentation>Description=TimeIncrement is used for time series that have a global timing specification instead of per-timepoint timing info. For example in a video stream
+          <xsd:documentation>Description=TimeIncrement is used for time series that have a global timing specification instead of per-timepoint timing info. For example in a video stream.
           </xsd:documentation>
           <xsd:documentation>Tier=4</xsd:documentation>
         </xsd:annotation>
@@ -1190,26 +1192,26 @@
       </xsd:attribute>
       <xsd:attribute name="DimensionOrder" use="required" type="PixelsDimensionOrder">
         <xsd:annotation>
-          <xsd:documentation>Description=The order in which the individual planes of data are interleaved</xsd:documentation>
+          <xsd:documentation>Description=The order in which the individual planes of data are interleaved.</xsd:documentation>
           <xsd:documentation>Tier=2</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
       <xsd:attribute name="ChannelOrder" type="xsd:string">
         <xsd:annotation>
-          <xsd:documentation>Description=The order in which the channels were acquired and are stored</xsd:documentation>
+          <xsd:documentation>Description=The order in which the channels were acquired and are stored.</xsd:documentation>
           <xsd:documentation>Tier=2</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
       <xsd:attribute name="PixelType" use="required" type="PixelType">
         <xsd:annotation>
-          <xsd:documentation>Description=The variable type used to represent each pixel in the image
+          <xsd:documentation>Description=The variable type used to represent each pixel in the Image.
           </xsd:documentation>
           <xsd:documentation>Tier=3</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
       <xsd:attribute name="SignificantBits" use="optional" type="PositiveInt">
         <xsd:annotation>
-          <xsd:documentation>Description=The number of bits within the type storing each pixel that are significant. e.g. you can store 12 bit data within a 16 bit type. This does not reduce the storage requirements but can be a useful indicator when processing or viewing the image data
+          <xsd:documentation>Description=The number of bits within the type storing each pixel that are significant. e.g. you can store 12 bit data within a 16 bit type. This does not reduce the storage requirements but can be a useful indicator when processing or viewing the image data.
           </xsd:documentation>
           <xsd:documentation>Tier=5</xsd:documentation>
         </xsd:annotation>
@@ -1223,7 +1225,7 @@
       </xsd:attribute>
       <xsd:attribute name="BigEndian" use="optional" type="xsd:boolean">
         <xsd:annotation>
-          <xsd:documentation>Description=This is true if the pixels data was written in BigEndian order. If this value is present it should match the value used in BinData or TiffData. If it does not a reader should honour the value used in the BinData or TiffData. This values is useful for MetadataOnly files and is to allow for future storage solutions
+          <xsd:documentation>Description=This is true if the pixels data was written in BigEndian order. If this value is present it should match the value used in BinData or TiffData. If it does not a reader should honour the value used in the BinData or TiffData. This values is useful for MetadataOnly files and is to allow for future storage solutions.
           </xsd:documentation>
           <xsd:documentation>Tier=5</xsd:documentation>
         </xsd:annotation>
@@ -1301,6 +1303,7 @@
       </xsd:sequence>
       <xsd:attribute name="ID" use="required" type="InstrumentID">
         <xsd:annotation>
+          <xsd:documentation>Description=A unique identifier for this component.</xsd:documentation>
           <xsd:documentation>Tier=1</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
@@ -1318,7 +1321,7 @@
     <!-- top level definition -->
     <xsd:annotation>
       <xsd:appinfo><xsdfu xmlns=""><plural>Planes</plural></xsdfu></xsd:appinfo>
-      <xsd:documentation>Description=The Plane object holds microscope stage and image timing data for a given channel/z-section/timepoint
+      <xsd:documentation>Description=Each Image has to have at least one Plane and one Channel. The Plane object holds microscope stage and image timing data for a given channel/z-section/timepoint. The total number of Channel elements for a given Image must equal to SizeZ x SizeC x SizeT.
       </xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
     </xsd:annotation>
@@ -1362,6 +1365,7 @@
       </xsd:sequence>
       <xsd:attribute name="ID" type="LSID">
         <xsd:annotation>
+          <xsd:documentation>Description=A unique identifier for this Plane.</xsd:documentation>
           <xsd:documentation>Tier=1</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
@@ -1440,10 +1444,11 @@
       </xsd:sequence>
       <xsd:attribute name="ID" use="required" type="ChannelID">
         <xsd:annotation>
+          <xsd:documentation>Description=A unique identifier for this Channel.</xsd:documentation>
           <xsd:documentation>Tier=1</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
-      <xsd:attribute name="Name" use="required" type="xsd:string">
+      <xsd:attribute name="Name" use="required" type="Denomination">
         <xsd:annotation>
           <xsd:documentation>Description=A name for the channel that is suitable for presentation to the user.
           </xsd:documentation>
@@ -1753,7 +1758,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
   <xsd:element name="TIRFSettings">
     <!-- top level definition -->
     <xsd:annotation>
-      <xsd:documentation>Description=Defines the TIRF settings used for this experiment</xsd:documentation>
+      <xsd:documentation>Description=Defines the TIRF settings used for this experiment.</xsd:documentation>
       <xsd:documentation>Tier=3</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
@@ -1786,6 +1791,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
           </xsd:sequence>
           <xsd:attribute name="ID" type="TIRFSettingsID">
             <xsd:annotation>
+              <xsd:documentation>Description=A unique identifier for this element.</xsd:documentation>
               <xsd:documentation>Tier=3</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
@@ -1820,14 +1826,14 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
   <!-- Sample elements -->
   <xsd:element name="Sample">
     <xsd:annotation>
-      <xsd:documentation>Description=A description of the sample that was imaged in this experiment</xsd:documentation>
+      <xsd:documentation>Description=A description of the sample that was imaged in this experiment.</xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
       <xsd:sequence>
         <xsd:element name="Description" maxOccurs="1" minOccurs="0">
           <xsd:annotation>
-            <xsd:documentation>Description=A description for the Sample. [plain-text multi-line string]</xsd:documentation>
+            <xsd:documentation>Description=A description of the sample that was imaged in this case. [plain-text multi-line string]</xsd:documentation>
             <xsd:documentation>Tier=1</xsd:documentation>
           </xsd:annotation>
           <xsd:simpleType>
@@ -1843,24 +1849,25 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
       </xsd:sequence>
       <xsd:attribute name="ID" type="LSID">
         <xsd:annotation>
+          <xsd:documentation>Description=A unique identifier for this Sample.</xsd:documentation>
           <xsd:documentation>Tier=1</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
-      <xsd:attribute name="Name" type="xsd:string">
+      <xsd:attribute name="Name" type="Denomination" use="required">
         <xsd:annotation>
-          <xsd:documentation>Description=A user assigned name for this Sample</xsd:documentation>
+          <xsd:documentation>Description=A user assigned name for this Sample.</xsd:documentation>
           <xsd:documentation>Tier=1</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
       <xsd:attribute name="MountingMedium" type="xsd:string">
         <xsd:annotation>
-          <xsd:documentation>Description=The mounting medium the sample is embedded in during acquisition</xsd:documentation>
+          <xsd:documentation>Description=The mounting medium the sample is embedded in during acquisition.</xsd:documentation>
           <xsd:documentation>Tier=2</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
       <xsd:attribute name="MountingMediumRefractiveIndex" type="xsd:float">
         <xsd:annotation>
-          <xsd:documentation>Description=The measured refractive index of the medium the sample is embedded in during imaging</xsd:documentation>
+          <xsd:documentation>Description=The measured refractive index of the medium the sample is embedded in during imaging.</xsd:documentation>
           <xsd:documentation>Tier=4</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
@@ -1935,12 +1942,13 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
       </xsd:sequence>
       <xsd:attribute name="ID" type="LSID" use="required">
         <xsd:annotation>
+          <xsd:documentation>Description=A unique identified for this specific sample holder position.</xsd:documentation>
           <xsd:documentation>Tier=3</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
-      <xsd:attribute name="Name" use="optional" type="xsd:string">
+      <xsd:attribute name="Name" use="required" type="Denomination">
         <xsd:annotation>
-          <xsd:documentation>Description=A user assigned label for a specific sample holder position</xsd:documentation>
+          <xsd:documentation>Description=A user assigned label for this specific sample holder position.</xsd:documentation>
           <xsd:documentation>Tier=3</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
@@ -2008,10 +2016,11 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
       </xsd:sequence>
       <xsd:attribute name="ID" type="LSID" use="required">
         <xsd:annotation>
+          <xsd:documentation>Description=A unique identifier for this Z-axis focal position.</xsd:documentation>
           <xsd:documentation>Tier=3</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
-      <xsd:attribute name="Name" use="optional" type="xsd:string">
+      <xsd:attribute name="Name" use="required" type="Denomination">
         <xsd:annotation>
           <xsd:documentation>Description=A user assigned name for this Z-axis focal position.</xsd:documentation>
           <xsd:documentation>Tier=3</xsd:documentation>
@@ -2019,7 +2028,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
       </xsd:attribute>
       <xsd:attribute name="StagePositionZ" use="required" type="xsd:float">
         <xsd:annotation>
-          <xsd:documentation>Description=The Z-axis focal position.
+          <xsd:documentation>Description=The Z-axis focal position of this plane.
           </xsd:documentation>
           <xsd:documentation>Tier=3</xsd:documentation>
         </xsd:annotation>
@@ -2050,24 +2059,25 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
           </xsd:sequence>
           <xsd:attribute name="ID" type="LSID" use="required">
             <xsd:annotation>
+              <xsd:documentation>Description=A unique identifier for this component.</xsd:documentation>
               <xsd:documentation>Tier=1</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
           <xsd:attribute name="Name" type="Denomination" use="required">
             <xsd:annotation>
-              <xsd:documentation>Description=A user defined name for this element</xsd:documentation>
+              <xsd:documentation>Description=A user defined name for this component.</xsd:documentation>
               <xsd:documentation>Tier=1</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
           <xsd:attribute name="Type" use="required" type="MicroscopeType">
             <xsd:annotation>
-              <xsd:documentation>Description=This element describes the type of this microscope.</xsd:documentation>
+              <xsd:documentation>Description=The type of this microscope.</xsd:documentation>
               <xsd:documentation>Tier=1</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
           <xsd:attribute name="EyePieceFieldNumber" type="xsd:float">
             <xsd:annotation>
-              <xsd:documentation>Description=The Field Number represents the diaphragm size of the microscope eyepiece expressed in mm</xsd:documentation>
+              <xsd:documentation>Description=The Field Number represents the diaphragm size of the microscope eyepiece expressed in mm.</xsd:documentation>
               <xsd:documentation>Tier=3</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
@@ -2099,12 +2109,13 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
           </xsd:sequence>
           <xsd:attribute name="ID" type="LSID" use="required">
             <xsd:annotation>
+              <xsd:documentation>Description=A unique identifier for this component.</xsd:documentation>
               <xsd:documentation>Tier=4</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
           <xsd:attribute name="Name" type="Denomination" use="required">
             <xsd:annotation>
-              <xsd:documentation>Description=A user defined name for this element.</xsd:documentation>
+              <xsd:documentation>Description=A user defined name for this component.</xsd:documentation>
               <xsd:documentation>Tier=4</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
@@ -2289,12 +2300,13 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
       <xsd:extension base="ManufacturerSpec">
         <xsd:attribute name="ID" type="LSID" use="required">
           <xsd:annotation>
+            <xsd:documentation>Description=A unique identifier for this component.</xsd:documentation>
             <xsd:documentation>Tier=3</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
         <xsd:attribute name="Name" type="Denomination" use="required">
           <xsd:annotation>
-            <xsd:documentation>Description=A user defined name for this element</xsd:documentation>
+            <xsd:documentation>Description=A user defined name for this component.</xsd:documentation>
             <xsd:documentation>Tier=3</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
@@ -2375,12 +2387,13 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
           </xsd:sequence>
           <xsd:attribute name="ID" type="LSID" use="required">
             <xsd:annotation>
+              <xsd:documentation>Description=A unique identifier for this component.</xsd:documentation>
               <xsd:documentation>Tier=3</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
           <xsd:attribute name="Name" type="Denomination" use="required">
             <xsd:annotation>
-              <xsd:documentation>Description=A user defined name for this element</xsd:documentation>
+              <xsd:documentation>Description=A user defined name for this component.</xsd:documentation>
               <xsd:documentation>Tier=3</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
@@ -2416,32 +2429,32 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
           </xsd:sequence>
           <xsd:attribute name="ID" use="required" type="ObjectiveID">
             <xsd:annotation>
+              <xsd:documentation>Description=A unique identifier for this component.</xsd:documentation>
               <xsd:documentation>Tier=1</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
           <xsd:attribute name="Name" type="Denomination" use="required">
             <xsd:annotation>
-              <xsd:documentation>A user defined name for this element</xsd:documentation>
+              <xsd:documentation>A user defined name for this component.</xsd:documentation>
               <xsd:documentation>Tier=1</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
           <xsd:attribute name="Correction" use="required" form="unqualified"
             type="ObjectiveCorrection">
             <xsd:annotation>
-              <xsd:documentation>Description=The correction applied to the lens</xsd:documentation>
+              <xsd:documentation>Description=The correction applied to the lens.</xsd:documentation>
               <xsd:documentation>Tier=2</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
           <xsd:attribute name="NominalMagnification" use="required" type="xsd:float">
             <xsd:annotation>
-              <xsd:documentation>Descrption=The magnification of the lens as specified by the manufacturer - i.e. '60' is a 60X lens. Note: The type of this has been changed from int to float to allow the specification of additional lenses e.g. 0.5X lens
-              </xsd:documentation>
+              <xsd:documentation>Descrption=The magnification of the lens as specified by the manufacturer - i.e. '60' is a 60X lens.</xsd:documentation>
               <xsd:documentation>Tier=1</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
           <xsd:attribute name="CalibratedMagnification" use="optional" type="xsd:float">
             <xsd:annotation>
-              <xsd:documentation>Description=The magnification of the lens as measured by a calibration process- i.e. '59.987' for a 60X lens</xsd:documentation>
+              <xsd:documentation>Description=The magnification of the lens as measured by a calibration process- i.e. '59.987' for a 60X lens.</xsd:documentation>
               <xsd:documentation>Tier=5</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
@@ -2454,13 +2467,13 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
           <xsd:attribute name="NominalImmersionMedium" use="required"
             type="ObjectiveNominalImmersionMedium">
             <xsd:annotation>
-              <xsd:documentation>Description=The immersion medium the lens is designed for</xsd:documentation>
+              <xsd:documentation>Description=The immersion medium the lens is designed for.</xsd:documentation>
               <xsd:documentation>Tier=2</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
           <xsd:attribute name="Infinity" type="xsd:boolean" use="required">
             <xsd:annotation>
-              <xsd:documentation>Description=Records whether or not the objective is infinity corrected</xsd:documentation>
+              <xsd:documentation>Description=Records whether or not the objective is infinity corrected.</xsd:documentation>
               <xsd:documentation>Tier=3</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
@@ -2484,7 +2497,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
           </xsd:attribute>
           <xsd:attribute name="Iris" use="required" type="xsd:boolean">
             <xsd:annotation>
-              <xsd:documentation>Description=Records whether or not the objective was fitted with an Iris</xsd:documentation>
+              <xsd:documentation>Description=Records whether or not the objective was fitted with an Iris.</xsd:documentation>
               <xsd:documentation>Tier=4</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
@@ -2528,19 +2541,26 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
           </xsd:sequence>
           <xsd:attribute name="ID" type="LSID" use="required">
             <xsd:annotation>
+              <xsd:documentation>Description=A unique identifier for this component.</xsd:documentation>
               <xsd:documentation>Tier=1</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
           <xsd:attribute name="Name" type="Denomination" use="required">
             <xsd:annotation>
-              <xsd:documentation>Description=A user defined name for this element</xsd:documentation>
+              <xsd:documentation>Description=A user defined name for this component.</xsd:documentation>
+              <xsd:documentation>Tier=1</xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
+          <xsd:attribute name="Magnification" type="xsd:float">
+            <xsd:annotation>
+              <xsd:documentation>Description=The magnification of the optovar lens as specified by the manufacturer.</xsd:documentation>
               <xsd:documentation>Tier=1</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
           <xsd:attribute name="LensType" type="LensType" use="optional">
             <xsd:annotation>
-              <xsd:documentation>Description=The type of lens used by the Magnification Changer available with this microscope</xsd:documentation>
-              <xsd:documentation>Tier=3</xsd:documentation>
+              <xsd:documentation>Description=The type of lens used by the Magnification Changer available with this microscope.</xsd:documentation>
+              <xsd:documentation>Tier=5</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
         </xsd:extension>
@@ -2579,7 +2599,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
         </xsd:attribute>
         <xsd:attribute name="Name" type="Denomination" use="required">
           <xsd:annotation>
-            <xsd:documentation>Description=A user defined name for this element</xsd:documentation>
+            <xsd:documentation>Description=A user defined name for this component.</xsd:documentation>
             <xsd:documentation>Tier=1</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
@@ -2889,12 +2909,13 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
         </xsd:sequence>
         <xsd:attribute name="ID" type="LightSourceCouplingID" use="required">
           <xsd:annotation>
+            <xsd:documentation>Description=A unique identifier for this component.</xsd:documentation>
             <xsd:documentation>Tier=4</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
         <xsd:attribute name="Name" type="Denomination" use="required">
           <xsd:annotation>
-            <xsd:documentation>Description=A user defined name for this LightSourceCoupling device</xsd:documentation>
+            <xsd:documentation>Description=A user defined name for this component.</xsd:documentation>
             <xsd:documentation>Tier=4</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
@@ -3071,7 +3092,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
     <!-- top level definition -->
     <xsd:annotation>
       <xsd:appinfo><xsdfu xmlns=""><plural>LightPaths</plural></xsdfu></xsd:appinfo>
-      <xsd:documentation>Description=A description of the light path</xsd:documentation>
+      <xsd:documentation>Description=A description of the light path.</xsd:documentation>
       <xsd:documentation>Tier=2</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
@@ -3123,12 +3144,13 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
       </xsd:sequence>
       <xsd:attribute name="ID">
         <xsd:annotation>
+          <xsd:documentation>Description=A unique identifier for this element.</xsd:documentation>
           <xsd:documentation>Tier=2</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
       <xsd:attribute name="Name">
         <xsd:annotation>
-          <xsd:documentation>Description=Any user defined name/description for this element</xsd:documentation>
+          <xsd:documentation>Description=A user defined name for this component.</xsd:documentation>
           <xsd:documentation>Tier=2</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
@@ -3173,12 +3195,13 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
           </xsd:sequence>
           <xsd:attribute name="ID" use="required" type="FilterSetID">
             <xsd:annotation>
+              <xsd:documentation>Description=A unique identifier for this component.</xsd:documentation>
               <xsd:documentation>Tier=2</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
           <xsd:attribute name="Name" type="Denomination" use="required">
             <xsd:annotation>
-              <xsd:documentation>Description=A user defined name for this FilterSet element</xsd:documentation>
+              <xsd:documentation>Description=A user defined name for this component.</xsd:documentation>
               <xsd:documentation>Tier=2</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
@@ -3203,12 +3226,13 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
         </xsd:sequence>
         <xsd:attribute name="ID" use="required" type="FilterID">
           <xsd:annotation>
+            <xsd:documentation>Description=A unique identifier for this component.</xsd:documentation>
             <xsd:documentation>Tier=2</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
         <xsd:attribute name="Name" type="Denomination" use="required">
           <xsd:annotation>
-            <xsd:documentation>Description=A user defined name for this Filter</xsd:documentation>
+            <xsd:documentation>Description=A user defined name for this component.</xsd:documentation>
             <xsd:documentation>Tier=2</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
@@ -3338,12 +3362,13 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
         </xsd:sequence>
         <xsd:attribute name="ID" type="MirrorID" use="required">
           <xsd:annotation>
+            <xsd:documentation>Description=A unique identifier for this component.</xsd:documentation>
             <xsd:documentation>Tier=2</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
         <xsd:attribute name="Name" type="Denomination" use="required">
           <xsd:annotation>
-            <xsd:documentation>Description=A user defined name for this Mirror</xsd:documentation>
+            <xsd:documentation>Description=A user defined name for this component.</xsd:documentation>
             <xsd:documentation>Tier=2</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
@@ -3611,12 +3636,13 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
       </xsd:sequence>
       <xsd:attribute name="ID" type="LSID" use="required">
         <xsd:annotation>
+          <xsd:documentation>Description=A unique identifier for this element.</xsd:documentation>
           <xsd:documentation>Tier=2</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
       <xsd:attribute name="Name" type="Denomination">
         <xsd:annotation>
-          <xsd:documentation>Description=Any user defined name/description for this element</xsd:documentation>
+          <xsd:documentation>Description=A user defined name for this component.</xsd:documentation>
           <xsd:documentation>Tier=2</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
@@ -3636,12 +3662,13 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
         </xsd:sequence>
         <xsd:attribute name="ID" type="LensID" use="required">
           <xsd:annotation>
+            <xsd:documentation>Description=A unique identifier for this component.</xsd:documentation>
             <xsd:documentation>Tier=2</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
         <xsd:attribute name="Name" type="Denomination" use="required">
           <xsd:annotation>
-            <xsd:documentation>Description=A user defined name for this Lens</xsd:documentation>
+            <xsd:documentation>Description=A user defined name for this component.</xsd:documentation>
             <xsd:documentation>Tier=2</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
@@ -3825,12 +3852,13 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
           </xsd:sequence>
           <xsd:attribute name="ID" type="PrismID" use="required">
             <xsd:annotation>
+              <xsd:documentation>Description=A unique identifier for this component.</xsd:documentation>
               <xsd:documentation>Tier=2</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
           <xsd:attribute name="Name" type="Denomination" use="required">
             <xsd:annotation>
-              <xsd:documentation>Description=A user defined name for this Prism</xsd:documentation>
+              <xsd:documentation>Description=A user defined name for this component.</xsd:documentation>
               <xsd:documentation>Tier=2</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
@@ -3940,12 +3968,13 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
           </xsd:sequence>
           <xsd:attribute name="ID" type="PolarizationOpticsID" use="required">
             <xsd:annotation>
+              <xsd:documentation>Description=A unique identifier for this component.</xsd:documentation>
               <xsd:documentation>Tier=2</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
           <xsd:attribute name="Name" type="Denomination" use="required">
             <xsd:annotation>
-              <xsd:documentation>Description=A user defined name for this Polarization Optics element</xsd:documentation>
+              <xsd:documentation>Description=A user defined name for this component.</xsd:documentation>
               <xsd:documentation>Tier=2</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
@@ -4006,12 +4035,13 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
         </xsd:sequence>
         <xsd:attribute name="ID" type="DetectorID" use="required">
           <xsd:annotation>
+            <xsd:documentation>Description=A unique identifier for this component.</xsd:documentation>
             <xsd:documentation>Tier=2</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
         <xsd:attribute name="Name" type="Denomination" use="required">
           <xsd:annotation>
-            <xsd:documentation>Description=A user defined name for this Detector</xsd:documentation>
+            <xsd:documentation>Description=A user defined name for this component.</xsd:documentation>
             <xsd:documentation>Tier=2</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
@@ -4393,12 +4423,48 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
   </xsd:complexType>
   <xsd:element name="MicroscopeSettings">
     <xsd:annotation>
-      <xsd:documentation>Description=This holds the setting applied to a Microscope as well as a reference to the Microscope (the ID attribute) in question. The ID referes to the microscope used in this case</xsd:documentation>
+      <xsd:documentation>Description=This field refers to the Microscope used to acquire this image and holds the setting that were applied to the microscope in this case. The ID is the microscope used in this case.</xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
       <xsd:complexContent>
         <xsd:extension base="Settings">
+          <xsd:sequence>
+            <xsd:element name="OptovarRef">
+              <xsd:annotation>
+                <xsd:documentation>Description=This empty element has a required reference (the OptovarID attribute) to an existing Optovar component.</xsd:documentation>
+                <xsd:documentation>Tier=3</xsd:documentation>
+              </xsd:annotation>
+              <xsd:complexType>
+                <xsd:complexContent>
+                  <xsd:extension base="Reference">
+                    <xsd:attribute name="ID" type="OptovarID">
+                      <xsd:annotation>
+                        <xsd:documentation>Tier=3</xsd:documentation>
+                      </xsd:annotation>
+                    </xsd:attribute>
+                  </xsd:extension>
+                </xsd:complexContent>
+              </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="ObjectiveRef">
+              <xsd:annotation>
+                <xsd:documentation>Description=This empty element has a required reference (the ObjectiveID attribute) to an existing Objective component.</xsd:documentation>
+                <xsd:documentation>Tier=3</xsd:documentation>
+              </xsd:annotation>
+              <xsd:complexType>
+                <xsd:complexContent>
+                  <xsd:extension base="Reference">
+                    <xsd:attribute name="ID" type="ObjectiveID">
+                      <xsd:annotation>
+                        <xsd:documentation>Tier=3</xsd:documentation>
+                      </xsd:annotation>
+                    </xsd:attribute>
+                  </xsd:extension>
+                </xsd:complexContent>
+              </xsd:complexType>
+            </xsd:element>
+          </xsd:sequence>
           <xsd:attribute name="ID" type="MicroscopeID">
             <xsd:annotation>
               <xsd:documentation>Tier=1</xsd:documentation>
@@ -4406,7 +4472,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
           </xsd:attribute>
           <xsd:attribute name="FieldOfView" type="xsd:float">
             <xsd:annotation>
-              <xsd:documentation>Description=The Field of View defines the area of the specimen that is viewable via the eyepiece. This attribute caputers the measures size of the Field of View</xsd:documentation>
+              <xsd:documentation>Description=The Field of View defines the area of the specimen that is viewable via the eyepiece. This attribute caputers the measures size of the Field of View.</xsd:documentation>
               <xsd:documentation>Tier=3</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
@@ -4415,15 +4481,9 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
               <xsd:documentation>Tier=3</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="OptovarMagnification" type="xsd:float">
-            <xsd:annotation>
-              <xsd:documentation>Description=This is the magnification associated with the Optovar used in this case</xsd:documentation>
-              <xsd:documentation>Tier=1</xsd:documentation>
-            </xsd:annotation>
-          </xsd:attribute>
           <xsd:attribute name="TotalEffectiveMagnification" type="xsd:float">
             <xsd:annotation>
-              <xsd:documentation>Description=This is the total effective magnification used in this case. This number can be obtained by multiplying the OptovarMagnification times the Objective/NominalMagnification or even better the Objective/CalibratedMagnification if available</xsd:documentation>
+              <xsd:documentation>Description=This is the total effective magnification used in this case. This number can be obtained by multiplying Optovar/Magnification times the Objective/NominalMagnification or even better the Objective/CalibratedMagnification if available.</xsd:documentation>
               <xsd:documentation>Tier=1</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
@@ -4818,6 +4878,7 @@ PlaneInfo (as Plane)
         <xsd:extension base="Reference">
           <xsd:attribute name="ID" use="required" type="AnnotationID">
             <xsd:annotation>
+              <xsd:documentation>Description=A unique identifier for this component.</xsd:documentation>
               <xsd:documentation>Tier=2</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
@@ -4855,6 +4916,7 @@ PlaneInfo (as Plane)
     </xsd:sequence>
     <xsd:attribute name="ID" use="required" type="AnnotationID">
       <xsd:annotation>
+        <xsd:documentation>Description=A unique identifier for this component.</xsd:documentation>
         <xsd:documentation>Tier=2</xsd:documentation>
       </xsd:annotation>
     </xsd:attribute>
@@ -5696,7 +5758,7 @@ annotation refs from the base Annotation to form the list.</xsd:documentation>
       <xsd:attribute name="Name" use="optional" type="xsd:string">
         <xsd:annotation>
           <xsd:documentation>
-            A short name for the reagent
+            A short name for the reagent.
           </xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
@@ -6252,25 +6314,25 @@ annotation refs from the base Annotation to form the list.</xsd:documentation>
     </xsd:annotation>
     <xsd:attribute name="Manufacturer" use="required" type="xsd:string">
       <xsd:annotation>
-        <xsd:documentation>Description=The manufacturer of the component.</xsd:documentation>
+        <xsd:documentation>Description=The manufacturer of this component.</xsd:documentation>
         <xsd:documentation>Tier=1</xsd:documentation>
       </xsd:annotation>
     </xsd:attribute>
     <xsd:attribute name="Model" use="required" type="xsd:string">
       <xsd:annotation>
-        <xsd:documentation>Description=The Model of the component.</xsd:documentation>
+        <xsd:documentation>Description=The model of this component.</xsd:documentation>
         <xsd:documentation>Tier=3</xsd:documentation>
       </xsd:annotation>
     </xsd:attribute>
     <xsd:attribute name="SerialNumber" use="required" type="xsd:string">
       <xsd:annotation>
-        <xsd:documentation>Description=The serial number of the component</xsd:documentation>
+        <xsd:documentation>Description=The serial number of this component</xsd:documentation>
         <xsd:documentation>Tier=5</xsd:documentation>
       </xsd:annotation>
     </xsd:attribute>
     <xsd:attribute name="LotNumber" use="optional" type="xsd:string">
       <xsd:annotation>
-        <xsd:documentation>Description=The lot number of the component</xsd:documentation>
+        <xsd:documentation>Description=The lot number of this component</xsd:documentation>
         <xsd:documentation>Tier=5</xsd:documentation>
       </xsd:annotation>
     </xsd:attribute>
@@ -6675,6 +6737,9 @@ length at the expense of readability as they are likely to occur many times. </x
     <xsd:restriction base="LSID">
       <xsd:pattern value="(urn:lsid:([\w\-\.]+\.[\w\-\.]+)+:Objective:\S+)|(Objective:\S+)"/>
     </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="OptovarID">
+    <xsd:restriction base="LSID"/>
   </xsd:simpleType>
   <xsd:simpleType name="LightSourceID">
     <xsd:restriction base="LSID">
@@ -8545,6 +8610,7 @@ length at the expense of readability as they are likely to occur many times. </x
       </xsd:sequence>
       <xsd:attribute name="ID" type="LSID" use="required">
         <xsd:annotation>
+          <xsd:documentation>Description=A unique identifier for this element.</xsd:documentation>
           <xsd:documentation>Tier=3</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
@@ -8619,6 +8685,7 @@ length at the expense of readability as they are likely to occur many times. </x
       </xsd:sequence>
       <xsd:attribute name="ID" type="LSID" use="required">
         <xsd:annotation>
+          <xsd:documentation>Description=A unique identifier for this element.</xsd:documentation>
           <xsd:documentation>Tier=3</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
@@ -8769,11 +8836,12 @@ length at the expense of readability as they are likely to occur many times. </x
         <xsd:attribute name="ID" type="LSID" use="required">
           <xsd:annotation>
             <xsd:documentation>Tier=3</xsd:documentation>
+            <xsd:documentation>Description=A unique identifier for this component.</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
-        <xsd:attribute name="Name" type="xsd:string" use="required">
+        <xsd:attribute name="Name" type="Denomination" use="required">
           <xsd:annotation>
-            <xsd:documentation>Description=A user assigned name for this optical standard.</xsd:documentation>
+            <xsd:documentation>Description=A user defined name for this component.</xsd:documentation>
             <xsd:documentation>Tier=3</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
@@ -8898,12 +8966,13 @@ length at the expense of readability as they are likely to occur many times. </x
           </xsd:sequence>
           <xsd:attribute name="ID" type="LSID" use="required">
             <xsd:annotation>
+              <xsd:documentation>Description=A unique identifier for this component.</xsd:documentation>
               <xsd:documentation>Tier=3</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
           <xsd:attribute name="Name" type="Denomination" use="required">
             <xsd:annotation>
-              <xsd:documentation>Description=A user defined name for this Intensity Calibration Tool.</xsd:documentation>
+              <xsd:documentation>Description=A user defined name for this component.</xsd:documentation>
               <xsd:documentation>Tier=3</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
@@ -8940,6 +9009,7 @@ length at the expense of readability as they are likely to occur many times. </x
     </xsd:sequence>
     <xsd:attribute name="ID" type="LSID" use="required">
       <xsd:annotation>
+        <xsd:documentation>Description=A unique identifier for this element.</xsd:documentation>
         <xsd:documentation>Tier=3</xsd:documentation>
       </xsd:annotation>
     </xsd:attribute>
@@ -9116,7 +9186,12 @@ length at the expense of readability as they are likely to occur many times. </x
           </xsd:complexType>
         </xsd:element>
       </xsd:sequence>
-      <xsd:attribute name="ID" type="LSID" use="required"/>
+      <xsd:attribute name="ID" type="LSID" use="required">
+        <xsd:annotation>
+          <xsd:documentation>Description=A unique identifier for this element.</xsd:documentation>
+          <xsd:documentation>Tier=4</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
       <xsd:attribute name="Date" type="xsd:date" use="required">
         <xsd:annotation>
           <xsd:documentation>Description=The date in which this calibration was performed.</xsd:documentation>
