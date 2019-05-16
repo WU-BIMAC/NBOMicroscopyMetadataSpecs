@@ -2088,7 +2088,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
   <xsd:element name="MicroscopeTable">
     <xsd:annotation>
       <xsd:documentation>Category=MicroscopyBasics</xsd:documentation>
-      <xsd:documentation>Description=This element describes the type of this microscope table</xsd:documentation>
+      <xsd:documentation>Description=This element describes the table on which this Microscope rests during acquisition.</xsd:documentation>
       <xsd:documentation>Tier=4</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
