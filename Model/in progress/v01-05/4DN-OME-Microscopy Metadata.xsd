@@ -2632,7 +2632,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
       <xsd:documentation>Category=LightSource</xsd:documentation>
       <xsd:documentation>Description=A Light Amplification by Stimulated Emission of Radiation (LASER) is a device that emits light through a process of optical amplification based on the stimulated emission of electromagnetic radiation.</xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
-      <xsd:documentation>Split=[TransmittedLightSource; FluorescenceLightSource].</xsd:documentation>
+      <xsd:documentation>Split=[Fluorescence_LightSource]</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
       <xsd:complexContent>
@@ -2717,7 +2717,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
       <xsd:documentation>Category=LightSource</xsd:documentation>
       <xsd:documentation>Description=The Arc element is used to describe various kinds of Arc lamps - Hg, Xe, HgXe. The Power of the Arc is now stored in the LightSource</xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
-      <xsd:documentation>Split=[TransmittedLightSource; FluorescenceLightSource].</xsd:documentation>
+      <xsd:documentation>Split=[Fluorescence_LightSource]</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
       <xsd:complexContent>
@@ -2739,7 +2739,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
       <xsd:documentation>Category=LightSource</xsd:documentation>
       <xsd:documentation>Description=The Filament element is used to describe various kinds of filament bulbs such as Incadescent or Halogen. The Power of the Filament is now stored in the LightSource.</xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
-      <xsd:documentation>Split=[TransmittedLightSource; FluorescenceLightSource].</xsd:documentation>
+      <xsd:documentation>Split=[Transmitted_LightSource; Fluorescence_LightSource]</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
       <xsd:complexContent>
@@ -2761,7 +2761,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
       <xsd:documentation>Category=LightSource</xsd:documentation>
       <xsd:documentation>Description=The LightEmittingDiode element is used to describe various kinds of LED lamps</xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
-      <xsd:documentation>Split=[TransmittedLightSource; FluorescenceLightSource].</xsd:documentation>
+      <xsd:documentation>Split=[Transmitted_LightSource; Fluorescence_LightSource]</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
       <xsd:complexContent>
@@ -2863,7 +2863,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
       <xsd:documentation>Category=LightSource</xsd:documentation>
       <xsd:documentation>Description=The GenericExcitationSource element is used to represent a source as a collection of key/value pairs, stored in a Map. The other lightsource objects should always be used in preference to this if possible.</xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
-      <xsd:documentation>Split=[TransmittedLightSource; FluorescenceLightSource].</xsd:documentation>
+      <xsd:documentation>Split=[Transmitted_LightSource; Fluorescence_LightSource]</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
       <xsd:complexContent>
