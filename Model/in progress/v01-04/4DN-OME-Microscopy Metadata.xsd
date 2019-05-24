@@ -2632,6 +2632,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
       <xsd:documentation>Category=LightSource</xsd:documentation>
       <xsd:documentation>Description=A Light Amplification by Stimulated Emission of Radiation (LASER) is a device that emits light through a process of optical amplification based on the stimulated emission of electromagnetic radiation.</xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
+      <xsd:documentation>Split=[TransmittedLightSource; FluorescenceLightSource].</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
       <xsd:complexContent>
@@ -2716,6 +2717,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
       <xsd:documentation>Category=LightSource</xsd:documentation>
       <xsd:documentation>Description=The Arc element is used to describe various kinds of Arc lamps - Hg, Xe, HgXe. The Power of the Arc is now stored in the LightSource</xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
+      <xsd:documentation>Split=[TransmittedLightSource; FluorescenceLightSource].</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
       <xsd:complexContent>
@@ -2737,6 +2739,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
       <xsd:documentation>Category=LightSource</xsd:documentation>
       <xsd:documentation>Description=The Filament element is used to describe various kinds of filament bulbs such as Incadescent or Halogen. The Power of the Filament is now stored in the LightSource.</xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
+      <xsd:documentation>Split=[TransmittedLightSource; FluorescenceLightSource].</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
       <xsd:complexContent>
@@ -2758,6 +2761,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
       <xsd:documentation>Category=LightSource</xsd:documentation>
       <xsd:documentation>Description=The LightEmittingDiode element is used to describe various kinds of LED lamps</xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
+      <xsd:documentation>Split=[TransmittedLightSource; FluorescenceLightSource].</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
       <xsd:complexContent>
@@ -2859,6 +2863,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
       <xsd:documentation>Category=LightSource</xsd:documentation>
       <xsd:documentation>Description=The GenericExcitationSource element is used to represent a source as a collection of key/value pairs, stored in a Map. The other lightsource objects should always be used in preference to this if possible.</xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
+      <xsd:documentation>Split=[TransmittedLightSource; FluorescenceLightSource].</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
       <xsd:complexContent>
@@ -3132,13 +3137,13 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
             <xsd:documentation>Tier=2</xsd:documentation>
           </xsd:annotation>
         </xsd:element>
-        <xsd:element minOccurs="1" maxOccurs="unbounded" name="DichroicRef" type="MirrorRef">
+        <xsd:element minOccurs="0" maxOccurs="unbounded" ref="StandardDichroicRef">
           <xsd:annotation>
-            <xsd:documentation>Description=This empty element has a reference (the Mirror ID attribute) to the Mirror/Dichroic placed in the light path</xsd:documentation>
+            <xsd:documentation>Description=This empty element has a reference (the Mirror ID attribute) to the Dichroic utilized in this Filter Set.</xsd:documentation>
             <xsd:documentation>Tier=2</xsd:documentation>
           </xsd:annotation>
         </xsd:element>
-        <xsd:element name="EmissionFilterRef" type="FilterRef" minOccurs="1" maxOccurs="unbounded">
+        <xsd:element name="EmissionFilterRef" type="FilterRef" minOccurs="0" maxOccurs="unbounded">
           <xsd:annotation>
             <xsd:appinfo><xsdfu xmlns=""><plural>EmissionFilters</plural><manytomany/></xsdfu></xsd:appinfo>
             <xsd:documentation>Description=This empty element has a reference (the Filter ID attribute) to the Filters placed in the Emission light path</xsd:documentation>
@@ -3193,13 +3198,13 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
                 <xsd:documentation>Tier=2</xsd:documentation>
               </xsd:annotation>
             </xsd:element>
-            <xsd:element minOccurs="1" maxOccurs="1" name="DichroicRef" type="MirrorRef">
+            <xsd:element minOccurs="1" maxOccurs="1" ref="StandardDichroicRef">
               <xsd:annotation>
-                <xsd:documentation>Description=This empty element has a reference (the Mirror ID attribute) to the Mirror/Dichroic placed in the light path</xsd:documentation>
+                <xsd:documentation>Description=This empty element has a reference (the Mirror ID attribute) to the Dichroic utilized in this Filter Set.</xsd:documentation>
                 <xsd:documentation>Tier=2</xsd:documentation>
               </xsd:annotation>
             </xsd:element>
-            <xsd:element name="EmissionFilterRef" type="FilterRef" minOccurs="1" maxOccurs="1">
+            <xsd:element name="EmissionFilterRef" minOccurs="1" maxOccurs="1">
               <xsd:annotation>
                 <xsd:appinfo><xsdfu xmlns=""><plural>EmissionFilters</plural><manytomany/></xsdfu></xsd:appinfo>
                 <xsd:documentation>Description=This empty element has a reference (the Filter ID attribute) to the Filters placed in the Emission light path</xsd:documentation>
@@ -3493,76 +3498,101 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
       </xsd:complexContent>
     </xsd:complexType>
   </xsd:element>
-  <xsd:element name="Dichroic" substitutionGroup="MirrorGroup">
-    <!-- top level definition -->
+
+  <xsd:complexType name="Dichroic">
+    <xsd:complexContent>
+      <xsd:extension base="Mirror">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" ref="TransmittanceRange"/>
+          <xsd:element maxOccurs="unbounded" ref="ReflectanceRange" minOccurs="0"/>
+        </xsd:sequence>
+        <xsd:attribute name="DichroicType" type="DichroicType" use="required">
+          <xsd:annotation>
+            <xsd:documentation>Description=The type of dichroic mirror used in this case.</xsd:documentation>
+            <xsd:documentation>Tier=3</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="HardSputtered" type="xsd:boolean" use="required">
+          <xsd:annotation>
+            <xsd:documentation>Description=This field records whether this coating of this dichroic is hard-sputtered or traditional.</xsd:documentation>
+            <xsd:documentation>Tier=3</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="AttenuationLevel" type="xsd:float" use="required">
+          <xsd:annotation>
+            <xsd:documentation>Description=The attenuation level, aka blocking level, is used as a measure of the out-of-band attenuation of an optical filter or dichroic mirror over an extended range of the spectrum. The attenuation level is often defined in units of optical density (OD), wherease OD= -log10(T), and T=Transmittance (0≤T≤1).</xsd:documentation>
+            <xsd:documentation>Tier=3</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute default="Reflection" name="AttenuationMethod" type="AttenuationMethod">
+          <xsd:annotation>
+            <xsd:documentation>Description=The mean by which this dichroic filter achieves out-of-band transmission attenuation.</xsd:documentation>
+            <xsd:documentation>Tier=5</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="Technology" type="TechnologyType">
+          <xsd:annotation>
+            <xsd:documentation>Description=The main types of filter technology used in fluorescence analysis are absorption (aka colored) glass, thin-film coating, and acousto-optical tunable, liquid-crystal tunable filters.</xsd:documentation>
+            <xsd:documentation>Tier=5</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="Polarization" type="DichroicPolarization">
+          <xsd:annotation>
+            <xsd:documentation>Description=The polarization state of this dichroic.</xsd:documentation>
+            <xsd:documentation>Tier=5</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="FilterWheel" type="xsd:string">
+          <xsd:annotation>
+            <xsd:documentation>Description=A filter 'wheel' in OME can refer to any arrangement of filters in a filter holder of any shape. It could, for example, be a filter slider</xsd:documentation>
+            <xsd:documentation>Tier=3</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="TransmittanceProfileFile" type="xsd:anyURI" use="required">
+          <xsd:annotation>
+            <xsd:documentation>Description=This contains the location of file in .csv or other suitable formats containing the wavelenght profile of this component.</xsd:documentation>
+            <xsd:documentation>Tier=5</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="ReflectanceProfileFile" type="xsd:anyURI" use="required">
+          <xsd:annotation>
+            <xsd:documentation>Description=This contains the location of file in .csv or other suitable formats containing the wavelenght profile of this component.</xsd:documentation>
+            <xsd:documentation>Tier=5</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+
+
+  <xsd:element abstract="true" name="DichroicGroup" substitutionGroup="MirrorGroup" type="Dichroic">
     <xsd:annotation>
-      <xsd:appinfo><xsdfu xmlns=""><plural>Dichroics</plural></xsdfu></xsd:appinfo>
-      <xsd:documentation>Category=LightPath</xsd:documentation>
       <xsd:documentation>Description=A dichroic beamsplitter or dichroic mirror is a mirror that spectrally separate light by transmitting and reflecting light as a function of wavelength. In the context of fluorescence microscopy, they are typically used to reflect the excitation light, but transmit the emitted fluorescence. Dichroic mirrors can be categorized in different manners. However, the most important criteria for choosing a dichoric mirror are the transmittance and the reflectance wavelenght ranges.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="StandardDichroic" substitutionGroup="DichroicGroup">
+    <xsd:annotation>
+      <xsd:documentation>Category=LightPath</xsd:documentation>
+      <xsd:documentation>Description=A Dichroic used in the standard fluorecence Ligh Path.</xsd:documentation>
       <xsd:documentation>Tier=2</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
       <xsd:complexContent>
-        <xsd:extension base="Mirror">
-          <xsd:sequence>
-            <xsd:element maxOccurs="unbounded" ref="TransmittanceRange"/>
-            <xsd:element maxOccurs="unbounded" ref="ReflectanceRange" minOccurs="0"/>
-          </xsd:sequence>
-          <xsd:attribute name="DichroicType" type="DichroicType" use="required">
-            <xsd:annotation>
-              <xsd:documentation>Description=The type of dichroic mirror used in this case.</xsd:documentation>
-              <xsd:documentation>Tier=3</xsd:documentation>
-            </xsd:annotation>
-          </xsd:attribute>
-          <xsd:attribute name="HardSputtered" type="xsd:boolean" use="required">
-            <xsd:annotation>
-              <xsd:documentation>Description=This field records whether this coating of this dichroic is hard-sputtered or traditional.</xsd:documentation>
-              <xsd:documentation>Tier=3</xsd:documentation>
-            </xsd:annotation>
-          </xsd:attribute>
-          <xsd:attribute name="AttenuationLevel" type="xsd:float" use="required">
-            <xsd:annotation>
-              <xsd:documentation>Description=The attenuation level, aka blocking level, is used as a measure of the out-of-band attenuation of an optical filter or dichroic mirror over an extended range of the spectrum. The attenuation level is often defined in units of optical density (OD), wherease OD= -log10(T), and T=Transmittance (0≤T≤1).</xsd:documentation>
-              <xsd:documentation>Tier=3</xsd:documentation>
-            </xsd:annotation>
-          </xsd:attribute>
-          <xsd:attribute default="Reflection" name="AttenuationMethod" type="AttenuationMethod">
-            <xsd:annotation>
-              <xsd:documentation>Description=The mean by which this dichroic filter achieves out-of-band transmission attenuation.</xsd:documentation>
-              <xsd:documentation>Tier=5</xsd:documentation>
-            </xsd:annotation>
-          </xsd:attribute>
-          <xsd:attribute name="Technology" type="TechnologyType">
-            <xsd:annotation>
-              <xsd:documentation>Description=The main types of filter technology used in fluorescence analysis are absorption (aka colored) glass, thin-film coating, and acousto-optical tunable, liquid-crystal tunable filters.</xsd:documentation>
-              <xsd:documentation>Tier=5</xsd:documentation>
-            </xsd:annotation>
-          </xsd:attribute>
-          <xsd:attribute name="Polarization" type="DichroicPolarization">
-            <xsd:annotation>
-              <xsd:documentation>Description=The polarization state of this dichroic.</xsd:documentation>
-              <xsd:documentation>Tier=5</xsd:documentation>
-            </xsd:annotation>
-          </xsd:attribute>
-          <xsd:attribute name="FilterWheel" type="xsd:string">
-            <xsd:annotation>
-              <xsd:documentation>Description=A filter 'wheel' in OME can refer to any arrangement of filters in a filter holder of any shape. It could, for example, be a filter slider</xsd:documentation>
-              <xsd:documentation>Tier=3</xsd:documentation>
-            </xsd:annotation>
-          </xsd:attribute>
-          <xsd:attribute name="TransmittanceProfileFile" type="xsd:anyURI" use="required">
-            <xsd:annotation>
-              <xsd:documentation>Description=This contains the location of file in .csv or other suitable formats containing the wavelenght profile of this component.</xsd:documentation>
-              <xsd:documentation>Tier=5</xsd:documentation>
-            </xsd:annotation>
-          </xsd:attribute>
-          <xsd:attribute name="ReflectanceProfileFile" type="xsd:anyURI" use="required">
-            <xsd:annotation>
-              <xsd:documentation>Description=This contains the location of file in .csv or other suitable formats containing the wavelenght profile of this component.</xsd:documentation>
-              <xsd:documentation>Tier=5</xsd:documentation>
-            </xsd:annotation>
-          </xsd:attribute>
-        </xsd:extension>
+        <xsd:extension base="Dichroic"/>
+      </xsd:complexContent>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="AdditionalDichroic" substitutionGroup="DichroicGroup">
+    <!-- top level definition -->
+    <xsd:annotation>
+      <xsd:appinfo><xsdfu xmlns=""><plural>Dichroics</plural></xsdfu></xsd:appinfo>
+      <xsd:documentation>Category=AdditionalOptics</xsd:documentation>
+      <xsd:documentation>Description=An additional Dichroic poistioned in the light path for a given channel.</xsd:documentation>
+      <xsd:documentation>Tier=2</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:complexContent>
+        <xsd:extension base="Dichroic"/>
       </xsd:complexContent>
     </xsd:complexType>
   </xsd:element>
@@ -6259,16 +6289,8 @@ annotation refs from the base Annotation to form the list.</xsd:documentation>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
-  <xsd:element name="DichroicRef">
-    <!-- top level definition -->
-    <xsd:complexType>
-      <xsd:complexContent>
-        <xsd:extension base="Reference">
-          <xsd:attribute name="ID" use="required" type="MirrorID"/>
-        </xsd:extension>
-      </xsd:complexContent>
-    </xsd:complexType>
-  </xsd:element>
+  <xsd:element name="StandardDichroicRef" type="MirrorRef">
+    <!-- top level definition --> </xsd:element>
   <xsd:element name="LightSourceCouplingRef">
     <xsd:complexType>
       <xsd:complexContent>
