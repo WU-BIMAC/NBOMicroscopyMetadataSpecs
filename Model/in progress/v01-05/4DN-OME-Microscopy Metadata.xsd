@@ -2601,7 +2601,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
         </xsd:sequence>
         <xsd:attribute name="ID" use="required" type="LightSourceID">
           <xsd:annotation>
-            <xsd:documentation>Description=A LightSource ID must be specified for each light source, and the individual light sources can be referred to by their LightSource IDs (eg from Channel).</xsd:documentation>
+            <xsd:documentation>Description=A unique identifier for this component.</xsd:documentation>
             <xsd:documentation>Tier=1</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
@@ -2672,7 +2672,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
           </xsd:attribute>
           <xsd:attribute name="FrequencyMultiplication" use="optional" type="PositiveInt">
             <xsd:annotation>
-              <xsd:documentation>Description=FrequencyMultiplication that may be specified.</xsd:documentation>
+              <xsd:documentation>Description=The optical frequency multiplication that may be specified for this laser.</xsd:documentation>
               <xsd:documentation>Tier=5</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
@@ -2715,7 +2715,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
     <xsd:annotation>
       <xsd:appinfo><xsdfu xmlns=""><plural>Arcs</plural></xsdfu></xsd:appinfo>
       <xsd:documentation>Category=LightSource</xsd:documentation>
-      <xsd:documentation>Description=The Arc element is used to describe various kinds of Arc lamps - Hg, Xe, HgXe. The Power of the Arc is now stored in the LightSource</xsd:documentation>
+      <xsd:documentation>Description=An Arc lamp is a lamp that produces light by an electric arc (also called a voltaic arc), which is typically generated between metal electrodes through an inert gas in a glass bulb.</xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
       <xsd:documentation>Split=[Fluorescence_LightSource]</xsd:documentation>
     </xsd:annotation>
@@ -2724,7 +2724,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
         <xsd:extension base="LightSource">
           <xsd:attribute name="Type" use="required" type="ArcType">
             <xsd:annotation>
-              <xsd:documentation>Description=The type of Arc lamp.</xsd:documentation>
+              <xsd:documentation>Description=The type of Arc lamp light source.</xsd:documentation>
               <xsd:documentation>Tier=3</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
@@ -2737,7 +2737,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
     <xsd:annotation>
       <xsd:appinfo><xsdfu xmlns=""><plural>Filaments</plural></xsdfu></xsd:appinfo>
       <xsd:documentation>Category=LightSource</xsd:documentation>
-      <xsd:documentation>Description=The Filament element is used to describe various kinds of filament bulbs such as Incadescent or Halogen. The Power of the Filament is now stored in the LightSource.</xsd:documentation>
+      <xsd:documentation>Description=A Filament lamp is an incandescent light source with a wire filament heated to such a high temperature that it glows with visible light (incandescence).</xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
       <xsd:documentation>Split=[Transmitted_LightSource; Fluorescence_LightSource]</xsd:documentation>
     </xsd:annotation>
@@ -2746,7 +2746,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
         <xsd:extension base="LightSource">
           <xsd:attribute name="Type" use="required" type="FilamentType">
             <xsd:annotation>
-              <xsd:documentation>Description=The type of filament.</xsd:documentation>
+              <xsd:documentation>Description=The type of Filament lamp light source.</xsd:documentation>
               <xsd:documentation>Tier=3</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
@@ -2759,7 +2759,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
     <xsd:annotation>
       <xsd:appinfo><xsdfu xmlns=""><plural>LightEmittingDiodes</plural></xsdfu></xsd:appinfo>
       <xsd:documentation>Category=LightSource</xsd:documentation>
-      <xsd:documentation>Description=The LightEmittingDiode element is used to describe various kinds of LED lamps</xsd:documentation>
+      <xsd:documentation>Description=A Light Emitting Diode (LED) is a semiconductor light source that emits light when current flows through it. Electrons in the semiconductor recombine with electron holes, releasing energy in the form of photons. The color of the light (corresponding to the energy of the photons) is determined by the energy required for electrons to cross the band gap of the semiconductor. White light may be obtained by using multiple semiconductors or a layer of light-emitting phosphor on the semiconductor device.</xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
       <xsd:documentation>Split=[Transmitted_LightSource; Fluorescence_LightSource]</xsd:documentation>
     </xsd:annotation>
@@ -2784,7 +2784,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
     <!-- top level definition -->
     <xsd:annotation>
       <xsd:appinfo><xsdfu xmlns=""><plural>TransmittanceRanges</plural></xsdfu></xsd:appinfo>
-      <xsd:documentation>Category=ChildrenElement</xsd:documentation>
+      <xsd:documentation>Category=ChildElement</xsd:documentation>
       <xsd:documentation>Description=A Light Emitting Diode (LED) light source is often composed of multiple modules each with its own wavelenght characteristics. This element describes an individual LED module. Multiple of this elements may be used.</xsd:documentation>
       <xsd:documentation>Tier=2</xsd:documentation>
     </xsd:annotation>
@@ -2886,7 +2886,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
     <!-- top level definition -->
     <xsd:annotation>
       <xsd:appinfo><xsdfu xmlns=""><plural>Pumps</plural></xsdfu></xsd:appinfo>
-      <xsd:documentation>Category=ChildrenElement</xsd:documentation>
+      <xsd:documentation>Category=ChildElement</xsd:documentation>
       <xsd:documentation>Description=The Pump element is a reference to a LightSource. It is used within the Laser element to specify the light source for the laser's pump (if any).</xsd:documentation>
       <xsd:documentation>Tier=5</xsd:documentation>
     </xsd:annotation>
@@ -2905,7 +2905,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
   </xsd:element>
   <xsd:element name="LightSourceCouplingGroup" abstract="true" type="LightSourceCoupling">
     <xsd:annotation>
-      <xsd:documentation>Description=This element describes the method(s) used to couple the light source with the light path moving through speciment to the detector.</xsd:documentation>
+      <xsd:documentation>Description=This element describes the method(s) used to couple the light source with the microscope body to transfer light to the specimen.</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
   <xsd:complexType name="LightSourceCoupling">
@@ -2944,7 +2944,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
         </xsd:attribute>
         <xsd:attribute name="Transmittance" type="xsd:float" use="required">
           <xsd:annotation>
-            <xsd:documentation>Description=The amount of light this LightSourceCoupling apparatus transmits at a maximum. A fraction, as a value from 0.0 to 1.0</xsd:documentation>
+            <xsd:documentation>Description=The maximum amount of light this LightSourceCoupling apparatus is capable of transmitting at the peak wavelenght. It is represented as a fractional value from 0.0 to 1.0.</xsd:documentation>
             <xsd:documentation>Tier=5</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
@@ -2954,7 +2954,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
   <xsd:element name="LightGuide" substitutionGroup="LightSourceCouplingGroup">
     <xsd:annotation>
       <xsd:documentation>Category=LightSourceCoupling</xsd:documentation>
-      <xsd:documentation>Description=Light Guides interface with illuminators to transfer light to the speciment in a usable manner.</xsd:documentation>
+      <xsd:documentation>Description=A Light Guide coupling between the light source and the microscope generally consists of a casing enclosing a medium capable of transferring light from the illuminator to the back of the microsocpe body.</xsd:documentation>
       <xsd:documentation>Tier=4</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
@@ -3046,7 +3046,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
     <!-- top level definition -->
     <xsd:annotation>
       <xsd:appinfo><xsdfu xmlns=""><plural>TransmittanceRanges</plural></xsdfu></xsd:appinfo>
-      <xsd:documentation>Category=ChildrenElement</xsd:documentation>
+      <xsd:documentation>Category=ChildElement</xsd:documentation>
       <xsd:documentation>Description=This records a range of wavelengths associated with the associated microscope component. Multiple of this elements may be used.</xsd:documentation>
       <xsd:documentation>Tier=5</xsd:documentation>
     </xsd:annotation>
@@ -3086,7 +3086,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
   <xsd:element name="Direct" substitutionGroup="LightSourceCouplingGroup">
     <xsd:annotation>
       <xsd:documentation>Category=LightSourceCoupling</xsd:documentation>
-      <xsd:documentation>Description=Direct coupling consists of either direct mounting or a optical light path that connects the Light Source with the microscope</xsd:documentation>
+      <xsd:documentation>Description=A Direct coupling between the light source and the microscope consists either of a direct mount or of an optical light path that directs light across space to the back of the microscope body.</xsd:documentation>
       <xsd:documentation>Tier=4</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
@@ -3334,7 +3334,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
     <!-- top level definition -->
     <xsd:annotation>
       <xsd:appinfo><xsdfu xmlns=""><plural>TransmittanceRanges</plural></xsdfu></xsd:appinfo>
-      <xsd:documentation>Category=ChildrenElement</xsd:documentation>
+      <xsd:documentation>Category=ChildElement</xsd:documentation>
       <xsd:documentation>Description=This records the range of wavelengths that are transmitted by the filter. It also records the maximum amount of light transmitted. Multiple of this elements can be used.</xsd:documentation>
       <xsd:documentation>Tier=2</xsd:documentation>
     </xsd:annotation>
@@ -3363,7 +3363,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
       </xsd:attribute>
       <xsd:attribute name="Transmittance" use="required" type="PercentFraction">
         <xsd:annotation>
-          <xsd:documentation>Description=The amount of light the filter transmits at a maximum. A fraction, as a value from 0.0 to 1.0.</xsd:documentation>
+          <xsd:documentation>Description=The maximum amount of light this optical component is capable of transmitting at the peak wavelenght. It is represented as a fractional value from 0.0 to 1.0.</xsd:documentation>
           <xsd:documentation>Tier=3</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
@@ -3391,7 +3391,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
         </xsd:attribute>
         <xsd:attribute name="Reflectance" type="xsd:float" use="required">
           <xsd:annotation>
-            <xsd:documentation>Description=The amount of light the mirror reflects at a maximum. It is represented as a fraction, as a value from 0.0 to 1.0</xsd:documentation>
+            <xsd:documentation>Description=The maximum amount of light this Mirror is capable of reflecting. It is represented as a fractional value from 0.0 to 1.0.</xsd:documentation>
             <xsd:documentation>Tier=3</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
@@ -3473,7 +3473,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
         <xsd:extension base="Mirror">
           <xsd:attribute name="Transmittance" type="xsd:float" use="required">
             <xsd:annotation>
-              <xsd:documentation>Description=The amount of light the beamsplitter transmits at a maximum. A fraction, as a value from 0.0 to 1.0</xsd:documentation>
+              <xsd:documentation>Description=The maximum amount of light this Beamsplitteris capable of transmitting at the peak wavelenght. It is represented as a fractional value from 0.0 to 1.0.</xsd:documentation>
               <xsd:documentation>Tier=3</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
@@ -3601,7 +3601,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
     <!-- top level definition -->
     <xsd:annotation>
       <xsd:appinfo><xsdfu xmlns=""><plural>TransmittanceRanges</plural></xsdfu></xsd:appinfo>
-      <xsd:documentation>Category=ChildrenElement</xsd:documentation>
+      <xsd:documentation>Category=ChildElement</xsd:documentation>
       <xsd:documentation>Description=This records the range of wavelengths that are reflected by the mirror.</xsd:documentation>
       <xsd:documentation>Tier=3</xsd:documentation>
     </xsd:annotation>
@@ -3916,7 +3916,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
           </xsd:attribute>
           <xsd:attribute name="Reflectance" type="xsd:float" use="required">
             <xsd:annotation>
-              <xsd:documentation>Description=The amount of light the prism reflects at a maximum. It is represented as a fraction, as a value from 0.0 to 1.0</xsd:documentation>
+              <xsd:documentation>Description=The maximum amount of light this Prism is capable of transmitting at the peak wavelenght. It is represented as a fractional value from 0.0 to 1.0.</xsd:documentation>
               <xsd:documentation>Tier=5</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
@@ -8079,7 +8079,7 @@ annotation refs from the base Annotation to form the list.</xsd:documentation>
   </xsd:simpleType>
   <xsd:simpleType name="FilamentType">
     <xsd:restriction base="xsd:string">
-      <xsd:enumeration value="Incandescent"/>
+      <xsd:enumeration value="Standard"/>
       <xsd:enumeration value="Halogen"/>
       <xsd:enumeration value="Other"/>
     </xsd:restriction>
