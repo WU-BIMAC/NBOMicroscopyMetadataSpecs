@@ -995,7 +995,7 @@
         </xsd:element>
         <xsd:element minOccurs="0" ref="AnnotationRef">
           <xsd:annotation>
-            <xsd:documentation>Description=The AnnotationRef element is a reference to an element derived from the CommentAnnotation element, which consists of a simple comment multi-line annotation.</xsd:documentation>
+            <xsd:documentation>Description=This is a simple multi-line comment or annotation describing this component.</xsd:documentation>
             <xsd:documentation>Tier=2</xsd:documentation>
           </xsd:annotation>
         </xsd:element>
@@ -1237,7 +1237,7 @@
     <xsd:annotation>
       <xsd:appinfo><xsdfu xmlns=""><plural>Instruments</plural></xsdfu></xsd:appinfo>
       <xsd:documentation>Category=MicroscopyBasics</xsd:documentation>
-      <xsd:documentation>Description=This element describes the instrument used to capture the Image. It is primarily a container for manufacturer's model and catalog numbers for the Microscope, LightSource, Detector, Objective and Filters components. The Objective element contains the additional elements LensNA and Magnification. The Filters element can be composed either of separate excitation, emission filters and a dichroic mirror or a single filter set. Within the Image itself, a reference is made to this one Filter element. There may be multiple light sources, detectors, objectives and filters on a microscope. Each of these has their own ID attribute, which can be referred to from Channel. It is understood that the light path configuration can be different for each channel, but cannot be different for each timepoint or each plane of an XYZ stack</xsd:documentation>
+      <xsd:documentation>Description=This element describes the instrument used to capture the Image. It is primarily a container referring to the microscope's components list, which include the Microscope Body, Microscope Table, LightSource, LightSourceCoupling, SampleHolder, Focusing devices, Objective, Optovar, Filter, Dichroic, AdditionalOptics, Detector and CalibrationTool. The Filter element can be composed either of separate excitation, emission filters and a dichroic mirror or a single filter set. Within the Image itself, a reference is made to this one Filter element. There may be multiple light sources, detectors, objectives and filters etc. in an Instrument. Each of these has their own ID attribute, which can be referred to from Channel. It is understood that the light path configuration can be different for each channel, but cannot be different for each timepoint or each plane of an XYZ stack.</xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
@@ -1296,7 +1296,7 @@
         <xsd:element ref="AnnotationRef" minOccurs="0" maxOccurs="1">
           <xsd:annotation>
             <xsd:appinfo><xsdfu xmlns=""><manytomany/></xsdfu></xsd:appinfo>
-            <xsd:documentation>Description=The AnnotationRef element is a reference to an element derived from the CommentAnnotation element, which consists of a simple comment multi-line annotation.</xsd:documentation>
+            <xsd:documentation>Description=This is a simple multi-line comment or annotation describing this component.</xsd:documentation>
             <xsd:documentation>Tier=2</xsd:documentation>
           </xsd:annotation>
         </xsd:element>
@@ -1342,7 +1342,7 @@
         </xsd:element>
         <xsd:element minOccurs="0" name="AnnotationRef">
           <xsd:annotation>
-            <xsd:documentation>Description=The AnnotationRef element is a reference to an element derived from the CommentAnnotation element, which consists of a simple comment multi-line annotation.</xsd:documentation>
+            <xsd:documentation>Description=This is a simple multi-line comment or annotation describing this component.</xsd:documentation>
             <xsd:documentation>Tier=3</xsd:documentation>
           </xsd:annotation>
           <xsd:complexType>
@@ -1432,7 +1432,7 @@
         <xsd:element maxOccurs="unbounded" minOccurs="0" ref="FIeldCalibration"/>
         <xsd:element minOccurs="0" name="AnnotationRef">
           <xsd:annotation>
-            <xsd:documentation>Description=The AnnotationRef element is a reference to an element derived from the CommentAnnotation element, which consists of a simple comment multi-line annotation.</xsd:documentation>
+            <xsd:documentation>Description=This is a simple multi-line comment or annotation describing this component.</xsd:documentation>
             <xsd:documentation>Tier=3</xsd:documentation>
           </xsd:annotation>
           <xsd:complexType>
@@ -1732,7 +1732,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
         </xsd:element>
         <xsd:element minOccurs="0" name="AnnotationRef">
           <xsd:annotation>
-            <xsd:documentation>Description=The AnnotationRef element is a reference to an element derived from the CommentAnnotation element, which consists of a simple comment multi-line annotation.</xsd:documentation>
+            <xsd:documentation>Description=This is a simple multi-line comment or annotation describing this component.</xsd:documentation>
             <xsd:documentation>Tier=3</xsd:documentation>
           </xsd:annotation>
           <xsd:complexType>
@@ -1779,7 +1779,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
             </xsd:element>
             <xsd:element minOccurs="0" name="AnnotationRef">
               <xsd:annotation>
-                <xsd:documentation>Description=The AnnotationRef element is a reference to an element derived from the CommentAnnotation element, which consists of a simple comment multi-line annotation.</xsd:documentation>
+                <xsd:documentation>Description=This is a simple multi-line comment or annotation describing this component.</xsd:documentation>
                 <xsd:documentation>Tier=3</xsd:documentation>
               </xsd:annotation>
               <xsd:complexType>
@@ -1842,7 +1842,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
         </xsd:element>
         <xsd:element minOccurs="0" ref="AnnotationRef">
           <xsd:annotation>
-            <xsd:documentation>Description=The AnnotationRef element is a reference to an element derived from the CommentAnnotation element, which consists of a simple comment multi-line annotation.</xsd:documentation>
+            <xsd:documentation>Description=This is a simple multi-line comment or annotation describing this component.</xsd:documentation>
             <xsd:documentation>Tier=2</xsd:documentation>
           </xsd:annotation>
         </xsd:element>
@@ -2078,7 +2078,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
           <xsd:attribute name="EyePieceFieldNumber" type="xsd:float">
             <xsd:annotation>
               <xsd:documentation>Description=The Field Number represents the diaphragm size of the microscope eyepiece expressed in mm.</xsd:documentation>
-              <xsd:documentation>Tier=3</xsd:documentation>
+              <xsd:documentation>Tier=5</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
         </xsd:extension>
@@ -2097,7 +2097,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
           <xsd:sequence>
             <xsd:element minOccurs="0" name="AnnotationRef">
               <xsd:annotation>
-                <xsd:documentation>Description=The AnnotationRef element is a reference to an element derived from the CommentAnnotation element, which consists of a simple comment multi-line annotation.</xsd:documentation>
+                <xsd:documentation>Description=This is a simple multi-line comment or annotation describing this component.</xsd:documentation>
                 <xsd:documentation>Tier=4</xsd:documentation>
               </xsd:annotation>
               <xsd:complexType>
@@ -2131,7 +2131,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
               <xsd:documentation>Tier=5</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="TableWidthUnit" type="UnitsLength">
+          <xsd:attribute name="TableWidthUnit" type="UnitsLength" default="cm">
             <xsd:annotation>
               <xsd:documentation>Tier=5</xsd:documentation>
             </xsd:annotation>
@@ -2142,7 +2142,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
               <xsd:documentation>Tier=5</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="TableDepthUnit" type="UnitsLength">
+          <xsd:attribute name="TableDepthUnit" type="UnitsLength" default="cm">
             <xsd:annotation>
               <xsd:documentation>Tier=5</xsd:documentation>
             </xsd:annotation>
@@ -2165,7 +2165,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
           <xsd:sequence>
             <xsd:element minOccurs="0" name="AnnotationRef">
               <xsd:annotation>
-                <xsd:documentation>Description=The AnnotationRef element is a reference to an element derived from the CommentAnnotation element, which consists of a simple comment multi-line annotation.</xsd:documentation>
+                <xsd:documentation>Description=This is a simple multi-line comment or annotation describing this component.</xsd:documentation>
                 <xsd:documentation>Tier=3</xsd:documentation>
               </xsd:annotation>
               <xsd:complexType>
@@ -2375,7 +2375,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
           <xsd:sequence>
             <xsd:element minOccurs="0" name="AnnotationRef">
               <xsd:annotation>
-                <xsd:documentation>Description=The AnnotationRef element is a reference to an element derived from the CommentAnnotation element, which consists of a simple comment multi-line annotation.</xsd:documentation>
+                <xsd:documentation>Description=This is a simple multi-line comment or annotation describing this component.</xsd:documentation>
                 <xsd:documentation>Tier=3</xsd:documentation>
               </xsd:annotation>
               <xsd:complexType>
@@ -2594,7 +2594,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
           <xsd:element ref="AnnotationRef" minOccurs="0" maxOccurs="1">
             <xsd:annotation>
               <xsd:appinfo><xsdfu xmlns=""><manytomany/></xsdfu></xsd:appinfo>
-              <xsd:documentation>Description=The AnnotationRef element is a reference to an element derived from the CommentAnnotation element, which consists of a simple comment multi-line annotation.</xsd:documentation>
+              <xsd:documentation>Description=This is a simple multi-line comment or annotation describing this component.</xsd:documentation>
               <xsd:documentation>Tier=2</xsd:documentation>
             </xsd:annotation>
           </xsd:element>
@@ -2611,13 +2611,13 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
             <xsd:documentation>Tier=1</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
-        <xsd:attribute name="NominalPower" use="required" type="xsd:float">
+        <xsd:attribute name="NominalPowerOutput" use="required" type="xsd:float">
           <xsd:annotation>
-            <xsd:documentation>Description=The nominal power of the light-source</xsd:documentation>
+            <xsd:documentation>Description=The average nominal power output of this light-source.</xsd:documentation>
             <xsd:documentation>Tier=3</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
-        <xsd:attribute name="NominalPowerUnit" use="optional" default="mW" type="UnitsPower">
+        <xsd:attribute name="NominalPowerOutputUnit" use="optional" default="W" type="UnitsPower">
           <xsd:annotation>
             <xsd:documentation>Tier=3</xsd:documentation>
           </xsd:annotation>
@@ -2660,7 +2660,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
           </xsd:attribute>
           <xsd:attribute name="Wavelength" use="required" type="PositiveFloat">
             <xsd:annotation>
-              <xsd:documentation>Description=The Wavelength of the laser</xsd:documentation>
+              <xsd:documentation>Description=The center Wavelength of the light emitted by this laser.</xsd:documentation>
               <xsd:documentation>Tier=2</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
@@ -2791,7 +2791,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
     <xsd:complexType>
       <xsd:attribute name="PeakWavelenght" type="xsd:float" use="required">
         <xsd:annotation>
-          <xsd:documentation>Description=The wavelength at which there is maximal response rate.</xsd:documentation>
+          <xsd:documentation>Description=The nominal wavelength at which the amount of light power output is at a maximum.</xsd:documentation>
           <xsd:documentation>Tier=2</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
@@ -2800,13 +2800,13 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
           <xsd:documentation>Tier=2</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
-      <xsd:attribute name="LumenPower" type="xsd:float" use="required">
+      <xsd:attribute name="PeakPower" type="xsd:float" use="required">
         <xsd:annotation>
-          <xsd:documentation>Description=The amount of light this light source generate at maximum expressed in lumen. The lumen is the SI derived unit of luminous flux, a measure of the total quantity of visible light emitted by a source.</xsd:documentation>
+          <xsd:documentation>Description=The nominal light power output generated at peak wavelenght.</xsd:documentation>
           <xsd:documentation>Tier=3</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
-      <xsd:attribute name="LumenPowerUnit" type="UnitsPower">
+      <xsd:attribute name="PeakPowerUnit" type="UnitsPower" default="W">
         <xsd:annotation>
           <xsd:documentation>Tier=3</xsd:documentation>
         </xsd:annotation>
@@ -2861,7 +2861,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
     <xsd:annotation>
       <xsd:appinfo><xsdfu xmlns=""><plural>GenericExcitationSources</plural></xsdfu></xsd:appinfo>
       <xsd:documentation>Category=LightSource</xsd:documentation>
-      <xsd:documentation>Description=The GenericExcitationSource element is used to represent a source as a collection of key/value pairs, stored in a Map. The other lightsource objects should always be used in preference to this if possible.</xsd:documentation>
+      <xsd:documentation>Description=The GenericExcitationSource element is used to represent a light source as a collection of key/value pairs, stored in a Map. One of the other light source elements should always be used in preference to this if possible.</xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
       <xsd:documentation>Split=[Transmitted_LightSource; Fluorescence_LightSource]</xsd:documentation>
     </xsd:annotation>
@@ -2871,6 +2871,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
           <xsd:sequence>
             <xsd:element name="Map" type="Map" minOccurs="0" maxOccurs="1">
               <xsd:annotation>
+                <xsd:documentation>Category=ChildElement</xsd:documentation>
                 <xsd:documentation>Description=This is a Mapping of key/value pairs used to store customized metadata that describes this element.</xsd:documentation>
                 <xsd:documentation>Tier=3</xsd:documentation>
               </xsd:annotation>
@@ -2919,7 +2920,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
           </xsd:element>
           <xsd:element minOccurs="0" name="AnnotationRef">
             <xsd:annotation>
-              <xsd:documentation>Description=The AnnotationRef element is a reference to an element derived from the CommentAnnotation element, which consists of a simple comment multi-line annotation.</xsd:documentation>
+              <xsd:documentation>Description=This is a simple multi-line comment or annotation describing this component.</xsd:documentation>
               <xsd:documentation>Tier=4</xsd:documentation>
             </xsd:annotation>
             <xsd:complexType>
@@ -3153,7 +3154,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
         <xsd:element minOccurs="0" ref="AdditionalOptics"/>
         <xsd:element minOccurs="0" name="AnnotationRef">
           <xsd:annotation>
-            <xsd:documentation>Description=The AnnotationRef element is a reference to an element derived from the CommentAnnotation element, which consists of a simple comment multi-line annotation.</xsd:documentation>
+            <xsd:documentation>Description=This is a simple multi-line comment or annotation describing this component.</xsd:documentation>
             <xsd:documentation>Tier=3</xsd:documentation>
           </xsd:annotation>
           <xsd:complexType>
@@ -4198,7 +4199,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
     <xsd:annotation>
       <xsd:appinfo><xsdfu xmlns=""><plural>GenericExcitationSources</plural></xsdfu></xsd:appinfo>
       <xsd:documentation>Category=Detector</xsd:documentation>
-      <xsd:documentation>Description=The GenericDetector element is used to represent a detector as a collection of key/value pairs, stored in a Map. The other detector objects should always be used in preference to this if possible.</xsd:documentation>
+      <xsd:documentation>Description=The GenericDetector element is used to represent a detector as a collection of key/value pairs, stored in a Map. One of the other detector elements should always be used in preference to this if possible.</xsd:documentation>
       <xsd:documentation>Tier=2</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
@@ -4207,6 +4208,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
           <xsd:sequence>
             <xsd:element name="Map" type="Map">
               <xsd:annotation>
+                <xsd:documentation>Category=ChildElement</xsd:documentation>
                 <xsd:documentation>Description=This is a Mapping of key/value pairs used to store customized metadata that describes this element.</xsd:documentation>
                 <xsd:documentation>Tier=3</xsd:documentation>
               </xsd:annotation>
@@ -4543,27 +4545,47 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
     <!-- top level definition -->
     <xsd:annotation>
       <xsd:appinfo><xsdfu xmlns=""><plural>LightSourceSettingsCombinations</plural></xsdfu></xsd:appinfo>
+      <xsd:documentation>Domain=ImageAcquisitionSettings</xsd:documentation>
+      <xsd:documentation>Category=Settings</xsd:documentation>
+      <xsd:documentation>Description=This holds the setting applied to a LightSource e as well as a reference to the LightSource (the ID attribute) in question. The ID referes to the LightSource used in this case.</xsd:documentation>
+      <xsd:documentation>Tier=3</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
       <xsd:complexContent>
         <xsd:extension base="Settings">
-          <xsd:attribute name="ID" use="required" type="LightSourceID"/>
-          <xsd:attribute name="Attenuation" use="optional" type="PercentFraction">
+          <xsd:attribute name="ID" use="required" type="LightSourceID">
             <xsd:annotation>
-              <xsd:documentation>The Attenuation of the light source. A fraction, as a value from 0.0 to 1.0.</xsd:documentation>
+              <xsd:documentation>Tier=3</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
           <xsd:attribute name="Wavelength" use="required" type="PositiveFloat">
             <xsd:annotation>
-              <xsd:documentation>The Wavelength of the light source. Units are set by WavelengthUnit.
+              <xsd:documentation>Description=The nominal wavelength of the excitation light utilized in this case.
               </xsd:documentation>
+              <xsd:documentation>Tier=3</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
           <xsd:attribute name="WavelengthUnit" use="optional" default="nm" type="UnitsLength">
             <xsd:annotation>
-              <xsd:documentation>
-                The units of the Wavelength of the light source - default:nanometres[nm]
-              </xsd:documentation>
+              <xsd:documentation>Description=The units of the Wavelength of the light source - default:nanometres[nm].</xsd:documentation>
+              <xsd:documentation>Tier=3</xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
+          <xsd:attribute name="PowerSettings" type="xsd:float">
+            <xsd:annotation>
+              <xsd:documentation>Description=The light power output settings utilized in this case.</xsd:documentation>
+              <xsd:documentation>Tier=3</xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
+          <xsd:attribute default="W" name="PowerSettingsUnit" type="UnitsPower">
+            <xsd:annotation>
+              <xsd:documentation>Tier=3</xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
+          <xsd:attribute name="Attenuation" use="optional" type="PercentFraction">
+            <xsd:annotation>
+              <xsd:documentation>Description=The observed attenuation of the excitation light power expressed as a fractional value from 0.0 to 1.0.</xsd:documentation>
+              <xsd:documentation>Tier=5</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
         </xsd:extension>
@@ -4918,7 +4940,7 @@ PlaneInfo (as Plane)
   <xsd:element name="AnnotationRef">
     <!-- top level definition -->
     <xsd:annotation>
-      <xsd:documentation>Description=The AnnotationRef element is a reference to an element derived from the CommentAnnotation element, which consists of a simple comment multi-line annotation.</xsd:documentation>
+      <xsd:documentation>Description=This is a simple multi-line comment or annotation describing this component.</xsd:documentation>
       <xsd:documentation>Tier=2</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
@@ -7969,8 +7991,10 @@ annotation refs from the base Annotation to form the list.</xsd:documentation>
     <xsd:restriction base="xsd:string">
       <xsd:enumeration value="Upright"/>
       <xsd:enumeration value="Inverted"/>
+      <xsd:enumeration value="Custom Made"/>
       <xsd:enumeration value="Dissection"/>
       <xsd:enumeration value="Electrophysiology"/>
+      <xsd:enumeration value="Stereomicroscope"/>
       <xsd:enumeration value="Other"/>
     </xsd:restriction>
   </xsd:simpleType>
@@ -8072,7 +8096,7 @@ annotation refs from the base Annotation to form the list.</xsd:documentation>
     <xsd:restriction base="xsd:string">
       <xsd:enumeration value="Unmounted"/>
       <xsd:enumeration value="Mounted"/>
-      <xsd:enumeration value="Collimate"/>
+      <xsd:enumeration value="Collimated"/>
       <xsd:enumeration value="Other"/>
     </xsd:restriction>
   </xsd:simpleType>
@@ -8636,7 +8660,7 @@ annotation refs from the base Annotation to form the list.</xsd:documentation>
         </xsd:element>
         <xsd:element minOccurs="0" name="AnnotationRef">
           <xsd:annotation>
-            <xsd:documentation>Description=The AnnotationRef element is a reference to an element derived from the CommentAnnotation element, which consists of a simple comment multi-line annotation.</xsd:documentation>
+            <xsd:documentation>Description=This is a simple multi-line comment or annotation describing this component.</xsd:documentation>
             <xsd:documentation>Tier=3</xsd:documentation>
           </xsd:annotation>
           <xsd:complexType>
@@ -8711,7 +8735,7 @@ annotation refs from the base Annotation to form the list.</xsd:documentation>
         </xsd:element>
         <xsd:element minOccurs="0" name="AnnotationRef">
           <xsd:annotation>
-            <xsd:documentation>Description=The AnnotationRef element is a reference to an element derived from the CommentAnnotation element, which consists of a simple comment multi-line annotation.</xsd:documentation>
+            <xsd:documentation>Description=This is a simple multi-line comment or annotation describing this component.</xsd:documentation>
             <xsd:documentation>Tier=3</xsd:documentation>
           </xsd:annotation>
           <xsd:complexType>
@@ -8992,7 +9016,7 @@ annotation refs from the base Annotation to form the list.</xsd:documentation>
           <xsd:sequence>
             <xsd:element minOccurs="0" name="AnnotationRef">
               <xsd:annotation>
-                <xsd:documentation>Description=The AnnotationRef element is a reference to an element derived from the CommentAnnotation element, which consists of a simple comment multi-line annotation.</xsd:documentation>
+                <xsd:documentation>Description=This is a simple multi-line comment or annotation describing this component.</xsd:documentation>
                 <xsd:documentation>Tier=3</xsd:documentation>
               </xsd:annotation>
               <xsd:complexType>
@@ -9035,7 +9059,7 @@ annotation refs from the base Annotation to form the list.</xsd:documentation>
       </xsd:element>
       <xsd:element minOccurs="0" name="AnnotationRef">
         <xsd:annotation>
-          <xsd:documentation>Description=The AnnotationRef element is a reference to an element derived from the CommentAnnotation element, which consists of a simple comment multi-line annotation.</xsd:documentation>
+          <xsd:documentation>Description=This is a simple multi-line comment or annotation describing this component.</xsd:documentation>
           <xsd:documentation>Tier=3</xsd:documentation>
         </xsd:annotation>
         <xsd:complexType>
@@ -9063,24 +9087,36 @@ annotation refs from the base Annotation to form the list.</xsd:documentation>
         <xsd:documentation>Tier=3</xsd:documentation>
       </xsd:annotation>
     </xsd:attribute>
-    <xsd:attribute name="ObservedExcitationWavelenghtUnit" type="UnitsLength">
+    <xsd:attribute name="ObservedExcitationWavelenghtUnit" type="UnitsLength" default="nm">
       <xsd:annotation>
         <xsd:documentation>Tier=3</xsd:documentation>
       </xsd:annotation>
     </xsd:attribute>
-    <xsd:attribute name="ObservedExcitationPower" type="xsd:float">
+    <xsd:attribute name="ObservedExcitationPowerAtObjective" type="xsd:float">
       <xsd:annotation>
-        <xsd:documentation>Description=Observed mean excitation light irradiance as measured at the sample plane over the Field of View (FOV).</xsd:documentation>
+        <xsd:documentation>Description=The observed excitation light power measured at the back of the objective.</xsd:documentation>
+        <xsd:documentation>Tier=3</xsd:documentation>
       </xsd:annotation>
     </xsd:attribute>
-    <xsd:attribute name="ObservedExcitationPowerUnit" type="UnitsPower">
+    <xsd:attribute name="ObservedExcitationPowerAtObjectiveUnit" type="UnitsPower" default="W">
+      <xsd:annotation>
+        <xsd:documentation>Tier=3</xsd:documentation>
+      </xsd:annotation>
+    </xsd:attribute>
+    <xsd:attribute name="ObservedExcitationIrradiance" type="xsd:float">
+      <xsd:annotation>
+        <xsd:documentation>Description=Observed mean excitation light irradiance (radiant power per unit area) as measured at the sample plane over the Field of View (FOV). </xsd:documentation>
+        <xsd:documentation>Tier=3</xsd:documentation>
+      </xsd:annotation>
+    </xsd:attribute>
+    <xsd:attribute default="W" name="ObservedExcitationIrradianceUnit" type="UnitsPower">
       <xsd:annotation>
         <xsd:documentation>Tier=3</xsd:documentation>
       </xsd:annotation>
     </xsd:attribute>
     <xsd:attribute name="ObservedExcitationVariance" type="xsd:float">
       <xsd:annotation>
-        <xsd:documentation>Description=Observed irradiance variation over the Field of View (FOV).</xsd:documentation>
+        <xsd:documentation>Description=Observed excitation light irradiance (radiant power per unit area) variation over the Field of View (FOV).</xsd:documentation>
         <xsd:documentation>Tier=3</xsd:documentation>
       </xsd:annotation>
     </xsd:attribute>
@@ -9093,6 +9129,8 @@ annotation refs from the base Annotation to form the list.</xsd:documentation>
 
   <xsd:element name="ExcitationCalibration" substitutionGroup="IntensityCalibrationGroup">
     <xsd:annotation>
+      <xsd:documentation>Domain=ImageAcquisitionSettings</xsd:documentation>
+      <xsd:documentation>Category=Calibration</xsd:documentation>
       <xsd:documentation>Description=This procedure measures the performance and allows calibration of the wavelength and irradiance of the excitation light.</xsd:documentation>
       <xsd:documentation>Tier=3</xsd:documentation>
     </xsd:annotation>
@@ -9214,7 +9252,7 @@ annotation refs from the base Annotation to form the list.</xsd:documentation>
         <xsd:element minOccurs="0" ref="AutoFocusRef"/>
         <xsd:element minOccurs="0" name="AnnotationRef">
           <xsd:annotation>
-            <xsd:documentation>Description=The AnnotationRef element is a reference to an element derived from the CommentAnnotation element, which consists of a simple comment multi-line annotation.</xsd:documentation>
+            <xsd:documentation>Description=This is a simple multi-line comment or annotation describing this component.</xsd:documentation>
             <xsd:documentation>Tier=4</xsd:documentation>
           </xsd:annotation>
           <xsd:complexType>
