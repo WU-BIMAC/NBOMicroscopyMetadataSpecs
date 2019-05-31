@@ -3100,7 +3100,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
           </xsd:attribute>
           <xsd:attribute name="Mount" type="xsd:string" use="required">
             <xsd:annotation>
-              <xsd:documentation>Description=The mount utilized to attach a LightSource to the microscope</xsd:documentation>
+              <xsd:documentation>Description=The mount utilized to attach the available light sources to this microscope body.</xsd:documentation>
               <xsd:documentation>Tier=5</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
