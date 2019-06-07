@@ -2177,17 +2177,17 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
           </xsd:sequence>
           <xsd:attribute name="Type" type="SampleHolderType" use="required">
             <xsd:annotation>
-              <xsd:documentation>Description=The type of sample holder.</xsd:documentation>
+              <xsd:documentation>Description=The type of this sample holder.</xsd:documentation>
               <xsd:documentation>Tier=5</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
           <xsd:attribute name="RotationAngle" type="xsd:float">
             <xsd:annotation>
-              <xsd:documentation>Description=The angle by which this device is capable of rotating</xsd:documentation>
+              <xsd:documentation>Description=The angle by which this sample holder is capable of rotating.</xsd:documentation>
               <xsd:documentation>Tier=5</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="RotationAngleUnit" type="UnitsAngle">
+          <xsd:attribute name="RotationAngleUnit" type="UnitsAngle" default="deg">
             <xsd:annotation>
               <xsd:documentation>Tier=5</xsd:documentation>
             </xsd:annotation>
@@ -2198,12 +2198,12 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
   </xsd:element>
   <xsd:element name="FocusingGroup" abstract="true" type="Focusing">
     <xsd:annotation>
-      <xsd:documentation>Description=This element describes the objective lens and stage positioning device(s) available in this microscope. An instrument may have more than one of these devices. The type of focusing device is specified by one of the child-element which are 'MechanicalStage', 'PiezoElectricSage', 'ObjectiveTurret' or 'PiezoElectricObjective'.</xsd:documentation>
+      <xsd:documentation>Description=This describes the objective lens and stage positioning device(s) available for this instrument. An instrument may have more than one of these devices of different type, such as mechanical stage, piezoelectric stage, objective turret and piezoelectric objective.</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
   <xsd:complexType name="Focusing">
     <xsd:annotation>
-      <xsd:documentation>This element describes the objective lens and stage positioning device(s) available in this microscope. An instrument may have more than one of these devices. The type of focusing device is specified by one of the child-element which are 'MechanicalStage', 'PiezoElectricSate', or 'PiezoElectricObjective'. </xsd:documentation>
+      <xsd:documentation>Description=This describes the objective lens and stage positioning device(s) available for this instrument. An instrument may have more than one of these devices of different type, such as mechanical stage, piezoelectric stage, objective turret and piezoelectric objective.</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="Stage">
@@ -2250,7 +2250,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
   <xsd:element name="MechanicalStage" substitutionGroup="FocusingGroup">
     <xsd:annotation>
       <xsd:documentation>Category=SampleHolderAndFocusing.Focusing</xsd:documentation>
-      <xsd:documentation>Description=This is a mechanical stage positioning device</xsd:documentation>
+      <xsd:documentation>Description=The mechanical stage positioning device associated with this instrument. It is not very common but can be found in simple surveying microscopes.</xsd:documentation>
       <xsd:documentation>Tier=3</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
@@ -2262,7 +2262,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
   <xsd:element name="PiezoElectricStage" substitutionGroup="FocusingGroup">
     <xsd:annotation>
       <xsd:documentation>Category=SampleHolderAndFocusing.Focusing</xsd:documentation>
-      <xsd:documentation>Description=This is a piezoelectric stage positioning device.</xsd:documentation>
+      <xsd:documentation>Description=The optional piezoelectric stage positioning device associated with this instrument.</xsd:documentation>
       <xsd:documentation>Tier=3</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
@@ -2274,7 +2274,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
   <xsd:element name="ObjectiveTurret" substitutionGroup="FocusingGroup">
     <xsd:annotation>
       <xsd:documentation>Category=SampleHolderAndFocusing.Focusing</xsd:documentation>
-      <xsd:documentation>Description=This is a objective turret positoning device.</xsd:documentation>
+      <xsd:documentation>Description=The objective turret positoning device associated with this instrument.</xsd:documentation>
       <xsd:documentation>Tier=3</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
@@ -2286,7 +2286,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
   <xsd:element name="PiezoElectricObjective" substitutionGroup="FocusingGroup">
     <xsd:annotation>
       <xsd:documentation>Category=SampleHolderAndFocusing.Focusing</xsd:documentation>
-      <xsd:documentation>Description=This is a piezoelectric objective-lens positioning device</xsd:documentation>
+      <xsd:documentation>Description=The optional piezoelectric objective positioning device associated with this instrument.</xsd:documentation>
       <xsd:documentation>Tier=3</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
@@ -2312,13 +2312,13 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
         </xsd:attribute>
         <xsd:attribute name="MovementAxes" use="optional" default="Z" type="StageMovementAxes">
           <xsd:annotation>
-            <xsd:documentation>Description=The axis along which this device moves.</xsd:documentation>
+            <xsd:documentation>Description=The axes or axis along which this device is capable of moving.</xsd:documentation>
             <xsd:documentation>Tier=5</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
         <xsd:attribute name="XTravelRange" type="xsd:float" use="required">
           <xsd:annotation>
-            <xsd:documentation>Description=The X axis range this device is capable of moving in</xsd:documentation>
+            <xsd:documentation>Description=The range this device is capable of moving in along the X axis.</xsd:documentation>
             <xsd:documentation>Tier=5</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
@@ -2329,7 +2329,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
         </xsd:attribute>
         <xsd:attribute name="YTravelRange" type="xsd:float" use="required">
           <xsd:annotation>
-            <xsd:documentation>Description=The Y axis range this device is capable of moving in</xsd:documentation>
+            <xsd:documentation>Description=The range this device is capable of moving in along the Y axis.</xsd:documentation>
             <xsd:documentation>Tier=5</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
@@ -2340,7 +2340,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
         </xsd:attribute>
         <xsd:attribute name="ZTravelRange" type="xsd:float" use="required">
           <xsd:annotation>
-            <xsd:documentation>Description=The Z axis range this device is capable of moving in</xsd:documentation>
+            <xsd:documentation>Description=The range this device is capable of moving in along the Z axis.</xsd:documentation>
             <xsd:documentation>Tier=5</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
@@ -2351,7 +2351,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
         </xsd:attribute>
         <xsd:attribute name="MaxVelocity" type="xsd:float">
           <xsd:annotation>
-            <xsd:documentation>Description=The maximum velocity this device is capable of moving at</xsd:documentation>
+            <xsd:documentation>Description=The maximum velocity at which this device is capable of moving.</xsd:documentation>
             <xsd:documentation>Tier=5</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
@@ -2366,7 +2366,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
   <xsd:element name="AutoFocus">
     <xsd:annotation>
       <xsd:documentation>Category=SampleHolderAndFocusing.Focusing</xsd:documentation>
-      <xsd:documentation>Description=This element describes the focus stabilization device(s) available for this microscope.</xsd:documentation>
+      <xsd:documentation>Description=This element describes one or more optional focus stabilization device(s) available for this instrument.</xsd:documentation>
       <xsd:documentation>Tier=3</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
@@ -2414,7 +2414,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
     <xsd:annotation>
       <xsd:appinfo><xsdfu xmlns=""><plural>Objectives</plural></xsdfu></xsd:appinfo>
       <xsd:documentation>Category=Magnification</xsd:documentation>
-      <xsd:documentation>Description=A description of the microscope's objective lens. Required elements include the lens numerical aperture, and the magnification, both of which a floating point (real) numbers. The values are those that are fixed for a particular objective: either because it has been manufactured to this specification or the value has been measured on this particular objective. Correction: This is the type of correction coating applied to this lens. Immersion: This is the types of immersion medium the lens is designed to work with. It is not the same as 'Medium' in ObjectiveRef (a single type) as here Immersion can have compound values like 'Multi'. LensNA: The numerical aperture of the lens (as a float) NominalMagnification: The specified magnification e.g. x10 CalibratedMagnification: The measured magnification e.g. x10.3 WorkingDistance: WorkingDistance of the lens</xsd:documentation>
+      <xsd:documentation>Description=A microscope's objective lens is a compound lens consisting of several simple lenses (elements), usually arranged along a common axis.</xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
@@ -2442,7 +2442,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
           <xsd:attribute name="Correction" use="required" form="unqualified"
             type="ObjectiveCorrection">
             <xsd:annotation>
-              <xsd:documentation>Description=The correction applied to the lens.</xsd:documentation>
+              <xsd:documentation>Description=The type of optical correction (i.e. chromatict, flatness, etc.) associated with this objective.</xsd:documentation>
               <xsd:documentation>Tier=2</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
@@ -2454,20 +2454,20 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
           </xsd:attribute>
           <xsd:attribute name="CalibratedMagnification" use="optional" type="xsd:float">
             <xsd:annotation>
-              <xsd:documentation>Description=The magnification of the lens as measured by a calibration process- i.e. '59.987' for a 60X lens.</xsd:documentation>
+              <xsd:documentation>Description=The magnification of the lens as measured via a calibration process- i.e. '59.987' for a 60X lens.</xsd:documentation>
               <xsd:documentation>Tier=5</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
           <xsd:attribute name="LensNA" use="required" type="xsd:float">
             <xsd:annotation>
-              <xsd:documentation>Description=The numerical aperture of the lens expressed as a floating point (real) number. Expected range 0.02 - 1.5.</xsd:documentation>
+              <xsd:documentation>Description=The numerical aperture of this objective expressed as a floating point (real) number. Expected range 0.02 - 1.5.</xsd:documentation>
               <xsd:documentation>Tier=1</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
           <xsd:attribute name="NominalImmersionMedium" use="required"
             type="ObjectiveNominalImmersionMedium">
             <xsd:annotation>
-              <xsd:documentation>Description=The immersion medium the lens is designed for.</xsd:documentation>
+              <xsd:documentation>Description=The immersion medium this objective is designed for.</xsd:documentation>
               <xsd:documentation>Tier=2</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
@@ -2485,13 +2485,12 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
           </xsd:attribute>
           <xsd:attribute name="WorkingDistance" use="required" type="xsd:float">
             <xsd:annotation>
-              <xsd:documentation>Description=The working distance of the lens expressed as a floating point (real) number.</xsd:documentation>
+              <xsd:documentation>Description=The working distance of this objective, expressed as a floating point (real) number.</xsd:documentation>
               <xsd:documentation>Tier=3</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
           <xsd:attribute name="WorkingDistanceUnit" use="optional" default="mm" type="UnitsLength">
             <xsd:annotation>
-              <xsd:documentation>The units of the working distance - default:microns[µm]</xsd:documentation>
               <xsd:documentation>Tier=3</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
@@ -2538,7 +2537,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
   <xsd:element name="Optovar">
     <xsd:annotation>
       <xsd:documentation>Category=Magnification</xsd:documentation>
-      <xsd:documentation>Description=Optovars are magnification changing devices originally developed by Zeiss, which provide additional magnification that can be beneficial when a desired field of view is required for the imaging sensor. Magnification changer components are placed before the tube lens within the infinity space of the optical system. Typical magnification increments are: 1.25x, 1.6x, and 2x</xsd:documentation>
+      <xsd:documentation>Description=Optovars are magnification changing devices originally developed by Zeiss, which provide additional magnification that can be beneficial when a desired field of view is required for the imaging sensor. Magnification changers are placed before the tube lens within the infinity space of the optical system. Typical magnification increments are: 1.25x, 1.6x, and 2x.</xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
@@ -2561,13 +2560,13 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
           </xsd:attribute>
           <xsd:attribute name="Magnification" type="xsd:float">
             <xsd:annotation>
-              <xsd:documentation>Description=The magnification of the optovar lens as specified by the manufacturer.</xsd:documentation>
+              <xsd:documentation>Description=The magnification associated with this magnification changing lens, as specified by the manufacturer.</xsd:documentation>
               <xsd:documentation>Tier=1</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
           <xsd:attribute name="LensType" type="LensType" use="optional">
             <xsd:annotation>
-              <xsd:documentation>Description=The type of lens used by the Magnification Changer available with this microscope.</xsd:documentation>
+              <xsd:documentation>Description=The type of lens associated with this magnification changing device.</xsd:documentation>
               <xsd:documentation>Tier=5</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
@@ -2579,13 +2578,13 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
   <!-- Light elements -->
   <xsd:element name="LightSourceGroup" abstract="true" type="LightSource">
     <xsd:annotation>
-      <xsd:documentation>Description=This element describes the light source(s) available in this microscope.</xsd:documentation>
+      <xsd:documentation>Description=This describes the light source(s) available for this instrument. An instrument may have several light sources of different types (Laser, LightEmittingDiode, Filament, Arc etc.). A typical light-microscope has two light sources, one for transmitted light and one for fluorescence light.</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
   <xsd:complexType name="LightSource">
     <xsd:annotation>
       <xsd:appinfo><xsdfu xmlns=""><plural>LightSources</plural><abstract/></xsdfu></xsd:appinfo>
-      <xsd:documentation>The lightsource for the instrument. An instrument may have several light sources. The type of lightsource is specified by one of the child-elements which are 'Laser', 'Filament', 'Arc' or 'LightEmittingDiode'. Each of the light source types has its own Type attribute to further differentiate the light source (eg, Nd-YAG for Laser or Hg for Arc).
+      <xsd:documentation>Description=This describes the light source(s) available for this instrument. An instrument may have several light sources of different types (Laser, LightEmittingDiode, Filament, Arc etc.). A typical light-microscope has two light sources, one for transmitted light and one for fluorescence light.
       </xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
@@ -2905,16 +2904,19 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
   </xsd:element>
   <xsd:element name="LightSourceCouplingGroup" abstract="true" type="LightSourceCoupling">
     <xsd:annotation>
-      <xsd:documentation>Description=This element describes the method(s) used to couple the light source with the microscope body to transfer light to the specimen.</xsd:documentation>
+      <xsd:documentation>Description=This element describes the device(s)/method(s) used to couple the available light source(s) with this microscope body in order to transfer light to the specimen. A typical light-microscope has a light coupling device for each available light source.</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
   <xsd:complexType name="LightSourceCoupling">
+    <xsd:annotation>
+      <xsd:documentation>Description=This element describes the device(s)/method(s) used to couple the available light source(s) with this microscope body in order to transfer light to the specimen. A typical light-microscope has a light coupling device for each available light source.</xsd:documentation>
+    </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="ManufacturerSpec">
         <xsd:sequence>
           <xsd:element name="CouplingLensRef" type="LensRef" minOccurs="0">
             <xsd:annotation>
-              <xsd:documentation>Description=This is a reference to a lens positioned at connector between this light source coupling element and the microscope body.</xsd:documentation>
+              <xsd:documentation>Description=This is a reference to a lens positioned at the connection between this light source coupling element and the microscope body.</xsd:documentation>
               <xsd:documentation>Tier=5</xsd:documentation>
             </xsd:annotation>
           </xsd:element>
@@ -2971,7 +2973,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
           </xsd:attribute>
           <xsd:attribute name="PeakWavelength" type="xsd:float" use="required">
             <xsd:annotation>
-              <xsd:documentation>Description=The wavelength associated with maximum light intensity transmitted by this light guide</xsd:documentation>
+              <xsd:documentation>Description=The wavelength associated with the transmittance peak for this light guide.</xsd:documentation>
               <xsd:documentation>Tier=5</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
@@ -2982,58 +2984,58 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
           </xsd:attribute>
           <xsd:attribute name="RefractiveIndex" type="xsd:float" use="required">
             <xsd:annotation>
-              <xsd:documentation>Description=The refractive index of the material this light guide is made of</xsd:documentation>
+              <xsd:documentation>Description=The refractive index of the material this light guide is made of.</xsd:documentation>
               <xsd:documentation>Tier=5</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
           <xsd:attribute name="NumericalAperture" type="xsd:float" use="required">
             <xsd:annotation>
-              <xsd:documentation>Description=The numerical aperture of the light guide expressed as a floating point (real) number. Expected range 0.02 - 1.5</xsd:documentation>
+              <xsd:documentation>Description=The numerical aperture of this light guide expressed as a floating point (real) number. Expected range 0.02 - 1.5.</xsd:documentation>
               <xsd:documentation>Tier=5</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
           <xsd:attribute name="AcceptanceAngle" type="xsd:float" use="required">
             <xsd:annotation>
-              <xsd:documentation>Description=The angle within which light beam may be coupled into the bound modes of an optical fiber.</xsd:documentation>
+              <xsd:documentation>Description=The angle within which the light beam produced by a light source may be coupled with the bound modes of this light guide.</xsd:documentation>
               <xsd:documentation>Tier=5</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="AcceptanceAngleUnit" type="UnitsAngle">
+          <xsd:attribute name="AcceptanceAngleUnit" type="UnitsAngle" default="deg">
             <xsd:annotation>
               <xsd:documentation>Tier=5</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
           <xsd:attribute name="Geometry" type="LightGuideGeometry">
             <xsd:annotation>
-              <xsd:documentation>Description=The shape of this LightGuide</xsd:documentation>
+              <xsd:documentation>Description=The shape of this light guide.</xsd:documentation>
               <xsd:documentation>Tier=5</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
           <xsd:attribute name="MaterialName" type="LightGuideMaterialName">
             <xsd:annotation>
-              <xsd:documentation>Description=This records the chemical composition or the nonproprietary trade designation of the material used for this light guide</xsd:documentation>
+              <xsd:documentation>Description=The chemical composition or the non-proprietary trade designation of the material used for this light guide.</xsd:documentation>
               <xsd:documentation>Tier=5</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
           <xsd:attribute name="SingleMode" type="xsd:boolean">
             <xsd:annotation>
-              <xsd:documentation>Description=Records whether or not the light guide is single-mode. If not, then the guide is assumend to be multi-modal</xsd:documentation>
+              <xsd:documentation>Description=Whether or not this light guide is single-mode. If not, then the guide is assumend to be multi-modal.</xsd:documentation>
               <xsd:documentation>Tier=5</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
           <xsd:attribute name="WaveguideMode" type="LightGuideWaveguideMode">
             <xsd:annotation>
-              <xsd:documentation>Description=When boundary conditions are imposed by a physical structure, a wave of a particular frequency can be described in terms of a transverse mode (or superposition of such modes). These modes generally follow different propagation constants</xsd:documentation>
+              <xsd:documentation>Description=The transverse mode (or superposition of such modes) that are being imposed by this light guide onto the light wave traversing it. These modes generally follow different propagation constants.</xsd:documentation>
               <xsd:documentation>Tier=5</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
           <xsd:attribute name="Diameter" type="xsd:float">
             <xsd:annotation>
-              <xsd:documentation>Description=The outer diameter of the light guide</xsd:documentation>
+              <xsd:documentation>Description=The outer diameter of this light guide.</xsd:documentation>
               <xsd:documentation>Tier=5</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="DiameterUnit" type="UnitsLength">
+          <xsd:attribute name="DiameterUnit" type="UnitsLength" default="mm">
             <xsd:annotation>
               <xsd:documentation>Tier=5</xsd:documentation>
             </xsd:annotation>
@@ -3100,7 +3102,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
           </xsd:attribute>
           <xsd:attribute name="Mount" type="xsd:string" use="required">
             <xsd:annotation>
-              <xsd:documentation>Description=The mount utilized to attach the available light sources to this microscope body.</xsd:documentation>
+              <xsd:documentation>Description=The mount utilized to couple the available light sources to this microscope body.</xsd:documentation>
               <xsd:documentation>Tier=5</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
@@ -3234,6 +3236,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
   <xsd:complexType name="FIlter">
     <xsd:annotation>
       <xsd:appinfo><xsdfu xmlns=""><plural>Filters</plural></xsdfu></xsd:appinfo>
+      <xsd:documentation>Description=This describes an optical filter positioned in the light path for one or more channel available for this instrument. An optical filter is a device that selectively transmits light of different wavelengths. An instrument may have several filters of different types, such as an excitation, an emission filter or an additional filter positioned in the light path for different purposes. For each fluorescence Image there should be at least one filter element specified per Channel. This element can be associated with an optional FilterWheel - Note: FilterWheel is not the same as a FilterSet.</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="ManufacturerSpec">
@@ -3290,7 +3293,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
     <!-- top level definition -->
     <xsd:annotation>
       <xsd:appinfo><xsdfu xmlns=""><plural>Filters</plural></xsdfu></xsd:appinfo>
-      <xsd:documentation>Description=An optical filter is a device that selectively transmits light of different wavelengths. A filter maybe either an excitation, an emission filter or an additional filter positioned in the light path. For each fluorescence Image there should be at least one filter element specified per Channel. This element can be associated with an optional FilterWheel - Note: FilterWheel is not the same as a FilterSet.</xsd:documentation>
+      <xsd:documentation>Description=This describes an optical filter positioned in the light path for one or more channel available for this instrument. An optical filter is a device that selectively transmits light of different wavelengths. An instrument may have several filters of different types, such as an excitation, an emission filter or an additional filter positioned in the light path for different purposes. For each fluorescence Image there should be at least one filter element specified per Channel. This element can be associated with an optional FilterWheel - Note: FilterWheel is not the same as a FilterSet.</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
 
@@ -3372,6 +3375,9 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
 
   <!-- Mirror elements -->
   <xsd:complexType name="Mirror">
+    <xsd:annotation>
+      <xsd:documentation>Description=This describes a mirror positioned in the light path for one or more channel available for this instrument. An instrument may have several mirrors of different types, such as dichroic, beamsplitter or reflector.</xsd:documentation>
+    </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="ManufacturerSpec">
         <xsd:sequence>
@@ -3459,7 +3465,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
   </xsd:complexType>
   <xsd:element name="MirrorGroup" abstract="true" type="Mirror">
     <xsd:annotation>
-      <xsd:documentation>Description=This element describes mirror component(s) available in this microscope.</xsd:documentation>
+      <xsd:documentation>Description=This describes a mirror positioned in the light path for one or more channel available for this instrument. An instrument may have several mirrors of different types, such as dichroic, beamsplitter or reflector.</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
   <xsd:element name="BeamSplitter" substitutionGroup="MirrorGroup">
@@ -3689,9 +3695,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
 
   <xsd:complexType name="Lens">
     <xsd:annotation>
-      <xsd:documentation>Category=AdditionalOptics</xsd:documentation>
-      <xsd:documentation>Description=A lens is a component of glass or transparent plastic material, usually circular in diameter, which has two primary surfaces that are ground and polished in a specific manner designed to produce either a convergence or divergence of light passing through the material. This element describes a lens utilized in this microscope</xsd:documentation>
-      <xsd:documentation>Tier=2</xsd:documentation>
+      <xsd:documentation>Description=This describes a lens positioned in the light path for one or more channel available for this instrument. A lens is a component of glass or transparent plastic material, usually circular in diameter, which has two primary surfaces that are ground and polished in a specific manner designed to produce either a convergence or divergence of light passing through the material. An instrument may have several lenses with different fuctions such as, a coupling lens positioned between the light source and the microscope body, a relay lens positioned at the detector mount, or an additional lens positioned in the light path for various purposes.</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="ManufacturerSpec">
@@ -3712,48 +3716,43 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
         </xsd:attribute>
         <xsd:attribute name="Type" type="LensType" use="required">
           <xsd:annotation>
-            <xsd:documentation>Description=The general category to which this lens belongs.</xsd:documentation>
-            <xsd:documentation>Tier=5</xsd:documentation>
-          </xsd:annotation>
-        </xsd:attribute>
-        <xsd:attribute name="Geometry" type="LensGeometry">
-          <xsd:annotation>
-            <xsd:documentation>Description=The geometrical shape of the lens surfaces</xsd:documentation>
-            <xsd:documentation>Tier=5</xsd:documentation>
-          </xsd:annotation>
-        </xsd:attribute>
-        <xsd:attribute name="Construction" type="LensConstruction" use="required">
-          <xsd:annotation>
-            <xsd:documentation>Description=Whether or not the lens is simple or composite</xsd:documentation>
+            <xsd:documentation>Description=The general category this lens belongs to.</xsd:documentation>
             <xsd:documentation>Tier=5</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
         <xsd:attribute name="Magnification" type="xsd:int" use="required">
           <xsd:annotation>
-            <xsd:documentation>Description=The nominal magnification provided by this lens</xsd:documentation>
+            <xsd:documentation>Description=The nominal magnification provided by this lens as specified by the manufacturer.</xsd:documentation>
             <xsd:documentation>Tier=2</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="Construction" type="LensConstruction" use="required">
+          <xsd:annotation>
+            <xsd:documentation>Description=Whether or not this lens is simple or composite.</xsd:documentation>
+            <xsd:documentation>Tier=5</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="Geometry" type="LensGeometry" use="required">
+          <xsd:annotation>
+            <xsd:documentation>Description=The geometrical shape of this lens' surface(s).</xsd:documentation>
+            <xsd:documentation>Tier=5</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="RefractiveIndex" type="xsd:float" use="required">
+          <xsd:annotation>
+            <xsd:documentation>Description=The refractive index of the material this lens is made of, as specified by the manufacturer.</xsd:documentation>
+            <xsd:documentation>Tier=5</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
         <xsd:attribute name="AttenuationCoefficient" type="xsd:float" use="required">
           <xsd:annotation>
-            <xsd:documentation>Description=The attenuation coefficient (aka blocking coefficient) is a material property that characterizes the degree of transparency of a lens. The attenuation coefficient is often defined in units of optical density (OD), wherease OD= -log10(T), and T=Transmittance (0≤T≤1).</xsd:documentation>
-            <xsd:documentation>Tier=5</xsd:documentation>
-          </xsd:annotation>
-        </xsd:attribute>
-        <xsd:attribute name="RadiusOfCurvature" type="xsd:float">
-          <xsd:annotation>
-            <xsd:documentation>Description=A spherical lens or mirror surface has a center of curvature located either along or decentered from the system local optical axis. The vertex of the lens surface is located on the local optical axis. The distance from the vertex to the center of curvature is the radius of curvature of the surface</xsd:documentation>
-            <xsd:documentation>Tier=5</xsd:documentation>
-          </xsd:annotation>
-        </xsd:attribute>
-        <xsd:attribute name="RadiusOfCurvatureUnit" type="UnitsLength">
-          <xsd:annotation>
+            <xsd:documentation>Description=The attenuation coeffieient of this lens. The attenuation coefficient (aka blocking coefficient) is a material property that characterizes the degree of transparency of a lens. The attenuation coefficient is often defined in units of optical density (OD), wherease OD= -log10(T), and T=Transmittance (0≤T≤1).</xsd:documentation>
             <xsd:documentation>Tier=5</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
         <xsd:attribute name="FocalDistanceToObject" type="xsd:float" use="required">
           <xsd:annotation>
-            <xsd:documentation>Description=The distance between the front principal plane of the lens and the specimen</xsd:documentation>
+            <xsd:documentation>Description=The distance between the front principal plane of this lens and the specimen plane.</xsd:documentation>
             <xsd:documentation>Tier=5</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
@@ -3764,7 +3763,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
         </xsd:attribute>
         <xsd:attribute name="FocalDistanceToImage" type="xsd:float" use="required">
           <xsd:annotation>
-            <xsd:documentation>Description=The distance from the rear principal plane to the image</xsd:documentation>
+            <xsd:documentation>Description=The distance between the rear principal plane of this lens and the image plane.</xsd:documentation>
             <xsd:documentation>Tier=5</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
@@ -3775,7 +3774,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
         </xsd:attribute>
         <xsd:attribute name="FocalLength" type="xsd:float" use="required">
           <xsd:annotation>
-            <xsd:documentation>Description=The distance from the rear principal plane of the lens and its focal point</xsd:documentation>
+            <xsd:documentation>Description=The distance from the rear principal plane of this lens and its focal plane.</xsd:documentation>
             <xsd:documentation>Tier=5</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
@@ -3784,48 +3783,53 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
             <xsd:documentation>Tier=5</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
+        <xsd:attribute name="Diameter" type="xsd:float">
+          <xsd:annotation>
+            <xsd:documentation>Description=The physical diamter of this lens.</xsd:documentation>
+            <xsd:documentation>Tier=5</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="DiameterUnit" type="UnitsLength">
+          <xsd:annotation>
+            <xsd:documentation>Tier=5</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="AbbeNumber" type="xsd:float" use="optional">
+          <xsd:annotation>
+            <xsd:documentation>Description=The Abbe number of this lens. The Abbe Number is a measure of the material's dispersion (variation of refractive index versus wavelength), with high values indicating low dispersion.</xsd:documentation>
+            <xsd:documentation>Tier=5</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="RadiusOfCurvature" type="xsd:float">
+          <xsd:annotation>
+            <xsd:documentation>Description=The radius of curvature of this lens. A spherical lens or mirror surface has a center of curvature located either along or decentered from the system local optical axis. The vertex of the lens surface is located on the local optical axis. The distance from the vertex to the center of curvature is the radius of curvature of the surface.</xsd:documentation>
+            <xsd:documentation>Tier=5</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="RadiusOfCurvatureUnit" type="UnitsLength">
+          <xsd:annotation>
+            <xsd:documentation>Tier=5</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
         <xsd:attribute name="MaterialName" type="LensMaterialName">
           <xsd:annotation>
-            <xsd:documentation>Description=This records the chemical composition or the nonproprietary trade designation of the glass</xsd:documentation>
+            <xsd:documentation>Description=This records the chemical composition or the nonproprietary trade designation of the glass this lens is made of.</xsd:documentation>
             <xsd:documentation>Tier=5</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
         <xsd:attribute name="GlassCode" type="xsd:short">
           <xsd:annotation>
-            <xsd:documentation>Description=If available provide the international glass code. This is based on U.S. military standard MIL-G-174, and is a six-digit number specifying the glass according to its refractive index nd at the Fraunhofer d- (or D3-) line, and its Abbe number Vd also taken at that line. The resulting glass code is the value of nd-1 rounded to three digits, followed by Vd rounded to three digits, with all decimal points ignored. For example, BK7 has nd = 1.5168 and Vd = 64.17, giving a six-digit glass code of 517642</xsd:documentation>
-            <xsd:documentation>Tier=5</xsd:documentation>
-          </xsd:annotation>
-        </xsd:attribute>
-        <xsd:attribute name="RefractiveIndex" type="xsd:float" use="required">
-          <xsd:annotation>
-            <xsd:documentation>Description=The refractive index of the material the prism is made of</xsd:documentation>
-            <xsd:documentation>Tier=5</xsd:documentation>
-          </xsd:annotation>
-        </xsd:attribute>
-        <xsd:attribute name="AbbeNumber" type="xsd:float" use="required">
-          <xsd:annotation>
-            <xsd:documentation>Description=The Abbe Number is a measure of the material's dispersion (variation of refractive index versus wavelength), with high values indicating low dispersion</xsd:documentation>
+            <xsd:documentation>Description=If available provide the international glass code. This is based on U.S. military standard MIL-G-174, and is a six-digit number specifying the glass according to its refractive index nd at the Fraunhofer d- (or D3-) line, and its Abbe number Vd also taken at that line. The resulting glass code is the value of nd-1 rounded to three digits, followed by Vd rounded to three digits, with all decimal points ignored. For example, BK7 has nd = 1.5168 and Vd = 64.17, giving a six-digit glass code of 517642.</xsd:documentation>
             <xsd:documentation>Tier=5</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
         <xsd:attribute name="Density" type="xsd:float" use="optional">
           <xsd:annotation>
-            <xsd:documentation>Description=The density of the material this lens is made of</xsd:documentation>
+            <xsd:documentation>Description=The density of the material this lens is made of.</xsd:documentation>
             <xsd:documentation>Tier=5</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
         <xsd:attribute name="DensityUnit" type="UnitsDensity">
-          <xsd:annotation>
-            <xsd:documentation>Tier=5</xsd:documentation>
-          </xsd:annotation>
-        </xsd:attribute>
-        <xsd:attribute name="Diameter" type="xsd:float">
-          <xsd:annotation>
-            <xsd:documentation>Description=The physical diamter of this lens</xsd:documentation>
-            <xsd:documentation>Tier=5</xsd:documentation>
-          </xsd:annotation>
-        </xsd:attribute>
-        <xsd:attribute name="DiameterUnit" type="UnitsLength">
           <xsd:annotation>
             <xsd:documentation>Tier=5</xsd:documentation>
           </xsd:annotation>
@@ -3836,15 +3840,14 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
 
   <xsd:element name="LensGroup" abstract="true" type="Lens">
     <xsd:annotation>
-      <xsd:documentation>Description=A lens is a component of glass or transparent plastic material, usually circular in diameter, which has two primary surfaces that are ground and polished in a specific manner designed to produce either a convergence or divergence of light passing through the material. This element describes a lens utilized in this microscope</xsd:documentation>
-      <xsd:documentation>Tier=2</xsd:documentation>
+      <xsd:documentation>Description=This describes a lens positioned in the light path for one or more channel available for this instrument. A lens is a component of glass or transparent plastic material, usually circular in diameter, which has two primary surfaces that are ground and polished in a specific manner designed to produce either a convergence or divergence of light passing through the material. An instrument may have several lenses with different fuctions such as, a coupling lens positioned between the light source and the microscope body, a relay lens positioned at the detector mount, or an additional lens positioned in the light path for various purposes.</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
 
   <xsd:element name="AdditionalLens" substitutionGroup="LensGroup">
     <xsd:annotation>
       <xsd:documentation>Category=AdditionalOptics</xsd:documentation>
-      <xsd:documentation>Description=A lens poistioned in the light path in the light path for a given channel.</xsd:documentation>
+      <xsd:documentation>Description=Any additional lens poistioned in the light path for a given channel.</xsd:documentation>
       <xsd:documentation>Tier=2</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
@@ -3856,7 +3859,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
   <xsd:element name="CouplingLens" substitutionGroup="LensGroup">
     <xsd:annotation>
       <xsd:documentation>Category=AdditionalOptics</xsd:documentation>
-      <xsd:documentation>Description=A lens positioned at connector between this light source coupling element and the microscope body.</xsd:documentation>
+      <xsd:documentation>Description=A lens positioned at connector between this light source coupling device and the microscope body.</xsd:documentation>
       <xsd:documentation>Tier=5</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
@@ -3868,7 +3871,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
   <xsd:element name="RelayLens" substitutionGroup="LensGroup">
     <xsd:annotation>
       <xsd:documentation>Category=AdditionalOptics</xsd:documentation>
-      <xsd:documentation>Description=A lens positioned at the mount connecting this detector to the microscope body.</xsd:documentation>
+      <xsd:documentation>Description=A lens positioned at the mount connecting a detector to the microscope body.</xsd:documentation>
       <xsd:documentation>Tier=3</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
@@ -3880,7 +3883,8 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
   <xsd:element name="Prism">
     <xsd:annotation>
       <xsd:documentation>Category=AdditionalOptics</xsd:documentation>
-      <xsd:documentation>Description=A prism is a block of glass or other transparent material with flat, polished surfaces. A prism can be employed to deflect or deviate a light beam, rotate or invert an image, separate polarization states, or disperse light into its component wavelengths. Prisms can be classified in three general categories: reflecting prisms, polarizing prisms, and refracting or dispersion prisms. Reflecting prisms are useful for redirecting light beams by total internal reflection. Refracting prisms can be employed to bend and separate light into its component colors. Polarizing prisms are birefringent crystals that divide incident non-polarized light into separate components polarized orthogonally to each other. These prisms are employed to produce polarized light for optical instruments such as microscopes and polarimeters. A prism can be viewed as an ensamble of different rigidly mounted mirrors, with each face having a permanent orientation with respect to all the others</xsd:documentation>
+      <xsd:documentation>Description=This describes a prism positioned in the light path for one or more channel available for this instrument. A prism is a block of glass or other transparent material with flat, polished surfaces, which can be viewed as an ensamble of different rigidly mounted mirrors, with each face having a permanent orientation with respect to all the others. A prism can be employed to deflect or deviate a light beam, rotate or invert an image, separate polarization states, or disperse light into its component wavelengths. An instrument may have several prisms with different factionality such as,  reflecting, polarizing, and refracting or dispersion prisms. 
+Reflecting prisms are useful for redirecting light beams by total internal reflection. Polarizing prisms are birefringent crystals that divide incident non-polarized light into separate components polarized orthogonally to each other. Refracting prisms can be employed to bend and separate light into its component colors. These prisms are employed to produce polarized light for optical instruments such as microscopes and polarimeters.</xsd:documentation>
       <xsd:documentation>Tier=2</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
@@ -3908,26 +3912,15 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
               <xsd:documentation>Tier=3</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="Geometry" type="PrismGeometry">
+          <xsd:attribute name="RefractiveIndex" type="xsd:float" use="required">
             <xsd:annotation>
-              <xsd:documentation>Description=The geometrical shape of this prism</xsd:documentation>
+              <xsd:documentation>Description=The refractive index of the material this prism is made of, as specified by the manufacturer.</xsd:documentation>
               <xsd:documentation>Tier=5</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
           <xsd:attribute name="Reflectance" type="xsd:float" use="required">
             <xsd:annotation>
               <xsd:documentation>Description=The maximum amount of light this Prism is capable of transmitting at the peak wavelenght. It is represented as a fractional value from 0.0 to 1.0.</xsd:documentation>
-              <xsd:documentation>Tier=5</xsd:documentation>
-            </xsd:annotation>
-          </xsd:attribute>
-          <xsd:attribute name="PrismAngle" type="xsd:float">
-            <xsd:annotation>
-              <xsd:documentation>Description=The angle between two surfaces of a Prism</xsd:documentation>
-              <xsd:documentation>Tier=5</xsd:documentation>
-            </xsd:annotation>
-          </xsd:attribute>
-          <xsd:attribute name="PrismAngleUnit" type="UnitsAngle">
-            <xsd:annotation>
               <xsd:documentation>Tier=5</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
@@ -3944,11 +3937,34 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
           </xsd:attribute>
           <xsd:attribute name="DeviationAngle" type="xsd:float" use="required">
             <xsd:annotation>
-              <xsd:documentation>Description=A beam passing through an object like a prism is deflected twice: once entering, and again when exiting. The sum of these two deflections is called the deviation angle and is measured with respect to the incident ray</xsd:documentation>
+              <xsd:documentation>Description=A beam passing through an object like a prism is deflected twice: once entering, and again when exiting. The sum of these two deflections is called the deviation angle and is measured with respect to the incident ray.</xsd:documentation>
               <xsd:documentation>Tier=5</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
           <xsd:attribute name="DevianceAngleUnit" type="UnitsAngle">
+            <xsd:annotation>
+              <xsd:documentation>Tier=5</xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
+          <xsd:attribute name="Geometry" type="PrismGeometry">
+            <xsd:annotation>
+              <xsd:documentation>Description=The geometrical shape of this prism</xsd:documentation>
+              <xsd:documentation>Tier=5</xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
+          <xsd:attribute name="AbbeNumber" type="xsd:float" use="optional">
+            <xsd:annotation>
+              <xsd:documentation>Description=The Abbe Number is a measure of the material's dispersion (variation of refractive index versus wavelength), with high values indicating low dispersion</xsd:documentation>
+              <xsd:documentation>Tier=5</xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
+          <xsd:attribute name="PrismAngle" type="xsd:float">
+            <xsd:annotation>
+              <xsd:documentation>Description=The angle between two surfaces of a Prism</xsd:documentation>
+              <xsd:documentation>Tier=5</xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
+          <xsd:attribute name="PrismAngleUnit" type="UnitsAngle">
             <xsd:annotation>
               <xsd:documentation>Tier=5</xsd:documentation>
             </xsd:annotation>
@@ -3962,18 +3978,6 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
           <xsd:attribute name="GlassCode" type="xsd:string">
             <xsd:annotation>
               <xsd:documentation>Description=If available provide the international glass code. This is based on U.S. military standard MIL-G-174, and is a six-digit number specifying the glass according to its refractive index nd at the Fraunhofer d- (or D3-) line, and its Abbe number Vd also taken at that line. The resulting glass code is the value of nd-1 rounded to three digits, followed by Vd rounded to three digits, with all decimal points ignored. For example, BK7 has nd = 1.5168 and Vd = 64.17, giving a six-digit glass code of 517642</xsd:documentation>
-              <xsd:documentation>Tier=5</xsd:documentation>
-            </xsd:annotation>
-          </xsd:attribute>
-          <xsd:attribute name="RefractiveIndex" type="xsd:float" use="required">
-            <xsd:annotation>
-              <xsd:documentation>Description=The refractive index of the material of which the prism is made</xsd:documentation>
-              <xsd:documentation>Tier=5</xsd:documentation>
-            </xsd:annotation>
-          </xsd:attribute>
-          <xsd:attribute name="AbbeNumber" type="xsd:float" use="required">
-            <xsd:annotation>
-              <xsd:documentation>Description=The Abbe Number is a measure of the material's dispersion (variation of refractive index versus wavelength), with high values indicating low dispersion</xsd:documentation>
               <xsd:documentation>Tier=5</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
@@ -4061,6 +4065,9 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
 
   <!-- Detector elements -->
   <xsd:complexType name="Detector">
+    <xsd:annotation>
+      <xsd:documentation>Description=This describes a detector available for this instrument. An instrument may have more than one detector of different types, such as photomultiplier, or camera. The Detector ID can be used as a reference within the Channel element in the Image element. The values stored in Detector represent the fixed values, variable values modified during the acquisition go in DetectorSettings.</xsd:documentation>
+    </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="ManufacturerSpec">
         <xsd:sequence>
@@ -4166,7 +4173,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
     <!-- top level definition -->
     <xsd:annotation>
       <xsd:appinfo><xsdfu xmlns=""><plural>Detectors</plural></xsdfu></xsd:appinfo>
-      <xsd:documentation>Description=This element describe the detector(s) available in this microscope. The Detector ID can be used as a reference within the Channel element in the Image element. The values stored in Detector represent the fixed values, variable values modified during the acquisition go in DetectorSettings.</xsd:documentation>
+      <xsd:documentation>Description=This describes a detector available for this instrument. An instrument may have more than one detector of different types, such as photomultiplier, or camera. The Detector ID can be used as a reference within the Channel element in the Image element. The values stored in Detector represent the fixed values, variable values modified during the acquisition go in DetectorSettings.</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
   <xsd:element name="PhotoMultiplier" substitutionGroup="DetectorGroup">
@@ -4220,12 +4227,12 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
   </xsd:element>
   <xsd:element name="CameraGroup" abstract="true" type="Camera" substitutionGroup="DetectorGroup">
     <xsd:annotation>
-      <xsd:documentation>Description=This element describes the camera(s) devices available in this microscope. A camera is device that converts optical brightness into an electrical signal using a CCD(a semiconductor chip, which converts the intensity of light falling onto its surface at different points into a charge) and then reproduces an image of the specimen.</xsd:documentation>
+      <xsd:documentation>Description=This describes a camera device available for this instrument. A camera is device that converts optical brightness into an electrical signal using a CCD(a semiconductor chip, which converts the intensity of light falling onto its surface at different points into a charge) and then reproduces an image of the specimen.  An instrument may have more than one camera of different types, such as EMCCD, intensified EMCCD, CMOS, or analog video.</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
   <xsd:complexType name="Camera">
     <xsd:annotation>
-      <xsd:documentation/>
+      <xsd:documentation>Description=This describes a camera device available for this instrument. A camera is device that converts optical brightness into an electrical signal using a CCD(a semiconductor chip, which converts the intensity of light falling onto its surface at different points into a charge) and then reproduces an image of the specimen.  An instrument may have more than one camera of different types, such as EMCCD, intensified EMCCD, CMOS, or analog video.</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="Detector">
@@ -4656,6 +4663,9 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
     </xsd:annotation>
   </xsd:element>
   <xsd:complexType name="DetectorSettings">
+    <xsd:annotation>
+      <xsd:documentation>Description=This element holds the setting applied to a Detector e as well as a reference to the Detector (the ID attribute) in question. The ID referes to the Detector used in this case.</xsd:documentation>
+    </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="Settings">
         <xsd:attribute name="ID" type="DetectorID" use="required">
@@ -8890,6 +8900,9 @@ annotation refs from the base Annotation to form the list.</xsd:documentation>
     </xsd:complexType>
   </xsd:element>
   <xsd:complexType name="OpticalStandard">
+    <xsd:annotation>
+      <xsd:documentation>Description=The optical standard used in this case. This might be a pre-manufactured slide, such as those produced by Argolight (http://argolight.com/), Geller MicroAnalytical Laboratory (Magnification Reference Standard MRS-4 and others; http://www.gellermicro.com/mag_standards/mrs.html), Zeiss and others. Alternatively, the standard might be a slide containing multi-colored beads of known size and emission characteristics. Finally, slides coated with specific DNA origami patterns are increasingly being used for this purpose as well.</xsd:documentation>
+    </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="ManufacturerSpec">
         <xsd:sequence>
@@ -9049,6 +9062,9 @@ annotation refs from the base Annotation to form the list.</xsd:documentation>
     </xsd:complexType>
   </xsd:element>
   <xsd:complexType name="IntensityCalibration">
+    <xsd:annotation>
+      <xsd:documentation>Description=This describes the procedure(s) that were used for excitation and detector calibration and the resulting calibration results.</xsd:documentation>
+    </xsd:annotation>
     <xsd:sequence>
       <xsd:element name="IntensityCalibrationToolRef" type="Reference" maxOccurs="unbounded"
         minOccurs="0">
@@ -9123,14 +9139,13 @@ annotation refs from the base Annotation to form the list.</xsd:documentation>
   </xsd:complexType>
   <xsd:element abstract="true" name="IntensityCalibrationGroup" type="IntensityCalibration">
     <xsd:annotation>
-      <xsd:documentation>Description=This describes the procedures that were used for excitation and detector calibration and the resulting calibration results.</xsd:documentation>
+      <xsd:documentation>Description=This describes the procedure(s) that were used for excitation and detector calibration and the resulting calibration results.</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
 
   <xsd:element name="ExcitationCalibration" substitutionGroup="IntensityCalibrationGroup">
     <xsd:annotation>
       <xsd:documentation>Domain=ImageAcquisitionSettings</xsd:documentation>
-      <xsd:documentation>Category=Calibration</xsd:documentation>
       <xsd:documentation>Description=This procedure measures the performance and allows calibration of the wavelength and irradiance of the excitation light.</xsd:documentation>
       <xsd:documentation>Tier=3</xsd:documentation>
     </xsd:annotation>
