@@ -3187,7 +3187,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
     <xsd:annotation>
       <xsd:appinfo><xsdfu xmlns=""><plural>FilterSets</plural></xsdfu></xsd:appinfo>
       <xsd:documentation>Category=LightPath</xsd:documentation>
-      <xsd:documentation>Description=A filter set is typically composed of one excitation filter, one emission filter and a dichroic. Often they are pre-assebled by the manufacturer and pruchased as a whole</xsd:documentation>
+      <xsd:documentation>Description=A filter set is typically composed of one excitation filter, one emission filter and a dichroic. They might either be pre-assebled by the manufacturer and pruchased as a whole or they can be custome assembled on site depending on the needs of the user.</xsd:documentation>
       <xsd:documentation>Tier=2</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
@@ -3197,20 +3197,20 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
             <xsd:element name="ExcitationFilterRef" type="FilterRef" minOccurs="1" maxOccurs="1">
               <xsd:annotation>
                 <xsd:appinfo><xsdfu xmlns=""><plural>ExcitationFilters</plural><manytomany/></xsdfu></xsd:appinfo>
-                <xsd:documentation>Description=This empty element has a reference (the Filter ID attribute) to the Filters placed in the Excitation light path.</xsd:documentation>
+                <xsd:documentation>Description=This refers to an available excitation filter, which is part of this filter set.</xsd:documentation>
                 <xsd:documentation>Tier=2</xsd:documentation>
               </xsd:annotation>
             </xsd:element>
             <xsd:element minOccurs="1" maxOccurs="1" ref="StandardDichroicRef">
               <xsd:annotation>
-                <xsd:documentation>Description=This empty element has a reference (the Mirror ID attribute) to the Dichroic utilized in this Filter Set.</xsd:documentation>
+                <xsd:documentation>Description=This refers to an available dichroic mirror, which is part of this filter set.</xsd:documentation>
                 <xsd:documentation>Tier=2</xsd:documentation>
               </xsd:annotation>
             </xsd:element>
             <xsd:element name="EmissionFilterRef" minOccurs="1" maxOccurs="1">
               <xsd:annotation>
                 <xsd:appinfo><xsdfu xmlns=""><plural>EmissionFilters</plural><manytomany/></xsdfu></xsd:appinfo>
-                <xsd:documentation>Description=This empty element has a reference (the Filter ID attribute) to the Filters placed in the Emission light path</xsd:documentation>
+                <xsd:documentation>Description=This refers to an available emission filter, which is part of this filter set.</xsd:documentation>
                 <xsd:documentation>Tier=2</xsd:documentation>
               </xsd:annotation>
             </xsd:element>
@@ -3507,6 +3507,9 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
   </xsd:element>
 
   <xsd:complexType name="Dichroic">
+    <xsd:annotation>
+      <xsd:documentation>Description=A dichroic beamsplitter or dichroic mirror is a mirror that spectrally separate light by transmitting and reflecting light as a function of wavelength. In the context of fluorescence microscopy, they are typically used to reflect the excitation light, but transmit the emitted fluorescence. Dichroic mirrors can be categorized in different manners. However, the most important criteria for choosing a dichoric mirror are the transmittance and the reflectance wavelenght ranges.</xsd:documentation>
+    </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="Mirror">
         <xsd:sequence>
@@ -3813,13 +3816,13 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
         </xsd:attribute>
         <xsd:attribute name="MaterialName" type="LensMaterialName">
           <xsd:annotation>
-            <xsd:documentation>Description=This records the chemical composition or the nonproprietary trade designation of the glass this lens is made of.</xsd:documentation>
+            <xsd:documentation>Description=This records the chemical composition or the nonproprietary trade designation of the material this lens is made of.</xsd:documentation>
             <xsd:documentation>Tier=5</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
         <xsd:attribute name="GlassCode" type="xsd:short">
           <xsd:annotation>
-            <xsd:documentation>Description=If available provide the international glass code. This is based on U.S. military standard MIL-G-174, and is a six-digit number specifying the glass according to its refractive index nd at the Fraunhofer d- (or D3-) line, and its Abbe number Vd also taken at that line. The resulting glass code is the value of nd-1 rounded to three digits, followed by Vd rounded to three digits, with all decimal points ignored. For example, BK7 has nd = 1.5168 and Vd = 64.17, giving a six-digit glass code of 517642.</xsd:documentation>
+            <xsd:documentation>Description=If available provide the international glass code for the glass this lens is made of. This is based on U.S. military standard MIL-G-174, and is a six-digit number specifying the glass according to its refractive index nd at the Fraunhofer d- (or D3-) line, and its Abbe number Vd also taken at that line. The resulting glass code is the value of nd-1 rounded to three digits, followed by Vd rounded to three digits, with all decimal points ignored. For example, BK7 has nd = 1.5168 and Vd = 64.17, giving a six-digit glass code of 517642.</xsd:documentation>
             <xsd:documentation>Tier=5</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
@@ -3948,7 +3951,7 @@ Reflecting prisms are useful for redirecting light beams by total internal refle
           </xsd:attribute>
           <xsd:attribute name="Geometry" type="PrismGeometry">
             <xsd:annotation>
-              <xsd:documentation>Description=The geometrical shape of this prism</xsd:documentation>
+              <xsd:documentation>Description=The geometrical shape of this prism.</xsd:documentation>
               <xsd:documentation>Tier=5</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
@@ -3960,7 +3963,7 @@ Reflecting prisms are useful for redirecting light beams by total internal refle
           </xsd:attribute>
           <xsd:attribute name="PrismAngle" type="xsd:float">
             <xsd:annotation>
-              <xsd:documentation>Description=The angle between two surfaces of a Prism</xsd:documentation>
+              <xsd:documentation>Description=The angle between two surfaces of this prism.</xsd:documentation>
               <xsd:documentation>Tier=5</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
@@ -3971,19 +3974,19 @@ Reflecting prisms are useful for redirecting light beams by total internal refle
           </xsd:attribute>
           <xsd:attribute name="MaterialName" type="PrismMaterialName" use="optional">
             <xsd:annotation>
-              <xsd:documentation>Description=This records the chemical composition or the nonproprietary trade designation of the glass</xsd:documentation>
+              <xsd:documentation>Description=This records the chemical composition or the nonproprietary trade designation of the material this prism is made of.</xsd:documentation>
               <xsd:documentation>Tier=5</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
           <xsd:attribute name="GlassCode" type="xsd:string">
             <xsd:annotation>
-              <xsd:documentation>Description=If available provide the international glass code. This is based on U.S. military standard MIL-G-174, and is a six-digit number specifying the glass according to its refractive index nd at the Fraunhofer d- (or D3-) line, and its Abbe number Vd also taken at that line. The resulting glass code is the value of nd-1 rounded to three digits, followed by Vd rounded to three digits, with all decimal points ignored. For example, BK7 has nd = 1.5168 and Vd = 64.17, giving a six-digit glass code of 517642</xsd:documentation>
+              <xsd:documentation>Description=If available provide the international glass code for the glass this prism is made of. This is based on U.S. military standard MIL-G-174, and is a six-digit number specifying the glass according to its refractive index nd at the Fraunhofer d- (or D3-) line, and its Abbe number Vd also taken at that line. The resulting glass code is the value of nd-1 rounded to three digits, followed by Vd rounded to three digits, with all decimal points ignored. For example, BK7 has nd = 1.5168 and Vd = 64.17, giving a six-digit glass code of 517642.</xsd:documentation>
               <xsd:documentation>Tier=5</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
           <xsd:attribute name="Density" type="xsd:float">
             <xsd:annotation>
-              <xsd:documentation>Description=The density of the material of which the prism is made</xsd:documentation>
+              <xsd:documentation>Description=The density of the material of which the prism is made.</xsd:documentation>
               <xsd:documentation>Tier=5</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
@@ -4000,7 +4003,7 @@ Reflecting prisms are useful for redirecting light beams by total internal refle
   <xsd:element name="PolarizationOptics">
     <xsd:annotation>
       <xsd:documentation>Category=AdditionalOptics</xsd:documentation>
-      <xsd:documentation>Description=This is an optical filter that lets light waves of a specific polarization pass through while blocking light waves of other polarizations</xsd:documentation>
+      <xsd:documentation>Description=This describes an optical polarization device positioned in the light path for one or more channel available for this instrument. A polarization device is an optical filter that lets light waves of a specific polarization pass through while blocking light waves of other polarizations.</xsd:documentation>
       <xsd:documentation>Tier=2</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
@@ -4024,19 +4027,19 @@ Reflecting prisms are useful for redirecting light beams by total internal refle
           </xsd:attribute>
           <xsd:attribute name="Function" type="PolarizationOpticsFunction" use="required">
             <xsd:annotation>
-              <xsd:documentation>Description=This records whether this polarizer optics is used to generate polarized light or to analyze polarized light</xsd:documentation>
+              <xsd:documentation>Description=This field records whether this polarizer optics is used to generate or to analyze polarized light.</xsd:documentation>
               <xsd:documentation>Tier=2</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
           <xsd:attribute name="Construction" type="PolarizationOpticsConstruction">
             <xsd:annotation>
-              <xsd:documentation>Description=The modality in with which this Polarization Optics is constructed</xsd:documentation>
+              <xsd:documentation>Description=The modality with which this polarization device is constructed.</xsd:documentation>
               <xsd:documentation>Tier=3</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
           <xsd:attribute name="Fabrication" type="PolarizationOpticsFabrication">
             <xsd:annotation>
-              <xsd:documentation>Description=The way in with which this Polarization Optics is fabricated</xsd:documentation>
+              <xsd:documentation>Description=The way in with which this polarization device is fabricated.</xsd:documentation>
               <xsd:documentation>Tier=5</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
@@ -4048,13 +4051,13 @@ Reflecting prisms are useful for redirecting light beams by total internal refle
           </xsd:attribute>
           <xsd:attribute name="MaterialName" type="PolarizationOpticsMaterialName">
             <xsd:annotation>
-              <xsd:documentation>Description=This records the chemical composition or the nonproprietary trade designation of the glass</xsd:documentation>
+              <xsd:documentation>Description=This records the chemical composition or the nonproprietary trade designation of the material this polarization device is made of.</xsd:documentation>
               <xsd:documentation>Tier=5</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
           <xsd:attribute name="GlassCode" type="xsd:string">
             <xsd:annotation>
-              <xsd:documentation>Description=If available provide the international glass code. This is based on U.S. military standard MIL-G-174, and is a six-digit number specifying the glass according to its refractive index nd at the Fraunhofer d- (or D3-) line, and its Abbe number Vd also taken at that line. The resulting glass code is the value of nd-1 rounded to three digits, followed by Vd rounded to three digits, with all decimal points ignored. For example, BK7 has nd = 1.5168 and Vd = 64.17, giving a six-digit glass code of 517642</xsd:documentation>
+              <xsd:documentation>Description=If available provide the international glass code for the glass this polarization device is made of. This is based on U.S. military standard MIL-G-174, and is a six-digit number specifying the glass according to its refractive index nd at the Fraunhofer d- (or D3-) line, and its Abbe number Vd also taken at that line. The resulting glass code is the value of nd-1 rounded to three digits, followed by Vd rounded to three digits, with all decimal points ignored. For example, BK7 has nd = 1.5168 and Vd = 64.17, giving a six-digit glass code of 517642.</xsd:documentation>
               <xsd:documentation>Tier=5</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
