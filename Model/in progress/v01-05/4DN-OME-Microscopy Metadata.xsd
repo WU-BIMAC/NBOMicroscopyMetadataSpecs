@@ -3268,13 +3268,13 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
         </xsd:attribute>
         <xsd:attribute name="ReflectionCoating" type="xsd:string" use="required">
           <xsd:annotation>
-            <xsd:documentation>Description=An optical coating is one or more thin layers of material deposited on an optical component such as a lens or mirror, which alters the way in which the optic reflects and transmits light</xsd:documentation>
+            <xsd:documentation>Description=An optical coating is one or more thin layers of material deposited on an optical component such as a lens or mirror, which alters the way in which the optic reflects and transmits light.</xsd:documentation>
             <xsd:documentation>Tier=5</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
         <xsd:attribute name="FilterWheel" use="optional" type="xsd:string">
           <xsd:annotation>
-            <xsd:documentation>Description=A filter 'wheel' in OME can refer to any arrangement of filters in a filter holder of any shape. It could, for example, be a filter slider.</xsd:documentation>
+            <xsd:documentation>Description=This can can refer to any arrangement of filters in a filter holder of any shape. It could, for example, be a filter slider.</xsd:documentation>
             <xsd:documentation>Tier=3</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
@@ -3312,7 +3312,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
   <xsd:element name="EmissionFilter" substitutionGroup="FilterGroup">
     <xsd:annotation>
       <xsd:documentation>Category=LightPath</xsd:documentation>
-      <xsd:documentation>Description=An optical filter is a device that selectively transmits light of different wavelengths.This element refers to an emission filter. For each fluorescence Image there should be at least one emission filter element specified per Channel.This element can be associated with an optional FilterWheel - Note: FilterWheel is not the same as a FilterSet.</xsd:documentation>
+      <xsd:documentation>Description=An optical filter is a device that selectively transmits light of different wavelengths. This element refers to an emission filter. This element can be associated with an optional FilterWheel - Note: FilterWheel is not the same as a FilterSet.</xsd:documentation>
       <xsd:documentation>Tier=2</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
@@ -3324,7 +3324,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
   <xsd:element name="AdditionalFilter" substitutionGroup="FilterGroup">
     <xsd:annotation>
       <xsd:documentation>Category=AdditionalOptics</xsd:documentation>
-      <xsd:documentation>Description=An optical filter is a device that selectively transmits light of different wavelengths.This element refers to a filter positioned along the light path in addition to the excitation and the emission filters.This element can be associated with an optional FilterWheel - Note: FilterWheel is not the same as a FilterSet.</xsd:documentation>
+      <xsd:documentation>Description=An optical filter is a device that selectively transmits light of different wavelengths. This element refers to a filter positioned along the light path in addition to the excitation and the emission filters.This element can be associated with an optional FilterWheel - Note: FilterWheel is not the same as a FilterSet.</xsd:documentation>
       <xsd:documentation>Tier=2</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
@@ -3401,18 +3401,6 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
             <xsd:documentation>Tier=3</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
-        <xsd:attribute name="MirrorType" type="MirrorType">
-          <xsd:annotation>
-            <xsd:documentation>Description=The general category to which this lens belongs.</xsd:documentation>
-            <xsd:documentation>Tier=5</xsd:documentation>
-          </xsd:annotation>
-        </xsd:attribute>
-        <xsd:attribute name="Geometry" type="MirrorGeometry">
-          <xsd:annotation>
-            <xsd:documentation>Description=The geometrical shape of the surface of this mirror</xsd:documentation>
-            <xsd:documentation>Tier=5</xsd:documentation>
-          </xsd:annotation>
-        </xsd:attribute>
         <xsd:attribute name="AngleOfIncidence" type="xsd:float" use="required">
           <xsd:annotation>
             <xsd:documentation>Description=This field records the optimal angle of incidence (AOI) for this mirror. TheAOI is the angle between the optical axis of the incident light and the axis normal to the surface of the mirror. In specular reflection AOI is by definition equal to the Angle Of Reflection (AOR).</xsd:documentation>
@@ -3430,9 +3418,21 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
             </xsd:restriction>
           </xsd:simpleType>
         </xsd:attribute>
+        <xsd:attribute name="MirrorType" type="MirrorType">
+          <xsd:annotation>
+            <xsd:documentation>Description=The general category this mirror belongs to.</xsd:documentation>
+            <xsd:documentation>Tier=5</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="Geometry" type="MirrorGeometry">
+          <xsd:annotation>
+            <xsd:documentation>Description=The geometrical shape of the surface(s) of this mirror.</xsd:documentation>
+            <xsd:documentation>Tier=5</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
         <xsd:attribute name="RadiusOfCurvature" type="xsd:float">
           <xsd:annotation>
-            <xsd:documentation>Description=A spherical lens or mirror surface has a center of curvature located either along or decentered from the system local optical axis. The vertex of the lens surface is located on the local optical axis. The distance from the vertex to the center of curvature is the radius of curvature of the surface</xsd:documentation>
+            <xsd:documentation>Description=The radius of curvature of this mirror. A spherical lens or mirror surface has a center of curvature located either along or decentered from the system local optical axis. The vertex of the lens surface is located on the local optical axis. The distance from the vertex to the center of curvature is the radius of curvature of the surface.</xsd:documentation>
             <xsd:documentation>Tier=5</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
@@ -3456,7 +3456,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
         </xsd:attribute>
         <xsd:attribute name="GlassCode" type="xsd:string">
           <xsd:annotation>
-            <xsd:documentation>Description=If available provide the international glass code. This is based on U.S. military standard MIL-G-174, and is a six-digit number specifying the glass according to its refractive index nd at the Fraunhofer d- (or D3-) line, and its Abbe number Vd also taken at that line. The resulting glass code is the value of nd-1 rounded to three digits, followed by Vd rounded to three digits, with all decimal points ignored. For example, BK7 has nd = 1.5168 and Vd = 64.17, giving a six-digit glass code of 517642</xsd:documentation>
+            <xsd:documentation>Description=If available provide the international glass code for the glass this polarization device is made of. This is based on U.S. military standard MIL-G-174, and is a six-digit number specifying the glass according to its refractive index nd at the Fraunhofer d- (or D3-) line, and its Abbe number Vd also taken at that line. The resulting glass code is the value of nd-1 rounded to three digits, followed by Vd rounded to three digits, with all decimal points ignored. For example, BK7 has nd = 1.5168 and Vd = 64.17, giving a six-digit glass code of 517642.</xsd:documentation>
             <xsd:documentation>Tier=5</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
@@ -3528,9 +3528,9 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
             <xsd:documentation>Tier=3</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
-        <xsd:attribute name="AttenuationLevel" type="xsd:float" use="required">
+        <xsd:attribute name="AttenuationCoefficient" type="xsd:float" use="required">
           <xsd:annotation>
-            <xsd:documentation>Description=The attenuation level, aka blocking level, is used as a measure of the out-of-band attenuation of an optical filter or dichroic mirror over an extended range of the spectrum. The attenuation level is often defined in units of optical density (OD), wherease OD= -log10(T), and T=Transmittance (0≤T≤1).</xsd:documentation>
+            <xsd:documentation>Description=The attenuation coeffieient of this dichroic The attenuation coefficient (aka blocking coefficient) is used as a measure of the out-of-band attenuation of an optical filter or dichroic mirror over an extended range of the spectrum. The attenuation coefficient is often defined in units of optical density (OD), wherease OD= -log10(T), and T=Transmittance (0≤T≤1).</xsd:documentation>
             <xsd:documentation>Tier=3</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
@@ -3542,31 +3542,31 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
         </xsd:attribute>
         <xsd:attribute name="Technology" type="TechnologyType">
           <xsd:annotation>
-            <xsd:documentation>Description=The main types of filter technology used in fluorescence analysis are absorption (aka colored) glass, thin-film coating, and acousto-optical tunable, liquid-crystal tunable filters.</xsd:documentation>
+            <xsd:documentation>Description=The filtering technology utilized by this dichroic. The main types of filter technology used in fluorescence analysis are absorption (aka colored) glass, thin-film coating, and acousto-optical tunable, liquid-crystal tunable filters.</xsd:documentation>
             <xsd:documentation>Tier=5</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
         <xsd:attribute name="Polarization" type="DichroicPolarization">
           <xsd:annotation>
-            <xsd:documentation>Description=The polarization state of this dichroic.</xsd:documentation>
+            <xsd:documentation>Description=This field records the polarization effect of this dichroic. Dichroic beamsplitters (and, in fact, any thin-film interference coating that is used at non-normal angles-of-incidence) will cause some amount of polarization. ), the precise effect varying greatly with wavelength and with the particular coating design.</xsd:documentation>
             <xsd:documentation>Tier=5</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
         <xsd:attribute name="FilterWheel" type="xsd:string">
           <xsd:annotation>
-            <xsd:documentation>Description=A filter 'wheel' in OME can refer to any arrangement of filters in a filter holder of any shape. It could, for example, be a filter slider</xsd:documentation>
+            <xsd:documentation>Description=This can can refer to any arrangement of filters in a filter holder of any shape. It could, for example, be a filter slider.</xsd:documentation>
             <xsd:documentation>Tier=3</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
         <xsd:attribute name="TransmittanceProfileFile" type="xsd:anyURI" use="required">
           <xsd:annotation>
-            <xsd:documentation>Description=This contains the location of file in .csv or other suitable formats containing the wavelenght profile of this component.</xsd:documentation>
+            <xsd:documentation>Description=This contains the location of a file in .csv or other suitable formats containing the wavelenght profile of this component.</xsd:documentation>
             <xsd:documentation>Tier=5</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
         <xsd:attribute name="ReflectanceProfileFile" type="xsd:anyURI" use="required">
           <xsd:annotation>
-            <xsd:documentation>Description=This contains the location of file in .csv or other suitable formats containing the wavelenght profile of this component.</xsd:documentation>
+            <xsd:documentation>Description=This contains the location of a file in .csv or other suitable formats containing the wavelenght profile of this component.</xsd:documentation>
             <xsd:documentation>Tier=5</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
@@ -3583,7 +3583,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
   <xsd:element name="StandardDichroic" substitutionGroup="DichroicGroup">
     <xsd:annotation>
       <xsd:documentation>Category=LightPath</xsd:documentation>
-      <xsd:documentation>Description=A Dichroic used in the standard fluorecence Ligh Path.</xsd:documentation>
+      <xsd:documentation>Description=This describes a dichroic  positioned in the standard light path for one or more channel available for this instrument.</xsd:documentation>
       <xsd:documentation>Tier=2</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
@@ -3597,7 +3597,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
     <xsd:annotation>
       <xsd:appinfo><xsdfu xmlns=""><plural>Dichroics</plural></xsdfu></xsd:appinfo>
       <xsd:documentation>Category=AdditionalOptics</xsd:documentation>
-      <xsd:documentation>Description=An additional Dichroic poistioned in the light path for a given channel.</xsd:documentation>
+      <xsd:documentation>Description=This describes an additional dichroic  positioned in the light path for one or more channel available for this instrument.</xsd:documentation>
       <xsd:documentation>Tier=2</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
@@ -6384,8 +6384,7 @@ annotation refs from the base Annotation to form the list.</xsd:documentation>
   <xsd:complexType name="ManufacturerSpec">
     <xsd:annotation>
       <xsd:appinfo><xsdfu xmlns=""><abstract/></xsdfu></xsd:appinfo>
-      <xsd:documentation>Description=This is the base from which many microscope components are extended. E.g Objective, Filter etc. Provides attributes for recording common properties of these components such as Manufacturer name, Model etc. All of which are optional
-      </xsd:documentation>
+      <xsd:documentation>Description=This describes the manufacturer specifications for this component (i.e., manufacturer name, model designation and serial number).</xsd:documentation>
     </xsd:annotation>
     <xsd:attribute name="Manufacturer" use="required" type="xsd:string">
       <xsd:annotation>
