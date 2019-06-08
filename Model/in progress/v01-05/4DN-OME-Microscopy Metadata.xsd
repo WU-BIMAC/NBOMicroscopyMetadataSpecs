@@ -3049,7 +3049,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
     <xsd:annotation>
       <xsd:appinfo><xsdfu xmlns=""><plural>TransmittanceRanges</plural></xsdfu></xsd:appinfo>
       <xsd:documentation>Category=ChildElement</xsd:documentation>
-      <xsd:documentation>Description=This records a range of wavelengths associated with the associated microscope component. Multiple of this elements may be used.</xsd:documentation>
+      <xsd:documentation>Description=This records a range of wavelengths this device is designed for, according to the manufacturer. Multiple of this elements may be used.</xsd:documentation>
       <xsd:documentation>Tier=5</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
@@ -3471,7 +3471,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
   <xsd:element name="BeamSplitter" substitutionGroup="MirrorGroup">
     <xsd:annotation>
       <xsd:documentation>Category=Mirror</xsd:documentation>
-      <xsd:documentation>Description=This is a mirror that reflects part of the light, regardless of wavelenght</xsd:documentation>
+      <xsd:documentation>Description=This is a mirror that reflects part of the light, regardless of wavelenght.</xsd:documentation>
       <xsd:documentation>Tier=2</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
@@ -3479,13 +3479,13 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
         <xsd:extension base="Mirror">
           <xsd:attribute name="Transmittance" type="xsd:float" use="required">
             <xsd:annotation>
-              <xsd:documentation>Description=The maximum amount of light this Beamsplitteris capable of transmitting at the peak wavelenght. It is represented as a fractional value from 0.0 to 1.0.</xsd:documentation>
+              <xsd:documentation>Description=The maximum amount of light this beamsplitteris capable of transmitting at the peak wavelenght. It is represented as a fractional value from 0.0 to 1.0.</xsd:documentation>
               <xsd:documentation>Tier=3</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
           <xsd:attribute name="TransmissionAngle" type="xsd:float" use="required">
             <xsd:annotation>
-              <xsd:documentation>Description=The angle at which light is transmitted by this beamsplitter</xsd:documentation>
+              <xsd:documentation>Description=The angle at which light is transmitted by this beamsplitter.</xsd:documentation>
               <xsd:documentation>Tier=5</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
@@ -3496,7 +3496,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
   <xsd:element name="Reflector" substitutionGroup="MirrorGroup">
     <xsd:annotation>
       <xsd:documentation>Category=Mirror</xsd:documentation>
-      <xsd:documentation>Description=This is a total reflector mirror</xsd:documentation>
+      <xsd:documentation>Description=This is a total reflection mirror.</xsd:documentation>
       <xsd:documentation>Tier=2</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
@@ -4097,19 +4097,19 @@ Reflecting prisms are useful for redirecting light beams by total internal refle
         </xsd:attribute>
         <xsd:attribute name="Gain" type="xsd:float" use="required">
           <xsd:annotation>
-            <xsd:documentation>Description=The analog gain is the conversion unit for this detector. It specifies how many electrons correspond to 1 signal unit. It is expressed in e-/Analog-to-Digit-Unit (ADU).</xsd:documentation>
+            <xsd:documentation>Description=The analog gain is the conversion unit for this detector, as specified by the manufacturer. It specifies how many electrons correspond to 1 signal unit. It is expressed in e-/Analog-to-Digit-Unit (ADU).</xsd:documentation>
             <xsd:documentation>Tier=3</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
         <xsd:attribute default="C-mount" name="Mount" type="DetectorMount" use="optional">
           <xsd:annotation>
-            <xsd:documentation>Description=The type of mount used for the camera.</xsd:documentation>
+            <xsd:documentation>Description=The type of mount used to connect this detector to the microscope body.</xsd:documentation>
             <xsd:documentation>Tier=5</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
         <xsd:attribute name="ReadNoise" type="xsd:float" use="required">
           <xsd:annotation>
-            <xsd:documentation>Description=Read noise includes thermal noise build-up and clock induced charge. This is generally expressed in e- rms</xsd:documentation>
+            <xsd:documentation>Description=The read noise of this detector, as specified by the manufacturer. Read noise includes thermal noise build-up and clock induced charge. This is generally expressed in e- rms.</xsd:documentation>
             <xsd:documentation>Tier=5</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
@@ -4120,13 +4120,13 @@ Reflecting prisms are useful for redirecting light beams by total internal refle
         </xsd:attribute>
         <xsd:attribute name="DetectorNoiseModel" type="DetectorNoiseModel" use="required">
           <xsd:annotation>
-            <xsd:documentation>Description=The noise contribution that comes from the detector</xsd:documentation>
+            <xsd:documentation>Description=The type of noise associated with this detector.</xsd:documentation>
             <xsd:documentation>Tier=5</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
         <xsd:attribute name="DarkCurrentRate" type="xsd:float" use="required">
           <xsd:annotation>
-            <xsd:documentation>Description=Median current detected in the absence of light. Generally expressed in e-/pixel/sec</xsd:documentation>
+            <xsd:documentation>Description=The dark current rate of this detector as specified by the manufacturer. The dark current rate is the median current detected in the absence of light. Generally expressed in e-/pixel/sec.</xsd:documentation>
             <xsd:documentation>Tier=5</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
@@ -4137,7 +4137,7 @@ Reflecting prisms are useful for redirecting light beams by total internal refle
         </xsd:attribute>
         <xsd:attribute name="PeakWavelength" type="xsd:string" use="required">
           <xsd:annotation>
-            <xsd:documentation>Description=The wavelength associated with maximum light intensity detected by this device</xsd:documentation>
+            <xsd:documentation>Description=The wavelength associated with maximum light intensity detected by this device.</xsd:documentation>
             <xsd:documentation>Tier=3</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
@@ -4148,13 +4148,13 @@ Reflecting prisms are useful for redirecting light beams by total internal refle
         </xsd:attribute>
         <xsd:attribute name="QuantumEfficiencyatPeakWavelength" type="xsd:float" use="required">
           <xsd:annotation>
-            <xsd:documentation>Description=The Quantum Efficiency observed at peak wavelength. Quantum Efficiency is generally defined as is the ratio of incident photon to converted electrons. Typically expressed as a number between 0 and 1.</xsd:documentation>
+            <xsd:documentation>Description=The quantum efficiency observed at peak wavelength, according to the manufacturer. Quantum Efficiency is generally defined as is the ratio of incident photon to converted electrons. Typically expressed as a number between 0 and 1.</xsd:documentation>
             <xsd:documentation>Tier=3</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
         <xsd:attribute name="AmbientOperatingTemperature" type="xsd:float">
           <xsd:annotation>
-            <xsd:documentation>Description=The ambient temperature at which this detector is designed to operate</xsd:documentation>
+            <xsd:documentation>Description=The ambient temperature at which this detector is designed to operate, according to the manufactuer.</xsd:documentation>
             <xsd:documentation>Tier=5</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
@@ -4165,7 +4165,7 @@ Reflecting prisms are useful for redirecting light beams by total internal refle
         </xsd:attribute>
         <xsd:attribute name="AmbientOperatingHumidity" type="xsd:float">
           <xsd:annotation>
-            <xsd:documentation>Description=The ambient humidity at which this detector is designed to operate</xsd:documentation>
+            <xsd:documentation>Description=The ambient humidity at which this detector is designed to operate, according to the manufactuer.</xsd:documentation>
             <xsd:documentation>Tier=5</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
@@ -4182,7 +4182,7 @@ Reflecting prisms are useful for redirecting light beams by total internal refle
   <xsd:element name="PhotoMultiplier" substitutionGroup="DetectorGroup">
     <xsd:annotation>
       <xsd:documentation>Category=Detector</xsd:documentation>
-      <xsd:documentation>Description=A photomultiplier tube, useful for light detection of very weak signals, is a photoemissive device in which the absorption of a photon results in the emission of an electron. These detectors work by amplifying the electrons generated by a photocathode exposed to a photon flux</xsd:documentation>
+      <xsd:documentation>Description=A photomultiplier tube, useful for light detection of very weak signals, is a photoemissive device in which the absorption of a photon results in the emission of an electron. These detectors work by amplifying the electrons generated by a photocathode exposed to a photon flux.</xsd:documentation>
       <xsd:documentation>Tier=2</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
@@ -4209,7 +4209,7 @@ Reflecting prisms are useful for redirecting light beams by total internal refle
     <xsd:annotation>
       <xsd:appinfo><xsdfu xmlns=""><plural>GenericExcitationSources</plural></xsdfu></xsd:appinfo>
       <xsd:documentation>Category=Detector</xsd:documentation>
-      <xsd:documentation>Description=The GenericDetector element is used to represent a detector as a collection of key/value pairs, stored in a Map. One of the other detector elements should always be used in preference to this if possible.</xsd:documentation>
+      <xsd:documentation>Description=This element is used to represent a detector as a collection of key/value pairs, which are stored in a Map. One of the other detector elements should always be used in preference to this if possible.</xsd:documentation>
       <xsd:documentation>Tier=2</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
@@ -4247,19 +4247,19 @@ Reflecting prisms are useful for redirecting light beams by total internal refle
         </xsd:attribute>
         <xsd:attribute name="ArrayWidth" type="xsd:int" use="required">
           <xsd:annotation>
-            <xsd:documentation>Description=The width of this camera chip expressed in pixel</xsd:documentation>
+            <xsd:documentation>Description=The width of this camera chip expressed in pixel.</xsd:documentation>
             <xsd:documentation>Tier=3</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
         <xsd:attribute name="ArrayHeight" type="xsd:int" use="required">
           <xsd:annotation>
-            <xsd:documentation>Description=The height of this camera chip expressed in pixel</xsd:documentation>
+            <xsd:documentation>Description=The height of this camera chip expressed in pixel.</xsd:documentation>
             <xsd:documentation>Tier=3</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
         <xsd:attribute name="PixelWidth" type="xsd:float" use="required">
           <xsd:annotation>
-            <xsd:documentation>Description=The physical width of each pixel</xsd:documentation>
+            <xsd:documentation>Description=The physical width of each pixel.</xsd:documentation>
             <xsd:documentation>Tier=3</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
@@ -4270,7 +4270,7 @@ Reflecting prisms are useful for redirecting light beams by total internal refle
         </xsd:attribute>
         <xsd:attribute name="PixelHeight" type="xsd:float" use="required">
           <xsd:annotation>
-            <xsd:documentation>Description=The physical height of each pixel</xsd:documentation>
+            <xsd:documentation>Description=The physical height of each pixel.</xsd:documentation>
             <xsd:documentation>Tier=3</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
@@ -4281,7 +4281,7 @@ Reflecting prisms are useful for redirecting light beams by total internal refle
         </xsd:attribute>
         <xsd:attribute name="ImageWidth" type="xsd:float">
           <xsd:annotation>
-            <xsd:documentation>Description=The width of the image generated by the camera</xsd:documentation>
+            <xsd:documentation>Description=The width of the image generated by the camera.</xsd:documentation>
             <xsd:documentation>Tier=3</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
@@ -4292,7 +4292,7 @@ Reflecting prisms are useful for redirecting light beams by total internal refle
         </xsd:attribute>
         <xsd:attribute name="ImageHeight" type="xsd:float">
           <xsd:annotation>
-            <xsd:documentation>Description=The width of the image generated by the camera</xsd:documentation>
+            <xsd:documentation>Description=The width of the image generated by the camera.</xsd:documentation>
             <xsd:documentation>Tier=3</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
@@ -4303,7 +4303,7 @@ Reflecting prisms are useful for redirecting light beams by total internal refle
         </xsd:attribute>
         <xsd:attribute name="PixelWellCapacity" type="xsd:int" use="required">
           <xsd:annotation>
-            <xsd:documentation>Description=The maximum amount of charge each pixel well can hold, measured in electron counts</xsd:documentation>
+            <xsd:documentation>Description=The maximum amount of charge each pixel well can hold, measured in electron counts.</xsd:documentation>
             <xsd:documentation>Tier=5</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
@@ -4314,7 +4314,7 @@ Reflecting prisms are useful for redirecting light beams by total internal refle
         </xsd:attribute>
         <xsd:attribute name="RegisterWellCapacity" type="xsd:int">
           <xsd:annotation>
-            <xsd:documentation>Description=The maximum amount of charge each register well can hold, measured in electron counts</xsd:documentation>
+            <xsd:documentation>Description=The maximum amount of charge each register well can hold, measured in electron counts.</xsd:documentation>
             <xsd:documentation>Tier=5</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
@@ -4325,7 +4325,9 @@ Reflecting prisms are useful for redirecting light beams by total internal refle
         </xsd:attribute>
         <xsd:attribute name="VerticalClockSpeed" type="xsd:float">
           <xsd:annotation>
-            <xsd:documentation>Description=The maximal speed each vertical colunm of pixels in the camera chip, can be shifted down and read</xsd:documentation>
+            <xsd:documentation>Description=The maximal speed each vertical colunm of pixels in the camera chip, can be shifted down and read.
+
+</xsd:documentation>
             <xsd:documentation>Tier=5</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
@@ -4336,7 +4338,7 @@ Reflecting prisms are useful for redirecting light beams by total internal refle
         </xsd:attribute>
         <xsd:attribute name="MaximumFrameRate" type="xsd:float" use="required">
           <xsd:annotation>
-            <xsd:documentation>Description=The maximal rate this camera can acquire a single frame</xsd:documentation>
+            <xsd:documentation>Description=The maximal rate at which this camera can acquire a single frame.</xsd:documentation>
             <xsd:documentation>Tier=5</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
@@ -4347,7 +4349,7 @@ Reflecting prisms are useful for redirecting light beams by total internal refle
         </xsd:attribute>
         <xsd:attribute name="MaximumReadoutRate" type="xsd:float" use="required">
           <xsd:annotation>
-            <xsd:documentation>Description=The maximal pixel read out rate allowed by this camera</xsd:documentation>
+            <xsd:documentation>Description=The maximal pixel read out rate allowed by this camera.</xsd:documentation>
             <xsd:documentation>Tier=5</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
@@ -4363,7 +4365,7 @@ Reflecting prisms are useful for redirecting light beams by total internal refle
   <xsd:element name="CCD" substitutionGroup="CameraGroup">
     <xsd:annotation>
       <xsd:documentation>Category=Detector.Camera</xsd:documentation>
-      <xsd:documentation>Description=A charged coupled device camera</xsd:documentation>
+      <xsd:documentation>Description=A charged coupled device camera.</xsd:documentation>
       <xsd:documentation>Tier=2</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
@@ -4382,7 +4384,7 @@ Reflecting prisms are useful for redirecting light beams by total internal refle
   <xsd:element name="IntensifiedCCD" substitutionGroup="CameraGroup">
     <xsd:annotation>
       <xsd:documentation>Category=Detector.Camera</xsd:documentation>
-      <xsd:documentation>Description=The type of Intensified CCD camera used</xsd:documentation>
+      <xsd:documentation>Description=The type of Intensified CCD camera used.</xsd:documentation>
       <xsd:documentation>Tier=2</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
@@ -4401,7 +4403,7 @@ Reflecting prisms are useful for redirecting light beams by total internal refle
   <xsd:element name="AnalogVideo" substitutionGroup="CameraGroup">
     <xsd:annotation>
       <xsd:documentation>Category=Detector.Camera</xsd:documentation>
-      <xsd:documentation>Description=A device used to capture analog videos</xsd:documentation>
+      <xsd:documentation>Description=A device used to capture analog videos.</xsd:documentation>
       <xsd:documentation>Tier=2</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
@@ -4413,7 +4415,7 @@ Reflecting prisms are useful for redirecting light beams by total internal refle
   <xsd:element name="CMOS" substitutionGroup="CameraGroup">
     <xsd:annotation>
       <xsd:documentation>Category=Detector.Camera</xsd:documentation>
-      <xsd:documentation>Description=A complementary metal-oxide-semiconductor camera</xsd:documentation>
+      <xsd:documentation>Description=A complementary metal-oxide-semiconductor camera.</xsd:documentation>
       <xsd:documentation>Tier=2</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
@@ -8380,7 +8382,7 @@ annotation refs from the base Annotation to form the list.</xsd:documentation>
   </xsd:simpleType>
   <xsd:simpleType name="MirrorGeometry">
     <xsd:restriction base="xsd:string">
-      <xsd:enumeration value="Spherical, , , , , "/>
+      <xsd:enumeration value="Spherical"/>
       <xsd:enumeration value="Aspherical"/>
       <xsd:enumeration value="Cylindrical"/>
       <xsd:enumeration value="Ellipsoidal"/>
