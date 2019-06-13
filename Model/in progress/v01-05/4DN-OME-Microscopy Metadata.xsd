@@ -2201,15 +2201,49 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
       <xsd:documentation>Description=This describes the objective lens and stage positioning device(s) available for this instrument. An instrument may have more than one of these devices of different type, such as mechanical stage, piezoelectric stage, objective turret and piezoelectric objective.</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
-  <xsd:complexType name="Focusing">
-    <xsd:annotation>
-      <xsd:documentation>Description=This describes the objective lens and stage positioning device(s) available for this instrument. An instrument may have more than one of these devices of different type, such as mechanical stage, piezoelectric stage, objective turret and piezoelectric objective.</xsd:documentation>
-    </xsd:annotation>
+  <xsd:complexType abstract="false" name="Stage">
     <xsd:complexContent>
-      <xsd:extension base="Stage">
-        <xsd:sequence>
-          <xsd:element ref="AnnotationRef" maxOccurs="1" minOccurs="0"/>
-        </xsd:sequence>
+      <xsd:extension base="ManufacturerSpec">
+        <xsd:attribute name="ID" type="LSID" use="required">
+          <xsd:annotation>
+            <xsd:documentation>Description=A unique identifier for this component.</xsd:documentation>
+            <xsd:documentation>Tier=3</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="Name" type="Denomination" use="required">
+          <xsd:annotation>
+            <xsd:documentation>Description=A user defined name for this component.</xsd:documentation>
+            <xsd:documentation>Tier=3</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="MovementAxes" use="optional" default="Z" type="StageMovementAxes">
+          <xsd:annotation>
+            <xsd:documentation>Description=The axes or axis along which this device is capable of moving.</xsd:documentation>
+            <xsd:documentation>Tier=5</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="XTravelRange" type="xsd:float" use="required">
+          <xsd:annotation>
+            <xsd:documentation>Description=The range this device is capable of moving in along the X axis.</xsd:documentation>
+            <xsd:documentation>Tier=5</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="XTravelRangeUnit" type="UnitsLength" default="µm">
+          <xsd:annotation>
+            <xsd:documentation>Tier=5</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="YTravelRange" type="xsd:float" use="required">
+          <xsd:annotation>
+            <xsd:documentation>Description=The range this device is capable of moving in along the Y axis.</xsd:documentation>
+            <xsd:documentation>Tier=5</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="YTravelRangeUnit" type="UnitsLength" default="µm">
+          <xsd:annotation>
+            <xsd:documentation>Tier=5</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
         <xsd:attribute name="Resolution" type="xsd:float" use="required">
           <xsd:annotation>
             <xsd:documentation>Description=The expected motion resolution of this device.</xsd:documentation>
@@ -2229,17 +2263,52 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
         </xsd:attribute>
         <xsd:attribute name="Repetability" type="xsd:float" use="required">
           <xsd:annotation>
-            <xsd:documentation>Description=The expected precision with which this device is capable of returning to a previously visited position. Typically expressed in % error.</xsd:documentation>
+            <xsd:documentation>Description=The expected precision with which this device is capable of returning to a previously visited position.</xsd:documentation>
             <xsd:documentation>Tier=5</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
-        <xsd:attribute name="SettingTime" type="xsd:float" use="required">
+        <xsd:attribute default="nm" name="RepetabilityUnit" type="UnitsLength"/>
+        <xsd:attribute name="SettingTime" type="xsd:float" use="optional">
           <xsd:annotation>
             <xsd:documentation>Description=The expected time it takes for this device to stabilize at the target position.</xsd:documentation>
             <xsd:documentation>Tier=5</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
         <xsd:attribute default="ms" name="SettlingTimeUnit" type="UnitsTime">
+          <xsd:annotation>
+            <xsd:documentation>Tier=5</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="MaxVelocity" type="xsd:float">
+          <xsd:annotation>
+            <xsd:documentation>Description=The maximum velocity at which this device is capable of moving.</xsd:documentation>
+            <xsd:documentation>Tier=5</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute default="nm/s" name="MaxVelocityUnit" type="UnitsVelocity">
+          <xsd:annotation>
+            <xsd:documentation>Tier=5</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="Focusing">
+    <xsd:annotation>
+      <xsd:documentation>Description=This describes the objective lens and stage positioning device(s) available for this instrument. An instrument may have more than one of these devices of different type, such as mechanical stage, piezoelectric stage, objective turret and piezoelectric objective.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="Stage">
+        <xsd:sequence>
+          <xsd:element ref="AnnotationRef" maxOccurs="1" minOccurs="0"/>
+        </xsd:sequence>
+        <xsd:attribute name="ZTravelRange" type="xsd:float" use="required">
+          <xsd:annotation>
+            <xsd:documentation>Description=The range this device is capable of moving in along the Z axis.</xsd:documentation>
+            <xsd:documentation>Tier=5</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="ZTravelRangeUnit" type="UnitsLength" default="µm">
           <xsd:annotation>
             <xsd:documentation>Tier=5</xsd:documentation>
           </xsd:annotation>
@@ -2295,74 +2364,6 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
       </xsd:complexContent>
     </xsd:complexType>
   </xsd:element>
-  <xsd:complexType abstract="false" name="Stage">
-    <xsd:complexContent>
-      <xsd:extension base="ManufacturerSpec">
-        <xsd:attribute name="ID" type="LSID" use="required">
-          <xsd:annotation>
-            <xsd:documentation>Description=A unique identifier for this component.</xsd:documentation>
-            <xsd:documentation>Tier=3</xsd:documentation>
-          </xsd:annotation>
-        </xsd:attribute>
-        <xsd:attribute name="Name" type="Denomination" use="required">
-          <xsd:annotation>
-            <xsd:documentation>Description=A user defined name for this component.</xsd:documentation>
-            <xsd:documentation>Tier=3</xsd:documentation>
-          </xsd:annotation>
-        </xsd:attribute>
-        <xsd:attribute name="MovementAxes" use="optional" default="Z" type="StageMovementAxes">
-          <xsd:annotation>
-            <xsd:documentation>Description=The axes or axis along which this device is capable of moving.</xsd:documentation>
-            <xsd:documentation>Tier=5</xsd:documentation>
-          </xsd:annotation>
-        </xsd:attribute>
-        <xsd:attribute name="XTravelRange" type="xsd:float" use="required">
-          <xsd:annotation>
-            <xsd:documentation>Description=The range this device is capable of moving in along the X axis.</xsd:documentation>
-            <xsd:documentation>Tier=5</xsd:documentation>
-          </xsd:annotation>
-        </xsd:attribute>
-        <xsd:attribute name="XTravelRangeUnit" type="UnitsLength" default="µm">
-          <xsd:annotation>
-            <xsd:documentation>Tier=5</xsd:documentation>
-          </xsd:annotation>
-        </xsd:attribute>
-        <xsd:attribute name="YTravelRange" type="xsd:float" use="required">
-          <xsd:annotation>
-            <xsd:documentation>Description=The range this device is capable of moving in along the Y axis.</xsd:documentation>
-            <xsd:documentation>Tier=5</xsd:documentation>
-          </xsd:annotation>
-        </xsd:attribute>
-        <xsd:attribute name="YTravelRangeUnit" type="UnitsLength" default="µm">
-          <xsd:annotation>
-            <xsd:documentation>Tier=5</xsd:documentation>
-          </xsd:annotation>
-        </xsd:attribute>
-        <xsd:attribute name="ZTravelRange" type="xsd:float" use="required">
-          <xsd:annotation>
-            <xsd:documentation>Description=The range this device is capable of moving in along the Z axis.</xsd:documentation>
-            <xsd:documentation>Tier=5</xsd:documentation>
-          </xsd:annotation>
-        </xsd:attribute>
-        <xsd:attribute name="ZTravelRangeUnit" type="UnitsLength" default="µm">
-          <xsd:annotation>
-            <xsd:documentation>Tier=5</xsd:documentation>
-          </xsd:annotation>
-        </xsd:attribute>
-        <xsd:attribute name="MaxVelocity" type="xsd:float">
-          <xsd:annotation>
-            <xsd:documentation>Description=The maximum velocity at which this device is capable of moving.</xsd:documentation>
-            <xsd:documentation>Tier=5</xsd:documentation>
-          </xsd:annotation>
-        </xsd:attribute>
-        <xsd:attribute default="nm/s" name="MaxVelocityUnit" type="UnitsVelocity">
-          <xsd:annotation>
-            <xsd:documentation>Tier=5</xsd:documentation>
-          </xsd:annotation>
-        </xsd:attribute>
-      </xsd:extension>
-    </xsd:complexContent>
-  </xsd:complexType>
   <xsd:element name="AutoFocus">
     <xsd:annotation>
       <xsd:documentation>Category=SampleHolderAndFocusing.Focusing</xsd:documentation>
@@ -2636,22 +2637,19 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
     <xsd:complexType>
       <xsd:complexContent>
         <xsd:extension base="LightSource">
-          <xsd:sequence>
-            <xsd:element ref="Pump" minOccurs="0" maxOccurs="1">
-              <xsd:annotation>
-                <xsd:documentation>Description=The Laser element may contain a Pump sub-element which refers to a LightSource used as a laser pump
-                </xsd:documentation>
-                <xsd:documentation>Tier=5</xsd:documentation>
-              </xsd:annotation>
-            </xsd:element>
-          </xsd:sequence>
           <xsd:attribute name="Type" use="required" type="LaserType">
             <xsd:annotation>
               <xsd:documentation>Description=Type is the general category of laser.</xsd:documentation>
               <xsd:documentation>Tier=5</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="LaserMedium" use="required" type="LaserMedium">
+          <xsd:attribute name="Pump" type="xsd:boolean" use="required">
+            <xsd:annotation>
+              <xsd:documentation>Tier=5</xsd:documentation>
+              <xsd:documentation>Description=Wheter or not this is a pumped laser.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
+          <xsd:attribute name="LaserMedium" use="optional" type="LaserMedium">
             <xsd:annotation>
               <xsd:documentation>Description=The Medium attribute specifies the actual lasing medium for a given laser type.           </xsd:documentation>
               <xsd:documentation>Tier=5</xsd:documentation>
@@ -2886,20 +2884,11 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
     <xsd:annotation>
       <xsd:appinfo><xsdfu xmlns=""><plural>Pumps</plural></xsdfu></xsd:appinfo>
       <xsd:documentation>Category=ChildElement</xsd:documentation>
-      <xsd:documentation>Description=The Pump element is a reference to a LightSource. It is used within the Laser element to specify the light source for the laser's pump (if any).</xsd:documentation>
+      <xsd:documentation>Description=The Pump element refers to a light source. It is used within the Laser element to specify the light source used as an optional laser pump.</xsd:documentation>
       <xsd:documentation>Tier=5</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
-      <xsd:complexContent>
-        <xsd:extension base="Reference">
-          <xsd:attribute name="ID" use="required" type="LightSourceID">
-            <xsd:annotation>
-              <xsd:documentation>Description=A unique identifier for this component.</xsd:documentation>
-              <xsd:documentation>Tier=5</xsd:documentation>
-            </xsd:annotation>
-          </xsd:attribute>
-        </xsd:extension>
-      </xsd:complexContent>
+      <xsd:attribute name="ID" type="LightSourceID"/>
     </xsd:complexType>
   </xsd:element>
   <xsd:element name="LightSourceCouplingGroup" abstract="true" type="LightSourceCoupling">
@@ -3194,20 +3183,20 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
       <xsd:complexContent>
         <xsd:extension base="ManufacturerSpec">
           <xsd:sequence>
-            <xsd:element name="ExcitationFilterRef" type="FilterRef" minOccurs="1" maxOccurs="1">
+            <xsd:element name="ExcitationFilterRef" type="FilterRef" minOccurs="0" maxOccurs="1">
               <xsd:annotation>
                 <xsd:appinfo><xsdfu xmlns=""><plural>ExcitationFilters</plural><manytomany/></xsdfu></xsd:appinfo>
                 <xsd:documentation>Description=This refers to an available excitation filter, which is part of this filter set.</xsd:documentation>
                 <xsd:documentation>Tier=2</xsd:documentation>
               </xsd:annotation>
             </xsd:element>
-            <xsd:element minOccurs="1" maxOccurs="1" ref="StandardDichroicRef">
+            <xsd:element minOccurs="0" maxOccurs="1" ref="StandardDichroicRef">
               <xsd:annotation>
                 <xsd:documentation>Description=This refers to an available dichroic mirror, which is part of this filter set.</xsd:documentation>
                 <xsd:documentation>Tier=2</xsd:documentation>
               </xsd:annotation>
             </xsd:element>
-            <xsd:element name="EmissionFilterRef" minOccurs="1" maxOccurs="1">
+            <xsd:element name="EmissionFilterRef" minOccurs="0" maxOccurs="1" type="FilterRef">
               <xsd:annotation>
                 <xsd:appinfo><xsdfu xmlns=""><plural>EmissionFilters</plural><manytomany/></xsdfu></xsd:appinfo>
                 <xsd:documentation>Description=This refers to an available emission filter, which is part of this filter set.</xsd:documentation>
@@ -3266,7 +3255,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
             <xsd:documentation>Tier=3</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
-        <xsd:attribute name="ReflectionCoating" type="xsd:string" use="required">
+        <xsd:attribute name="ReflectionCoating" type="xsd:string" use="optional">
           <xsd:annotation>
             <xsd:documentation>Description=An optical coating is one or more thin layers of material deposited on an optical component such as a lens or mirror, which alters the way in which the optic reflects and transmits light.</xsd:documentation>
             <xsd:documentation>Tier=5</xsd:documentation>
@@ -3395,12 +3384,6 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
             <xsd:documentation>Tier=2</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
-        <xsd:attribute name="Reflectance" type="xsd:float" use="required">
-          <xsd:annotation>
-            <xsd:documentation>Description=The maximum amount of light this Mirror is capable of reflecting. It is represented as a fractional value from 0.0 to 1.0.</xsd:documentation>
-            <xsd:documentation>Tier=3</xsd:documentation>
-          </xsd:annotation>
-        </xsd:attribute>
         <xsd:attribute name="AngleOfIncidence" type="xsd:float" use="required">
           <xsd:annotation>
             <xsd:documentation>Description=This field records the optimal angle of incidence (AOI) for this mirror. TheAOI is the angle between the optical axis of the incident light and the axis normal to the surface of the mirror. In specular reflection AOI is by definition equal to the Angle Of Reflection (AOR).</xsd:documentation>
@@ -3447,8 +3430,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
             <xsd:documentation>Tier=5</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
-        <xsd:attribute name="SubstrateMaterial" type="SubstrateMaterialName"
-          default="UV-Grade Fused Silica (UVFS)">
+        <xsd:attribute name="SubstrateMaterial" type="SubstrateMaterialName">
           <xsd:annotation>
             <xsd:documentation>Description=This records the chemical composition or the nonproprietary trade designation of the mirror's optical substrate. For dichoric mirrors the substrate is typically composed of a glass material with low autofluorescence, such as UV-grade fused silica.</xsd:documentation>
             <xsd:documentation>Tier=5</xsd:documentation>
@@ -3489,6 +3471,12 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
               <xsd:documentation>Tier=5</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
+          <xsd:attribute name="Reflectance" type="xsd:float">
+            <xsd:annotation>
+              <xsd:documentation>Description=The maximum amount of light this Mirror is capable of reflecting. It is represented as a fractional value from 0.0 to 1.0.</xsd:documentation>
+              <xsd:documentation>Tier=3</xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
         </xsd:extension>
       </xsd:complexContent>
     </xsd:complexType>
@@ -3501,7 +3489,14 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
     </xsd:annotation>
     <xsd:complexType>
       <xsd:complexContent>
-        <xsd:extension base="Mirror"/>
+        <xsd:extension base="Mirror">
+          <xsd:attribute name="Reflectance" type="xsd:float">
+            <xsd:annotation>
+              <xsd:documentation>Description=The maximum amount of light this Mirror is capable of reflecting. It is represented as a fractional value from 0.0 to 1.0.</xsd:documentation>
+              <xsd:documentation>Tier=3</xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
+        </xsd:extension>
       </xsd:complexContent>
     </xsd:complexType>
   </xsd:element>
@@ -3634,6 +3629,12 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
       </xsd:attribute>
       <xsd:attribute name="CutOutUnit" use="optional" default="nm" type="UnitsLength">
         <xsd:annotation>
+          <xsd:documentation>Tier=3</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="Reflectance" type="xsd:float">
+        <xsd:annotation>
+          <xsd:documentation>Description=The maximum amount of light this Mirror is capable of reflecting. It is represented as a fractional value from 0.0 to 1.0.</xsd:documentation>
           <xsd:documentation>Tier=3</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
@@ -4141,7 +4142,7 @@ Reflecting prisms are useful for redirecting light beams by total internal refle
             <xsd:documentation>Tier=3</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
-        <xsd:attribute name="PeakWavelenghtUnit" type="UnitsLength">
+        <xsd:attribute name="PeakWavelenghtUnit" type="UnitsLength" default="nm">
           <xsd:annotation>
             <xsd:documentation>Tier=3</xsd:documentation>
           </xsd:annotation>
@@ -4353,8 +4354,7 @@ Reflecting prisms are useful for redirecting light beams by total internal refle
             <xsd:documentation>Tier=5</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
-        <xsd:attribute default="pixel per second" name="MaximumReadoutRateUnit"
-          type="UnitsFrequency">
+        <xsd:attribute default="MHz" name="MaximumReadoutRateUnit" type="UnitsFrequency">
           <xsd:annotation>
             <xsd:documentation>Tier=5</xsd:documentation>
           </xsd:annotation>
@@ -6126,18 +6126,6 @@ annotation refs from the base Annotation to form the list.</xsd:documentation>
       </xsd:complexContent>
     </xsd:complexType>
   </xsd:element>
-  <xsd:complexType name="FilterRef">
-    <!-- top level definition -->
-    <xsd:complexContent>
-      <xsd:extension base="Reference">
-        <xsd:attribute name="ID" use="required" type="FilterID">
-          <xsd:annotation>
-            <xsd:documentation>Tier=2</xsd:documentation>
-          </xsd:annotation>
-        </xsd:attribute>
-      </xsd:extension>
-    </xsd:complexContent>
-  </xsd:complexType>
   <xsd:element name="TIRFSettingsRef">
     <xsd:annotation>
       <xsd:documentation>This empty element has a reference (the TIRFSettingsID attribute) to a TIRF Settings defined into OME. E.g. a microbeam operation, such as a laser used for photobleaching.</xsd:documentation>
@@ -6312,6 +6300,18 @@ annotation refs from the base Annotation to form the list.</xsd:documentation>
     <xsd:complexContent>
       <xsd:extension base="Reference">
         <xsd:attribute name="ID" type="PolarizationOpticsID"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="FilterRef">
+    <!-- top level definition -->
+    <xsd:complexContent>
+      <xsd:extension base="Reference">
+        <xsd:attribute name="ID" use="required" type="FilterID">
+          <xsd:annotation>
+            <xsd:documentation>Tier=2</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
@@ -8025,12 +8025,12 @@ annotation refs from the base Annotation to form the list.</xsd:documentation>
   <xsd:simpleType name="LaserType">
     <xsd:restriction base="xsd:string">
       <xsd:enumeration value="Gas"/>
+      <xsd:enumeration value="SolidState"/>
       <xsd:enumeration value="MetalVapor"/>
       <xsd:enumeration value="LaserDiode"/>
-      <xsd:enumeration value="DiodePumpedSolidState"/>
+      <xsd:enumeration value="SolidStateDiodePumped"/>
       <xsd:enumeration value="LED"/>
       <xsd:enumeration value="Dye"/>
-      <xsd:enumeration value="Semiconductor"/>
       <xsd:enumeration value="FreeElectron"/>
       <xsd:enumeration value="Other"/>
     </xsd:restriction>
@@ -8038,28 +8038,33 @@ annotation refs from the base Annotation to form the list.</xsd:documentation>
   <xsd:simpleType name="LaserMedium">
     <xsd:restriction base="xsd:string">
       <!-- MetalVaporLaserMedia -->
-      <xsd:enumeration value="Cu"/>
-      <xsd:enumeration value="Ag"/>
       <!-- ExcimerLaserMedia -->
-      <xsd:enumeration value="ArFl"/>
-      <xsd:enumeration value="ArCl"/>
-      <xsd:enumeration value="KrFl"/>
-      <xsd:enumeration value="KrCl"/>
-      <xsd:enumeration value="XeFl"/>
-      <xsd:enumeration value="XeCl"/>
-      <xsd:enumeration value="XeBr"/>
       <!-- GasLaserMedia -->
-      <xsd:enumeration value="N"/>
+      <!-- SolidStateLaserMedia -->
+      <!-- DyeLaserMedia -->
+      <!-- SemiconductorLaserMedia -->
+      <!-- FreeElectronLaserMedia -->
+      <!-- OtherLaserMedia -->
+      <xsd:enumeration value="Ag"/>
       <xsd:enumeration value="Ar"/>
-      <xsd:enumeration value="Kr"/>
-      <xsd:enumeration value="Xe"/>
-      <xsd:enumeration value="HeNe"/>
-      <xsd:enumeration value="HeCd"/>
+      <xsd:enumeration value="ArCl"/>
+      <xsd:enumeration value="ArFl"/>
+      <xsd:enumeration value="ArKr"/>
       <xsd:enumeration value="CO"/>
       <xsd:enumeration value="CO2"/>
-      <xsd:enumeration value="H2O"/>
+      <xsd:enumeration value="Cu"/>
       <xsd:enumeration value="HFl"/>
-      <!-- SolidStateLaserMedia -->
+      <xsd:enumeration value="H2O"/>
+      <xsd:enumeration value="HeCd"/>
+      <xsd:enumeration value="HeNe"/>
+      <xsd:enumeration value="Kr"/>
+      <xsd:enumeration value="KrCl"/>
+      <xsd:enumeration value="KrFl"/>
+      <xsd:enumeration value="N"/>
+      <xsd:enumeration value="Xe"/>
+      <xsd:enumeration value="XeBr"/>
+      <xsd:enumeration value="XeCl"/>
+      <xsd:enumeration value="XeFl"/>
       <xsd:enumeration value="NdGlass"/>
       <xsd:enumeration value="NdYAG"/>
       <xsd:enumeration value="ErGlass"/>
@@ -8069,15 +8074,11 @@ annotation refs from the base Annotation to form the list.</xsd:documentation>
       <xsd:enumeration value="Ruby"/>
       <xsd:enumeration value="TiSapphire"/>
       <xsd:enumeration value="Alexandrite"/>
-      <!-- DyeLaserMedia -->
       <xsd:enumeration value="Rhodamine6G"/>
       <xsd:enumeration value="CoumarinC30"/>
-      <!-- SemiconductorLaserMedia -->
       <xsd:enumeration value="GaAs"/>
       <xsd:enumeration value="GaAlAs"/>
-      <!-- FreeElectronLaserMedia -->
       <xsd:enumeration value="EMinus"/>
-      <!-- OtherLaserMedia -->
       <xsd:enumeration value="Other"/>
     </xsd:restriction>
   </xsd:simpleType>
@@ -8198,6 +8199,8 @@ annotation refs from the base Annotation to form the list.</xsd:documentation>
       <xsd:enumeration value="PlanFluor"/>
       <xsd:enumeration value="PlanNeofluar"/>
       <xsd:enumeration value="SuperFluor"/>
+      <xsd:enumeration value="UPlanApo"/>
+      <xsd:enumeration value="UPlanFl"/>
       <xsd:enumeration value="UV"/>
       <xsd:enumeration value="VioletCorrected"/>
       <xsd:enumeration value="Other"/>
