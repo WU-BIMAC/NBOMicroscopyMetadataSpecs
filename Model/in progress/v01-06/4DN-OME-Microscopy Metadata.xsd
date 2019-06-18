@@ -1926,7 +1926,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
     </xsd:annotation>
     <xsd:complexType>
       <xsd:sequence>
-        <xsd:element ref="SampleHolderRef" maxOccurs="1" minOccurs="0">
+        <xsd:element ref="SamplePositioningRef" maxOccurs="1" minOccurs="0">
           <xsd:annotation>
             <xsd:documentation>Description=This empty element has a reference (the SampleHolderID attribute) to a SampleHolder element defined within OME</xsd:documentation>
             <xsd:documentation>Tier=3</xsd:documentation>
@@ -1994,7 +1994,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
     </xsd:annotation>
     <xsd:complexType>
       <xsd:sequence>
-        <xsd:element ref="FocusingRef" minOccurs="0">
+        <xsd:element ref="SamplePositioningRef" minOccurs="0">
           <xsd:annotation>
             <xsd:documentation>Description=This empty element has a reference (the FocusingID attribute) to a Focusing element defined within OME</xsd:documentation>
             <xsd:documentation>Tier=3</xsd:documentation>
@@ -2236,7 +2236,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
       <xsd:documentation>Description=This describes a objective lens or stage positioning device available for this instrument. An instrument may have more than one of these devices of different type, such as mechanical stage, piezoelectric stage, objective turret and piezoelectric objective.</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
-  <xsd:element name="ObjectiveTurretFocusing" substitutionGroup="SamplePositioningGroup">
+  <xsd:element name="ObjectiveTurretFocus" substitutionGroup="SamplePositioningGroup">
     <xsd:annotation>
       <xsd:documentation>Category=SamplePositioning.Focusing</xsd:documentation>
       <xsd:documentation>Description=An objective turret positoning device available for this instrument.</xsd:documentation>
@@ -2248,7 +2248,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
       </xsd:complexContent>
     </xsd:complexType>
   </xsd:element>
-  <xsd:element name="PiezoElectricObjectiveFocusing" substitutionGroup="SamplePositioningGroup">
+  <xsd:element name="PiezoElectricObjectiveFocus" substitutionGroup="SamplePositioningGroup">
     <xsd:annotation>
       <xsd:documentation>Category=SamplePositioning.Focusing</xsd:documentation>
       <xsd:documentation>Description=An optional piezoelectric objective positioning device associated with this instrument.</xsd:documentation>
@@ -6338,11 +6338,11 @@ annotation refs from the base Annotation to form the list.</xsd:documentation>
       </xsd:complexContent>
     </xsd:complexType>
   </xsd:element>
-  <xsd:element name="FocusingRef">
+  <xsd:element name="SamplePositioningRef">
     <xsd:complexType>
       <xsd:complexContent>
         <xsd:extension base="Reference">
-          <xsd:attribute name="ID" type="FocusingID"/>
+          <xsd:attribute name="ID" type="SamplePositioningID"/>
         </xsd:extension>
       </xsd:complexContent>
     </xsd:complexType>
@@ -6818,7 +6818,7 @@ annotation refs from the base Annotation to form the list.</xsd:documentation>
   <xsd:simpleType name="SampleHolderID">
     <xsd:restriction base="LSID"/>
   </xsd:simpleType>
-  <xsd:simpleType name="FocusingID">
+  <xsd:simpleType name="SamplePositioningID">
     <xsd:restriction base="LSID"/>
   </xsd:simpleType>
   <xsd:simpleType name="AutoFocusID">
@@ -9259,8 +9259,7 @@ annotation refs from the base Annotation to form the list.</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
       <xsd:sequence>
-        <xsd:element maxOccurs="1" minOccurs="0" ref="SampleHolderRef"/>
-        <xsd:element minOccurs="0" ref="FocusingRef"/>
+        <xsd:element minOccurs="0" ref="SamplePositioningRef"/>
         <xsd:element minOccurs="0" ref="AutoFocusRef"/>
         <xsd:element minOccurs="0" name="AnnotationRef">
           <xsd:annotation>
