@@ -960,22 +960,19 @@
   <xsd:element name="Experiment">
     <!-- top level definition -->
     <xsd:annotation>
-      <xsd:appinfo>This element describes the type of experiment. The required Type attribute must contain one or more entries from the following list: FRET, Time-lapse, 4D+, HightThroughputScreen, FISH, Electrophysiology, Ion-Imaging, Co-localization, PGI/Documentation FRAP, Photo-ablation, Optical-Trapping, Photo-activation, Fluorescence-Lifetime, Spectral-Imaging, Other The required LabellingMethod attribute must contain one or more entries from the following list: FluorescentProtein, CASFISH, FISH, Single-Molecule-FISH, Indirect-Immunofluorescene, Immunocytochemistry, None, Other PGI/Documentation is not a 'data' image. The optional Description element may contain free text to further describe the experiment</xsd:appinfo>
-      <xsd:documentation>This element describes the type of experiment.  
-        The required Type attribute must contain one or more entries from the following list:
-        FRET, Time-lapse, 4D+, HightThroughputScreen, FISH, Electrophysiology, Ion-Imaging, Co-localization, PGI/Documentation FRAP, Photo-ablation, Optical-Trapping, Photo-activation, Fluorescence-Lifetime, Spectral-Imaging, Other
-        The required LabellingMethod attribute must contain one or more entries from the following list:
-        FluorescentProtein, CASFISH, FISH, Single-Molecule-FISH, Indirect-Immunofluorescene, Immunocytochemistry, None, Other
-        PGI/Documentation is not a 'data' image.
-        The optional Description element may contain free text to further describe the experiment.</xsd:documentation>
+      <xsd:appinfo/>
+      <xsd:documentation>Domain=Experimental</xsd:documentation>
+      <xsd:documentation>Category=SamplePreparation</xsd:documentation>
+      <xsd:documentation>Description=Describes the experiment during which this Image was acquired. The optional Description element may contain free text to further describe the experiment.</xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
       <xsd:sequence>
         <xsd:element ref="ExperimenterRef" minOccurs="1" maxOccurs="unbounded">
           <xsd:annotation>
-            <xsd:documentation>Description=This empty element has a required reference (the ExperimenterID attribute) to a predefined Experimenter.
-            </xsd:documentation>
+            <xsd:documentation>Domain=Experimental</xsd:documentation>
+            <xsd:documentation>Category=SamplePreparation</xsd:documentation>
+            <xsd:documentation>Description=This empty element refers to Experimenter that performed this experiment.</xsd:documentation>
             <xsd:documentation>Tier=1</xsd:documentation>
           </xsd:annotation>
         </xsd:element>
@@ -1012,16 +1009,16 @@
           <xsd:documentation>Tier=1</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
-      <xsd:attribute name="Type" use="optional" type="ExperimentType">
+      <xsd:attribute name="Type" use="required" type="ExperimentType">
         <xsd:annotation>
-          <xsd:documentation>Description=A term to describe the type of experiment.</xsd:documentation>
+          <xsd:documentation>Description=A term to describe the type of imaging experiment performed in this case.</xsd:documentation>
           <xsd:documentation>Tier=2</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
-      <xsd:attribute name="LabellingMethod" type="ExperimentLabellingMethod">
+      <xsd:attribute name="LabellingMethod" type="ExperimentLabellingMethod" use="required">
         <xsd:annotation>
-          <xsd:documentation>Description=A term that describes the method used for labelling the molecular component under study in this experiment</xsd:documentation>
-          <xsd:documentation>Tier=1</xsd:documentation>
+          <xsd:documentation>Description=A term that describes the method used for labelling the molecular component under study in this experiment.</xsd:documentation>
+          <xsd:documentation>Tier=2</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
     </xsd:complexType>
@@ -1030,15 +1027,17 @@
     <!-- top level definition -->
     <xsd:annotation>
       <xsd:appinfo><xsdfu xmlns=""><plural>Images</plural></xsdfu></xsd:appinfo>
-      <xsd:documentation>This element describes the actual image and its meta-data. The elements that are references (ending in Ref or Settings) refer to elements defined outside of the Image element. Ref elements are simple links, while Settings elements are links with additional values. If any of the required Image attributes or elements are missing, its guaranteed to be an invalid document. The required attributes and elements are ID and Pixels. ExperimenterRef is required for all Images with well formed LSIDs. ImageType is a vendor-specific designation of the type of image this is. Examples of ImageType include 'STK', 'SoftWorx', etc. The Name attributes are in all cases the name of the element instance. In this case, the name of the image, not necessarily the filename. Physical size of pixels are microns[µm].
-      </xsd:documentation>
+      <xsd:documentation>Domain=ImageAcquisitionSettings</xsd:documentation>
+      <xsd:documentation>Category=Image</xsd:documentation>
+      <xsd:documentation>Description=This element describes the actual image that was acquired and its meta-data. The elements that are references (ending in Ref or Settings) refer to elements defined outside of the Image element. Ref elements are simple links, while Settings elements are links with additional values. If any of the required Image attributes or elements are missing, its guaranteed to be an invalid document.</xsd:documentation>
+      <xsd:documentation>Tier=1</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
       <xsd:sequence>
         <xsd:element ref="InstrumentRef" minOccurs="1" maxOccurs="1"/>
         <xsd:element ref="ExperimentRef" minOccurs="1" maxOccurs="1">
           <xsd:annotation>
-            <xsd:documentation>Description=This element describes the type of experiment. The required Type attribute must contain one or more entries from the following list: FRET, Time-lapse, 4D+, HightThroughputScreen, FISH, Electrophysiology, Ion-Imaging, Co-localization, PGI/Documentation FRAP, Photo-ablation, Optical-Trapping, Photo-activation, Fluorescence-Lifetime, Spectral-Imaging, Other The required LabellingMethod attribute must contain one or more entries from the following list: FluorescentProtein, CASFISH, FISH, Single-Molecule-FISH, Indirect-Immunofluorescene, Immunocytochemistry, None, Other PGI/Documentation is not a 'data' image. The optional Description element may contain free text to further describe the experiment</xsd:documentation>
+            <xsd:documentation>Description=This empty element refers to the Experiment during which this Image was acquired.</xsd:documentation>
             <xsd:documentation>Tier=1</xsd:documentation>
           </xsd:annotation>
         </xsd:element>
@@ -1047,14 +1046,14 @@
         <xsd:element ref="MicrobeamManipulationRef" minOccurs="0" maxOccurs="unbounded">
           <xsd:annotation>
             <xsd:appinfo><xsdfu xmlns=""><manytomany/></xsdfu></xsd:appinfo>
-            <xsd:documentation>Description=This empty element has a reference (the MicroBeamManipulationID attribute) to a predefined Microbeam Manipulation (e.g. a microbeam operation, such as a laser used for photobleaching).</xsd:documentation>
+            <xsd:documentation>Description=This empty element refers to an optional micro beam manipulation that was performed in connection with the acquisition of this Image (e.g. a microbeam operation, such as a laser-induced photobleaching).</xsd:documentation>
             <xsd:documentation>Tier=3</xsd:documentation>
           </xsd:annotation>
         </xsd:element>
         <xsd:element ref="ROIRef" minOccurs="0" maxOccurs="unbounded">
           <xsd:annotation>
             <xsd:appinfo><xsdfu xmlns=""><manytomany/></xsdfu></xsd:appinfo>
-            <xsd:documentation>Description=This empty element has a reference (the ROIID attribute) to a four dimensional ROI ( 'Region of Interest').  If they are not used, and the Image has more than one plane, the entire set of planes is assumed to be included in the ROI. Multiple ROIs may be specified</xsd:documentation>
+            <xsd:documentation>Description=This empty element refers  to the predefined four dimensional  ROI (Region of Interest) that was used for this micromanipulation experiment.</xsd:documentation>
             <xsd:documentation>Tier=2</xsd:documentation>
           </xsd:annotation>
         </xsd:element>
@@ -1069,7 +1068,9 @@
           <xsd:element ref="Channel" minOccurs="1" maxOccurs="unbounded">
             <xsd:annotation>
               <xsd:appinfo><xsdfu xmlns=""><ordered/></xsdfu></xsd:appinfo>
-              <xsd:documentation>Description=Each Image has to have at least one Plane and one Channel. The Channel object stores information about how the each image channel was acquired. The total number of Channel elements for a given Image must equal to SizeC. One useful feature of the model, is that this design allows to create LogicalChannels which are composed of one or more ChannelComponents. For example, an entire spectrum in an FTIR experiment may be stored in a single Logical Channel with each discrete wavenumber of the spectrum constituting a ChannelComponent of the FTIR Logical Channel. An RGB image where the Red, Green and Blue components do not reflect discrete probes but are instead the output of a color camera would be treated similarly - one Logical channel with three ChannelComponents in this case. The IlluminationType attribute is a string enumeration which may be set to 'Transmitted', 'Epifluorescence', 'Oblique', or 'NonLinear'. The user interface logic for labeling a given channel for the user should use the first existing attribute in the following sequence: Name -> Fluor -> EmissionWavelength -> ChannelComponent/Index.</xsd:documentation>
+              <xsd:documentation>Domain=ImageAcquisitionSettings</xsd:documentation>
+              <xsd:documentation>Category=Channel</xsd:documentation>
+              <xsd:documentation>Description=Each Image has to have at least one Plane and one Channel. The Channel element stores information about how the each image channel was acquired. The total number of Channel elements for a given Image must equal to SizeC.</xsd:documentation>
               <xsd:documentation>Tier=1</xsd:documentation>
             </xsd:annotation>
           </xsd:element>
@@ -1081,8 +1082,7 @@
         </xsd:sequence>
         <xsd:element name="Description" minOccurs="0" maxOccurs="1">
           <xsd:annotation>
-            <xsd:documentation>Description=A description for the image [plain-text multi-line string]
-            </xsd:documentation>
+            <xsd:documentation>Description=A description for this image.</xsd:documentation>
             <xsd:documentation>Tier=1</xsd:documentation>
           </xsd:annotation>
           <xsd:simpleType>
@@ -1094,6 +1094,8 @@
         <xsd:element ref="AnnotationRef" minOccurs="0" maxOccurs="1">
           <xsd:annotation>
             <xsd:appinfo><xsdfu xmlns=""><manytomany/></xsdfu></xsd:appinfo>
+            <xsd:documentation>Description=This is a simple multi-line comment or annotation describing this component.</xsd:documentation>
+            <xsd:documentation>Tier=2</xsd:documentation>
           </xsd:annotation>
         </xsd:element>
       </xsd:sequence>
@@ -1117,13 +1119,13 @@
       </xsd:attribute>
       <xsd:attribute name="SizeX" use="required" type="PositiveInt">
         <xsd:annotation>
-          <xsd:documentation>Description=Dimensional size of pixel data array.</xsd:documentation>
+          <xsd:documentation>Description=X size of the pixel data array.</xsd:documentation>
           <xsd:documentation>Tier=1</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
       <xsd:attribute name="SizeY" use="required" type="PositiveInt">
         <xsd:annotation>
-          <xsd:documentation>Desciption=Dimensional size of pixel data array.</xsd:documentation>
+          <xsd:documentation>Desciption=Y size of the pixel data array.</xsd:documentation>
           <xsd:documentation>Tier=1</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
@@ -1133,7 +1135,7 @@
           <xsd:documentation>Tier=1</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
-      <xsd:attribute name="SizeC" use="optional" type="PositiveInt">
+      <xsd:attribute name="SizeC" use="required" type="PositiveInt">
         <xsd:annotation>
           <xsd:documentation>Description=Dimensional size of pixel data array.</xsd:documentation>
           <xsd:documentation>Tier=1</xsd:documentation>
@@ -1145,9 +1147,9 @@
           <xsd:documentation>Tier=4</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
-      <xsd:attribute name="PhysicalSizeX" use="optional" type="PositiveFloat">
+      <xsd:attribute name="PhysicalSizeX" use="required" type="PositiveFloat">
         <xsd:annotation>
-          <xsd:documentation>Description=Physical size of a pixel.</xsd:documentation>
+          <xsd:documentation>Description=Physical width of a pixel expressed in µm.</xsd:documentation>
           <xsd:documentation>Tier=1</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
@@ -1156,9 +1158,9 @@
           <xsd:documentation>Tier=1</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
-      <xsd:attribute name="PhysicalSizeY" use="optional" type="PositiveFloat">
+      <xsd:attribute name="PhysicalSizeY" use="required" type="PositiveFloat">
         <xsd:annotation>
-          <xsd:documentation>Description=Physical size of a pixel.</xsd:documentation>
+          <xsd:documentation>Description=Physical height of a pixel expressed in µm.</xsd:documentation>
           <xsd:documentation>Tier=1</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
@@ -1167,7 +1169,7 @@
           <xsd:documentation>Tier=1</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
-      <xsd:attribute name="PhysicalSizeZ" use="optional" type="PositiveFloat">
+      <xsd:attribute name="PhysicalSizeZ" use="required" type="PositiveFloat">
         <xsd:annotation>
           <xsd:documentation>Description=Physical size of a pixel.</xsd:documentation>
           <xsd:documentation>Tier=1</xsd:documentation>
@@ -1178,10 +1180,9 @@
           <xsd:documentation>Tier=1</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
-      <xsd:attribute name="TimeIncrement" use="optional" type="xsd:float">
+      <xsd:attribute name="TimeIncrement" use="required" type="xsd:float">
         <xsd:annotation>
-          <xsd:documentation>Description=TimeIncrement is used for time series that have a global timing specification instead of per-timepoint timing info. For example in a video stream.
-          </xsd:documentation>
+          <xsd:documentation>Description=This attribute is used for time series that have a global timing specification instead of per-timepoint timing info. For example in a video stream.</xsd:documentation>
           <xsd:documentation>Tier=4</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
@@ -1190,7 +1191,7 @@
           <xsd:documentation>Tier=4</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
-      <xsd:attribute name="DimensionOrder" use="required" type="PixelsDimensionOrder">
+      <xsd:attribute name="DimensionOrder" use="optional" type="PixelsDimensionOrder">
         <xsd:annotation>
           <xsd:documentation>Description=The order in which the individual planes of data are interleaved.</xsd:documentation>
           <xsd:documentation>Tier=2</xsd:documentation>
@@ -1236,6 +1237,7 @@
     <!-- top level definition -->
     <xsd:annotation>
       <xsd:appinfo><xsdfu xmlns=""><plural>Instruments</plural></xsdfu></xsd:appinfo>
+      <xsd:documentation>Domain=MicrosocpeSpecifications</xsd:documentation>
       <xsd:documentation>Category=MicroscopyBasics</xsd:documentation>
       <xsd:documentation>Description=This element describes the instrument used to capture the Image. It is primarily a container referring to the microscope's components list, which include the Microscope Body, Microscope Table, LightSource, LightSourceCoupling, SampleHolder, Focusing devices, Objective, Optovar, Filter, Dichroic, AdditionalOptics, Detector and CalibrationTool. The Filter element can be composed either of separate excitation, emission filters and a dichroic mirror or a single filter set. Within the Image itself, a reference is made to this one Filter element. There may be multiple light sources, detectors, objectives and filters etc. in an Instrument. Each of these has their own ID attribute, which can be referred to from Channel. It is understood that the light path configuration can be different for each channel, but cannot be different for each timepoint or each plane of an XYZ stack.</xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
@@ -1246,6 +1248,7 @@
         <xsd:element minOccurs="1" ref="MicroscopeTable"/>
         <xsd:element ref="LightSourceGroup" minOccurs="1" maxOccurs="unbounded">
           <xsd:annotation>
+            <xsd:documentation>Domain=MicrosocpeSpecifications</xsd:documentation>
             <xsd:documentation>Category=LightSource</xsd:documentation>
             <xsd:documentation>Description=This element describes the light source(s) available in this microscope</xsd:documentation>
             <xsd:documentation>Tier=1</xsd:documentation>
@@ -1253,6 +1256,7 @@
         </xsd:element>
         <xsd:element maxOccurs="unbounded" minOccurs="1" ref="LightSourceCouplingGroup">
           <xsd:annotation>
+            <xsd:documentation>Domain=MicrosocpeSpecifications</xsd:documentation>
             <xsd:documentation>Category=LightSourceCoupling</xsd:documentation>
             <xsd:documentation>Description=This element describes the method(s) used to couple the light source with the light path moving through speciment to the detector</xsd:documentation>
             <xsd:documentation>Tier=4</xsd:documentation>
@@ -1260,6 +1264,7 @@
         </xsd:element>
         <xsd:element maxOccurs="unbounded" minOccurs="1" ref="SamplePositioningGroup">
           <xsd:annotation>
+            <xsd:documentation>Domain=MicrosocpeSpecifications</xsd:documentation>
             <xsd:documentation>Category=SampleHolderAndFocusing.Focusing</xsd:documentation>
             <xsd:documentation>Description=This element describes the objective lens and stage positioning device(s) available in this microscope. An instrument may have more than one of these devices. The type of focusing device is specified by one of the child-element which are 'MechanicalStage', 'PiezoElectricSate', or 'PiezoElectricObjective'</xsd:documentation>
             <xsd:documentation>Tier=3</xsd:documentation>
@@ -1267,6 +1272,7 @@
         </xsd:element>
         <xsd:element maxOccurs="unbounded" minOccurs="0" ref="AutoFocus">
           <xsd:annotation>
+            <xsd:documentation>Domain=MicrosocpeSpecifications</xsd:documentation>
             <xsd:documentation>Category=SampleHolderAndFocusing</xsd:documentation>
             <xsd:documentation>Description=This element describes the focus stabilization device(s) available for this microscope</xsd:documentation>
             <xsd:documentation>Tier=3</xsd:documentation>
@@ -1314,22 +1320,23 @@
     <!-- top level definition -->
     <xsd:annotation>
       <xsd:appinfo><xsdfu xmlns=""><plural>Planes</plural></xsdfu></xsd:appinfo>
-      <xsd:documentation>Description=Each Image has to have at least one Plane and one Channel. The Plane object holds microscope stage and image timing data for a given channel/z-section/timepoint. The total number of Channel elements for a given Image must equal to SizeZ x SizeC x SizeT.
-      </xsd:documentation>
+      <xsd:documentation>Domain=ImageAcquisitionSettings</xsd:documentation>
+      <xsd:documentation>Category=Image</xsd:documentation>
+      <xsd:documentation>Description=Each Image has to have at least one Plane and one Channel. The Plane element holds microscope stage and image timing data for a given channel/z-section/timepoint. The total number of Plane elements for a given Image must equal to SizeZ x SizeC x SizeT.</xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
       <xsd:sequence>
         <xsd:element minOccurs="0" ref="SamplePosition" maxOccurs="1"/>
-        <xsd:element ref="FocalPosition" minOccurs="1" maxOccurs="1">
+        <xsd:element ref="FocalPosition" minOccurs="0" maxOccurs="1">
           <xsd:annotation>
-            <xsd:documentation>Description=This element is used to record the Z-axis position of a Plane with respect to the microscope's reference frame</xsd:documentation>
+            <xsd:documentation>Description=This element is used to record the Z-axis position of this plane with respect to the microscope's reference frame.</xsd:documentation>
             <xsd:documentation>Tier=3</xsd:documentation>
           </xsd:annotation>
         </xsd:element>
         <xsd:element maxOccurs="unbounded" minOccurs="0" ref="MechanicalCalibration">
           <xsd:annotation>
-            <xsd:documentation>Description=This describes the procedures that were used for mechanical calibration and the resulting calibration results.</xsd:documentation>
+            <xsd:documentation>Description=This describes the procedures that were used for mechanical calibration as well as the calibration results.</xsd:documentation>
             <xsd:documentation>Tier=4</xsd:documentation>
           </xsd:annotation>
         </xsd:element>
@@ -1351,12 +1358,13 @@
           </xsd:annotation>
           <xsd:element name="HashSHA1" type="Hex40" minOccurs="1" maxOccurs="1">
             <xsd:annotation>
+              <xsd:documentation>Description=This optional element is a hash of the plane's image data. It is a choice between all the supported hash types. Currently the only method supported is SHA1</xsd:documentation>
               <xsd:documentation>Tier=5</xsd:documentation>
             </xsd:annotation>
           </xsd:element>
         </xsd:choice>
       </xsd:sequence>
-      <xsd:attribute name="ID" type="LSID">
+      <xsd:attribute name="ID" type="LSID" use="required">
         <xsd:annotation>
           <xsd:documentation>Description=A unique identifier for this Plane.</xsd:documentation>
           <xsd:documentation>Tier=1</xsd:documentation>
@@ -1380,9 +1388,9 @@
           <xsd:documentation>Tier=1</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
-      <xsd:attribute name="Timestamp" use="optional" type="xsd:float">
+      <xsd:attribute name="Timestamp" use="required" type="xsd:float">
         <xsd:annotation>
-          <xsd:documentation>Description=This records the total time intercoursed since the beginning of the experiment</xsd:documentation>
+          <xsd:documentation>Description=This records the total time intercoursed since the beginning of image acquisitoin.</xsd:documentation>
           <xsd:documentation>Tier=2</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
@@ -1391,9 +1399,9 @@
           <xsd:documentation>Tier=2</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
-      <xsd:attribute name="ExposureTime" use="optional" type="xsd:float">
+      <xsd:attribute name="ExposureTime" use="required" type="xsd:float">
         <xsd:annotation>
-          <xsd:documentation>Description=The length of the exposure</xsd:documentation>
+          <xsd:documentation>Description=The length of the exposure utilized to acquire this plane.</xsd:documentation>
           <xsd:documentation>Tier=2</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
@@ -1408,19 +1416,23 @@
     <!-- top level definition -->
     <xsd:annotation>
       <xsd:appinfo><xsdfu xmlns=""><plural>Channels</plural></xsdfu></xsd:appinfo>
-      <xsd:documentation>Description=There must be one per Channel in the Image, even for a single-plane image. Information about how each of the Channel was acquired is stored in the various optional *Ref elements. One useful feature of the model, is that this design allows to create LogicalChannels which are composed of one or more ChannelComponents. For example, an entire spectrum in an FTIR experiment may be stored in a single Logical Channel with each discrete wavenumber of the spectrum constituting a ChannelComponent of the FTIR Logical Channel. An RGB image where the Red, Green and Blue components do not reflect discrete probes but are instead the output of a color camera would be treated similarly - one Logical channel with three ChannelComponents in this case. The total number of ChannelComponents for a set of pixels must equal SizeC. The IlluminationType attribute is a string enumeration which may be set to 'Transmitted', 'Epifluorescence', 'Oblique', or 'NonLinear'. The user interface logic for labeling a given channel for the user should use the first existing attribute in the following sequence: Name -> Fluor -> EmissionWavelength -> ChannelComponent/Index.</xsd:documentation>
+      <xsd:documentation>Domain=ImageAcquisitionSettings</xsd:documentation>
+      <xsd:documentation>Category=Channel</xsd:documentation>
+      <xsd:documentation>Description=Each Image has to have at least one Plane and one Channel. The Channel element stores information about how the each image channel was acquired. The total number of Channel elements for a given Image must equal to SizeC.</xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
       <xsd:sequence>
-        <xsd:element ref="LightSourceSettings" minOccurs="1" maxOccurs="unbounded">
+        <xsd:element ref="LightSourceSettings" minOccurs="0" maxOccurs="unbounded">
           <xsd:annotation>
+            <xsd:documentation>Domain=ImageAcquisitionSettings</xsd:documentation>
+            <xsd:documentation>Category=Settings</xsd:documentation>
             <xsd:documentation>Description=This holds the setting applied to a LightSource e as well as a reference to the LightSource (the ID attribute) in question. The ID referes to the LightSource used in this case</xsd:documentation>
             <xsd:documentation>Tier=3</xsd:documentation>
           </xsd:annotation>
         </xsd:element>
         <xsd:element ref="LightPath" minOccurs="1" maxOccurs="1"/>
-        <xsd:element ref="DetectorSettingsGroup" minOccurs="1" maxOccurs="unbounded"/>
+        <xsd:element ref="DetectorSettingsGroup" minOccurs="0" maxOccurs="unbounded"/>
         <xsd:element maxOccurs="unbounded" minOccurs="0" ref="ExcitationCalibration"/>
         <xsd:element maxOccurs="unbounded" minOccurs="0" ref="FIeldCalibration"/>
         <xsd:element minOccurs="0" name="AnnotationRef">
@@ -1480,7 +1492,7 @@
           <xsd:documentation>Tier=1</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
-      <xsd:attribute name="ContrastMethod" use="optional" type="ChannelContrastMethod">
+      <xsd:attribute name="ContrastMethod" use="required" type="ChannelContrastMethod">
         <xsd:annotation>
           <xsd:documentation>Description=ContrastMethod describes the technique used to achieve contrast for each channel.
           </xsd:documentation>
@@ -1690,10 +1702,10 @@
   <xsd:element name="MicrobeamManipulation">
     <!-- top level definition -->
     <xsd:annotation>
-      <xsd:appinfo>Description=Defines a microbeam operation type and the region of the image it was applied to.The LightSourceSettingsRef element is a reference to a LightSourceSettings and in turn to the LightSource specified in the Instrument element which was used for this micromanipulation experiment. For example, a laser used for photobleaching</xsd:appinfo>
-      <xsd:documentation>Defines a microbeam operation type and the region of the image it was applied to.
-The LightSourceSettingsRef element is a reference to a LightSourceSettings and in turn to the LightSource specified in the Instrument element which was used for this micromanipulation experiment. For example, a laser used for photobleaching.
-      </xsd:documentation>
+      <xsd:appinfo/>
+      <xsd:documentation>Domain=ImageAcquisitionSettings</xsd:documentation>
+      <xsd:documentation>Category=SampleManipulation</xsd:documentation>
+      <xsd:documentation>Description=Defines a microbeam operation and the region of the image it was applied to. The LightSourceSettingsRef element is a reference to the LightSourceSettings that were used in this case, including a reference to the light source that was used for this micromanipulation experiment (e.g.  a laser used for photobleaching).</xsd:documentation>
       <xsd:documentation>Tier=3</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
@@ -1701,13 +1713,14 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
         <xsd:element ref="ExperimenterRef" minOccurs="0" maxOccurs="unbounded"/>
         <xsd:element ref="ROIRef" minOccurs="1" maxOccurs="unbounded">
           <xsd:annotation>
-            <xsd:appinfo>Description=This empty element has a reference (the ROIID attribute) to a four dimensional ROI ('Region of Interest') that was used in this micromanipulation experiment</xsd:appinfo>
+            <xsd:appinfo/>
+            <xsd:documentation>Description=This empty element refers  to the predefined four dimensional  ROI (Region of Interest) that was used for this micromanipulation experiment.</xsd:documentation>
             <xsd:documentation>Tier=3</xsd:documentation>
           </xsd:annotation>
         </xsd:element>
         <xsd:element ref="LightSourceSettings" minOccurs="1" maxOccurs="unbounded">
           <xsd:annotation>
-            <xsd:documentation>Description=This holds the setting applied to a LightSource e as well as a reference to the LightSource (the ID attribute) in question. The ID referes to the LightSource used in this case</xsd:documentation>
+            <xsd:documentation>Description=This holds a reference to the LightSource (i.e. the ID attribute) that was used in this case as well as the setting that were applied to in in this case.</xsd:documentation>
             <xsd:documentation>Tier=3</xsd:documentation>
           </xsd:annotation>
         </xsd:element>
@@ -1737,10 +1750,11 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
       </xsd:sequence>
       <xsd:attribute name="ID" use="required" type="MicrobeamManipulationID">
         <xsd:annotation>
+          <xsd:documentation>Description=A unique identifier for this component.</xsd:documentation>
           <xsd:documentation>Tier=3</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
-      <xsd:attribute name="Type" use="optional" type="MicrobeamManipulationType">
+      <xsd:attribute name="Type" use="required" type="MicrobeamManipulationType">
         <xsd:annotation>
           <xsd:documentation>Description=Defines the type of micromanipulation performed.</xsd:documentation>
           <xsd:documentation>Tier=3</xsd:documentation>
@@ -1751,6 +1765,8 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
   <xsd:element name="TIRFSettings">
     <!-- top level definition -->
     <xsd:annotation>
+      <xsd:documentation>Domain=ImageAcquisitionSettings</xsd:documentation>
+      <xsd:documentation>Category=Settings</xsd:documentation>
       <xsd:documentation>Description=Defines the TIRF settings used for this experiment.</xsd:documentation>
       <xsd:documentation>Tier=3</xsd:documentation>
     </xsd:annotation>
@@ -1782,19 +1798,19 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
               </xsd:complexType>
             </xsd:element>
           </xsd:sequence>
-          <xsd:attribute name="ID" type="TIRFSettingsID">
+          <xsd:attribute name="ID" type="TIRFSettingsID" use="required">
             <xsd:annotation>
-              <xsd:documentation>Description=A unique identifier for this element.</xsd:documentation>
+              <xsd:documentation>Description=A unique identifier for this component.</xsd:documentation>
               <xsd:documentation>Tier=3</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="ThroughLens" type="xsd:boolean">
+          <xsd:attribute name="ThroughLens" type="xsd:boolean" use="required">
             <xsd:annotation>
               <xsd:documentation>Description=The TIRF modality used in this case. True=Through the lens TIRF modality. False=TIRF modality in which the laser light is not travelling through the objective lens.</xsd:documentation>
               <xsd:documentation>Tier=3</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="TIRFAngle" type="xsd:float">
+          <xsd:attribute name="TIRFAngle" type="xsd:float" use="required">
             <xsd:annotation>
               <xsd:documentation>Description=The incidence angle used in this case</xsd:documentation>
               <xsd:documentation>Tier=3</xsd:documentation>
@@ -1805,7 +1821,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
               <xsd:documentation>Tier=3</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="Geometry" type="TIRFGeometry">
+          <xsd:attribute name="Geometry" type="TIRFGeometry" use="required">
             <xsd:annotation>
               <xsd:documentation>Description=The TIRF geometry used in this case</xsd:documentation>
               <xsd:documentation>Tier=3</xsd:documentation>
@@ -1819,6 +1835,8 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
   <!-- Sample elements -->
   <xsd:element name="Sample">
     <xsd:annotation>
+      <xsd:documentation>Domain=Experimental</xsd:documentation>
+      <xsd:documentation>Category=SamplePreparation</xsd:documentation>
       <xsd:documentation>Description=A description of the sample that was imaged in this experiment.</xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
     </xsd:annotation>
@@ -1852,16 +1870,16 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
           <xsd:documentation>Tier=1</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
-      <xsd:attribute name="MountingMedium" type="xsd:string">
+      <xsd:attribute name="MountingMedium" type="xsd:string" use="required">
         <xsd:annotation>
           <xsd:documentation>Description=The mounting medium the sample is embedded in during acquisition.</xsd:documentation>
           <xsd:documentation>Tier=2</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
-      <xsd:attribute name="MountingMediumRefractiveIndex" type="xsd:float">
+      <xsd:attribute name="MountingMediumRefractiveIndex" type="xsd:float" use="required">
         <xsd:annotation>
-          <xsd:documentation>Description=The measured refractive index of the medium the sample is embedded in during imaging.</xsd:documentation>
-          <xsd:documentation>Tier=4</xsd:documentation>
+          <xsd:documentation>Description=The refractive index (RI) of the mounting medium. If possible the RI should be measured. Alternatively, please refer to the nominal RI as provided by the manufacturer.</xsd:documentation>
+          <xsd:documentation>Tier=3</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
     </xsd:complexType>
@@ -1870,15 +1888,16 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
     <!-- top level definition -->
     <xsd:annotation>
       <xsd:appinfo><xsdfu xmlns=""><plural>ImagingEnvironments</plural></xsdfu></xsd:appinfo>
-      <xsd:documentation>Description=This describes the environment that the biological sample was in during the experiment
-      </xsd:documentation>
+      <xsd:documentation>Domain=ImageAcquisitionSettings</xsd:documentation>
+      <xsd:documentation>Category=SampleConditions</xsd:documentation>
+      <xsd:documentation>Description=This describes the environment in which the biological sample was kept, during the acquisition of this image.</xsd:documentation>
       <xsd:documentation>Tier=4</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
       <xsd:sequence>
         <xsd:element name="Map" type="Map" minOccurs="0" maxOccurs="1"/>
       </xsd:sequence>
-      <xsd:attribute name="Temperature" use="optional" type="xsd:float">
+      <xsd:attribute name="Temperature" use="required" type="xsd:float">
         <xsd:annotation>
           <xsd:documentation>Description=The Temperature at which the imaging experiment was conducted
           </xsd:documentation>
@@ -1910,7 +1929,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
           <xsd:documentation>Tier=4</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
-      <xsd:attribute name="CO2Percent" use="optional" type="PercentFraction">
+      <xsd:attribute name="CO2Percent" use="required" type="PercentFraction">
         <xsd:annotation>
           <xsd:documentation>Description=Carbon Dioxide concentration around the sample [units:none]. A fraction, as a value from 0.0 to 1.0
           </xsd:documentation>
@@ -1921,14 +1940,16 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
   </xsd:element>
   <xsd:element name="SamplePosition">
     <xsd:annotation>
-      <xsd:documentation>Description=SamplePosition is used to specify a name and location for a specific sample holder position in the microscope's reference frame. This element subsitutes a deprecated element called StageLabel</xsd:documentation>
+      <xsd:documentation>Domain=ImageAcquisitionSettings</xsd:documentation>
+      <xsd:documentation>Category=SampleConditions</xsd:documentation>
+      <xsd:documentation>Description=This is used to specify the location of the sample during the acquisition of this plane, with respect to the microscope's reference frame.</xsd:documentation>
       <xsd:documentation>Tier=4</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
       <xsd:sequence>
         <xsd:element ref="SamplePositioningRef" maxOccurs="1" minOccurs="0">
           <xsd:annotation>
-            <xsd:documentation>Description=This empty element has a reference (the SampleHolderID attribute) to a SampleHolder element defined within OME</xsd:documentation>
+            <xsd:documentation>Description= This empty element refers to the sample holder that was used for the acquisition of this image.</xsd:documentation>
             <xsd:documentation>Tier=3</xsd:documentation>
           </xsd:annotation>
         </xsd:element>
@@ -1988,21 +2009,22 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
     <!-- top level definition -->
     <xsd:annotation>
       <xsd:appinfo><xsdfu xmlns=""><plural>StageLabels</plural></xsdfu></xsd:appinfo>
-      <xsd:documentation>Description=This element is used to record the Z-axis position of a Plane with respect to the microscope's reference frame
-      </xsd:documentation>
+      <xsd:documentation>Domain=ImageAcquisitionSettings</xsd:documentation>
+      <xsd:documentation>Category=SampleConditions</xsd:documentation>
+      <xsd:documentation>Description=This element is used to record the Z-axis position of a Plane with respect to the microscope's reference frame.</xsd:documentation>
       <xsd:documentation>Tier=3</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
       <xsd:sequence>
         <xsd:element ref="SamplePositioningRef" minOccurs="0">
           <xsd:annotation>
-            <xsd:documentation>Description=This empty element has a reference (the FocusingID attribute) to a Focusing element defined within OME</xsd:documentation>
+            <xsd:documentation>Description= This empty element refers to the focusing device that was used for the acquisition of this image.</xsd:documentation>
             <xsd:documentation>Tier=3</xsd:documentation>
           </xsd:annotation>
         </xsd:element>
         <xsd:element ref="AutoFocusRef" minOccurs="0">
           <xsd:annotation>
-            <xsd:documentation>Description=This empty element has a reference (the AutofocusID attribute) to a Autofocus element defined within OME</xsd:documentation>
+            <xsd:documentation>Description= This empty element refers to the optional auto focus device that was used for the acquisition of this image.</xsd:documentation>
             <xsd:documentation>Tier=3</xsd:documentation>
           </xsd:annotation>
         </xsd:element>
@@ -2040,6 +2062,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
     <!-- top level definition -->
     <xsd:annotation>
       <xsd:appinfo><xsdfu xmlns=""><plural>Microscopes</plural></xsdfu></xsd:appinfo>
+      <xsd:documentation>Domain=MicrosocpeSpecifications</xsd:documentation>
       <xsd:documentation>Category=MicroscopyBasics</xsd:documentation>
       <xsd:documentation>Description=A description of the body of this microscope</xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
@@ -2080,6 +2103,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
   </xsd:element>
   <xsd:element name="MicroscopeTable">
     <xsd:annotation>
+      <xsd:documentation>Domain=MicrosocpeSpecifications</xsd:documentation>
       <xsd:documentation>Category=MicroscopyBasics</xsd:documentation>
       <xsd:documentation>Description=This element describes the table on which this Microscope rests during acquisition.</xsd:documentation>
       <xsd:documentation>Tier=4</xsd:documentation>
@@ -2238,6 +2262,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
   </xsd:element>
   <xsd:element name="ObjectiveTurretFocus" substitutionGroup="SamplePositioningGroup">
     <xsd:annotation>
+      <xsd:documentation>Domain=MicrosocpeSpecifications</xsd:documentation>
       <xsd:documentation>Category=SamplePositioning.Focusing</xsd:documentation>
       <xsd:documentation>Description=An objective turret positoning device available for this instrument.</xsd:documentation>
       <xsd:documentation>Tier=3</xsd:documentation>
@@ -2250,6 +2275,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
   </xsd:element>
   <xsd:element name="PiezoElectricObjectiveFocus" substitutionGroup="SamplePositioningGroup">
     <xsd:annotation>
+      <xsd:documentation>Domain=MicrosocpeSpecifications</xsd:documentation>
       <xsd:documentation>Category=SamplePositioning.Focusing</xsd:documentation>
       <xsd:documentation>Description=An optional piezoelectric objective positioning device associated with this instrument.</xsd:documentation>
       <xsd:documentation>Tier=3</xsd:documentation>
@@ -2305,6 +2331,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
   </xsd:element>
   <xsd:element name="SampleHolder" substitutionGroup="StageGroup">
     <xsd:annotation>
+      <xsd:documentation>Domain=MicrosocpeSpecifications</xsd:documentation>
       <xsd:documentation>Category=SamplePositioning.Stage</xsd:documentation>
       <xsd:documentation>Description=This describes an optional sample holder mounted on the microscope stage.</xsd:documentation>
       <xsd:documentation>Tier=3</xsd:documentation>
@@ -2336,6 +2363,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
   </xsd:element>
   <xsd:element name="MechanicalStage" substitutionGroup="StageGroup">
     <xsd:annotation>
+      <xsd:documentation>Domain=MicrosocpeSpecifications</xsd:documentation>
       <xsd:documentation>Category=SamplePositioning.Stage</xsd:documentation>
       <xsd:documentation>Description=This describes a mechanical stage positioning device associated with this instrument. This component is not very common but can be found in simple surveying microscopes.</xsd:documentation>
       <xsd:documentation>Tier=3</xsd:documentation>
@@ -2348,6 +2376,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
   </xsd:element>
   <xsd:element name="PiezoElectricStage" substitutionGroup="StageGroup">
     <xsd:annotation>
+      <xsd:documentation>Domain=MicrosocpeSpecifications</xsd:documentation>
       <xsd:documentation>Category=SamplePositioning.Stage</xsd:documentation>
       <xsd:documentation>Description=This describes an optional piezoelectric stage positioning device associated with this instrument.</xsd:documentation>
       <xsd:documentation>Tier=3</xsd:documentation>
@@ -2362,6 +2391,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
   <!-- Magnification elements -->
   <xsd:element name="AutoFocus">
     <xsd:annotation>
+      <xsd:documentation>Domain=MicrosocpeSpecifications</xsd:documentation>
       <xsd:documentation>Category=SamplePositioning.Focusing</xsd:documentation>
       <xsd:documentation>Description=This element describes one or more optional focus stabilization device(s) available for this instrument.</xsd:documentation>
       <xsd:documentation>Tier=3</xsd:documentation>
@@ -2408,6 +2438,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
     <!-- top level definition -->
     <xsd:annotation>
       <xsd:appinfo><xsdfu xmlns=""><plural>Objectives</plural></xsdfu></xsd:appinfo>
+      <xsd:documentation>Domain=MicrosocpeSpecifications</xsd:documentation>
       <xsd:documentation>Category=Magnification</xsd:documentation>
       <xsd:documentation>Description=A microscope's objective lens is a compound lens consisting of several simple lenses (elements), usually arranged along a common axis.</xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
@@ -2531,6 +2562,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
   </xsd:element>
   <xsd:element name="Optovar">
     <xsd:annotation>
+      <xsd:documentation>Domain=MicrosocpeSpecifications</xsd:documentation>
       <xsd:documentation>Category=Magnification</xsd:documentation>
       <xsd:documentation>Description=Optovars are magnification changing devices originally developed by Zeiss, which provide additional magnification that can be beneficial when a desired field of view is required for the imaging sensor. Magnification changers are placed before the tube lens within the infinity space of the optical system. Typical magnification increments are: 1.25x, 1.6x, and 2x.</xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
@@ -2576,6 +2608,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
       <xsd:documentation>Description=This describes the light source(s) available for this instrument. An instrument may have several light sources of different types (Laser, LightEmittingDiode, Filament, Arc etc.). A typical light-microscope has two light sources, one for transmitted light and one for fluorescence light.</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
+
   <xsd:complexType name="LightSource">
     <xsd:annotation>
       <xsd:appinfo><xsdfu xmlns=""><plural>LightSources</plural><abstract/></xsdfu></xsd:appinfo>
@@ -2619,10 +2652,12 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
+
   <xsd:element name="Laser" substitutionGroup="LightSourceGroup">
     <!-- top level definition -->
     <xsd:annotation>
       <xsd:appinfo><xsdfu xmlns=""><plural>Lasers</plural></xsdfu></xsd:appinfo>
+      <xsd:documentation>Domain=MicrosocpeSpecifications</xsd:documentation>
       <xsd:documentation>Category=LightSource</xsd:documentation>
       <xsd:documentation>Description=A Light Amplification by Stimulated Emission of Radiation (LASER) is a device that emits light through a process of optical amplification based on the stimulated emission of electromagnetic radiation.</xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
@@ -2705,6 +2740,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
     <!-- top level definition -->
     <xsd:annotation>
       <xsd:appinfo><xsdfu xmlns=""><plural>Arcs</plural></xsdfu></xsd:appinfo>
+      <xsd:documentation>Domain=MicrosocpeSpecifications</xsd:documentation>
       <xsd:documentation>Category=LightSource</xsd:documentation>
       <xsd:documentation>Description=An Arc lamp is a lamp that produces light by an electric arc (also called a voltaic arc), which is typically generated between metal electrodes through an inert gas in a glass bulb.</xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
@@ -2727,6 +2763,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
     <!-- top level definition -->
     <xsd:annotation>
       <xsd:appinfo><xsdfu xmlns=""><plural>Filaments</plural></xsdfu></xsd:appinfo>
+      <xsd:documentation>Domain=MicrosocpeSpecifications</xsd:documentation>
       <xsd:documentation>Category=LightSource</xsd:documentation>
       <xsd:documentation>Description=A Filament lamp is an incandescent light source with a wire filament heated to such a high temperature that it glows with visible light (incandescence).</xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
@@ -2749,6 +2786,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
     <!-- top level definition -->
     <xsd:annotation>
       <xsd:appinfo><xsdfu xmlns=""><plural>LightEmittingDiodes</plural></xsdfu></xsd:appinfo>
+      <xsd:documentation>Domain=MicrosocpeSpecifications</xsd:documentation>
       <xsd:documentation>Category=LightSource</xsd:documentation>
       <xsd:documentation>Description=A Light Emitting Diode (LED) is a semiconductor light source that emits light when current flows through it. Electrons in the semiconductor recombine with electron holes, releasing energy in the form of photons. The color of the light (corresponding to the energy of the photons) is determined by the energy required for electrons to cross the band gap of the semiconductor. White light may be obtained by using multiple semiconductors or a layer of light-emitting phosphor on the semiconductor device.</xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
@@ -2775,6 +2813,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
     <!-- top level definition -->
     <xsd:annotation>
       <xsd:appinfo><xsdfu xmlns=""><plural>TransmittanceRanges</plural></xsdfu></xsd:appinfo>
+      <xsd:documentation>Domain=MicrosocpeSpecifications</xsd:documentation>
       <xsd:documentation>Category=ChildElement</xsd:documentation>
       <xsd:documentation>Description=A Light Emitting Diode (LED) light source is often composed of multiple modules each with its own wavelenght characteristics. This element describes an individual LED module. Multiple of this elements may be used.</xsd:documentation>
       <xsd:documentation>Tier=2</xsd:documentation>
@@ -2851,6 +2890,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
     <!-- top level definition -->
     <xsd:annotation>
       <xsd:appinfo><xsdfu xmlns=""><plural>GenericExcitationSources</plural></xsdfu></xsd:appinfo>
+      <xsd:documentation>Domain=MicrosocpeSpecifications</xsd:documentation>
       <xsd:documentation>Category=LightSource</xsd:documentation>
       <xsd:documentation>Description=The GenericExcitationSource element is used to represent a light source as a collection of key/value pairs, stored in a Map. One of the other light source elements should always be used in preference to this if possible.</xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
@@ -2862,6 +2902,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
           <xsd:sequence>
             <xsd:element name="Map" type="Map" minOccurs="0" maxOccurs="1">
               <xsd:annotation>
+                <xsd:documentation>Domain=MicrosocpeSpecifications</xsd:documentation>
                 <xsd:documentation>Category=ChildElement</xsd:documentation>
                 <xsd:documentation>Description=This is a Mapping of key/value pairs used to store customized metadata that describes this element.</xsd:documentation>
                 <xsd:documentation>Tier=3</xsd:documentation>
@@ -2877,6 +2918,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
     <!-- top level definition -->
     <xsd:annotation>
       <xsd:appinfo><xsdfu xmlns=""><plural>Pumps</plural></xsdfu></xsd:appinfo>
+      <xsd:documentation>Domain=MicrosocpeSpecifications</xsd:documentation>
       <xsd:documentation>Category=ChildElement</xsd:documentation>
       <xsd:documentation>Description=The Pump element refers to a light source. It is used within the Laser element to specify the light source used as an optional laser pump.</xsd:documentation>
       <xsd:documentation>Tier=5</xsd:documentation>
@@ -2938,6 +2980,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
   </xsd:complexType>
   <xsd:element name="LightGuide" substitutionGroup="LightSourceCouplingGroup">
     <xsd:annotation>
+      <xsd:documentation>Domain=MicrosocpeSpecifications</xsd:documentation>
       <xsd:documentation>Category=LightSourceCoupling</xsd:documentation>
       <xsd:documentation>Description=A Light Guide coupling between the light source and the microscope generally consists of a casing enclosing a medium capable of transferring light from the illuminator to the back of the microsocpe body.</xsd:documentation>
       <xsd:documentation>Tier=4</xsd:documentation>
@@ -3031,6 +3074,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
     <!-- top level definition -->
     <xsd:annotation>
       <xsd:appinfo><xsdfu xmlns=""><plural>TransmittanceRanges</plural></xsdfu></xsd:appinfo>
+      <xsd:documentation>Domain=MicrosocpeSpecifications</xsd:documentation>
       <xsd:documentation>Category=ChildElement</xsd:documentation>
       <xsd:documentation>Description=This records a range of wavelengths this device is designed for, according to the manufacturer. Multiple of this elements may be used.</xsd:documentation>
       <xsd:documentation>Tier=5</xsd:documentation>
@@ -3070,6 +3114,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
   </xsd:element>
   <xsd:element name="Direct" substitutionGroup="LightSourceCouplingGroup">
     <xsd:annotation>
+      <xsd:documentation>Domain=MicrosocpeSpecifications</xsd:documentation>
       <xsd:documentation>Category=LightSourceCoupling</xsd:documentation>
       <xsd:documentation>Description=A Direct coupling between the light source and the microscope consists either of a direct mount or of an optical light path that directs light across space to the back of the microscope body.</xsd:documentation>
       <xsd:documentation>Tier=4</xsd:documentation>
@@ -3099,6 +3144,8 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
     <!-- top level definition -->
     <xsd:annotation>
       <xsd:appinfo><xsdfu xmlns=""><plural>LightPaths</plural></xsdfu></xsd:appinfo>
+      <xsd:documentation>Domain=ImageAcquisitionSettings</xsd:documentation>
+      <xsd:documentation>Category=Channel</xsd:documentation>
       <xsd:documentation>Description=A description of the light path.</xsd:documentation>
       <xsd:documentation>Tier=2</xsd:documentation>
     </xsd:annotation>
@@ -3106,33 +3153,33 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
       <xsd:sequence>
         <xsd:element maxOccurs="unbounded" minOccurs="0" ref="LightSourceCouplingRef">
           <xsd:annotation>
-            <xsd:documentation>Description=This empty element can be used (via the required LightSourceCouplingID attribute) to refer to a LightSourceCoupling element defined within OME.</xsd:documentation>
+            <xsd:documentation>Description=This empty element refers to a LightSourceCoupling component used in this light path.</xsd:documentation>
             <xsd:documentation>Tier=4</xsd:documentation>
           </xsd:annotation>
         </xsd:element>
         <xsd:element maxOccurs="unbounded" minOccurs="0" ref="FilterSetRef">
           <xsd:annotation>
-            <xsd:documentation>Description=This empty element has a reference (the FilterSet ID attribute) to the FilterSet placed in the light path</xsd:documentation>
+            <xsd:documentation>Description=This empty element refers to a FilterSet component used in this light path.</xsd:documentation>
             <xsd:documentation>Tier=2</xsd:documentation>
           </xsd:annotation>
         </xsd:element>
         <xsd:element name="ExcitationFilterRef" type="FilterRef" minOccurs="0" maxOccurs="unbounded">
           <xsd:annotation>
             <xsd:appinfo><xsdfu xmlns=""><plural>ExcitationFilters</plural><parentordered/><manytomany/></xsdfu></xsd:appinfo>
-            <xsd:documentation>Description=This empty element has a reference (the Filter ID attribute) to the Filters placed in the Excitation light path</xsd:documentation>
+            <xsd:documentation>Description=This empty element refers to an ExcitationFilter component used in this light path.</xsd:documentation>
             <xsd:documentation>Tier=2</xsd:documentation>
           </xsd:annotation>
         </xsd:element>
         <xsd:element minOccurs="0" maxOccurs="unbounded" ref="StandardDichroicRef">
           <xsd:annotation>
-            <xsd:documentation>Description=This empty element has a reference (the Mirror ID attribute) to the Dichroic utilized in this Filter Set.</xsd:documentation>
+            <xsd:documentation>Description=This empty element refers to a StandardDichroic component used in this light path.</xsd:documentation>
             <xsd:documentation>Tier=2</xsd:documentation>
           </xsd:annotation>
         </xsd:element>
         <xsd:element name="EmissionFilterRef" type="FilterRef" minOccurs="0" maxOccurs="unbounded">
           <xsd:annotation>
             <xsd:appinfo><xsdfu xmlns=""><plural>EmissionFilters</plural><manytomany/></xsdfu></xsd:appinfo>
-            <xsd:documentation>Description=This empty element has a reference (the Filter ID attribute) to the Filters placed in the Emission light path</xsd:documentation>
+            <xsd:documentation>Description=This empty element refers to an EmissionFilter component used in this light path.</xsd:documentation>
             <xsd:documentation>Tier=2</xsd:documentation>
           </xsd:annotation>
         </xsd:element>
@@ -3149,13 +3196,13 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
           </xsd:complexType>
         </xsd:element>
       </xsd:sequence>
-      <xsd:attribute name="ID">
+      <xsd:attribute name="ID" type="LSID" use="required">
         <xsd:annotation>
-          <xsd:documentation>Description=A unique identifier for this element.</xsd:documentation>
+          <xsd:documentation>Description=A unique identifier for this component.</xsd:documentation>
           <xsd:documentation>Tier=2</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
-      <xsd:attribute name="Name">
+      <xsd:attribute name="Name" type="Denomination" use="required">
         <xsd:annotation>
           <xsd:documentation>Description=A user defined name for this component.</xsd:documentation>
           <xsd:documentation>Tier=2</xsd:documentation>
@@ -3169,6 +3216,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
     <!-- top level definition -->
     <xsd:annotation>
       <xsd:appinfo><xsdfu xmlns=""><plural>FilterSets</plural></xsdfu></xsd:appinfo>
+      <xsd:documentation>Domain=MicrosocpeSpecifications</xsd:documentation>
       <xsd:documentation>Category=LightPath</xsd:documentation>
       <xsd:documentation>Description=A filter set is typically composed of one excitation filter, one emission filter and a dichroic. They might either be pre-assebled by the manufacturer and pruchased as a whole or they can be custome assembled on site depending on the needs of the user.</xsd:documentation>
       <xsd:documentation>Tier=2</xsd:documentation>
@@ -3282,6 +3330,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
 
   <xsd:element name="ExcitationFilter" substitutionGroup="FilterGroup">
     <xsd:annotation>
+      <xsd:documentation>Domain=MicrosocpeSpecifications</xsd:documentation>
       <xsd:documentation>Category=LightPath</xsd:documentation>
       <xsd:documentation>Description=An optical filter is a device that selectively transmits light of different wavelengths.This element refers to an excitation filter. This element can be associated with an optional FilterWheel - Note: FilterWheel is not the same as a FilterSet.</xsd:documentation>
       <xsd:documentation>Tier=2</xsd:documentation>
@@ -3294,6 +3343,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
   </xsd:element>
   <xsd:element name="EmissionFilter" substitutionGroup="FilterGroup">
     <xsd:annotation>
+      <xsd:documentation>Domain=MicrosocpeSpecifications</xsd:documentation>
       <xsd:documentation>Category=LightPath</xsd:documentation>
       <xsd:documentation>Description=An optical filter is a device that selectively transmits light of different wavelengths. This element refers to an emission filter. This element can be associated with an optional FilterWheel - Note: FilterWheel is not the same as a FilterSet.</xsd:documentation>
       <xsd:documentation>Tier=2</xsd:documentation>
@@ -3306,6 +3356,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
   </xsd:element>
   <xsd:element name="AdditionalFilter" substitutionGroup="FilterGroup">
     <xsd:annotation>
+      <xsd:documentation>Domain=MicrosocpeSpecifications</xsd:documentation>
       <xsd:documentation>Category=AdditionalOptics</xsd:documentation>
       <xsd:documentation>Description=An optical filter is a device that selectively transmits light of different wavelengths. This element refers to a filter positioned along the light path in addition to the excitation and the emission filters.This element can be associated with an optional FilterWheel - Note: FilterWheel is not the same as a FilterSet.</xsd:documentation>
       <xsd:documentation>Tier=2</xsd:documentation>
@@ -3320,6 +3371,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
     <!-- top level definition -->
     <xsd:annotation>
       <xsd:appinfo><xsdfu xmlns=""><plural>TransmittanceRanges</plural></xsdfu></xsd:appinfo>
+      <xsd:documentation>Domain=MicrosocpeSpecifications</xsd:documentation>
       <xsd:documentation>Category=ChildElement</xsd:documentation>
       <xsd:documentation>Description=This records the range of wavelengths that are transmitted by the filter. It also records the maximum amount of light transmitted. Multiple of this elements can be used.</xsd:documentation>
       <xsd:documentation>Tier=2</xsd:documentation>
@@ -3446,6 +3498,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
   </xsd:element>
   <xsd:element name="BeamSplitter" substitutionGroup="MirrorGroup">
     <xsd:annotation>
+      <xsd:documentation>Domain=MicrosocpeSpecifications</xsd:documentation>
       <xsd:documentation>Category=Mirror</xsd:documentation>
       <xsd:documentation>Description=This is a mirror that reflects part of the light, regardless of wavelenght.</xsd:documentation>
       <xsd:documentation>Tier=2</xsd:documentation>
@@ -3477,6 +3530,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
   </xsd:element>
   <xsd:element name="Reflector" substitutionGroup="MirrorGroup">
     <xsd:annotation>
+      <xsd:documentation>Domain=MicrosocpeSpecifications</xsd:documentation>
       <xsd:documentation>Category=Mirror</xsd:documentation>
       <xsd:documentation>Description=This is a total reflection mirror.</xsd:documentation>
       <xsd:documentation>Tier=2</xsd:documentation>
@@ -3571,6 +3625,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
   </xsd:element>
   <xsd:element name="StandardDichroic" substitutionGroup="DichroicGroup">
     <xsd:annotation>
+      <xsd:documentation>Domain=MicrosocpeSpecifications</xsd:documentation>
       <xsd:documentation>Category=LightPath</xsd:documentation>
       <xsd:documentation>Description=This describes a dichroic  positioned in the standard light path for one or more channel available for this instrument.</xsd:documentation>
       <xsd:documentation>Tier=2</xsd:documentation>
@@ -3585,6 +3640,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
     <!-- top level definition -->
     <xsd:annotation>
       <xsd:appinfo><xsdfu xmlns=""><plural>Dichroics</plural></xsdfu></xsd:appinfo>
+      <xsd:documentation>Domain=MicrosocpeSpecifications</xsd:documentation>
       <xsd:documentation>Category=AdditionalOptics</xsd:documentation>
       <xsd:documentation>Description=This describes an additional dichroic  positioned in the light path for one or more channel available for this instrument.</xsd:documentation>
       <xsd:documentation>Tier=2</xsd:documentation>
@@ -3599,6 +3655,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
     <!-- top level definition -->
     <xsd:annotation>
       <xsd:appinfo><xsdfu xmlns=""><plural>TransmittanceRanges</plural></xsdfu></xsd:appinfo>
+      <xsd:documentation>Domain=MicrosocpeSpecifications</xsd:documentation>
       <xsd:documentation>Category=ChildElement</xsd:documentation>
       <xsd:documentation>Description=This records the range of wavelengths that are reflected by the mirror.</xsd:documentation>
       <xsd:documentation>Tier=3</xsd:documentation>
@@ -3638,39 +3695,41 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
   <!-- Additional optics elements -->
   <xsd:element name="AdditionalOptics">
     <xsd:annotation>
-      <xsd:documentation>Description=A description of additional optics placed in the light path</xsd:documentation>
+      <xsd:documentation>Domain=ImageAcquisitionSettings</xsd:documentation>
+      <xsd:documentation>Category=Channel</xsd:documentation>
+      <xsd:documentation>Description=A description of additional optics placed in this light path.</xsd:documentation>
       <xsd:documentation>Tier=2</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
       <xsd:sequence>
         <xsd:element name="AdditionalLensRef" type="LensRef" maxOccurs="unbounded" minOccurs="0">
           <xsd:annotation>
-            <xsd:documentation>Description=This empty element has a reference (the LensID attribute) to the an additional Lens placed in the light path</xsd:documentation>
+            <xsd:documentation>Description=This empty element refers to an AdditionalLens component placed in this light path.</xsd:documentation>
             <xsd:documentation>Tier=2</xsd:documentation>
           </xsd:annotation>
         </xsd:element>
         <xsd:element name="PrimsRef" type="PrismRef" maxOccurs="unbounded" minOccurs="0">
           <xsd:annotation>
-            <xsd:documentation>Description=This empty element has a reference (the PrismID attribute) to the a Prism placed in the light path</xsd:documentation>
+            <xsd:documentation>Description=This empty element refers to a Prism component placed in this light path.</xsd:documentation>
             <xsd:documentation>Tier=2</xsd:documentation>
           </xsd:annotation>
         </xsd:element>
         <xsd:element name="PolarizationOpticsRef" type="PolarizationOpticsRef" maxOccurs="unbounded"
           minOccurs="0">
           <xsd:annotation>
-            <xsd:documentation>Description=This empty element has a reference (the PorarizationOpticsID attribute) to the a PolarizationOptics placed in the light path</xsd:documentation>
+            <xsd:documentation>Description=This empty element refers to a PolarizationOptics component placed in this light path.</xsd:documentation>
             <xsd:documentation>Tier=2</xsd:documentation>
           </xsd:annotation>
         </xsd:element>
         <xsd:element name="AdditionalFilterRef" type="FilterRef" maxOccurs="unbounded" minOccurs="0">
           <xsd:annotation>
-            <xsd:documentation>Description=This empty element has a reference (the FilterID attribute) to the an additional Filter placed in the light path</xsd:documentation>
+            <xsd:documentation>Description=This empty element refers to an AdditionalFilter component placed in this light path.</xsd:documentation>
             <xsd:documentation>Tier=2</xsd:documentation>
           </xsd:annotation>
         </xsd:element>
         <xsd:element name="AdditionalMirrorRef" type="MirrorRef" maxOccurs="unbounded" minOccurs="0">
           <xsd:annotation>
-            <xsd:documentation>Description=This empty element has a reference (the MirrorID attribute) to the an additional Mirror placed in the light path</xsd:documentation>
+            <xsd:documentation>Description=This empty element refers to an AdditionalMirror component placed in this light path.</xsd:documentation>
             <xsd:documentation>Tier=2</xsd:documentation>
           </xsd:annotation>
         </xsd:element>
@@ -3678,11 +3737,11 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
       </xsd:sequence>
       <xsd:attribute name="ID" type="LSID" use="required">
         <xsd:annotation>
-          <xsd:documentation>Description=A unique identifier for this element.</xsd:documentation>
+          <xsd:documentation>Description=A unique identifier for this component.</xsd:documentation>
           <xsd:documentation>Tier=2</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
-      <xsd:attribute name="Name" type="Denomination">
+      <xsd:attribute name="Name" type="Denomination" use="required">
         <xsd:annotation>
           <xsd:documentation>Description=A user defined name for this component.</xsd:documentation>
           <xsd:documentation>Tier=2</xsd:documentation>
@@ -3844,6 +3903,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
 
   <xsd:element name="AdditionalLens" substitutionGroup="LensGroup">
     <xsd:annotation>
+      <xsd:documentation>Domain=MicrosocpeSpecifications</xsd:documentation>
       <xsd:documentation>Category=AdditionalOptics</xsd:documentation>
       <xsd:documentation>Description=Any additional lens poistioned in the light path for a given channel.</xsd:documentation>
       <xsd:documentation>Tier=2</xsd:documentation>
@@ -3856,6 +3916,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
   </xsd:element>
   <xsd:element name="CouplingLens" substitutionGroup="LensGroup">
     <xsd:annotation>
+      <xsd:documentation>Domain=MicrosocpeSpecifications</xsd:documentation>
       <xsd:documentation>Category=AdditionalOptics</xsd:documentation>
       <xsd:documentation>Description=A lens positioned at connector between this light source coupling device and the microscope body.</xsd:documentation>
       <xsd:documentation>Tier=5</xsd:documentation>
@@ -3868,6 +3929,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
   </xsd:element>
   <xsd:element name="RelayLens" substitutionGroup="LensGroup">
     <xsd:annotation>
+      <xsd:documentation>Domain=MicrosocpeSpecifications</xsd:documentation>
       <xsd:documentation>Category=AdditionalOptics</xsd:documentation>
       <xsd:documentation>Description=A lens positioned at the mount connecting a detector to the microscope body.</xsd:documentation>
       <xsd:documentation>Tier=3</xsd:documentation>
@@ -3880,6 +3942,7 @@ The LightSourceSettingsRef element is a reference to a LightSourceSettings and i
   </xsd:element>
   <xsd:element name="Prism">
     <xsd:annotation>
+      <xsd:documentation>Domain=MicrosocpeSpecifications</xsd:documentation>
       <xsd:documentation>Category=AdditionalOptics</xsd:documentation>
       <xsd:documentation>Description=This describes a prism positioned in the light path for one or more channel available for this instrument. A prism is a block of glass or other transparent material with flat, polished surfaces, which can be viewed as an ensamble of different rigidly mounted mirrors, with each face having a permanent orientation with respect to all the others. A prism can be employed to deflect or deviate a light beam, rotate or invert an image, separate polarization states, or disperse light into its component wavelengths. An instrument may have several prisms with different factionality such as,  reflecting, polarizing, and refracting or dispersion prisms. 
 Reflecting prisms are useful for redirecting light beams by total internal reflection. Polarizing prisms are birefringent crystals that divide incident non-polarized light into separate components polarized orthogonally to each other. Refracting prisms can be employed to bend and separate light into its component colors. These prisms are employed to produce polarized light for optical instruments such as microscopes and polarimeters.</xsd:documentation>
@@ -3997,6 +4060,7 @@ Reflecting prisms are useful for redirecting light beams by total internal refle
 
   <xsd:element name="PolarizationOptics">
     <xsd:annotation>
+      <xsd:documentation>Domain=MicrosocpeSpecifications</xsd:documentation>
       <xsd:documentation>Category=AdditionalOptics</xsd:documentation>
       <xsd:documentation>Description=This describes an optical polarization device positioned in the light path for one or more channel available for this instrument. A polarization device is an optical filter that lets light waves of a specific polarization pass through while blocking light waves of other polarizations.</xsd:documentation>
       <xsd:documentation>Tier=2</xsd:documentation>
@@ -4176,6 +4240,7 @@ Reflecting prisms are useful for redirecting light beams by total internal refle
   </xsd:element>
   <xsd:element name="PhotoMultiplier" substitutionGroup="DetectorGroup">
     <xsd:annotation>
+      <xsd:documentation>Domain=MicrosocpeSpecifications</xsd:documentation>
       <xsd:documentation>Category=Detector</xsd:documentation>
       <xsd:documentation>Description=A photomultiplier tube, useful for light detection of very weak signals, is a photoemissive device in which the absorption of a photon results in the emission of an electron. These detectors work by amplifying the electrons generated by a photocathode exposed to a photon flux.</xsd:documentation>
       <xsd:documentation>Tier=2</xsd:documentation>
@@ -4203,6 +4268,7 @@ Reflecting prisms are useful for redirecting light beams by total internal refle
     <!-- top level definition -->
     <xsd:annotation>
       <xsd:appinfo><xsdfu xmlns=""><plural>GenericExcitationSources</plural></xsdfu></xsd:appinfo>
+      <xsd:documentation>Domain=MicrosocpeSpecifications</xsd:documentation>
       <xsd:documentation>Category=Detector</xsd:documentation>
       <xsd:documentation>Description=This element is used to represent a detector as a collection of key/value pairs, which are stored in a Map. One of the other detector elements should always be used in preference to this if possible.</xsd:documentation>
       <xsd:documentation>Tier=2</xsd:documentation>
@@ -4213,6 +4279,7 @@ Reflecting prisms are useful for redirecting light beams by total internal refle
           <xsd:sequence>
             <xsd:element name="Map" type="Map">
               <xsd:annotation>
+                <xsd:documentation>Domain=MicrosocpeSpecifications</xsd:documentation>
                 <xsd:documentation>Category=ChildElement</xsd:documentation>
                 <xsd:documentation>Description=This is a Mapping of key/value pairs used to store customized metadata that describes this element.</xsd:documentation>
                 <xsd:documentation>Tier=3</xsd:documentation>
@@ -4358,6 +4425,7 @@ Reflecting prisms are useful for redirecting light beams by total internal refle
   </xsd:complexType>
   <xsd:element name="CCD" substitutionGroup="CameraGroup">
     <xsd:annotation>
+      <xsd:documentation>Domain=MicrosocpeSpecifications</xsd:documentation>
       <xsd:documentation>Category=Detector.Camera</xsd:documentation>
       <xsd:documentation>Description=A charged coupled device camera.</xsd:documentation>
       <xsd:documentation>Tier=2</xsd:documentation>
@@ -4377,6 +4445,7 @@ Reflecting prisms are useful for redirecting light beams by total internal refle
   </xsd:element>
   <xsd:element name="IntensifiedCCD" substitutionGroup="CameraGroup">
     <xsd:annotation>
+      <xsd:documentation>Domain=MicrosocpeSpecifications</xsd:documentation>
       <xsd:documentation>Category=Detector.Camera</xsd:documentation>
       <xsd:documentation>Description=The type of Intensified CCD camera used.</xsd:documentation>
       <xsd:documentation>Tier=2</xsd:documentation>
@@ -4396,6 +4465,7 @@ Reflecting prisms are useful for redirecting light beams by total internal refle
   </xsd:element>
   <xsd:element name="AnalogVideo" substitutionGroup="CameraGroup">
     <xsd:annotation>
+      <xsd:documentation>Domain=MicrosocpeSpecifications</xsd:documentation>
       <xsd:documentation>Category=Detector.Camera</xsd:documentation>
       <xsd:documentation>Description=A device used to capture analog videos.</xsd:documentation>
       <xsd:documentation>Tier=2</xsd:documentation>
@@ -4408,6 +4478,7 @@ Reflecting prisms are useful for redirecting light beams by total internal refle
   </xsd:element>
   <xsd:element name="CMOS" substitutionGroup="CameraGroup">
     <xsd:annotation>
+      <xsd:documentation>Domain=MicrosocpeSpecifications</xsd:documentation>
       <xsd:documentation>Category=Detector.Camera</xsd:documentation>
       <xsd:documentation>Description=A complementary metal-oxide-semiconductor camera.</xsd:documentation>
       <xsd:documentation>Tier=2</xsd:documentation>
@@ -4479,16 +4550,18 @@ Reflecting prisms are useful for redirecting light beams by total internal refle
   </xsd:complexType>
   <xsd:element name="MicroscopeSettings">
     <xsd:annotation>
-      <xsd:documentation>Description=This field refers to the Microscope used to acquire this image and holds the setting that were applied to the microscope in this case. The ID is the microscope used in this case.</xsd:documentation>
+      <xsd:documentation>Domain=ImageAcquisitionSettings</xsd:documentation>
+      <xsd:documentation>Category=Settings</xsd:documentation>
+      <xsd:documentation>Description=This element refers to the microscope used to acquire this image and it holds the settings that were applied to the microscope during this acquisition.</xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
       <xsd:complexContent>
         <xsd:extension base="Settings">
           <xsd:sequence>
-            <xsd:element name="OptovarRef">
+            <xsd:element name="OptovarRef" minOccurs="0">
               <xsd:annotation>
-                <xsd:documentation>Description=This empty element has a required reference (the OptovarID attribute) to an existing Optovar component.</xsd:documentation>
+                <xsd:documentation>Description=This empty element refers to the existing Optovar component used in this case.</xsd:documentation>
                 <xsd:documentation>Tier=3</xsd:documentation>
               </xsd:annotation>
               <xsd:complexType>
@@ -4505,7 +4578,7 @@ Reflecting prisms are useful for redirecting light beams by total internal refle
             </xsd:element>
             <xsd:element name="ObjectiveRef">
               <xsd:annotation>
-                <xsd:documentation>Description=This empty element has a required reference (the ObjectiveID attribute) to an existing Objective component.</xsd:documentation>
+                <xsd:documentation>Description=This empty element refers to the existing Objective component used in this case.</xsd:documentation>
                 <xsd:documentation>Tier=3</xsd:documentation>
               </xsd:annotation>
               <xsd:complexType>
@@ -4523,12 +4596,13 @@ Reflecting prisms are useful for redirecting light beams by total internal refle
           </xsd:sequence>
           <xsd:attribute name="ID" type="MicroscopeID">
             <xsd:annotation>
+              <xsd:documentation>Description=This is the unique identifier of the microscope used in this case.</xsd:documentation>
               <xsd:documentation>Tier=1</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
           <xsd:attribute name="FieldOfView" type="xsd:float">
             <xsd:annotation>
-              <xsd:documentation>Description=The Field of View defines the area of the specimen that is viewable via the eyepiece. This attribute caputers the measures size of the Field of View.</xsd:documentation>
+              <xsd:documentation>Description=The Field of View defines the area of the specimen that is viewable via the eyepiece. This field caputers the measures size of the Field of View.</xsd:documentation>
               <xsd:documentation>Tier=3</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
@@ -4551,6 +4625,8 @@ Reflecting prisms are useful for redirecting light beams by total internal refle
     <!-- top level definition -->
     <xsd:annotation>
       <xsd:appinfo><xsdfu xmlns=""><plural>LightSourceSettingsCombinations</plural></xsdfu></xsd:appinfo>
+      <xsd:documentation>Domain=ImageAcquisitionSettings</xsd:documentation>
+      <xsd:documentation>Category=Settings</xsd:documentation>
       <xsd:documentation>Description=This holds the setting applied to a LightSource e as well as a reference to the LightSource (the ID attribute) in question. The ID referes to the LightSource used in this case.</xsd:documentation>
       <xsd:documentation>Tier=3</xsd:documentation>
     </xsd:annotation>
@@ -4559,6 +4635,7 @@ Reflecting prisms are useful for redirecting light beams by total internal refle
         <xsd:extension base="Settings">
           <xsd:attribute name="ID" use="required" type="LightSourceID">
             <xsd:annotation>
+              <xsd:documentation>Description=A unique identifier for this component.</xsd:documentation>
               <xsd:documentation>Tier=3</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
@@ -4575,7 +4652,7 @@ Reflecting prisms are useful for redirecting light beams by total internal refle
               <xsd:documentation>Tier=3</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="PowerSettings" type="xsd:float">
+          <xsd:attribute name="PowerSettings" type="xsd:float" use="required">
             <xsd:annotation>
               <xsd:documentation>Description=The light power output settings utilized in this case.</xsd:documentation>
               <xsd:documentation>Tier=3</xsd:documentation>
@@ -4600,8 +4677,9 @@ Reflecting prisms are useful for redirecting light beams by total internal refle
     <!-- top level definition -->
     <xsd:annotation>
       <xsd:appinfo><xsdfu xmlns=""><plural>ObjectiveSettingsCombinations</plural></xsdfu></xsd:appinfo>
-      <xsd:documentation>Description=This holds the setting applied to an objective as well as a reference to the objective. The ID is the objective used in this case
-      </xsd:documentation>
+      <xsd:documentation>Domain=ImageAcquisitionSettings</xsd:documentation>
+      <xsd:documentation>Category=Settings</xsd:documentation>
+      <xsd:documentation>Description=This element refers to the objective used to acquire this image and it holds the settings that were applied to the objective during this acquisition.</xsd:documentation>
       <xsd:documentation>Tier=2</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
@@ -4609,38 +4687,38 @@ Reflecting prisms are useful for redirecting light beams by total internal refle
         <xsd:extension base="Settings">
           <xsd:attribute name="ID" use="required" type="ObjectiveID">
             <xsd:annotation>
+              <xsd:documentation>Description=This is the unique identifier of the objective used in this case.</xsd:documentation>
               <xsd:documentation>Tier=2</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
           <xsd:attribute name="CorrectionCollar" use="optional" type="xsd:float">
             <xsd:annotation>
-              <xsd:documentation>Description=The CorrectionCollar is normally an adjustable ring on the objective. Each has an arbitrary scale on it so the values is unit-less.[units:none]</xsd:documentation>
+              <xsd:documentation>Description=When using high numerical aperture dry objectives (numerical aperture of 0.8 or greater), cover glass thickness variations of only a few micrometers result in dramatic image degradation due to aberration, which grows worse with increasing cover glass thickness. To compensate for this error, the more highly corrected objectives are equipped with a correction collar to allow adjustment of the central lens group position to coincide with fluctuations in cover glass thickness. The CorrectionCollar is normally an adjustable ring on the objective, whose position can be modified. This field records the position of the collar during the acquisition of this image. Each correction collar has an arbitrary scale on it so the values is unit-less.</xsd:documentation>
               <xsd:documentation>Tier=5</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="ImmersionMedium" type="ObjectiveSettingsImmersionMedium">
+          <xsd:attribute name="ImmersionMedium" type="ObjectiveSettingsImmersionMedium"
+            use="required">
             <xsd:annotation>
-              <xsd:documentation>Description=The actual immersion medium that was used in this case</xsd:documentation>
+              <xsd:documentation>Description=The actual immersion medium that was used for the acquisition of this image.</xsd:documentation>
               <xsd:documentation>Tier=2</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
           <xsd:attribute name="ImmersionRefractiveIndex" use="required" type="xsd:float">
             <xsd:annotation>
-              <xsd:documentation>Description=The nominal RefractiveIndex of ther immersion medium utilized in this case. This is a ratio so it also unit-less. [units:none]
-              </xsd:documentation>
+              <xsd:documentation>Description=The nominal refractive index of the immersion medium utilized in this case, as specified by the manufacturer.</xsd:documentation>
               <xsd:documentation>Tier=2</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
           <xsd:attribute name="MeasuredRefractiveIndex" type="xsd:float">
             <xsd:annotation>
-              <xsd:documentation>Description=The temperature dependent measured RefractiveIndex of ther immersion medium utilized in this case. This is a ratio so it also unit-less. [units:none]</xsd:documentation>
+              <xsd:documentation>Description=The temperature dependenent measured Refractive Index of ther immersion medium utilized in this case.</xsd:documentation>
               <xsd:documentation>Tier=4</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
           <xsd:attribute name="Temperature" type="xsd:float">
             <xsd:annotation>
-              <xsd:documentation>Description=The Temperature of the Objective during acquisition.
-</xsd:documentation>
+              <xsd:documentation>Description=The temperature of the objective if different from the ImagingEnvironment/Temperature.</xsd:documentation>
               <xsd:documentation>Tier=4</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
@@ -4656,18 +4734,19 @@ Reflecting prisms are useful for redirecting light beams by total internal refle
   </xsd:element>
   <xsd:element name="DetectorSettingsGroup" abstract="true" type="DetectorSettings">
     <xsd:annotation>
-      <xsd:documentation>Description=This element holds the setting applied to a Detector e as well as a reference to the Detector (the ID attribute) in question. The ID referes to the Detector used in this case.</xsd:documentation>
+      <xsd:documentation>Description=This element refers to the Detector used to acquire this image and it holds the settings that were applied to the Detector during this acquisition.</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
   <xsd:complexType name="DetectorSettings">
     <xsd:annotation>
-      <xsd:documentation>Description=This element holds the setting applied to a Detector e as well as a reference to the Detector (the ID attribute) in question. The ID referes to the Detector used in this case.</xsd:documentation>
+      <xsd:documentation>Description=This element refers to the Detector used to acquire this image and it holds the settings that were applied to the Detector during this acquisition.</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="Settings">
         <xsd:attribute name="ID" type="DetectorID" use="required">
           <xsd:annotation>
             <xsd:documentation>Tier=3</xsd:documentation>
+            <xsd:documentation>Description=A unique identifier for this component.</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
         <xsd:attribute name="EffectiveOffset" type="xsd:float" use="required">
@@ -4678,17 +4757,17 @@ Reflecting prisms are useful for redirecting light beams by total internal refle
         </xsd:attribute>
         <xsd:attribute name="Integration" type="PositiveInt">
           <xsd:annotation>
-            <xsd:documentation>Description=This is the number of sequential frames that have been averaged for this image, to improve the signal-to-noise ratio</xsd:documentation>
+            <xsd:documentation>Description=This is the number of sequential frames that have been averaged to obtain this image, to improve the overall signal-to-noise ratio.</xsd:documentation>
             <xsd:documentation>Tier=3</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
-        <xsd:attribute name="CameraFieldOfView" type="xsd:float">
+        <xsd:attribute name="DetectorFieldOfView" type="xsd:float">
           <xsd:annotation>
-            <xsd:documentation>Description=The Camera Field of View is the diameter of the field visible by the camera as measured in the specimen plane. It is expressed in mm and it is defined as the Cameara Field Number divided by the Total Effective Magnification of the system. In turn the Field Number is defined as the diameter of the view field in mm measured at the intermediate image plane</xsd:documentation>
+            <xsd:documentation>Description=The detector field of view is the diameter of the field visible by the camera as measured in the specimen plane. It is expressed in mm and it is defined as the detector field number divided by the total effective magnification of the system. In turn the Field Number is defined as the diameter of the view field in mm measured at the intermediate image plane.</xsd:documentation>
             <xsd:documentation>Tier=3</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
-        <xsd:attribute name="CameraFieldOfViewUnit" type="UnitsLength">
+        <xsd:attribute name="DetectorFieldOfViewUnit" type="UnitsLength" default="mm">
           <xsd:annotation>
             <xsd:documentation>Tier=3</xsd:documentation>
           </xsd:annotation>
@@ -4698,7 +4777,7 @@ Reflecting prisms are useful for redirecting light beams by total internal refle
   </xsd:complexType>
   <xsd:element name="PhotoMultiplierSettings" substitutionGroup="DetectorSettingsGroup">
     <xsd:annotation>
-      <xsd:documentation>Description=This holds the setting applied to a PhotoMultiplier e as well as a reference to the PhotoMultiplier (the ID attribute) in question. The ID referes to the PhotoMultiplier used in this case.</xsd:documentation>
+      <xsd:documentation>Description=This element refers to the PhotoMultiplier used to acquire this image and it holds the settings that were applied to the PhotoMultiplier during this acquisition.</xsd:documentation>
       <xsd:documentation>Tier=3</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
@@ -4706,13 +4785,13 @@ Reflecting prisms are useful for redirecting light beams by total internal refle
         <xsd:extension base="DetectorSettings">
           <xsd:attribute name="PMTGain" type="xsd:float" use="required">
             <xsd:annotation>
-              <xsd:documentation>Description=In general, the gain is a measure of the ability a two-port circuit to add energy to an input signal and therefore increase its power or amplitude. Specifically, PMTGain refers to the ratio of output to input current set for the acquisition of this image</xsd:documentation>
+              <xsd:documentation>Description=In general, the gain is a measure of the ability a two-port circuit to add energy to an input signal and therefore increase its power or amplitude. Specifically, PMTGain refers to the ratio of output to input current set for the acquisition of this image.</xsd:documentation>
               <xsd:documentation>Tier=3</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
           <xsd:attribute name="PMTVoltage" type="xsd:float" use="required">
             <xsd:annotation>
-              <xsd:documentation>Description=This refers to the voltage applied to the photomultiplier for the acquisition of this image</xsd:documentation>
+              <xsd:documentation>Description=This refers to the voltage applied to the photomultiplier for the acquisition of this image.</xsd:documentation>
               <xsd:documentation>Tier=3</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
@@ -4723,7 +4802,7 @@ Reflecting prisms are useful for redirecting light beams by total internal refle
           </xsd:attribute>
           <xsd:attribute name="EffectiveZoom" type="xsd:float" use="required">
             <xsd:annotation>
-              <xsd:documentation>Description=The Zoom factor, aka "Confocal Zoom" or "Scan Zoom", utilized for the acquisition of this image.</xsd:documentation>
+              <xsd:documentation>Description=The zoom factor, aka "Confocal Zoom" or "Scan Zoom", utilized for the acquisition of this image.</xsd:documentation>
               <xsd:documentation>Tier=3</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
@@ -4735,8 +4814,7 @@ Reflecting prisms are useful for redirecting light beams by total internal refle
     <!-- top level definition -->
     <xsd:annotation>
       <xsd:appinfo><xsdfu xmlns=""><plural>DetectorSettingsCombinations</plural></xsdfu></xsd:appinfo>
-      <xsd:documentation>Description=This holds the setting applied to a Camera e as well as a reference to the Camera (the ID attribute) in question. The ID referes to the Camera used in this case.
-      </xsd:documentation>
+      <xsd:documentation>Description=This element refers to the Camera used to acquire this image and it holds the settings that were applied to the Camera during this acquisition.</xsd:documentation>
       <xsd:documentation>Tier=3</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
@@ -4744,8 +4822,7 @@ Reflecting prisms are useful for redirecting light beams by total internal refle
         <xsd:extension base="DetectorSettings">
           <xsd:attribute name="Binning" use="required" type="Binning">
             <xsd:annotation>
-              <xsd:documentation>Description=Represents the number of pixels that are combined to imporve readout rates, signal to noise ratios albeit at the expense of reduced spatial resolution
-              </xsd:documentation>
+              <xsd:documentation>Description=This represents the number of pixels that are combined to improve readout rates and signal to noise ratios albeit at the expense of reduced spatial resolution.</xsd:documentation>
               <xsd:documentation>Tier=3</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
@@ -4761,10 +4838,9 @@ Reflecting prisms are useful for redirecting light beams by total internal refle
               <xsd:documentation>Tier=3</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="ReadOutRate" use="required" type="xsd:float">
+          <xsd:attribute name="ReadOutRate" use="optional" type="xsd:float">
             <xsd:annotation>
-              <xsd:documentation>Description=Effective pixel read out rate used for the acquisition of this image. This is the bytes per second that can be read from the detector (like a baud rate).
-                
+              <xsd:documentation>Description=The effective pixel read out rate used for the acquisition of this image. This value depends on the bytes per second that can be read from the detector (like a baud rate).
               </xsd:documentation>
               <xsd:documentation>Tier=5</xsd:documentation>
             </xsd:annotation>
@@ -4776,14 +4852,14 @@ Reflecting prisms are useful for redirecting light beams by total internal refle
           </xsd:attribute>
           <xsd:attribute name="FrameRate" type="xsd:float">
             <xsd:annotation>
-              <xsd:documentation>Description=Effective frame rate used for the acquisition of this image.</xsd:documentation>
+              <xsd:documentation>Description=This is the effective frame rate used for the acquisition of this image.</xsd:documentation>
               <xsd:documentation>Tier=3</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
           <xsd:attribute default="fps" name="FrameRateUnit" type="UnitsFrequency"/>
-          <xsd:attribute name="OperatingTemperature">
+          <xsd:attribute name="OperatingTemperature" type="xsd:float">
             <xsd:annotation>
-              <xsd:documentation>Description=Effective cooling temperature used duringh the acquisition of this image.</xsd:documentation>
+              <xsd:documentation>Description=This is the effective cooling temperature used during the acquisition of this image.</xsd:documentation>
               <xsd:documentation>Tier=3</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
@@ -5707,7 +5783,12 @@ annotation refs from the base Annotation to form the list.</xsd:documentation>
       <xsd:complexContent>
         <xsd:extension base="Reference">
           <xsd:sequence/>
-          <xsd:attribute name="ID" use="required" type="ROIID"/>
+          <xsd:attribute name="ID" use="required" type="ROIID">
+            <xsd:annotation>
+              <xsd:documentation>Description=A unique identifier for this ROI.</xsd:documentation>
+              <xsd:documentation>Tier=2</xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
         </xsd:extension>
       </xsd:complexContent>
     </xsd:complexType>
@@ -6135,17 +6216,31 @@ annotation refs from the base Annotation to form the list.</xsd:documentation>
     <xsd:complexType>
       <xsd:complexContent>
         <xsd:extension base="Reference">
-          <xsd:attribute name="ID" use="required" type="MicrobeamManipulationID"/>
+          <xsd:attribute name="ID" use="required" type="MicrobeamManipulationID">
+            <xsd:annotation>
+              <xsd:documentation>Description=A unique identifier for this MicrobeamManipulation event.</xsd:documentation>
+              <xsd:documentation>Tier=3</xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
         </xsd:extension>
       </xsd:complexContent>
     </xsd:complexType>
   </xsd:element>
   <xsd:element name="ExperimentRef">
     <!-- top level definition -->
+    <xsd:annotation>
+      <xsd:documentation>Description=This empty element refers to the Experiment during which this Image was acquired.</xsd:documentation>
+      <xsd:documentation>Tier=1</xsd:documentation>
+    </xsd:annotation>
     <xsd:complexType>
       <xsd:complexContent>
         <xsd:extension base="Reference">
-          <xsd:attribute name="ID" use="required" type="ExperimentID"/>
+          <xsd:attribute name="ID" use="required" type="ExperimentID">
+            <xsd:annotation>
+              <xsd:documentation>Description=A unique identifier for this Experiment.</xsd:documentation>
+              <xsd:documentation>Tier=1</xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
         </xsd:extension>
       </xsd:complexContent>
     </xsd:complexType>
@@ -6179,8 +6274,7 @@ annotation refs from the base Annotation to form the list.</xsd:documentation>
   <xsd:element name="ExperimenterRef">
     <!-- top level definition -->
     <xsd:annotation>
-      <xsd:documentation>Description=This empty element has a required reference (the ExperimenterID attribute) to a Experimenter defined within OME
-      </xsd:documentation>
+      <xsd:documentation>Description=This empty element refers to Experimenter that performed this experiment.</xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
@@ -6188,7 +6282,8 @@ annotation refs from the base Annotation to form the list.</xsd:documentation>
         <xsd:extension base="Reference">
           <xsd:attribute name="ID" use="required" type="ExperimenterID">
             <xsd:annotation>
-              <xsd:documentation>Tier=3</xsd:documentation>
+              <xsd:documentation>Description=A unique identifier for this Experimenter.</xsd:documentation>
+              <xsd:documentation>Tier=1</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
         </xsd:extension>
@@ -6198,14 +6293,19 @@ annotation refs from the base Annotation to form the list.</xsd:documentation>
   <xsd:element name="ExperimenterGroupRef">
     <!-- top level definition -->
     <xsd:annotation>
-      <xsd:documentation>Description=This empty element has a reference (the ExperimenterGroup ID attribute) to a ExperimenterGroup defined within OME
+      <xsd:documentation>Description=This empty element refers to the ExperimenterGroup that owns this Image.
 </xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
       <xsd:complexContent>
         <xsd:extension base="Reference">
-          <xsd:attribute name="ID" use="required" type="ExperimenterGroupID"/>
+          <xsd:attribute name="ID" use="required" type="ExperimenterGroupID">
+            <xsd:annotation>
+              <xsd:documentation>Description=A unique identifier for this ExperimenterGroup.</xsd:documentation>
+              <xsd:documentation>Tier=1</xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
         </xsd:extension>
       </xsd:complexContent>
     </xsd:complexType>
@@ -6213,13 +6313,18 @@ annotation refs from the base Annotation to form the list.</xsd:documentation>
   <xsd:element name="InstrumentRef">
     <!-- top level definition -->
     <xsd:annotation>
-      <xsd:documentation>Description=This empty element can be used (via the required Instrument ID attribute) to refer to an Instrument defined within OME</xsd:documentation>
+      <xsd:documentation>Description=This empty element refers to the Instrument that was utilized to acquire this image.</xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
       <xsd:complexContent>
         <xsd:extension base="Reference">
-          <xsd:attribute name="ID" use="required" type="InstrumentID"/>
+          <xsd:attribute name="ID" use="required" type="InstrumentID">
+            <xsd:annotation>
+              <xsd:documentation>Description=A unique identifier for this Instrument.</xsd:documentation>
+              <xsd:documentation>Tier=1</xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
         </xsd:extension>
       </xsd:complexContent>
     </xsd:complexType>
@@ -6859,6 +6964,9 @@ annotation refs from the base Annotation to form the list.</xsd:documentation>
   <xsd:simpleType name="OpticalCalibrationReportID">
     <xsd:restriction base="LSID"/>
   </xsd:simpleType>
+  <xsd:simpleType name="IntensityCalibrationToolID">
+    <xsd:restriction base="xsd:string"/>
+  </xsd:simpleType>
   <xsd:simpleType name="DetectorDarkMapID">
     <xsd:restriction base="LSID"/>
   </xsd:simpleType>
@@ -6875,8 +6983,7 @@ annotation refs from the base Annotation to form the list.</xsd:documentation>
   </xsd:simpleType>
   <xsd:simpleType name="UnitsLength">
     <xsd:annotation>
-      <xsd:documentation>
-        The units used to represent a length
+      <xsd:documentation>The units used to represent a length
       </xsd:documentation>
     </xsd:annotation>
     <xsd:restriction base="xsd:string">
@@ -8500,39 +8607,58 @@ annotation refs from the base Annotation to form the list.</xsd:documentation>
   </xsd:simpleType>
   <xsd:simpleType name="ExperimentType">
     <xsd:restriction base="xsd:string">
-      <xsd:enumeration value="FRET"/>
-      <!-- Förster resonance energy transfer, also known as fluorescence resonance energy transfer, resonance energy transfer (RET) or electronic energy transfer (EET) -->
-      <xsd:enumeration value="TimeLapse"/>
-      <!--  Time-lapse microscopy (microphotography, photomicrography) -->
       <xsd:enumeration value="FourDPlus"/>
-      <xsd:enumeration value="HightThroughputScreen"/>
-      <xsd:enumeration value="Electrophysiology"/>
-      <xsd:enumeration value="IonImaging"/>
       <xsd:enumeration value="Co-localization"/>
-      <xsd:enumeration value="PGI-Documentation"/>
-      <xsd:enumeration value="FRAP"/>
-      <!-- Fluorescence Recovery After Photobleaching -->
+      <!--  An experiment in which the main question being asked is to what degree do two labelled molecules co-localize -->
+      <xsd:enumeration value="Electrophysiology"/>
       <xsd:enumeration value="FLIM"/>
       <!-- Fluorescence lifetime imaging (FLIM) -->
-      <xsd:enumeration value="SpectralImaging"/>
+      <xsd:enumeration value="FRAP"/>
+      <!-- Fluorescence Recovery After Photobleaching -->
+      <xsd:enumeration value="FRET"/>
+      <!-- Förster resonance energy transfer, also known as fluorescence resonance energy transfer, resonance energy transfer (RET) or electronic energy transfer (EET) -->
+      <xsd:enumeration value="HightThroughputScreen"/>
+      <xsd:enumeration value="IonImaging"/>
+      <xsd:enumeration value="LightSheet"/>
       <xsd:enumeration value="OpticalTrapping"/>
+      <xsd:enumeration value="PGI-Documentation"/>
       <xsd:enumeration value="PhotoAblation"/>
       <xsd:enumeration value="PhotoActivation"/>
+      <xsd:enumeration value="SpectralImaging"/>
       <xsd:enumeration value="SPIM"/>
       <!-- Selective or Single Plane Illumination Microscopy -->
+      <xsd:enumeration value="DeterministicSuper-Resolution"/>
+      <!--  i.e., STED, GSD, RESOLFT  -->
+      <xsd:enumeration value="StochasticSuper-Resolution"/>
+      <!--  i.e., SPDM, SPDMphymod, PALM, FPALM, STORM and dSTORM  -->
+      <xsd:enumeration value="StructuredIlluminationMicroscopy"/>
+      <!--  A method that enhances spatial resolution by collecting information from frequency space outside the observable region -->
+      <xsd:enumeration value="TimeLapse"/>
+      <!--  Time-lapse microscopy (microphotography, photomicrography) -->
       <xsd:enumeration value="Other"/>
     </xsd:restriction>
   </xsd:simpleType>
   <xsd:simpleType name="ExperimentLabellingMethod">
     <xsd:restriction base="xsd:string">
+      <!-- Protein labelling -->
+      <xsd:enumeration value="BiarsenicalDye"/>
       <xsd:enumeration value="FluorescentProtein"/>
-      <xsd:enumeration value="FISH"/>
-      <!-- Fluorescent in situ hybridization -->
-      <xsd:enumeration value="SingleMoleculeFISH"/>
-      <xsd:enumeration value="CASFISH"/>
-      <!-- CRISPR dCas9 based FISH -->
-      <xsd:enumeration value="ImmunoFluorescence"/>
       <xsd:enumeration value="Immunocytochemistry"/>
+      <xsd:enumeration value="ImmunoFluorescence"/>
+      <xsd:enumeration value="SelfLabellingEnzymeTag"/>
+      <!-- Nucleic Acid labelling -->
+      <xsd:enumeration value="Aptamer"/>
+      <xsd:enumeration value="BacteriophageDerivedRNATag"/>
+      <xsd:enumeration value="ChemicalModification"/>
+      <xsd:enumeration value="ForcedIntercalation"/>
+      <xsd:enumeration value="MolecularBeacon"/>
+      <!-- Fluorescent in situ hybridization -->
+      <xsd:enumeration value="FISH"/>
+      <xsd:enumeration value="SingleMoleculeFISH"/>
+      <!-- CRISPR dCas9 based FISH -->
+      <xsd:enumeration value="CASFISH"/>
+      <!-- Other -->
+      <xsd:enumeration value="ChemicalModification"/>
       <xsd:enumeration value="None"/>
       <xsd:enumeration value="Other"/>
     </xsd:restriction>
@@ -8644,6 +8770,8 @@ annotation refs from the base Annotation to form the list.</xsd:documentation>
   <!-- 4DN-specific calibration elements -->
   <xsd:element name="FIeldCalibration">
     <xsd:annotation>
+      <xsd:documentation>Domain=ImageAcquisitionSettings</xsd:documentation>
+      <xsd:documentation>Category=CalibrationProcedure</xsd:documentation>
       <xsd:documentation>Description=This describes the procedure used to measure the field dependent variations in the pixel-to-pixel sensitivity of the detector and/or by distortions in the optical path.</xsd:documentation>
       <xsd:documentation>Tier=3</xsd:documentation>
     </xsd:annotation>
@@ -8680,7 +8808,7 @@ annotation refs from the base Annotation to form the list.</xsd:documentation>
       </xsd:sequence>
       <xsd:attribute name="ID" type="LSID" use="required">
         <xsd:annotation>
-          <xsd:documentation>Description=A unique identifier for this element.</xsd:documentation>
+          <xsd:documentation>Description=A unique identifier for this component.</xsd:documentation>
           <xsd:documentation>Tier=3</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
@@ -8695,6 +8823,8 @@ annotation refs from the base Annotation to form the list.</xsd:documentation>
 
   <xsd:element name="OpticalCalibration">
     <xsd:annotation>
+      <xsd:documentation>Domain=ImageAcquisitionSettings</xsd:documentation>
+      <xsd:documentation>Category=CalibrationProcedure</xsd:documentation>
       <xsd:documentation>Description=This describes the procedure that was used for optical calibration and the resulting calibration measurements.</xsd:documentation>
       <xsd:documentation>Tier=3</xsd:documentation>
     </xsd:annotation>
@@ -8710,6 +8840,7 @@ annotation refs from the base Annotation to form the list.</xsd:documentation>
               <xsd:extension base="Reference">
                 <xsd:attribute name="ID" type="ImageID" use="required">
                   <xsd:annotation>
+                    <xsd:documentation>Description=A unique identifier for this component.</xsd:documentation>
                     <xsd:documentation>Tier=3</xsd:documentation>
                   </xsd:annotation>
                 </xsd:attribute>
@@ -8728,10 +8859,11 @@ annotation refs from the base Annotation to form the list.</xsd:documentation>
               <xsd:extension base="Reference">
                 <xsd:attribute name="ID" type="OpticalCalibrationReportID" use="required">
                   <xsd:annotation>
+                    <xsd:documentation>Description=A unique identifier for this component.</xsd:documentation>
                     <xsd:documentation>Tier=3</xsd:documentation>
                   </xsd:annotation>
                 </xsd:attribute>
-                <xsd:attribute name="OpticalCalibrationSoftware " type="xsd:string">
+                <xsd:attribute name="OpticalCalibrationSoftware " type="xsd:string" use="required">
                   <xsd:annotation>
                     <xsd:documentation>Description=The name of the software tool utilized to generate the OpticalCalibration report. As an example, such a tool might analyzes microscopy images of fluorescent beads in order to determine quantitatively the resolution and chromatic aberrations of a fluorescence microsocope over the full field of view. An example of such a tool is PSFj (http://www.knoplab.de/psfj/sample-page/).</xsd:documentation>
                     <xsd:documentation>Tier=3</xsd:documentation>
@@ -8755,7 +8887,7 @@ annotation refs from the base Annotation to form the list.</xsd:documentation>
       </xsd:sequence>
       <xsd:attribute name="ID" type="LSID" use="required">
         <xsd:annotation>
-          <xsd:documentation>Description=A unique identifier for this element.</xsd:documentation>
+          <xsd:documentation>Description=A unique identifier for this component.</xsd:documentation>
           <xsd:documentation>Tier=3</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
@@ -8928,6 +9060,8 @@ annotation refs from the base Annotation to form the list.</xsd:documentation>
   </xsd:element>
   <xsd:element name="ColoredBeadsSlide" substitutionGroup="OpticalStandardGroup">
     <xsd:annotation>
+      <xsd:documentation>Domain=ImageAcquisitionSettings</xsd:documentation>
+      <xsd:documentation>Category=CalibrationProcedure</xsd:documentation>
       <xsd:documentation>Description=This element describes the beads that were used to acquire the image.</xsd:documentation>
       <xsd:documentation>Tier=3</xsd:documentation>
     </xsd:annotation>
@@ -8941,14 +9075,14 @@ annotation refs from the base Annotation to form the list.</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
           <xsd:attribute default="nm" name="BeadSizeUnit" type="UnitsLength" use="optional"/>
-          <xsd:attribute name="BeadConcentration" type="xsd:float">
+          <xsd:attribute name="BeadConcentration" type="xsd:float" use="required">
             <xsd:annotation>
               <xsd:documentation>Description=The concentration of the colored beads preparation utilized to make this slide.</xsd:documentation>
               <xsd:documentation>Tier=3</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
           <xsd:attribute default="Units/ml" name="BeadConcentrationUnit" type="UnitsConcentration"/>
-          <xsd:attribute name="BeadVolume" type="xsd:float">
+          <xsd:attribute name="BeadVolume" type="xsd:float" use="optional">
             <xsd:annotation>
               <xsd:documentation>Description=The volume of the colored beads preparation utilized to prepare this slide.</xsd:documentation>
               <xsd:documentation>Tier=3</xsd:documentation>
@@ -8974,19 +9108,21 @@ annotation refs from the base Annotation to form the list.</xsd:documentation>
   </xsd:element>
   <xsd:element name="CalibrationSlide" substitutionGroup="OpticalStandardGroup">
     <xsd:annotation>
+      <xsd:documentation>Domain=ImageAcquisitionSettings</xsd:documentation>
+      <xsd:documentation>Category=CalibrationProcedure</xsd:documentation>
       <xsd:documentation>Description=This element describes a slide used to measure the different optical properties such as magnification, distance, and different kinds of optical distorsions.</xsd:documentation>
       <xsd:documentation>Tier=3</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
       <xsd:complexContent>
         <xsd:extension base="OpticalStandard">
-          <xsd:attribute name="Type" type="CalibrationSlideType">
+          <xsd:attribute name="Type" type="CalibrationSlideType" use="required">
             <xsd:annotation>
               <xsd:documentation>Description=The type of calibration slide used in this case. Examples include slides produced by Argolight, Geller MicroAnalytical Laboratory, Zeiss and others.</xsd:documentation>
               <xsd:documentation>Tier=3</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="CalibratedMeasure" type="CalibratedMeasure">
+          <xsd:attribute name="CalibratedMeasure" type="CalibratedMeasure" use="required">
             <xsd:annotation>
               <xsd:documentation>Description=The optical characteristic this slide is used to calibrate, examples include magnification, distance, optical distorsions and others.</xsd:documentation>
               <xsd:documentation>Tier=3</xsd:documentation>
@@ -8998,13 +9134,15 @@ annotation refs from the base Annotation to form the list.</xsd:documentation>
   </xsd:element>
   <xsd:element name="DNAOrigami" substitutionGroup="OpticalStandardGroup">
     <xsd:annotation>
+      <xsd:documentation>Domain=ImageAcquisitionSettings</xsd:documentation>
+      <xsd:documentation>Category=CalibrationProcedure</xsd:documentation>
       <xsd:documentation>Description=This element describes an optical standard constructed using the DNA origani technique.</xsd:documentation>
       <xsd:documentation>Tier=3</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
       <xsd:complexContent>
         <xsd:extension base="OpticalStandard">
-          <xsd:attribute name="Type" type="xsd:string">
+          <xsd:attribute name="Type" type="xsd:string" use="required">
             <xsd:annotation>
               <xsd:documentation>Description=This field describes the type of DNA origami-based optical standard used in this case. Currently this is fild is a simple string. However it might be substituted by an enumeration at a later stage.</xsd:documentation>
               <xsd:documentation>Tier=3</xsd:documentation>
@@ -9017,6 +9155,7 @@ annotation refs from the base Annotation to form the list.</xsd:documentation>
 
   <xsd:element name="IntensityCalibrationTool">
     <xsd:annotation>
+      <xsd:documentation>Domain=MicrosocpeSpecifications</xsd:documentation>
       <xsd:documentation>Category=Calibration</xsd:documentation>
       <xsd:documentation>Description=A tool, such as the Meta-Max calibration toold developed by the 4D Nucleome Imaging Standards Working Group, used to perform an intensity calibration procedure.</xsd:documentation>
       <xsd:documentation>Tier=3</xsd:documentation>
@@ -9064,12 +9203,23 @@ annotation refs from the base Annotation to form the list.</xsd:documentation>
       <xsd:documentation>Description=This describes the procedure(s) that were used for excitation and detector calibration and the resulting calibration results.</xsd:documentation>
     </xsd:annotation>
     <xsd:sequence>
-      <xsd:element name="IntensityCalibrationToolRef" type="Reference" maxOccurs="unbounded"
-        minOccurs="0">
+      <xsd:element name="IntensityCalibrationToolRef" maxOccurs="unbounded" minOccurs="0">
         <xsd:annotation>
           <xsd:documentation>Description=This element is a reference to the tool, if any, used to perform this calibratin procdure.</xsd:documentation>
           <xsd:documentation>Tier=3</xsd:documentation>
         </xsd:annotation>
+        <xsd:complexType>
+          <xsd:complexContent>
+            <xsd:extension base="Reference">
+              <xsd:attribute name="ID" type="IntensityCalibrationToolID">
+                <xsd:annotation>
+                  <xsd:documentation>Description=A unique identifier for this component.</xsd:documentation>
+                  <xsd:documentation>Tier=3</xsd:documentation>
+                </xsd:annotation>
+              </xsd:attribute>
+            </xsd:extension>
+          </xsd:complexContent>
+        </xsd:complexType>
       </xsd:element>
       <xsd:element minOccurs="0" name="AnnotationRef">
         <xsd:annotation>
@@ -9085,7 +9235,7 @@ annotation refs from the base Annotation to form the list.</xsd:documentation>
     </xsd:sequence>
     <xsd:attribute name="ID" type="LSID" use="required">
       <xsd:annotation>
-        <xsd:documentation>Description=A unique identifier for this element.</xsd:documentation>
+        <xsd:documentation>Description=A unique identifier for this component.</xsd:documentation>
         <xsd:documentation>Tier=3</xsd:documentation>
       </xsd:annotation>
     </xsd:attribute>
@@ -9095,46 +9245,8 @@ annotation refs from the base Annotation to form the list.</xsd:documentation>
         <xsd:documentation>Tier=3</xsd:documentation>
       </xsd:annotation>
     </xsd:attribute>
-    <xsd:attribute name="ObservedExcitationWavelenght" type="xsd:float">
-      <xsd:annotation>
-        <xsd:documentation>Description=Observed peak excitation wavelength.</xsd:documentation>
-        <xsd:documentation>Tier=3</xsd:documentation>
-      </xsd:annotation>
-    </xsd:attribute>
-    <xsd:attribute name="ObservedExcitationWavelenghtUnit" type="UnitsLength" default="nm">
-      <xsd:annotation>
-        <xsd:documentation>Tier=3</xsd:documentation>
-      </xsd:annotation>
-    </xsd:attribute>
-    <xsd:attribute name="ObservedExcitationPowerAtObjective" type="xsd:float">
-      <xsd:annotation>
-        <xsd:documentation>Description=The observed excitation light power measured at the back of the objective.</xsd:documentation>
-        <xsd:documentation>Tier=3</xsd:documentation>
-      </xsd:annotation>
-    </xsd:attribute>
-    <xsd:attribute name="ObservedExcitationPowerAtObjectiveUnit" type="UnitsPower" default="W">
-      <xsd:annotation>
-        <xsd:documentation>Tier=3</xsd:documentation>
-      </xsd:annotation>
-    </xsd:attribute>
-    <xsd:attribute name="ObservedExcitationIrradiance" type="xsd:float">
-      <xsd:annotation>
-        <xsd:documentation>Description=Observed mean excitation light irradiance (radiant power per unit area) as measured at the sample plane over the Field of View (FOV). </xsd:documentation>
-        <xsd:documentation>Tier=3</xsd:documentation>
-      </xsd:annotation>
-    </xsd:attribute>
-    <xsd:attribute default="W" name="ObservedExcitationIrradianceUnit" type="UnitsPower">
-      <xsd:annotation>
-        <xsd:documentation>Tier=3</xsd:documentation>
-      </xsd:annotation>
-    </xsd:attribute>
-    <xsd:attribute name="ObservedExcitationVariance" type="xsd:float">
-      <xsd:annotation>
-        <xsd:documentation>Description=Observed excitation light irradiance (radiant power per unit area) variation over the Field of View (FOV).</xsd:documentation>
-        <xsd:documentation>Tier=3</xsd:documentation>
-      </xsd:annotation>
-    </xsd:attribute>
   </xsd:complexType>
+
   <xsd:element abstract="true" name="IntensityCalibrationGroup" type="IntensityCalibration">
     <xsd:annotation>
       <xsd:documentation>Description=This describes the procedure(s) that were used for excitation and detector calibration and the resulting calibration results.</xsd:documentation>
@@ -9143,29 +9255,85 @@ annotation refs from the base Annotation to form the list.</xsd:documentation>
 
   <xsd:element name="ExcitationCalibration" substitutionGroup="IntensityCalibrationGroup">
     <xsd:annotation>
+      <xsd:documentation>Domain=ImageAcquisitionSettings</xsd:documentation>
+      <xsd:documentation>Category=CalibrationProcedure</xsd:documentation>
       <xsd:documentation>Description=This procedure measures the performance and allows calibration of the wavelength and irradiance of the excitation light.</xsd:documentation>
       <xsd:documentation>Tier=3</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
       <xsd:complexContent>
-        <xsd:extension base="IntensityCalibration"/>
+        <xsd:extension base="IntensityCalibration">
+          <xsd:attribute name="ObservedExcitationWavelenght" type="xsd:float" use="required">
+            <xsd:annotation>
+              <xsd:documentation>Description=Observed peak excitation wavelength.</xsd:documentation>
+              <xsd:documentation>Tier=3</xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
+          <xsd:attribute name="ObservedExcitationWavelenghtUnit" type="UnitsLength" default="nm">
+            <xsd:annotation>
+              <xsd:documentation>Tier=3</xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
+          <xsd:attribute name="ObservedExcitationPowerAtObjective" type="xsd:float" use="required">
+            <xsd:annotation>
+              <xsd:documentation>Description=The observed excitation light power measured at the back of the objective.</xsd:documentation>
+              <xsd:documentation>Tier=3</xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
+          <xsd:attribute name="ObservedExcitationPowerAtObjectiveUnit" type="UnitsPower" default="W">
+            <xsd:annotation>
+              <xsd:documentation>Tier=3</xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
+          <xsd:attribute name="ObservedExcitationIrradiance" type="xsd:float" use="required">
+            <xsd:annotation>
+              <xsd:documentation>Description=Observed mean excitation light irradiance (radiant power per unit area) as measured at the sample plane over the Field of View (FOV). </xsd:documentation>
+              <xsd:documentation>Tier=3</xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
+          <xsd:attribute default="W" name="ObservedExcitationIrradianceUnit" type="UnitsPower">
+            <xsd:annotation>
+              <xsd:documentation>Tier=3</xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
+          <xsd:attribute name="ObservedExcitationVariance" type="xsd:float" use="required">
+            <xsd:annotation>
+              <xsd:documentation>Description=Observed excitation light irradiance (radiant power per unit area) variation over the Field of View (FOV).</xsd:documentation>
+              <xsd:documentation>Tier=3</xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
+        </xsd:extension>
       </xsd:complexContent>
     </xsd:complexType>
   </xsd:element>
 
   <xsd:element name="DetectorCalibration" substitutionGroup="IntensityCalibrationGroup">
     <xsd:annotation>
+      <xsd:documentation>Domain=ImageAcquisitionSettings</xsd:documentation>
+      <xsd:documentation>Category=CalibrationProcedure</xsd:documentation>
       <xsd:documentation>Description=This procedure measures the performance of the dectector.</xsd:documentation>
       <xsd:documentation>Tier=3</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
       <xsd:complexContent>
-        <xsd:extension base="IntensityCalibration"/>
+        <xsd:extension base="IntensityCalibration">
+          <xsd:sequence>
+            <xsd:element ref="CalibrationMap"/>
+          </xsd:sequence>
+          <xsd:attribute name="Method" type="xsd:string" use="required">
+            <xsd:annotation>
+              <xsd:documentation>Tier=3</xsd:documentation>
+              <xsd:documentation>Description=This is a description of method used for this calibration procedure.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
+        </xsd:extension>
       </xsd:complexContent>
     </xsd:complexType>
   </xsd:element>
   <xsd:element name="CalibrationMap">
     <xsd:annotation>
+      <xsd:documentation>Domain=ImageAcquisitionSettings</xsd:documentation>
+      <xsd:documentation>Category=CalibrationProcedure</xsd:documentation>
       <xsd:documentation>Description=This is a 2D matrix containing values computed as a resulut of the calibration procedure.  This matrix is the same size of the image this calibration refers to.</xsd:documentation>
       <xsd:documentation>Tier=3</xsd:documentation>
     </xsd:annotation>
@@ -9178,20 +9346,19 @@ annotation refs from the base Annotation to form the list.</xsd:documentation>
           </xsd:unique>
         </xsd:element>
       </xsd:sequence>
-      <xsd:attribute name="MetricType" type="MatrixTypeEnum">
+      <xsd:attribute name="MetricType" type="MatrixTypeEnum" use="required">
         <xsd:annotation>
           <xsd:documentation>Description=This field captures the type of metric that was computed as part of the calibratin procedure in this instance.</xsd:documentation>
           <xsd:documentation>Tier=3</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
-      <xsd:attribute name="IlluminationIntensity" type="xsd:float">
+      <xsd:attribute name="IlluminationIntensity" type="xsd:float" use="required">
         <xsd:annotation>
           <xsd:documentation>Description=This attribute only applies to matrices of type Variance and Mean. It represents the illumination intensity that was used to acquire the images used to contruct this matrix. The value can range from 0 (i.e. dark image) to any intenisty value experssed either as percentage or as absolute power. </xsd:documentation>
           <xsd:documentation>Tier=3</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
-      <xsd:attribute name="IlluminationIntensityUnit"/>
-      <xsd:attribute name="NrOfImages" type="xsd:int">
+      <xsd:attribute name="NrOfImages" type="xsd:int" use="required">
         <xsd:annotation>
           <xsd:documentation>Description=This field represents the number of images that were employed to generate this calibration matrix.</xsd:documentation>
           <xsd:documentation>Tier=3</xsd:documentation>
@@ -9254,13 +9421,25 @@ annotation refs from the base Annotation to form the list.</xsd:documentation>
   </xsd:simpleType>
   <xsd:element name="MechanicalCalibration">
     <xsd:annotation>
+      <xsd:documentation>Domain=ImageAcquisitionSettings</xsd:documentation>
+      <xsd:documentation>Category=CalibrationProcedure</xsd:documentation>
       <xsd:documentation>Description=This describes the procedures that were used for mechanical calibration and the resulting calibration results.</xsd:documentation>
       <xsd:documentation>Tier=4</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
       <xsd:sequence>
-        <xsd:element minOccurs="0" ref="SamplePositioningRef"/>
-        <xsd:element minOccurs="0" ref="AutoFocusRef"/>
+        <xsd:element minOccurs="0" ref="SamplePositioningRef">
+          <xsd:annotation>
+            <xsd:documentation>Description= This empty element refers to the focusing device that was used for the acquisition of this image.</xsd:documentation>
+            <xsd:documentation>Tier=4</xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element minOccurs="0" ref="AutoFocusRef">
+          <xsd:annotation>
+            <xsd:documentation>Description= This empty element refers to the optional auto focus device that was used for the acquisition of this image.</xsd:documentation>
+            <xsd:documentation>Tier=4</xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
         <xsd:element minOccurs="0" name="AnnotationRef">
           <xsd:annotation>
             <xsd:documentation>Description=This is a simple multi-line comment or annotation describing this component.</xsd:documentation>
@@ -9275,38 +9454,55 @@ annotation refs from the base Annotation to form the list.</xsd:documentation>
       </xsd:sequence>
       <xsd:attribute name="ID" type="LSID" use="required">
         <xsd:annotation>
-          <xsd:documentation>Description=A unique identifier for this element.</xsd:documentation>
+          <xsd:documentation>Description=A unique identifier for this component.</xsd:documentation>
           <xsd:documentation>Tier=4</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
       <xsd:attribute name="Date" type="xsd:date" use="required">
         <xsd:annotation>
           <xsd:documentation>Description=The date in which this calibration was performed.</xsd:documentation>
+          <xsd:documentation>Tier=4</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
-      <xsd:attribute name="MeasuredLateralDrift" type="xsd:float">
+      <xsd:attribute name="MeasuredLateralDrift" type="xsd:float" use="required">
         <xsd:annotation>
           <xsd:documentation>Description=Measured shift in (x, y) position over time.</xsd:documentation>
+          <xsd:documentation>Tier=4</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
-      <xsd:attribute name="MeasuredLateralDriftUnit" type="UnitsLength"/>
-      <xsd:attribute name="MeasuredFocalDrift">
+      <xsd:attribute name="MeasuredLateralDriftUnit" type="UnitsLength" default="µm">
+        <xsd:annotation>
+          <xsd:documentation>Tier=4</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="MeasuredFocalDrift" type="xsd:float" use="required">
         <xsd:annotation>
           <xsd:documentation>Description=Measured shift in z position over time.</xsd:documentation>
+          <xsd:documentation>Tier=4</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
-      <xsd:attribute name="MeasuredFocalDriftUnit" type="UnitsLength"/>
-      <xsd:attribute name="MeasuredRepeatability">
+      <xsd:attribute name="MeasuredFocalDriftUnit" type="UnitsLength" default="µm">
+        <xsd:annotation>
+          <xsd:documentation>Tier=4</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="MeasuredRepeatability" type="xsd:float" use="required">
         <xsd:annotation>
           <xsd:documentation>Description=Measured precision with which this device is capable of returning to a previously visited position (useful for tiling). Typically expressed in % error.</xsd:documentation>
+          <xsd:documentation>Tier=4</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
-      <xsd:attribute name="MeasuredSettlingTime">
+      <xsd:attribute name="MeasuredSettlingTime" type="xsd:float" use="required">
         <xsd:annotation>
           <xsd:documentation>Description=Measured time it takes for this device to stabilize at the target position.</xsd:documentation>
+          <xsd:documentation>Tier=4</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
-      <xsd:attribute name="MeasuredSettlingTimeUnit"/>
+      <xsd:attribute name="MeasuredSettlingTimeUnit" default="s" type="UnitsTime">
+        <xsd:annotation>
+          <xsd:documentation>Tier=4</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
     </xsd:complexType>
   </xsd:element>
 </xsd:schema>
