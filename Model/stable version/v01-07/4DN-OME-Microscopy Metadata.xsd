@@ -2478,12 +2478,6 @@
               <xsd:documentation>Tier=1</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="CalibratedMagnification" use="optional" type="xsd:float">
-            <xsd:annotation>
-              <xsd:documentation>Description=The magnification of the lens as measured via a calibration process- i.e. '59.987' for a 60X lens.</xsd:documentation>
-              <xsd:documentation>Tier=5</xsd:documentation>
-            </xsd:annotation>
-          </xsd:attribute>
           <xsd:attribute name="LensNA" use="required" type="xsd:float">
             <xsd:annotation>
               <xsd:documentation>Description=The numerical aperture of this objective expressed as a floating point (real) number. Expected range 0.02 - 1.5.</xsd:documentation>
@@ -2503,12 +2497,6 @@
               <xsd:documentation>Tier=3</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="CoverslipTickness" type="xsd:float" use="required">
-            <xsd:annotation>
-              <xsd:documentation>Description = The coverlip thickness this objective is recommended for.</xsd:documentation>
-              <xsd:documentation>Tier=2</xsd:documentation>
-            </xsd:annotation>
-          </xsd:attribute>
           <xsd:attribute name="WorkingDistance" use="required" type="xsd:float">
             <xsd:annotation>
               <xsd:documentation>Description=The working distance of this objective, expressed as a floating point (real) number.</xsd:documentation>
@@ -2526,13 +2514,25 @@
               <xsd:documentation>Tier=4</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="ObjectiveFieldNumber" type="xsd:float" use="required">
+          <xsd:attribute name="CorrectionCollar" type="xsd:boolean" use="required">
+            <xsd:annotation>
+              <xsd:documentation>Description=Records whether or not the objective was fitted with a Correction Collar.</xsd:documentation>
+              <xsd:documentation>Tier=3</xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
+          <xsd:attribute name="CorrectionCollarType" type="CorrectionCollarType">
+            <xsd:annotation>
+              <xsd:documentation>Description=Records the type of Correction Collar this objective is fitted with.</xsd:documentation>
+              <xsd:documentation>Tier=3</xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
+          <xsd:attribute name="ObjectiveFieldNumber" type="xsd:float" use="optional">
             <xsd:annotation>
               <xsd:documentation>Description=The maximal diameter of the viewfield allowed by this objective expressed in mm and measured at the intermediate image plane. NB: The field of view is influenced by the magnification and diameter of the ocular (eyepiece) field diaphragm, but also by the limits imposed by the design of the objective.</xsd:documentation>
               <xsd:documentation>Tier=3</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="ParfocalizingDistance" type="xsd:float" use="required">
+          <xsd:attribute name="ParfocalizingDistance" type="xsd:float" use="optional">
             <xsd:annotation>
               <xsd:documentation>Description=The distance between the objective lens mounting plane and the specimen.</xsd:documentation>
               <xsd:documentation>Tier=5</xsd:documentation>
@@ -2544,7 +2544,7 @@
               <xsd:documentation>Tier=5</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="BackFocalPlanePosition" type="xsd:float" use="required">
+          <xsd:attribute name="BackFocalPlanePosition" type="xsd:float" use="optional">
             <xsd:annotation>
               <xsd:documentation>Description=The position of the back focal plane with respect to the specimen position.</xsd:documentation>
               <xsd:documentation>Tier=5</xsd:documentation>
@@ -3388,9 +3388,9 @@
           <xsd:documentation>Tier=2</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
-      <xsd:attribute name="CutOut" use="required" type="PositiveFloat">
+      <xsd:attribute name="CutOut" use="optional" type="PositiveFloat">
         <xsd:annotation>
-          <xsd:documentation>Description=CutOut is the wavelength above which the response rate is below 50%.</xsd:documentation>
+          <xsd:documentation>Description=CutOut is the wavelength above which the response rate is below 50%. Leave empty in case this is a longpass filter.</xsd:documentation>
           <xsd:documentation>Tier=2</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
@@ -3672,9 +3672,9 @@
           <xsd:documentation>Tier=3</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
-      <xsd:attribute name="CutOut" use="required" type="PositiveFloat">
+      <xsd:attribute name="CutOut" use="optional" type="PositiveFloat">
         <xsd:annotation>
-          <xsd:documentation>Description=CutOut is the wavelength above which the response rate is below 50%.</xsd:documentation>
+          <xsd:documentation>Description=Description=CutOut is the wavelength above which the response rate is below 50%. Leave empty in case this is a longpass filter.</xsd:documentation>
           <xsd:documentation>Tier=3</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
@@ -4691,10 +4691,16 @@ Reflecting prisms are useful for redirecting light beams by total internal refle
               <xsd:documentation>Tier=2</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="CorrectionCollar" use="optional" type="xsd:float">
+          <xsd:attribute name="ActualMagnification" type="xsd:float">
             <xsd:annotation>
-              <xsd:documentation>Description=When using high numerical aperture dry objectives (numerical aperture of 0.8 or greater), cover glass thickness variations of only a few micrometers result in dramatic image degradation due to aberration, which grows worse with increasing cover glass thickness. To compensate for this error, the more highly corrected objectives are equipped with a correction collar to allow adjustment of the central lens group position to coincide with fluctuations in cover glass thickness. The CorrectionCollar is normally an adjustable ring on the objective, whose position can be modified. This field records the position of the collar during the acquisition of this image. Each correction collar has an arbitrary scale on it so the values is unit-less.</xsd:documentation>
+              <xsd:documentation>Description=The magnification of the lens as measured via a calibration process- i.e. '59.987' for a 60X lens.</xsd:documentation>
               <xsd:documentation>Tier=5</xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
+          <xsd:attribute name="CoverslipThickness" type="xsd:float">
+            <xsd:annotation>
+              <xsd:documentation>Description=The thickness of the coverslip that was used in this instance.</xsd:documentation>
+              <xsd:documentation>Tier=2</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
           <xsd:attribute name="ImmersionMedium" type="ObjectiveSettingsImmersionMedium"
@@ -4726,6 +4732,18 @@ Reflecting prisms are useful for redirecting light beams by total internal refle
             <xsd:annotation>
               <xsd:documentation>Tier=4
           </xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
+          <xsd:attribute name="IrisAperture" type="xsd:float">
+            <xsd:annotation>
+              <xsd:documentation>Description=This field records the aperture of the Iris diaphagm, which determines determines the size of the objective rear aperture yielding a variable numerical aperture range between 0.5 and the objective's upper limit.</xsd:documentation>
+              <xsd:documentation>Tier=3</xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
+          <xsd:attribute name="CorrectionCollarPosition" type="xsd:float">
+            <xsd:annotation>
+              <xsd:documentation>Description=The Correction Collar is normally an adjustable ring on the objective, whose position can be modified. This field records the position of the collar during the acquisition of this image. Each correction collar has an arbitrary scale on it so the values is unit-less.</xsd:documentation>
+              <xsd:documentation>Tier=3</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
         </xsd:extension>
@@ -8302,6 +8320,13 @@ annotation refs from the base Annotation to form the list.</xsd:documentation>
       <xsd:enumeration value="UV"/>
       <xsd:enumeration value="VioletCorrected"/>
       <xsd:enumeration value="Other"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="CorrectionCollarType">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="CoverslipThickness"/>
+      <xsd:enumeration value=" ImmersionMedium"/>
+      <xsd:enumeration value="Temperature"/>
     </xsd:restriction>
   </xsd:simpleType>
   <xsd:simpleType name="ObjectiveNominalImmersionMedium">
