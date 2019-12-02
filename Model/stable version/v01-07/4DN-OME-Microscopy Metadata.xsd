@@ -2484,13 +2484,6 @@
               <xsd:documentation>Tier=1</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="NominalImmersionMedium" use="required"
-            type="ObjectiveNominalImmersionMedium">
-            <xsd:annotation>
-              <xsd:documentation>Description=The immersion medium this objective is designed for.</xsd:documentation>
-              <xsd:documentation>Tier=2</xsd:documentation>
-            </xsd:annotation>
-          </xsd:attribute>
           <xsd:attribute name="Infinity" type="xsd:boolean" use="required">
             <xsd:annotation>
               <xsd:documentation>Description=Records whether or not the objective is infinity corrected.</xsd:documentation>
@@ -2516,7 +2509,7 @@
           </xsd:attribute>
           <xsd:attribute name="CorrectionCollar" type="xsd:boolean" use="required">
             <xsd:annotation>
-              <xsd:documentation>Description=Records whether or not the objective was fitted with a Correction Collar.</xsd:documentation>
+              <xsd:documentation>Description=When using high numerical aperture dry objectives (numerical aperture of 0.8 or greater), cover glass thickness variations of only a few micrometers, immersion medium changes and temperature changes result in dramatic image degradation due to aberration. To compensate for these errors, the more highly corrected objectives are equipped with a correction collar to allow adjustment of the central lens group position to coincide with fluctuations in cover glass thickness, changes in immersion medium and in temperature. This field records whether or not the objective was fitted with a Correction Collar.</xsd:documentation>
               <xsd:documentation>Tier=3</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
