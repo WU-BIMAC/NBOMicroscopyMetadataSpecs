@@ -13,7 +13,7 @@ The OME model forms the basis of the [BioFormats library](https://www.openmicros
 
 Despite the this very successful efforts, there remains a substantial gap between the OME data model and its wide adoption by the wide bio-imaging community as a bona fide Microscopy Data and Metadata Standard, dictating the set of metadata descriptors to be recorded or published with imaging datasets.
 
-Here we present Microscopy Metadata 4DN Guidelines (4DN-Micro-Meta), which is a tiered system of guidelines that was developed by the [4D Nucleome (4DN) initiative](https://www.4dnucleome.org/) Imaging Standards Working Group for calibrating, and documenting microscopy experiments. In particular the proposal describes standards for: 
+Here we present 4DN Microscopy Metadata Guidelines (4DN-Micro-Meta), which is a tiered system of guidelines that was developed by the [4D Nucleome (4DN) initiative](https://www.4dnucleome.org/) Imaging Standards Working Group for calibrating, and documenting microscopy experiments. In particular the proposal describes standards for: 
 
 1. MICROSCOPE HARDWARE Specifications
 2. IMAGE ACQUISITION Settings
