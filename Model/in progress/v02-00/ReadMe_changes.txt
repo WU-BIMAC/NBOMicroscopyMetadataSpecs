@@ -1,4 +1,4 @@
-Towards v01-08
+Towards v02-00
 
 The next release of the model will be a major overhaul with several important revisions.
 These revision are the results of several months of evaluation, feedback collection and correction of v01.07 by the members of the Hardware and Settings sub-group of the BINA Quality Control and Data Management Working Group.
