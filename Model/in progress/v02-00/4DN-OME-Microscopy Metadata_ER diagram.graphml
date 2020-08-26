@@ -499,23 +499,24 @@ MountType<y:LabelModel><y:ErdAttributesNodeLabelModel/></y:LabelModel><y:ModelPa
     <node id="n12">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
-          <y:Geometry height="235.0" width="230.0" x="-5961.480593233856" y="-1541.448689393545"/>
+          <y:Geometry height="251.18533754537225" width="230.0" x="-5961.480593233856" y="-1549.541358166231"/>
           <y:Fill color="#E8EEF7" color2="#6699FF" transparent="false"/>
           <y:BorderStyle color="#000000" type="dashed" width="4.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#FF9933" configuration="com.yworks.entityRelationship.label.name" fontFamily="Dialog" fontSize="18" fontStyle="plain" hasLineColor="false" height="46.3984375" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="t" textColor="#000000" verticalTextPosition="bottom" visible="true" width="190.9697265625" x="19.51513671875" xml:space="preserve" y="4.0">MirroringDevice-APE 
 (was Dichroic)</y:NodeLabel>
-          <y:NodeLabel alignment="left" autoSizePolicy="content" configuration="com.yworks.entityRelationship.label.attributes" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="187.7265625" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="113.564453125" x="2.0" xml:space="preserve" y="58.3984375">ID
+          <y:NodeLabel alignment="left" autoSizePolicy="content" configuration="com.yworks.entityRelationship.label.attributes" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="201.859375" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="126.267578125" x="2.0" xml:space="preserve" y="58.3984375">ID
 AnnotationRef
 --
 Name
+MirrorType
 Diameter
 AngleOfIncidence
-MirrorType
 Geometry
 RadiusOfCurvature
 SubstrateType
 SubstrateMaterial
 GlassCode
+OpticsHolderPosition
 
 <y:LabelModel><y:ErdAttributesNodeLabelModel/></y:LabelModel><y:ModelParameter><y:ErdAttributesNodeLabelModelParameter/></y:ModelParameter></y:NodeLabel>
           <y:StyleProperties>
@@ -2947,8 +2948,8 @@ ReflectanceProfileFile<y:LabelModel><y:ErdAttributesNodeLabelModel/></y:LabelMod
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
               <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#999999" configuration="com.yworks.entityRelationship.label.name" fontFamily="Dialog" fontSize="18" fontStyle="plain" hasLineColor="false" height="25.19921875" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="t" textColor="#000000" verticalTextPosition="bottom" visible="true" width="112.896484375" x="51.0517578125" xml:space="preserve" y="4.0">Beamsplitter</y:NodeLabel>
               <y:NodeLabel alignment="left" autoSizePolicy="content" configuration="com.yworks.entityRelationship.label.attributes" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="74.6640625" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="144.25" x="2.0" xml:space="preserve" y="37.19921875">Transmittance
-TransmissionAngle
 TransmittanceProfileFile
+TransmissionAngle
 Reflectance
 ReflectanceProfileFile<y:LabelModel><y:ErdAttributesNodeLabelModel/></y:LabelModel><y:ModelParameter><y:ErdAttributesNodeLabelModelParameter/></y:ModelParameter></y:NodeLabel>
               <y:StyleProperties>
@@ -4408,13 +4409,13 @@ XYMaxVelocity<y:LabelModel><y:ErdAttributesNodeLabelModel/></y:LabelModel><y:Mod
     <edge id="e16" source="n2" target="n12">
       <data key="d10">
         <y:PolyLineEdge>
-          <y:Path sx="100.0" sy="-8.592182439315366E-6" tx="-114.99971271825052" ty="3.303255832634022E-4">
+          <y:Path sx="100.0" sy="-8.592182439315366E-6" tx="-114.99971271825052" ty="3.5307635375272196E-4">
             <y:Point x="-6034.04093650688" y="-2296.59038187504"/>
             <y:Point x="-6034.04093650688" y="-1423.9484011634584"/>
           </y:Path>
           <y:LineStyle color="#0000FF" type="line" width="2.0"/>
           <y:Arrows source="none" target="crows_foot_many_mandatory"/>
-          <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="891.0497983482992" y="899.7418937866983">
+          <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="891.0497892242529" y="899.7418900454516">
             <y:LabelModel>
               <y:SmartEdgeLabelModel autoRotationEnabled="false" defaultAngle="0.0" defaultDistance="10.0"/>
             </y:LabelModel>
@@ -5535,7 +5536,7 @@ XYMaxVelocity<y:LabelModel><y:ErdAttributesNodeLabelModel/></y:LabelModel><y:Mod
     <edge id="e69" source="n12" target="n54">
       <data key="d10">
         <y:PolyLineEdge>
-          <y:Path sx="-114.99971271825052" sy="3.303255832634022E-4" tx="0.0" ty="8.815925941345995">
+          <y:Path sx="-114.99971271825052" sy="3.5307635375272196E-4" tx="0.0" ty="8.815925941345995">
             <y:Point x="-6008.04093650688" y="-1423.9484011634584"/>
             <y:Point x="-6008.04093650688" y="-2296.5903732828574"/>
             <y:Point x="-6725.0" y="-2296.5903732828574"/>

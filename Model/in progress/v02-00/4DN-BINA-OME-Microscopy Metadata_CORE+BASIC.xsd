@@ -1285,7 +1285,7 @@
         <xsd:element maxOccurs="unbounded" minOccurs="0" ref="PolarizationOptics"/>
         <xsd:element ref="FilterSet" minOccurs="0" maxOccurs="unbounded"/>
         <xsd:element ref="FilterGroup" minOccurs="1" maxOccurs="unbounded"/>
-        <xsd:element ref="MirrorGroup" minOccurs="1" maxOccurs="unbounded">
+        <xsd:element ref="MirroringDeviceGroup" minOccurs="1" maxOccurs="unbounded">
           <xsd:annotation>
             <xsd:documentation>Description=This element describes mirror component(s) available in this microscope</xsd:documentation>
           </xsd:annotation>
@@ -2828,7 +2828,7 @@
           <xsd:documentation>Tier=5</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
-      <xsd:attribute name="WavelenghtProfile" type="xsd:anyURI" use="required">
+      <xsd:attribute name="WavelengthProfile" type="xsd:anyURI" use="required">
         <xsd:annotation>
           <xsd:documentation>Description=The location of a file containing the Wavelenght profile of this hardware component.</xsd:documentation>
           <xsd:documentation>Tier=5</xsd:documentation>
@@ -3236,7 +3236,7 @@
               <xsd:documentation>Tier=3</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="WavelenghtOfReflectedBeam" type="xsd:float">
+          <xsd:attribute name="WavelengthOfReflectedBeam" type="xsd:float">
             <xsd:annotation>
               <xsd:documentation>Description=This field refers to the wavelenght of the beam that is used to reflect against the coverslip to obtain a measurement of the focal offset of the sample at a given time during acquisition.</xsd:documentation>
               <xsd:documentation>Tier=3</xsd:documentation>
@@ -3527,6 +3527,184 @@
   </xsd:element>
 
   <!-- Additional optics elements -->
+  <xsd:element name="OpticalDeviceGroup" abstract="true" type="OpticalDevice">
+    <xsd:annotation>
+      <xsd:documentation>Description=This is a device that might include one or more Lenses, other Optics and Optics Holders. Optical Devices might be custom built or they might also be available as pre-assembled units. Such devices might be embedded within the Microscope Stand or exist as independent units. Examples include the Condenser and the Microscope Tube.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="OpticalDevice">
+    <xsd:annotation>
+      <xsd:documentation>Description=This is a device that might include one or more Lenses, other Optics and Optics Holders. Optical Devices might be custom built or they might also be available as pre-assembled units. Such devices might be embedded within the Microscope Stand or exist as independent units. Examples include the Condenser and the Microscope Tube.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="ManufacturerSpec">
+        <xsd:sequence>
+          <xsd:element name="FilterRef" type="FilterRef" minOccurs="0" maxOccurs="unbounded">
+            <xsd:annotation>
+              <xsd:documentation>Description=This refers to an available Filter, which is part of this Optical Device.</xsd:documentation>
+              <xsd:documentation>Tier=3</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="LensRef" type="LensRef" minOccurs="0" maxOccurs="unbounded">
+            <xsd:annotation>
+              <xsd:documentation>Description=This refers to an available Lens, which is part of this Optical Device.</xsd:documentation>
+              <xsd:documentation>Tier=3</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="MirrorringDeviceRef" type="MirrorRef" minOccurs="0"
+            maxOccurs="unbounded">
+            <xsd:annotation>
+              <xsd:documentation>Description=This refers to an available Mirroring Device, which is part of this Optical Device.</xsd:documentation>
+              <xsd:documentation>Tier=3</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="OpticalApertureRef" type="OpticalApertureRef" minOccurs="0"
+            maxOccurs="unbounded">
+            <xsd:annotation>
+              <xsd:documentation>Description=This refers to an available Optical Aperture, which is part of this Optical Device.</xsd:documentation>
+              <xsd:documentation>Tier=3</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="OpticsHolderRef" type="OpticsHolderRef" minOccurs="0"
+            maxOccurs="unbounded">
+            <xsd:annotation>
+              <xsd:documentation>Description=This refers to an available Optics Holder, which is part of this Optical Device.</xsd:documentation>
+              <xsd:documentation>Tier=3</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="PolarizationOpticsRef" type="PolarizationOpticsRef" minOccurs="0"
+            maxOccurs="unbounded">
+            <xsd:annotation>
+              <xsd:documentation>Description=This refers to an available Polarization Optics, which is part of this Optical Device.</xsd:documentation>
+              <xsd:documentation>Tier=3</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="PrismRef" type="PrismRef" minOccurs="0" maxOccurs="unbounded">
+            <xsd:annotation>
+              <xsd:documentation>Description=This field refers to an available Prism, which is part of this Optical Device.</xsd:documentation>
+              <xsd:documentation>Tier=3</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element ref="AnnotationRef" maxOccurs="1" minOccurs="0"/>
+        </xsd:sequence>
+        <xsd:attribute name="ID" type="LSID" use="required">
+          <xsd:annotation>
+            <xsd:documentation>Description=A Unique Identifier for this hardware component.</xsd:documentation>
+            <xsd:documentation>Tier=1</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="Name" type="Denomination" use="required">
+          <xsd:annotation>
+            <xsd:documentation>Description=A user-defined Name for this hardware component.</xsd:documentation>
+            <xsd:documentation>Tier=1</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+
+  <xsd:element name="BeamCollimator" substitutionGroup="OpticalDeviceGroup">
+    <xsd:annotation>
+      <xsd:documentation>Domain=MicrosocpeHardwareSpecifications</xsd:documentation>
+      <xsd:documentation>Category=OpticalDevices</xsd:documentation>
+      <xsd:documentation>Description=Beam Collimators are Lens Systems that transform a strongly diverging light beam into a collimated beam, i.e., a beam where light propagates essentially only in one direction, and the beam divergence is weak. Beam Collimators typically contain some kind of focusing Lens, or sometimes a curved Mirror, and usually some opto-mechanics for stable mounting and possibly adjustment. Beam Expanders can be custom built or they are also available as pre-assembled optical devices.</xsd:documentation>
+      <xsd:documentation>Tier=3</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:complexContent>
+        <xsd:extension base="OpticalDevice"/>
+      </xsd:complexContent>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="BeamExpander" substitutionGroup="OpticalDeviceGroup">
+    <xsd:annotation>
+      <xsd:documentation>Domain=MicrosocpeHardwareSpecifications</xsd:documentation>
+      <xsd:documentation>Category=OpticalDevices</xsd:documentation>
+      <xsd:documentation>Description=Beam Expanders are Lens Systems whose role is to increase the diameter of a collimated input beam to a larger collimated output beam. Beam Expanders typically are afocal systems in which object rays enter and exit parallel to the optical axis. As such a Beam Expander does not have a focal length. In most cases, Beam Expanders are realized as optical telescopes consisting of two lenses. Beam Expanders can be custom built or they are also available as pre-assembled optical devices.</xsd:documentation>
+      <xsd:documentation>Tier=3</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:complexContent>
+        <xsd:extension base="OpticalDevice">
+          <xsd:attribute name="Configuration" type="BeamExpanderConfiguration">
+            <xsd:annotation>
+              <xsd:documentation>Description=This field captures the Configuration of this Beam Expander.</xsd:documentation>
+              <xsd:documentation>Tier=5</xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
+        </xsd:extension>
+      </xsd:complexContent>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Condenser" substitutionGroup="OpticalDeviceGroup">
+    <xsd:annotation>
+      <xsd:documentation>Domain=MicrosocpeHardwareSpecifications</xsd:documentation>
+      <xsd:documentation>Category=OpticalDevices</xsd:documentation>
+      <xsd:documentation>Description=Condensers are Lens Systems located above the Light Source and under the sample in an Upright Microscope, and above the stage and below the Light Source in an Inverted Microscope. They act to gather light from the Light Source and concentrate it into a cone of light that illuminates the specimen. They typically include a Turret system and Diaphragms. The aperture and angle of the light cone must be adjusted (via the size of the Diaphragm) for each different Objective.</xsd:documentation>
+      <xsd:documentation>Tier=3</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:complexContent>
+        <xsd:extension base="OpticalDevice">
+          <xsd:attribute name="Type" type="CondenserType" use="required">
+            <xsd:annotation>
+              <xsd:documentation>Description=This field captures the category this Condenser belongs to.</xsd:documentation>
+              <xsd:documentation>Tier=3</xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
+        </xsd:extension>
+      </xsd:complexContent>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="MicroscopeTube" substitutionGroup="OpticalDeviceGroup">
+    <xsd:annotation>
+      <xsd:documentation>Domain=MicrosocpeHardwareSpecifications</xsd:documentation>
+      <xsd:documentation>Category=OpticalDevices</xsd:documentation>
+      <xsd:documentation>Description=Illumination Tubes are Lens systems, which might be embedded within the Microscope Stand and therefore not immediately accessible. They are essential for infinity-correction and should be regarded as integral parts of the Objective Lens System when magnification and correction are considered.</xsd:documentation>
+      <xsd:documentation>Tier=3</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:complexContent>
+        <xsd:extension base="OpticalDevice">
+          <xsd:attribute name="Type" type="MicroscopeTubeType" use="required">
+            <xsd:annotation>
+              <xsd:documentation>Description=This field captures the category of this Tube.</xsd:documentation>
+              <xsd:documentation>Tier=3</xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
+          <xsd:attribute name="MechanicalLength" type="xsd:float">
+            <xsd:annotation>
+              <xsd:documentation>Description=For Objectives corrected for a finite primary image distance, this is the length of the Tube in its simplest form, and it corresponds to the distance in air between the Objective and the Camera port. It commonly has a value of 160 mm (ISO 9345-1). For infinity-corrected objectives, the mechanical tube length is hypothetically considered to be infinite.</xsd:documentation>
+              <xsd:documentation>Tier=5</xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
+          <xsd:attribute name="MechanicalLengthUnit" type="UnitsLength">
+            <xsd:annotation>
+              <xsd:documentation>Tier=5</xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
+          <xsd:attribute name="OpticalLength" type="xsd:float">
+            <xsd:annotation>
+              <xsd:documentation>Description=This is the distance between the back focal plane of the Objective and the primary Image plane. This distance is relevant only when using finite primary Image distance Objectives.</xsd:documentation>
+              <xsd:documentation>Tier=5</xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
+          <xsd:attribute name="OpticalLengthUnit" type="UnitsLength">
+            <xsd:annotation>
+              <xsd:documentation>Tier=5</xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
+          <xsd:attribute name="Factor" type="xsd:float">
+            <xsd:annotation>
+              <xsd:documentation>Description=Factor (q) by which the lateral Magnification at the primary image is changed by an intermediate Lens or Lens System inserted between the Objective and the primary Image.</xsd:documentation>
+              <xsd:documentation>Tier=5</xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
+        </xsd:extension>
+      </xsd:complexContent>
+    </xsd:complexType>
+  </xsd:element>
+
   <xsd:element name="LensGroup" abstract="true" type="Lens">
     <xsd:annotation>
       <xsd:documentation>Description=This describes a lens positioned in the light path for one or more channel available for this instrument. A lens is a component of glass or transparent plastic material, usually circular in diameter, which has two primary surfaces that are ground and polished in a specific manner designed to produce either a convergence or divergence of light passing through the material. An instrument may have several lenses with different fuctions such as, a coupling lens positioned between the light source and the microscope body, a relay lens positioned at the detector mount, or an additional lens positioned in the light path for various purposes.</xsd:documentation>
@@ -3731,7 +3909,6 @@
       </xsd:complexContent>
     </xsd:complexType>
   </xsd:element>
-
   <xsd:element name="AdditionalGenericLens" substitutionGroup="LensGroup">
     <xsd:annotation>
       <xsd:documentation>Domain=MicrosocpeHardwareSpecifications</xsd:documentation>
@@ -4107,17 +4284,17 @@
       </xsd:complexContent>
     </xsd:complexType>
   </xsd:element>
-  <xsd:element name="FilterGroup" abstract="true" type="FIlter">
+  <xsd:element name="FilterGroup" abstract="true" type="Filter">
     <!-- top level definition -->
     <xsd:annotation>
       <xsd:appinfo><xsdfu xmlns=""><plural>Filters</plural></xsdfu></xsd:appinfo>
-      <xsd:documentation>Description=This describes an optical filter positioned in the light path for one or more channel available for this instrument. An optical filter is a device that selectively transmits light of different wavelengths. An instrument may have several filters of different types, such as an excitation, an emission filter or an additional filter positioned in the light path for different purposes. For each fluorescence Image there should be at least one filter element specified per Channel. This element can be associated with an optional FilterWheel - Note: FilterWheel is not the same as a FilterSet.</xsd:documentation>
+      <xsd:documentation>Description=This element describes an optical Filter positioned in the Light Path for one or more Channels available for this Instrument. An optical Filter is a device designed to control selectively the Wavelengths, colour temperature, vibration direction, and/or intensity of the radiation which it transmits or reflects. An Instrument may have several Filters of different types, such as an Excitation, Emission, Neutral Density or an additional Generic Filter positioned in the Light Path for different purposes. For each fluorescence Image there should be at least one Filter element specified per Channel. This element can be associated with an optional Optics Holder, such as a Filter Cube, Filter Turret, Filtr Wheel, or Filter Slider.</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
-  <xsd:complexType name="FIlter">
+  <xsd:complexType name="Filter">
     <xsd:annotation>
       <xsd:appinfo><xsdfu xmlns=""><plural>Filters</plural></xsdfu></xsd:appinfo>
-      <xsd:documentation>Description=This describes an optical filter positioned in the light path for one or more channel available for this instrument. An optical filter is a device that selectively transmits light of different wavelengths. An instrument may have several filters of different types, such as an excitation, an emission filter or an additional filter positioned in the light path for different purposes. For each fluorescence Image there should be at least one filter element specified per Channel. This element can be associated with an optional FilterWheel - Note: FilterWheel is not the same as a FilterSet.</xsd:documentation>
+      <xsd:documentation>Description=This element describes an optical Filter positioned in the Light Path for one or more Channels available for this Instrument. An optical Filter is a device designed to control selectively the Wavelengths, colour temperature, vibration direction, and/or intensity of the radiation which it transmits or reflects. An Instrument may have several Filters of different types, such as an Excitation, Emission, Neutral Density or an additional Generic Filter positioned in the Light Path for different purposes. For each fluorescence Image there should be at least one Filter element specified per Channel. This element can be associated with an optional Optics Holder, such as a Filter Cube, Filter Turret, Filtr Wheel, or Filter Slider.</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="ManufacturerSpec">
@@ -4143,25 +4320,82 @@
         </xsd:attribute>
         <xsd:attribute name="Type" use="optional" type="FilterType" default="BandPass">
           <xsd:annotation>
-            <xsd:documentation>Description=The type of filter used in this case.</xsd:documentation>
+            <xsd:documentation>Description=This field captures the Type of Filter used in this case.</xsd:documentation>
+            <xsd:documentation>Tier=2</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="FilterHolderPosition" use="optional" type="xsd:nonNegativeInteger">
+          <xsd:annotation>
+            <xsd:documentation>Description=This field records the position of this Filter in a Filter Holder of any kind, such as a Filter Slider, Turret or Wheel.</xsd:documentation>
             <xsd:documentation>Tier=3</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
-        <xsd:attribute name="ReflectionCoating" type="xsd:string" use="optional">
+        <xsd:attribute name="Technology" type="FilterTechnologyType" use="required">
           <xsd:annotation>
-            <xsd:documentation>Description=An optical coating is one or more thin layers of material deposited on an optical component such as a lens or mirror, which alters the way in which the optic reflects and transmits light.</xsd:documentation>
+            <xsd:documentation>Description=This field records Filtering technology utilized by this optical element. The main types of Filter technology used in fluorescence analysis are Absorption (aka colored) glass, Metallic-coating, Polymer-Based, or Thin-film interference-coating.</xsd:documentation>
+            <xsd:documentation>Tier=3</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="AttenuationCoefficient" type="xsd:float" use="required">
+          <xsd:annotation>
+            <xsd:documentation>Description=This field records the Attenuation Coefficient of this Filter. The Attenuation Coefficient (aka blocking coefficient) is a material property that characterizes the degree of transparency of a Lens. The Attenuation Coefficient is often defined in units of optical density (OD), whereas OD= -log10(T), and T=Transmittance (0≤T≤1).</xsd:documentation>
+            <xsd:documentation>Tier=3</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="AttenuationMethod" type="AttenuationMethodType">
+          <xsd:annotation>
+            <xsd:documentation>Description=This field records the mean by which this optical element achieves out-of-band transmission attenuation.</xsd:documentation>
             <xsd:documentation>Tier=5</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
-        <xsd:attribute name="FilterWheel" use="optional" type="xsd:string">
+        <xsd:attribute name="CoatingMethod" type="CoatingMethod" use="required">
           <xsd:annotation>
-            <xsd:documentation>Description=This can can refer to any arrangement of filters in a filter holder of any shape. It could, for example, be a filter slider.</xsd:documentation>
-            <xsd:documentation>Tier=3</xsd:documentation>
+            <xsd:documentation>Description=This field records the type of Coating used in this case. An optical coating is one or more thin layers of material deposited on an optical component such as a Lens, Filter or Mirror, which alters the way in which the optic reflects and transmits light.</xsd:documentation>
+            <xsd:documentation>Tier=5</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="Diameter" type="xsd:float">
+          <xsd:annotation>
+            <xsd:documentation>Diameter=This field describes the Diameter of this optical element.</xsd:documentation>
+            <xsd:documentation>Tier=5</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="DiameterUnit" type="UnitsLength">
+          <xsd:annotation>
+            <xsd:documentation>Tier=5</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="Thickness" type="xsd:float">
+          <xsd:annotation>
+            <xsd:documentation>Description=This field describes the Thickness of this optical element.</xsd:documentation>
+            <xsd:documentation>Tier=5</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="ThicknessUnit" type="UnitsLength">
+          <xsd:annotation>
+            <xsd:documentation>Tier=5</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="AngleOfIncidence" type="xsd:float">
+          <xsd:annotation>
+            <xsd:documentation>Description=This field records the optimal angle of incidence (AOI) for this Filter. TheAOI is the angle between the optical axis of the incident light and the axis normal to the surface of the mirror. In specular reflection AOI is by definition equal to the Angle Of Reflection (AOR).</xsd:documentation>
+            <xsd:documentation>Tier=5</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="AngleOfIncidenceUnit" type="UnitsAngle">
+          <xsd:annotation>
+            <xsd:documentation>Tier=5</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="Polarization" type="FilterPolarizationType">
+          <xsd:annotation>
+            <xsd:documentation>Description=This field records the Polarization effect of this optical element. Any thin-film interference coating that is used at non-normal AOI will cause some amount of Polarization, the precise effect varying greatly with Wavelength and with the particular coating design.</xsd:documentation>
+            <xsd:documentation>Tier=5</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
         <xsd:attribute name="TransmittanceProfileFile" type="xsd:anyURI" use="required">
           <xsd:annotation>
-            <xsd:documentation>Description=This contains the location of file in .csv or other suitable formats containing the wavelenght profile of this component.</xsd:documentation>
+            <xsd:documentation>Description=This field records the Location of a file in .csv or other suitable formats containing the Wavelength profile of this optical component.</xsd:documentation>
             <xsd:documentation>Tier=5</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
@@ -4173,39 +4407,65 @@
   <xsd:element name="ExcitationFilter" substitutionGroup="FilterGroup">
     <xsd:annotation>
       <xsd:documentation>Domain=MicrosocpeHardwareSpecifications</xsd:documentation>
-      <xsd:documentation>Category=LightPath</xsd:documentation>
-      <xsd:documentation>Description=An optical filter is a device that selectively transmits light of different wavelengths.This element refers to an excitation filter. This element can be associated with an optional FilterWheel - Note: FilterWheel is not the same as a FilterSet.</xsd:documentation>
+      <xsd:documentation>Category=Filters</xsd:documentation>
+      <xsd:documentation>Description=This element refers to a Filter that selectively attenuates Light depending on Wavelength that is serves as an Excitation Filter. This element can be associated with an optional Filter Holder - Note: Filter Holder is not the same as a FilterSet.</xsd:documentation>
       <xsd:documentation>Tier=2</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
       <xsd:complexContent>
-        <xsd:extension base="FIlter"/>
+        <xsd:extension base="Filter"/>
       </xsd:complexContent>
     </xsd:complexType>
   </xsd:element>
   <xsd:element name="EmissionFilter" substitutionGroup="FilterGroup">
     <xsd:annotation>
       <xsd:documentation>Domain=MicrosocpeHardwareSpecifications</xsd:documentation>
-      <xsd:documentation>Category=LightPath</xsd:documentation>
-      <xsd:documentation>Description=An optical filter is a device that selectively transmits light of different wavelengths. This element refers to an emission filter. This element can be associated with an optional FilterWheel - Note: FilterWheel is not the same as a FilterSet.</xsd:documentation>
+      <xsd:documentation>Category=Filters</xsd:documentation>
+      <xsd:documentation>Description=This element refers to a Filter that selectively attenuates Light depending on Wavelength that is serves as an Emission Filter. This element can be associated with an optional Filter Holder - Note: Filter Holder is not the same as a FilterSet.</xsd:documentation>
       <xsd:documentation>Tier=2</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
       <xsd:complexContent>
-        <xsd:extension base="FIlter"/>
+        <xsd:extension base="Filter"/>
       </xsd:complexContent>
     </xsd:complexType>
   </xsd:element>
-  <xsd:element name="AdditionalFilter" substitutionGroup="FilterGroup">
+  <xsd:element name="NeutralDensityFilter" substitutionGroup="FilterGroup">
     <xsd:annotation>
       <xsd:documentation>Domain=MicrosocpeHardwareSpecifications</xsd:documentation>
-      <xsd:documentation>Category=AdditionalOptics</xsd:documentation>
-      <xsd:documentation>Description=An optical filter is a device that selectively transmits light of different wavelengths. This element refers to a filter positioned along the light path in addition to the excitation and the emission filters.This element can be associated with an optional FilterWheel - Note: FilterWheel is not the same as a FilterSet.</xsd:documentation>
+      <xsd:documentation>Category=Filters</xsd:documentation>
+      <xsd:documentation>Description=This element refers to an optical Filter that attenuates the intensity of the transmitted light independent of the Wavelength.</xsd:documentation>
       <xsd:documentation>Tier=2</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
       <xsd:complexContent>
-        <xsd:extension base="FIlter"/>
+        <xsd:extension base="Filter">
+          <xsd:attribute name="NDType" type="NDTYPE" use="required">
+            <xsd:annotation>
+              <xsd:documentation>Description=This field refers to the general category of this Neutral Density Filter. Neutral Density Filters come in two general types. Those made of darkened glass that absorb light and those coated with a metal film that reflect light.</xsd:documentation>
+              <xsd:documentation>Tier=3</xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
+          <xsd:attribute name="OpticalDensity" type="xsd:float" use="required">
+            <xsd:annotation>
+              <xsd:documentation>Description=This field measures the absolute value of the logarithm of base 10 of the power transmission factor. For example, an optical density of 3 means an attenuation of optical powers by the factor 10^3 = 1000.</xsd:documentation>
+              <xsd:documentation>Tier=3</xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
+        </xsd:extension>
+      </xsd:complexContent>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="GenericFilter" substitutionGroup="FilterGroup">
+    <xsd:annotation>
+      <xsd:documentation>Domain=MicrosocpeHardwareSpecifications</xsd:documentation>
+      <xsd:documentation>Category=Filters</xsd:documentation>
+      <xsd:documentation>Description=An optical Filter is a device that attenuates Light of different Wavelengths. This element refers to a Generic Filter positioned along the Light Path in addition to the canonical fluorescence Excitation and the Emission Filters.</xsd:documentation>
+      <xsd:documentation>Tier=2</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:complexContent>
+        <xsd:extension base="Filter"/>
       </xsd:complexContent>
     </xsd:complexType>
   </xsd:element>
@@ -4215,35 +4475,30 @@
       <xsd:appinfo><xsdfu xmlns=""><plural>TransmittanceRanges</plural></xsdfu></xsd:appinfo>
       <xsd:documentation>Domain=MicrosocpeHardwareSpecifications</xsd:documentation>
       <xsd:documentation>Category=ChildElement</xsd:documentation>
-      <xsd:documentation>Description=This records the range of wavelengths that are transmitted by the filter. It also records the maximum amount of light transmitted. Multiple of this elements can be used.</xsd:documentation>
+      <xsd:documentation>Description=This element records the range of Wavelengths that are transmitted by this Dichroic Mirror. It also records the maximum amount of light transmitted. Multiple of these elements can be used.</xsd:documentation>
       <xsd:documentation>Tier=2</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
-      <xsd:attribute name="CutIn" use="required" type="PositiveFloat">
+      <xsd:attribute name="Wavelength" use="required" type="PositiveFloat">
         <xsd:annotation>
-          <xsd:documentation>Description=CutIn is the wavelength below which the response rate is below 50%.</xsd:documentation>
+          <xsd:documentation>Description=This field records the key Wavelength that characterizes this Optical Filter. This might be the Central Wavelength of (one of) the transmission bands for a BandPass, BandStop, MultiPass or Notch Filter, or the Transition Wavelength of a LongPss or ShortPass Filter.</xsd:documentation>
           <xsd:documentation>Tier=2</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
-      <xsd:attribute name="CutInUnit" use="optional" default="nm" type="UnitsLength">
+      <xsd:attribute name="FWHMBandwidth" use="required" type="PositiveFloat">
         <xsd:annotation>
+          <xsd:documentation>Description=This field records the width of the transmission band of this optical Filter. Specifically, the Full Width at Half Maximum (FWHM) represents the bandwidth of the Wavelength spectrum curve measured between those points on the intensity axis which are half the maximum transmission amplitude.</xsd:documentation>
           <xsd:documentation>Tier=2</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
-      <xsd:attribute name="CutOut" use="optional" type="PositiveFloat">
-        <xsd:annotation>
-          <xsd:documentation>Description=CutOut is the wavelength above which the response rate is below 50%.</xsd:documentation>
-          <xsd:documentation>Tier=2</xsd:documentation>
-        </xsd:annotation>
-      </xsd:attribute>
-      <xsd:attribute name="CutOutUnit" use="optional" default="nm" type="UnitsLength">
+      <xsd:attribute name="WavelenthUnit" use="optional" default="nm" type="UnitsLength">
         <xsd:annotation>
           <xsd:documentation>Tier=2</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
       <xsd:attribute name="Transmittance" use="required" type="PercentFraction">
         <xsd:annotation>
-          <xsd:documentation>Description=The maximum amount of light this optical component is capable of transmitting at the peak wavelenght. It is represented as a fractional value from 0.0 to 1.0.</xsd:documentation>
+          <xsd:documentation>Description=This field records the maximum amount of light this optical component is capable of transmitting in this Wavelength Range, at the peak Wavelength. It is represented as a fractional value from 0.0 to 1.0.</xsd:documentation>
           <xsd:documentation>Tier=3</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
@@ -4251,14 +4506,14 @@
   </xsd:element>
 
   <!-- Mirror elements -->
-  <xsd:element name="MirrorGroup" abstract="true" type="Mirror">
+  <xsd:element name="MirroringDeviceGroup" abstract="true" type="MirroringDevice">
     <xsd:annotation>
-      <xsd:documentation>Description=This describes a mirror positioned in the light path for one or more channel available for this instrument. An instrument may have several mirrors of different types, such as dichroic, beamsplitter or reflector.</xsd:documentation>
+      <xsd:documentation>Description=This element describes a Mirror positioned in the Ligth Path for one or more Channels available for this Instrument. An Instrument may have several Mirrors of different types, such as Dichroic, Beamsplitter or Reflector. This element can be associated with an optional Optics Holder, such as a Filter Cube, Filter Turret, Filtr Wheel, or Filter Slider.</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
-  <xsd:complexType name="Mirror">
+  <xsd:complexType name="MirroringDevice">
     <xsd:annotation>
-      <xsd:documentation>Description=This describes a mirror positioned in the light path for one or more channel available for this instrument. An instrument may have several mirrors of different types, such as dichroic, beamsplitter or reflector.</xsd:documentation>
+      <xsd:documentation>Description=This element describes a Mirror positioned in the Ligth Path for one or more Channels available for this Instrument. An Instrument may have several Mirrors of different types, such as Dichroic, Beamsplitter or Reflector. This element can be associated with an optional Optics Holder, such as a Filter Cube, Filter Turret, Filtr Wheel, or Filter Slider.</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="ManufacturerSpec">
@@ -4277,15 +4532,31 @@
             <xsd:documentation>Tier=2</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
-        <xsd:attribute name="AngleOfIncidence" type="xsd:float" use="required">
+        <xsd:attribute name="MirrorType" type="MirrorType" use="optional">
           <xsd:annotation>
-            <xsd:documentation>Description=This field records the optimal angle of incidence (AOI) for this mirror. TheAOI is the angle between the optical axis of the incident light and the axis normal to the surface of the mirror. In specular reflection AOI is by definition equal to the Angle Of Reflection (AOR).</xsd:documentation>
+            <xsd:documentation>Description=This field records the general category of this Mirror.</xsd:documentation>
+            <xsd:documentation>Tier=5</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="Diameter" type="xsd:float">
+          <xsd:annotation>
+            <xsd:documentation>Description=This field describes the Diameter of this optical element.</xsd:documentation>
+            <xsd:documentation>Tier=5</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="DiameterUnit" type="UnitsLength">
+          <xsd:annotation>
+            <xsd:documentation>Tier=5</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="AngleOfIncidence" type="xsd:float" use="optional">
+          <xsd:annotation>
+            <xsd:documentation>Description=This field records the optimal angle of incidence (AOI) for this Mirror. The AOI is the angle between the optical axis of the incident light and the axis normal to the surface of the Mirror. In specular reflection AOI is by definition equal to the Angle Of Reflection (AOR).</xsd:documentation>
             <xsd:documentation>Tier=5</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
         <xsd:attribute default="deg" name="AngleOfIncidenceUnit">
           <xsd:annotation>
-            <xsd:documentation>Description=This field records the optimal angle of incidence (AOI) for this mirror. TheAOI is the angle between the optical axis of the incident light and the axis normal to the surface of the mirror. In specular reflection AOI is by definition equal to the Angle Of Reflection (AOR).</xsd:documentation>
             <xsd:documentation>Tier=5</xsd:documentation>
           </xsd:annotation>
           <xsd:simpleType>
@@ -4294,21 +4565,15 @@
             </xsd:restriction>
           </xsd:simpleType>
         </xsd:attribute>
-        <xsd:attribute name="MirrorType" type="MirrorType">
-          <xsd:annotation>
-            <xsd:documentation>Description=The general category this mirror belongs to.</xsd:documentation>
-            <xsd:documentation>Tier=5</xsd:documentation>
-          </xsd:annotation>
-        </xsd:attribute>
         <xsd:attribute name="Geometry" type="MirrorGeometry">
           <xsd:annotation>
-            <xsd:documentation>Description=The geometrical shape of the surface(s) of this mirror.</xsd:documentation>
+            <xsd:documentation>Description=This field records the geometrical shape of the surface(s) of this Mirror.</xsd:documentation>
             <xsd:documentation>Tier=5</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
         <xsd:attribute name="RadiusOfCurvature" type="xsd:float">
           <xsd:annotation>
-            <xsd:documentation>Description=The radius of curvature of this mirror. A spherical lens or mirror surface has a center of curvature located either along or decentered from the system local optical axis. The vertex of the lens surface is located on the local optical axis. The distance from the vertex to the center of curvature is the radius of curvature of the surface.</xsd:documentation>
+            <xsd:documentation>Description=The radius of curvature of this Mirror. A spherical lens or Mirror surface has a center of curvature located either along or decentered from the system local optical axis. The vertex of the lens surface is located on the local optical axis. The distance from the vertex to the center of curvature is the radius of curvature of the surface.</xsd:documentation>
             <xsd:documentation>Tier=5</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
@@ -4317,145 +4582,180 @@
             <xsd:documentation>Tier=5</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
-        <xsd:attribute name="SubstrateType" type="SubstrateType">
+        <xsd:attribute name="SubstrateType" type="xsd:string">
           <xsd:annotation>
-            <xsd:documentation>Description=This field records the type of substrate that is used for the beamsplitter coating. It is typically a ground and polished piece of optical glass.</xsd:documentation>
+            <xsd:documentation>Description=This field records the type of Substrate that is used for this Mirror. It is typically a ground and polished piece of optical glass.</xsd:documentation>
             <xsd:documentation>Tier=5</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
         <xsd:attribute name="SubstrateMaterial" type="SubstrateMaterialName">
           <xsd:annotation>
-            <xsd:documentation>Description=This records the chemical composition or the nonproprietary trade designation of the mirror's optical substrate. For dichoric mirrors the substrate is typically composed of a glass material with low autofluorescence, such as UV-grade fused silica.</xsd:documentation>
+            <xsd:documentation>Description=This field records the polarization effect of this optical element. Any thin-film interference Coating that is used at non-normal angles-of-incidence will cause some amount of polarization, the precise effect varying greatly with wavelength and with the particular Coating design.</xsd:documentation>
             <xsd:documentation>Tier=5</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
         <xsd:attribute name="GlassCode" type="xsd:string">
           <xsd:annotation>
-            <xsd:documentation>Description=If available provide the international glass code for the glass this polarization device is made of. This is based on U.S. military standard MIL-G-174, and is a six-digit number specifying the glass according to its refractive index nd at the Fraunhofer d- (or D3-) line, and its Abbe number Vd also taken at that line. The resulting glass code is the value of nd-1 rounded to three digits, followed by Vd rounded to three digits, with all decimal points ignored. For example, BK7 has nd = 1.5168 and Vd = 64.17, giving a six-digit glass code of 517642.</xsd:documentation>
+            <xsd:documentation>Description=If available, this field records the international Glass Code of the material that constitutes this Mirror. The Glass Code designation is based on U.S. military standard MIL-G-174, and it consists of a six-digit number specifying the glass according to its Refractive Index nd at the Fraunhofer d- (or D3-) line, and its Abbe Number Vd also taken at that line. The resulting Glass Code is the value of nd-1 rounded to three digits, followed by Vd rounded to three digits, with all decimal points ignored. For example, BK7 has nd = 1.5168 and Vd = 64.17, giving a six-digit Glass Code of 517642.</xsd:documentation>
             <xsd:documentation>Tier=5</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="OpticsHolderPosition" type="xsd:positiveInteger">
+          <xsd:annotation>
+            <xsd:documentation>Description=This field records the position of this Mirroring Device in a Optics Holder of any kind, such as a Slider, Turret or Wheel.</xsd:documentation>
+            <xsd:documentation>Tier=3</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
-  <xsd:element name="BeamSplitter" substitutionGroup="MirrorGroup">
+  <xsd:element name="BeamSplitter" substitutionGroup="MirroringDeviceGroup">
     <xsd:annotation>
       <xsd:documentation>Domain=MicrosocpeHardwareSpecifications</xsd:documentation>
       <xsd:documentation>Category=Mirror</xsd:documentation>
-      <xsd:documentation>Description=This is a mirror that reflects part of the light, regardless of wavelenght.</xsd:documentation>
+      <xsd:documentation>Description=This element describes a Mirror that reflects part of the light, regardless of wavelenght.</xsd:documentation>
       <xsd:documentation>Tier=2</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
       <xsd:complexContent>
-        <xsd:extension base="Mirror">
+        <xsd:extension base="MirroringDevice">
           <xsd:attribute name="Transmittance" type="xsd:float" use="required">
             <xsd:annotation>
-              <xsd:documentation>Description=The maximum amount of light this beamsplitteris capable of transmitting at the peak wavelenght. It is represented as a fractional value from 0.0 to 1.0.</xsd:documentation>
+              <xsd:documentation>Description=The field records the maximum amount of light this Beamsplitteris capable of transmitting at the peak Wavelenght. It is represented as a fractional value from 0.0 to 1.0.</xsd:documentation>
               <xsd:documentation>Tier=3</xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
+          <xsd:attribute name="TransmittanceProfileFile" type="xsd:anyURI">
+            <xsd:annotation>
+              <xsd:documentation>Description=This field records the location of a file in .csv or other suitable formats containing the Transmittance profile of this optical component.</xsd:documentation>
+              <xsd:documentation>Tier=5</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
           <xsd:attribute name="TransmissionAngle" type="xsd:float" use="required">
             <xsd:annotation>
-              <xsd:documentation>Description=The angle at which light is transmitted by this beamsplitter.</xsd:documentation>
+              <xsd:documentation>Description=The angle at which light is transmitted by this Beamsplitter.</xsd:documentation>
               <xsd:documentation>Tier=5</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="Reflectance" type="xsd:float">
+          <xsd:attribute name="TransmissionAngleUnit" type="UnitsAngle" use="optional">
             <xsd:annotation>
-              <xsd:documentation>Description=The maximum amount of light this Mirror is capable of reflecting. It is represented as a fractional value from 0.0 to 1.0.</xsd:documentation>
+              <xsd:documentation>Tier=5</xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
+          <xsd:attribute name="Reflectance" type="xsd:float" use="required">
+            <xsd:annotation>
+              <xsd:documentation>Description=The field records the maximum amount of light this Beamsplitteris capable of reflecting at the peak Wavelenght. It is represented as a fractional value from 0.0 to 1.0.</xsd:documentation>
               <xsd:documentation>Tier=3</xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
+          <xsd:attribute name="ReflectanceProfileFile" type="xsd:anyURI">
+            <xsd:annotation>
+              <xsd:documentation>Description=This field records the location of a file in .csv or other suitable formats containing the Reflectance profile of this optical component.</xsd:documentation>
+              <xsd:documentation>Tier=5</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
         </xsd:extension>
       </xsd:complexContent>
     </xsd:complexType>
   </xsd:element>
-  <xsd:element name="Reflector" substitutionGroup="MirrorGroup">
+  <xsd:element name="ReflectingMirror" substitutionGroup="MirroringDeviceGroup">
     <xsd:annotation>
       <xsd:documentation>Domain=MicrosocpeHardwareSpecifications</xsd:documentation>
       <xsd:documentation>Category=Mirror</xsd:documentation>
-      <xsd:documentation>Description=This is a total reflection mirror.</xsd:documentation>
+      <xsd:documentation>Description=This element describes a total reflection Mirror.</xsd:documentation>
       <xsd:documentation>Tier=2</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
       <xsd:complexContent>
-        <xsd:extension base="Mirror">
-          <xsd:attribute name="Reflectance" type="xsd:float">
+        <xsd:extension base="MirroringDevice">
+          <xsd:attribute name="Reflectance" type="xsd:float" use="required">
             <xsd:annotation>
-              <xsd:documentation>Description=The maximum amount of light this Mirror is capable of reflecting. It is represented as a fractional value from 0.0 to 1.0.</xsd:documentation>
+              <xsd:documentation>Description=The field records the maximum amount of light this Mirror is capable of reflecting at the peak Wavelenght. It is represented as a fractional value from 0.0 to 1.0.</xsd:documentation>
               <xsd:documentation>Tier=3</xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
+          <xsd:attribute name="ReflectanceProfileFile" type="xsd:anyURI">
+            <xsd:annotation>
+              <xsd:documentation>Description=This field records the location of a file in .csv or other suitable formats containing the Reflectance profile of this optical component.</xsd:documentation>
+              <xsd:documentation>Tier=5</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
         </xsd:extension>
       </xsd:complexContent>
     </xsd:complexType>
   </xsd:element>
-  <xsd:element abstract="true" name="DichroicGroup" substitutionGroup="MirrorGroup" type="Dichroic">
+  <xsd:element abstract="true" name="DichroicGroup" substitutionGroup="MirroringDeviceGroup"
+    type="Dichroic">
     <xsd:annotation>
-      <xsd:documentation>Description=A dichroic beamsplitter or dichroic mirror is a mirror that spectrally separate light by transmitting and reflecting light as a function of wavelength. In the context of fluorescence microscopy, they are typically used to reflect the excitation light, but transmit the emitted fluorescence. Dichroic mirrors can be categorized in different manners. However, the most important criteria for choosing a dichoric mirror are the transmittance and the reflectance wavelenght ranges.</xsd:documentation>
+      <xsd:documentation>Description=A Dichroic Beamsplitter or Dichroic Mirror is a Mirror that spectrally separate light by transmitting and reflecting light as a function of wavelength. In the context of fluorescence microscopy, they are typically used to reflect the excitation light, but transmit the emitted fluorescence. Dichroic Mirrors can be categorized in different manners. However, the most important criteria for choosing a dichoric Mirror are the transmittance and the reflectance wavelenght ranges.</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
   <xsd:complexType name="Dichroic">
     <xsd:annotation>
-      <xsd:documentation>Description=A dichroic beamsplitter or dichroic mirror is a mirror that spectrally separate light by transmitting and reflecting light as a function of wavelength. In the context of fluorescence microscopy, they are typically used to reflect the excitation light, but transmit the emitted fluorescence. Dichroic mirrors can be categorized in different manners. However, the most important criteria for choosing a dichoric mirror are the transmittance and the reflectance wavelenght ranges.</xsd:documentation>
+      <xsd:documentation>Description=A Dichroic Beamsplitter or Dichroic Mirror is a Mirror that spectrally separate light by transmitting and reflecting light as a function of wavelength. In the context of fluorescence microscopy, they are typically used to reflect the excitation light, but transmit the emitted fluorescence. Dichroic Mirrors can be categorized in different manners. However, the most important criteria for choosing a dichoric Mirror are the transmittance and the reflectance wavelenght ranges.</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
-      <xsd:extension base="Mirror">
+      <xsd:extension base="MirroringDevice">
         <xsd:sequence>
           <xsd:element maxOccurs="unbounded" ref="TransmittanceRange"/>
           <xsd:element maxOccurs="unbounded" ref="ReflectanceRange" minOccurs="0"/>
         </xsd:sequence>
-        <xsd:attribute name="DichroicType" type="DichroicType" use="required">
+        <xsd:attribute name="DichroicType" type="FilterType" use="required">
           <xsd:annotation>
-            <xsd:documentation>Description=The type of dichroic mirror used in this case.</xsd:documentation>
+            <xsd:documentation>Description=This field captures the Type of Dichroic used in this case.</xsd:documentation>
             <xsd:documentation>Tier=3</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
-        <xsd:attribute name="HardSputtered" type="xsd:boolean" use="required">
+        <xsd:attribute name="Technology" type="FilterTechnologyType">
           <xsd:annotation>
-            <xsd:documentation>Description=This field records whether this coating of this dichroic is hard-sputtered or traditional.</xsd:documentation>
+            <xsd:documentation>Description=This field records the filtering Technology utilized for this optical element. The main types of technologies used in fluorescence analysis are Absorption (aka colored) glass, Polymer or Thin-film coating.</xsd:documentation>
             <xsd:documentation>Tier=3</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
         <xsd:attribute name="AttenuationCoefficient" type="xsd:float" use="required">
           <xsd:annotation>
-            <xsd:documentation>Description=The attenuation coeffieient of this dichroic The attenuation coefficient (aka blocking coefficient) is used as a measure of the out-of-band attenuation of an optical filter or dichroic mirror over an extended range of the spectrum. The attenuation coefficient is often defined in units of optical density (OD), wherease OD= -log10(T), and T=Transmittance (0≤T≤1).</xsd:documentation>
+            <xsd:documentation>Description=This field records the Attenuation Coefficient of this Dichroic. The Attenuation Coefficient (aka blocking coefficient) is a material property that characterizes the degree of transparency of a Lens. The Attenuation Coefficient is often defined in units of optical density (OD), whereas OD= -log10(T), and T=Transmittance (0≤T≤1).</xsd:documentation>
             <xsd:documentation>Tier=3</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
-        <xsd:attribute default="Reflection" name="AttenuationMethod" type="AttenuationMethod">
+        <xsd:attribute name="AttenuationMethod" type="AttenuationMethod">
           <xsd:annotation>
-            <xsd:documentation>Description=The mean by which this dichroic filter achieves out-of-band transmission attenuation.</xsd:documentation>
+            <xsd:documentation>Description=This field records the mean by which this optical element achieves out-of-band transmission attenuation.</xsd:documentation>
             <xsd:documentation>Tier=5</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
-        <xsd:attribute name="Technology" type="TechnologyType">
+        <xsd:attribute name="CoatingMethod" type="CoatingMethod" use="required">
           <xsd:annotation>
-            <xsd:documentation>Description=The filtering technology utilized by this dichroic. The main types of filter technology used in fluorescence analysis are absorption (aka colored) glass, thin-film coating, and acousto-optical tunable, liquid-crystal tunable filters.</xsd:documentation>
+            <xsd:documentation>Description=This field records the type of Coating used in this case. An optical coating is one or more thin layers of material deposited on an optical component such as a Lens, Filter or Mirror, which alters the way in which the optic reflects and transmits light.</xsd:documentation>
             <xsd:documentation>Tier=5</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
-        <xsd:attribute name="Polarization" type="DichroicPolarization">
+        <xsd:attribute name="Thickness" type="xsd:float">
           <xsd:annotation>
-            <xsd:documentation>Description=This field records the polarization effect of this dichroic. Dichroic beamsplitters (and, in fact, any thin-film interference coating that is used at non-normal angles-of-incidence) will cause some amount of polarization. ), the precise effect varying greatly with wavelength and with the particular coating design.</xsd:documentation>
+            <xsd:documentation>Description=This field describes the Thickness of this optical element.</xsd:documentation>
             <xsd:documentation>Tier=5</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
-        <xsd:attribute name="FilterWheel" type="xsd:string">
+        <xsd:attribute name="ThicknessUnit" type="UnitsLength">
           <xsd:annotation>
-            <xsd:documentation>Description=This can can refer to any arrangement of filters in a filter holder of any shape. It could, for example, be a filter slider.</xsd:documentation>
-            <xsd:documentation>Tier=3</xsd:documentation>
+            <xsd:documentation>Tier=5</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="Polarization" type="FilterPolarizationType">
+          <xsd:annotation>
+            <xsd:documentation>Description=This field records the polarization effect of this optical element. Any thin-film interference coating that is used at non-normal angles-of-incidence will cause some amount of polarization, the precise effect varying greatly with wavelength and with the particular coating design.</xsd:documentation>
+            <xsd:documentation>Tier=5</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
         <xsd:attribute name="TransmittanceProfileFile" type="xsd:anyURI" use="required">
           <xsd:annotation>
-            <xsd:documentation>Description=This contains the location of a file in .csv or other suitable formats containing the wavelenght profile of this component.</xsd:documentation>
+            <xsd:documentation>Description=This field records the location of a file in .csv or other suitable formats containing the Transmittance profile of this optical component.</xsd:documentation>
             <xsd:documentation>Tier=5</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
         <xsd:attribute name="ReflectanceProfileFile" type="xsd:anyURI" use="required">
           <xsd:annotation>
-            <xsd:documentation>Description=This contains the location of a file in .csv or other suitable formats containing the wavelenght profile of this component.</xsd:documentation>
+            <xsd:documentation>Description=This field records the location of a file in .csv or other suitable formats containing the Reflectance profile of this optical component.</xsd:documentation>
             <xsd:documentation>Tier=5</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
@@ -4466,7 +4766,7 @@
     <xsd:annotation>
       <xsd:documentation>Domain=MicrosocpeHardwareSpecifications</xsd:documentation>
       <xsd:documentation>Category=LightPath</xsd:documentation>
-      <xsd:documentation>Description=This describes a dichroic  positioned in the standard light path for one or more channel available for this instrument.</xsd:documentation>
+      <xsd:documentation>Description=This element describes a Dichroic positioned in the standard Ligth Path for one or more Channels available for this Instrument.</xsd:documentation>
       <xsd:documentation>Tier=2</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
@@ -4475,13 +4775,13 @@
       </xsd:complexContent>
     </xsd:complexType>
   </xsd:element>
-  <xsd:element name="AdditionalDichroic" substitutionGroup="DichroicGroup">
+  <xsd:element name="GenericDichroic" substitutionGroup="DichroicGroup">
     <!-- top level definition -->
     <xsd:annotation>
       <xsd:appinfo><xsdfu xmlns=""><plural>Dichroics</plural></xsdfu></xsd:appinfo>
       <xsd:documentation>Domain=MicrosocpeHardwareSpecifications</xsd:documentation>
       <xsd:documentation>Category=AdditionalOptics</xsd:documentation>
-      <xsd:documentation>Description=This describes an additional dichroic  positioned in the light path for one or more channel available for this instrument.</xsd:documentation>
+      <xsd:documentation>Description=This element describes an additional Generic Dichroic positioned in the Ligth Path for one or more Channel available for this Instrument.</xsd:documentation>
       <xsd:documentation>Tier=2</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
@@ -4496,35 +4796,30 @@
       <xsd:appinfo><xsdfu xmlns=""><plural>TransmittanceRanges</plural></xsdfu></xsd:appinfo>
       <xsd:documentation>Domain=MicrosocpeHardwareSpecifications</xsd:documentation>
       <xsd:documentation>Category=ChildElement</xsd:documentation>
-      <xsd:documentation>Description=This records the range of wavelengths that are reflected by the mirror.</xsd:documentation>
+      <xsd:documentation>Description=This element records the range of Wavelengths that are reflected by this Dichroic Mirror. It also records the maximum amount of light reflected. Multiple of these elements can be used.</xsd:documentation>
       <xsd:documentation>Tier=3</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
-      <xsd:attribute name="CutIn" use="required" type="PositiveFloat">
+      <xsd:attribute name="Wavelength" use="required" type="PositiveFloat">
         <xsd:annotation>
-          <xsd:documentation>Description=CutIn is the wavelength below which the response rate is below 50%.</xsd:documentation>
+          <xsd:documentation>Description=This field records the key Wavelength that characterizes this Optical Filter. This might be the Central Wavelength of (one of) the transmission bands for a BandPass, BandStop, MultiPass or Notch Filter, or the Transition Wavelength of a LongPss or ShortPass Filter.</xsd:documentation>
           <xsd:documentation>Tier=3</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
-      <xsd:attribute name="CutInUnit" use="optional" default="nm" type="UnitsLength">
+      <xsd:attribute name="FWHMBandwidth" use="optional" type="PositiveFloat">
         <xsd:annotation>
+          <xsd:documentation>Description=This field records the width of the transmission band of this optical Filter. Specifically, the Full Width at Half Maximum (FWHM) represents the bandwidth of the Wavelength spectrum curve measured between those points on the intensity axis which are half the maximum transmission amplitude.</xsd:documentation>
           <xsd:documentation>Tier=3</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
-      <xsd:attribute name="CutOut" use="optional" type="PositiveFloat">
-        <xsd:annotation>
-          <xsd:documentation>Description=CutOut is the wavelength above which the response rate is below 50%.</xsd:documentation>
-          <xsd:documentation>Tier=3</xsd:documentation>
-        </xsd:annotation>
-      </xsd:attribute>
-      <xsd:attribute name="CutOutUnit" use="optional" default="nm" type="UnitsLength">
+      <xsd:attribute name="WavelengthUnit" use="optional" default="nm" type="UnitsLength">
         <xsd:annotation>
           <xsd:documentation>Tier=3</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
-      <xsd:attribute name="Reflectance" type="xsd:float">
+      <xsd:attribute name="Reflectance" type="PercentFraction" use="required">
         <xsd:annotation>
-          <xsd:documentation>Description=The maximum amount of light this Mirror is capable of reflecting. It is represented as a fractional value from 0.0 to 1.0.</xsd:documentation>
+          <xsd:documentation>Description=This field records the maximum amount of light this optical component is capable of reflecting in this Wavelength Range, at the peak Wavelength. It is represented as a fractional value from 0.0 to 1.0.</xsd:documentation>
           <xsd:documentation>Tier=3</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
@@ -4613,7 +4908,7 @@
             <xsd:documentation>Tier=3</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
-        <xsd:attribute name="PeakWavelenghtUnit" type="UnitsLength" default="nm">
+        <xsd:attribute name="PeakWavelengthUnit" type="UnitsLength" default="nm">
           <xsd:annotation>
             <xsd:documentation>Tier=3</xsd:documentation>
           </xsd:annotation>
@@ -4936,7 +5231,7 @@
           <xsd:documentation>Tier=5</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
-      <xsd:attribute name="WavelenghtProfile" type="xsd:anyURI">
+      <xsd:attribute name="WavelengthProfile" type="xsd:anyURI">
         <xsd:annotation>
           <xsd:documentation>Description=A file containing the wavelenght profile of this component.</xsd:documentation>
           <xsd:documentation>Tier=5</xsd:documentation>
@@ -6852,6 +7147,28 @@ annotation refs from the base Annotation to form the list.</xsd:documentation>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
+  <xsd:complexType name="OpticalApertureRef">
+    <xsd:complexContent>
+      <xsd:extension base="Reference">
+        <xsd:attribute name="ID" type="OpticalApertureID" use="required">
+          <xsd:annotation>
+            <xsd:documentation>Tier=3</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="OpticsHolderRef">
+    <xsd:complexContent>
+      <xsd:extension base="Reference">
+        <xsd:attribute name="ID" type="OpticsHolderID" use="required">
+          <xsd:annotation>
+            <xsd:documentation>Tier=2</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
   <xsd:element name="StandardDichroicRef" type="MirrorRef">
     <!-- top level definition --> </xsd:element>
   <xsd:element name="LightSourceCouplingRef">
@@ -7373,6 +7690,12 @@ annotation refs from the base Annotation to form the list.</xsd:documentation>
     <xsd:restriction base="LSID"/>
   </xsd:simpleType>
   <xsd:simpleType name="MirrorID">
+    <xsd:restriction base="LSID"/>
+  </xsd:simpleType>
+  <xsd:simpleType name="OpticalApertureID">
+    <xsd:restriction base="LSID"/>
+  </xsd:simpleType>
+  <xsd:simpleType name="OpticsHolderID">
     <xsd:restriction base="LSID"/>
   </xsd:simpleType>
   <xsd:simpleType name="DichroicID">
@@ -8836,6 +9159,34 @@ annotation refs from the base Annotation to form the list.</xsd:documentation>
       <xsd:enumeration value="Other"/>
     </xsd:restriction>
   </xsd:simpleType>
+
+  <xsd:simpleType name="BeamExpanderConfiguration">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Galileian telescope"/>
+      <xsd:enumeration value="Keplerian telescope"/>
+      <xsd:enumeration value="Other"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="CondenserType">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Abbe"/>
+      <xsd:enumeration value="Achromatic-Aplanatic"/>
+      <xsd:enumeration value="Cardioid"/>
+      <xsd:enumeration value="Dark-field"/>
+      <xsd:enumeration value="Pancratic"/>
+      <xsd:enumeration value="Phase-contrast"/>
+      <xsd:enumeration value="Other"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="MicroscopeTubeType">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Body"/>
+      <xsd:enumeration value="Intermediate"/>
+      <xsd:enumeration value="Viewing"/>
+      <xsd:enumeration value="Other"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+
   <xsd:simpleType name="LensType">
     <xsd:restriction base="xsd:string">
       <xsd:enumeration value="Amici-Bertrand"/>
@@ -8986,14 +9337,51 @@ annotation refs from the base Annotation to form the list.</xsd:documentation>
   <xsd:simpleType name="FilterType">
     <xsd:restriction base="xsd:string">
       <xsd:enumeration value="BandPass"/>
-      <xsd:enumeration value="MultiPass"/>
+      <xsd:enumeration value="BandStop"/>
       <xsd:enumeration value="LongPass"/>
+      <xsd:enumeration value="MultiPass"/>
+      <xsd:enumeration value="Notch"/>
       <xsd:enumeration value="ShortPass"/>
-      <xsd:enumeration value="NeutralDensity"/>
-      <xsd:enumeration value="Tuneable"/>
-      <xsd:enumeration value="HeatFilter"/>
-      <xsd:enumeration value="Acousto-optical"/>
-      <xsd:enumeration value="Liquid-crystal"/>
+      <xsd:enumeration value="Other"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="FilterTechnologyType">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Absorption Colored Glass"/>
+      <xsd:enumeration value="Metallic-coating"/>
+      <xsd:enumeration value="Polymer-Based"/>
+      <xsd:enumeration value="Thin-film interference-coating"/>
+      <xsd:enumeration value="Other"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="AttenuationMethodType">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Absorption"/>
+      <xsd:enumeration value="Reflection"/>
+      <xsd:enumeration value="Refraction"/>
+      <xsd:enumeration value="Other"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="CoatingMethod">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="EBeam"/>
+      <xsd:enumeration value="Dielectric"/>
+      <xsd:enumeration value="HardSputtered"/>
+      <xsd:enumeration value="Other"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="FilterPolarizationType">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Circular"/>
+      <xsd:enumeration value="Elliptical"/>
+      <xsd:enumeration value="Planar"/>
+      <xsd:enumeration value="Other"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="NDTYPE">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Absorbing"/>
+      <xsd:enumeration value="Reflecting"/>
       <xsd:enumeration value="Other"/>
     </xsd:restriction>
   </xsd:simpleType>
@@ -9007,12 +9395,12 @@ annotation refs from the base Annotation to form the list.</xsd:documentation>
   </xsd:simpleType>
   <xsd:simpleType name="MirrorGeometry">
     <xsd:restriction base="xsd:string">
-      <xsd:enumeration value="Spherical"/>
       <xsd:enumeration value="Aspherical"/>
       <xsd:enumeration value="Cylindrical"/>
       <xsd:enumeration value="Ellipsoidal"/>
       <xsd:enumeration value="Hyeprboloidal"/>
       <xsd:enumeration value="Paraboloidal"/>
+      <xsd:enumeration value="Spherical"/>
       <xsd:enumeration value="Other"/>
     </xsd:restriction>
   </xsd:simpleType>
@@ -9683,13 +10071,13 @@ annotation refs from the base Annotation to form the list.</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
           <xsd:attribute default="µl" name="BeadVolumeUnit" type="UnitsVolume"/>
-          <xsd:attribute name="BeadEmissionWavelenght" type="xsd:string" use="required">
+          <xsd:attribute name="BeadEmissionWavelength" type="xsd:string" use="required">
             <xsd:annotation>
               <xsd:documentation>Description=The wavelenght(s) of the light emitted by these beads.</xsd:documentation>
               <xsd:documentation>Tier-3</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute default="nm" name="BeadEmissionWavelenghtUnit" type="UnitsLength"/>
+          <xsd:attribute default="nm" name="BeadEmissionWavelengthUnit" type="UnitsLength"/>
           <xsd:attribute name="Type" type="BeadType" use="required">
             <xsd:annotation>
               <xsd:documentation>Description=The type of colred beads used in this case.</xsd:documentation>
@@ -9857,13 +10245,13 @@ annotation refs from the base Annotation to form the list.</xsd:documentation>
     <xsd:complexType>
       <xsd:complexContent>
         <xsd:extension base="IntensityCalibration">
-          <xsd:attribute name="ObservedExcitationWavelenght" type="xsd:float" use="required">
+          <xsd:attribute name="ObservedExcitationWavelength" type="xsd:float" use="required">
             <xsd:annotation>
               <xsd:documentation>Description=Observed peak excitation wavelength.</xsd:documentation>
               <xsd:documentation>Tier=3</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="ObservedExcitationWavelenghtUnit" type="UnitsLength" default="nm">
+          <xsd:attribute name="ObservedExcitationWavelengthUnit" type="UnitsLength" default="nm">
             <xsd:annotation>
               <xsd:documentation>Tier=3</xsd:documentation>
             </xsd:annotation>
