@@ -1263,7 +1263,8 @@
             <xsd:documentation>Tier=4</xsd:documentation>
           </xsd:annotation>
         </xsd:element>
-        <xsd:element maxOccurs="unbounded" minOccurs="0" ref="SampleOpticsPositioningGroup">
+        <xsd:element maxOccurs="unbounded" minOccurs="0" ref="StageInsert"/>
+        <xsd:element maxOccurs="unbounded" minOccurs="0" ref="SamplePositioningGroup">
           <xsd:annotation>
             <xsd:documentation>Domain=MicrosocpeHardwareSpecifications</xsd:documentation>
             <xsd:documentation>Category=SampleHolderAndFocusing.Focusing</xsd:documentation>
@@ -1280,10 +1281,12 @@
           </xsd:annotation>
         </xsd:element>
         <xsd:element ref="Objective" minOccurs="1" maxOccurs="unbounded"/>
+        <xsd:element maxOccurs="unbounded" minOccurs="0" ref="OpticalDeviceGroup"/>
         <xsd:element maxOccurs="unbounded" minOccurs="0" ref="LensGroup"/>
         <xsd:element maxOccurs="unbounded" minOccurs="0" ref="Prism"/>
         <xsd:element maxOccurs="unbounded" minOccurs="0" ref="PolarizationOptics"/>
-        <xsd:element ref="FilterSet" minOccurs="0" maxOccurs="unbounded"/>
+        <xsd:element ref="OpticsHolderGroup" minOccurs="0" maxOccurs="unbounded"/>
+        <xsd:element maxOccurs="unbounded" minOccurs="0" ref="OpticalApertureGroup"/>
         <xsd:element ref="FilterGroup" minOccurs="1" maxOccurs="unbounded"/>
         <xsd:element ref="MirroringDeviceGroup" minOccurs="1" maxOccurs="unbounded">
           <xsd:annotation>
@@ -2790,8 +2793,8 @@
       <xsd:appinfo><xsdfu xmlns=""><plural>TransmittanceRanges</plural></xsdfu></xsd:appinfo>
       <xsd:documentation>Domain=MicrosocpeHardwareSpecifications</xsd:documentation>
       <xsd:documentation>Category=ChildElement</xsd:documentation>
-      <xsd:documentation>Description=This element records a range of Wavelengths this device is designed for, according to the Manufacturer. Multiple of this element may be used.</xsd:documentation>
-      <xsd:documentation>Tier=5</xsd:documentation>
+      <xsd:documentation>Description=This element records the Range of Wavelengths this device is designed for, according to the Manufacturer. Multiple of this element may be used.</xsd:documentation>
+      <xsd:documentation>Tier=2</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
       <xsd:attribute name="PeakWavelength" type="xsd:float">
@@ -2864,12 +2867,47 @@
   </xsd:element>
 
   <!-- Sample holder and focusing elements -->
-  <xsd:element name="SampleOpticsPositioningGroup" abstract="true" type="SampleOpticsPositioning">
+  <xsd:element name="StageInsert">
+    <xsd:annotation>
+      <xsd:documentation>Domain=MicrosocpeHardwareSpecifications</xsd:documentation>
+      <xsd:documentation>Category=SamplePositioning.Stage</xsd:documentation>
+      <xsd:documentation>Description=This element describes an optional Stage Insert mounted on the Stage.</xsd:documentation>
+      <xsd:documentation>Tier=2</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:complexContent>
+        <xsd:extension base="ManufacturerSpec">
+          <xsd:sequence>
+            <xsd:element ref="AnnotationRef"/>
+          </xsd:sequence>
+          <xsd:attribute name="SampleHolderType" type="SampleHolderType" use="required">
+            <xsd:annotation>
+              <xsd:documentation>Description=This field describes the type of Specimen Holder this Stage Insert is designed to hold.</xsd:documentation>
+              <xsd:documentation>Tier=2</xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
+          <xsd:attribute name="TemperatureControlled" type="xsd:boolean" use="required">
+            <xsd:annotation>
+              <xsd:documentation>Description=This field records whether this Stage Insert is Temperature Controlled (True), or not (False).</xsd:documentation>
+              <xsd:documentation>Tier=2</xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
+          <xsd:attribute name="NumberOfSlots" type="xsd:positiveInteger">
+            <xsd:annotation>
+              <xsd:documentation>Description=This field describes the number of Specimen Holder slots on this Stage Insert.</xsd:documentation>
+              <xsd:documentation>Tier=2</xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
+        </xsd:extension>
+      </xsd:complexContent>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="SamplePositioningGroup" abstract="true" type="SamplePositioning">
     <xsd:annotation>
       <xsd:documentation>Description=This describes a objective lens or stage positioning device available for this instrument. An instrument may have more than one of these devices of different type, such as mechanical stage, piezoelectric stage, objective turret and piezoelectric objective.</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
-  <xsd:complexType name="SampleOpticsPositioning">
+  <xsd:complexType name="SamplePositioning">
     <xsd:annotation>
       <xsd:documentation>Description=This element describes a focusing device associated with a rotating Objective Turret. This type of device is often operated using a rack and pinion mechanism.</xsd:documentation>
     </xsd:annotation>
@@ -2996,12 +3034,12 @@
     </xsd:annotation>
     <xsd:complexType>
       <xsd:complexContent>
-        <xsd:extension base="SampleOpticsPositioning"/>
+        <xsd:extension base="SamplePositioning"/>
       </xsd:complexContent>
     </xsd:complexType>
   </xsd:element>
   <xsd:element name="FocusingDeviceGroup" abstract="true" type="FocusingDevice"
-    substitutionGroup="SampleOpticsPositioningGroup">
+    substitutionGroup="SamplePositioningGroup">
     <xsd:annotation>
       <xsd:documentation>Description=A focusing mechanism is used to obtain maximum sharpness in an Image by changing the distance between a Sample and the optical system forming the Image. In this case, a Z-axis focusing mechanism moves the Objective along the optical axis.</xsd:documentation>
     </xsd:annotation>
@@ -3011,7 +3049,7 @@
       <xsd:documentation>Description=A Focusing mechanism is used to obtain maximum sharpness in an Image by changing the distance between a Sample and the optical system forming the Image. In this case, a Z-axis focusing mechanism moves the Objective along the optical axis.</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
-      <xsd:extension base="SampleOpticsPositioning"> </xsd:extension>
+      <xsd:extension base="SamplePositioning"> </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
   <xsd:element name="ObjectiveTurretFocusing" substitutionGroup="FocusingDeviceGroup">
@@ -3047,7 +3085,7 @@
       </xsd:complexContent>
     </xsd:complexType>
   </xsd:element>
-  <xsd:element abstract="true" name="StageGroup" substitutionGroup="SampleOpticsPositioningGroup"
+  <xsd:element abstract="true" name="StageGroup" substitutionGroup="SamplePositioningGroup"
     type="Stage">
     <xsd:annotation>
       <xsd:documentation>Description=This element describes a platform positioned at right angle to the optical axis of this Microscope, which is designed to either directly hold a Specimen Holder containing a Sample to be observed, or a Stage Insert, which itself holds the Sample Holder. In many cases, this device is capable of mechanical movements (as in a Mechanical Stage) to allow easy positioning and rotation of the Sample in the X-, Y-, and Z-axes.</xsd:documentation>
@@ -3058,7 +3096,7 @@
       <xsd:documentation>Description=This element describes a platform positioned at right angle to the optical axis of this Microscope, which is designed to either directly hold a Specimen Holder containing a Sample to be observed, or a Stage Insert, which itself holds the Sample Holder. In many cases, this device is capable of mechanical movements (as in a Mechanical Stage) to allow easy positioning and rotation of the Sample in the X-, Y-, and Z-axes.</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
-      <xsd:extension base="SampleOpticsPositioning">
+      <xsd:extension base="SamplePositioning">
         <xsd:attribute name="XTravelRange" type="xsd:float" use="required">
           <xsd:annotation>
             <xsd:documentation>Description=This field describes the X-axis range within which this device is capable of moving.</xsd:documentation>
@@ -3134,34 +3172,6 @@
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
-  <xsd:element name="StageInsert" substitutionGroup="StageGroup">
-    <xsd:annotation>
-      <xsd:documentation>Domain=MicrosocpeHardwareSpecifications</xsd:documentation>
-      <xsd:documentation>Category=SamplePositioning.Stage</xsd:documentation>
-      <xsd:documentation>Description=This element describes an optional Stage Insert mounted on the Stage.</xsd:documentation>
-      <xsd:documentation>Tier=3</xsd:documentation>
-    </xsd:annotation>
-    <xsd:complexType>
-      <xsd:complexContent>
-        <xsd:extension base="Stage">
-          <xsd:sequence> </xsd:sequence>
-          <xsd:attribute name="SampleHolderType" type="SampleHolderType" use="required">
-            <xsd:annotation>
-              <xsd:documentation>Description=This field describes the type of Specimen Holder this Stage Insert is designed to hold.</xsd:documentation>
-              <xsd:documentation>Tier=5</xsd:documentation>
-            </xsd:annotation>
-          </xsd:attribute>
-          <xsd:attribute name="TemperatureControlled" type="xsd:boolean" use="required">
-            <xsd:annotation>
-              <xsd:documentation>Description=This field records whether this Stage Insert is Temperature Controlled (True), or not (False).</xsd:documentation>
-              <xsd:documentation>Tier=5</xsd:documentation>
-            </xsd:annotation>
-          </xsd:attribute>
-          <xsd:attribute name="NumberOfSlots" type="xsd:positiveInteger"/>
-        </xsd:extension>
-      </xsd:complexContent>
-    </xsd:complexType>
-  </xsd:element>
   <xsd:element name="MechanicalStage" substitutionGroup="StageGroup">
     <xsd:annotation>
       <xsd:documentation>Domain=MicrosocpeHardwareSpecifications</xsd:documentation>
@@ -3526,7 +3536,349 @@
     </xsd:complexType>
   </xsd:element>
 
+  <!-- Optics Holder elements -->
+  <xsd:element name="OpticsHolderGroup" abstract="true" type="OpticsHolder">
+    <xsd:annotation>
+      <xsd:documentation>Description=This element represents a Holder for Filters, Dichroic and other Optical Element that is associated with this Instrument. These Holders come in different arrangements such as Cubes, Sliders, Turrets, and Wheels. Optics Holders might either be pre-assebled by the Manufacturer and pruchased as a whole or they can be custome assembled on site depending on the needs of the user.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="OpticsHolder">
+    <xsd:annotation>
+      <xsd:documentation>Description=This element represents a Holder for Filters, Dichroic and other Optical Element that is associated with this Instrument. These Holders come in different arrangements such as Cubes, Sliders, Turrets, and Wheels. Optics Holders might either be pre-assebled by the Manufacturer and pruchased as a whole or they can be custome assembled on site depending on the needs of the user.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="ManufacturerSpec">
+        <xsd:sequence>
+          <xsd:element ref="AnnotationRef" maxOccurs="1" minOccurs="0"/>
+        </xsd:sequence>
+        <xsd:attribute name="ID" type="LensID" use="required">
+          <xsd:annotation>
+            <xsd:documentation>Description=A Unique Identifier for this hardware component.</xsd:documentation>
+            <xsd:documentation>Tier=2</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="Name" type="Denomination" use="required">
+          <xsd:annotation>
+            <xsd:documentation>Description=A user-defined Name for this hardware component.</xsd:documentation>
+            <xsd:documentation>Tier=2</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="NrOfSlots" type="xsd:integer" use="required">
+          <xsd:annotation>
+            <xsd:documentation>Description=This field records how many Slots this Optics Holder has.</xsd:documentation>
+            <xsd:documentation>Tier=2</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="FilterCube" type="xsd:boolean">
+          <xsd:annotation>
+            <xsd:documentation>Description=This field records whether or not this holder holds Filter Cubes (True) or individual Filters (False).</xsd:documentation>
+            <xsd:documentation>Tier=2</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="FilterCube" substitutionGroup="OpticsHolderGroup">
+    <xsd:annotation>
+      <xsd:documentation>Domain=MicrosocpeHardwareSpecifications</xsd:documentation>
+      <xsd:documentation>Category=OpticsHolder</xsd:documentation>
+      <xsd:documentation>Description=This element represents a Filter Cube containing the filters and mirror used in epi-fluorescence microscopy to separate fluorescence excitation and emission light. A Filter Cube is typically composed of one Excitation, one Emission, and one Dichroic Filter. It might be pre-assebled by the Manufacturer and pruchased as a whole or it might be custome assembled on site depending on the needs of the user.</xsd:documentation>
+      <xsd:documentation>Tier=1</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:complexContent>
+        <xsd:extension base="OpticsHolder">
+          <xsd:sequence>
+            <xsd:element ref="ExcitationFilterRef" maxOccurs="1" minOccurs="0"/>
+            <xsd:element ref="StandardDichroicRef">
+              <xsd:annotation>
+                <xsd:documentation>Description=This field refers to an available Dichroic Mirror, which is part of this Filter Cube.</xsd:documentation>
+                <xsd:documentation>Tier=1</xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+            <xsd:element ref="EmissionFilterRef" maxOccurs="1" minOccurs="0"/>
+          </xsd:sequence>
+          <xsd:attribute name="OpticsHolderPosition" type="xsd:positiveInteger">
+            <xsd:annotation>
+              <xsd:documentation>Description=When relevant, this field records the position of this Filter Cube in a Optics Holder.</xsd:documentation>
+              <xsd:documentation>Tier=1</xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
+        </xsd:extension>
+      </xsd:complexContent>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="FilterCubeTurret" substitutionGroup="OpticsHolderGroup">
+    <xsd:annotation>
+      <xsd:documentation>Domain=MicrosocpeHardwareSpecifications</xsd:documentation>
+      <xsd:documentation>Category=OpticsHolder</xsd:documentation>
+      <xsd:documentation>Description=This element represents a circular holder for multiple Filter Cubes.</xsd:documentation>
+      <xsd:documentation>Tier=2</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:complexContent>
+        <xsd:extension base="OpticsHolder">
+          <xsd:sequence>
+            <xsd:element ref="FilterCubeRef" maxOccurs="unbounded"/>
+          </xsd:sequence>
+        </xsd:extension>
+      </xsd:complexContent>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="FilterWheel" substitutionGroup="OpticsHolderGroup">
+    <xsd:annotation>
+      <xsd:documentation>Domain=MicrosocpeHardwareSpecifications</xsd:documentation>
+      <xsd:documentation>Category=OpticsHolder</xsd:documentation>
+      <xsd:documentation>Description=This element represents a circular holder for multiple individual Filters.</xsd:documentation>
+      <xsd:documentation>Tier=2</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:complexContent>
+        <xsd:extension base="OpticsHolder">
+          <xsd:sequence>
+            <xsd:element ref="ExcitationFilterRef" maxOccurs="unbounded" minOccurs="0"/>
+            <xsd:element ref="StandardDichroicRef" maxOccurs="unbounded" minOccurs="0">
+              <xsd:annotation>
+                <xsd:documentation>Description=This field refers to an available Dichroic Mirror, which is part of this Filter Cube.</xsd:documentation>
+                <xsd:documentation>Tier=1</xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+            <xsd:element ref="EmissionFilterRef" maxOccurs="unbounded" minOccurs="0"/>
+          </xsd:sequence>
+        </xsd:extension>
+      </xsd:complexContent>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="FilterSlider" substitutionGroup="OpticsHolderGroup">
+    <xsd:annotation>
+      <xsd:documentation>Domain=MicrosocpeHardwareSpecifications</xsd:documentation>
+      <xsd:documentation>Category=OpticsHolder</xsd:documentation>
+      <xsd:documentation>Description=This element represents a linear holder for either Filter Cubes or individual Filers.</xsd:documentation>
+      <xsd:documentation>Tier=2</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:complexContent>
+        <xsd:extension base="OpticsHolder">
+          <xsd:sequence>
+            <xsd:element ref="ExcitationFilterRef" maxOccurs="unbounded" minOccurs="0"/>
+            <xsd:element ref="StandardDichroicRef" maxOccurs="unbounded" minOccurs="0">
+              <xsd:annotation>
+                <xsd:documentation>Description=This field refers to an available Dichroic Mirror, which is part of this Filter Cube.</xsd:documentation>
+                <xsd:documentation>Tier=1</xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+            <xsd:element ref="EmissionFilterRef" maxOccurs="unbounded" minOccurs="0"/>
+            <xsd:element ref="FilterCubeRef" maxOccurs="unbounded" minOccurs="0"/>
+          </xsd:sequence>
+        </xsd:extension>
+      </xsd:complexContent>
+    </xsd:complexType>
+  </xsd:element>
+
+  <xsd:element name="OpticsTurret" substitutionGroup="OpticsHolderGroup">
+    <xsd:annotation>
+      <xsd:documentation>Domain=MicrosocpeHardwareSpecifications</xsd:documentation>
+      <xsd:documentation>Category=OpticsHolder</xsd:documentation>
+      <xsd:documentation>Description=This element represents a circular holder for multiple optical elements.</xsd:documentation>
+      <xsd:documentation>Tier=2</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:complexContent>
+        <xsd:extension base="OpticsHolder">
+          <xsd:sequence>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="LensRef"/>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="MirrorringDeviceRef"/>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="OpticalApertureRef"/>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="PrismRef"/>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="PolarizationOpticsRef"/>
+          </xsd:sequence>
+        </xsd:extension>
+      </xsd:complexContent>
+    </xsd:complexType>
+  </xsd:element>
+
   <!-- Additional optics elements -->
+  <xsd:element name="OpticalApertureGroup" abstract="true" type="OpticalAperture">
+    <xsd:annotation>
+      <xsd:documentation>Description=This element represents any mechanical, non optical device that is placed in the Light Path and spatially modifies the light beam. Examples include, Pin Holes, Phase Rings, Dark Field Stops, Hoffman Modulators, Diffraction Gratings etc. This element can be associated with an optional Optics Turret.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="OpticalAperture">
+    <xsd:annotation>
+      <xsd:documentation>Description=This element represents any mechanical, non optical device that is placed in the Light Path and spatially modifies the light beam. Examples include, Pin Holes, Phase Rings, Dark Field Stops, Hoffman Modulators, Diffraction Gratings etc. This element can be associated with an optional Optics Turret.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="ManufacturerSpec">
+        <xsd:sequence>
+          <xsd:element ref="AnnotationRef" maxOccurs="1" minOccurs="0"/>
+        </xsd:sequence>
+        <xsd:attribute name="ID" type="LensID" use="required">
+          <xsd:annotation>
+            <xsd:documentation>Description=A Unique Identifier for this hardware component.</xsd:documentation>
+            <xsd:documentation>Tier=1</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="Name" type="Denomination" use="required">
+          <xsd:annotation>
+            <xsd:documentation>Description=A user-defined Name for this hardware component.</xsd:documentation>
+            <xsd:documentation>Tier=1</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="OpticsHolderPosition" type="xsd:positiveInteger" use="required">
+          <xsd:annotation>
+            <xsd:documentation>Description=This field records the position of this Optical Aperture in a Optics Turret.</xsd:documentation>
+            <xsd:documentation>Tier=2</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="OuterDiameter" type="xsd:float" use="optional">
+          <xsd:annotation>
+            <xsd:documentation>Description=This field captures the physical outer diameter of the component</xsd:documentation>
+            <xsd:documentation>Tier=3</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute default="mm" name="OuterDiameterUnit" type="UnitsLength" use="optional">
+          <xsd:annotation>
+            <xsd:documentation>Tier=3</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+
+  <xsd:element name="DarkFieldDStop" substitutionGroup="OpticalApertureGroup">
+    <xsd:annotation>
+      <xsd:documentation>Domain=MicrosocpeHardwareSpecifications</xsd:documentation>
+      <xsd:documentation>Category=OpticalApertures</xsd:documentation>
+      <xsd:documentation>Description=This element refers to a central circular stop (i.e., opaque disc) usually used in dark-field microscopy and placed in the front focal plane of a Condenser to occlude all the direct light which would fall within the aperture of the objective.</xsd:documentation>
+      <xsd:documentation>Tier=2</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:complexContent>
+        <xsd:extension base="OpticalAperture">
+          <xsd:attribute name="CenterStopDiameter" type="xsd:float" use="required">
+            <xsd:annotation>
+              <xsd:documentation>Description=This field captures the physical diameter of the central disc of this Dark Field Stop.</xsd:documentation>
+              <xsd:documentation>Tier=3</xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
+          <xsd:attribute default="mm" name="CenterStopDiameterUnit" type="UnitsLength"
+            use="optional">
+            <xsd:annotation>
+              <xsd:documentation>Tier=3</xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
+        </xsd:extension>
+      </xsd:complexContent>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="PhaseRing" substitutionGroup="OpticalApertureGroup">
+    <xsd:annotation>
+      <xsd:documentation>Domain=MicrosocpeHardwareSpecifications</xsd:documentation>
+      <xsd:documentation>Category=OpticalApertures</xsd:documentation>
+      <xsd:documentation>Description=This element refers to an annular (ring-like) slit used to produce contrast modulation following Zernike, in which the image contrast of a phase object is enhanced by altering the phase and amplitude of the direct light with respect to those of the diffracted light. This illuminating aperture Diaphragm is placed in the front focal plane of the Condenser and acts in conjunction with an appropriate phase plate, usually in the form of an annulus, placed in the back focal plane of the objective (or in a succeeding plane conjugate with this).</xsd:documentation>
+      <xsd:documentation>Tier=1</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:complexContent>
+        <xsd:extension base="OpticalAperture">
+          <xsd:attribute name="PhaseNumber" type="PhaseRingNumber" use="required">
+            <xsd:annotation>
+              <xsd:documentation>Description=This field captures the Phase Number is used to identify the size of the annular slit of this Phase Ring. The Phase Number must match the Phase Plate found within a Phase-contrast capable Objective lens.</xsd:documentation>
+              <xsd:documentation>Tier=1</xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
+          <xsd:attribute name="CenterStopDiameter" type="xsd:float">
+            <xsd:annotation>
+              <xsd:documentation>Description=This filed records the physical diameter of the center-stop (i.e. opaque disc) of this Phase Ring.</xsd:documentation>
+              <xsd:documentation>Tier=3</xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
+          <xsd:attribute default="mm" name="CenterStopDiameterUnit" type="UnitsLength">
+            <xsd:annotation>
+              <xsd:documentation>Description=This filed records the physical diameter of the center-stop (i.e. opaque disc) of this Phase Ring.</xsd:documentation>
+              <xsd:documentation>Tier=3</xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
+          <xsd:attribute name="SlitWidth" type="PositiveFloat">
+            <xsd:annotation>
+              <xsd:documentation>Description=This field records the physical width of the annular slit of this Phase Ring.</xsd:documentation>
+              <xsd:documentation>Tier=3</xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
+          <xsd:attribute default="mm" name="SlitWidthUnit" type="UnitsLength">
+            <xsd:annotation>
+              <xsd:documentation>Tier=3</xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
+        </xsd:extension>
+      </xsd:complexContent>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="HoffmanSlit" substitutionGroup="OpticalApertureGroup">
+    <xsd:annotation>
+      <xsd:documentation>Domain=MicrosocpeHardwareSpecifications</xsd:documentation>
+      <xsd:documentation>Category=OpticalApertures</xsd:documentation>
+      <xsd:documentation>Description=This element represents an off-axis Slit aperture positioned in the front focal plane of the Condenser. It is used alongside a Hoffman contrast modulator (i.e., optical amplitude spatial filter) present in the back focal plane of the objective or in a succeeding conjugate plane to produce contrast modulation as described by Hoffman (i.e., Hoffman Contrast Modulation, HMC). Hoffman modulation contrast is not hampered by the use of birefringent materials (such as plastic Petri dishes) in the optical pathway, so the technique is more useful for examining specimens in containers constructed with polymeric materials.</xsd:documentation>
+      <xsd:documentation>Tier=1</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:complexContent>
+        <xsd:extension base="OpticalAperture">
+          <xsd:attribute name="Design" type="HoffmanSlitDesign" use="required">
+            <xsd:annotation>
+              <xsd:documentation>Description=This field captures the design of the Slit of this Hoffman Slit.</xsd:documentation>
+              <xsd:documentation>Tier=2</xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
+        </xsd:extension>
+      </xsd:complexContent>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="IrisDiagram" substitutionGroup="OpticalApertureGroup">
+    <xsd:annotation>
+      <xsd:documentation>Domain=MicrosocpeHardwareSpecifications</xsd:documentation>
+      <xsd:documentation>Category=OpticalApertures</xsd:documentation>
+      <xsd:documentation>Description=This element represents a Diaphragm, positioned trasversally to the optical axis bounded by multiple leaves, usually metal, arranged so as to provide an opening of variable size, which is adjustable by means of a mechanical control.</xsd:documentation>
+      <xsd:documentation>Tier=1</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:complexContent>
+        <xsd:extension base="OpticalAperture">
+          <xsd:attribute name="Diameter" type="xsd:float" use="required">
+            <xsd:annotation>
+              <xsd:documentation>Description=This field records the maximum physical diameter of the aperture of this Iris Diaphragm.</xsd:documentation>
+              <xsd:documentation>Tier=2</xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
+          <xsd:attribute default="mm" name="DiameterUnit" type="UnitsLength" use="optional">
+            <xsd:annotation>
+              <xsd:documentation>Tier=2</xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
+          <xsd:attribute name="Shape" type="IrisShape" use="required">
+            <xsd:annotation>
+              <xsd:documentation>Description=This field captures the Shape of the aperture of this Iris Diaphragm.</xsd:documentation>
+              <xsd:documentation>Tier=3</xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
+        </xsd:extension>
+      </xsd:complexContent>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="VarelRing" substitutionGroup="OpticalApertureGroup">
+    <xsd:annotation>
+      <xsd:documentation>Domain=MicrosocpeHardwareSpecifications</xsd:documentation>
+      <xsd:documentation>Category=OpticalApertures</xsd:documentation>
+      <xsd:documentation>Description=This element represents a stop (i.e., opaque structure) shaped like a ring sector, which is used on the illumination side, to permit unilateral inclined illumination. It was developed to work in combination with Phase Objectives to yield contrast even when light passes through birefringent materials, such as plastic Petri dishes.</xsd:documentation>
+      <xsd:documentation>Tier=1</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:complexContent>
+        <xsd:extension base="OpticalAperture"/>
+      </xsd:complexContent>
+    </xsd:complexType>
+  </xsd:element>
+
   <xsd:element name="OpticalDeviceGroup" abstract="true" type="OpticalDevice">
     <xsd:annotation>
       <xsd:documentation>Description=This is a device that might include one or more Lenses, other Optics and Optics Holders. Optical Devices might be custom built or they might also be available as pre-assembled units. Such devices might be embedded within the Microscope Stand or exist as independent units. Examples include the Condenser and the Microscope Tube.</xsd:documentation>
@@ -3545,26 +3897,9 @@
               <xsd:documentation>Tier=3</xsd:documentation>
             </xsd:annotation>
           </xsd:element>
-          <xsd:element name="LensRef" type="LensRef" minOccurs="0" maxOccurs="unbounded">
-            <xsd:annotation>
-              <xsd:documentation>Description=This refers to an available Lens, which is part of this Optical Device.</xsd:documentation>
-              <xsd:documentation>Tier=3</xsd:documentation>
-            </xsd:annotation>
-          </xsd:element>
-          <xsd:element name="MirrorringDeviceRef" type="MirrorRef" minOccurs="0"
-            maxOccurs="unbounded">
-            <xsd:annotation>
-              <xsd:documentation>Description=This refers to an available Mirroring Device, which is part of this Optical Device.</xsd:documentation>
-              <xsd:documentation>Tier=3</xsd:documentation>
-            </xsd:annotation>
-          </xsd:element>
-          <xsd:element name="OpticalApertureRef" type="OpticalApertureRef" minOccurs="0"
-            maxOccurs="unbounded">
-            <xsd:annotation>
-              <xsd:documentation>Description=This refers to an available Optical Aperture, which is part of this Optical Device.</xsd:documentation>
-              <xsd:documentation>Tier=3</xsd:documentation>
-            </xsd:annotation>
-          </xsd:element>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" ref="LensRef"/>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" ref="MirrorringDeviceRef"/>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" ref="OpticalApertureRef"/>
           <xsd:element name="OpticsHolderRef" type="OpticsHolderRef" minOccurs="0"
             maxOccurs="unbounded">
             <xsd:annotation>
@@ -3572,19 +3907,8 @@
               <xsd:documentation>Tier=3</xsd:documentation>
             </xsd:annotation>
           </xsd:element>
-          <xsd:element name="PolarizationOpticsRef" type="PolarizationOpticsRef" minOccurs="0"
-            maxOccurs="unbounded">
-            <xsd:annotation>
-              <xsd:documentation>Description=This refers to an available Polarization Optics, which is part of this Optical Device.</xsd:documentation>
-              <xsd:documentation>Tier=3</xsd:documentation>
-            </xsd:annotation>
-          </xsd:element>
-          <xsd:element name="PrismRef" type="PrismRef" minOccurs="0" maxOccurs="unbounded">
-            <xsd:annotation>
-              <xsd:documentation>Description=This field refers to an available Prism, which is part of this Optical Device.</xsd:documentation>
-              <xsd:documentation>Tier=3</xsd:documentation>
-            </xsd:annotation>
-          </xsd:element>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" ref="PolarizationOpticsRef"/>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" ref="PrismRef"/>
           <xsd:element ref="AnnotationRef" maxOccurs="1" minOccurs="0"/>
         </xsd:sequence>
         <xsd:attribute name="ID" type="LSID" use="required">
@@ -3895,7 +4219,6 @@
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
-
   <xsd:element name="MagnificationChanger" substitutionGroup="LensGroup">
     <xsd:annotation>
       <xsd:documentation>Domain=MicrosocpeHardwareSpecifications</xsd:documentation>
@@ -3909,6 +4232,7 @@
       </xsd:complexContent>
     </xsd:complexType>
   </xsd:element>
+
   <xsd:element name="AdditionalGenericLens" substitutionGroup="LensGroup">
     <xsd:annotation>
       <xsd:documentation>Domain=MicrosocpeHardwareSpecifications</xsd:documentation>
@@ -4246,26 +4570,14 @@
       <xsd:complexContent>
         <xsd:extension base="ManufacturerSpec">
           <xsd:sequence>
-            <xsd:element name="ExcitationFilterRef" type="FilterRef" minOccurs="0" maxOccurs="1">
-              <xsd:annotation>
-                <xsd:appinfo><xsdfu xmlns=""><plural>ExcitationFilters</plural><manytomany/></xsdfu></xsd:appinfo>
-                <xsd:documentation>Description=This refers to an available excitation filter, which is part of this filter set.</xsd:documentation>
-                <xsd:documentation>Tier=2</xsd:documentation>
-              </xsd:annotation>
-            </xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="0" ref="ExcitationFilterRef"/>
             <xsd:element minOccurs="0" maxOccurs="1" ref="StandardDichroicRef">
               <xsd:annotation>
                 <xsd:documentation>Description=This refers to an available dichroic mirror, which is part of this filter set.</xsd:documentation>
                 <xsd:documentation>Tier=2</xsd:documentation>
               </xsd:annotation>
             </xsd:element>
-            <xsd:element name="EmissionFilterRef" minOccurs="0" maxOccurs="1" type="FilterRef">
-              <xsd:annotation>
-                <xsd:appinfo><xsdfu xmlns=""><plural>EmissionFilters</plural><manytomany/></xsdfu></xsd:appinfo>
-                <xsd:documentation>Description=This refers to an available emission filter, which is part of this filter set.</xsd:documentation>
-                <xsd:documentation>Tier=2</xsd:documentation>
-              </xsd:annotation>
-            </xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="0" ref="EmissionFilterRef"/>
             <xsd:element minOccurs="0" ref="AnnotationRef"/>
           </xsd:sequence>
           <xsd:attribute name="ID" use="required" type="FilterSetID">
@@ -4504,6 +4816,9 @@
       </xsd:attribute>
     </xsd:complexType>
   </xsd:element>
+
+
+
 
   <!-- Mirror elements -->
   <xsd:element name="MirroringDeviceGroup" abstract="true" type="MirroringDevice">
@@ -4831,81 +5146,87 @@
     <!-- top level definition -->
     <xsd:annotation>
       <xsd:appinfo><xsdfu xmlns=""><plural>Detectors</plural></xsdfu></xsd:appinfo>
-      <xsd:documentation>Description=This describes a detector available for this instrument. An instrument may have more than one detector of different types, such as photomultiplier, or camera. The Detector ID can be used as a reference within the Channel element in the Image element. The values stored in Detector represent the fixed values, variable values modified during the acquisition go in DetectorSettings.</xsd:documentation>
+      <xsd:documentation>Description=This element describes a Detector available for this Instrument. An Instrument may have more than one Detector of different types, such as a Photomultiplier, or a Camera. The Detector ID can be used as a reference within the Channel element. The values stored in Detector represent the fixed values, variable values modified during the acquisition go in DetectorSettings.</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
   <xsd:complexType name="Detector">
     <xsd:annotation>
-      <xsd:documentation>Description=This describes a detector available for this instrument. An instrument may have more than one detector of different types, such as photomultiplier, or camera. The Detector ID can be used as a reference within the Channel element in the Image element. The values stored in Detector represent the fixed values, variable values modified during the acquisition go in DetectorSettings.</xsd:documentation>
+      <xsd:documentation>Description=This element describes a Detector available for this Instrument. An Instrument may have more than one Detector of different types, such as a Photomultiplier, or a Camera. The Detector ID can be used as a reference within the Channel element. The values stored in Detector represent the fixed values, variable values modified during the acquisition go in DetectorSettings.</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="ManufacturerSpec">
         <xsd:sequence>
-          <xsd:element maxOccurs="1" ref="WavelengthRange" minOccurs="1"/>
           <xsd:element name="RelayLensRef" type="LensRef" minOccurs="0" maxOccurs="1">
             <xsd:annotation>
               <xsd:documentation>Description=This is a reference to a lens positioned at the mount connecting this detector to the microscope body.</xsd:documentation>
-              <xsd:documentation>Tier=3</xsd:documentation>
+              <xsd:documentation>Tier=2</xsd:documentation>
             </xsd:annotation>
           </xsd:element>
           <xsd:element ref="AnnotationRef" maxOccurs="1" minOccurs="0"/>
+          <xsd:element maxOccurs="1" ref="WavelengthRange" minOccurs="1"/>
         </xsd:sequence>
         <xsd:attribute name="ID" type="DetectorID" use="required">
           <xsd:annotation>
             <xsd:documentation>Description=A Unique Identifier for this hardware component.</xsd:documentation>
-            <xsd:documentation>Tier=2</xsd:documentation>
+            <xsd:documentation>Tier=1</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
         <xsd:attribute name="Name" type="Denomination" use="required">
           <xsd:annotation>
             <xsd:documentation>Description=A user-defined Name for this hardware component.</xsd:documentation>
-            <xsd:documentation>Tier=2</xsd:documentation>
-          </xsd:annotation>
-        </xsd:attribute>
-        <xsd:attribute name="Gain" type="xsd:float" use="required">
-          <xsd:annotation>
-            <xsd:documentation>Description=The analog gain is the conversion unit for this detector, as specified by the manufacturer. It specifies how many electrons correspond to 1 signal unit. It is expressed in e-/Analog-to-Digit-Unit (ADU).</xsd:documentation>
-            <xsd:documentation>Tier=3</xsd:documentation>
+            <xsd:documentation>Tier=1</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
         <xsd:attribute default="C-mount" name="Mount" type="DetectorMount" use="optional">
           <xsd:annotation>
-            <xsd:documentation>Description=The type of mount used to connect this detector to the microscope body.</xsd:documentation>
-            <xsd:documentation>Tier=5</xsd:documentation>
+            <xsd:documentation>Description=This field records the type of Mount used to connect this detector to the Microscope Stand.</xsd:documentation>
+            <xsd:documentation>Tier=1</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
-        <xsd:attribute name="ReadNoise" type="xsd:float" use="required">
+        <xsd:attribute name="MaxBitDepth" type="PixelType" use="required">
           <xsd:annotation>
-            <xsd:documentation>Description=The read noise of this detector, as specified by the manufacturer. Read noise includes thermal noise build-up and clock induced charge. This is generally expressed in e- rms.</xsd:documentation>
-            <xsd:documentation>Tier=5</xsd:documentation>
+            <xsd:documentation>Description=This field records the Maximum Bit Depth provided by the Detector's Analog to Digital (A/D) converter.</xsd:documentation>
+            <xsd:documentation>Tier=2</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="QuantumEfficiency" type="xsd:float" use="required">
+          <xsd:annotation>
+            <xsd:documentation>Description=This field records the Quantum Efficiency observed at Peak Wavelength, according to the Manufacturer. Quantum Efficiency is generally defined as is the ratio of incident photons to converted electrons. Typically expressed as a number between 0 and 1.</xsd:documentation>
+            <xsd:documentation>Tier=3</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="ElectronicConversionFactor" type="xsd:float" use="required">
+          <xsd:annotation>
+            <xsd:documentation>Description=This field records the Electron-Conversion Factor for this Detector, as specified by the Manufacturer. The Electron Conversion Factor relates the digital numbers associated with each pixel with the actual number of electrons generated by the Detector. It is expressed in e-/Digital Number (DN). Note that DN can also be referred to as Analog-to-Digital-Unit (ADU) or Binary Number. It is sometimes referred to as Digital Gain or, in case of CCD cameras as CCD Gain.</xsd:documentation>
+            <xsd:documentation>Tier=2</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="ReadOutNoise" type="xsd:float" use="required">
+          <xsd:annotation>
+            <xsd:documentation>Description=This field captures the Read Out Noise associated with this Detector, as specified by the Manufacturer. Read Out Noise is a constant amount of noise and it includes thermal noise build-up and clock induced charge added by CCD chip, the readout amplifier and surrounding electronics. It is generally expressed in photo-electrons (i.e., e- root-mean-square).</xsd:documentation>
+            <xsd:documentation>Tier=2</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
         <xsd:attribute default="e- rms" name="ReadNoiseUnit" type="UnitsElectricCurrent">
           <xsd:annotation>
-            <xsd:documentation>Tier=5</xsd:documentation>
+            <xsd:documentation>Tier=2</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
         <xsd:attribute name="DetectorNoiseModel" type="DetectorNoiseModel" use="required">
           <xsd:annotation>
-            <xsd:documentation>Description=The type of noise associated with this detector.</xsd:documentation>
-            <xsd:documentation>Tier=5</xsd:documentation>
+            <xsd:documentation>Description=This field records the Noise Model associated with this Detector.</xsd:documentation>
+            <xsd:documentation>Tier=2</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
         <xsd:attribute name="DarkCurrentRate" type="xsd:float" use="required">
           <xsd:annotation>
-            <xsd:documentation>Description=The dark current rate of this detector as specified by the manufacturer. The dark current rate is the median current detected in the absence of light. Generally expressed in e-/pixel/sec.</xsd:documentation>
-            <xsd:documentation>Tier=5</xsd:documentation>
+            <xsd:documentation>Description=This field records the Dark Current Rate of this Detector as specified by the Manufacturer. The Dark Current Rate is the median current detected in the absence of light. Generally expressed in e-/pixel/sec.</xsd:documentation>
+            <xsd:documentation>Tier=2</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
         <xsd:attribute default="e-/pixel/sec" name="DarkCurrentRateUnit" type="UnitsElectricCurrent">
           <xsd:annotation>
-            <xsd:documentation>Tier=5</xsd:documentation>
-          </xsd:annotation>
-        </xsd:attribute>
-        <xsd:attribute name="PeakWavelength" type="xsd:string" use="required">
-          <xsd:annotation>
-            <xsd:documentation>Description=The wavelength associated with maximum light intensity detected by this device.</xsd:documentation>
-            <xsd:documentation>Tier=3</xsd:documentation>
+            <xsd:documentation>Tier=2</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
         <xsd:attribute name="PeakWavelengthUnit" type="UnitsLength" default="nm">
@@ -4913,55 +5234,392 @@
             <xsd:documentation>Tier=3</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
-        <xsd:attribute name="QuantumEfficiencyatPeakWavelength" type="xsd:float" use="required">
+        <xsd:attribute name="DynamicRange" type="xsd:float">
           <xsd:annotation>
-            <xsd:documentation>Description=The quantum efficiency observed at peak wavelength, according to the manufacturer. Quantum Efficiency is generally defined as is the ratio of incident photon to converted electrons. Typically expressed as a number between 0 and 1.</xsd:documentation>
-            <xsd:documentation>Tier=3</xsd:documentation>
+            <xsd:documentation>Description=This field records the Dynamic Range of this Detector in deciBel (dB).</xsd:documentation>
+            <xsd:documentation>Tier=2</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute default="decibel (dB)" name="DynamicRangeUnit" type="UnitsRatio">
+          <xsd:annotation>
+            <xsd:documentation>Tier=2</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
         <xsd:attribute name="AmbientOperatingTemperature" type="xsd:float">
           <xsd:annotation>
-            <xsd:documentation>Description=The ambient temperature at which this detector is designed to operate, according to the manufactuer.</xsd:documentation>
-            <xsd:documentation>Tier=5</xsd:documentation>
+            <xsd:documentation>Description=This field records the Ambient Temperature at which this Detector is designed to operate, according to the Manufacturer.</xsd:documentation>
+            <xsd:documentation>Tier=3</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
         <xsd:attribute default="°C" name="AmbientOperatingTemperatureUnit" type="UnitsTemperature">
           <xsd:annotation>
-            <xsd:documentation>Tier=5</xsd:documentation>
+            <xsd:documentation>Tier=3</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
         <xsd:attribute name="AmbientOperatingHumidity" type="xsd:float">
           <xsd:annotation>
-            <xsd:documentation>Description=The ambient humidity at which this detector is designed to operate, according to the manufactuer.</xsd:documentation>
-            <xsd:documentation>Tier=5</xsd:documentation>
+            <xsd:documentation>Description=This field records the Ambient Humidity at which this detector is designed to operate, according to the Manufacturer.</xsd:documentation>
+            <xsd:documentation>Tier=3</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
-  <xsd:element name="PhotoMultiplier" substitutionGroup="DetectorGroup">
+
+  <xsd:element name="CameraGroup" abstract="true" type="Camera" substitutionGroup="DetectorGroup">
+    <xsd:annotation>
+      <xsd:documentation>Description=This field describes a Camera available for this Instrument. A Camerais is a device that converts optical brightness into an electrical signal using a CCD (a semiconductor chip, which converts the intensity of light falling onto its surface at different points into a charge) and then reproduces an image of the specimen. An Instrument may have more than one camera of different types, such as EMCCD, intensified EMCCD, CMOS, or analog video.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="Camera">
+    <xsd:annotation>
+      <xsd:documentation>Description=This field describes a Camera available for this Instrument. A Camerais is a device that converts optical brightness into an electrical signal using a CCD (a semiconductor chip, which converts the intensity of light falling onto its surface at different points into a charge) and then reproduces an image of the specimen. An Instrument may have more than one camera of different types, such as EMCCD, intensified EMCCD, CMOS, or analog video.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="Detector">
+        <xsd:attribute name="Illumination" type="CameraIllumination" default="Back" use="optional">
+          <xsd:annotation>
+            <xsd:documentation>Description=This field records the type of illumination the Camera chip receives.</xsd:documentation>
+            <xsd:documentation>Tier=2</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="ArrayWidth" type="xsd:integer" use="required">
+          <xsd:annotation>
+            <xsd:documentation>Description=This field records the Width of this Camera chip expressed in pixel.</xsd:documentation>
+            <xsd:documentation>Tier=2</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="ArrayHeight" type="xsd:integer" use="required">
+          <xsd:annotation>
+            <xsd:documentation>Description=This field records the Height of this Camera chip expressed in pixel.</xsd:documentation>
+            <xsd:documentation>Tier=2</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="PixelWidth" type="xsd:float" use="required">
+          <xsd:annotation>
+            <xsd:documentation>Description=This field records the Physical Width of each Pixel.</xsd:documentation>
+            <xsd:documentation>Tier=2</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute default="µm" name="PixelWidthUnit" type="UnitsLength">
+          <xsd:annotation>
+            <xsd:documentation>Tier=2</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="PixelHeight" type="xsd:float" use="required">
+          <xsd:annotation>
+            <xsd:documentation>Description=This field records the Physical Height of each Pixel.</xsd:documentation>
+            <xsd:documentation>Tier=2</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute default="µm" name="PixelHeightUnit" type="UnitsLength">
+          <xsd:annotation>
+            <xsd:documentation>Tier=3</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="ManufacturerOffet" type="xsd:float">
+          <xsd:annotation>
+            <xsd:documentation>Description=This field reports the Offset when it is pre-set by the Manufacturer. The Offset is an electronic baseline added to the output signal from the sensor to ensure that the displayed signal level is always a positive number of counts.</xsd:documentation>
+            <xsd:documentation>Tier=2</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="Color" type="ColorMode">
+          <xsd:annotation>
+            <xsd:documentation>Description=This field records whether this is a Color Camera and what type it is.</xsd:documentation>
+            <xsd:documentation>Tier=2</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="PixelWellCapacity" type="xsd:integer" use="required">
+          <xsd:annotation>
+            <xsd:documentation>Description=This field records the maximum amount of charge each Pixel Well can hold, measured in electron counts.</xsd:documentation>
+            <xsd:documentation>Tier=3</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute default="e-" name="PixelWellCapacityUnit" type="UnitsElectricCharge">
+          <xsd:annotation>
+            <xsd:documentation>Tier=3</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="MaximumFrameRate" type="xsd:float" use="required">
+          <xsd:annotation>
+            <xsd:documentation>Description=This field records the maximal rate at which this Camera can acquire a single full-frame.</xsd:documentation>
+            <xsd:documentation>Tier=3</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute default="fps" name="MaximumFrameRateUnit" type="UnitsFrequency">
+          <xsd:annotation>
+            <xsd:documentation>Tier=3</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="MaximumReadoutRate" type="xsd:float" use="required">
+          <xsd:annotation>
+            <xsd:documentation>Description=This field records the maximal pixel Readout Rate allowed by this Camera.</xsd:documentation>
+            <xsd:documentation>Tier=3</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute default="MHz" name="MaximumReadoutRateUnit" type="UnitsFrequency">
+          <xsd:annotation>
+            <xsd:documentation>Tier=3</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="VerticalClockSpeed" type="xsd:float">
+          <xsd:annotation>
+            <xsd:documentation>Description=This field records the maximal speed at which each vertical column of pixels in the camera chip can be shifted down and read.
+</xsd:documentation>
+            <xsd:documentation>Tier=3</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute default="µs" name="VerticalClockSpeedUnit" type="UnitsTime">
+          <xsd:annotation>
+            <xsd:documentation>Tier=3</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="AnalogVideo" substitutionGroup="CameraGroup">
     <xsd:annotation>
       <xsd:documentation>Domain=MicrosocpeHardwareSpecifications</xsd:documentation>
-      <xsd:documentation>Category=Detector</xsd:documentation>
-      <xsd:documentation>Description=A photomultiplier tube, useful for light detection of very weak signals, is a photoemissive device in which the absorption of a photon results in the emission of an electron. These detectors work by amplifying the electrons generated by a photocathode exposed to a photon flux.</xsd:documentation>
-      <xsd:documentation>Tier=2</xsd:documentation>
+      <xsd:documentation>Category=Detector.Camera</xsd:documentation>
+      <xsd:documentation>Description=This element represents a device used to capture Analog Videos.</xsd:documentation>
+      <xsd:documentation>Tier=1</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
       <xsd:complexContent>
-        <xsd:extension base="Detector">
-          <xsd:attribute name="Type" type="PhotoMultiplierType">
+        <xsd:extension base="Camera"/>
+      </xsd:complexContent>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="CCD" substitutionGroup="CameraGroup">
+    <xsd:annotation>
+      <xsd:documentation>Domain=MicrosocpeHardwareSpecifications</xsd:documentation>
+      <xsd:documentation>Category=Detector.Camera</xsd:documentation>
+      <xsd:documentation>Description=This element represents a Charged Coupled Device Camera.</xsd:documentation>
+      <xsd:documentation>Tier=1</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:complexContent>
+        <xsd:extension base="Camera">
+          <xsd:attribute name="Type" type="CCDType" use="required">
             <xsd:annotation>
-              <xsd:documentation>Description=The type of photomultiplier used.</xsd:documentation>
+              <xsd:documentation>Description=This field records the Type of CCD camera used in this case.</xsd:documentation>
+              <xsd:documentation>Tier=2</xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
+          <xsd:attribute name="RegisterWellCapacity" type="xsd:integer">
+            <xsd:annotation>
+              <xsd:documentation>Description=This field records the maximum amount of charge each read-out register well can hold, measured in electron counts.</xsd:documentation>
               <xsd:documentation>Tier=3</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="RadiantSensitivity" type="xsd:float">
+          <xsd:attribute default="e-" name="RegisterWellCapacityUnit" type="UnitsElectricCharge">
             <xsd:annotation>
-              <xsd:documentation>Description=The radiant sensitivity observed with this PhotoMultiplier at peak wavelength.</xsd:documentation>
-              <xsd:documentation>Tier=5</xsd:documentation>
+              <xsd:documentation>Tier=3</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
         </xsd:extension>
+      </xsd:complexContent>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="CMOS" substitutionGroup="CameraGroup">
+    <xsd:annotation>
+      <xsd:documentation>Domain=MicrosocpeHardwareSpecifications</xsd:documentation>
+      <xsd:documentation>Category=Detector.Camera</xsd:documentation>
+      <xsd:documentation>Description=This field records a complementary metal–oxide–semiconductor camera</xsd:documentation>
+      <xsd:documentation>Tier=1</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:complexContent>
+        <xsd:extension base="Camera">
+          <xsd:attribute name="Type" type="CMOSType" use="required">
+            <xsd:annotation>
+              <xsd:documentation>Description=This field records the Type of CMOS Camera used.</xsd:documentation>
+              <xsd:documentation>Tier=2</xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
+        </xsd:extension>
+      </xsd:complexContent>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Intensified" substitutionGroup="CameraGroup">
+    <xsd:annotation>
+      <xsd:documentation>Domain=MicrosocpeHardwareSpecifications</xsd:documentation>
+      <xsd:documentation>Category=Detector.Camera</xsd:documentation>
+      <xsd:documentation>Description=This field records an intensified Camera.</xsd:documentation>
+      <xsd:documentation>Tier=1</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:complexContent>
+        <xsd:extension base="Camera">
+          <xsd:attribute name="SensorType" type="SensorType" use="required">
+            <xsd:annotation>
+              <xsd:documentation>Description=This field records the Type of Sensor used in this case.</xsd:documentation>
+              <xsd:documentation>Tier=2</xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
+          <xsd:attribute name="IntensifierType" type="IntensifierType" use="required">
+            <xsd:annotation>
+              <xsd:documentation>Description=This field records the Type of Intensifier used for this Camera.</xsd:documentation>
+              <xsd:documentation>Tier=2</xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
+          <xsd:attribute name="RegisterWellCapacity" type="xsd:integer">
+            <xsd:annotation>
+              <xsd:documentation>Description=This field records the maximum amount of charge each read-out register well can hold, measured in electron counts.</xsd:documentation>
+              <xsd:documentation>Tier=3</xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
+          <xsd:attribute default="e-" name="RegisterWellCapacityUnit" type="UnitsElectricCharge">
+            <xsd:annotation>
+              <xsd:documentation>Tier=3</xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
+        </xsd:extension>
+      </xsd:complexContent>
+    </xsd:complexType>
+  </xsd:element>
+
+  <!-- Settings -->
+  <xsd:element name="PointDetectorGroup" abstract="true" type="PointDetector"
+    substitutionGroup="DetectorGroup">
+    <xsd:annotation>
+      <xsd:documentation>Description=This element represents any Detector that collects light from a restricted point-like area of an image. These detectors are typically used in Laser Scanning Confocal Microscopy.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="PointDetector">
+    <xsd:annotation>
+      <xsd:documentation>Description=This element represents any Detector that collects light from a restricted point-like area of an image. These detectors are typically used in Laser Scanning Confocal Microscopy.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="Detector">
+        <xsd:attribute name="SignalProcessing" type="SignalProcessingMode">
+          <xsd:annotation>
+            <xsd:documentation>Description=This field describes the method employed by this device to process the output signal and convert it into a measure of incident light intensity. In Photon Counting mode the system is set in a manner in which each photon hitting the head of the detector gives either no or 1 discrete pulse. This way by counting the pulses one is sure to be counting individual photons. In Analog mode the system is set so the mean value of all signal pulses is used as a measure of intensity.</xsd:documentation>
+            <xsd:documentation>Tier=2</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="ResponseTime" type="xsd:float">
+          <xsd:annotation>
+            <xsd:documentation>Description=This field records the Time required for the Detector to respond to an optical input.</xsd:documentation>
+            <xsd:documentation>Tier=2</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="ResponseTimeUnit" type="UnitsTime">
+          <xsd:annotation>
+            <xsd:documentation>Tier=2</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="DeadTime" type="xsd:float">
+          <xsd:annotation>
+            <xsd:documentation>Description=This field records the Time required for the Detector to become responsive again after being hit by a photon.</xsd:documentation>
+            <xsd:documentation>Tier=2</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="DeadTimeUnit" type="UnitsTime">
+          <xsd:annotation>
+            <xsd:documentation>Tier=2</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="RadiantSensitivity" type="xsd:float">
+          <xsd:annotation>
+            <xsd:documentation>Description=This field records the Radiant Sensitivity observed with this Detector at the peak Wavelength</xsd:documentation>
+            <xsd:documentation>Tier=3</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="RadiantSensitivityUnit" type="UnitsPower">
+          <xsd:annotation>
+            <xsd:documentation>Tier=3</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="PhotoMultiplier" substitutionGroup="PointDetectorGroup">
+    <xsd:annotation>
+      <xsd:documentation>Domain=MicrosocpeHardwareSpecifications</xsd:documentation>
+      <xsd:documentation>Category=Detector.PointDetector</xsd:documentation>
+      <xsd:documentation>Description=A Photomultiplier Tube (PMT) is a photoemissive device in which the absorption of a photon results in the emission of an electron and it is used for the detection of very weak signals. These Detectors work by amplifying the electrons generated by a photocathode exposed to a photon flux. The higher the supplied voltage (PMTVoltage setting), the greater the amplification of the current (PMTGain setting) and thus sensitivity, but also the higher the noise in the acquired image. The amplifier offset (PMTOffset setting) defines black level setting of the image. A PMT has no spatial information of the image.</xsd:documentation>
+      <xsd:documentation>Tier=1</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:complexContent>
+        <xsd:extension base="PointDetector">
+          <xsd:attribute name="CollectionEfficiency" type="PercentFraction" use="required">
+            <xsd:annotation>
+              <xsd:documentation>Description=This field measures the probability that photoelectrons will land on the effective area of the first dynode of the photomultiplier stage. While there might be dispersion at the second and later dynodes, this tends to have less of an effect on the total collection efficiency as the number of emitted electrons increases greatly.</xsd:documentation>
+              <xsd:documentation>Tier=2</xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
+          <xsd:attribute name="Multianode" type="xsd:boolean" use="required">
+            <xsd:annotation>
+              <xsd:documentation>Description=This field records whether (True) or not (False) this is Photo Multiplier Tube is composed of an array of multiple </xsd:documentation>
+              <xsd:documentation>Tier=2</xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
+          <xsd:attribute name="MultianodeChannelNr" type="xsd:integer">
+            <xsd:annotation>
+              <xsd:documentation>Description=In case this Detector is a Multianode composed of an array of multiple Photomultiplier Tubes, this field records the number of Channels it consists of.</xsd:documentation>
+              <xsd:documentation>Tier=3</xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
+          <xsd:attribute name="MultianodeArrangement" type="MultianodeArrangement">
+            <xsd:annotation>
+              <xsd:documentation>Description=In case this Detector is a Multianode composed of an array of multiple Photomultiplier Tubes, this field records the arrangement of the individual Photomultiplier Tubes.</xsd:documentation>
+              <xsd:documentation>Tier=3</xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
+          <xsd:attribute name="HeadOn" type="xsd:boolean">
+            <xsd:annotation>
+              <xsd:documentation>Description=This is True if the Photocathode is positioned at either end of the vacuum tube. This is False if the photocathode element is located on the side of the vacuum tube (side-on geometry).</xsd:documentation>
+              <xsd:documentation>Tier=3</xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
+          <xsd:attribute name="Coating" type="CoatingMaterial">
+            <xsd:annotation>
+              <xsd:documentation>Description=This field records the Coating Material used to increase the photoelectric properties of the metallic cathode used in this Detector. The coating releases electrons much more readily than the underlying metal, allowing it to detect the low-energy photons in infrared radiation. The lens transmits the radiation from the object being viewed to a layer of coated glass. The photons strike the metal surface and transfer electrons to its rear side. The freed electrons are then collected to produce the final image.</xsd:documentation>
+              <xsd:documentation>Tier=3</xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
+        </xsd:extension>
+      </xsd:complexContent>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="PhotoDiode" substitutionGroup="PointDetectorGroup">
+    <xsd:annotation>
+      <xsd:documentation>Domain=MicrosocpeHardwareSpecifications</xsd:documentation>
+      <xsd:documentation>Category=Detector.PointDetector</xsd:documentation>
+      <xsd:documentation>Description=This element represents a Photovoltaic Detector. Most photodiodes used in confocal microscopes are Avalanche Photodiode (APD) which because of the amplification gain have good sensitivities and less dark current.</xsd:documentation>
+      <xsd:documentation>Tier=1</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:complexContent>
+        <xsd:extension base="PointDetector">
+          <xsd:attribute name="Avalanche" type="xsd:boolean">
+            <xsd:annotation>
+              <xsd:documentation>Description=This field records whether (True) or not (False) this is an "Avalanche" Photodiode.</xsd:documentation>
+              <xsd:documentation>Tier=2</xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
+          <xsd:attribute name="PINJunction" type="xsd:boolean">
+            <xsd:annotation>
+              <xsd:documentation>Description=This field records whether this photodiode is based on a Positive-Intermediate-Negative (PIN) or a Positive-Negative (PN) architecture.</xsd:documentation>
+              <xsd:documentation>Tier=3</xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
+        </xsd:extension>
+      </xsd:complexContent>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="HybridPhotoDetector" substitutionGroup="PointDetectorGroup">
+    <xsd:annotation>
+      <xsd:documentation>Domain=MicrosocpeHardwareSpecifications</xsd:documentation>
+      <xsd:documentation>Category=Detector.PointDetector</xsd:documentation>
+      <xsd:documentation>Description=This element represents a hybrid Photomultiplier and Avalanche Photodiode (APD).</xsd:documentation>
+      <xsd:documentation>Tier=1</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:complexContent>
+        <xsd:extension base="PointDetector"/>
       </xsd:complexContent>
     </xsd:complexType>
   </xsd:element>
@@ -4971,8 +5629,8 @@
       <xsd:appinfo><xsdfu xmlns=""><plural>GenericExcitationSources</plural></xsdfu></xsd:appinfo>
       <xsd:documentation>Domain=MicrosocpeHardwareSpecifications</xsd:documentation>
       <xsd:documentation>Category=Detector</xsd:documentation>
-      <xsd:documentation>Description=This element is used to represent a detector as a collection of key/value pairs, which are stored in a Map. One of the other detector elements should always be used in preference to this if possible.</xsd:documentation>
-      <xsd:documentation>Tier=2</xsd:documentation>
+      <xsd:documentation>Description=This element is used to represent a Detector as a collection of Key/Value pairs, which are stored in a Map. One of the other detector elements should always be used in preference to this if possible.</xsd:documentation>
+      <xsd:documentation>Tier=1</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
       <xsd:complexContent>
@@ -4982,8 +5640,8 @@
               <xsd:annotation>
                 <xsd:documentation>Domain=MicrosocpeHardwareSpecifications</xsd:documentation>
                 <xsd:documentation>Category=ChildElement</xsd:documentation>
-                <xsd:documentation>Description=This is a Mapping of key/value pairs used to store customized metadata that describes this element.</xsd:documentation>
-                <xsd:documentation>Tier=3</xsd:documentation>
+                <xsd:documentation>Description=This is a Mapping of Key/Value pairs used to store customized metadata that describes this element.</xsd:documentation>
+                <xsd:documentation>Tier=2</xsd:documentation>
               </xsd:annotation>
             </xsd:element>
           </xsd:sequence>
@@ -4991,256 +5649,6 @@
       </xsd:complexContent>
     </xsd:complexType>
   </xsd:element>
-
-  <xsd:element name="CameraGroup" abstract="true" type="Camera" substitutionGroup="DetectorGroup">
-    <xsd:annotation>
-      <xsd:documentation>Description=This describes a camera device available for this instrument. A camera is device that converts optical brightness into an electrical signal using a CCD(a semiconductor chip, which converts the intensity of light falling onto its surface at different points into a charge) and then reproduces an image of the specimen.  An instrument may have more than one camera of different types, such as EMCCD, intensified EMCCD, CMOS, or analog video.</xsd:documentation>
-    </xsd:annotation>
-  </xsd:element>
-  <xsd:complexType name="Camera">
-    <xsd:annotation>
-      <xsd:documentation>Description=This describes a camera device available for this instrument. A camera is device that converts optical brightness into an electrical signal using a CCD(a semiconductor chip, which converts the intensity of light falling onto its surface at different points into a charge) and then reproduces an image of the specimen.  An instrument may have more than one camera of different types, such as EMCCD, intensified EMCCD, CMOS, or analog video.</xsd:documentation>
-    </xsd:annotation>
-    <xsd:complexContent>
-      <xsd:extension base="Detector">
-        <xsd:attribute name="Illumination" type="CameraIllumination" default="Back" use="optional">
-          <xsd:annotation>
-            <xsd:documentation>Description=The type of illumination the camera chip receives</xsd:documentation>
-            <xsd:documentation>Tier=3</xsd:documentation>
-          </xsd:annotation>
-        </xsd:attribute>
-        <xsd:attribute name="ArrayWidth" type="xsd:int" use="required">
-          <xsd:annotation>
-            <xsd:documentation>Description=The width of this camera chip expressed in pixel.</xsd:documentation>
-            <xsd:documentation>Tier=3</xsd:documentation>
-          </xsd:annotation>
-        </xsd:attribute>
-        <xsd:attribute name="ArrayHeight" type="xsd:int" use="required">
-          <xsd:annotation>
-            <xsd:documentation>Description=The height of this camera chip expressed in pixel.</xsd:documentation>
-            <xsd:documentation>Tier=3</xsd:documentation>
-          </xsd:annotation>
-        </xsd:attribute>
-        <xsd:attribute name="PixelWidth" type="xsd:float" use="required">
-          <xsd:annotation>
-            <xsd:documentation>Description=The physical width of each pixel.</xsd:documentation>
-            <xsd:documentation>Tier=3</xsd:documentation>
-          </xsd:annotation>
-        </xsd:attribute>
-        <xsd:attribute default="µm" name="PixelWidthUnit" type="UnitsLength">
-          <xsd:annotation>
-            <xsd:documentation>Tier=3</xsd:documentation>
-          </xsd:annotation>
-        </xsd:attribute>
-        <xsd:attribute name="PixelHeight" type="xsd:float" use="required">
-          <xsd:annotation>
-            <xsd:documentation>Description=The physical height of each pixel.</xsd:documentation>
-            <xsd:documentation>Tier=3</xsd:documentation>
-          </xsd:annotation>
-        </xsd:attribute>
-        <xsd:attribute default="µm" name="PixelHeightUnit" type="UnitsLength">
-          <xsd:annotation>
-            <xsd:documentation>Tier=3</xsd:documentation>
-          </xsd:annotation>
-        </xsd:attribute>
-        <xsd:attribute name="ImageWidth" type="xsd:float">
-          <xsd:annotation>
-            <xsd:documentation>Description=The width of the image generated by the camera.</xsd:documentation>
-            <xsd:documentation>Tier=3</xsd:documentation>
-          </xsd:annotation>
-        </xsd:attribute>
-        <xsd:attribute default="µm" name="ImageWidthUnit" type="UnitsLength">
-          <xsd:annotation>
-            <xsd:documentation>Tier=3</xsd:documentation>
-          </xsd:annotation>
-        </xsd:attribute>
-        <xsd:attribute name="ImageHeight" type="xsd:float">
-          <xsd:annotation>
-            <xsd:documentation>Description=The width of the image generated by the camera.</xsd:documentation>
-            <xsd:documentation>Tier=3</xsd:documentation>
-          </xsd:annotation>
-        </xsd:attribute>
-        <xsd:attribute default="µm" name="ImageHeightUnit" type="UnitsLength">
-          <xsd:annotation>
-            <xsd:documentation>Tier=3</xsd:documentation>
-          </xsd:annotation>
-        </xsd:attribute>
-        <xsd:attribute name="PixelWellCapacity" type="xsd:int" use="required">
-          <xsd:annotation>
-            <xsd:documentation>Description=The maximum amount of charge each pixel well can hold, measured in electron counts.</xsd:documentation>
-            <xsd:documentation>Tier=5</xsd:documentation>
-          </xsd:annotation>
-        </xsd:attribute>
-        <xsd:attribute default="e-" name="PixelWellCapacityUnit" type="UnitsElectricCharge">
-          <xsd:annotation>
-            <xsd:documentation>Tier=5</xsd:documentation>
-          </xsd:annotation>
-        </xsd:attribute>
-        <xsd:attribute name="RegisterWellCapacity" type="xsd:int">
-          <xsd:annotation>
-            <xsd:documentation>Description=The maximum amount of charge each register well can hold, measured in electron counts.</xsd:documentation>
-            <xsd:documentation>Tier=5</xsd:documentation>
-          </xsd:annotation>
-        </xsd:attribute>
-        <xsd:attribute default="e-" name="RegisterWellCapacityUnit" type="UnitsElectricCharge">
-          <xsd:annotation>
-            <xsd:documentation>Tier=5</xsd:documentation>
-          </xsd:annotation>
-        </xsd:attribute>
-        <xsd:attribute name="VerticalClockSpeed" type="xsd:float">
-          <xsd:annotation>
-            <xsd:documentation>Description=The maximal speed each vertical colunm of pixels in the camera chip, can be shifted down and read.
-
-</xsd:documentation>
-            <xsd:documentation>Tier=5</xsd:documentation>
-          </xsd:annotation>
-        </xsd:attribute>
-        <xsd:attribute default="µs" name="VerticalClockSpeedUnit" type="UnitsTime">
-          <xsd:annotation>
-            <xsd:documentation>Tier=5</xsd:documentation>
-          </xsd:annotation>
-        </xsd:attribute>
-        <xsd:attribute name="MaximumFrameRate" type="xsd:float" use="required">
-          <xsd:annotation>
-            <xsd:documentation>Description=The maximal rate at which this camera can acquire a single frame.</xsd:documentation>
-            <xsd:documentation>Tier=5</xsd:documentation>
-          </xsd:annotation>
-        </xsd:attribute>
-        <xsd:attribute default="fps" name="MaximumFrameRateUnit" type="UnitsFrequency">
-          <xsd:annotation>
-            <xsd:documentation>Tier=5</xsd:documentation>
-          </xsd:annotation>
-        </xsd:attribute>
-        <xsd:attribute name="MaximumReadoutRate" type="xsd:float" use="required">
-          <xsd:annotation>
-            <xsd:documentation>Description=The maximal pixel read out rate allowed by this camera.</xsd:documentation>
-            <xsd:documentation>Tier=5</xsd:documentation>
-          </xsd:annotation>
-        </xsd:attribute>
-        <xsd:attribute default="MHz" name="MaximumReadoutRateUnit" type="UnitsFrequency">
-          <xsd:annotation>
-            <xsd:documentation>Tier=5</xsd:documentation>
-          </xsd:annotation>
-        </xsd:attribute>
-      </xsd:extension>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:element name="CCD" substitutionGroup="CameraGroup">
-    <xsd:annotation>
-      <xsd:documentation>Domain=MicrosocpeHardwareSpecifications</xsd:documentation>
-      <xsd:documentation>Category=Detector.Camera</xsd:documentation>
-      <xsd:documentation>Description=A charged coupled device camera.</xsd:documentation>
-      <xsd:documentation>Tier=2</xsd:documentation>
-    </xsd:annotation>
-    <xsd:complexType>
-      <xsd:complexContent>
-        <xsd:extension base="Camera">
-          <xsd:attribute name="Type" type="CCDType" use="required">
-            <xsd:annotation>
-              <xsd:documentation>Description=The type of CCD camera used.</xsd:documentation>
-              <xsd:documentation>Tier=3</xsd:documentation>
-            </xsd:annotation>
-          </xsd:attribute>
-        </xsd:extension>
-      </xsd:complexContent>
-    </xsd:complexType>
-  </xsd:element>
-
-  <xsd:element name="IntensifiedCCD" substitutionGroup="CameraGroup">
-    <xsd:annotation>
-      <xsd:documentation>Domain=MicrosocpeHardwareSpecifications</xsd:documentation>
-      <xsd:documentation>Category=Detector.Camera</xsd:documentation>
-      <xsd:documentation>Description=The type of Intensified CCD camera used.</xsd:documentation>
-      <xsd:documentation>Tier=2</xsd:documentation>
-    </xsd:annotation>
-    <xsd:complexType>
-      <xsd:complexContent>
-        <xsd:extension base="Camera">
-          <xsd:attribute name="Type" type="IntensifiedCCDType" use="required">
-            <xsd:annotation>
-              <xsd:documentation>Description=The type of intensifiedCCD camera used.</xsd:documentation>
-              <xsd:documentation>Tier=3</xsd:documentation>
-            </xsd:annotation>
-          </xsd:attribute>
-        </xsd:extension>
-      </xsd:complexContent>
-    </xsd:complexType>
-  </xsd:element>
-  <xsd:element name="AnalogVideo" substitutionGroup="CameraGroup">
-    <xsd:annotation>
-      <xsd:documentation>Domain=MicrosocpeHardwareSpecifications</xsd:documentation>
-      <xsd:documentation>Category=Detector.Camera</xsd:documentation>
-      <xsd:documentation>Description=A device used to capture analog videos.</xsd:documentation>
-      <xsd:documentation>Tier=2</xsd:documentation>
-    </xsd:annotation>
-    <xsd:complexType>
-      <xsd:complexContent>
-        <xsd:extension base="Camera"/>
-      </xsd:complexContent>
-    </xsd:complexType>
-  </xsd:element>
-  <xsd:element name="CMOS" substitutionGroup="CameraGroup">
-    <xsd:annotation>
-      <xsd:documentation>Domain=MicrosocpeHardwareSpecifications</xsd:documentation>
-      <xsd:documentation>Category=Detector.Camera</xsd:documentation>
-      <xsd:documentation>Description=A complementary metal-oxide-semiconductor camera.</xsd:documentation>
-      <xsd:documentation>Tier=2</xsd:documentation>
-    </xsd:annotation>
-    <xsd:complexType>
-      <xsd:complexContent>
-        <xsd:extension base="Camera">
-          <xsd:attribute name="Type" type="CMOSType" use="required">
-            <xsd:annotation>
-              <xsd:documentation>Description=The type of CCD camera used.</xsd:documentation>
-              <xsd:documentation>Tier=3</xsd:documentation>
-            </xsd:annotation>
-          </xsd:attribute>
-        </xsd:extension>
-      </xsd:complexContent>
-    </xsd:complexType>
-  </xsd:element>
-  <xsd:element name="DetectorWavelengthRange">
-    <!-- top level definition -->
-    <xsd:annotation>
-      <xsd:appinfo><xsdfu xmlns=""><plural>TransmittanceRanges</plural></xsdfu></xsd:appinfo>
-      <xsd:documentation>Description=This records the range of wavelengths this detector is capable of sensing. Multiple of this elements can be used.
-      </xsd:documentation>
-      <xsd:documentation>Tier=5</xsd:documentation>
-    </xsd:annotation>
-    <xsd:complexType>
-      <xsd:attribute name="CutIn" use="required" type="PositiveFloat">
-        <xsd:annotation>
-          <xsd:documentation>Description=CutIn is the wavelength below which the response rate is below 50%.
-          </xsd:documentation>
-          <xsd:documentation>Tier=5</xsd:documentation>
-        </xsd:annotation>
-      </xsd:attribute>
-      <xsd:attribute name="CutInUnit" use="optional" default="nm" type="UnitsLength">
-        <xsd:annotation>
-          <xsd:documentation>Tier=5</xsd:documentation>
-        </xsd:annotation>
-      </xsd:attribute>
-      <xsd:attribute name="CutOut" use="required" type="PositiveFloat">
-        <xsd:annotation>
-          <xsd:documentation>Description=CutOut is the wavelength above which the response rate is below 50%.</xsd:documentation>
-          <xsd:documentation>Tier=5</xsd:documentation>
-        </xsd:annotation>
-      </xsd:attribute>
-      <xsd:attribute name="CutOutUnit" use="optional" default="nm" type="UnitsLength">
-        <xsd:annotation>
-          <xsd:documentation>Tier=5</xsd:documentation>
-        </xsd:annotation>
-      </xsd:attribute>
-      <xsd:attribute name="WavelengthProfile" type="xsd:anyURI">
-        <xsd:annotation>
-          <xsd:documentation>Description=A file containing the wavelenght profile of this component.</xsd:documentation>
-          <xsd:documentation>Tier=5</xsd:documentation>
-        </xsd:annotation>
-      </xsd:attribute>
-    </xsd:complexType>
-  </xsd:element>
-
-  <!-- Settings -->
   <xsd:complexType name="Settings">
     <xsd:annotation>
       <xsd:appinfo><xsdfu xmlns=""><abstract/></xsdfu></xsd:appinfo>
@@ -5745,8 +6153,8 @@ PlaneInfo (as Plane)
   <xsd:element name="AnnotationRef">
     <!-- top level definition -->
     <xsd:annotation>
-      <xsd:documentation>Description=This is a simple multi-line comment or annotation describing this component.</xsd:documentation>
-      <xsd:documentation>Tier=2</xsd:documentation>
+      <xsd:documentation>Description=This field contains a reference to a Lens positioned at the Mount connecting this Detector to the Microscope Stand.</xsd:documentation>
+      <xsd:documentation>Tier=1</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
       <xsd:complexContent>
@@ -7079,20 +7487,6 @@ annotation refs from the base Annotation to form the list.</xsd:documentation>
       </xsd:complexContent>
     </xsd:complexType>
   </xsd:element>
-  <xsd:element name="FilterSetRef">
-    <!-- top level definition -->
-    <xsd:complexType>
-      <xsd:complexContent>
-        <xsd:extension base="Reference">
-          <xsd:attribute name="ID" use="required" type="FilterSetID">
-            <xsd:annotation>
-              <xsd:documentation>Tier=2</xsd:documentation>
-            </xsd:annotation>
-          </xsd:attribute>
-        </xsd:extension>
-      </xsd:complexContent>
-    </xsd:complexType>
-  </xsd:element>
   <xsd:element name="ReagentRef">
     <!-- top level definition -->
     <xsd:complexType>
@@ -7103,27 +7497,44 @@ annotation refs from the base Annotation to form the list.</xsd:documentation>
       </xsd:complexContent>
     </xsd:complexType>
   </xsd:element>
-  <xsd:complexType name="LensRef">
-    <xsd:complexContent>
-      <xsd:extension base="Reference">
-        <xsd:attribute name="ID" type="LensID"/>
-      </xsd:extension>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:complexType name="PrismRef">
-    <xsd:complexContent>
-      <xsd:extension base="Reference">
-        <xsd:attribute name="ID" type="PrismID"/>
-      </xsd:extension>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:complexType name="PolarizationOpticsRef">
-    <xsd:complexContent>
-      <xsd:extension base="Reference">
-        <xsd:attribute name="ID" type="PolarizationOpticsID"/>
-      </xsd:extension>
-    </xsd:complexContent>
-  </xsd:complexType>
+
+  <xsd:element name="LightSourceCouplingRef">
+    <xsd:complexType>
+      <xsd:complexContent>
+        <xsd:extension base="Reference">
+          <xsd:attribute name="ID" type="LightSourceCouplingID"/>
+        </xsd:extension>
+      </xsd:complexContent>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="SampleHolderRef">
+    <xsd:complexType>
+      <xsd:complexContent>
+        <xsd:extension base="Reference">
+          <xsd:attribute name="ID" type="SampleHolderID"/>
+        </xsd:extension>
+      </xsd:complexContent>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="SamplePositioningRef">
+    <xsd:complexType>
+      <xsd:complexContent>
+        <xsd:extension base="Reference">
+          <xsd:attribute name="ID" type="SamplePositioningID"/>
+        </xsd:extension>
+      </xsd:complexContent>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="FocusStabilizationRef">
+    <xsd:complexType>
+      <xsd:complexContent>
+        <xsd:extension base="Reference">
+          <xsd:attribute name="ID" type="FocusStabilizationID"/>
+        </xsd:extension>
+      </xsd:complexContent>
+    </xsd:complexType>
+  </xsd:element>
+
   <xsd:complexType name="FilterRef">
     <!-- top level definition -->
     <xsd:complexContent>
@@ -7133,6 +7544,13 @@ annotation refs from the base Annotation to form the list.</xsd:documentation>
             <xsd:documentation>Tier=2</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="LensRef">
+    <xsd:complexContent>
+      <xsd:extension base="Reference">
+        <xsd:attribute name="ID" type="LensID"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
@@ -7169,43 +7587,98 @@ annotation refs from the base Annotation to form the list.</xsd:documentation>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
+  <xsd:complexType name="PrismRef">
+    <xsd:complexContent>
+      <xsd:extension base="Reference">
+        <xsd:attribute name="ID" type="PrismID"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="PolarizationOpticsRef">
+    <xsd:complexContent>
+      <xsd:extension base="Reference">
+        <xsd:attribute name="ID" type="PolarizationOpticsID"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+
+  <xsd:element name="LensRef" type="LensRef">
+    <xsd:annotation>
+      <xsd:documentation>Description=This refers to an available Lens, which is part of this Optical Device.</xsd:documentation>
+      <xsd:documentation>Tier=2</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="MirrorringDeviceRef" type="MirrorRef">
+    <xsd:annotation>
+      <xsd:documentation>Description=This refers to an available Mirroring Device, which is part of this Optical Device.</xsd:documentation>
+      <xsd:documentation>Tier=2</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="OpticalApertureRef" type="OpticalApertureRef">
+    <xsd:annotation>
+      <xsd:documentation>Description=This refers to an available Optical Aperture, which is part of this Optical Device.</xsd:documentation>
+      <xsd:documentation>Tier=2</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="PrismRef" type="PrismRef">
+    <xsd:annotation>
+      <xsd:documentation>Description=This field refers to an available Prism, which is part of this Optical Device.</xsd:documentation>
+      <xsd:documentation>Tier=2</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="PolarizationOpticsRef" type="PolarizationOpticsRef">
+    <xsd:annotation>
+      <xsd:documentation>Description=This refers to an available Polarization Optics, which is part of this Optical Device.</xsd:documentation>
+      <xsd:documentation>Tier=2</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+
+  <xsd:element name="FilterCubeRef" type="FilterCubeRef">
+    <xsd:annotation>
+      <xsd:documentation>Description=This field refers to an available FilterCube, which is housed in this Optics Holder.</xsd:documentation>
+      <xsd:documentation>Tier=2</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="FilterCubeRef">
+    <xsd:complexContent>
+      <xsd:extension base="Reference"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+
+  <xsd:element name="FilterSetRef">
+    <!-- top level definition -->
+    <xsd:complexType>
+      <xsd:complexContent>
+        <xsd:extension base="Reference">
+          <xsd:attribute name="ID" use="required" type="FilterSetID">
+            <xsd:annotation>
+              <xsd:documentation>Tier=2</xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
+        </xsd:extension>
+      </xsd:complexContent>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="ExcitationFilterRef" type="FilterRef">
+    <xsd:annotation>
+      <xsd:appinfo><xsdfu xmlns=""><plural>ExcitationFilters</plural><manytomany/></xsdfu></xsd:appinfo>
+      <xsd:documentation>Description=This field refers to an available Excitation Filter, which is part of this Filter Cube.</xsd:documentation>
+      <xsd:documentation>Tier=1</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="EmissionFilterRef" type="FilterRef">
+    <xsd:annotation>
+      <xsd:appinfo><xsdfu xmlns=""><plural>EmissionFilters</plural><manytomany/></xsdfu></xsd:appinfo>
+      <xsd:documentation>Description=This field refers to an available Emission Filter, which is part of this Filter Cube.</xsd:documentation>
+      <xsd:documentation>Tier=1</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
   <xsd:element name="StandardDichroicRef" type="MirrorRef">
-    <!-- top level definition --> </xsd:element>
-  <xsd:element name="LightSourceCouplingRef">
-    <xsd:complexType>
-      <xsd:complexContent>
-        <xsd:extension base="Reference">
-          <xsd:attribute name="ID" type="LightSourceCouplingID"/>
-        </xsd:extension>
-      </xsd:complexContent>
-    </xsd:complexType>
-  </xsd:element>
-  <xsd:element name="SampleHolderRef">
-    <xsd:complexType>
-      <xsd:complexContent>
-        <xsd:extension base="Reference">
-          <xsd:attribute name="ID" type="SampleHolderID"/>
-        </xsd:extension>
-      </xsd:complexContent>
-    </xsd:complexType>
-  </xsd:element>
-  <xsd:element name="SamplePositioningRef">
-    <xsd:complexType>
-      <xsd:complexContent>
-        <xsd:extension base="Reference">
-          <xsd:attribute name="ID" type="SamplePositioningID"/>
-        </xsd:extension>
-      </xsd:complexContent>
-    </xsd:complexType>
-  </xsd:element>
-  <xsd:element name="FocusStabilizationRef">
-    <xsd:complexType>
-      <xsd:complexContent>
-        <xsd:extension base="Reference">
-          <xsd:attribute name="ID" type="FocusStabilizationID"/>
-        </xsd:extension>
-      </xsd:complexContent>
-    </xsd:complexType>
+    <!-- top level definition -->
+    <xsd:annotation>
+      <xsd:documentation>Description=This field refers to an available Dichroic Mirror, which is part of this Filter Cube.</xsd:documentation>
+      <xsd:documentation>Tier=1</xsd:documentation>
+    </xsd:annotation>
   </xsd:element>
 
   <!-- Miscellaneous complex types -->
@@ -7495,6 +7968,36 @@ annotation refs from the base Annotation to form the list.</xsd:documentation>
       </xsd:documentation>
     </xsd:annotation>
     <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="bit">
+        <xsd:annotation>
+          <xsd:documentation>bit mask.</xsd:documentation>
+          <xsd:appinfo><xsdfu xmlns=""><enum enum="BIT"/></xsdfu></xsd:appinfo>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="complex">
+        <xsd:annotation>
+          <xsd:documentation>complex single-precision floating point.</xsd:documentation>
+          <xsd:appinfo><xsdfu xmlns=""><enum enum="COMPLEXFLOAT"/></xsdfu></xsd:appinfo>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="double">
+        <xsd:annotation>
+          <xsd:documentation>double-precision floating point.</xsd:documentation>
+          <xsd:appinfo><xsdfu xmlns=""><enum enum="DOUBLE"/></xsdfu></xsd:appinfo>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="double-complex">
+        <xsd:annotation>
+          <xsd:documentation>complex double-precision floating point.</xsd:documentation>
+          <xsd:appinfo><xsdfu xmlns=""><enum enum="COMPLEXDOUBLE"/></xsdfu></xsd:appinfo>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="float">
+        <xsd:annotation>
+          <xsd:documentation>single-precision floating point.</xsd:documentation>
+          <xsd:appinfo><xsdfu xmlns=""><enum enum="FLOAT"/></xsdfu></xsd:appinfo>
+        </xsd:annotation>
+      </xsd:enumeration>
       <xsd:enumeration value="int8">
         <xsd:annotation>
           <xsd:documentation>8 bit signed integer.</xsd:documentation>
@@ -7531,36 +8034,7 @@ annotation refs from the base Annotation to form the list.</xsd:documentation>
           <xsd:appinfo><xsdfu xmlns=""><enum enum="UINT32"/></xsdfu></xsd:appinfo>
         </xsd:annotation>
       </xsd:enumeration>
-      <xsd:enumeration value="float">
-        <xsd:annotation>
-          <xsd:documentation>single-precision floating point.</xsd:documentation>
-          <xsd:appinfo><xsdfu xmlns=""><enum enum="FLOAT"/></xsdfu></xsd:appinfo>
-        </xsd:annotation>
-      </xsd:enumeration>
-      <xsd:enumeration value="double">
-        <xsd:annotation>
-          <xsd:documentation>double-precision floating point.</xsd:documentation>
-          <xsd:appinfo><xsdfu xmlns=""><enum enum="DOUBLE"/></xsdfu></xsd:appinfo>
-        </xsd:annotation>
-      </xsd:enumeration>
-      <xsd:enumeration value="complex">
-        <xsd:annotation>
-          <xsd:documentation>complex single-precision floating point.</xsd:documentation>
-          <xsd:appinfo><xsdfu xmlns=""><enum enum="COMPLEXFLOAT"/></xsdfu></xsd:appinfo>
-        </xsd:annotation>
-      </xsd:enumeration>
-      <xsd:enumeration value="double-complex">
-        <xsd:annotation>
-          <xsd:documentation>complex double-precision floating point.</xsd:documentation>
-          <xsd:appinfo><xsdfu xmlns=""><enum enum="COMPLEXDOUBLE"/></xsdfu></xsd:appinfo>
-        </xsd:annotation>
-      </xsd:enumeration>
-      <xsd:enumeration value="bit">
-        <xsd:annotation>
-          <xsd:documentation>bit mask.</xsd:documentation>
-          <xsd:appinfo><xsdfu xmlns=""><enum enum="BIT"/></xsdfu></xsd:appinfo>
-        </xsd:annotation>
-      </xsd:enumeration>
+      <xsd:enumeration value="Other"/>
     </xsd:restriction>
   </xsd:simpleType>
   <xsd:simpleType name="Color">
@@ -7737,6 +8211,335 @@ annotation refs from the base Annotation to form the list.</xsd:documentation>
   </xsd:simpleType>
   <xsd:simpleType name="ReflectanceProfileID">
     <xsd:restriction base="xsd:string"/>
+  </xsd:simpleType>
+  <xsd:simpleType name="UnitsAngle">
+    <xsd:annotation>
+      <xsd:documentation>The units used to represent an angle.
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="deg">
+        <xsd:annotation>
+          <xsd:documentation>degree unit.</xsd:documentation>
+          <xsd:appinfo><xsdfu xmlns=""><enum name="degree" plural="degrees" unitsystem="SI.RADIAN" enum="DEGREE"/></xsdfu></xsd:appinfo>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="rad">
+        <xsd:annotation>
+          <xsd:documentation>radian unit.</xsd:documentation>
+          <xsd:appinfo><xsdfu xmlns=""><enum name="radian" plural="radians" unitsystem="SI.RADIAN" enum="RADIAN"/></xsdfu></xsd:appinfo>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="gon">
+        <xsd:annotation>
+          <xsd:documentation>gradian unit.</xsd:documentation>
+          <xsd:appinfo><xsdfu xmlns=""><enum name="gradian" plural="gradians" unitsystem="SI.RADIAN" enum="GRADIAN"/></xsdfu></xsd:appinfo>
+        </xsd:annotation>
+      </xsd:enumeration>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="UnitsDensity">
+    <xsd:annotation>
+      <xsd:documentation>The units used to represent density.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="kg/m3"/>
+      <xsd:enumeration value="g/ml"/>
+      <xsd:enumeration value="mg/µg"/>
+      <xsd:enumeration value="µg/ng"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="UnitsElectricCharge">
+    <xsd:annotation>
+      <xsd:documentation>The units used to represent an electric charge</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="e-"/>
+      <xsd:enumeration value="Coulomb"/>
+      <xsd:enumeration value="Other"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="UnitsElectricCurrent">
+    <xsd:annotation>
+      <xsd:documentation>The units used to represent an electric current</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="A"/>
+      <xsd:enumeration value="e-/pixel/sec"/>
+      <xsd:enumeration value="e- rms"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="UnitsElectricPotential">
+    <xsd:annotation>
+      <xsd:documentation>
+        The units used to represent an electric potential
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="YV">
+        <xsd:annotation>
+          <xsd:documentation>yottavolt unit.</xsd:documentation>
+          <xsd:appinfo><xsdfu xmlns=""><enum name="yottavolt" plural="yottavolts" unitsystem="SI.VOLT" enum="YOTTAVOLT"/></xsdfu></xsd:appinfo>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="ZV">
+        <xsd:annotation>
+          <xsd:documentation>zettavolt unit.</xsd:documentation>
+          <xsd:appinfo><xsdfu xmlns=""><enum name="zettavolt" plural="zettavolts" unitsystem="SI.VOLT" enum="ZETTAVOLT"/></xsdfu></xsd:appinfo>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="EV">
+        <xsd:annotation>
+          <xsd:documentation>exavolt unit.</xsd:documentation>
+          <xsd:appinfo><xsdfu xmlns=""><enum name="exavolt" plural="exavolts" unitsystem="SI.VOLT" enum="EXAVOLT"/></xsdfu></xsd:appinfo>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="PV">
+        <xsd:annotation>
+          <xsd:documentation>petavolt unit.</xsd:documentation>
+          <xsd:appinfo><xsdfu xmlns=""><enum name="petavolt" plural="petavolts" unitsystem="SI.VOLT" enum="PETAVOLT"/></xsdfu></xsd:appinfo>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="TV">
+        <xsd:annotation>
+          <xsd:documentation>teravolt unit.</xsd:documentation>
+          <xsd:appinfo><xsdfu xmlns=""><enum name="teravolt" plural="teravolts" unitsystem="SI.VOLT" enum="TERAVOLT"/></xsdfu></xsd:appinfo>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="GV">
+        <xsd:annotation>
+          <xsd:documentation>gigavolt unit.</xsd:documentation>
+          <xsd:appinfo><xsdfu xmlns=""><enum name="gigavolt" plural="gigavolts" unitsystem="SI.VOLT" enum="GIGAVOLT"/></xsdfu></xsd:appinfo>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="MV">
+        <xsd:annotation>
+          <xsd:documentation>megavolt unit.</xsd:documentation>
+          <xsd:appinfo><xsdfu xmlns=""><enum name="megavolt" plural="megavolts" unitsystem="SI.VOLT" enum="MEGAVOLT"/></xsdfu></xsd:appinfo>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="kV">
+        <xsd:annotation>
+          <xsd:documentation>kilovolt unit.</xsd:documentation>
+          <xsd:appinfo><xsdfu xmlns=""><enum name="kilovolt" plural="kilovolts" unitsystem="SI.VOLT" enum="KILOVOLT"/></xsdfu></xsd:appinfo>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="hV">
+        <xsd:annotation>
+          <xsd:documentation>hectovolt unit.</xsd:documentation>
+          <xsd:appinfo><xsdfu xmlns=""><enum name="hectovolt" plural="hectovolts" unitsystem="SI.VOLT" enum="HECTOVOLT"/></xsdfu></xsd:appinfo>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="daV">
+        <xsd:annotation>
+          <xsd:documentation>decavolt unit.</xsd:documentation>
+          <xsd:appinfo><xsdfu xmlns=""><enum name="decavolt" plural="decavolts" unitsystem="SI.VOLT" enum="DECAVOLT"/></xsdfu></xsd:appinfo>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="V">
+        <xsd:annotation>
+          <xsd:documentation>volt unit.</xsd:documentation>
+          <xsd:appinfo><xsdfu xmlns=""><enum name="volt" plural="volts" unitsystem="SI.VOLT" enum="VOLT"/></xsdfu></xsd:appinfo>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="dV">
+        <xsd:annotation>
+          <xsd:documentation>decivolt unit.</xsd:documentation>
+          <xsd:appinfo><xsdfu xmlns=""><enum name="decivolt" plural="decivolts" unitsystem="SI.VOLT" enum="DECIVOLT"/></xsdfu></xsd:appinfo>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="cV">
+        <xsd:annotation>
+          <xsd:documentation>centivolt unit.</xsd:documentation>
+          <xsd:appinfo><xsdfu xmlns=""><enum name="centivolt" plural="centivolts" unitsystem="SI.VOLT" enum="CENTIVOLT"/></xsdfu></xsd:appinfo>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="mV">
+        <xsd:annotation>
+          <xsd:documentation>millivolt unit.</xsd:documentation>
+          <xsd:appinfo><xsdfu xmlns=""><enum name="millivolt" plural="millivolts" unitsystem="SI.VOLT" enum="MILLIVOLT"/></xsdfu></xsd:appinfo>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="µV">
+        <xsd:annotation>
+          <xsd:documentation>microvolt unit.</xsd:documentation>
+          <xsd:appinfo><xsdfu xmlns=""><enum name="microvolt" plural="microvolts" unitsystem="SI.VOLT" enum="MICROVOLT"/></xsdfu></xsd:appinfo>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="nV">
+        <xsd:annotation>
+          <xsd:documentation>nanovolt unit.</xsd:documentation>
+          <xsd:appinfo><xsdfu xmlns=""><enum name="nanovolt" plural="nanovolts" unitsystem="SI.VOLT" enum="NANOVOLT"/></xsdfu></xsd:appinfo>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="pV">
+        <xsd:annotation>
+          <xsd:documentation>picovolt unit.</xsd:documentation>
+          <xsd:appinfo><xsdfu xmlns=""><enum name="picovolt" plural="picovolts" unitsystem="SI.VOLT" enum="PICOVOLT"/></xsdfu></xsd:appinfo>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="fV">
+        <xsd:annotation>
+          <xsd:documentation>femtovolt unit.</xsd:documentation>
+          <xsd:appinfo><xsdfu xmlns=""><enum name="femtovolt" plural="femtovolts" unitsystem="SI.VOLT" enum="FEMTOVOLT"/></xsdfu></xsd:appinfo>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="aV">
+        <xsd:annotation>
+          <xsd:documentation>attovolt unit.</xsd:documentation>
+          <xsd:appinfo><xsdfu xmlns=""><enum name="attovolt" plural="attovolts" unitsystem="SI.VOLT" enum="ATTOVOLT"/></xsdfu></xsd:appinfo>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="zV">
+        <xsd:annotation>
+          <xsd:documentation>zeptovolt unit.</xsd:documentation>
+          <xsd:appinfo><xsdfu xmlns=""><enum name="zeptovolt" plural="zeptovolts" unitsystem="SI.VOLT" enum="ZEPTOVOLT"/></xsdfu></xsd:appinfo>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="yV">
+        <xsd:annotation>
+          <xsd:documentation>yoctovolt unit.</xsd:documentation>
+          <xsd:appinfo><xsdfu xmlns=""><enum name="yoctovolt" plural="yoctovolts" unitsystem="SI.VOLT" enum="YOCTOVOLT"/></xsdfu></xsd:appinfo>
+        </xsd:annotation>
+      </xsd:enumeration>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="UnitsFrequency">
+    <xsd:annotation>
+      <xsd:documentation>
+        The units used to represent frequency
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="YHz">
+        <xsd:annotation>
+          <xsd:documentation>yottahertz unit.</xsd:documentation>
+          <xsd:appinfo><xsdfu xmlns=""><enum name="yottahertz" unitsystem="SI.HERTZ" enum="YOTTAHERTZ"/></xsdfu></xsd:appinfo>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="ZHz">
+        <xsd:annotation>
+          <xsd:documentation>zettahertz unit.</xsd:documentation>
+          <xsd:appinfo><xsdfu xmlns=""><enum name="zettahertz" unitsystem="SI.HERTZ" enum="ZETTAHERTZ"/></xsdfu></xsd:appinfo>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="EHz">
+        <xsd:annotation>
+          <xsd:documentation>exahertz unit.</xsd:documentation>
+          <xsd:appinfo><xsdfu xmlns=""><enum name="exahertz" unitsystem="SI.HERTZ" enum="EXAHERTZ"/></xsdfu></xsd:appinfo>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="PHz">
+        <xsd:annotation>
+          <xsd:documentation>petahertz unit.</xsd:documentation>
+          <xsd:appinfo><xsdfu xmlns=""><enum name="petahertz" unitsystem="SI.HERTZ" enum="PETAHERTZ"/></xsdfu></xsd:appinfo>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="THz">
+        <xsd:annotation>
+          <xsd:documentation>terahertz unit.</xsd:documentation>
+          <xsd:appinfo><xsdfu xmlns=""><enum name="terahertz" unitsystem="SI.HERTZ" enum="TERAHERTZ"/></xsdfu></xsd:appinfo>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="GHz">
+        <xsd:annotation>
+          <xsd:documentation>gigahertz unit.</xsd:documentation>
+          <xsd:appinfo><xsdfu xmlns=""><enum name="gigahertz" unitsystem="SI.HERTZ" enum="GIGAHERTZ"/></xsdfu></xsd:appinfo>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="MHz">
+        <xsd:annotation>
+          <xsd:documentation>megahertz unit.</xsd:documentation>
+          <xsd:appinfo><xsdfu xmlns=""><enum name="megahertz" unitsystem="SI.HERTZ" enum="MEGAHERTZ"/></xsdfu></xsd:appinfo>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="kHz">
+        <xsd:annotation>
+          <xsd:documentation>kilohertz unit.</xsd:documentation>
+          <xsd:appinfo><xsdfu xmlns=""><enum name="kilohertz" unitsystem="SI.HERTZ" enum="KILOHERTZ"/></xsdfu></xsd:appinfo>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="hHz">
+        <xsd:annotation>
+          <xsd:documentation>hectohertz unit.</xsd:documentation>
+          <xsd:appinfo><xsdfu xmlns=""><enum name="hectohertz" unitsystem="SI.HERTZ" enum="HECTOHERTZ"/></xsdfu></xsd:appinfo>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="daHz">
+        <xsd:annotation>
+          <xsd:documentation>decahertz unit.</xsd:documentation>
+          <xsd:appinfo><xsdfu xmlns=""><enum name="decahertz" unitsystem="SI.HERTZ" enum="DECAHERTZ"/></xsdfu></xsd:appinfo>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="Hz">
+        <xsd:annotation>
+          <xsd:documentation>hertz unit.</xsd:documentation>
+          <xsd:appinfo><xsdfu xmlns=""><enum name="hertz" unitsystem="SI.HERTZ" enum="HERTZ"/></xsdfu></xsd:appinfo>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="dHz">
+        <xsd:annotation>
+          <xsd:documentation>decihertz unit.</xsd:documentation>
+          <xsd:appinfo><xsdfu xmlns=""><enum name="decihertz" unitsystem="SI.HERTZ" enum="DECIHERTZ"/></xsdfu></xsd:appinfo>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="cHz">
+        <xsd:annotation>
+          <xsd:documentation>centihertz unit.</xsd:documentation>
+          <xsd:appinfo><xsdfu xmlns=""><enum name="centihertz" unitsystem="SI.HERTZ" enum="CENTIHERTZ"/></xsdfu></xsd:appinfo>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="mHz">
+        <xsd:annotation>
+          <xsd:documentation>millihertz unit.</xsd:documentation>
+          <xsd:appinfo><xsdfu xmlns=""><enum name="millihertz" unitsystem="SI.HERTZ" enum="MILLIHERTZ"/></xsdfu></xsd:appinfo>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="µHz">
+        <xsd:annotation>
+          <xsd:documentation>microhertz unit.</xsd:documentation>
+          <xsd:appinfo><xsdfu xmlns=""><enum name="microhertz" unitsystem="SI.HERTZ" enum="MICROHERTZ"/></xsdfu></xsd:appinfo>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="nHz">
+        <xsd:annotation>
+          <xsd:documentation>nanohertz unit.</xsd:documentation>
+          <xsd:appinfo><xsdfu xmlns=""><enum name="nanohertz" unitsystem="SI.HERTZ" enum="NANOHERTZ"/></xsdfu></xsd:appinfo>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="pHz">
+        <xsd:annotation>
+          <xsd:documentation>picohertz unit.</xsd:documentation>
+          <xsd:appinfo><xsdfu xmlns=""><enum name="picohertz" unitsystem="SI.HERTZ" enum="PICOHERTZ"/></xsdfu></xsd:appinfo>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="fHz">
+        <xsd:annotation>
+          <xsd:documentation>femtohertz unit.</xsd:documentation>
+          <xsd:appinfo><xsdfu xmlns=""><enum name="femtohertz" unitsystem="SI.HERTZ" enum="FEMTOHERTZ"/></xsdfu></xsd:appinfo>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="aHz">
+        <xsd:annotation>
+          <xsd:documentation>attohertz unit.</xsd:documentation>
+          <xsd:appinfo><xsdfu xmlns=""><enum name="attohertz" unitsystem="SI.HERTZ" enum="ATTOHERTZ"/></xsdfu></xsd:appinfo>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="zHz">
+        <xsd:annotation>
+          <xsd:documentation>zeptohertz unit.</xsd:documentation>
+          <xsd:appinfo><xsdfu xmlns=""><enum name="zeptohertz" unitsystem="SI.HERTZ" enum="ZEPTOHERTZ"/></xsdfu></xsd:appinfo>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="yHz">
+        <xsd:annotation>
+          <xsd:documentation>yoctohertz unit.</xsd:documentation>
+          <xsd:appinfo><xsdfu xmlns=""><enum name="yoctohertz" unitsystem="SI.HERTZ" enum="YOCTOHERTZ"/></xsdfu></xsd:appinfo>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="fps"/>
+      <xsd:enumeration value="pixel per second"/>
+    </xsd:restriction>
   </xsd:simpleType>
   <xsd:simpleType name="UnitsLength">
     <xsd:annotation>
@@ -7955,156 +8758,137 @@ annotation refs from the base Annotation to form the list.</xsd:documentation>
       </xsd:enumeration>
     </xsd:restriction>
   </xsd:simpleType>
-  <xsd:simpleType name="UnitsTime">
+  <xsd:simpleType name="UnitsPower">
     <xsd:annotation>
       <xsd:documentation>
-        The units used to represent a time interval
+        The units used to represent power
       </xsd:documentation>
     </xsd:annotation>
     <xsd:restriction base="xsd:string">
-      <xsd:enumeration value="Ys">
+      <xsd:enumeration value="YW">
         <xsd:annotation>
-          <xsd:documentation>yottasecond SI unit.</xsd:documentation>
-          <xsd:appinfo><xsdfu xmlns=""><enum name="yottasecond" plural="yottaseconds" unitsystem="SI.SECOND" enum="YOTTASECOND"/></xsdfu></xsd:appinfo>
+          <xsd:documentation>yottawatt unit.</xsd:documentation>
+          <xsd:appinfo><xsdfu xmlns=""><enum name="yottawatt" plural="yottawatts" unitsystem="SI.WATT" enum="YOTTAWATT"/></xsdfu></xsd:appinfo>
         </xsd:annotation>
       </xsd:enumeration>
-      <xsd:enumeration value="Zs">
+      <xsd:enumeration value="ZW">
         <xsd:annotation>
-          <xsd:documentation>zettasecond SI unit.</xsd:documentation>
-          <xsd:appinfo><xsdfu xmlns=""><enum name="zettasecond" plural="zettaseconds" unitsystem="SI.SECOND" enum="ZETTASECOND"/></xsdfu></xsd:appinfo>
+          <xsd:documentation>zettawatt unit.</xsd:documentation>
+          <xsd:appinfo><xsdfu xmlns=""><enum name="zettawatt" plural="zettawatts" unitsystem="SI.WATT" enum="ZETTAWATT"/></xsdfu></xsd:appinfo>
         </xsd:annotation>
       </xsd:enumeration>
-      <xsd:enumeration value="Es">
+      <xsd:enumeration value="EW">
         <xsd:annotation>
-          <xsd:documentation>exasecond SI unit.</xsd:documentation>
-          <xsd:appinfo><xsdfu xmlns=""><enum name="exasecond" plural="exaseconds" unitsystem="SI.SECOND" enum="EXASECOND"/></xsdfu></xsd:appinfo>
+          <xsd:documentation>exawatt unit.</xsd:documentation>
+          <xsd:appinfo><xsdfu xmlns=""><enum name="exawatt" plural="exawatts" unitsystem="SI.WATT" enum="EXAWATT"/></xsdfu></xsd:appinfo>
         </xsd:annotation>
       </xsd:enumeration>
-      <xsd:enumeration value="Ps">
+      <xsd:enumeration value="PW">
         <xsd:annotation>
-          <xsd:documentation>petasecond SI unit.</xsd:documentation>
-          <xsd:appinfo><xsdfu xmlns=""><enum name="petasecond" plural="petaseconds" unitsystem="SI.SECOND" enum="PETASECOND"/></xsdfu></xsd:appinfo>
+          <xsd:documentation>petawatt unit.</xsd:documentation>
+          <xsd:appinfo><xsdfu xmlns=""><enum name="petawatt" plural="petawatts" unitsystem="SI.WATT" enum="PETAWATT"/></xsdfu></xsd:appinfo>
         </xsd:annotation>
       </xsd:enumeration>
-      <xsd:enumeration value="Ts">
+      <xsd:enumeration value="TW">
         <xsd:annotation>
-          <xsd:documentation>terasecond SI unit.</xsd:documentation>
-          <xsd:appinfo><xsdfu xmlns=""><enum name="terasecond" plural="teraseconds" unitsystem="SI.SECOND" enum="TERASECOND"/></xsdfu></xsd:appinfo>
+          <xsd:documentation>terawatt unit.</xsd:documentation>
+          <xsd:appinfo><xsdfu xmlns=""><enum name="terawatt" plural="terawatts" unitsystem="SI.WATT" enum="TERAWATT"/></xsdfu></xsd:appinfo>
         </xsd:annotation>
       </xsd:enumeration>
-      <xsd:enumeration value="Gs">
+      <xsd:enumeration value="GW">
         <xsd:annotation>
-          <xsd:documentation>gigasecond SI unit.</xsd:documentation>
-          <xsd:appinfo><xsdfu xmlns=""><enum name="gigasecond" plural="gigaseconds" unitsystem="SI.SECOND" enum="GIGASECOND"/></xsdfu></xsd:appinfo>
+          <xsd:documentation>gigawatt unit.</xsd:documentation>
+          <xsd:appinfo><xsdfu xmlns=""><enum name="gigawatt" plural="gigawatts" unitsystem="SI.WATT" enum="GIGAWATT"/></xsdfu></xsd:appinfo>
         </xsd:annotation>
       </xsd:enumeration>
-      <xsd:enumeration value="Ms">
+      <xsd:enumeration value="MW">
         <xsd:annotation>
-          <xsd:documentation>megasecond SI unit.</xsd:documentation>
-          <xsd:appinfo><xsdfu xmlns=""><enum name="megasecond" plural="megaseconds" unitsystem="SI.SECOND" enum="MEGASECOND"/></xsdfu></xsd:appinfo>
+          <xsd:documentation>megawatt unit.</xsd:documentation>
+          <xsd:appinfo><xsdfu xmlns=""><enum name="megawatt" plural="megawatts" unitsystem="SI.WATT" enum="MEGAWATT"/></xsdfu></xsd:appinfo>
         </xsd:annotation>
       </xsd:enumeration>
-      <xsd:enumeration value="ks">
+      <xsd:enumeration value="kW">
         <xsd:annotation>
-          <xsd:documentation>kilosecond SI unit.</xsd:documentation>
-          <xsd:appinfo><xsdfu xmlns=""><enum name="kilosecond" plural="kiloseconds" unitsystem="SI.SECOND" enum="KILOSECOND"/></xsdfu></xsd:appinfo>
+          <xsd:documentation>kilowatt unit.</xsd:documentation>
+          <xsd:appinfo><xsdfu xmlns=""><enum name="kilowatt" plural="kilowatts" unitsystem="SI.WATT" enum="KILOWATT"/></xsdfu></xsd:appinfo>
         </xsd:annotation>
       </xsd:enumeration>
-      <xsd:enumeration value="hs">
+      <xsd:enumeration value="hW">
         <xsd:annotation>
-          <xsd:documentation>hectosecond SI unit.</xsd:documentation>
-          <xsd:appinfo><xsdfu xmlns=""><enum name="hectosecond" plural="hectoseconds" unitsystem="SI.SECOND" enum="HECTOSECOND"/></xsdfu></xsd:appinfo>
+          <xsd:documentation>hectowatt unit.</xsd:documentation>
+          <xsd:appinfo><xsdfu xmlns=""><enum name="hectowatt" plural="hectowatts" unitsystem="SI.WATT" enum="HECTOWATT"/></xsdfu></xsd:appinfo>
         </xsd:annotation>
       </xsd:enumeration>
-      <xsd:enumeration value="das">
+      <xsd:enumeration value="daW">
         <xsd:annotation>
-          <xsd:documentation>decasecond SI unit.</xsd:documentation>
-          <xsd:appinfo><xsdfu xmlns=""><enum name="decasecond" plural="decaseconds" unitsystem="SI.SECOND" enum="DECASECOND"/></xsdfu></xsd:appinfo>
+          <xsd:documentation>decawatt unit.</xsd:documentation>
+          <xsd:appinfo><xsdfu xmlns=""><enum name="decawatt" plural="decawatts" unitsystem="SI.WATT" enum="DECAWATT"/></xsdfu></xsd:appinfo>
         </xsd:annotation>
       </xsd:enumeration>
-      <xsd:enumeration value="s">
+      <xsd:enumeration value="W">
         <xsd:annotation>
-          <xsd:documentation>second SI unit.</xsd:documentation>
-          <xsd:appinfo><xsdfu xmlns=""><enum name="second" plural="seconds" unitsystem="SI.SECOND" enum="SECOND"/></xsdfu></xsd:appinfo>
+          <xsd:documentation>watt unit.</xsd:documentation>
+          <xsd:appinfo><xsdfu xmlns=""><enum name="watt" plural="watts" unitsystem="SI.WATT" enum="WATT"/></xsdfu></xsd:appinfo>
         </xsd:annotation>
       </xsd:enumeration>
-      <xsd:enumeration value="ds">
+      <xsd:enumeration value="dW">
         <xsd:annotation>
-          <xsd:documentation>decisecond SI unit.</xsd:documentation>
-          <xsd:appinfo><xsdfu xmlns=""><enum name="decisecond" plural="deciseconds" unitsystem="SI.SECOND" enum="DECISECOND"/></xsdfu></xsd:appinfo>
+          <xsd:documentation>deciwatt unit.</xsd:documentation>
+          <xsd:appinfo><xsdfu xmlns=""><enum name="deciwatt" plural="deciwatts" unitsystem="SI.WATT" enum="DECIWATT"/></xsdfu></xsd:appinfo>
         </xsd:annotation>
       </xsd:enumeration>
-      <xsd:enumeration value="cs">
+      <xsd:enumeration value="cW">
         <xsd:annotation>
-          <xsd:documentation>centisecond SI unit.</xsd:documentation>
-          <xsd:appinfo><xsdfu xmlns=""><enum name="centisecond" plural="centiseconds" unitsystem="SI.SECOND" enum="CENTISECOND"/></xsdfu></xsd:appinfo>
+          <xsd:documentation>centiwatt unit.</xsd:documentation>
+          <xsd:appinfo><xsdfu xmlns=""><enum name="centiwatt" plural="centiwatts" unitsystem="SI.WATT" enum="CENTIWATT"/></xsdfu></xsd:appinfo>
         </xsd:annotation>
       </xsd:enumeration>
-      <xsd:enumeration value="ms">
+      <xsd:enumeration value="mW">
         <xsd:annotation>
-          <xsd:documentation>millisecond SI unit.</xsd:documentation>
-          <xsd:appinfo><xsdfu xmlns=""><enum name="millisecond" plural="milliseconds" unitsystem="SI.SECOND" enum="MILLISECOND"/></xsdfu></xsd:appinfo>
+          <xsd:documentation>milliwatt unit.</xsd:documentation>
+          <xsd:appinfo><xsdfu xmlns=""><enum name="milliwatt" plural="milliwatts" unitsystem="SI.WATT" enum="MILLIWATT"/></xsdfu></xsd:appinfo>
         </xsd:annotation>
       </xsd:enumeration>
-      <xsd:enumeration value="µs">
+      <xsd:enumeration value="µW">
         <xsd:annotation>
-          <xsd:documentation>microsecond SI unit.</xsd:documentation>
-          <xsd:appinfo><xsdfu xmlns=""><enum name="microsecond" plural="microseconds" unitsystem="SI.SECOND" enum="MICROSECOND"/></xsdfu></xsd:appinfo>
+          <xsd:documentation>microwatt unit.</xsd:documentation>
+          <xsd:appinfo><xsdfu xmlns=""><enum name="microwatt" plural="microwatts" unitsystem="SI.WATT" enum="MICROWATT"/></xsdfu></xsd:appinfo>
         </xsd:annotation>
       </xsd:enumeration>
-      <xsd:enumeration value="ns">
+      <xsd:enumeration value="nW">
         <xsd:annotation>
-          <xsd:documentation>nanosecond SI unit.</xsd:documentation>
-          <xsd:appinfo><xsdfu xmlns=""><enum name="nanosecond" plural="nanoseconds" unitsystem="SI.SECOND" enum="NANOSECOND"/></xsdfu></xsd:appinfo>
+          <xsd:documentation>nanowatt unit.</xsd:documentation>
+          <xsd:appinfo><xsdfu xmlns=""><enum name="nanowatt" plural="nanowatts" unitsystem="SI.WATT" enum="NANOWATT"/></xsdfu></xsd:appinfo>
         </xsd:annotation>
       </xsd:enumeration>
-      <xsd:enumeration value="ps">
+      <xsd:enumeration value="pW">
         <xsd:annotation>
-          <xsd:documentation>picosecond SI unit.</xsd:documentation>
-          <xsd:appinfo><xsdfu xmlns=""><enum name="picosecond" plural="picoseconds" unitsystem="SI.SECOND" enum="PICOSECOND"/></xsdfu></xsd:appinfo>
+          <xsd:documentation>picowatt unit.</xsd:documentation>
+          <xsd:appinfo><xsdfu xmlns=""><enum name="picowatt" plural="picowatts" unitsystem="SI.WATT" enum="PICOWATT"/></xsdfu></xsd:appinfo>
         </xsd:annotation>
       </xsd:enumeration>
-      <xsd:enumeration value="fs">
+      <xsd:enumeration value="fW">
         <xsd:annotation>
-          <xsd:documentation>femtosecond SI unit.</xsd:documentation>
-          <xsd:appinfo><xsdfu xmlns=""><enum name="femtosecond" plural="femtoseconds" unitsystem="SI.SECOND" enum="FEMTOSECOND"/></xsdfu></xsd:appinfo>
+          <xsd:documentation>femtowatt unit.</xsd:documentation>
+          <xsd:appinfo><xsdfu xmlns=""><enum name="femtowatt" plural="femtowatts" unitsystem="SI.WATT" enum="FEMTOWATT"/></xsdfu></xsd:appinfo>
         </xsd:annotation>
       </xsd:enumeration>
-      <xsd:enumeration value="as">
+      <xsd:enumeration value="aW">
         <xsd:annotation>
-          <xsd:documentation>attosecond SI unit.</xsd:documentation>
-          <xsd:appinfo><xsdfu xmlns=""><enum name="attosecond" plural="attoseconds" unitsystem="SI.SECOND" enum="ATTOSECOND"/></xsdfu></xsd:appinfo>
+          <xsd:documentation>attowatt unit.</xsd:documentation>
+          <xsd:appinfo><xsdfu xmlns=""><enum name="attowatt" plural="attowatts" unitsystem="SI.WATT" enum="ATTOWATT"/></xsdfu></xsd:appinfo>
         </xsd:annotation>
       </xsd:enumeration>
-      <xsd:enumeration value="zs">
+      <xsd:enumeration value="zW">
         <xsd:annotation>
-          <xsd:documentation>zeptosecond SI unit.</xsd:documentation>
-          <xsd:appinfo><xsdfu xmlns=""><enum name="zeptosecond" plural="zeptoseconds" unitsystem="SI.SECOND" enum="ZEPTOSECOND"/></xsdfu></xsd:appinfo>
+          <xsd:documentation>zeptowatt unit.</xsd:documentation>
+          <xsd:appinfo><xsdfu xmlns=""><enum name="zeptowatt" plural="zeptowatts" unitsystem="SI.WATT" enum="ZEPTOWATT"/></xsdfu></xsd:appinfo>
         </xsd:annotation>
       </xsd:enumeration>
-      <xsd:enumeration value="ys">
+      <xsd:enumeration value="yW">
         <xsd:annotation>
-          <xsd:documentation>yoctosecond SI unit.</xsd:documentation>
-          <xsd:appinfo><xsdfu xmlns=""><enum name="yoctosecond" plural="yoctoseconds" unitsystem="SI.SECOND" enum="YOCTOSECOND"/></xsdfu></xsd:appinfo>
-        </xsd:annotation>
-      </xsd:enumeration>
-
-      <xsd:enumeration value="min">
-        <xsd:annotation>
-          <xsd:documentation>minute SI-derived unit.</xsd:documentation>
-          <xsd:appinfo><xsdfu xmlns=""><enum name="minute" plural="minutes" unitsystem="SI.SECOND" enum="MINUTE"/></xsdfu></xsd:appinfo>
-        </xsd:annotation>
-      </xsd:enumeration>
-      <xsd:enumeration value="h">
-        <xsd:annotation>
-          <xsd:documentation>hour SI-derived unit.</xsd:documentation>
-          <xsd:appinfo><xsdfu xmlns=""><enum name="hour" plural="hours" unitsystem="SI.SECOND" enum="HOUR"/></xsdfu></xsd:appinfo>
-        </xsd:annotation>
-      </xsd:enumeration>
-      <xsd:enumeration value="d">
-        <xsd:annotation>
-          <xsd:documentation>day SI-derived unit.</xsd:documentation>
-          <xsd:appinfo><xsdfu xmlns=""><enum name="day" plural="days" unitsystem="SI.SECOND" enum="DAY"/></xsdfu></xsd:appinfo>
+          <xsd:documentation>yoctowatt unit.</xsd:documentation>
+          <xsd:appinfo><xsdfu xmlns=""><enum name="yoctowatt" plural="yoctowatts" unitsystem="SI.WATT" enum="YOCTOWATT"/></xsdfu></xsd:appinfo>
         </xsd:annotation>
       </xsd:enumeration>
     </xsd:restriction>
@@ -8314,30 +9098,13 @@ annotation refs from the base Annotation to form the list.</xsd:documentation>
       </xsd:enumeration>
     </xsd:restriction>
   </xsd:simpleType>
-  <xsd:simpleType name="UnitsAngle">
+  <xsd:simpleType name="UnitsRatio">
     <xsd:annotation>
-      <xsd:documentation>The units used to represent an angle.
-      </xsd:documentation>
+      <xsd:documentation>The units represent the relative loudness of sounds or the ratio between two physical quantities, usually amounts of acoustic or electric power, or for measuring. </xsd:documentation>
     </xsd:annotation>
     <xsd:restriction base="xsd:string">
-      <xsd:enumeration value="deg">
-        <xsd:annotation>
-          <xsd:documentation>degree unit.</xsd:documentation>
-          <xsd:appinfo><xsdfu xmlns=""><enum name="degree" plural="degrees" unitsystem="SI.RADIAN" enum="DEGREE"/></xsdfu></xsd:appinfo>
-        </xsd:annotation>
-      </xsd:enumeration>
-      <xsd:enumeration value="rad">
-        <xsd:annotation>
-          <xsd:documentation>radian unit.</xsd:documentation>
-          <xsd:appinfo><xsdfu xmlns=""><enum name="radian" plural="radians" unitsystem="SI.RADIAN" enum="RADIAN"/></xsdfu></xsd:appinfo>
-        </xsd:annotation>
-      </xsd:enumeration>
-      <xsd:enumeration value="gon">
-        <xsd:annotation>
-          <xsd:documentation>gradian unit.</xsd:documentation>
-          <xsd:appinfo><xsdfu xmlns=""><enum name="gradian" plural="gradians" unitsystem="SI.RADIAN" enum="GRADIAN"/></xsdfu></xsd:appinfo>
-        </xsd:annotation>
-      </xsd:enumeration>
+      <xsd:enumeration value="bel"/>
+      <xsd:enumeration value="decibel (dB)"/>
     </xsd:restriction>
   </xsd:simpleType>
   <xsd:simpleType name="UnitsTemperature">
@@ -8373,276 +9140,158 @@ annotation refs from the base Annotation to form the list.</xsd:documentation>
       </xsd:enumeration>
     </xsd:restriction>
   </xsd:simpleType>
-  <xsd:simpleType name="UnitsPower">
+  <xsd:simpleType name="UnitsTime">
     <xsd:annotation>
       <xsd:documentation>
-        The units used to represent power
+        The units used to represent a time interval
       </xsd:documentation>
     </xsd:annotation>
     <xsd:restriction base="xsd:string">
-      <xsd:enumeration value="YW">
+      <xsd:enumeration value="Ys">
         <xsd:annotation>
-          <xsd:documentation>yottawatt unit.</xsd:documentation>
-          <xsd:appinfo><xsdfu xmlns=""><enum name="yottawatt" plural="yottawatts" unitsystem="SI.WATT" enum="YOTTAWATT"/></xsdfu></xsd:appinfo>
+          <xsd:documentation>yottasecond SI unit.</xsd:documentation>
+          <xsd:appinfo><xsdfu xmlns=""><enum name="yottasecond" plural="yottaseconds" unitsystem="SI.SECOND" enum="YOTTASECOND"/></xsdfu></xsd:appinfo>
         </xsd:annotation>
       </xsd:enumeration>
-      <xsd:enumeration value="ZW">
+      <xsd:enumeration value="Zs">
         <xsd:annotation>
-          <xsd:documentation>zettawatt unit.</xsd:documentation>
-          <xsd:appinfo><xsdfu xmlns=""><enum name="zettawatt" plural="zettawatts" unitsystem="SI.WATT" enum="ZETTAWATT"/></xsdfu></xsd:appinfo>
+          <xsd:documentation>zettasecond SI unit.</xsd:documentation>
+          <xsd:appinfo><xsdfu xmlns=""><enum name="zettasecond" plural="zettaseconds" unitsystem="SI.SECOND" enum="ZETTASECOND"/></xsdfu></xsd:appinfo>
         </xsd:annotation>
       </xsd:enumeration>
-      <xsd:enumeration value="EW">
+      <xsd:enumeration value="Es">
         <xsd:annotation>
-          <xsd:documentation>exawatt unit.</xsd:documentation>
-          <xsd:appinfo><xsdfu xmlns=""><enum name="exawatt" plural="exawatts" unitsystem="SI.WATT" enum="EXAWATT"/></xsdfu></xsd:appinfo>
+          <xsd:documentation>exasecond SI unit.</xsd:documentation>
+          <xsd:appinfo><xsdfu xmlns=""><enum name="exasecond" plural="exaseconds" unitsystem="SI.SECOND" enum="EXASECOND"/></xsdfu></xsd:appinfo>
         </xsd:annotation>
       </xsd:enumeration>
-      <xsd:enumeration value="PW">
+      <xsd:enumeration value="Ps">
         <xsd:annotation>
-          <xsd:documentation>petawatt unit.</xsd:documentation>
-          <xsd:appinfo><xsdfu xmlns=""><enum name="petawatt" plural="petawatts" unitsystem="SI.WATT" enum="PETAWATT"/></xsdfu></xsd:appinfo>
+          <xsd:documentation>petasecond SI unit.</xsd:documentation>
+          <xsd:appinfo><xsdfu xmlns=""><enum name="petasecond" plural="petaseconds" unitsystem="SI.SECOND" enum="PETASECOND"/></xsdfu></xsd:appinfo>
         </xsd:annotation>
       </xsd:enumeration>
-      <xsd:enumeration value="TW">
+      <xsd:enumeration value="Ts">
         <xsd:annotation>
-          <xsd:documentation>terawatt unit.</xsd:documentation>
-          <xsd:appinfo><xsdfu xmlns=""><enum name="terawatt" plural="terawatts" unitsystem="SI.WATT" enum="TERAWATT"/></xsdfu></xsd:appinfo>
+          <xsd:documentation>terasecond SI unit.</xsd:documentation>
+          <xsd:appinfo><xsdfu xmlns=""><enum name="terasecond" plural="teraseconds" unitsystem="SI.SECOND" enum="TERASECOND"/></xsdfu></xsd:appinfo>
         </xsd:annotation>
       </xsd:enumeration>
-      <xsd:enumeration value="GW">
+      <xsd:enumeration value="Gs">
         <xsd:annotation>
-          <xsd:documentation>gigawatt unit.</xsd:documentation>
-          <xsd:appinfo><xsdfu xmlns=""><enum name="gigawatt" plural="gigawatts" unitsystem="SI.WATT" enum="GIGAWATT"/></xsdfu></xsd:appinfo>
+          <xsd:documentation>gigasecond SI unit.</xsd:documentation>
+          <xsd:appinfo><xsdfu xmlns=""><enum name="gigasecond" plural="gigaseconds" unitsystem="SI.SECOND" enum="GIGASECOND"/></xsdfu></xsd:appinfo>
         </xsd:annotation>
       </xsd:enumeration>
-      <xsd:enumeration value="MW">
+      <xsd:enumeration value="Ms">
         <xsd:annotation>
-          <xsd:documentation>megawatt unit.</xsd:documentation>
-          <xsd:appinfo><xsdfu xmlns=""><enum name="megawatt" plural="megawatts" unitsystem="SI.WATT" enum="MEGAWATT"/></xsdfu></xsd:appinfo>
+          <xsd:documentation>megasecond SI unit.</xsd:documentation>
+          <xsd:appinfo><xsdfu xmlns=""><enum name="megasecond" plural="megaseconds" unitsystem="SI.SECOND" enum="MEGASECOND"/></xsdfu></xsd:appinfo>
         </xsd:annotation>
       </xsd:enumeration>
-      <xsd:enumeration value="kW">
+      <xsd:enumeration value="ks">
         <xsd:annotation>
-          <xsd:documentation>kilowatt unit.</xsd:documentation>
-          <xsd:appinfo><xsdfu xmlns=""><enum name="kilowatt" plural="kilowatts" unitsystem="SI.WATT" enum="KILOWATT"/></xsdfu></xsd:appinfo>
+          <xsd:documentation>kilosecond SI unit.</xsd:documentation>
+          <xsd:appinfo><xsdfu xmlns=""><enum name="kilosecond" plural="kiloseconds" unitsystem="SI.SECOND" enum="KILOSECOND"/></xsdfu></xsd:appinfo>
         </xsd:annotation>
       </xsd:enumeration>
-      <xsd:enumeration value="hW">
+      <xsd:enumeration value="hs">
         <xsd:annotation>
-          <xsd:documentation>hectowatt unit.</xsd:documentation>
-          <xsd:appinfo><xsdfu xmlns=""><enum name="hectowatt" plural="hectowatts" unitsystem="SI.WATT" enum="HECTOWATT"/></xsdfu></xsd:appinfo>
+          <xsd:documentation>hectosecond SI unit.</xsd:documentation>
+          <xsd:appinfo><xsdfu xmlns=""><enum name="hectosecond" plural="hectoseconds" unitsystem="SI.SECOND" enum="HECTOSECOND"/></xsdfu></xsd:appinfo>
         </xsd:annotation>
       </xsd:enumeration>
-      <xsd:enumeration value="daW">
+      <xsd:enumeration value="das">
         <xsd:annotation>
-          <xsd:documentation>decawatt unit.</xsd:documentation>
-          <xsd:appinfo><xsdfu xmlns=""><enum name="decawatt" plural="decawatts" unitsystem="SI.WATT" enum="DECAWATT"/></xsdfu></xsd:appinfo>
+          <xsd:documentation>decasecond SI unit.</xsd:documentation>
+          <xsd:appinfo><xsdfu xmlns=""><enum name="decasecond" plural="decaseconds" unitsystem="SI.SECOND" enum="DECASECOND"/></xsdfu></xsd:appinfo>
         </xsd:annotation>
       </xsd:enumeration>
-      <xsd:enumeration value="W">
+      <xsd:enumeration value="s">
         <xsd:annotation>
-          <xsd:documentation>watt unit.</xsd:documentation>
-          <xsd:appinfo><xsdfu xmlns=""><enum name="watt" plural="watts" unitsystem="SI.WATT" enum="WATT"/></xsdfu></xsd:appinfo>
+          <xsd:documentation>second SI unit.</xsd:documentation>
+          <xsd:appinfo><xsdfu xmlns=""><enum name="second" plural="seconds" unitsystem="SI.SECOND" enum="SECOND"/></xsdfu></xsd:appinfo>
         </xsd:annotation>
       </xsd:enumeration>
-      <xsd:enumeration value="dW">
+      <xsd:enumeration value="ds">
         <xsd:annotation>
-          <xsd:documentation>deciwatt unit.</xsd:documentation>
-          <xsd:appinfo><xsdfu xmlns=""><enum name="deciwatt" plural="deciwatts" unitsystem="SI.WATT" enum="DECIWATT"/></xsdfu></xsd:appinfo>
+          <xsd:documentation>decisecond SI unit.</xsd:documentation>
+          <xsd:appinfo><xsdfu xmlns=""><enum name="decisecond" plural="deciseconds" unitsystem="SI.SECOND" enum="DECISECOND"/></xsdfu></xsd:appinfo>
         </xsd:annotation>
       </xsd:enumeration>
-      <xsd:enumeration value="cW">
+      <xsd:enumeration value="cs">
         <xsd:annotation>
-          <xsd:documentation>centiwatt unit.</xsd:documentation>
-          <xsd:appinfo><xsdfu xmlns=""><enum name="centiwatt" plural="centiwatts" unitsystem="SI.WATT" enum="CENTIWATT"/></xsdfu></xsd:appinfo>
+          <xsd:documentation>centisecond SI unit.</xsd:documentation>
+          <xsd:appinfo><xsdfu xmlns=""><enum name="centisecond" plural="centiseconds" unitsystem="SI.SECOND" enum="CENTISECOND"/></xsdfu></xsd:appinfo>
         </xsd:annotation>
       </xsd:enumeration>
-      <xsd:enumeration value="mW">
+      <xsd:enumeration value="ms">
         <xsd:annotation>
-          <xsd:documentation>milliwatt unit.</xsd:documentation>
-          <xsd:appinfo><xsdfu xmlns=""><enum name="milliwatt" plural="milliwatts" unitsystem="SI.WATT" enum="MILLIWATT"/></xsdfu></xsd:appinfo>
+          <xsd:documentation>millisecond SI unit.</xsd:documentation>
+          <xsd:appinfo><xsdfu xmlns=""><enum name="millisecond" plural="milliseconds" unitsystem="SI.SECOND" enum="MILLISECOND"/></xsdfu></xsd:appinfo>
         </xsd:annotation>
       </xsd:enumeration>
-      <xsd:enumeration value="µW">
+      <xsd:enumeration value="µs">
         <xsd:annotation>
-          <xsd:documentation>microwatt unit.</xsd:documentation>
-          <xsd:appinfo><xsdfu xmlns=""><enum name="microwatt" plural="microwatts" unitsystem="SI.WATT" enum="MICROWATT"/></xsdfu></xsd:appinfo>
+          <xsd:documentation>microsecond SI unit.</xsd:documentation>
+          <xsd:appinfo><xsdfu xmlns=""><enum name="microsecond" plural="microseconds" unitsystem="SI.SECOND" enum="MICROSECOND"/></xsdfu></xsd:appinfo>
         </xsd:annotation>
       </xsd:enumeration>
-      <xsd:enumeration value="nW">
+      <xsd:enumeration value="ns">
         <xsd:annotation>
-          <xsd:documentation>nanowatt unit.</xsd:documentation>
-          <xsd:appinfo><xsdfu xmlns=""><enum name="nanowatt" plural="nanowatts" unitsystem="SI.WATT" enum="NANOWATT"/></xsdfu></xsd:appinfo>
+          <xsd:documentation>nanosecond SI unit.</xsd:documentation>
+          <xsd:appinfo><xsdfu xmlns=""><enum name="nanosecond" plural="nanoseconds" unitsystem="SI.SECOND" enum="NANOSECOND"/></xsdfu></xsd:appinfo>
         </xsd:annotation>
       </xsd:enumeration>
-      <xsd:enumeration value="pW">
+      <xsd:enumeration value="ps">
         <xsd:annotation>
-          <xsd:documentation>picowatt unit.</xsd:documentation>
-          <xsd:appinfo><xsdfu xmlns=""><enum name="picowatt" plural="picowatts" unitsystem="SI.WATT" enum="PICOWATT"/></xsdfu></xsd:appinfo>
+          <xsd:documentation>picosecond SI unit.</xsd:documentation>
+          <xsd:appinfo><xsdfu xmlns=""><enum name="picosecond" plural="picoseconds" unitsystem="SI.SECOND" enum="PICOSECOND"/></xsdfu></xsd:appinfo>
         </xsd:annotation>
       </xsd:enumeration>
-      <xsd:enumeration value="fW">
+      <xsd:enumeration value="fs">
         <xsd:annotation>
-          <xsd:documentation>femtowatt unit.</xsd:documentation>
-          <xsd:appinfo><xsdfu xmlns=""><enum name="femtowatt" plural="femtowatts" unitsystem="SI.WATT" enum="FEMTOWATT"/></xsdfu></xsd:appinfo>
+          <xsd:documentation>femtosecond SI unit.</xsd:documentation>
+          <xsd:appinfo><xsdfu xmlns=""><enum name="femtosecond" plural="femtoseconds" unitsystem="SI.SECOND" enum="FEMTOSECOND"/></xsdfu></xsd:appinfo>
         </xsd:annotation>
       </xsd:enumeration>
-      <xsd:enumeration value="aW">
+      <xsd:enumeration value="as">
         <xsd:annotation>
-          <xsd:documentation>attowatt unit.</xsd:documentation>
-          <xsd:appinfo><xsdfu xmlns=""><enum name="attowatt" plural="attowatts" unitsystem="SI.WATT" enum="ATTOWATT"/></xsdfu></xsd:appinfo>
+          <xsd:documentation>attosecond SI unit.</xsd:documentation>
+          <xsd:appinfo><xsdfu xmlns=""><enum name="attosecond" plural="attoseconds" unitsystem="SI.SECOND" enum="ATTOSECOND"/></xsdfu></xsd:appinfo>
         </xsd:annotation>
       </xsd:enumeration>
-      <xsd:enumeration value="zW">
+      <xsd:enumeration value="zs">
         <xsd:annotation>
-          <xsd:documentation>zeptowatt unit.</xsd:documentation>
-          <xsd:appinfo><xsdfu xmlns=""><enum name="zeptowatt" plural="zeptowatts" unitsystem="SI.WATT" enum="ZEPTOWATT"/></xsdfu></xsd:appinfo>
+          <xsd:documentation>zeptosecond SI unit.</xsd:documentation>
+          <xsd:appinfo><xsdfu xmlns=""><enum name="zeptosecond" plural="zeptoseconds" unitsystem="SI.SECOND" enum="ZEPTOSECOND"/></xsdfu></xsd:appinfo>
         </xsd:annotation>
       </xsd:enumeration>
-      <xsd:enumeration value="yW">
+      <xsd:enumeration value="ys">
         <xsd:annotation>
-          <xsd:documentation>yoctowatt unit.</xsd:documentation>
-          <xsd:appinfo><xsdfu xmlns=""><enum name="yoctowatt" plural="yoctowatts" unitsystem="SI.WATT" enum="YOCTOWATT"/></xsdfu></xsd:appinfo>
+          <xsd:documentation>yoctosecond SI unit.</xsd:documentation>
+          <xsd:appinfo><xsdfu xmlns=""><enum name="yoctosecond" plural="yoctoseconds" unitsystem="SI.SECOND" enum="YOCTOSECOND"/></xsdfu></xsd:appinfo>
         </xsd:annotation>
       </xsd:enumeration>
-    </xsd:restriction>
-  </xsd:simpleType>
-  <xsd:simpleType name="UnitsFrequency">
-    <xsd:annotation>
-      <xsd:documentation>
-        The units used to represent frequency
-      </xsd:documentation>
-    </xsd:annotation>
-    <xsd:restriction base="xsd:string">
-      <xsd:enumeration value="YHz">
+
+      <xsd:enumeration value="min">
         <xsd:annotation>
-          <xsd:documentation>yottahertz unit.</xsd:documentation>
-          <xsd:appinfo><xsdfu xmlns=""><enum name="yottahertz" unitsystem="SI.HERTZ" enum="YOTTAHERTZ"/></xsdfu></xsd:appinfo>
+          <xsd:documentation>minute SI-derived unit.</xsd:documentation>
+          <xsd:appinfo><xsdfu xmlns=""><enum name="minute" plural="minutes" unitsystem="SI.SECOND" enum="MINUTE"/></xsdfu></xsd:appinfo>
         </xsd:annotation>
       </xsd:enumeration>
-      <xsd:enumeration value="ZHz">
+      <xsd:enumeration value="h">
         <xsd:annotation>
-          <xsd:documentation>zettahertz unit.</xsd:documentation>
-          <xsd:appinfo><xsdfu xmlns=""><enum name="zettahertz" unitsystem="SI.HERTZ" enum="ZETTAHERTZ"/></xsdfu></xsd:appinfo>
+          <xsd:documentation>hour SI-derived unit.</xsd:documentation>
+          <xsd:appinfo><xsdfu xmlns=""><enum name="hour" plural="hours" unitsystem="SI.SECOND" enum="HOUR"/></xsdfu></xsd:appinfo>
         </xsd:annotation>
       </xsd:enumeration>
-      <xsd:enumeration value="EHz">
+      <xsd:enumeration value="d">
         <xsd:annotation>
-          <xsd:documentation>exahertz unit.</xsd:documentation>
-          <xsd:appinfo><xsdfu xmlns=""><enum name="exahertz" unitsystem="SI.HERTZ" enum="EXAHERTZ"/></xsdfu></xsd:appinfo>
+          <xsd:documentation>day SI-derived unit.</xsd:documentation>
+          <xsd:appinfo><xsdfu xmlns=""><enum name="day" plural="days" unitsystem="SI.SECOND" enum="DAY"/></xsdfu></xsd:appinfo>
         </xsd:annotation>
       </xsd:enumeration>
-      <xsd:enumeration value="PHz">
-        <xsd:annotation>
-          <xsd:documentation>petahertz unit.</xsd:documentation>
-          <xsd:appinfo><xsdfu xmlns=""><enum name="petahertz" unitsystem="SI.HERTZ" enum="PETAHERTZ"/></xsdfu></xsd:appinfo>
-        </xsd:annotation>
-      </xsd:enumeration>
-      <xsd:enumeration value="THz">
-        <xsd:annotation>
-          <xsd:documentation>terahertz unit.</xsd:documentation>
-          <xsd:appinfo><xsdfu xmlns=""><enum name="terahertz" unitsystem="SI.HERTZ" enum="TERAHERTZ"/></xsdfu></xsd:appinfo>
-        </xsd:annotation>
-      </xsd:enumeration>
-      <xsd:enumeration value="GHz">
-        <xsd:annotation>
-          <xsd:documentation>gigahertz unit.</xsd:documentation>
-          <xsd:appinfo><xsdfu xmlns=""><enum name="gigahertz" unitsystem="SI.HERTZ" enum="GIGAHERTZ"/></xsdfu></xsd:appinfo>
-        </xsd:annotation>
-      </xsd:enumeration>
-      <xsd:enumeration value="MHz">
-        <xsd:annotation>
-          <xsd:documentation>megahertz unit.</xsd:documentation>
-          <xsd:appinfo><xsdfu xmlns=""><enum name="megahertz" unitsystem="SI.HERTZ" enum="MEGAHERTZ"/></xsdfu></xsd:appinfo>
-        </xsd:annotation>
-      </xsd:enumeration>
-      <xsd:enumeration value="kHz">
-        <xsd:annotation>
-          <xsd:documentation>kilohertz unit.</xsd:documentation>
-          <xsd:appinfo><xsdfu xmlns=""><enum name="kilohertz" unitsystem="SI.HERTZ" enum="KILOHERTZ"/></xsdfu></xsd:appinfo>
-        </xsd:annotation>
-      </xsd:enumeration>
-      <xsd:enumeration value="hHz">
-        <xsd:annotation>
-          <xsd:documentation>hectohertz unit.</xsd:documentation>
-          <xsd:appinfo><xsdfu xmlns=""><enum name="hectohertz" unitsystem="SI.HERTZ" enum="HECTOHERTZ"/></xsdfu></xsd:appinfo>
-        </xsd:annotation>
-      </xsd:enumeration>
-      <xsd:enumeration value="daHz">
-        <xsd:annotation>
-          <xsd:documentation>decahertz unit.</xsd:documentation>
-          <xsd:appinfo><xsdfu xmlns=""><enum name="decahertz" unitsystem="SI.HERTZ" enum="DECAHERTZ"/></xsdfu></xsd:appinfo>
-        </xsd:annotation>
-      </xsd:enumeration>
-      <xsd:enumeration value="Hz">
-        <xsd:annotation>
-          <xsd:documentation>hertz unit.</xsd:documentation>
-          <xsd:appinfo><xsdfu xmlns=""><enum name="hertz" unitsystem="SI.HERTZ" enum="HERTZ"/></xsdfu></xsd:appinfo>
-        </xsd:annotation>
-      </xsd:enumeration>
-      <xsd:enumeration value="dHz">
-        <xsd:annotation>
-          <xsd:documentation>decihertz unit.</xsd:documentation>
-          <xsd:appinfo><xsdfu xmlns=""><enum name="decihertz" unitsystem="SI.HERTZ" enum="DECIHERTZ"/></xsdfu></xsd:appinfo>
-        </xsd:annotation>
-      </xsd:enumeration>
-      <xsd:enumeration value="cHz">
-        <xsd:annotation>
-          <xsd:documentation>centihertz unit.</xsd:documentation>
-          <xsd:appinfo><xsdfu xmlns=""><enum name="centihertz" unitsystem="SI.HERTZ" enum="CENTIHERTZ"/></xsdfu></xsd:appinfo>
-        </xsd:annotation>
-      </xsd:enumeration>
-      <xsd:enumeration value="mHz">
-        <xsd:annotation>
-          <xsd:documentation>millihertz unit.</xsd:documentation>
-          <xsd:appinfo><xsdfu xmlns=""><enum name="millihertz" unitsystem="SI.HERTZ" enum="MILLIHERTZ"/></xsdfu></xsd:appinfo>
-        </xsd:annotation>
-      </xsd:enumeration>
-      <xsd:enumeration value="µHz">
-        <xsd:annotation>
-          <xsd:documentation>microhertz unit.</xsd:documentation>
-          <xsd:appinfo><xsdfu xmlns=""><enum name="microhertz" unitsystem="SI.HERTZ" enum="MICROHERTZ"/></xsdfu></xsd:appinfo>
-        </xsd:annotation>
-      </xsd:enumeration>
-      <xsd:enumeration value="nHz">
-        <xsd:annotation>
-          <xsd:documentation>nanohertz unit.</xsd:documentation>
-          <xsd:appinfo><xsdfu xmlns=""><enum name="nanohertz" unitsystem="SI.HERTZ" enum="NANOHERTZ"/></xsdfu></xsd:appinfo>
-        </xsd:annotation>
-      </xsd:enumeration>
-      <xsd:enumeration value="pHz">
-        <xsd:annotation>
-          <xsd:documentation>picohertz unit.</xsd:documentation>
-          <xsd:appinfo><xsdfu xmlns=""><enum name="picohertz" unitsystem="SI.HERTZ" enum="PICOHERTZ"/></xsdfu></xsd:appinfo>
-        </xsd:annotation>
-      </xsd:enumeration>
-      <xsd:enumeration value="fHz">
-        <xsd:annotation>
-          <xsd:documentation>femtohertz unit.</xsd:documentation>
-          <xsd:appinfo><xsdfu xmlns=""><enum name="femtohertz" unitsystem="SI.HERTZ" enum="FEMTOHERTZ"/></xsdfu></xsd:appinfo>
-        </xsd:annotation>
-      </xsd:enumeration>
-      <xsd:enumeration value="aHz">
-        <xsd:annotation>
-          <xsd:documentation>attohertz unit.</xsd:documentation>
-          <xsd:appinfo><xsdfu xmlns=""><enum name="attohertz" unitsystem="SI.HERTZ" enum="ATTOHERTZ"/></xsdfu></xsd:appinfo>
-        </xsd:annotation>
-      </xsd:enumeration>
-      <xsd:enumeration value="zHz">
-        <xsd:annotation>
-          <xsd:documentation>zeptohertz unit.</xsd:documentation>
-          <xsd:appinfo><xsdfu xmlns=""><enum name="zeptohertz" unitsystem="SI.HERTZ" enum="ZEPTOHERTZ"/></xsdfu></xsd:appinfo>
-        </xsd:annotation>
-      </xsd:enumeration>
-      <xsd:enumeration value="yHz">
-        <xsd:annotation>
-          <xsd:documentation>yoctohertz unit.</xsd:documentation>
-          <xsd:appinfo><xsdfu xmlns=""><enum name="yoctohertz" unitsystem="SI.HERTZ" enum="YOCTOHERTZ"/></xsdfu></xsd:appinfo>
-        </xsd:annotation>
-      </xsd:enumeration>
-      <xsd:enumeration value="fps"/>
-      <xsd:enumeration value="pixel per second"/>
     </xsd:restriction>
   </xsd:simpleType>
   <xsd:simpleType name="UnitsVelocity">
@@ -8659,172 +9308,6 @@ annotation refs from the base Annotation to form the list.</xsd:documentation>
       <xsd:enumeration value="mm/s"/>
       <xsd:enumeration value="µm/s"/>
       <xsd:enumeration value="nm/s"/>
-      <xsd:enumeration value="Other"/>
-    </xsd:restriction>
-  </xsd:simpleType>
-  <xsd:simpleType name="UnitsDensity">
-    <xsd:annotation>
-      <xsd:documentation>The units used to represent density.</xsd:documentation>
-    </xsd:annotation>
-    <xsd:restriction base="xsd:string">
-      <xsd:enumeration value="kg/m3"/>
-      <xsd:enumeration value="g/ml"/>
-      <xsd:enumeration value="mg/µg"/>
-      <xsd:enumeration value="µg/ng"/>
-    </xsd:restriction>
-  </xsd:simpleType>
-  <xsd:simpleType name="UnitsElectricPotential">
-    <xsd:annotation>
-      <xsd:documentation>
-        The units used to represent an electric potential
-      </xsd:documentation>
-    </xsd:annotation>
-    <xsd:restriction base="xsd:string">
-      <xsd:enumeration value="YV">
-        <xsd:annotation>
-          <xsd:documentation>yottavolt unit.</xsd:documentation>
-          <xsd:appinfo><xsdfu xmlns=""><enum name="yottavolt" plural="yottavolts" unitsystem="SI.VOLT" enum="YOTTAVOLT"/></xsdfu></xsd:appinfo>
-        </xsd:annotation>
-      </xsd:enumeration>
-      <xsd:enumeration value="ZV">
-        <xsd:annotation>
-          <xsd:documentation>zettavolt unit.</xsd:documentation>
-          <xsd:appinfo><xsdfu xmlns=""><enum name="zettavolt" plural="zettavolts" unitsystem="SI.VOLT" enum="ZETTAVOLT"/></xsdfu></xsd:appinfo>
-        </xsd:annotation>
-      </xsd:enumeration>
-      <xsd:enumeration value="EV">
-        <xsd:annotation>
-          <xsd:documentation>exavolt unit.</xsd:documentation>
-          <xsd:appinfo><xsdfu xmlns=""><enum name="exavolt" plural="exavolts" unitsystem="SI.VOLT" enum="EXAVOLT"/></xsdfu></xsd:appinfo>
-        </xsd:annotation>
-      </xsd:enumeration>
-      <xsd:enumeration value="PV">
-        <xsd:annotation>
-          <xsd:documentation>petavolt unit.</xsd:documentation>
-          <xsd:appinfo><xsdfu xmlns=""><enum name="petavolt" plural="petavolts" unitsystem="SI.VOLT" enum="PETAVOLT"/></xsdfu></xsd:appinfo>
-        </xsd:annotation>
-      </xsd:enumeration>
-      <xsd:enumeration value="TV">
-        <xsd:annotation>
-          <xsd:documentation>teravolt unit.</xsd:documentation>
-          <xsd:appinfo><xsdfu xmlns=""><enum name="teravolt" plural="teravolts" unitsystem="SI.VOLT" enum="TERAVOLT"/></xsdfu></xsd:appinfo>
-        </xsd:annotation>
-      </xsd:enumeration>
-      <xsd:enumeration value="GV">
-        <xsd:annotation>
-          <xsd:documentation>gigavolt unit.</xsd:documentation>
-          <xsd:appinfo><xsdfu xmlns=""><enum name="gigavolt" plural="gigavolts" unitsystem="SI.VOLT" enum="GIGAVOLT"/></xsdfu></xsd:appinfo>
-        </xsd:annotation>
-      </xsd:enumeration>
-      <xsd:enumeration value="MV">
-        <xsd:annotation>
-          <xsd:documentation>megavolt unit.</xsd:documentation>
-          <xsd:appinfo><xsdfu xmlns=""><enum name="megavolt" plural="megavolts" unitsystem="SI.VOLT" enum="MEGAVOLT"/></xsdfu></xsd:appinfo>
-        </xsd:annotation>
-      </xsd:enumeration>
-      <xsd:enumeration value="kV">
-        <xsd:annotation>
-          <xsd:documentation>kilovolt unit.</xsd:documentation>
-          <xsd:appinfo><xsdfu xmlns=""><enum name="kilovolt" plural="kilovolts" unitsystem="SI.VOLT" enum="KILOVOLT"/></xsdfu></xsd:appinfo>
-        </xsd:annotation>
-      </xsd:enumeration>
-      <xsd:enumeration value="hV">
-        <xsd:annotation>
-          <xsd:documentation>hectovolt unit.</xsd:documentation>
-          <xsd:appinfo><xsdfu xmlns=""><enum name="hectovolt" plural="hectovolts" unitsystem="SI.VOLT" enum="HECTOVOLT"/></xsdfu></xsd:appinfo>
-        </xsd:annotation>
-      </xsd:enumeration>
-      <xsd:enumeration value="daV">
-        <xsd:annotation>
-          <xsd:documentation>decavolt unit.</xsd:documentation>
-          <xsd:appinfo><xsdfu xmlns=""><enum name="decavolt" plural="decavolts" unitsystem="SI.VOLT" enum="DECAVOLT"/></xsdfu></xsd:appinfo>
-        </xsd:annotation>
-      </xsd:enumeration>
-      <xsd:enumeration value="V">
-        <xsd:annotation>
-          <xsd:documentation>volt unit.</xsd:documentation>
-          <xsd:appinfo><xsdfu xmlns=""><enum name="volt" plural="volts" unitsystem="SI.VOLT" enum="VOLT"/></xsdfu></xsd:appinfo>
-        </xsd:annotation>
-      </xsd:enumeration>
-      <xsd:enumeration value="dV">
-        <xsd:annotation>
-          <xsd:documentation>decivolt unit.</xsd:documentation>
-          <xsd:appinfo><xsdfu xmlns=""><enum name="decivolt" plural="decivolts" unitsystem="SI.VOLT" enum="DECIVOLT"/></xsdfu></xsd:appinfo>
-        </xsd:annotation>
-      </xsd:enumeration>
-      <xsd:enumeration value="cV">
-        <xsd:annotation>
-          <xsd:documentation>centivolt unit.</xsd:documentation>
-          <xsd:appinfo><xsdfu xmlns=""><enum name="centivolt" plural="centivolts" unitsystem="SI.VOLT" enum="CENTIVOLT"/></xsdfu></xsd:appinfo>
-        </xsd:annotation>
-      </xsd:enumeration>
-      <xsd:enumeration value="mV">
-        <xsd:annotation>
-          <xsd:documentation>millivolt unit.</xsd:documentation>
-          <xsd:appinfo><xsdfu xmlns=""><enum name="millivolt" plural="millivolts" unitsystem="SI.VOLT" enum="MILLIVOLT"/></xsdfu></xsd:appinfo>
-        </xsd:annotation>
-      </xsd:enumeration>
-      <xsd:enumeration value="µV">
-        <xsd:annotation>
-          <xsd:documentation>microvolt unit.</xsd:documentation>
-          <xsd:appinfo><xsdfu xmlns=""><enum name="microvolt" plural="microvolts" unitsystem="SI.VOLT" enum="MICROVOLT"/></xsdfu></xsd:appinfo>
-        </xsd:annotation>
-      </xsd:enumeration>
-      <xsd:enumeration value="nV">
-        <xsd:annotation>
-          <xsd:documentation>nanovolt unit.</xsd:documentation>
-          <xsd:appinfo><xsdfu xmlns=""><enum name="nanovolt" plural="nanovolts" unitsystem="SI.VOLT" enum="NANOVOLT"/></xsdfu></xsd:appinfo>
-        </xsd:annotation>
-      </xsd:enumeration>
-      <xsd:enumeration value="pV">
-        <xsd:annotation>
-          <xsd:documentation>picovolt unit.</xsd:documentation>
-          <xsd:appinfo><xsdfu xmlns=""><enum name="picovolt" plural="picovolts" unitsystem="SI.VOLT" enum="PICOVOLT"/></xsdfu></xsd:appinfo>
-        </xsd:annotation>
-      </xsd:enumeration>
-      <xsd:enumeration value="fV">
-        <xsd:annotation>
-          <xsd:documentation>femtovolt unit.</xsd:documentation>
-          <xsd:appinfo><xsdfu xmlns=""><enum name="femtovolt" plural="femtovolts" unitsystem="SI.VOLT" enum="FEMTOVOLT"/></xsdfu></xsd:appinfo>
-        </xsd:annotation>
-      </xsd:enumeration>
-      <xsd:enumeration value="aV">
-        <xsd:annotation>
-          <xsd:documentation>attovolt unit.</xsd:documentation>
-          <xsd:appinfo><xsdfu xmlns=""><enum name="attovolt" plural="attovolts" unitsystem="SI.VOLT" enum="ATTOVOLT"/></xsdfu></xsd:appinfo>
-        </xsd:annotation>
-      </xsd:enumeration>
-      <xsd:enumeration value="zV">
-        <xsd:annotation>
-          <xsd:documentation>zeptovolt unit.</xsd:documentation>
-          <xsd:appinfo><xsdfu xmlns=""><enum name="zeptovolt" plural="zeptovolts" unitsystem="SI.VOLT" enum="ZEPTOVOLT"/></xsdfu></xsd:appinfo>
-        </xsd:annotation>
-      </xsd:enumeration>
-      <xsd:enumeration value="yV">
-        <xsd:annotation>
-          <xsd:documentation>yoctovolt unit.</xsd:documentation>
-          <xsd:appinfo><xsdfu xmlns=""><enum name="yoctovolt" plural="yoctovolts" unitsystem="SI.VOLT" enum="YOCTOVOLT"/></xsdfu></xsd:appinfo>
-        </xsd:annotation>
-      </xsd:enumeration>
-    </xsd:restriction>
-  </xsd:simpleType>
-  <xsd:simpleType name="UnitsElectricCurrent">
-    <xsd:annotation>
-      <xsd:documentation>The units used to represent an electric current</xsd:documentation>
-    </xsd:annotation>
-    <xsd:restriction base="xsd:string">
-      <xsd:enumeration value="A"/>
-      <xsd:enumeration value="e-/pixel/sec"/>
-      <xsd:enumeration value="e- rms"/>
-    </xsd:restriction>
-  </xsd:simpleType>
-  <xsd:simpleType name="UnitsElectricCharge">
-    <xsd:annotation>
-      <xsd:documentation>The units used to represent an electric charge</xsd:documentation>
-    </xsd:annotation>
-    <xsd:restriction base="xsd:string">
-      <xsd:enumeration value="e-"/>
-      <xsd:enumeration value="Coulomb"/>
       <xsd:enumeration value="Other"/>
     </xsd:restriction>
   </xsd:simpleType>
@@ -9187,6 +9670,31 @@ annotation refs from the base Annotation to form the list.</xsd:documentation>
     </xsd:restriction>
   </xsd:simpleType>
 
+  <xsd:simpleType name="PhaseRingNumber">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="PhL"/>
+      <xsd:enumeration value="Ph1"/>
+      <xsd:enumeration value="Ph2"/>
+      <xsd:enumeration value="Ph3"/>
+      <xsd:enumeration value="Ph4"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="HoffmanSlitDesign">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Center"/>
+      <xsd:enumeration value="Offset"/>
+      <xsd:enumeration value="Other"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="IrisShape">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Diamond"/>
+      <xsd:enumeration value="Round"/>
+      <xsd:enumeration value="Slit"/>
+      <xsd:enumeration value="Square"/>
+      <xsd:enumeration value="Other"/>
+    </xsd:restriction>
+  </xsd:simpleType>
   <xsd:simpleType name="LensType">
     <xsd:restriction base="xsd:string">
       <xsd:enumeration value="Amici-Bertrand"/>
@@ -9466,23 +9974,33 @@ annotation refs from the base Annotation to form the list.</xsd:documentation>
   <xsd:simpleType name="DetectorMount">
     <xsd:restriction base="xsd:string">
       <xsd:enumeration value="C-mount"/>
-      <xsd:enumeration value="T-mount"/>
-      <xsd:enumeration value="SLR adapter"/>
       <xsd:enumeration value="D-SLR adapter"/>
+      <xsd:enumeration value="SLR adapter"/>
+      <xsd:enumeration value="T-mount"/>
       <xsd:enumeration value="Other"/>
     </xsd:restriction>
   </xsd:simpleType>
   <xsd:simpleType name="DetectorNoiseModel">
     <xsd:restriction base="xsd:string">
-      <xsd:enumeration value="Poisson"/>
       <xsd:enumeration value="Gaussian"/>
+      <xsd:enumeration value="Poisson"/>
       <xsd:enumeration value="Other"/>
     </xsd:restriction>
   </xsd:simpleType>
   <xsd:simpleType name="CameraIllumination">
     <xsd:restriction base="xsd:string">
-      <xsd:enumeration value="Front"/>
       <xsd:enumeration value="Back"/>
+      <xsd:enumeration value="Front"/>
+      <xsd:enumeration value="Other"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="ColorMode">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="no-color"/>
+      <xsd:enumeration value="3-Sensor"/>
+      <xsd:enumeration value="Bayer"/>
+      <xsd:enumeration value="CYGM"/>
+      <xsd:enumeration value="MultiLayer"/>
       <xsd:enumeration value="Other"/>
     </xsd:restriction>
   </xsd:simpleType>
@@ -9490,30 +10008,54 @@ annotation refs from the base Annotation to form the list.</xsd:documentation>
     <xsd:restriction base="xsd:string">
       <xsd:enumeration value="Conventional"/>
       <xsd:enumeration value="EMCCD"/>
+      <xsd:enumeration value="FrameTransfer"/>
       <xsd:enumeration value="Interline"/>
-      <xsd:enumeration value="Other"/>
-    </xsd:restriction>
-  </xsd:simpleType>
-  <xsd:simpleType name="IntensifiedCCDType">
-    <xsd:restriction base="xsd:string">
-      <xsd:enumeration value="Conventional"/>
-      <xsd:enumeration value="EBCCD"/>
       <xsd:enumeration value="Other"/>
     </xsd:restriction>
   </xsd:simpleType>
   <xsd:simpleType name="CMOSType">
     <xsd:restriction base="xsd:string">
       <xsd:enumeration value="Conventional"/>
-      <xsd:enumeration value="EMCCD"/>
-      <xsd:enumeration value="Interline"/>
+      <xsd:enumeration value="Scientific"/>
       <xsd:enumeration value="Other"/>
     </xsd:restriction>
   </xsd:simpleType>
-  <xsd:simpleType name="PhotoMultiplierType">
+  <xsd:simpleType name="IntensifierType">
     <xsd:restriction base="xsd:string">
-      <xsd:enumeration value="PMT"/>
-      <xsd:enumeration value="Photodiode"/>
-      <xsd:enumeration value="APD"/>
+      <xsd:enumeration value="Conventional"/>
+      <xsd:enumeration value="EBCCD"/>
+      <xsd:enumeration value="MicroChannelPlate"/>
+      <xsd:enumeration value="Other"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="SensorType">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="CCD"/>
+      <xsd:enumeration value="CMOS"/>
+      <xsd:enumeration value="Other"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="MultianodeArrangement">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Linear"/>
+      <xsd:enumeration value="Round"/>
+      <xsd:enumeration value="Square"/>
+      <xsd:enumeration value="Other"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="CoatingMaterial">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Bi-alkali"/>
+      <xsd:enumeration value="Multi-alkali"/>
+      <xsd:enumeration value="Gallium arsenide phosphide"/>
+      <xsd:enumeration value="Gallius arsenide"/>
+      <xsd:enumeration value="Other"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="SignalProcessingMode">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Analog"/>
+      <xsd:enumeration value="PhotonCounting"/>
       <xsd:enumeration value="Other"/>
     </xsd:restriction>
   </xsd:simpleType>
@@ -9680,7 +10222,6 @@ annotation refs from the base Annotation to form the list.</xsd:documentation>
   </xsd:simpleType>
 
   <!-- 4DN-BINA Basic Fluorescence Microscopy Extension -->
-
   <xsd:element name="AdditionalVendorInformation">
     <xsd:annotation>
       <xsd:documentation>Domain=MicrosocpeHardwareSpecifications</xsd:documentation>
@@ -9747,8 +10288,6 @@ annotation refs from the base Annotation to form the list.</xsd:documentation>
       </xsd:simpleContent>
     </xsd:complexType>
   </xsd:element>
-
-
 
   <!-- 4DN-BINA Calibration and Performance Extension -->
   <xsd:element name="FIeldCalibration">
@@ -10487,4 +11026,5 @@ annotation refs from the base Annotation to form the list.</xsd:documentation>
       </xsd:attribute>
     </xsd:complexType>
   </xsd:element>
+
 </xsd:schema>
