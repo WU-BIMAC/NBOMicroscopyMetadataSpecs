@@ -1929,7 +1929,7 @@
         </xsd:attribute>
         <xsd:attribute name="PowerMode" type="PowerMode">
           <xsd:annotation>
-            <xsd:documentation>Description=The statistic used by the Manufactuer to report the nominal Power output.</xsd:documentation>
+            <xsd:documentation>Description=The statistic used by the Manufacturer to report the nominal Power output.</xsd:documentation>
             <xsd:documentation>Tier=2</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
@@ -2199,7 +2199,7 @@
           </xsd:attribute>
           <xsd:attribute name="ImmersionType" type="ImmersionTypeList" use="required">
             <xsd:annotation>
-              <xsd:documentation>Description=According to ISO 10934-1:2002, an Immersion Liquid is a liquid (commonly immersion oil, water or glycerol) specified as suitable for use in the space between the front of an immersion lens and the object NOTE Because the immersion liquid is considered in the computing of corrections to be part of the lens, its refractive index and dispersion (or Abbe number) are critical. Please refer to ISO 8036-1 for more details on Immersion Oil. This field describes the general category of the Immersion Liquid this Objective is designed for, according to the Manufactuer. If the general category is not "Air", the actual Immersion Liquid that was used during the Acquisition of a specific Image must be specified in Objective Settings.</xsd:documentation>
+              <xsd:documentation>Description=According to ISO 10934-1:2002, an Immersion Liquid is a liquid (commonly immersion oil, water or glycerol) specified as suitable for use in the space between the front of an immersion lens and the object NOTE Because the immersion liquid is considered in the computing of corrections to be part of the lens, its refractive index and dispersion (or Abbe number) are critical. Please refer to ISO 8036-1 for more details on Immersion Oil. This field describes the general category of the Immersion Liquid this Objective is designed for, according to the Manufacturer. If the general category is not "Air", the actual Immersion Liquid that was used during the Acquisition of a specific Image must be specified in Objective Settings.</xsd:documentation>
               <xsd:documentation>Tier=1</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
@@ -4791,21 +4791,21 @@ annotation refs from the base Annotation to form the list.</xsd:documentation>
         <xsd:documentation>Tier=1</xsd:documentation>
       </xsd:annotation>
     </xsd:attribute>
-    <xsd:attribute name="Model" use="optional" type="xsd:string">
+    <xsd:attribute name="Model" use="required" type="xsd:string">
       <xsd:annotation>
-        <xsd:documentation>Description=The Model, Name or any other designation the Manufactuer uses for this component.</xsd:documentation>
+        <xsd:documentation>Description=The Model, Name or any other designation the Manufacturer uses for this component.</xsd:documentation>
         <xsd:documentation>Tier=1</xsd:documentation>
       </xsd:annotation>
     </xsd:attribute>
     <xsd:attribute name="CatalogNumber" use="required" type="xsd:string">
       <xsd:annotation>
-        <xsd:documentation>Description=The the Catalog, Part or Serial Number used by the Manufactuer to uniquely identify this component.</xsd:documentation>
+        <xsd:documentation>Description=The the Catalog, Part or Serial Number used by the Manufacturer to uniquely identify this component.</xsd:documentation>
         <xsd:documentation>Tier=1</xsd:documentation>
       </xsd:annotation>
     </xsd:attribute>
     <xsd:attribute name="LotNumber" use="optional" type="xsd:string">
       <xsd:annotation>
-        <xsd:documentation>Description=The Lot Number used by the Manufactuer to refer to a specific production batch or lot for this component.</xsd:documentation>
+        <xsd:documentation>Description=The Lot Number used by the Manufacturer to refer to a specific production batch or lot for this component.</xsd:documentation>
         <xsd:documentation>Tier=3</xsd:documentation>
       </xsd:annotation>
     </xsd:attribute>
@@ -6642,7 +6642,7 @@ annotation refs from the base Annotation to form the list.</xsd:documentation>
     <xsd:annotation>
       <xsd:documentation>Domain=MicroscopeSpecifications</xsd:documentation>
       <xsd:documentation>Category=MicroscopyEssentials</xsd:documentation>
-      <xsd:documentation>Description=This is a commercial, or open-source Software, script or macro utilized for any aspets of the Image Acquisition process.</xsd:documentation>
+      <xsd:documentation>Description=This is a commercial, or open-source Software, script, macro, plugin or module utilized for any aspets of the Image Acquisition process.</xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
@@ -6660,7 +6660,7 @@ annotation refs from the base Annotation to form the list.</xsd:documentation>
           </xsd:attribute>
           <xsd:attribute name="Name" type="xsd:string" use="required">
             <xsd:annotation>
-              <xsd:documentation>Description=A user-defined Name for this component.</xsd:documentation>
+              <xsd:documentation>Description=The Name or any other designation the Author uses for this Software.</xsd:documentation>
               <xsd:documentation>Tier=1</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
@@ -6672,7 +6672,7 @@ annotation refs from the base Annotation to form the list.</xsd:documentation>
           </xsd:attribute>
           <xsd:attribute name="Author" type="xsd:string" use="required">
             <xsd:annotation>
-              <xsd:documentation>Description=The developer of this Software.</xsd:documentation>
+              <xsd:documentation>Description=The developer of this Software. This could be the Manufacturer if this is a commercial proprietary sofware or the Author(s) if this is an open-source software.</xsd:documentation>
               <xsd:documentation>Tier=1</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
@@ -7626,7 +7626,7 @@ annotation refs from the base Annotation to form the list.</xsd:documentation>
     <xsd:complexType>
       <xsd:complexContent>
         <xsd:extension base="OpticalAssembly">
-          <xsd:attribute name="Type" type="CondenserType" use="optional">
+          <xsd:attribute name="Type" type="CondenserType" use="required">
             <xsd:annotation>
               <xsd:documentation>Description=This field captures the category this Condenser belongs to.</xsd:documentation>
               <xsd:documentation>Tier=1</xsd:documentation>
@@ -7720,7 +7720,7 @@ annotation refs from the base Annotation to form the list.</xsd:documentation>
         </xsd:attribute>
         <xsd:attribute name="ResponseTime" type="xsd:float">
           <xsd:annotation>
-            <xsd:documentation>Description=This field records the time it takes for this Shutter to open and close, according to the Manufactuer.</xsd:documentation>
+            <xsd:documentation>Description=This field records the time it takes for this Shutter to open and close, according to the Manufacturer.</xsd:documentation>
             <xsd:documentation>Tier=3</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
@@ -7940,7 +7940,7 @@ annotation refs from the base Annotation to form the list.</xsd:documentation>
     <xsd:annotation>
       <xsd:documentation>Domain=MicrosocpeHardwareSpecifications</xsd:documentation>
       <xsd:documentation>Category=Apertures</xsd:documentation>
-      <xsd:documentation>Description=This element refers to an annular (ring-like) slit used to produce contrast modulation following Zernike, in which the Image contrast of a phase object is enhanced by altering the phase and amplitude of the direct light with respect to those of the diffracted light. This illuminating aperture Diaphragm is placed in the front focal Plane of the Condenser and acts in conjunction with an appropriate phase plate, usually in the form of an annulus, placed in the back focal Plane of the objective (or in a succeeding Plane conjugate with this).</xsd:documentation>
+      <xsd:documentation>Description=This element (also called Phase Annulus) refers to an annular (ring-like) slit used to produce contrast modulation following Zernike, in which the Image contrast of a phase object is enhanced by altering the phase and amplitude of the direct light with respect to those of the diffracted light. This illuminating aperture Diaphragm is placed in the front focal Plane of the Condenser and acts in conjunction with an appropriate phase plate, usually in the form of an annulus, placed in the back focal Plane of the objective (or in a succeeding Plane conjugate with this).</xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
@@ -8061,7 +8061,7 @@ annotation refs from the base Annotation to form the list.</xsd:documentation>
           </xsd:attribute>
           <xsd:attribute name="ResponseTime" type="xsd:float">
             <xsd:annotation>
-              <xsd:documentation>Description=This field records the time it takes for this Shutter to open and close, according to the Manufactuer.</xsd:documentation>
+              <xsd:documentation>Description=This field records the time it takes for this Shutter to open and close, according to the Manufacturer.</xsd:documentation>
               <xsd:documentation>Tier=1</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
@@ -11490,6 +11490,12 @@ annotation refs from the base Annotation to form the list.</xsd:documentation>
               <xsd:documentation>Tier=1</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
+          <xsd:attribute name="Geometry" type="TIRFGeometry">
+            <xsd:annotation>
+              <xsd:documentation>Description=This field captures the TIRF geometry used by this TIRF Hardware Module.</xsd:documentation>
+              <xsd:documentation>Tier=1</xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
           <xsd:attribute name="HILO" type="xsd:boolean">
             <xsd:annotation>
               <xsd:documentation>Description=This field capture whether this TIRF Hardware Module employs Highly Inclined and Laminated Optical (HILO) sheet (True) or "true" TIRF.</xsd:documentation>
@@ -11499,13 +11505,7 @@ annotation refs from the base Annotation to form the list.</xsd:documentation>
           <xsd:attribute name="Motorized" type="xsd:boolean">
             <xsd:annotation>
               <xsd:documentation>Description=This field captures whether this TIRF Hardware Module employs a Motorized device  to set the TIRF Angle (True) or not (False).</xsd:documentation>
-              <xsd:documentation>Tier=1</xsd:documentation>
-            </xsd:annotation>
-          </xsd:attribute>
-          <xsd:attribute name="Geometry" type="TIRFGeometry">
-            <xsd:annotation>
-              <xsd:documentation>Description=This field captures the TIRF geometry used by this TIRF Hardware Module.</xsd:documentation>
-              <xsd:documentation>Tier=1</xsd:documentation>
+              <xsd:documentation>Tier=2</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
         </xsd:extension>
@@ -11774,7 +11774,7 @@ annotation refs from the base Annotation to form the list.</xsd:documentation>
     </xsd:attribute>
     <xsd:attribute name="OperatingTemperature" type="xsd:float">
       <xsd:annotation>
-        <xsd:documentation>Description=This field records the ambient temperature at which this device is designed to operate, according to the Manufactuer.</xsd:documentation>
+        <xsd:documentation>Description=This field records the ambient temperature at which this device is designed to operate, according to the Manufacturer.</xsd:documentation>
         <xsd:documentation>Tier=3</xsd:documentation>
       </xsd:annotation>
     </xsd:attribute>
@@ -11955,7 +11955,7 @@ annotation refs from the base Annotation to form the list.</xsd:documentation>
     </xsd:attribute>
     <xsd:attribute name="OperatingTemperature" type="xsd:float">
       <xsd:annotation>
-        <xsd:documentation>Description=This field records the ambient temperature at which this device is designed to operate, according to the Manufactuer.</xsd:documentation>
+        <xsd:documentation>Description=This field records the ambient temperature at which this device is designed to operate, according to the Manufacturer.</xsd:documentation>
         <xsd:documentation>Tier=3</xsd:documentation>
       </xsd:annotation>
     </xsd:attribute>
@@ -12474,7 +12474,6 @@ annotation refs from the base Annotation to form the list.</xsd:documentation>
       <xsd:complexContent>
         <xsd:extension base="Settings">
           <xsd:sequence>
-            <xsd:element minOccurs="0" ref="PrismRef" maxOccurs="unbounded"/>
             <xsd:element maxOccurs="unbounded" minOccurs="0" ref="TIRFHardwareModuleRef"/>
             <xsd:element ref="TIRFLightPath" minOccurs="0"/>
             <xsd:element minOccurs="0" ref="Description"/>
