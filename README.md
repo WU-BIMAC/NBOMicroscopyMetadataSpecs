@@ -1,6 +1,6 @@
 **A White Paper entitled "Minimum Information guidelines for fluorescence microscopy: increasing the value, quality, and fidelity of image data", which describes v01 of the guideline proposal was published on on ArXiv.org and can be found at: https://arxiv.org/abs/1910.11370**
 
-**STAND BY FOR THE UPCOMING MAJOR REVISION THAT WAS DEVELOPED BY THE [BINA Quality Control and Data Management Working Group](https://www.bioimagingna.org/qc-dm-wg)**
+**STAND BY FOR THE UPCOMING MAJOR REVISION THAT WAS AUTHORED BY THE [BINA Quality Control and Data Management Working Group](https://www.bioimagingna.org/qc-dm-wg)**
 
 # 4D Nucleome + Bioimaging North America Microscopy Metadata Guidelines
 
