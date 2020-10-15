@@ -32,7 +32,7 @@ In order to foster the wide usability of the guidelines, the proposal aim at pro
 
 # Tier System Proposal
 <p align="center">
-  <img src="https://github.com/WU-BIMAC/MicroscopyMetadata4DNGuidelines/blob/master/Tier%20System/stable%20version/v01-01/4DN-Metadata%20Tier%20System_2019-9-25_v01-01.png" title="Tier System">
+  <img src="https://github.com/WU-BIMAC/MicroscopyMetadata4DNGuidelines/blob/master/Tier%20System/in%20progress/v02-00/4DN-Metadata%20Tier%20System_2020-08-26_v02-00.png" title="Tier System">
 </p>
 
 # Repository content and documentation
