@@ -19,12 +19,17 @@ Here we present the 4DN-BINA Microscopy Metadata Guidelines, which is a tiered s
 2. IMAGE ACQUISITION Settings
 3. OPTICAL, FIELD, EXCITATION POWER and WAVELENGTH, and DETECTOR CALIBRATION Procedures
 
+# Proposed Revision of the OME Core Model vs. a suite of 4DN-BINA-OME Extensions
 To facilitate future adaptation and expansion of the guidelines, the proposed 4DN-BINA-OME model is organized on the basis of the core vs. extension ontology concepts. As such the proposal posits the following four elements:
 
-1. A revision of the OME Core Model
-2. A 4DN-BINA-OME Basic extension
+1. A proposed revision of the OME Core Model
+2. A 4DN-BINA-OME Basic extension (see Figure 1)
 3. A 4DN-BINA-OME Advanced + Confocal extension
 4. A 4DN-BINA-OME Calibration extension
+
+<p align="center">
+  <img src="https://github.com/WU-BIMAC/MicroscopyMetadata4DNGuidelines/blob/master/Core%20vs.%20Extension%20ontology%20concept/4DN-BINA-OME%20BASIC%20EXTENSION.png" title="Figure 1: OME Core ontology vs. 4DN-BINA-OME Basic extension">
+</p>
 
 In addition to extending the [OME data model](https://docs.openmicroscopy.org/ome-model/5.6.1/developers/model-overview.html) and maintaining full-compatibility with it, the main advance provided by the 4DN-BINA-OME guidelines is to posit the subdivision of imaging experiments among a set of five Tiers representing increasing imaging and analytical complexity levels. As a consequence, these guidelines not only provide an OME-based comprehensive list of metadata key-value pairs that should be recorded, but also details which subset of the full list should be recorded depending on the specific Tier the experiment belongs to. In so doing the guidelines lie the foundation for the birth of a microscopy data standard that could serve the same purpose the Encode guidelines serve in the genomic community.
 
@@ -32,7 +37,7 @@ In order to foster the wide usability of the guidelines, the proposal aim at pro
 
 # Tier System Proposal
 <p align="center">
-  <img src="https://github.com/WU-BIMAC/MicroscopyMetadata4DNGuidelines/blob/master/Tier%20System/in%20progress/v02-00/4DN-Metadata%20Tier%20System_2020-08-26_v02-00.png" title="Tier System">
+  <img src="https://github.com/WU-BIMAC/MicroscopyMetadata4DNGuidelines/blob/master/Tier%20System/in%20progress/v02-00/4DN-Metadata%20Tier%20System_2020-08-26_v02-00.png" title="Figure 2: Tier System">
 </p>
 
 # Repository content and documentation
