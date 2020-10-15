@@ -1,8 +1,8 @@
-**Our guideline proposal white-paper entitled "Minimum Information guidelines for fluorescence microscopy: increasing the value, quality, and fidelity of image data"
-reecently appeared on ArXiv.org.
-Please look it up following this link: https://arxiv.org/abs/1910.11370**
+**A White Paper entitled "Minimum Information guidelines for fluorescence microscopy: increasing the value, quality, and fidelity of image data", which describes v01 of the guideline proposal was published on on ArXiv.org and can be found at: https://arxiv.org/abs/1910.11370**
 
-# 4D Nucleome Microscopy Metadata Guidelines
+**STAND BY FOR THE UPCOMING MAJOR REVISION THAT WAS AUTHORED BY THE [BINA Quality Control and Data Management Working Group](https://www.bioimagingna.org/qc-dm-wg)**
+
+# 4D Nucleome + Bioimaging North America Microscopy OME Metadata Guidelines
 
 Adequate record keeping is essential for most experiments as it is necessary in order to evaluate results, share data and allow experiments to be repeated. Keeping notes on microscopy experiments should be relatively unchallenging in this regard, as the microscope is a machine equipped with a limited number of known parts and settings.
 
@@ -13,19 +13,26 @@ The OME model forms the basis of the [BioFormats library](https://www.openmicros
 
 Despite the this very successful efforts, there remains a substantial gap between the OME data model and its wide adoption by the wide bio-imaging community as a bona fide Microscopy Data and Metadata Standard, dictating the set of metadata descriptors to be recorded or published with imaging datasets.
 
-Here we present the 4DN Microscopy Metadata Guidelines (4DN-Micro-Meta), which is a tiered system of guidelines that was developed by the [4D Nucleome (4DN) initiative](https://www.4dnucleome.org/) Imaging Standards Working Group for calibrating, and documenting microscopy experiments. In particular the proposal describes standards for: 
+Here we present the 4DN-BINA Microscopy Metadata Guidelines, which is a tiered system of guidelines that was developed by the [4D Nucleome (4DN) initiative](https://www.4dnucleome.org/) Imaging Standards Working Group and by the [BINA Quality Control and Data Management Working Group](https://www.bioimagingna.org/qc-dm-wg) for documenting the provenance and the quality of microscopy image data. In particular the proposal describes metadata standards for capturing: 
 
 1. MICROSCOPE HARDWARE Specifications
 2. IMAGE ACQUISITION Settings
 3. OPTICAL, FIELD, EXCITATION POWER and WAVELENGTH, and DETECTOR CALIBRATION Procedures
 
-In addition to extending the [OME data model](https://docs.openmicroscopy.org/ome-model/5.6.1/developers/model-overview.html) and maintaining full-compatibility with it, the main advance provided by the 4DN-Micro-Meta guidelines is to posit the subdivision of imaging experiments among a set of five Tiers representing increasing imaging and analytical complexity levels. As a consequence, these guidelines not only provide an OME-based comprehensive list of metadata key-value pairs that should be recorded, but also details which subset of the full list should be recorded depending on the specific Tier the experiment belongs to. In so doing the guidelines lie the foundation for the birth of a microscopy data standard that could serve the same purpose the Encode guidelines serve in the genomic community.
+To facilitate future adaptation and expansion of the guidelines, the proposed 4DN-BINA-OME model is organized on the basis of the core vs. extension ontology concepts. As such the proposal posits the following four elements:
+
+1. A revision of the OME Core Model
+2. A 4DN-BINA-OME Basic extension
+3. A 4DN-BINA-OME Advanced + Confocal extension
+4. A 4DN-BINA-OME Calibration extension
+
+In addition to extending the [OME data model](https://docs.openmicroscopy.org/ome-model/5.6.1/developers/model-overview.html) and maintaining full-compatibility with it, the main advance provided by the 4DN-BINA-OME guidelines is to posit the subdivision of imaging experiments among a set of five Tiers representing increasing imaging and analytical complexity levels. As a consequence, these guidelines not only provide an OME-based comprehensive list of metadata key-value pairs that should be recorded, but also details which subset of the full list should be recorded depending on the specific Tier the experiment belongs to. In so doing the guidelines lie the foundation for the birth of a microscopy data standard that could serve the same purpose the Encode guidelines serve in the genomic community.
 
 In order to foster the wide usability of the guidelines, the proposal aim at providing detailed explanations of why these values matter. Finally, in order to aide their adoption by software developers, the guidelines are expressed in the Extensible Markup Language (XML) Schema Definition ([XSD](https://www.w3.org/XML/Schema)) format that can be utilized to generate code for both traditional databases and other software utilizing the data model.
 
 # Tier System Proposal
 <p align="center">
-  <img src="https://github.com/WU-BIMAC/MicroscopyMetadata4DNGuidelines/blob/master/Tier%20System/stable%20version/v01-01/4DN-Metadata%20Tier%20System_2019-9-25_v01-01.png" title="Tier System">
+  <img src="https://github.com/WU-BIMAC/MicroscopyMetadata4DNGuidelines/blob/master/Tier%20System/in%20progress/v02-00/4DN-Metadata%20Tier%20System_2020-08-26_v02-00.png" title="Tier System">
 </p>
 
 # Repository content and documentation
