@@ -43,7 +43,6 @@
 
   <xsd:import namespace="http://www.w3.org/XML/1998/namespace"
     schemaLocation="http://www.w3.org/2001/xml.xsd"/>
-
   <xsd:annotation>
     <xsd:documentation>
       Open Microscopy Environment
@@ -1193,7 +1192,7 @@
 
   <!-- ********************************** -->
   <!-- Core OME Model - Revision proposal -->
-  <!-- ********************************** -->
+  <!-- ********************************** --> 
 
   <!-- Key Pixel storage elements -->
   <xsd:element name="Pixels">
@@ -11387,7 +11386,7 @@ annotation refs from the base Annotation to form the list.</xsd:documentation>
   </xsd:simpleType>
 
   <!-- ********************************************** -->
-  <!--    4DN-BINA OME Extesion - Advanced/Confocal      -->
+  <!--    4DN-BINA OME Extesion - Advanced/Confocal   -->
   <!-- ********************************************** -->
 
   <!-- ================================== -->
