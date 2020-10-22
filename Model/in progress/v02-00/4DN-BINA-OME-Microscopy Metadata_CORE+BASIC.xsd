@@ -1,11 +1,14 @@
 <?xml version = "1.0" encoding = "UTF-8"?>
 <!--
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-#	Microscope Metadata 4DN Guidelines proposal
+#	Microscopy Metadata 4DN-BINA-OME Guidelines and Model proposal
 #
 # This is a proposal put forth by the 4D Nucleome (4DN) Imaging Standards Working 
-# Group for an extension of the OME data model schema which was originally released 
+# Group and by the Bioimaging North America (BINA) Quality Control and Data Management Working Group
+# for a suite of extensions of the OME data model schema which was originally released 
 # in June 2016 by the Open Microscopy Environment 
+#
+#  **********************
 # Copyright (C) 2002 - 2016 Open Microscopy Environment
 #       Massachusetts Institute of Technology,
 #       National Institutes of Health,
@@ -13,7 +16,10 @@
 #       University of Wisconsin at Madison
 # 	
 #  **********************
-# The authors of this proposal are: David Grunwald, Mathias Hammer, Maximiliaan Huisman, Alex Rigano, and Caterina Strambio-De-Castillia
+# The authors of this proposal are: 
+# 4DN: Mathias Hammer, Alex Rigano, Maximiliaan Huisman, Farzin Farzam, Renu Gopinathan, Carlas Smith, and David Grunwald
+# BINA: Ulrike Boehm, James Chambers, Nathalie Gaudreault, Alison North, Arturo Pimentel, Damir Sudar, Peter Bajcsy, Claire Brown, Alex Corbett, Orestis Faklaris, Judith Lacoste, Alex Laude, Glyn Nelson, Roland Nitschke
+# and Caterina Strambio-e-Castillia
 # For information contact: caterina.strambio@umassmed.edu
 #
 # Modifications from the original file are issues with
@@ -1192,7 +1198,7 @@
 
   <!-- ********************************** -->
   <!-- Core OME Model - Revision proposal -->
-  <!-- ********************************** --> 
+  <!-- ********************************** -->
 
   <!-- Key Pixel storage elements -->
   <xsd:element name="Pixels">
@@ -3253,9 +3259,9 @@
             <xsd:documentation>Tier=1</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
-        <xsd:attribute name="Gain" type="xsd:float" use="optional">
+        <xsd:attribute name="AnalogGain" type="xsd:float" use="optional">
           <xsd:annotation>
-            <xsd:documentation>Description=This field reports the analog Gain that was applied during the Acquisition of this Image. The Analog Gain is a property inherent to the Detector and it specifies how many electrons correspond to 1 signal unit (photon) detected.</xsd:documentation>
+            <xsd:documentation>Description=This field reports the Analog Gain (also known simply as Gain) that was applied during the Acquisition of this Image. The Analog Gain is a property inherent to the Detector and it specifies how many electrons correspond to 1 signal unit (photon) detected. Gain is reported in terms of electrons/ADU (analog-to-digital unit). A gain of 8 means that the Detector digitizes the light signal so that each ADU corresponds to 8 photoelectrons. NOTE: In the case of Point Detectors the value of Analog Gain can be set freely by the user. In the case of  Cameras, either the Analog Gain is pre-determined by the Manufactuer and it cannot be set, or it might be possible to choose among different pre-determined values the user can choose from. </xsd:documentation>
             <xsd:documentation>Tier=1</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
@@ -6999,7 +7005,7 @@ annotation refs from the base Annotation to form the list.</xsd:documentation>
             <xsd:documentation>Tier=1</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
-        <xsd:attribute name="Motorized" type="xsd:boolean">
+        <xsd:attribute name="Motorized" type="xsd:boolean" use="required">
           <xsd:annotation>
             <xsd:documentation>Description=This field describes whether this Mechanical Stage is Motor (True) or Manually (False) operated. A Motorized stage is also often referred to as a Scanning Stage.</xsd:documentation>
             <xsd:documentation>Tier=1</xsd:documentation>
@@ -13113,9 +13119,9 @@ annotation refs from the base Annotation to form the list.</xsd:documentation>
   </xsd:simpleType>
 
 
-  <!-- ********************************************** -->
-  <!-- 4DN-BINA Calibration and Performance Extension -->
-  <!-- ********************************************** -->
+  <!-- ************************************************************ -->
+  <!-- 4DN-BINA 4DN-BINA OME Extesion - Calibration and Performance -->
+  <!-- ************************************************************ -->
 
   <xsd:element name="FIeldCalibration">
     <xsd:annotation>
