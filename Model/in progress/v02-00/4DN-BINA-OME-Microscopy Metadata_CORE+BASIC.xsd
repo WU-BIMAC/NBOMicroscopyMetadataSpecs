@@ -3259,16 +3259,28 @@
             <xsd:documentation>Tier=1</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
-        <xsd:attribute name="AnalogGain" type="xsd:float" use="optional">
+        <xsd:attribute name="AnalogGain" type="xsd:float" use="required">
           <xsd:annotation>
-            <xsd:documentation>Description=This field reports the Analog Gain (also known simply as Gain) that was applied during the Acquisition of this Image. The Analog Gain is a property inherent to the Detector and it specifies how many electrons correspond to 1 signal unit (photon) detected. Gain is reported in terms of electrons/ADU (analog-to-digital unit). A gain of 8 means that the Detector digitizes the light signal so that each ADU corresponds to 8 photoelectrons. NOTE: In the case of Point Detectors the value of Analog Gain can be set freely by the user. In the case of  Cameras, either the Analog Gain is pre-determined by the Manufactuer and it cannot be set, or it might be possible to choose among different pre-determined values the user can choose from. </xsd:documentation>
+            <xsd:documentation>Description=This field reports the Analog Gain (also known as Inherent Gain or simply as Gain) that was applied during the Acquisition of this Image. The Analog Gain is a property Inherent to the Detector and it specifies how many electrons correspond to 1 signal unit (photon) detected. Gain is reported in terms of electrons/ADU (analog-to-digital unit). A gain of 8 means that the Detector digitizes the light signal so that each ADU corresponds to 8 photoelectrons. NOTE: In the case of Point Detectors the value of Analog Gain can be set freely by the user. Conversely, in the case of Cameras, it is common for the Gain to be preset by the Manufacturer to minimize noise. In this case, either the Analog Gain cannot be changed or the user is given the choice of selecting between a few preset Analog Gains values upon Acquisition. Finally, several Cameras might have so-called Automatic Gain Control (AGC or AutoGain) that will automatically adjusts so the full range of the Analog-to-Digital Converter (ADC) is used. Unless you can turn off the AGC, the use of these Cameras are highly discouraged for quantitative work.</xsd:documentation>
             <xsd:documentation>Tier=1</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
         <xsd:attribute name="Offset" type="xsd:float" use="optional">
           <xsd:annotation>
-            <xsd:documentation>Description=This field reports the actual Offset that was utilized for the Acquisition of this Image. The Offset is an electronic baseline added to the output signal from the sensor to ensure that the displayed signal level is always a positive number of counts.</xsd:documentation>
+            <xsd:documentation>Description=If available, this field reports the actual Offset that was set by the user for the Acquisition of this image. The Offset is an electronic baseline added to the output signal from the sensor to ensure that the displayed signal level is always a positive number of counts.</xsd:documentation>
             <xsd:documentation>Tier=1</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="AmplificationGain" type="xsd:float" use="optional">
+          <xsd:annotation>
+            <xsd:documentation>Description=This field reports the Amplification Gain that was applied during the Acquisition of this image. Amplification Gain in general measures of the ability of a Detector to add energy to the input light signal therefore increasing its power or amplitude. This might represent the Electron Multiplication (EM) gain (as apposed to the Inherent Analog Gain) for an EMCCD camera. It might represent the Gain introduced by the Micro-Channel Plage in an Intensified CCD or CMOS camera. It might represent the amplification of the electron current provided by a Photomultiplier Tube, and measured as the ratio of the input photoelectron current emitted by the photocatode and the current reaching the anode. Finally, it might represent the signal amplification provided by an Avalache Photo Diode.</xsd:documentation>
+            <xsd:documentation>Tier=1</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="DetectorOffsetMode" type="DetectorOffsetMode" use="optional">
+          <xsd:annotation>
+            <xsd:documentation>Description=This describes the way in which the Voltage Offset of the Detector is reported. It typically is expressed as an Arbitrary-units number, a Scaled percent (-100 to 100), or a a Voltage.</xsd:documentation>
+            <xsd:documentation>Tier=3</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
       </xsd:extension>
@@ -8919,7 +8931,7 @@ annotation refs from the base Annotation to form the list.</xsd:documentation>
         </xsd:attribute>
         <xsd:attribute name="ManufacturerOffet" type="xsd:float">
           <xsd:annotation>
-            <xsd:documentation>Description=This field reports the Offset when it is pre-set by the Manufacturer. The Offset is an electronic baseline added to the output signal from the sensor to ensure that the displayed signal level is always a positive number of counts.</xsd:documentation>
+            <xsd:documentation>Description=This field reports the Camera Offset when it is pre-set by the Manufacturer. The Offset is an electronic baseline added to the output signal from the sensor to ensure that the displayed signal level is always a positive number of counts.</xsd:documentation>
             <xsd:documentation>Tier=2</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
@@ -9004,6 +9016,12 @@ annotation refs from the base Annotation to form the list.</xsd:documentation>
             <xsd:annotation>
               <xsd:documentation>Description=This field records the Type of CCD camera used in this case.</xsd:documentation>
               <xsd:documentation>Tier=1</xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
+          <xsd:attribute name="CCDArchitecture" type="CCDArchitecture">
+            <xsd:annotation>
+              <xsd:documentation>Description=This field captures the Architecture of this CCD Camera and its  associated Transfer Mode.</xsd:documentation>
+              <xsd:documentation>Tier=2</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
           <xsd:attribute name="RegisterWellCapacity" type="xsd:integer">
@@ -9775,32 +9793,15 @@ annotation refs from the base Annotation to form the list.</xsd:documentation>
               <xsd:documentation>Tier=1</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="ReadOutMode" type="ReadOutModeList">
+          <xsd:attribute name="SensorExposureMode" type="CMOSSensorExposureMode">
             <xsd:annotation>
-              <xsd:documentation>Description=If selectable, this field reports the bit depth of the ReadOut Mode used for the Acquisition of this Channel.</xsd:documentation>
+              <xsd:documentation>Description=In case of a CMOS Camera and if selectable, this field reports the sensor Exposure modality used for the Acquisition of this Channel. In the Rolling Exposure mode adjacent rows of the array are exposed at slightly different times as the readout 'waves' sweep through each half of the sensor. In the Global Exposure mode (i.e., 'Snapshot' exposure mode) all pixels of the array are exposed simultaneously, thus enabling 'freeze frame' capture of fast moving or fast changing events. In this modality the CMOS Camera behaves like an interline CCD sensor. </xsd:documentation>
               <xsd:documentation>Tier=1</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="Digitizer" type="DigitizerType">
+          <xsd:attribute name="DigitizerBitDepth" type="DigitizerType">
             <xsd:annotation>
               <xsd:documentation>Description=If selectable, this field reports the bit depth of the Digitizer used for the Acquisition of this Channel.</xsd:documentation>
-              <xsd:documentation>Tier=1</xsd:documentation>
-            </xsd:annotation>
-          </xsd:attribute>
-          <xsd:attribute name="AmplificationGain" type="xsd:float" use="optional">
-            <xsd:annotation>
-              <xsd:documentation>Description=This field reports the Amplification Gain that was applied during the Acquisition of this Image. Amplification Gain in general measures of the ability of a Detector to add energy to the input light signal therefore increasing its power or amplitude. This might represent the Electron Multiplication (EM) gain (as apposed to the inherent gain) for an EMCCD camera. It might represent the gain introduced by the Micro-Channel Plage in an Intensified CCD or CMOS camera. It might represent the amplification of the electron current provided by a Photomultiplier Tube, and measured as the ratio of the input photoelectron current emitted by the photocatode and the current reaching the anode. Finally, it might represent the signal amplification provided by an Avalache Photo Diode.</xsd:documentation>
-              <xsd:documentation>Tier=1</xsd:documentation>
-            </xsd:annotation>
-          </xsd:attribute>
-          <xsd:attribute default="decibel (dB)" name="AmplificationGainUnit" type="UnitsRatio">
-            <xsd:annotation>
-              <xsd:documentation>Tier=1</xsd:documentation>
-            </xsd:annotation>
-          </xsd:attribute>
-          <xsd:attribute name="ShutterMode" type="CameraShutterMode">
-            <xsd:annotation>
-              <xsd:documentation>Description=If selectable, this field reports the sensor exposure modality used for the Acquisition of this Channel.</xsd:documentation>
               <xsd:documentation>Tier=1</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
@@ -9808,12 +9809,6 @@ annotation refs from the base Annotation to form the list.</xsd:documentation>
             <xsd:annotation>
               <xsd:documentation>Description=This field records the Number of sequential frames that have been averaged to obtain this Image, to improve the overall signal-to-noise ratio.</xsd:documentation>
               <xsd:documentation>Tier=2</xsd:documentation>
-            </xsd:annotation>
-          </xsd:attribute>
-          <xsd:attribute name="OffsetMode" type="OffsetMode" use="required">
-            <xsd:annotation>
-              <xsd:documentation>Description=This field describes the way in which the voltage offset of the detector is reported. It typically is expressed as a digital number, scaled percent (-100 to 100), or an analog offset voltage.</xsd:documentation>
-              <xsd:documentation>Tier=3</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
           <xsd:attribute name="FrameRate" type="xsd:float" use="required">
@@ -11062,11 +11057,19 @@ annotation refs from the base Annotation to form the list.</xsd:documentation>
     <xsd:restriction base="xsd:string">
       <xsd:enumeration value="Conventional"/>
       <xsd:enumeration value="EMCCD"/>
+      <xsd:enumeration value="Other"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="CCDArchitecture">
+    <xsd:restriction base="xsd:string">
       <xsd:enumeration value="FrameTransfer"/>
+      <xsd:enumeration value="Full-frame"/>
       <xsd:enumeration value="Interline"/>
       <xsd:enumeration value="Other"/>
     </xsd:restriction>
   </xsd:simpleType>
+
   <xsd:simpleType name="CMOSType">
     <xsd:restriction base="xsd:string">
       <xsd:enumeration value="Conventional"/>
@@ -11361,18 +11364,11 @@ annotation refs from the base Annotation to form the list.</xsd:documentation>
       <xsd:enumeration value="Other"/>
     </xsd:restriction>
   </xsd:simpleType>
-  <xsd:simpleType name="OffsetMode">
+  <xsd:simpleType name="DetectorOffsetMode">
     <xsd:restriction base="xsd:string">
-      <xsd:enumeration value="Analog"/>
-      <xsd:enumeration value="Digital"/>
+      <xsd:enumeration value="Arbitrary units"/>
       <xsd:enumeration value="Scaled percentage"/>
-      <xsd:enumeration value="Other"/>
-    </xsd:restriction>
-  </xsd:simpleType>
-  <xsd:simpleType name="ReadOutModeList">
-    <xsd:restriction base="xsd:string">
-      <xsd:enumeration value="Non-overlap"/>
-      <xsd:enumeration value="Overlap"/>
+      <xsd:enumeration value="Voltage"/>
       <xsd:enumeration value="Other"/>
     </xsd:restriction>
   </xsd:simpleType>
@@ -11383,7 +11379,7 @@ annotation refs from the base Annotation to form the list.</xsd:documentation>
       <xsd:enumeration value="Other"/>
     </xsd:restriction>
   </xsd:simpleType>
-  <xsd:simpleType name="CameraShutterMode">
+  <xsd:simpleType name="CMOSSensorExposureMode">
     <xsd:restriction base="xsd:string">
       <xsd:enumeration value="Global shutter"/>
       <xsd:enumeration value="Rolling shutter"/>
