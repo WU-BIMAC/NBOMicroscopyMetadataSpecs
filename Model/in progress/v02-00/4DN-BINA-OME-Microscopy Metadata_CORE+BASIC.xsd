@@ -1031,12 +1031,6 @@
           <xsd:documentation>Tier=1</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
-      <xsd:attribute name="FluorophoreType" type="FluorophoreType">
-        <xsd:annotation>
-          <xsd:documentation>Description=This field records a term that describes the general category of Fluorophore used in this case.</xsd:documentation>
-          <xsd:documentation>Tier=1</xsd:documentation>
-        </xsd:annotation>
-      </xsd:attribute>
       <xsd:attribute name="HystochemistryType" type="HystochemistryType">
         <xsd:annotation>
           <xsd:documentation>Description=This field records a term that describes the general category of Histochemistry staining used in this case.</xsd:documentation>
@@ -1539,6 +1533,7 @@
     </xsd:annotation>
     <xsd:complexType>
       <xsd:sequence>
+        <xsd:element maxOccurs="unbounded" ref="Fluorophore"/>
         <xsd:element ref="LightPath" minOccurs="1" maxOccurs="1"/>
         <xsd:element minOccurs="0" ref="AnnotationRef">
           <xsd:annotation>
@@ -1581,29 +1576,6 @@
       <xsd:attribute name="ContrastMethod" use="required" type="ChannelContrastMethod">
         <xsd:annotation>
           <xsd:documentation>Description=This field describes the technique used to achieve contrast for this Channel.</xsd:documentation>
-          <xsd:documentation>Tier=1</xsd:documentation>
-        </xsd:annotation>
-      </xsd:attribute>
-      <xsd:attribute name="ExcitationWavelength" use="required" type="PositiveFloat">
-        <xsd:annotation>
-          <xsd:documentation>Description=This field records the Excitation Wavelength used for this Channel.</xsd:documentation>
-          <xsd:documentation>Tier=1</xsd:documentation>
-        </xsd:annotation>
-      </xsd:attribute>
-      <xsd:attribute name="ExcitationWavelengthUnit" use="optional" default="nm" type="UnitsLength">
-        <xsd:annotation>
-          <xsd:documentation>Tier=1</xsd:documentation>
-        </xsd:annotation>
-      </xsd:attribute>
-      <xsd:attribute name="EmissionWavelength" use="required" type="PositiveFloat">
-        <xsd:annotation>
-          <xsd:documentation>Description=This field records the Emission Wavelength used for this Channel.</xsd:documentation>
-          <xsd:documentation>Tier=1
-          </xsd:documentation>
-        </xsd:annotation>
-      </xsd:attribute>
-      <xsd:attribute name="EmissionWavelengthUnit" use="optional" default="nm" type="UnitsLength">
-        <xsd:annotation>
           <xsd:documentation>Tier=1</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
@@ -6614,7 +6586,6 @@ annotation refs from the base Annotation to form the list.</xsd:documentation>
       </xsd:complexContent>
     </xsd:complexType>
   </xsd:element>
-
   <xsd:element name="MountingMedium">
     <xsd:annotation>
       <xsd:documentation>Domain=Experimental</xsd:documentation>
@@ -6647,7 +6618,80 @@ annotation refs from the base Annotation to form the list.</xsd:documentation>
       </xsd:complexContent>
     </xsd:complexType>
   </xsd:element>
-
+  <xsd:element name="Fluorophore">
+    <xsd:annotation>
+      <xsd:documentation>Domain=Experimental</xsd:documentation>
+      <xsd:documentation>Category=SamplePreparation</xsd:documentation>
+      <xsd:documentation>Description=This element describes the Fluorescent Label whose Emission is recorded by this Channel.</xsd:documentation>
+      <xsd:documentation>Tier=1</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:complexContent>
+        <xsd:extension base="ManufacturerSpec">
+          <xsd:attribute name="ID" type="LSID" use="required">
+            <xsd:annotation>
+              <xsd:documentation>Description=A Unique Identifier for this component.</xsd:documentation>
+              <xsd:documentation>Tier=1</xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
+          <xsd:attribute name="Type" type="FluorescentLabelType" use="required">
+            <xsd:annotation>
+              <xsd:documentation>Description=This field records a term that describes the general category of the Fluorescent Label used in this case.</xsd:documentation>
+              <xsd:documentation>Tier=1</xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
+          <xsd:attribute name="ExcitationWavelength" use="required" type="PositiveFloat">
+            <xsd:annotation>
+              <xsd:documentation>Description=This field records the Excitation Wavelength used for this Channel.</xsd:documentation>
+              <xsd:documentation>Tier=1</xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
+          <xsd:attribute name="ExcitationWavelengthUnit" use="optional" default="nm"
+            type="UnitsLength">
+            <xsd:annotation>
+              <xsd:documentation>Tier=1</xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
+          <xsd:attribute name="EmissionWavelength" use="required" type="PositiveFloat">
+            <xsd:annotation>
+              <xsd:documentation>Description=This field records the Emission Wavelength used for this Channel.</xsd:documentation>
+              <xsd:documentation>Tier=1
+          </xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
+          <xsd:attribute name="EmissionWavelengthUnit" use="optional" default="nm"
+            type="UnitsLength">
+            <xsd:annotation>
+              <xsd:documentation>Tier=1</xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
+          <xsd:attribute name="Concentration" use="optional" type="xsd:float">
+            <xsd:annotation>
+              <xsd:documentation>Description=This field records the Concentration of the Fluorophore that was used for this Channel.</xsd:documentation>
+              <xsd:documentation>Tier=1</xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
+          <xsd:attribute name="FBBaseID" type="xsd:string">
+            <xsd:annotation>
+              <xsd:documentation>Description=In case the Fluorophore is a Fluorescent Protein, this field records its FPBaseID (FPBase.org).</xsd:documentation>
+              <xsd:documentation>Tier=1</xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
+          <xsd:attribute name="ConcentrationUnit" type="UnitsConcentration">
+            <xsd:annotation>
+              <xsd:documentation>Tier=1</xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
+          <xsd:attribute name="PrimaryPublicationID" type="xsd:string">
+            <xsd:annotation>
+              <xsd:documentation>Description=This field captures the a Unique Identifier  for the Primary Publication describing this Fluorescent Label. Examples include, Digital Object Identifier (DOI), PubMed Central Identifier (PMCID), ArXiv.org ID etc.</xsd:documentation>
+              <xsd:documentation>Tier=2</xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
+        </xsd:extension>
+      </xsd:complexContent>
+    </xsd:complexType>
+  </xsd:element>
 
   <!-- ================================== -->
   <!--              HARDWARE              -->
@@ -6693,15 +6737,15 @@ annotation refs from the base Annotation to form the list.</xsd:documentation>
               <xsd:documentation>Tier=1</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="GitURL" type="xsd:anyURI" use="optional">
+          <xsd:attribute name="WebsiteURL" type="xsd:anyURI" use="required">
             <xsd:annotation>
               <xsd:documentation>Description=This records the URL for the Git repository for this Software.</xsd:documentation>
               <xsd:documentation>Tier=2</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="Publication" type="xsd:string">
+          <xsd:attribute name="PrimaryPublicationID" type="xsd:string">
             <xsd:annotation>
-              <xsd:documentation>Description=A publication describing this Software.</xsd:documentation>
+              <xsd:documentation>Description=This field captures the a Unique Identifier  for the Primary Publication describing this Software. Examples include, Digital Object Identifier (DOI), PubMed Central Identifier (PMCID), ArXiv.org ID etc.</xsd:documentation>
               <xsd:documentation>Tier=2</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
@@ -8901,7 +8945,7 @@ annotation refs from the base Annotation to form the list.</xsd:documentation>
             <xsd:documentation>Tier=1</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
-        <xsd:attribute name="PixelWidth" type="xsd:float" use="optional">
+        <xsd:attribute name="PixelWidth" type="xsd:float" use="required">
           <xsd:annotation>
             <xsd:documentation>Description=This field records the Physical Width of each Camera Pixel.</xsd:documentation>
             <xsd:documentation>Tier=1</xsd:documentation>
@@ -8912,7 +8956,7 @@ annotation refs from the base Annotation to form the list.</xsd:documentation>
             <xsd:documentation>Tier=1</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
-        <xsd:attribute name="PixelHeight" type="xsd:float" use="optional">
+        <xsd:attribute name="PixelHeight" type="xsd:float" use="required" form="unqualified">
           <xsd:annotation>
             <xsd:documentation>Description=This field records the Physical Height of each Camera Pixel.</xsd:documentation>
             <xsd:documentation>Tier=1</xsd:documentation>
@@ -9776,13 +9820,13 @@ annotation refs from the base Annotation to form the list.</xsd:documentation>
     <xsd:complexType>
       <xsd:complexContent>
         <xsd:extension base="DetectorSettings">
-          <xsd:attribute name="Binning" use="optional" type="Binning">
+          <xsd:attribute name="Binning" use="required" type="Binning">
             <xsd:annotation>
               <xsd:documentation>Description=This field records the number of pixels that are combined to improve readout rates and signal to noise ratios albeit at the expense of reduced spatial resolution.</xsd:documentation>
               <xsd:documentation>Tier=1</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="ReadOutRate" use="optional" type="xsd:float">
+          <xsd:attribute name="ReadOutRate" use="required" type="xsd:float">
             <xsd:annotation>
               <xsd:documentation>Description=This field describes the effective Pixel Read Out Rate used for the Acquisition of this Image. This value depends on the bytes per second that can be read from the detector (like a baud rate).</xsd:documentation>
               <xsd:documentation>Tier=1</xsd:documentation>
@@ -9793,15 +9837,15 @@ annotation refs from the base Annotation to form the list.</xsd:documentation>
               <xsd:documentation>Tier=1</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="SensorExposureMode" type="CMOSSensorExposureMode">
+          <xsd:attribute name="DigitizerBitDepth" type="DigitizerType" use="required">
             <xsd:annotation>
-              <xsd:documentation>Description=In case of a CMOS Camera and if selectable, this field reports the sensor Exposure modality used for the Acquisition of this Channel. In the Rolling Exposure mode adjacent rows of the array are exposed at slightly different times as the readout 'waves' sweep through each half of the sensor. In the Global Exposure mode (i.e., 'Snapshot' exposure mode) all pixels of the array are exposed simultaneously, thus enabling 'freeze frame' capture of fast moving or fast changing events. In this modality the CMOS Camera behaves like an interline CCD sensor. </xsd:documentation>
+              <xsd:documentation>Description=If selectable, this field reports the bit depth of the Digitizer used for the Acquisition of this Channel.</xsd:documentation>
               <xsd:documentation>Tier=1</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="DigitizerBitDepth" type="DigitizerType">
+          <xsd:attribute name="SensorExposureMode" type="CMOSSensorExposureMode">
             <xsd:annotation>
-              <xsd:documentation>Description=If selectable, this field reports the bit depth of the Digitizer used for the Acquisition of this Channel.</xsd:documentation>
+              <xsd:documentation>Description=In case of a CMOS Camera and if selectable, this field reports the sensor Exposure modality used for the Acquisition of this Channel. In the Rolling Exposure mode adjacent rows of the array are exposed at slightly different times as the readout 'waves' sweep through each half of the sensor. In the Global Exposure mode (i.e., 'Snapshot' exposure mode) all pixels of the array are exposed simultaneously, thus enabling 'freeze frame' capture of fast moving or fast changing events. In this modality the CMOS Camera behaves like an interline CCD sensor. </xsd:documentation>
               <xsd:documentation>Tier=1</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
@@ -11190,7 +11234,7 @@ annotation refs from the base Annotation to form the list.</xsd:documentation>
       <xsd:enumeration value="Other"/>
     </xsd:restriction>
   </xsd:simpleType>
-  <xsd:simpleType name="FluorophoreType">
+  <xsd:simpleType name="FluorescentLabelType">
     <xsd:restriction base="xsd:string">
       <!-- Nucleic Acid labelling -->
       <xsd:enumeration value="Nucleic Acid_Aptamer motif"/>
@@ -11485,13 +11529,13 @@ annotation refs from the base Annotation to form the list.</xsd:documentation>
               <xsd:documentation>Tier=1</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="ObjectiveMethod" type="xsd:boolean">
+          <xsd:attribute name="ObjectiveMethod" type="xsd:boolean" use="required">
             <xsd:annotation>
               <xsd:documentation>Description=This field captures the TIRF modality used by this TIRF Hardware Module. The field is set to True if this TIRF Hardware Module employs the Objective-lens Method (also often referred to as Through the Lens Illumination) and is set to False if it employs the Prism Method.</xsd:documentation>
               <xsd:documentation>Tier=1</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="Geometry" type="TIRFGeometry">
+          <xsd:attribute name="Geometry" type="TIRFGeometry" use="required">
             <xsd:annotation>
               <xsd:documentation>Description=This field captures the TIRF geometry used by this TIRF Hardware Module.</xsd:documentation>
               <xsd:documentation>Tier=1</xsd:documentation>
