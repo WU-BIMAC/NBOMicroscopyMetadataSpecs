@@ -13280,7 +13280,7 @@ annotation refs from the base Annotation to form the list.</xsd:documentation>
           </xsd:annotation>
         </xsd:element>
         <xsd:element maxOccurs="unbounded" minOccurs="0" ref="ChromaticRegistrationEvaluation"/>
-        <xsd:element maxOccurs="unbounded" minOccurs="0" ref="FlatFieldCalibration"/>
+        <xsd:element maxOccurs="unbounded" minOccurs="0" ref="FieldUniformityEvaluation"/>
         <xsd:element maxOccurs="unbounded" ref="OpticalStandardGroup"/>
         <xsd:element maxOccurs="unbounded" minOccurs="0" ref="CalibrationSoftware"/>
         <xsd:element minOccurs="0" name="AnnotationRef">
@@ -13422,7 +13422,7 @@ annotation refs from the base Annotation to form the list.</xsd:documentation>
       </xsd:attribute>
     </xsd:complexType>
   </xsd:element>
-  <xsd:element name="FlatFieldCalibration">
+  <xsd:element name="FieldUniformityEvaluation">
     <xsd:annotation>
       <xsd:documentation>Extension=Calibration and Performance</xsd:documentation>
       <xsd:documentation>Domain=ImageAcquisitionSettings</xsd:documentation>

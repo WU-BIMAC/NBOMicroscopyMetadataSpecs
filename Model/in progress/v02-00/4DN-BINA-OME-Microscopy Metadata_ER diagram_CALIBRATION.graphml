@@ -35,7 +35,7 @@
     <node id="n1">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
-          <y:Geometry height="81.14727053553679" width="205.0" x="-5212.165046146403" y="-2577.9626620115873"/>
+          <y:Geometry height="81.14727053553679" width="205.0" x="-5212.165046146403" y="-2575.179128171246"/>
           <y:Fill color="#CCCCCC" color2="#DE6B62" transparent="false"/>
           <y:BorderStyle hasColor="false" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#87241C" configuration="com.yworks.entityRelationship.label.name" fontFamily="Dialog" fontSize="20" fontStyle="plain" hasLineColor="false" height="51.109375" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="t" textColor="#FFFFFF" verticalTextPosition="bottom" visible="true" width="178.677734375" x="13.1611328125" xml:space="preserve" y="4.0">OpticalCalibration
@@ -51,7 +51,7 @@ ImageRef</y:NodeLabel>
     <node id="n2">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
-          <y:Geometry height="67.82750380892958" width="205.0" x="-5212.165046146403" y="-2651.1973309571504"/>
+          <y:Geometry height="57.86891018742517" width="205.0" x="-5211.7673984549265" y="-2634.0810788890535"/>
           <y:Fill color="#CCCCCC" color2="#DE6B62" transparent="false"/>
           <y:BorderStyle hasColor="false" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#87241C" configuration="com.yworks.entityRelationship.label.name" fontFamily="Dialog" fontSize="20" fontStyle="plain" hasLineColor="false" height="51.109375" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="t" textColor="#FFFFFF" verticalTextPosition="bottom" visible="true" width="200.220703125" x="2.3896484375" xml:space="preserve" y="4.0">CalibrationSoftware 
@@ -207,11 +207,12 @@ NrOfImages<y:LabelModel><y:ErdAttributesNodeLabelModel/></y:LabelModel><y:ModelP
     <node id="n8">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
-          <y:Geometry height="128.55100348770156" width="205.0" x="-5212.165046146403" y="-2786.2456269879576"/>
+          <y:Geometry height="150.81927421043292" width="205.0" x="-5212.165046146403" y="-2786.2456269879576"/>
           <y:Fill color="#CCCCCC" color2="#DE6B62" transparent="false"/>
           <y:BorderStyle hasColor="false" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#87241C" configuration="com.yworks.entityRelationship.label.name" fontFamily="Dialog" fontSize="20" fontStyle="plain" hasLineColor="false" height="27.5546875" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="t" textColor="#FFFFFF" verticalTextPosition="bottom" visible="true" width="156.236328125" x="24.3818359375" xml:space="preserve" y="4.0">FieldCalibration</y:NodeLabel>
-          <y:NodeLabel alignment="left" autoSizePolicy="content" configuration="com.yworks.entityRelationship.label.attributes" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="88.796875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="190.31640625" x="2.0" xml:space="preserve" y="39.5546875">ID
+          <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#87241C" configuration="com.yworks.entityRelationship.label.name" fontFamily="Dialog" fontSize="20" fontStyle="plain" hasLineColor="false" height="51.109375" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="t" textColor="#FFFFFF" verticalTextPosition="bottom" visible="true" width="152.271484375" x="26.3642578125" xml:space="preserve" y="4.0">FieldUniformity
+Evaluation</y:NodeLabel>
+          <y:NodeLabel alignment="left" autoSizePolicy="content" configuration="com.yworks.entityRelationship.label.attributes" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="88.796875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="190.31640625" x="2.0" xml:space="preserve" y="63.109375">ID
 MaxIntensityPixelXCoordinate
 MaxIntensityPiexlYCoordinate
 MeanMaxtoCornerIntensityRatio
@@ -1094,11 +1095,11 @@ Dashed Grey edges, dashed grey edges signifies "Extends" and they should be read
         <y:PolyLineEdge>
           <y:Path sx="-107.50036471496605" sy="-17.19641202928142" tx="39.36441403286153" ty="1.1745402376614038">
             <y:Point x="-4973.445543094743" y="-2380.213225772042"/>
-            <y:Point x="-4973.445543094743" y="-2536.2144865061573"/>
+            <y:Point x="-4973.445543094743" y="-2533.4309526658158"/>
           </y:Path>
           <y:LineStyle color="#0000FF" type="line" width="2.0"/>
           <y:Arrows source="crows_foot_one" target="crows_foot_many_mandatory"/>
-          <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="-26.845865144546224" y="-187.1013215818175">
+          <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="-26.845865144546224" y="-184.31778774147597">
             <y:LabelModel>
               <y:SmartEdgeLabelModel autoRotationEnabled="false" defaultAngle="0.0" defaultDistance="10.0"/>
             </y:LabelModel>
@@ -1114,13 +1115,13 @@ Dashed Grey edges, dashed grey edges signifies "Extends" and they should be read
     <edge id="e3" source="n3" target="n2">
       <data key="d10">
         <y:PolyLineEdge>
-          <y:Path sx="-107.50036471496605" sy="-17.19641202928142" tx="53.5806354853903" ty="1.183430561739989">
+          <y:Path sx="-107.50036471496605" sy="-17.19641202928142" tx="53.5806354853903" ty="1.0096765035509025">
             <y:Point x="-4973.445543094743" y="-2380.213225772042"/>
-            <y:Point x="-4973.445543094743" y="-2618.127943198353"/>
+            <y:Point x="-4973.047895403266" y="-2605.4032170710775"/>
           </y:Path>
           <y:LineStyle color="#0000FF" type="dashed" width="2.0"/>
           <y:Arrows source="crows_foot_one" target="crows_foot_many_optional"/>
-          <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="-27.56508733444207" y="-269.3962320799733">
+          <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="-26.896163161435652" y="-256.53049753435243">
             <y:LabelModel>
               <y:SmartEdgeLabelModel autoRotationEnabled="false" defaultAngle="0.0" defaultDistance="10.0"/>
             </y:LabelModel>
@@ -1218,13 +1219,13 @@ Dashed Grey edges, dashed grey edges signifies "Extends" and they should be read
     <edge id="e8" source="n3" target="n8">
       <data key="d10">
         <y:PolyLineEdge>
-          <y:Path sx="-107.50036471496605" sy="-17.19641202928142" tx="61.70812556522014" ty="-1.7237362296541505">
+          <y:Path sx="-107.50036471496605" sy="-17.19641202928142" tx="53.42308102201605" ty="-12.421371472794817">
             <y:Point x="-4973.445543094743" y="-2380.213225772042"/>
             <y:Point x="-4973.445543094743" y="-2723.257361355536"/>
           </y:Path>
           <y:LineStyle color="#0000FF" type="dashed" width="2.0"/>
           <y:Arrows source="crows_foot_one" target="crows_foot_many_optional"/>
-          <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="-26.675566201061883" y="-374.07376298796044">
+          <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="-26.845865144546224" y="-374.1441964311962">
             <y:LabelModel>
               <y:SmartEdgeLabelModel autoRotationEnabled="false" defaultAngle="0.0" defaultDistance="10.0"/>
             </y:LabelModel>
