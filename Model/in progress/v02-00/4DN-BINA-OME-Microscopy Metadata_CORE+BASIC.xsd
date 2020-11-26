@@ -1119,26 +1119,12 @@
   <xsd:element name="Instrument">
     <!-- top level definition -->
     <xsd:annotation>
-      <xsd:appinfo>
-        <xsdfu xmlns="">
-          <plural>Instruments</plural>
-        </xsdfu>
+      <xsd:appinfo><xsdfu xmlns=""> <plural>Instruments</plural> </xsdfu>
       </xsd:appinfo>
+      <xsd:documentation>Extension=Core</xsd:documentation>
       <xsd:documentation>Domain=MicrosocpeHardwareSpecifications</xsd:documentation>
       <xsd:documentation>Category=MicroscopyEssentials</xsd:documentation>
-      <xsd:documentation>Description=This element describes the Instrument used to capture the
-        Image. It is primarily a container referring to the list of hardware components included in
-        a given Microscope. The list consists of the Microscope Stand, Microscope Table, Light
-        Source, Light Source Coupling, Sample Holder, Focusing, Objective, Filter, Dichroic,
-        Additional Lens (including a commonly used Magnification Changer, also known as Optovar),
-        Additional Mirroring Device, Polarization Optics, Prism, Optical Aperture, Optical Device,
-        Detector and Calibration Tool. The Filter element can be either composed of separate
-        Excitation, Emission filters, and Dichroic mirrors or a single Filter Set. An Instrument
-        might have multiple Light Sources, Detectors, Objectives, and Filters, etc. Each of these
-        has its own ID attribute, which can be referred to from the Image, Plane or more commonly
-        Channel elements associated with a given Image Acquisition session. It is understood that
-        the Light Path configuration can be different for each Channel, but cannot be different for
-        each timepoint or each Plane of an XYZ stack.</xsd:documentation>
+      <xsd:documentation>Description=This element describes the Instrument used to capture the Image. It is primarily a container referring to the list of hardware components included in a given Microscope. The list consists of the Microscope Stand, Microscope Table, Light Source, Light Source Coupling, Sample Holder, Focusing, Objective, Filter, Dichroic, Additional Lens (including a commonly used Magnification Changer, also known as Optovar), Additional Mirroring Device, Polarization Optics, Prism, Optical Aperture, Optical Device, Detector and Calibration Tool. The Filter element can be either composed of separate Excitation, Emission filters, and Dichroic mirrors or a single Filter Set. An Instrument might have multiple Light Sources, Detectors, Objectives, and Filters, etc. Each of these has its own ID attribute, which can be referred to from the Image, Plane or more commonly Channel elements associated with a given Image Acquisition session. It is understood that the Light Path configuration can be different for each Channel, but cannot be different for each timepoint or each Plane of an XYZ stack.</xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
@@ -1275,6 +1261,13 @@
             <xsd:documentation>Tier=2</xsd:documentation>
           </xsd:annotation>
         </xsd:element>
+        <xsd:element maxOccurs="unbounded" minOccurs="0" ref="StageInsertRef"/>
+        <xsd:element maxOccurs="unbounded" minOccurs="0" ref="FocusStabilizationRef">
+          <xsd:annotation>
+            <xsd:documentation>Description=This empty element refers to the optional Focus Stabilization device that was used for the Acquisition of this Image.</xsd:documentation>
+            <xsd:documentation>Tier=1</xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
         <xsd:element ref="AcquisitionSoftwareRef"/>
         <xsd:element minOccurs="0" name="AcquisitionDate" type="xsd:dateTime">
           <xsd:annotation>
@@ -1288,8 +1281,10 @@
         </xsd:element>
         <xsd:element maxOccurs="1" minOccurs="0" ref="Description"/>
         <xsd:element ref="ImagingEnvironment" minOccurs="0" maxOccurs="1"/>
-        <xsd:element minOccurs="0" ref="MicroscopeSettings" maxOccurs="1"/>
+        <xsd:element minOccurs="1" ref="MicroscopeSettings" maxOccurs="1"/>
         <xsd:element minOccurs="0" ref="MicroscopeTableSettings"/>
+        <xsd:element maxOccurs="unbounded" minOccurs="1" ref="ObjectiveSettings"/>
+        <xsd:element maxOccurs="unbounded" minOccurs="0" ref="SamplePositioningSettings"/>
         <xsd:element ref="Pixels"/>
         <xsd:element ref="AnnotationRef" minOccurs="0" maxOccurs="unbounded">
           <xsd:annotation>
@@ -1538,36 +1533,6 @@
           </xsd:element>
         </xsd:choice>
         <xsd:element ref="TheAdditionalDimensionRef" maxOccurs="unbounded" minOccurs="0"/>
-        <xsd:element maxOccurs="unbounded" minOccurs="0" name="StageInsertRef">
-          <xsd:annotation>
-            <xsd:documentation>Description=This empty element refers to the optional Stage Insert
-              device that was used for the Acquisition of this Image.</xsd:documentation>
-            <xsd:documentation>Tier=2</xsd:documentation>
-          </xsd:annotation>
-          <xsd:complexType>
-            <xsd:complexContent>
-              <xsd:extension base="Reference">
-                <xsd:attribute name="StageInsertID" type="StageInsertID">
-                  <xsd:annotation>
-                    <xsd:documentation>Description=A Unique Identifier for this
-                      component.</xsd:documentation>
-                    <xsd:documentation>Tier=2</xsd:documentation>
-                  </xsd:annotation>
-                </xsd:attribute>
-              </xsd:extension>
-            </xsd:complexContent>
-          </xsd:complexType>
-        </xsd:element>
-        <xsd:element maxOccurs="unbounded" minOccurs="0" ref="FocusStabilizationRef">
-          <xsd:annotation>
-            <xsd:documentation>Description=This empty element refers to the optional Focus
-              Stabilization Device that was used for the Acquisition of this
-              Image.</xsd:documentation>
-            <xsd:documentation>Tier=2</xsd:documentation>
-          </xsd:annotation>
-        </xsd:element>
-        <xsd:element maxOccurs="unbounded" minOccurs="0" ref="ObjectiveSettings"/>
-        <xsd:element maxOccurs="unbounded" minOccurs="0" ref="SamplePositioningSettings"/>
         <xsd:element maxOccurs="unbounded" minOccurs="0" name="PlaneTransformationMatrix">
           <xsd:annotation>
             <xsd:documentation>Extension=Basic</xsd:documentation>
@@ -2036,25 +2001,17 @@
   <xsd:element name="MicroscopeStandGroup" abstract="true" type="MicroscopeStand">
     <!-- top level definition -->
     <xsd:annotation>
-      <xsd:appinfo>
-        <xsdfu xmlns="">
-          <plural>Microscopes</plural>
-        </xsdfu>
+      <xsd:appinfo><xsdfu xmlns=""> <plural>Microscopes</plural> </xsdfu>
       </xsd:appinfo>
-      <xsd:documentation>Description=This element refers to the heart of this Microscope, which
-        might also be referred to as Body, Frame, or Platform.</xsd:documentation>
+      <xsd:documentation>Description=This element refers to the core structure of this Microscope, which might also be referred to as Body, Frame, or Platform.</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
   <xsd:complexType name="MicroscopeStand">
     <!-- top level definition -->
     <xsd:annotation>
-      <xsd:appinfo>
-        <xsdfu xmlns="">
-          <plural>Microscopes</plural>
-        </xsdfu>
+      <xsd:appinfo><xsdfu xmlns=""> <plural>Microscopes</plural> </xsdfu>
       </xsd:appinfo>
-      <xsd:documentation>Description=This element refers to the core structure of this Microscope,
-        which might also be referred to as Body, Frame, or Platform.</xsd:documentation>
+      <xsd:documentation>Description=This element refers to the core structure of this Microscope, which might also be referred to as Body, Frame, or Platform.</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="ManufacturerSpec">
@@ -2125,27 +2082,22 @@
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
-  <xsd:element name="InvertedMicroscope" substitutionGroup="MicroscopeStandGroup">
+  <xsd:element name="InvertedMicroscopeStand" substitutionGroup="MicroscopeStandGroup">
     <xsd:annotation>
-      <xsd:appinfo>
-        <xsdfu xmlns="">
-          <plural>Arcs</plural>
-        </xsdfu>
+      <xsd:appinfo><xsdfu xmlns=""> <plural>Arcs</plural> </xsdfu>
       </xsd:appinfo>
+      <xsd:documentation>Extension=Basic</xsd:documentation>
       <xsd:documentation>Domain=MicroscopeHardwareSpecifications</xsd:documentation>
       <xsd:documentation>Category=MicroscopyEssentials</xsd:documentation>
-      <xsd:documentation>Description=This is a Microscope in which the object is observed from
-        beneath the stage.</xsd:documentation>
+      <xsd:documentation>Description=This is a Microscope in which the object is observed from beneath the stage.</xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
-  <xsd:element name="UprightdMicroscope" substitutionGroup="MicroscopeStandGroup">
+  <xsd:element name="UprightdMicroscopeStand" substitutionGroup="MicroscopeStandGroup">
     <xsd:annotation>
-      <xsd:appinfo>
-        <xsdfu xmlns="">
-          <plural>Arcs</plural>
-        </xsdfu>
+      <xsd:appinfo><xsdfu xmlns=""> <plural>Arcs</plural> </xsdfu>
       </xsd:appinfo>
+      <xsd:documentation>Extension=Core</xsd:documentation>
       <xsd:documentation>Domain=MicroscopeHardwareSpecifications</xsd:documentation>
       <xsd:documentation>Category=MicroscopyEssentials</xsd:documentation>
       <xsd:documentation>Description=This is a Microscope in which the object is observed from above
@@ -2527,19 +2479,13 @@
   <xsd:element name="Objective">
     <!-- top level definition -->
     <xsd:annotation>
-      <xsd:appinfo>
-        <xsdfu xmlns="">
-          <plural>Objectives</plural>
-        </xsdfu>
+      <xsd:appinfo><xsdfu xmlns=""> <plural>Objectives</plural> </xsdfu>
       </xsd:appinfo>
       <xsd:documentation>Domain=MicroscopeHardwareSpecifications</xsd:documentation>
       <xsd:documentation>Category=Magnification</xsd:documentation>
-      <xsd:documentation>Description=The Microscope's Objective lens consists of a lens, its mount,
-        and any associated parts. It is the part of the imaging system, which forms a primary image
-        of the object, either alone or in conjunction with a tube lens. The Objective typically
-        consists of a compound lens consisting of several simple lenses (elements), usually arranged
-        along a common axis.</xsd:documentation>
+      <xsd:documentation>Description=The Microscope's Objective lens consists of a lens, its mount, and any associated parts. It is the part of the imaging system, which forms a primary image of the object, either alone or in conjunction with a tube lens. The Objective typically consists of a compound lens consisting of along a common axis.</xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
+      <xsd:documentation>Model_Settings=ObjectiveSettings</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
       <xsd:complexContent>
@@ -3764,17 +3710,14 @@
   <xsd:element name="ObjectiveSettings">
     <!-- top level definition -->
     <xsd:annotation>
-      <xsd:appinfo>        <xsdfu xmlns="">
-          <plural>ObjectiveSettingsCombinations</plural>
-        </xsdfu>
+      <xsd:appinfo><xsdfu xmlns=""> <plural>ObjectiveSettingsCombinations</plural> </xsdfu>
       </xsd:appinfo>
       <xsd:documentation>Extension=Core</xsd:documentation>
       <xsd:documentation>Domain=ImageAcquisitionSettings</xsd:documentation>
       <xsd:documentation>Category=Settings</xsd:documentation>
-      <xsd:documentation>Description=This element holds the Setting applied to the Objective used
-        during the Acquisition of this Image as well as a reference (the ID attribute) to the
-        Objective in question.</xsd:documentation>
+      <xsd:documentation>Description=This element holds the Setting applied to the Objective used during the Acquisition of this Image as well as a reference (the ID attribute) to the Objective in question.</xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
+      <xsd:documentation>Model_Hardware=Objective</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
       <xsd:complexContent>
@@ -4182,8 +4125,7 @@ PlaneInfo (as Plane)
   <xsd:element name="AnnotationRef">
     <!-- top level definition -->
     <xsd:annotation>
-      <xsd:documentation>Description=This element holds a simple multi-line comment or annotation
-        describing this component.</xsd:documentation>
+      <xsd:documentation>Description=This element holds a simple multi-line comment or annotation describing this component.</xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
@@ -4551,13 +4493,9 @@ PlaneInfo (as Plane)
   <xsd:element name="MapAnnotation">
     <!-- top level definition -->
     <xsd:annotation>
-      <xsd:appinfo>
-        <xsdfu xmlns="">
-          <plural>MapAnnotations</plural>
-        </xsdfu>
+      <xsd:appinfo><xsdfu xmlns=""> <plural>MapAnnotations</plural> </xsdfu>
       </xsd:appinfo>
-      <xsd:documentation>Description=A Map Annotation. The contents of this is a list of Key/Value
-        pairs.</xsd:documentation>
+      <xsd:documentation>Description=A Map Annotation. The contents of this is a list of Key/Value pairs.</xsd:documentation>
       <xsd:documentation>Tier=3</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
@@ -5637,22 +5575,15 @@ PlaneInfo (as Plane)
   <!-- Miscellaneous complex types -->
   <xsd:complexType name="ManufacturerSpec">
     <xsd:annotation>
-      <xsd:appinfo>
-        <xsdfu xmlns="">
-          <abstract/>
-        </xsdfu>
+      <xsd:appinfo><xsdfu xmlns=""> <abstract/> </xsdfu>
       </xsd:appinfo>
-      <xsd:documentation>Description=This describes the Manufacturer specifications for this
-        component (i.e., Manufacturer Name, Model designation and Serial
-        Number).</xsd:documentation>
+      <xsd:documentation>Description=This describes the Manufacturer specifications for this component (i.e., Manufacturer Name, Model designation and Catalog Number).</xsd:documentation>
     </xsd:annotation>
     <xsd:sequence>
       <xsd:element maxOccurs="unbounded" minOccurs="0" ref="MapAnnotation"/>
       <xsd:element minOccurs="0" name="SpecsFile" type="FileAnnotation">
         <xsd:annotation>
-          <xsd:documentation>Description=This element refers to a PDF file that contains the
-            specifications for this hardware component as provided by the
-            Manufacturer.</xsd:documentation>
+          <xsd:documentation>Description=This element refers to a PDF file that contains the specifications for this hardware component as provided by the Manufacturer.</xsd:documentation>
           <xsd:documentation>Tier=3</xsd:documentation>
         </xsd:annotation>
       </xsd:element>
@@ -5660,29 +5591,25 @@ PlaneInfo (as Plane)
     </xsd:sequence>
     <xsd:attribute name="Manufacturer" use="required" type="xsd:string">
       <xsd:annotation>
-        <xsd:documentation>Description=This field refers to the company, research group or
-          individual who manufactured this hardware component.</xsd:documentation>
+        <xsd:documentation>Description=This field refers to the company, research group or individual who manufactured this hardware component.</xsd:documentation>
         <xsd:documentation>Tier=1</xsd:documentation>
       </xsd:annotation>
     </xsd:attribute>
     <xsd:attribute name="Model" use="required" type="xsd:string">
       <xsd:annotation>
-        <xsd:documentation>Description=This field refers to the Model name or any other designation
-          the Manufacturer uses for this component.</xsd:documentation>
+        <xsd:documentation>Description=This field refers to the Model name or any other designation the Manufacturer uses for this component.</xsd:documentation>
         <xsd:documentation>Tier=1</xsd:documentation>
       </xsd:annotation>
     </xsd:attribute>
     <xsd:attribute name="CatalogNumber" use="required" type="xsd:string">
       <xsd:annotation>
-        <xsd:documentation>Description=This field records the Catalog, Part or Serial Number used by
-          the Manufacturer to uniquely identify this component.</xsd:documentation>
+        <xsd:documentation>Description=This field records the Catalog, Part or Serial Number used by the Manufacturer to uniquely identify this component.</xsd:documentation>
         <xsd:documentation>Tier=1</xsd:documentation>
       </xsd:annotation>
     </xsd:attribute>
     <xsd:attribute name="LotNumber" use="optional" type="xsd:string">
       <xsd:annotation>
-        <xsd:documentation>Description=The Lot Number used by the Manufacturer to refer to a
-          specific production batch or lot for this component.</xsd:documentation>
+        <xsd:documentation>Description=The Lot Number used by the Manufacturer to refer to a specific production batch or lot for this component.</xsd:documentation>
         <xsd:documentation>Tier=3</xsd:documentation>
       </xsd:annotation>
     </xsd:attribute>
@@ -8311,7 +8238,7 @@ PlaneInfo (as Plane)
       <xsd:documentation>Tier=1</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
-  <xsd:element name="DependencySoftware" type="Software_type">
+  <xsd:element name="DependenciesSoftware" type="Software_type">
     <xsd:annotation>
       <xsd:documentation>Extension=Basic</xsd:documentation>
       <xsd:documentation>Domain=MicroscopeSpecifications</xsd:documentation>
@@ -8325,8 +8252,7 @@ PlaneInfo (as Plane)
       <xsd:documentation>Extension=Basic</xsd:documentation>
       <xsd:documentation>Domain=MicroscopeHardwareSpecifications</xsd:documentation>
       <xsd:documentation>Category=MicroscopyEssentials</xsd:documentation>
-      <xsd:documentation>Description=This element describes the Table used to support this
-        Instrument during Image Acquisition.</xsd:documentation>
+      <xsd:documentation>Description=This element describes the Table used to support this Instrument during Image Acquisition.</xsd:documentation>
       <xsd:documentation>Tier=2</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
@@ -8335,39 +8261,32 @@ PlaneInfo (as Plane)
           <xsd:sequence>
             <xsd:element minOccurs="0" maxOccurs="1" ref="AnnotationRef">
               <xsd:annotation>
-                <xsd:documentation>Description=This is a simple multi-line comment or annotation
-                  describing this component.</xsd:documentation>
+                <xsd:documentation>Description=This is a simple multi-line comment or annotation describing this component.</xsd:documentation>
                 <xsd:documentation>Tier=1</xsd:documentation>
               </xsd:annotation>
             </xsd:element>
           </xsd:sequence>
           <xsd:attribute name="ID" type="LSID" use="required">
             <xsd:annotation>
-              <xsd:documentation>Description=A Unique Identifier for this
-                component.</xsd:documentation>
+              <xsd:documentation>Description=A Unique Identifier for this component.</xsd:documentation>
               <xsd:documentation>Tier=2</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
           <xsd:attribute name="Name" type="Denomination" use="optional">
             <xsd:annotation>
-              <xsd:documentation>Description=A User-defined Name for this
-                component.</xsd:documentation>
+              <xsd:documentation>Description=A User-defined Name for this component.</xsd:documentation>
               <xsd:documentation>Tier=2</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
           <xsd:attribute name="MultipleMicroscopes" type="xsd:boolean">
             <xsd:annotation>
-              <xsd:documentation>Description=This field records whether (True) or not (False)
-                multiple Microscopes share this Microscope Table. This is relevant because multiple
-                Microscopes using the same table might affect stability and vibrations during Image
-                Acquisition.</xsd:documentation>
+              <xsd:documentation>Description=This field records whether (True) or not (False) multiple Microscopes share this Microscope Table. This is relevant because multiple Microscopes using the same table might affect stability and vibrations during Image Acquisition.</xsd:documentation>
               <xsd:documentation>Tier=2</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
           <xsd:attribute name="Type" type="MicroscopeTableType" use="required">
             <xsd:annotation>
-              <xsd:documentation>Description=This field describes the type of this Microscope
-                Table.</xsd:documentation>
+              <xsd:documentation>Description=This field describes the type of this Microscope Table.</xsd:documentation>
               <xsd:documentation>Tier=2</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
@@ -8402,8 +8321,7 @@ PlaneInfo (as Plane)
       <xsd:documentation>Extension=Basic</xsd:documentation>
       <xsd:documentation>Domain=MicroscopeHardwareSpecifications</xsd:documentation>
       <xsd:documentation>Category=MicroscopyEssentials</xsd:documentation>
-      <xsd:documentation>Description=This element describes an Environmental Control Device
-        available for this Instrument.</xsd:documentation>
+      <xsd:documentation>Description=This element describes an Environmental Control Device available for this Instrument.</xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
@@ -8420,82 +8338,68 @@ PlaneInfo (as Plane)
           </xsd:sequence>
           <xsd:attribute name="ID" type="LSID" use="required">
             <xsd:annotation>
-              <xsd:documentation>Description=A Unique Identifier for this
-                component.</xsd:documentation>
+              <xsd:documentation>Description=A Unique Identifier for this component.</xsd:documentation>
               <xsd:documentation>Tier=1</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
           <xsd:attribute name="Name" type="Denomination" use="optional">
             <xsd:annotation>
-              <xsd:documentation>Description=A User-defined Name for this
-                component.</xsd:documentation>
+              <xsd:documentation>Description=A User-defined Name for this component.</xsd:documentation>
               <xsd:documentation>Tier=1</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
           <xsd:attribute name="Type" type="EnvironmentalControlType" use="required">
             <xsd:annotation>
-              <xsd:documentation>Description=This field captures the general category of this
-                Environmental Control Device.</xsd:documentation>
+              <xsd:documentation>Description=This field captures the general category of this Environmental Control Device.</xsd:documentation>
               <xsd:documentation>Tier=1</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
           <xsd:attribute name="HumidityControl" type="HumidityControlMethod" use="required">
             <xsd:annotation>
-              <xsd:documentation>Description=This field captures whether this Environmental Control
-                Device provides Humidity control and what type of control it provides. If no
-                Humidity control is provided please enter "None".</xsd:documentation>
+              <xsd:documentation>Description=This field captures whether this Environmental Control Device provides Humidity control and what type of control it provides. If no Humidity control is provided please enter "None".</xsd:documentation>
               <xsd:documentation>Tier=1</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
           <xsd:attribute name="CO2Control" type="CO2ControlMethod" use="required">
             <xsd:annotation>
-              <xsd:documentation>Description=This field captures whether this Environmental Control
-                Device provides CO2 control and what type of control it provides. If no CO2 control
-                is provided please enter "None".</xsd:documentation>
+              <xsd:documentation>Description=This field captures whether this Environmental Control Device provides CO2 control and what type of control it provides. If no CO2 control is provided please enter "None".</xsd:documentation>
               <xsd:documentation>Tier=2</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
           <xsd:attribute name="O2Control" type="xsd:boolean" use="required">
             <xsd:annotation>
-              <xsd:documentation>Description=This field captures whether (True) or not (False) this
-                Environmental Control Device provides O2 control.</xsd:documentation>
+              <xsd:documentation>Description=This field captures whether (True) or not (False) this Environmental Control Device provides vibration control.</xsd:documentation>
               <xsd:documentation>Tier=2</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
           <xsd:attribute name="VibrationControl" type="xsd:boolean" use="optional">
             <xsd:annotation>
-              <xsd:documentation>Description=This field captures whether (True) or not (False) this
-                Environmental Control Device provides O2 control.</xsd:documentation>
+              <xsd:documentation>Description=This field captures whether (True) or not (False) this Environmental Control Device provides O2 control.</xsd:documentation>
               <xsd:documentation>Tier=2</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
           <xsd:attribute name="StandCompatibility" type="EnvironmentalStandCompatibility"
             use="required">
             <xsd:annotation>
-              <xsd:documentation>Description=This field captures what Microscope Stand type this
-                Environmental Control Chamber is compatible with.</xsd:documentation>
+              <xsd:documentation>Description=This field captures what Microscope Stand type this Environmental Control Chamber is compatible with.</xsd:documentation>
               <xsd:documentation>Tier=2</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
           <xsd:attribute name="Perfusion" type="xsd:boolean" use="required">
             <xsd:annotation>
-              <xsd:documentation>Description=In case this Environmental Control Device consists of a
-                Sample Holder Chamber, this field captures the Material that constitutes the Lid of
-                the Chamber.</xsd:documentation>
+              <xsd:documentation>Description=This field caputers whether (True) or not (False) this Environmental Control Device supports sample Perfusion.</xsd:documentation>
               <xsd:documentation>Tier=2</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
           <xsd:attribute name="LidMaterial" type="xsd:string">
             <xsd:annotation>
-              <xsd:documentation>Description=This field caputers whether (True) or not (False) this
-                Environmental Control Device supports sample Perfusion.</xsd:documentation>
+              <xsd:documentation>Description=In case this Environmental Control Device consists of a Sample Holder Chamber, this field captures the Material that constitutes the Lid of the Chamber.</xsd:documentation>
               <xsd:documentation>Tier=2</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
           <xsd:attribute name="MaxTemperature" type="xsd:float" use="required">
             <xsd:annotation>
-              <xsd:documentation>Description=This field captures the Maximum Temperature that can be
-                stably maintained by this Environmental Control Device.</xsd:documentation>
+              <xsd:documentation>Description=This field captures the Maximum Temperature that can be stably maintained by this Environmental Control Device.</xsd:documentation>
               <xsd:documentation>Tier=3</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
@@ -8506,8 +8410,7 @@ PlaneInfo (as Plane)
           </xsd:attribute>
           <xsd:attribute name="MinTemberature" type="xsd:float" use="required">
             <xsd:annotation>
-              <xsd:documentation>Description=This field captures the Minimum Temperature that can be
-                stably maintained by this Environmental Control Device.</xsd:documentation>
+              <xsd:documentation>Description=This field captures the Minimum Temperature that can be stably maintained by this Environmental Control Device.</xsd:documentation>
               <xsd:documentation>Tier=3</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
@@ -8518,8 +8421,7 @@ PlaneInfo (as Plane)
           </xsd:attribute>
           <xsd:attribute name="TemperatureAccuracy" type="xsd:float">
             <xsd:annotation>
-              <xsd:documentation>Description=This field captures the Temperature control Accuracy
-                provided by this Environmental Control Device.</xsd:documentation>
+              <xsd:documentation>Description=This field captures the Temperature control Accuracy provided by this Environmental Control Device.</xsd:documentation>
               <xsd:documentation>Tier=3</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
@@ -8530,8 +8432,7 @@ PlaneInfo (as Plane)
           </xsd:attribute>
           <xsd:attribute name="TTL" type="xsd:boolean">
             <xsd:annotation>
-              <xsd:documentation>Description=This field captures whether (True) or not (False) this
-                Environmental Control Device can be controlled by a TTL signal.</xsd:documentation>
+              <xsd:documentation>Description=This field captures whether (True) or not (False) this Environmental Control Device can be controlled by a TTL signal.</xsd:documentation>
               <xsd:documentation>Tier=3</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
@@ -8543,67 +8444,54 @@ PlaneInfo (as Plane)
     <xsd:complexContent>
       <xsd:extension base="ManufacturerSpec">
         <xsd:sequence>
-          <xsd:element ref="AnnotationRef" minOccurs="0"/>
-          <xsd:element maxOccurs="unbounded" minOccurs="0" ref="DependencySoftware"/>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" ref="DependenciesSoftware"/>
+          <xsd:element ref="AnnotationRef" minOccurs="0" maxOccurs="unbounded"/>
         </xsd:sequence>
         <xsd:attribute name="ID" type="LSID" use="required">
           <xsd:annotation>
-            <xsd:documentation>Description=A Unique Identifier for this
-              component.</xsd:documentation>
+            <xsd:documentation>Description=A Unique Identifier for this component.</xsd:documentation>
             <xsd:documentation>Tier=1</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
         <xsd:attribute name="Name" type="xsd:string" use="required">
           <xsd:annotation>
-            <xsd:documentation>Description=This field records the Name or any other designation the
-              Author uses for this Software.</xsd:documentation>
+            <xsd:documentation>Description=This field records the Name or any other designation the Author uses for this Software.</xsd:documentation>
             <xsd:documentation>Tier=1</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
         <xsd:attribute name="Version" type="xsd:string" use="required">
           <xsd:annotation>
-            <xsd:documentation>Description=This field records the Version of this
-              Software.</xsd:documentation>
+            <xsd:documentation>Description=This field records the Version of this Software.</xsd:documentation>
             <xsd:documentation>Tier=1</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
         <xsd:attribute name="Author" type="xsd:string" use="required">
           <xsd:annotation>
-            <xsd:documentation>Description=This field records the developer of this Software. This
-              could be the Manufacturer if this is a commercial proprietary sofware or the Author(s)
-              if this is an open-source software.</xsd:documentation>
+            <xsd:documentation>Description=This field records the developer of this Software. This could be the Manufacturer if this is a commercial proprietary sofware or the Author(s) if this is an open-source software.</xsd:documentation>
             <xsd:documentation>Tier=1</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
         <xsd:attribute name="WebsiteURL" type="xsd:anyURI" use="required">
           <xsd:annotation>
-            <xsd:documentation>Description=This field records the URL address of any Website where
-              the Software can be obtained. In case of open-source Software this field should record
-              the URL for the Git repository from which to obtain the
-              source-code.</xsd:documentation>
+            <xsd:documentation>Description=This field records the URL address of any Website where the Software can be obtained. In case of open-source Software this field should record the URL for the Git repository from which to obtain the source-code.</xsd:documentation>
             <xsd:documentation>Tier=2</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
         <xsd:attribute name="PrimaryPublicationID" type="xsd:string">
           <xsd:annotation>
-            <xsd:documentation>Description=This field captures the a Unique Identifier for the
-              Primary Publication describing this Software. Examples include, Digital Object
-              Identifier (DOI), PubMed Central Identifier (PMCID), ArXiv.org ID
-              etc.</xsd:documentation>
+            <xsd:documentation>Description=This field captures the a Unique Identifier  for the Primary Publication describing this Software. Examples include, Digital Object Identifier (DOI), PubMed Central Identifier (PMCID), ArXiv.org ID etc.</xsd:documentation>
             <xsd:documentation>Tier=2</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
         <xsd:attribute name="OpenSource" type="xsd:boolean">
           <xsd:annotation>
-            <xsd:documentation>Description=This records whether this Software is OpenSource (True)
-              or proprietary (False).</xsd:documentation>
+            <xsd:documentation>Description=This records whether this Software is OpenSource (True) or proprietary (False).</xsd:documentation>
             <xsd:documentation>Tier=2</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
         <xsd:attribute name="Macro" type="xsd:boolean">
           <xsd:annotation>
-            <xsd:documentation>Description=This field records whether this Software is a Macro or a
-              Scprit (True) or is it a full free-standing program.</xsd:documentation>
+            <xsd:documentation>Description=This field records whether this Software is a Macro or a Scprit (True) or is it a full free-standing program.</xsd:documentation>
             <xsd:documentation>Tier=2</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
@@ -8615,26 +8503,19 @@ PlaneInfo (as Plane)
         </xsd:attribute>
         <xsd:attribute name="Patch" type="xsd:string">
           <xsd:annotation>
-            <xsd:documentation>Description=This recodes the version for an optional Patch, HotFix or
-              Update used for this Sofware to run this Instrument. A Patch (aka HotFix, or Update)
-              is a set of changes to a computer program or its supporting data designed to update,
-              fix, or improve it. This includes fixing security vulnerabilities, and other bugs,
-              with such patches usually being called bugfixes or bug fixes, and improving the
-              functionality, usability or performance.</xsd:documentation>
+            <xsd:documentation>Description=This recodes the version for an optional Patch, HotFix or Update used for this Sofware to run this Instrument. A Patch (aka HotFix, or Update) is a set of changes to a computer program or its supporting data designed to update, fix, or improve it. This includes fixing security vulnerabilities, and other bugs, with such patches usually being called bugfixes or bug fixes, and improving the functionality, usability or performance.</xsd:documentation>
             <xsd:documentation>Tier=2</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
         <xsd:attribute name="ReleaseDate" type="xsd:date">
           <xsd:annotation>
-            <xsd:documentation>Description=The date in which this Software was
-              resleased.</xsd:documentation>
+            <xsd:documentation>Description=The date in which this Software was resleased.</xsd:documentation>
             <xsd:documentation>Tier=3</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
         <xsd:attribute name="Language" type="xsd:string">
           <xsd:annotation>
-            <xsd:documentation>Description=This records the computer Language this Software is
-              developed in.</xsd:documentation>
+            <xsd:documentation>Description=This records the computer Language in which this Software was developed.</xsd:documentation>
             <xsd:documentation>Tier=3</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
@@ -11754,16 +11635,10 @@ PlaneInfo (as Plane)
   <!-- Additional Vendor Information -->
   <xsd:element name="AdditionalVendorInformation">
     <xsd:annotation>
+      <xsd:documentation>Extension=Basic</xsd:documentation>
       <xsd:documentation>Domain=MicroscopeHardwareSpecifications</xsd:documentation>
       <xsd:documentation>Category=VendorInformation</xsd:documentation>
-      <xsd:documentation>Description=This element is intendended to be used as a last-resort
-        solution to capture vendor-specific Additional Information about this hardware component,
-        which cannot be described using either available model elements (Classes or Attributes) or
-        the Map Annotation feature of the schema. The use of this feature should not be intended as
-        a way to hide information that the Imaging Community has designated as essential to ensure
-        rigor and reproducibility. In case this feature is used, the Vendor is fully responsible for
-        this information, including but not limited to, making sure this information is
-        appropriately recorded and kept up to date.</xsd:documentation>
+      <xsd:documentation>Description=This element is intendended to be used as a last-resort solution to capture vendor-specific Additional Information about this hardware component, which cannot be described using either available model elements (Classes or Attributes) or the Map Annotation feature of the schema. The use of this feature should not be intended as a way to hide information that the Imaging Community has designated as essential to ensure rigor and reproducibility. In case this feature is used, the Vendor is fully responsible for this information, including but not limited to, making sure this information is appropriately recorded and kept up to date.</xsd:documentation>
       <xsd:documentation>Tier=3</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
@@ -11773,15 +11648,13 @@ PlaneInfo (as Plane)
       </xsd:sequence>
       <xsd:attribute name="ID" type="LSID" use="required">
         <xsd:annotation>
-          <xsd:documentation>Description=A Unique Identifier for this model
-            element.</xsd:documentation>
+          <xsd:documentation>Description=A Unique Identifier for this model element.</xsd:documentation>
           <xsd:documentation>Tier=3</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
       <xsd:attribute name="VendorName" type="xsd:string" use="required">
         <xsd:annotation>
-          <xsd:documentation>Description=The Name of the Vendor responsible for this
-            Information.</xsd:documentation>
+          <xsd:documentation>Description=The Name of the Vendor responsible for this Information.</xsd:documentation>
           <xsd:documentation>Tier=3</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
@@ -11790,10 +11663,10 @@ PlaneInfo (as Plane)
   <xsd:element name="VendorBinData">
     <!-- top level definition -->
     <xsd:annotation>
+      <xsd:documentation>Extension=Basic</xsd:documentation>
       <xsd:documentation>Domain=MicroscopeHardwareSpecifications</xsd:documentation>
       <xsd:documentation>Category=VendorInformation</xsd:documentation>
-      <xsd:documentation>Description=The contents of this element are base64-encoded. These are not
-        CDATA sections, just base64 streams.</xsd:documentation>
+      <xsd:documentation>Description=The contents of this element are base64-encoded. These are not CDATA sections, just base64 streams.</xsd:documentation>
       <xsd:documentation>Tier=3</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
@@ -12372,6 +12245,24 @@ PlaneInfo (as Plane)
       </xsd:complexContent>
     </xsd:complexType>
   </xsd:element>
+  <xsd:element name="StageInsertRef">
+    <xsd:annotation>
+      <xsd:documentation>Description=This empty element refers to the optional Stage Insert device that was used for the Acquisition of this Image.</xsd:documentation>
+      <xsd:documentation>Tier=2</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:complexContent>
+        <xsd:extension base="Reference">
+          <xsd:attribute name="StageInsertID" type="StageInsertID">
+            <xsd:annotation>
+              <xsd:documentation>Description=A Unique Identifier for this component.</xsd:documentation>
+              <xsd:documentation>Tier=2</xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
+        </xsd:extension>
+      </xsd:complexContent>
+    </xsd:complexType>
+  </xsd:element>
   <xsd:element name="SamplePositioningRef">
     <xsd:complexType>
       <xsd:complexContent>
@@ -12393,9 +12284,8 @@ PlaneInfo (as Plane)
         <xsd:extension base="Reference">
           <xsd:attribute name="ID" type="FocusStabilizationID">
             <xsd:annotation>
-              <xsd:documentation>Description=A Unique Identifier for this
-                component.</xsd:documentation>
-              <xsd:documentation>Tier=2</xsd:documentation>
+              <xsd:documentation>Description=A Unique Identifier for this component.</xsd:documentation>
+              <xsd:documentation>Tier=1</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
         </xsd:extension>
@@ -16450,7 +16340,7 @@ PlaneInfo (as Plane)
       <xsd:documentation>Extension=Calibration and Performance</xsd:documentation>
       <xsd:documentation>Domain=ImageAcquisitionSettings</xsd:documentation>
       <xsd:documentation>Category=CalibrationSample</xsd:documentation>
-      <xsd:documentation>Description=This element a Fluorescent Reference Slide. These Slides  provide a uniform fluorescent field and therefore they enable to check how evenly a Excitation Light Source is filling the Field of View (FOV), and whether it is centered. These Slides are easy to use an cheap. However they are typically made of plastic and it is often difficult to ensure the reproducibility of their emission properties. These Slides are mostly known to be produced by Chroma, but similar products are available from Ted Pella or Thorlabs.</xsd:documentation>
+      <xsd:documentation>Description=This element describes a Fluorescent Reference Slide. These Slides  provide a uniform fluorescent field and therefore they enable to check how evenly a Excitation Light Source is filling the Field of View (FOV), and whether it is centered. These Slides are easy to use an cheap. However they are typically made of plastic and it is often difficult to ensure the reproducibility of their emission properties. These Slides are mostly known to be produced by Chroma, but similar products are available from Ted Pella or Thorlabs.</xsd:documentation>
       <xsd:documentation>Tier=2</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
