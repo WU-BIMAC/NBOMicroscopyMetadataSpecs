@@ -400,6 +400,7 @@
           <global/>
         </xsdfu>
       </xsd:appinfo>
+      <xsd:documentation>Extension=Core</xsd:documentation>
       <xsd:documentation>Domanin=Experimental</xsd:documentation>
       <xsd:documentation>Category=SamplePreparation</xsd:documentation>
       <xsd:documentation>Description=This element describes a person who performed an imaging experiment. This person may also be a user of the OME system, in which case the UserName element contains their login name.Experimenters may belong to one or more groups which are specified using one or more ExperimenterGroupRef elements. </xsd:documentation>
@@ -464,6 +465,7 @@
           <global/>
         </xsdfu>
       </xsd:appinfo>
+      <xsd:documentation>Extension=Core</xsd:documentation>
       <xsd:documentation>Domanin=Experimental</xsd:documentation>
       <xsd:documentation>Category=SamplePreparation</xsd:documentation>
       <xsd:documentation>Description=The ExperimenterGroupID is required. Information should ideally be specified for at least one Leader as a contact for the group. The Leaders are themselves Experimenters.</xsd:documentation>
@@ -905,7 +907,7 @@
   <xsd:element name="Experiment">
     <!-- top level definition -->
     <xsd:annotation>
-      <xsd:appinfo/>
+      <xsd:documentation>Extension=Core</xsd:documentation>
       <xsd:documentation>Domain=Experimental</xsd:documentation>
       <xsd:documentation>Category=SamplePreparation</xsd:documentation>
       <xsd:documentation>Description=This element describes the experiment during which this Image was acquired. The optional Description element may contain free text to further describe the experiment.</xsd:documentation>
@@ -1030,6 +1032,7 @@
         </xsd:element>
         <xsd:element maxOccurs="unbounded" minOccurs="0" ref="FocusStabilizationDevice">
           <xsd:annotation>
+            <xsd:documentation>Extension=Basic</xsd:documentation>
             <xsd:documentation>Domain=MicrosocpeHardwareSpecifications</xsd:documentation>
             <xsd:documentation>Category=SamplePositioning.Focusing</xsd:documentation>
             <xsd:documentation>Description=This element describes the focus stabilization device(s) available for this microscope</xsd:documentation>
@@ -1049,6 +1052,11 @@
         <xsd:element maxOccurs="unbounded" minOccurs="0" ref="Prism"/>
         <xsd:element maxOccurs="unbounded" minOccurs="0" ref="PolarizationOptics"/>
         <xsd:element ref="DetectorGroup" minOccurs="1" maxOccurs="unbounded"/>
+        <xsd:element maxOccurs="unbounded" minOccurs="0" ref="TIRFHardwareModule"/>
+        <xsd:element maxOccurs="unbounded" minOccurs="0" ref="ConfocalScannerGroup"/>
+        <xsd:element maxOccurs="unbounded" minOccurs="0" ref="AcoustoOpticalDeviceGroup"/>
+        <xsd:element maxOccurs="unbounded" minOccurs="0" ref="ElectroOpticalDeviceGroup"/>
+        <xsd:element maxOccurs="unbounded" minOccurs="0" ref="MicrolensArray"/>
         <xsd:element maxOccurs="unbounded" minOccurs="0" ref="IntensityCalibrationTool"/>
         <xsd:element ref="AnnotationRef" minOccurs="0" maxOccurs="1">
           <xsd:annotation>
@@ -1084,6 +1092,7 @@
           <plural>Images</plural>
         </xsdfu>
       </xsd:appinfo>
+      <xsd:documentation>Extension=Core</xsd:documentation>
       <xsd:documentation>Domain=ImageAcquisitionSettingsSettings</xsd:documentation>
       <xsd:documentation>Category=Image</xsd:documentation>
       <xsd:documentation>Description=This element describes the actual Image that was acquired and its meta-data. The elements that are references (ending in Ref or Settings) refer to elements defined outside of the Image element. Ref elements are simple links, while Settings elements are links with additional values. If any of the required Image attributes or elements are missing, its guaranteed to be an invalid document.</xsd:documentation>
@@ -1099,7 +1108,13 @@
           </xsd:annotation>
         </xsd:element>
         <xsd:element ref="ExperimenterRef" minOccurs="0" maxOccurs="unbounded"/>
-        <xsd:element ref="ExperimenterGroupRef" minOccurs="0" maxOccurs="1"/>
+        <xsd:element maxOccurs="unbounded" minOccurs="1" ref="SampleRef">
+          <xsd:annotation>
+            <xsd:documentation>Description=This empty element refers to the Sample that was imaged in this Image Acquisition.</xsd:documentation>
+            <xsd:documentation>Tier=1</xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element ref="ExperimenterGroupRef" minOccurs="0" maxOccurs="unbounded"/>
         <xsd:element ref="ROIRef" minOccurs="0" maxOccurs="unbounded">
           <xsd:annotation>
             <xsd:appinfo>
@@ -1118,8 +1133,8 @@
             <xsd:documentation>Tier=1</xsd:documentation>
           </xsd:annotation>
         </xsd:element>
-        <xsd:element ref="AcquisitionSoftwareRef"/>
-        <xsd:element minOccurs="0" name="AcquisitionDate" type="xsd:dateTime">
+        <xsd:element ref="AcquisitionSoftwareRef" maxOccurs="unbounded"/>
+        <xsd:element minOccurs="1" name="AcquisitionDate" type="xsd:dateTime">
           <xsd:annotation>
             <xsd:documentation>Domain=ImageAcquisitionSettingsSettings</xsd:documentation>
             <xsd:documentation>Category=SamplePreparation</xsd:documentation>
@@ -1133,6 +1148,8 @@
         <xsd:element minOccurs="0" ref="MicroscopeTableSettings"/>
         <xsd:element maxOccurs="unbounded" minOccurs="1" ref="ObjectiveSettings"/>
         <xsd:element maxOccurs="unbounded" minOccurs="0" ref="SamplePositioningSettings"/>
+        <xsd:element maxOccurs="unbounded" minOccurs="0" ref="OpticalCalibration"/>
+        <xsd:element maxOccurs="unbounded" minOccurs="0" ref="DetectorCalibration"/>
         <xsd:element ref="Pixels"/>
         <xsd:element ref="AnnotationRef" minOccurs="0" maxOccurs="unbounded">
           <xsd:annotation>
@@ -1174,6 +1191,7 @@
           <plural>Pixels</plural>
         </xsdfu>
       </xsd:appinfo>
+      <xsd:documentation>Extension=Core</xsd:documentation>
       <xsd:documentation>Domain=ImageAcquisitionSettings</xsd:documentation>
       <xsd:documentation>Category=Image</xsd:documentation>
       <xsd:documentation>Description=The Pixels element is going to be removed in the future, but it is still required. This is just notice that the contents of Pixels will be moved up to Image in a future release. This is because there has only been 1 Pixels object in each Image for some time. The concept of multiple Pixels sets for one Image failed to take off. It is therefore redundant. The Image will be unreadable if any of the required Pixel attributes are missing. The Pixels themselves can be stored within the OME-XML compressed by Plane, and encoded in Base64. Or the Pixels may be stored in TIFF format. The Pixels element should contain a list of BinData or TiffData, each containing a single Plane of pixels. These Pixels elements, when read in document order, must produce a 5-D Pixel array of the size specified in this element, and in the dimension order specified by 'DimensionOrder'. All of the values in the Pixels object when present should match the same value stored in any associated TIFF format (e.g. SizeX should be the same). Where there is a mismatch our readers will take the value from the TIFF structure as overriding the value in the OME-XML. This is simply a pragmatic decision as it increases the likelihood of reading data from a slightly incorrect file.</xsd:documentation>
@@ -1311,6 +1329,7 @@
           <plural>Planes</plural>
         </xsdfu>
       </xsd:appinfo>
+      <xsd:documentation>Extension=Core</xsd:documentation>
       <xsd:documentation>Domain=ImageAcquisitionSettings</xsd:documentation>
       <xsd:documentation>Category=Image</xsd:documentation>
       <xsd:documentation>Description=Each Image has to have at least one Plane and one Channel. The Plane element holds the Microscope stage and Image timing data for a given Channel/z-section/timepoint. The total number of Plane elements for a given Image must equal to SizeZ x SizeC x SizeT.</xsd:documentation>
@@ -1329,12 +1348,13 @@
             </xsd:annotation>
           </xsd:element>
         </xsd:choice>
+        <xsd:element maxOccurs="unbounded" minOccurs="0" ref="MechanicalCalibration"/>
         <xsd:element ref="TheAdditionalDimensionRef" maxOccurs="unbounded" minOccurs="0"/>
         <xsd:element maxOccurs="unbounded" minOccurs="0" name="PlaneTransformationMatrix">
           <xsd:annotation>
             <xsd:documentation>Extension=Basic</xsd:documentation>
             <xsd:documentation>Domain=ImageAcquisitionSettings</xsd:documentation>
-            <xsd:documentation>Category=ChildElement</xsd:documentation>
+            <xsd:documentation>Category=Image</xsd:documentation>
             <xsd:documentation>Description=This element describes a 4x4 matrix relating the position of this Plane typically with respect to other Planes within this Image or collection of Images (or alternatively to the Microscope's reference frame). This can correct for translations, rotations, scale differences, or other affine distortions between Planes from the same set or between Image Datasets. An example is when multiple cameras are used for e.g. to acquire different Channels for the same Image. See: https://www.openmicroscopy.org/community/viewtopic.php?p=17433.</xsd:documentation>
             <xsd:documentation>Tier=3</xsd:documentation>
           </xsd:annotation>
@@ -1479,8 +1499,9 @@
           <plural>Channels</plural>
         </xsdfu>
       </xsd:appinfo>
+      <xsd:documentation>Extension=Core</xsd:documentation>
       <xsd:documentation>Domain=ImageAcquisitionSettings</xsd:documentation>
-      <xsd:documentation>Category=Channel</xsd:documentation>
+      <xsd:documentation>Category=Image</xsd:documentation>
       <xsd:documentation>Description=Each Image has to have at least one Plane and one Channel. The Channel element stores information about how the each Image Channel was acquired. The total number of Channel elements for a given Image must equal to SizeC.</xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
     </xsd:annotation>
@@ -1488,6 +1509,7 @@
       <xsd:sequence>
         <xsd:element maxOccurs="unbounded" ref="Fluorophore"/>
         <xsd:element ref="LightPath" minOccurs="1" maxOccurs="1"/>
+        <xsd:element maxOccurs="unbounded" minOccurs="0" ref="ExcitationCalibration"/>
         <xsd:element minOccurs="0" ref="AnnotationRef">
           <xsd:annotation>
             <xsd:documentation>Description=This is a simple multi-line comment or annotation describing this component.</xsd:documentation>
@@ -1559,6 +1581,7 @@
           <plural>BinDataBlocks</plural>
         </xsdfu>
       </xsd:appinfo>
+      <xsd:documentation>Extension=Core</xsd:documentation>
       <xsd:documentation>Domain=ImageAcquistionSettings</xsd:documentation>
       <xsd:documentation>Category=Data</xsd:documentation>
       <xsd:documentation>Description=The contents of this element are base64-encoded. These are not CDATA sections, just a base64 stream.</xsd:documentation>
@@ -1604,6 +1627,7 @@
           <plural>MetadataOnlyMarkers</plural>
         </xsdfu>
       </xsd:appinfo>
+      <xsd:documentation>Extension=Core</xsd:documentation>
       <xsd:documentation>Domain=ImageAcquistionSettings</xsd:documentation>
       <xsd:documentation>Category=Data</xsd:documentation>
       <xsd:documentation>Description=This place holder means there is no pixel data in this file.</xsd:documentation>
@@ -1618,6 +1642,7 @@
           <plural>TiffDataBlocks</plural>
         </xsdfu>
       </xsd:appinfo>
+      <xsd:documentation>Extension=Core</xsd:documentation>
       <xsd:documentation>Domain=ImageAcquistionSettings</xsd:documentation>
       <xsd:documentation>Category=Data</xsd:documentation>
       <xsd:documentation>Description=This field describes the location of the pixel data in a tiff file.</xsd:documentation>
@@ -1883,11 +1908,9 @@
   <xsd:element name="Arc" substitutionGroup="LightSourceGroup">
     <!-- top level definition -->
     <xsd:annotation>
-      <xsd:appinfo>
-        <xsdfu xmlns="">
-          <plural>Arcs</plural>
-        </xsdfu>
+      <xsd:appinfo><xsdfu xmlns=""> <plural>Arcs</plural> </xsdfu>
       </xsd:appinfo>
+      <xsd:documentation>Extension=Core</xsd:documentation>
       <xsd:documentation>Domain=MicroscopeHardwareSpecifications</xsd:documentation>
       <xsd:documentation>Category=LightSource</xsd:documentation>
       <xsd:documentation>Description=An Arc lamp is a discharge lamp that produces light by an electric arc (also called a voltaic arc), which is typically generated between metal electrodes and travels through an inert gas in a glass bulb. The inert gas can be Mercury (He), Xenon (Xe), or a mixture of the two. The choice of the gas is important because its nature determines the spectral behavior of the lamp. Refer to Type for more informations about this aspect.</xsd:documentation>
@@ -1918,6 +1941,7 @@
           <plural>GenericExcitationSources</plural>
         </xsdfu>
       </xsd:appinfo>
+      <xsd:documentation>Extension=Core</xsd:documentation>
       <xsd:documentation>Domain=MicroscopeHardwareSpecifications</xsd:documentation>
       <xsd:documentation>Category=LightSource</xsd:documentation>
       <xsd:documentation>Description=The GenericExcitationSource element is used to represent a light source as a collection of key/value pairs, stored in a Map. One of the other light source elements should always be used in preference to this if possible.</xsd:documentation>
@@ -1949,6 +1973,7 @@
           <plural>Filaments</plural>
         </xsdfu>
       </xsd:appinfo>
+      <xsd:documentation>Extension=Core</xsd:documentation>
       <xsd:documentation>Domain=MicroscopeHardwareSpecifications</xsd:documentation>
       <xsd:documentation>Category=LightSource</xsd:documentation>
       <xsd:documentation>Description=A Filament lamp is an incandescent Light Source with a wire filament (usually tungsten), which is heated by the passage of an electric current to such a high temperature that it glows with visible light (incandescence). The emitted spectrum is continuous, and it approximates that of a black-body radiator.</xsd:documentation>
@@ -1979,6 +2004,7 @@
           <plural>Lasers</plural>
         </xsdfu>
       </xsd:appinfo>
+      <xsd:documentation>Extension=Core</xsd:documentation>
       <xsd:documentation>Domain=MicroscopeHardwareSpecifications</xsd:documentation>
       <xsd:documentation>Category=LightSource</xsd:documentation>
       <xsd:documentation>Description=This element describes a Light Source, which emits coherent radiation at high spectral concentrations of radiance and minimal solid angles. This includes proper Light Amplification by Stimulated Emission of Radiation (LASER) sources that emit light through a process of optical amplification based on the stimulated emission of electromagnetic radiation. It also includes Optical Parametric Oscillator (OPO) sources that use a kind of LASER resonator but based on optical gain from parametric amplification in a nonlinear crystal rather than from stimulated emission.</xsd:documentation>
@@ -2087,6 +2113,7 @@
           <plural>LightEmittingDiodes</plural>
         </xsdfu>
       </xsd:appinfo>
+      <xsd:documentation>Extension=Core</xsd:documentation>
       <xsd:documentation>Domain=MicroscopeHardwareSpecifications</xsd:documentation>
       <xsd:documentation>Category=LightSource</xsd:documentation>
       <xsd:documentation>Description=A Light Emitting Diode (LED) is a semiconductor light source that emits light when current flows through it. Electrons in the semiconductor recombine with electron holes, releasing energy in the form of photons. The color of the light (corresponding to the energy of the photons) is determined by the energy required for electrons to cross the band gap of the semiconductor. White light may be obtained by using multiple semiconductors or a layer of light-emitting phosphor on the semiconductor device.</xsd:documentation>
@@ -2141,6 +2168,7 @@
           <plural>Objectives</plural>
         </xsdfu>
       </xsd:appinfo>
+      <xsd:documentation>Extension=Core</xsd:documentation>
       <xsd:documentation>Domain=MicroscopeHardwareSpecifications</xsd:documentation>
       <xsd:documentation>Category=Magnification</xsd:documentation>
       <xsd:documentation>Description=The Microscope's Objective lens consists of a lens, its mount, and any associated parts. It is the part of the imaging system, which forms a primary image of the object, either alone or in conjunction with a tube lens. The Objective typically consists of a compound lens consisting of along a common axis.</xsd:documentation>
@@ -2934,8 +2962,9 @@
           <plural>LightPaths</plural>
         </xsdfu>
       </xsd:appinfo>
+      <xsd:documentation>Extension=Core</xsd:documentation>
       <xsd:documentation>Domain=ImageAcquisitionSettings</xsd:documentation>
-      <xsd:documentation>Category=Channel</xsd:documentation>
+      <xsd:documentation>Category=LightPath</xsd:documentation>
       <xsd:documentation>Description=This element holds a description of the Light Path associated with the Acquisition of this Channel.</xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
     </xsd:annotation>
@@ -2991,6 +3020,7 @@
       <xsd:element maxOccurs="unbounded" minOccurs="0" ref="AdditionalMirrorSettings"/>
       <xsd:element maxOccurs="unbounded" minOccurs="0" ref="OpticalApertureRef"/>
       <xsd:element maxOccurs="unbounded" minOccurs="0" ref="OpticalAssemblyRef"/>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" ref="OpticalApertureSettingsGroup"/>
       <xsd:element name="PolarizationOpticsRef" type="PolarizationOpticsRef" maxOccurs="unbounded" minOccurs="0">
         <xsd:annotation>
           <xsd:documentation>Description=This empty element refers to a PolarizationOptics component placed in this light path.</xsd:documentation>
@@ -3000,8 +3030,13 @@
       <xsd:element maxOccurs="unbounded" minOccurs="0" ref="PrismSettings"/>
       <xsd:element maxOccurs="unbounded" minOccurs="0" ref="ShutterSettings"/>
       <xsd:element maxOccurs="unbounded" minOccurs="1" ref="DetectorSettingsGroup"/>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" ref="ConfocalScannerSettings"/>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" ref="AcoustoOpticalDeviceSettingsGroup"/>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" ref="ElectroOpticalDeviceSettingsGroup"/>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" ref="TIRFSettings"/>
       <xsd:element maxOccurs="1" minOccurs="0" name="LightPathMap">
         <xsd:annotation>
+          <xsd:documentation>Extension=Basic</xsd:documentation>
           <xsd:documentation>Domain=ImageAcquisitionSettings</xsd:documentation>
           <xsd:documentation>Category=ChildElement</xsd:documentation>
           <xsd:documentation>Description=This element holds a Map that records the order in which the different optical component associated with this Light Path are physically laid out.</xsd:documentation>
@@ -3032,6 +3067,12 @@
               </xsd:complexType>
             </xsd:element>
           </xsd:sequence>
+          <xsd:attribute name="ID" type="LSID">
+            <xsd:annotation>
+              <xsd:documentation>Description=A Unique Identifier for this component.</xsd:documentation>
+              <xsd:documentation>Tier=1</xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
         </xsd:complexType>
       </xsd:element>
       <xsd:element ref="AnnotationRef" maxOccurs="unbounded" minOccurs="0"/>
@@ -3058,8 +3099,9 @@
           <plural>FilterSets</plural>
         </xsdfu>
       </xsd:appinfo>
+      <xsd:documentation>Extension=Core</xsd:documentation>
       <xsd:documentation>Domain=ImageAcquisitionSettings</xsd:documentation>
-      <xsd:documentation>Category=Channel</xsd:documentation>
+      <xsd:documentation>Category=LightPath</xsd:documentation>
       <xsd:documentation>Description=A Filter Set is typically composed of one Excitation Filter, one Emission Filter and a Dichroic. They might either be pre-assembled by the Manufacturer and purchased as a whole or they can be custom assembled on site depending on the needs of the user.</xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
     </xsd:annotation>
@@ -3184,6 +3226,7 @@
           <plural>LightSourceSettings</plural>
         </xsdfu>
       </xsd:appinfo>
+      <xsd:documentation>Extension=Core</xsd:documentation>
       <xsd:documentation>Domain=ImageAcquisitionSettings</xsd:documentation>
       <xsd:documentation>Category=Settings</xsd:documentation>
       <xsd:documentation>Description=This element holds the Setting applied to a Light Source used in the Light Path during the acquisition of this Channel as well as a reference to the LightSource (the ID attribute) in question.</xsd:documentation>
@@ -3254,6 +3297,7 @@
       <xsd:documentation>Category=SampleConditions</xsd:documentation>
       <xsd:documentation>Description=This element describes the environment in which the biological sample was maintained during the Acquisition of this Image.</xsd:documentation>
       <xsd:documentation>Tier=2</xsd:documentation>
+      <xsd:documentation>Extension=Core</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
       <xsd:sequence>
@@ -3359,7 +3403,7 @@
   <!-- BinaryFile -->
   <xsd:element name="GenericDetectorSettings" substitutionGroup="DetectorSettingsGroup">
     <xsd:annotation>
-      <xsd:documentation>Extension=Basic</xsd:documentation>
+      <xsd:documentation>Extension=Core</xsd:documentation>
       <xsd:documentation>Domain=ImageAcquisitionSettings</xsd:documentation>
       <xsd:documentation>Category=Settings</xsd:documentation>
       <xsd:documentation>Description=This element refers to the Generic Detector that was used to Acquire this Channel and it holds the Settings that were applied to the Detector during this Acquisition.</xsd:documentation>
@@ -7004,6 +7048,7 @@ PlaneInfo (as Plane)
   <!-- Key Pixel storage elements -->
   <xsd:element name="AdditionalDimensionMap">
     <xsd:annotation>
+      <xsd:documentation>Extension=Basic</xsd:documentation>
       <xsd:documentation>Domain=ImageAcquistionSettings</xsd:documentation>
       <xsd:documentation>Category=Image</xsd:documentation>
       <xsd:documentation>Description=This map defines any additional dimension beyond the canonical 5 dimensions XYZCT. It contains a number of elements for each Plane of data referring to this Additional Dimension.</xsd:documentation>
@@ -7067,6 +7112,9 @@ PlaneInfo (as Plane)
   </xsd:element>
   <xsd:element name="TheAdditionalDimension">
     <xsd:annotation>
+      <xsd:documentation>Extension=Basic</xsd:documentation>
+      <xsd:documentation>Domain=ImageAcquisitionSettings</xsd:documentation>
+      <xsd:documentation>Category=Image</xsd:documentation>
       <xsd:documentation>Description=This element refers to each individual Plane of data pertaining to a given Additional Dimension.</xsd:documentation>
       <xsd:documentation>Tier=2</xsd:documentation>
     </xsd:annotation>
@@ -7093,6 +7141,7 @@ PlaneInfo (as Plane)
   </xsd:element>
   <xsd:element name="NGFFData">
     <xsd:annotation>
+      <xsd:documentation>Extension=Basic</xsd:documentation>
       <xsd:documentation>Domain=ImageAcquistionSettings</xsd:documentation>
       <xsd:documentation>Category=Data</xsd:documentation>
       <xsd:documentation>Description=This element describes the location of the pixel data in a NGFF storage set.</xsd:documentation>
@@ -8160,6 +8209,7 @@ PlaneInfo (as Plane)
   <xsd:element name="MultiLaserEngine" substitutionGroup="LightSourceGroup">
     <!-- top level definition -->
     <xsd:annotation>
+      <xsd:documentation>Extension=Advanced</xsd:documentation>
       <xsd:documentation>Domain=MicroscopeHardwareSpecifications</xsd:documentation>
       <xsd:documentation>Category=LightSource</xsd:documentation>
       <xsd:documentation>Description=This element describes a Light Source device that contains multiple Lasers built into a single box. This element contains Reference(s) to individual Laser components built separately and assembled as part of this device.</xsd:documentation>
@@ -8254,6 +8304,7 @@ PlaneInfo (as Plane)
   </xsd:complexType>
   <xsd:element name="FreeBeam" substitutionGroup="LightSourceCouplingGroup">
     <xsd:annotation>
+      <xsd:documentation>Extension=Basic</xsd:documentation>
       <xsd:documentation>Domain=MicroscopeHardwareSpecifications</xsd:documentation>
       <xsd:documentation>Category=LightSourceCoupling</xsd:documentation>
       <xsd:documentation>Description=A Free Beam coupling between the Light Source and the Microscope Stand consists of either a direct mount or an optical path that directs light across free space to the back of the Microscope Stand.</xsd:documentation>
@@ -8280,6 +8331,7 @@ PlaneInfo (as Plane)
   </xsd:element>
   <xsd:element name="LightGuide" substitutionGroup="LightSourceCouplingGroup">
     <xsd:annotation>
+      <xsd:documentation>Extension=Basic</xsd:documentation>
       <xsd:documentation>Domain=MicroscopeHardwareSpecifications</xsd:documentation>
       <xsd:documentation>Category=LightSourceCoupling</xsd:documentation>
       <xsd:documentation>Description=A Light Guide coupling between the Light Source and the Microscope Stand generally consists of a casing enclosing a medium (i.e., typically fiber optic) capable of transferring light from the illuminator to the back of the Microscope Stand.</xsd:documentation>
@@ -8410,6 +8462,7 @@ PlaneInfo (as Plane)
   </xsd:complexType>
   <xsd:element name="BeamCollimator" substitutionGroup="OpticalAssemblyGroup">
     <xsd:annotation>
+      <xsd:documentation>Extension=Basic</xsd:documentation>
       <xsd:documentation>Domain=MicroscopeHardwareSpecifications</xsd:documentation>
       <xsd:documentation>Category=OpticalAssemblies</xsd:documentation>
       <xsd:documentation>Description=Beam Collimators are Lens Systems that transform a strongly diverging light beam into a collimated beam, i.e., a beam where light propagates essentially only in one direction, and the beam divergence is weak. Beam Collimators typically contain some kind of Focusing Lens, or sometimes a curved Mirror, and usually some opto-mechanics for stable mounting and possibly adjustment. Beam Expanders can be custom built or they are also available as pre-assembled optical devices.</xsd:documentation>
@@ -8423,6 +8476,7 @@ PlaneInfo (as Plane)
   </xsd:element>
   <xsd:element name="BeamExpander" substitutionGroup="OpticalAssemblyGroup">
     <xsd:annotation>
+      <xsd:documentation>Extension=Basic</xsd:documentation>
       <xsd:documentation>Domain=MicroscopeHardwareSpecifications</xsd:documentation>
       <xsd:documentation>Category=OpticalAssemblies</xsd:documentation>
       <xsd:documentation>Description=Beam Expanders are Lens Systems whose role is to increase the diameter of a collimated input beam to a larger collimated output beam. Beam Expanders typically are afocal systems in which object rays enter and exit parallel to the optical axis. As such a Beam Expander does not have a focal length. In most cases, Beam Expanders are realized as optical telescopes consisting of two lenses. Beam Expanders can be custom built or they are also available as pre-assembled optical devices.</xsd:documentation>
@@ -8443,6 +8497,7 @@ PlaneInfo (as Plane)
   </xsd:element>
   <xsd:element name="Condenser" substitutionGroup="OpticalAssemblyGroup">
     <xsd:annotation>
+      <xsd:documentation>Extension=Basic</xsd:documentation>
       <xsd:documentation>Domain=MicroscopeHardwareSpecifications</xsd:documentation>
       <xsd:documentation>Category=OpticalAssemblies</xsd:documentation>
       <xsd:documentation>Description=Condensers are Lens Systems located above the Light Source and under the sample in an Upright Microscope, and above the stage and below the Light Source in an Inverted Microscope. They act to gather light from the Light Source and concentrate it into a cone of light that illuminates the specimen. They typically include a Turret system and Diaphragms. The aperture and angle of the light cone must be adjusted (via the size of the Diaphragm) for each different Objective.</xsd:documentation>
@@ -8469,6 +8524,7 @@ PlaneInfo (as Plane)
   </xsd:element>
   <xsd:element name="MicroscopeTube" substitutionGroup="OpticalAssemblyGroup">
     <xsd:annotation>
+      <xsd:documentation>Extension=Basic</xsd:documentation>
       <xsd:documentation>Domain=MicroscopeHardwareSpecifications</xsd:documentation>
       <xsd:documentation>Category=OpticalAssemblies</xsd:documentation>
       <xsd:documentation>Description=Illumination Tubes are Lens systems, which might be embedded within the Microscope Stand and therefore not immediately accessible. They are essential for infinity-correction and should be regarded as integral parts of the Objective Lens System when magnification and correction are considered.</xsd:documentation>
@@ -8677,6 +8733,7 @@ PlaneInfo (as Plane)
   </xsd:element>
   <xsd:element name="OpticsTurret" substitutionGroup="OpticsHolderGroup">
     <xsd:annotation>
+      <xsd:documentation>Extension=Basic</xsd:documentation>
       <xsd:documentation>Domain=MicroscopeHardwareSpecifications</xsd:documentation>
       <xsd:documentation>Category=Holders</xsd:documentation>
       <xsd:documentation>Description=This element represents a circular holder for multiple optical elements.</xsd:documentation>
@@ -8747,6 +8804,7 @@ PlaneInfo (as Plane)
   </xsd:complexType>
   <xsd:element name="DarkFieldDStop" substitutionGroup="OpticalApertureGroup">
     <xsd:annotation>
+      <xsd:documentation>Extension=Basic</xsd:documentation>
       <xsd:documentation>Domain=MicroscopeHardwareSpecifications</xsd:documentation>
       <xsd:documentation>Category=Apertures</xsd:documentation>
       <xsd:documentation>Description=This element refers to a central circular stop (i.e., opaque disk) usually used in dark-field microscopy and placed in the front focal Plane of a Condenser to occlude all the direct light which would fall within the aperture of the objective.</xsd:documentation>
@@ -8772,6 +8830,7 @@ PlaneInfo (as Plane)
   </xsd:element>
   <xsd:element name="PhaseRing" substitutionGroup="OpticalApertureGroup">
     <xsd:annotation>
+      <xsd:documentation>Extension=Basic</xsd:documentation>
       <xsd:documentation>Domain=MicroscopeHardwareSpecifications</xsd:documentation>
       <xsd:documentation>Category=Apertures</xsd:documentation>
       <xsd:documentation>Description=This element (also called Phase Annulus) refers to an annular (ring-like) slit used to produce contrast modulation following Zernike, in which the Image contrast of a phase object is enhanced by altering the phase and amplitude of the direct light with respect to those of the diffracted light. This illuminating aperture Diaphragm is placed in the front focal Plane of the Condenser and acts in conjunction with an appropriate phase plate, usually in the form of an annulus, placed in the back focal Plane of the objective (or in a succeeding Plane conjugate with this).</xsd:documentation>
@@ -8814,6 +8873,7 @@ PlaneInfo (as Plane)
   </xsd:element>
   <xsd:element name="HoffmanSlit" substitutionGroup="OpticalApertureGroup">
     <xsd:annotation>
+      <xsd:documentation>Extension=Basic</xsd:documentation>
       <xsd:documentation>Domain=MicroscopeHardwareSpecifications</xsd:documentation>
       <xsd:documentation>Category=Apertures</xsd:documentation>
       <xsd:documentation>Description=This element represents an off-axis Slit aperture positioned in the front focal Plane of the Condenser. It is used alongside a Hoffman contrast modulator (i.e., optical amplitude spatial filter) present in the back focal Plane of the objective or in a succeeding conjugate Plane to produce contrast modulation as described by Hoffman (i.e., Hoffman Contrast Modulation, HMC). Hoffman modulation contrast is not hampered by the use of birefringent materials (such as plastic Petri dishes) in the optical pathway, so the technique is more useful for examining specimens in containers constructed with polymeric materials.</xsd:documentation>
@@ -8834,6 +8894,7 @@ PlaneInfo (as Plane)
   </xsd:element>
   <xsd:element name="IrisDiagram" substitutionGroup="OpticalApertureGroup">
     <xsd:annotation>
+      <xsd:documentation>Extension=Basic</xsd:documentation>
       <xsd:documentation>Domain=MicroscopeHardwareSpecifications</xsd:documentation>
       <xsd:documentation>Category=Apertures</xsd:documentation>
       <xsd:documentation>Description=This element represents a Diaphragm, positioned trasversally to the optical axis bounded by multiple leaves, usually metal, arranged so as to provide an opening of variable size, which is adjustable by means of a mechanical control.</xsd:documentation>
@@ -8865,6 +8926,7 @@ PlaneInfo (as Plane)
   </xsd:element>
   <xsd:element name="VarelRing" substitutionGroup="OpticalApertureGroup">
     <xsd:annotation>
+      <xsd:documentation>Extension=Basic</xsd:documentation>
       <xsd:documentation>Domain=MicroscopeHardwareSpecifications</xsd:documentation>
       <xsd:documentation>Category=Apertures</xsd:documentation>
       <xsd:documentation>Description=This element represents a stop (i.e., opaque structure) shaped like a ring sector, which is used on the illumination side, to permit unilateral inclined illumination. It was developed to work in combination with Phase Objectives to yield contrast even when light passes through birefringent materials, such as plastic Petri dishes.</xsd:documentation>
@@ -8878,6 +8940,7 @@ PlaneInfo (as Plane)
   </xsd:element>
   <xsd:element name="Shutter" substitutionGroup="OpticalApertureGroup">
     <xsd:annotation>
+      <xsd:documentation>Extension=Basic</xsd:documentation>
       <xsd:documentation>Domain=MicroscopeHardwareSpecifications</xsd:documentation>
       <xsd:documentation>Category=Apertures</xsd:documentation>
       <xsd:documentation>Description=This element describes a Shutter available for this Instrument. Shutters are devices that open and close, and they may be mechanically or electro-mechanically controlled. Shutters are typically used to control the Light that raches the sample (i.e., to limit phototoxicity and photobleaching especially in case of live specimens), or the Detecrtor at any one time. They can also be used for Excitation or Emission Wavelength selection.</xsd:documentation>
@@ -10336,6 +10399,7 @@ PlaneInfo (as Plane)
   <!-- Settings -->
   <xsd:element name="MicroscopeSettings">
     <xsd:annotation>
+      <xsd:documentation>Extension=Basic</xsd:documentation>
       <xsd:documentation>Domain=ImageAcquisitionSettings</xsd:documentation>
       <xsd:documentation>Category=Settings</xsd:documentation>
       <xsd:documentation>Description=This element refers to the Microscope used to acquire this Image and it holds the Settings that were applied to the Microscope during this Acquisition.</xsd:documentation>
@@ -10422,6 +10486,7 @@ PlaneInfo (as Plane)
   </xsd:element>
   <xsd:element name="MicroscopeTableSettings">
     <xsd:annotation>
+      <xsd:documentation>Extension=Basic</xsd:documentation>
       <xsd:documentation>Domain=ImageAcquisitionSettings</xsd:documentation>
       <xsd:documentation>Category=Settings</xsd:documentation>
       <xsd:documentation>Description=This element refers to the MicroscopeTable used to support the Microscope used to acquire this Image and holds the settings that were applied to the Microscope during this Acquisition.</xsd:documentation>
@@ -10519,6 +10584,7 @@ PlaneInfo (as Plane)
           <plural>LightSourceSettingsCombinations</plural>
         </xsdfu>
       </xsd:appinfo>
+      <xsd:documentation>Extension=Basic</xsd:documentation>
       <xsd:documentation>Domain=ImageAcquisitionSettings</xsd:documentation>
       <xsd:documentation>Category=Settings</xsd:documentation>
       <xsd:documentation>Description=This element holds the Setting applied to a Lens used in the Light Path during the acquisition of this Channel as well as a reference (the ID attribute) to the Lens in question.</xsd:documentation>
@@ -10550,6 +10616,7 @@ PlaneInfo (as Plane)
           <plural>LightSourceSettingsCombinations</plural>
         </xsdfu>
       </xsd:appinfo>
+      <xsd:documentation>Extension=Basic</xsd:documentation>
       <xsd:documentation>Domain=ImageAcquisitionSettings</xsd:documentation>
       <xsd:documentation>Category=Settings</xsd:documentation>
       <xsd:documentation>Description=This element holds the Setting applied to a Mirror used in the Light Path during the acquisition of this Channel as well as a reference (the ID attribute) to the Mirror in question.</xsd:documentation>
@@ -10574,6 +10641,48 @@ PlaneInfo (as Plane)
       </xsd:complexContent>
     </xsd:complexType>
   </xsd:element>
+  <xsd:element name="OpticalApertureSettingsGroup" abstract="true" type="OpticalApertureSettings">
+    <xsd:annotation>
+      <xsd:documentation>Description=This element refers to the Optical Aperture device used to acquire this image and it holds the settings that were applied to it during this Acquisition.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="OpticalApertureSettings">
+    <xsd:annotation>
+      <xsd:documentation>Description=This element refers to the Optical Aperture device used to acquire this image and it holds the settings that were applied to it during this Acquisition.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="Settings">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" ref="TransmittanceProfileFile"/>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" ref="ReflectanceProfileFile"/>
+          <xsd:element maxOccurs="unbounded" ref="TransmissionWavelengthRangeSettings" minOccurs="0"/>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" ref="ReflectionWavelengthRangeSettings"/>
+        </xsd:sequence>
+        <xsd:attribute name="ID" type="OpticalApertureID">
+          <xsd:annotation>
+            <xsd:documentation>Description=This is the Unique Identifier of the device used in this case.</xsd:documentation>
+            <xsd:documentation>Tier=1</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+
+  <xsd:element name="GenericOpticalApertureSettings" substitutionGroup="OpticalApertureSettingsGroup">
+    <xsd:annotation>
+      <xsd:documentation>Extension=Basic</xsd:documentation>
+      <xsd:documentation>Domain=ImageAcquisitionSettings</xsd:documentation>
+      <xsd:documentation>Category=Settings</xsd:documentation>
+      <xsd:documentation>Description=This element holds the Setting applied to a Generic Optical Aperture used during the Acquisition of this Channel as well as a reference (the ID attribute) to the Optical Aperture in question.</xsd:documentation>
+      <xsd:documentation>Tier=1</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:complexContent>
+        <xsd:extension base="OpticalApertureSettings"> </xsd:extension>
+      </xsd:complexContent>
+    </xsd:complexType>
+  </xsd:element>
+
   <xsd:element name="PrismSettings">
     <xsd:annotation>
       <xsd:appinfo>
@@ -10581,6 +10690,7 @@ PlaneInfo (as Plane)
           <plural>LightSourceSettingsCombinations</plural>
         </xsdfu>
       </xsd:appinfo>
+      <xsd:documentation>Extension=Basic</xsd:documentation>
       <xsd:documentation>Domain=ImageAcquisitionSettings</xsd:documentation>
       <xsd:documentation>Category=Settings</xsd:documentation>
       <xsd:documentation>Description=This element holds the Setting applied to a Prism used in the Light Path during the acquisition of this Channel as well as a reference (the ID attribute) to the Prism in question.</xsd:documentation>
@@ -10628,6 +10738,7 @@ PlaneInfo (as Plane)
           <plural>LightSourceSettingsCombinations</plural>
         </xsdfu>
       </xsd:appinfo>
+      <xsd:documentation>Extension=Basic</xsd:documentation>
       <xsd:documentation>Domain=ImageAcquisitionSettings</xsd:documentation>
       <xsd:documentation>Category=Settings</xsd:documentation>
       <xsd:documentation>Description=This element holds the Setting applied to a Shutter used in the Light Path during the acquisition of this Channel as well as a reference (the ID attribute) to the Shutter in question.</xsd:documentation>
@@ -10785,6 +10896,24 @@ PlaneInfo (as Plane)
   <!-- ==================================== -->
 
   <!-- References -->
+  <xsd:element name="SampleRef">
+    <xsd:annotation>
+      <xsd:documentation>Description=This empty element refers to the Sample that was imaged in this Image Acquisition.</xsd:documentation>
+      <xsd:documentation>Tier=1</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:complexContent>
+        <xsd:extension base="Reference">
+          <xsd:attribute name="ID" type="AcquisitionSoftwareID" use="required">
+            <xsd:annotation>
+              <xsd:documentation>Description=A Unique Identifier for this element.</xsd:documentation>
+              <xsd:documentation>Tier=1</xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
+        </xsd:extension>
+      </xsd:complexContent>
+    </xsd:complexType>
+  </xsd:element>
   <xsd:element name="AcquisitionSoftwareRef">
     <xsd:annotation>
       <xsd:documentation>Description=This empty element refers to any Acquisition Softwre that was during the Acquisition of this Image.</xsd:documentation>
@@ -13795,32 +13924,6 @@ PlaneInfo (as Plane)
       <xsd:documentation>Tier=1</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
-  <xsd:element name="OpticalApertureSettingsGroup" abstract="true" type="OpticalApertureSettings">
-    <xsd:annotation>
-      <xsd:documentation>Description=This element refers to the Optical Aperture device used to acquire this image and it holds the settings that were applied to it during this Acquisition.</xsd:documentation>
-    </xsd:annotation>
-  </xsd:element>
-  <xsd:complexType name="OpticalApertureSettings">
-    <xsd:annotation>
-      <xsd:documentation>Description=This element refers to the Optical Aperture device used to acquire this image and it holds the settings that were applied to it during this Acquisition.</xsd:documentation>
-    </xsd:annotation>
-    <xsd:complexContent>
-      <xsd:extension base="Settings">
-        <xsd:sequence>
-          <xsd:element maxOccurs="unbounded" minOccurs="0" ref="TransmittanceProfileFile"/>
-          <xsd:element maxOccurs="unbounded" minOccurs="0" ref="ReflectanceProfileFile"/>
-          <xsd:element maxOccurs="unbounded" ref="TransmissionWavelengthRangeSettings" minOccurs="0"/>
-          <xsd:element maxOccurs="unbounded" minOccurs="0" ref="ReflectionWavelengthRangeSettings"/>
-        </xsd:sequence>
-        <xsd:attribute name="ID" type="OpticalApertureID">
-          <xsd:annotation>
-            <xsd:documentation>Description=This is the Unique Identifier of the device used in this case.</xsd:documentation>
-            <xsd:documentation>Tier=1</xsd:documentation>
-          </xsd:annotation>
-        </xsd:attribute>
-      </xsd:extension>
-    </xsd:complexContent>
-  </xsd:complexType>
   <xsd:element name="DiffractionGratingSettings" substitutionGroup="OpticalApertureSettingsGroup">
     <xsd:annotation>
       <xsd:documentation>Extension=Advanced+Confocal</xsd:documentation>
