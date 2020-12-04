@@ -8437,12 +8437,6 @@ PlaneInfo (as Plane)
             </xsd:annotation>
           </xsd:element>
           <xsd:element maxOccurs="unbounded" minOccurs="0" ref="MirrorringDeviceRef"/>
-          <xsd:element name="OpticsHolderRef" type="OpticsHolderRef" minOccurs="0" maxOccurs="unbounded">
-            <xsd:annotation>
-              <xsd:documentation>Description=This refers to an available Optics Holder, which is part of this Optical Device.</xsd:documentation>
-              <xsd:documentation>Tier=2</xsd:documentation>
-            </xsd:annotation>
-          </xsd:element>
           <xsd:element ref="AnnotationRef" maxOccurs="1" minOccurs="0"/>
         </xsd:sequence>
         <xsd:attribute name="ID" type="LSID" use="required">
