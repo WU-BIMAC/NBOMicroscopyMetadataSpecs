@@ -924,6 +924,7 @@
           </xsd:annotation>
         </xsd:element>
         <xsd:element maxOccurs="unbounded" ref="Sample"/>
+        <xsd:element maxOccurs="unbounded" minOccurs="0" ref="MicrobeamManipulation"/>
         <xsd:element minOccurs="0" ref="Description"/>
         <xsd:element minOccurs="0" ref="AnnotationRef">
           <xsd:annotation>
@@ -991,7 +992,7 @@
         </xsdfu>
       </xsd:appinfo>
       <xsd:documentation>Extension=Core</xsd:documentation>
-      <xsd:documentation>Domain=MicrosocpeHardwareSpecifications</xsd:documentation>
+      <xsd:documentation>Domain=MicroscopeHardwareSpecifications</xsd:documentation>
       <xsd:documentation>Category=MicroscopyEssentials</xsd:documentation>
       <xsd:documentation>Description=This element describes the Instrument used to capture the Image. It is primarily a container referring to the list of hardware components included in a given Microscope. The list consists of the Microscope Stand, Microscope Table, Light Source, Light Source Coupling, Sample Holder, Focusing, Objective, Filter, Dichroic, Additional Lens (including a commonly used Magnification Changer, also known as Optovar), Additional Mirroring Device, Polarization Optics, Prism, Optical Aperture, Optical Device, Detector and Calibration Tool. The Filter element can be either composed of separate Excitation, Emission filters, and Dichroic mirrors or a single Filter Set. An Instrument might have multiple Light Sources, Detectors, Objectives, and Filters, etc. Each of these has its own ID attribute, which can be referred to from the Image, Plane or more commonly Channel elements associated with a given Image Acquisition session. It is understood that the Light Path configuration can be different for each Channel, but cannot be different for each timepoint or each Plane of an XYZ stack.</xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
@@ -1004,7 +1005,7 @@
         <xsd:element maxOccurs="unbounded" minOccurs="0" ref="EnvironmentalControlDevice"/>
         <xsd:element ref="LightSourceGroup" minOccurs="1" maxOccurs="unbounded">
           <xsd:annotation>
-            <xsd:documentation>Domain=MicrosocpeHardwareSpecifications</xsd:documentation>
+            <xsd:documentation>Domain=MicroscopeHardwareSpecifications</xsd:documentation>
             <xsd:documentation>Category=LightSource</xsd:documentation>
             <xsd:documentation>Description=This element describes the light source(s) available in this microscope</xsd:documentation>
             <xsd:documentation>Tier=1</xsd:documentation>
@@ -1012,7 +1013,7 @@
         </xsd:element>
         <xsd:element maxOccurs="unbounded" minOccurs="0" ref="LightSourceCouplingGroup">
           <xsd:annotation>
-            <xsd:documentation>Domain=MicrosocpeHardwareSpecifications</xsd:documentation>
+            <xsd:documentation>Domain=MicroscopeHardwareSpecifications</xsd:documentation>
             <xsd:documentation>Category=LightSourceCoupling</xsd:documentation>
             <xsd:documentation>Description=This element describes the method(s) used to couple the light source with the light path moving through speciment to the detector</xsd:documentation>
             <xsd:documentation>Tier=2</xsd:documentation>
@@ -1024,7 +1025,7 @@
         <xsd:element maxOccurs="unbounded" minOccurs="0" ref="StageInsert"/>
         <xsd:element maxOccurs="unbounded" minOccurs="0" ref="SamplePositioningGroup">
           <xsd:annotation>
-            <xsd:documentation>Domain=MicrosocpeHardwareSpecifications</xsd:documentation>
+            <xsd:documentation>Domain=MicroscopeHardwareSpecifications</xsd:documentation>
             <xsd:documentation>Category=SamplePositioning</xsd:documentation>
             <xsd:documentation>Description=This element describes the objective lens and stage positioning device(s) available in this microscope. An Instrument may have more than one of these devices. The type of Focusing Device is specified by one of the child-element which are 'MechanicalStage', 'PiezoElectricSate', or 'PiezoElectricObjective'</xsd:documentation>
             <xsd:documentation>Tier=2</xsd:documentation>
@@ -1033,7 +1034,7 @@
         <xsd:element maxOccurs="unbounded" minOccurs="0" ref="FocusStabilizationDevice">
           <xsd:annotation>
             <xsd:documentation>Extension=Basic</xsd:documentation>
-            <xsd:documentation>Domain=MicrosocpeHardwareSpecifications</xsd:documentation>
+            <xsd:documentation>Domain=MicroscopeHardwareSpecifications</xsd:documentation>
             <xsd:documentation>Category=SamplePositioning.Focusing</xsd:documentation>
             <xsd:documentation>Description=This element describes the focus stabilization device(s) available for this microscope</xsd:documentation>
             <xsd:documentation>Tier=2</xsd:documentation>
@@ -1043,7 +1044,7 @@
         <xsd:element ref="FilterGroup" minOccurs="1" maxOccurs="unbounded"/>
         <xsd:element ref="MirroringDeviceGroup" minOccurs="1" maxOccurs="unbounded">
           <xsd:annotation>
-            <xsd:documentation>Domain=MicrosocpeHardwareSpecifications</xsd:documentation>
+            <xsd:documentation>Domain=MicroscopeHardwareSpecifications</xsd:documentation>
             <xsd:documentation>Description=This element describes mirror component(s) available in this microscope</xsd:documentation>
             <xsd:documentation>Tier=1</xsd:documentation>
           </xsd:annotation>
@@ -1146,7 +1147,7 @@
         <xsd:element ref="ImagingEnvironment" minOccurs="0" maxOccurs="1"/>
         <xsd:element minOccurs="1" ref="MicroscopeSettings" maxOccurs="1"/>
         <xsd:element minOccurs="0" ref="MicroscopeTableSettings"/>
-        <xsd:element maxOccurs="unbounded" minOccurs="1" ref="ObjectiveSettings"/>
+        <xsd:element maxOccurs="1" minOccurs="1" ref="ObjectiveSettings"/>
         <xsd:element maxOccurs="unbounded" minOccurs="0" ref="SamplePositioningSettings"/>
         <xsd:element maxOccurs="unbounded" minOccurs="0" ref="OpticalCalibration"/>
         <xsd:element maxOccurs="unbounded" minOccurs="0" ref="DetectorCalibration"/>
@@ -1350,30 +1351,7 @@
         </xsd:choice>
         <xsd:element maxOccurs="unbounded" minOccurs="0" ref="MechanicalCalibration"/>
         <xsd:element ref="TheAdditionalDimensionRef" maxOccurs="unbounded" minOccurs="0"/>
-        <xsd:element maxOccurs="unbounded" minOccurs="0" name="PlaneTransformationMatrix">
-          <xsd:annotation>
-            <xsd:documentation>Extension=Basic</xsd:documentation>
-            <xsd:documentation>Domain=ImageAcquisitionSettings</xsd:documentation>
-            <xsd:documentation>Category=Image</xsd:documentation>
-            <xsd:documentation>Description=This element describes a 4x4 matrix relating the position of this Plane typically with respect to other Planes within this Image or collection of Images (or alternatively to the Microscope's reference frame). This can correct for translations, rotations, scale differences, or other affine distortions between Planes from the same set or between Image Datasets. An example is when multiple cameras are used for e.g. to acquire different Channels for the same Image. See: https://www.openmicroscopy.org/community/viewtopic.php?p=17433.</xsd:documentation>
-            <xsd:documentation>Tier=3</xsd:documentation>
-          </xsd:annotation>
-          <xsd:complexType>
-            <xsd:sequence>
-              <xsd:element name="Row" type="rowType">
-                <xsd:annotation>
-                  <xsd:documentation>Tier=3</xsd:documentation>
-                </xsd:annotation>
-              </xsd:element>
-            </xsd:sequence>
-            <xsd:attribute name="ID" type="LSID" use="required">
-              <xsd:annotation>
-                <xsd:documentation>Description=A Unique Identifier for this component.</xsd:documentation>
-                <xsd:documentation>Tier=3</xsd:documentation>
-              </xsd:annotation>
-            </xsd:attribute>
-          </xsd:complexType>
-        </xsd:element>
+        <xsd:element maxOccurs="unbounded" minOccurs="0" ref="PlaneTransformationMatrix"/>
         <xsd:element minOccurs="0" maxOccurs="unbounded" ref="AnnotationRef">
           <xsd:annotation>
             <xsd:documentation>Description=This is a simple multi-line comment or annotation describing this component.</xsd:documentation>
@@ -1507,7 +1485,7 @@
     </xsd:annotation>
     <xsd:complexType>
       <xsd:sequence>
-        <xsd:element maxOccurs="unbounded" ref="Fluorophore"/>
+        <xsd:element maxOccurs="unbounded" ref="Fluorophore" minOccurs="1"/>
         <xsd:element ref="LightPath" minOccurs="1" maxOccurs="1"/>
         <xsd:element maxOccurs="unbounded" minOccurs="0" ref="ExcitationCalibration"/>
         <xsd:element minOccurs="0" ref="AnnotationRef">
@@ -3016,8 +2994,8 @@
           <xsd:documentation>Tier=1</xsd:documentation>
         </xsd:annotation>
       </xsd:element>
-      <xsd:element maxOccurs="unbounded" minOccurs="0" ref="AdditionalLensSettings"/>
-      <xsd:element maxOccurs="unbounded" minOccurs="0" ref="AdditionalMirrorSettings"/>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" ref="LensSettings"/>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" ref="MirroringDeviceSettings"/>
       <xsd:element maxOccurs="unbounded" minOccurs="0" ref="OpticalApertureRef"/>
       <xsd:element maxOccurs="unbounded" minOccurs="0" ref="OpticalAssemblyRef"/>
       <xsd:element maxOccurs="unbounded" minOccurs="0" ref="OpticalApertureSettingsGroup"/>
@@ -3170,7 +3148,7 @@
       <xsd:complexContent>
         <xsd:extension base="Settings">
           <xsd:sequence>
-            <xsd:element ref="ImmersionLiquid"/>
+            <xsd:element ref="ImmersionLiquid" maxOccurs="1" minOccurs="0"/>
           </xsd:sequence>
           <xsd:attribute name="ID" use="required" type="ObjectiveID">
             <xsd:annotation>
@@ -4645,12 +4623,18 @@ PlaneInfo (as Plane)
   <xsd:element name="ImageRef">
     <!-- top level definition -->
     <xsd:annotation>
-      <xsd:documentation> The ImageRef element is a reference to an Image element. </xsd:documentation>
+      <xsd:documentation>Description=The ImageRef element is a reference to an Image element. </xsd:documentation>
+      <xsd:documentation>Tier=1</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
       <xsd:complexContent>
         <xsd:extension base="Reference">
-          <xsd:attribute name="ID" use="required" type="ImageID"/>
+          <xsd:attribute name="ID" use="required" type="ImageID">
+            <xsd:annotation>
+              <xsd:documentation>Description=A Unique Identifier for this component.</xsd:documentation>
+              <xsd:documentation>Tier=1</xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
         </xsd:extension>
       </xsd:complexContent>
     </xsd:complexType>
@@ -7045,110 +7029,6 @@ PlaneInfo (as Plane)
   <!--     4DN-BINA OME Extesion - Basic      -->
   <!-- ************************************** -->
 
-  <!-- Key Pixel storage elements -->
-  <xsd:element name="AdditionalDimensionMap">
-    <xsd:annotation>
-      <xsd:documentation>Extension=Basic</xsd:documentation>
-      <xsd:documentation>Domain=ImageAcquistionSettings</xsd:documentation>
-      <xsd:documentation>Category=Image</xsd:documentation>
-      <xsd:documentation>Description=This map defines any additional dimension beyond the canonical 5 dimensions XYZCT. It contains a number of elements for each Plane of data referring to this Additional Dimension.</xsd:documentation>
-      <xsd:documentation>Tier=2</xsd:documentation>
-    </xsd:annotation>
-    <xsd:complexType>
-      <xsd:sequence>
-        <xsd:element ref="TheAdditionalDimension"/>
-        <xsd:element ref="Description"/>
-        <xsd:element ref="AnnotationRef"/>
-      </xsd:sequence>
-      <xsd:attribute name="ID" type="LSID" use="required">
-        <xsd:annotation>
-          <xsd:documentation>Description=A Unique Identifier for this component.</xsd:documentation>
-          <xsd:documentation>Tier=2</xsd:documentation>
-        </xsd:annotation>
-      </xsd:attribute>
-      <xsd:attribute name="Name" type="Denomination" use="optional">
-        <xsd:annotation>
-          <xsd:documentation>Description=A user assigned Name for this component.</xsd:documentation>
-          <xsd:documentation>Tier=2</xsd:documentation>
-        </xsd:annotation>
-      </xsd:attribute>
-      <xsd:attribute name="Size" type="xsd:integer" use="required">
-        <xsd:annotation>
-          <xsd:documentation>Description=This field captures the number of sample points recorded along this dimension.</xsd:documentation>
-          <xsd:documentation>Tier=2</xsd:documentation>
-        </xsd:annotation>
-      </xsd:attribute>
-      <xsd:attribute name="Type" use="required" type="AdditionalDimensionType">
-        <xsd:annotation>
-          <xsd:documentation>Description=This field describes the Type of this Additional Dimension.</xsd:documentation>
-          <xsd:documentation>Tier=2</xsd:documentation>
-        </xsd:annotation>
-      </xsd:attribute>
-      <xsd:attribute name="TypeDescription" type="xsd:string">
-        <xsd:annotation>
-          <xsd:documentation>Description=This is a description of the Type used to indicate to an application or user how the data should be interpreted.</xsd:documentation>
-          <xsd:documentation>Tier=2</xsd:documentation>
-        </xsd:annotation>
-      </xsd:attribute>
-      <xsd:attribute name="Order" type="xsd:integer" use="required">
-        <xsd:annotation>
-          <xsd:documentation>Description=This field describes the order in which the individual Planes of data referring to this dimension are interleaved in the Image past the canonical 5 dimension XYZCT. The number should be zero based, e.g., 0, 1, 2 etc.</xsd:documentation>
-          <xsd:documentation>Tier=2</xsd:documentation>
-        </xsd:annotation>
-      </xsd:attribute>
-      <xsd:attribute name="PresetStepIncrement" type="xsd:float">
-        <xsd:annotation>
-          <xsd:documentation>Description=This field records the preset size of Step Increment between Planes of data along this dimension. The Increment is numbered from 0, with default value of 1. Setting a value for this attribute to -1 indicates non-uniform sampling along this Additional Dimension. In this case the actual Step Increment value associated with each Plane along this Additional Dimension will have to be stored in TheIncrementStamp attribute of TheAdditionalDimension.</xsd:documentation>
-          <xsd:documentation>Tier=2</xsd:documentation>
-        </xsd:annotation>
-      </xsd:attribute>
-      <xsd:attribute name="Unit" type="xsd:string" use="required">
-        <xsd:annotation>
-          <xsd:documentation>Description=This field records the Unit used for the metric recorded along this dimension</xsd:documentation>
-          <xsd:documentation>Tier=2</xsd:documentation>
-        </xsd:annotation>
-      </xsd:attribute>
-    </xsd:complexType>
-  </xsd:element>
-  <xsd:element name="TheAdditionalDimension">
-    <xsd:annotation>
-      <xsd:documentation>Extension=Basic</xsd:documentation>
-      <xsd:documentation>Domain=ImageAcquisitionSettings</xsd:documentation>
-      <xsd:documentation>Category=Image</xsd:documentation>
-      <xsd:documentation>Description=This element refers to each individual Plane of data pertaining to a given Additional Dimension.</xsd:documentation>
-      <xsd:documentation>Tier=2</xsd:documentation>
-    </xsd:annotation>
-    <xsd:complexType>
-      <xsd:attribute name="ID" type="LSID" use="required">
-        <xsd:annotation>
-          <xsd:documentation>Description=A Unique Identifier for this component.</xsd:documentation>
-          <xsd:documentation>Tier=2</xsd:documentation>
-        </xsd:annotation>
-      </xsd:attribute>
-      <xsd:attribute name="TheAdditionalDimensionIndex" type="PositiveInt" use="required">
-        <xsd:annotation>
-          <xsd:documentation>Description=This field records the Index of this specific Plane within a vector of Additional Dimension data.</xsd:documentation>
-          <xsd:documentation>Tier=2</xsd:documentation>
-        </xsd:annotation>
-      </xsd:attribute>
-      <xsd:attribute name="TheIncrementStamp" type="xsd:float">
-        <xsd:annotation>
-          <xsd:documentation>Description=This field records the actual Step Increment value associated with each Plane of data along this Additional Dimension vector for this Image. While, this field is only required with non-uniform sampling along this Additional Dimension (as indicated by a value of -1 stored in AdditionalDImension/@ActualStepIncrement), it is always allowed.</xsd:documentation>
-          <xsd:documentation>Tier=2</xsd:documentation>
-        </xsd:annotation>
-      </xsd:attribute>
-    </xsd:complexType>
-  </xsd:element>
-  <xsd:element name="NGFFData">
-    <xsd:annotation>
-      <xsd:documentation>Extension=Basic</xsd:documentation>
-      <xsd:documentation>Domain=ImageAcquistionSettings</xsd:documentation>
-      <xsd:documentation>Category=Data</xsd:documentation>
-      <xsd:documentation>Description=This element describes the location of the pixel data in a NGFF storage set.</xsd:documentation>
-      <xsd:documentation>Tier=1</xsd:documentation>
-    </xsd:annotation>
-  </xsd:element>
-
   <!-- Sample elements -->
   <xsd:element name="Sample">
     <xsd:annotation>
@@ -7473,7 +7353,6 @@ PlaneInfo (as Plane)
   <!-- ================================== -->
 
   <!-- Microscopy essential elements -->
-
   <xsd:element name="AcquisitionSoftware" type="Software_type">
     <xsd:annotation>
       <xsd:documentation>Extension=Basic</xsd:documentation>
@@ -7960,7 +7839,7 @@ PlaneInfo (as Plane)
   <xsd:element name="ZDrive" substitutionGroup="SamplePositioningGroup">
     <xsd:annotation>
       <xsd:documentation>Extension=Basic</xsd:documentation>
-      <xsd:documentation>Domain=MicrosocpeHardwareSpecifications</xsd:documentation>
+      <xsd:documentation>Domain=MicroscopeHardwareSpecifications</xsd:documentation>
       <xsd:documentation>Category=SamplePositioning.Focusing</xsd:documentation>
       <xsd:documentation>Description=This element describes a Focusing Device designed to electronically control a moving a mechanical part of the Microscope such as the Stage (see Stage-APE), or the Microscope Stand itself (e.g. most dissecting Microscopes). An example of such devices is the MFC-2000 Z-Axis Drive and Controller (http://www.asiimaging.com/controllers/mfc-2000-z-axis-drive-and-controller/#tab-id-4).</xsd:documentation>
       <xsd:documentation>Tier=2</xsd:documentation>
@@ -8204,7 +8083,6 @@ PlaneInfo (as Plane)
     </xsd:complexType>
   </xsd:element>
 
-
   <!-- Light source elements -->
   <xsd:element name="MultiLaserEngine" substitutionGroup="LightSourceGroup">
     <!-- top level definition -->
@@ -8412,7 +8290,6 @@ PlaneInfo (as Plane)
     </xsd:complexType>
   </xsd:element>
 
-
   <!-- Optical Assembly elements -->
   <xsd:element name="OpticalAssemblyGroup" abstract="true" type="OpticalAssembly">
     <xsd:annotation>
@@ -8610,7 +8487,7 @@ PlaneInfo (as Plane)
             <xsd:documentation>Tier=3</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
-        <xsd:attribute name="NrOfSlots" type="xsd:integer" use="required">
+        <xsd:attribute name="NrOfSlots" type="xsd:integer" use="optional" default="6">
           <xsd:annotation>
             <xsd:documentation>Description=This field records how many Slots this Optics Holder has.</xsd:documentation>
             <xsd:documentation>Tier=3</xsd:documentation>
@@ -8668,12 +8545,13 @@ PlaneInfo (as Plane)
       <xsd:complexContent>
         <xsd:extension base="OpticsHolder">
           <xsd:sequence>
-            <xsd:element ref="FilterCubeRef" maxOccurs="unbounded"/>
+            <xsd:element ref="FilterCubeRef" maxOccurs="unbounded" minOccurs="1"/>
           </xsd:sequence>
         </xsd:extension>
       </xsd:complexContent>
     </xsd:complexType>
   </xsd:element>
+
   <xsd:element name="FilterWheel" substitutionGroup="OpticsHolderGroup">
     <xsd:annotation>
       <xsd:documentation>Extension=Basic</xsd:documentation>
@@ -8685,7 +8563,7 @@ PlaneInfo (as Plane)
     <xsd:complexType>
       <xsd:complexContent>
         <xsd:extension base="OpticsHolder">
-          <xsd:sequence>
+          <xsd:choice>
             <xsd:element ref="ExcitationFilterRef" maxOccurs="unbounded" minOccurs="0"/>
             <xsd:element ref="StandardDichroicRef" maxOccurs="unbounded" minOccurs="0">
               <xsd:annotation>
@@ -8694,11 +8572,12 @@ PlaneInfo (as Plane)
               </xsd:annotation>
             </xsd:element>
             <xsd:element ref="EmissionFilterRef" maxOccurs="unbounded" minOccurs="0"/>
-          </xsd:sequence>
+          </xsd:choice>
         </xsd:extension>
       </xsd:complexContent>
     </xsd:complexType>
   </xsd:element>
+
   <xsd:element name="FilterSlider" substitutionGroup="OpticsHolderGroup">
     <xsd:annotation>
       <xsd:documentation>Extension=Basic</xsd:documentation>
@@ -8710,7 +8589,7 @@ PlaneInfo (as Plane)
     <xsd:complexType>
       <xsd:complexContent>
         <xsd:extension base="OpticsHolder">
-          <xsd:sequence>
+          <xsd:choice>
             <xsd:element ref="ExcitationFilterRef" maxOccurs="unbounded" minOccurs="0"/>
             <xsd:element ref="StandardDichroicRef" maxOccurs="unbounded" minOccurs="0">
               <xsd:annotation>
@@ -8719,12 +8598,12 @@ PlaneInfo (as Plane)
               </xsd:annotation>
             </xsd:element>
             <xsd:element ref="EmissionFilterRef" maxOccurs="unbounded" minOccurs="0"/>
-            <xsd:element ref="FilterCubeRef" maxOccurs="unbounded" minOccurs="0"/>
-          </xsd:sequence>
+          </xsd:choice>
         </xsd:extension>
       </xsd:complexContent>
     </xsd:complexType>
   </xsd:element>
+
   <xsd:element name="OpticsTurret" substitutionGroup="OpticsHolderGroup">
     <xsd:annotation>
       <xsd:documentation>Extension=Basic</xsd:documentation>
@@ -10164,64 +10043,50 @@ PlaneInfo (as Plane)
           <plural>TransmittanceRanges</plural>
         </xsdfu>
       </xsd:appinfo>
+      <xsd:documentation>Extension=Basic</xsd:documentation>
       <xsd:documentation>Domain=MicroscopeHardwareSpecifications</xsd:documentation>
       <xsd:documentation>Category=ChildElement</xsd:documentation>
       <xsd:documentation>Description=A Light Emitting Diode (LED) Light Source is often composed of multiple modules each with its own wavelength characteristics. This element describes an individual LED module. Multiple of this elements may be used.</xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
-      <xsd:sequence>
-        <xsd:element minOccurs="0" ref="IlluminationWavelengthRange"/>
-      </xsd:sequence>
-      <xsd:attribute name="ProjectionAngle" type="xsd:float">
-        <xsd:annotation>
-          <xsd:documentation>Description=This field records the angle at which this LED Module projects the light beam.</xsd:documentation>
-          <xsd:documentation>Tier=3</xsd:documentation>
-        </xsd:annotation>
-      </xsd:attribute>
-      <xsd:attribute name="ProjectionAngleUnit" type="UnitsAngle">
-        <xsd:annotation>
-          <xsd:documentation>Tier=3</xsd:documentation>
-        </xsd:annotation>
-      </xsd:attribute>
-    </xsd:complexType>
-  </xsd:element>
-  <xsd:element name="IlluminationWavelengthRange">
-    <xsd:annotation>
-      <xsd:appinfo>
-        <xsdfu xmlns="">
-          <plural>TransmittanceRanges</plural>
-        </xsdfu>
-      </xsd:appinfo>
-      <xsd:documentation>Domain=MicroscopeHardwareSpecifications</xsd:documentation>
-      <xsd:documentation>Category=ChildElement</xsd:documentation>
-      <xsd:documentation>Description=This element records a range of Wavelengths at which this Light Source emits, according to the Manufacturer. Multiple of this element may be used.</xsd:documentation>
-      <xsd:documentation>Tier=1</xsd:documentation>
-    </xsd:annotation>
-    <xsd:complexType>
       <xsd:complexContent>
-        <xsd:extension base="WavelengthRangeType">
-          <xsd:attribute name="IlluminationPower" use="required" type="xsd:float">
+        <xsd:extension base="IlluminationWavelengthRangeType">
+          <xsd:attribute name="ProjectionAngle" type="xsd:float">
             <xsd:annotation>
-              <xsd:documentation>Description=This field records the nominal Power output emitted at Peak Wavelength by this Light Source as advertised by the Manufacturer.</xsd:documentation>
-              <xsd:documentation>Tier=1</xsd:documentation>
+              <xsd:documentation>Description=This field records the angle at which this LED Module projects the light beam.</xsd:documentation>
+              <xsd:documentation>Tier=3</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="IlluminationPowerUnit" type="UnitsPower" default="W">
+          <xsd:attribute name="ProjectionAngleUnit" type="UnitsAngle">
             <xsd:annotation>
-              <xsd:documentation>Tier=1</xsd:documentation>
+              <xsd:documentation>Tier=3</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
         </xsd:extension>
       </xsd:complexContent>
     </xsd:complexType>
   </xsd:element>
+  <xsd:element name="IlluminationWavelengthRange" type="IlluminationWavelengthRangeType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <xsdfu xmlns="">
+          <plural>IlluminationWavelengthRanges</plural>
+        </xsdfu>
+      </xsd:appinfo>
+      <xsd:documentation>Extension=Basic</xsd:documentation>
+      <xsd:documentation>Domain=MicroscopeHardwareSpecifications</xsd:documentation>
+      <xsd:documentation>Category=ChildElement</xsd:documentation>
+      <xsd:documentation>Description=This element records a range of Wavelengths at which this Light Source emits, according to the Manufacturer. Multiple of this element may be used.</xsd:documentation>
+      <xsd:documentation>Tier=1</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
   <xsd:element name="WavelengthRange" type="WavelengthRangeType">
     <!-- top level definition -->
     <xsd:annotation>
       <xsd:appinfo>
         <xsdfu xmlns="">
-          <plural>TransmittanceRanges</plural>
+          <plural>WavelengthRanges</plural>
         </xsdfu>
       </xsd:appinfo>
       <xsd:documentation>Extension=Basic</xsd:documentation>
@@ -10251,9 +10116,10 @@ PlaneInfo (as Plane)
     <xsd:annotation>
       <xsd:appinfo>
         <xsdfu xmlns="">
-          <plural>TransmittanceRanges</plural>
+          <plural>TransmissionWavelengthRangeSettings</plural>
         </xsdfu>
       </xsd:appinfo>
+      <xsd:documentation>Extension=Advanced+Confocal</xsd:documentation>
       <xsd:documentation>Domain=ImageAcquisitionSettings</xsd:documentation>
       <xsd:documentation>Category=ChildElement</xsd:documentation>
       <xsd:documentation>Description=This element records the range of Transmission Wavelengths that were set for this optical component during the Acquisition of this Image. It also records the maximum amount of light transmitted. Multiple of this elements can be used.</xsd:documentation>
@@ -10277,9 +10143,10 @@ PlaneInfo (as Plane)
     <xsd:annotation>
       <xsd:appinfo>
         <xsdfu xmlns="">
-          <plural>TransmittanceRanges</plural>
+          <plural>ReflectionWavelengthRangeSettings</plural>
         </xsdfu>
       </xsd:appinfo>
+      <xsd:documentation>Extension=Advanced+Confocal</xsd:documentation>
       <xsd:documentation>Domain=ImageAcquisitionSettings</xsd:documentation>
       <xsd:documentation>Category=ChildElement</xsd:documentation>
       <xsd:documentation>Description=This element records the range of Reflection Wavelengths that were set for this optical component during the Acquisition of this Image. It also records the maximum amount of light transmitted. Multiple of this elements can be used.</xsd:documentation>
@@ -10300,23 +10167,37 @@ PlaneInfo (as Plane)
   </xsd:element>
   <xsd:element name="TransmittanceProfileFile" type="FileAnnotation">
     <xsd:annotation>
+      <xsd:documentation>Extension=Basic</xsd:documentation>
+      <xsd:documentation>Domain=MicroscopeHardwareSpecifications</xsd:documentation>
+      <xsd:documentation>Category=ChildElement</xsd:documentation>
       <xsd:documentation>Description=This element represents a file in .csv or other suitable formats containing the Transmittance profile of this optical component.</xsd:documentation>
       <xsd:documentation>Tier=3</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
   <xsd:element name="ReflectanceProfileFile" type="FileAnnotation">
     <xsd:annotation>
+      <xsd:documentation>Extension=Basic</xsd:documentation>
+      <xsd:documentation>Domain=MicroscopeHardwareSpecifications</xsd:documentation>
+      <xsd:documentation>Category=ChildElement</xsd:documentation>
       <xsd:documentation>Description=This element represents a file in .csv or other suitable formats containing the Reflectance profile of this optical component.</xsd:documentation>
       <xsd:documentation>Tier=3</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
-
+  <xsd:element name="WavelengthProfileFile" type="FileAnnotation">
+    <xsd:annotation>
+      <xsd:documentation>Extension=Basic</xsd:documentation>
+      <xsd:documentation>Domain=MicroscopeHardwareSpecifications</xsd:documentation>
+      <xsd:documentation>Category=ChildElement</xsd:documentation>
+      <xsd:documentation>Description=This element consists of a file containing the Wavelength profile of this hardware component.</xsd:documentation>
+      <xsd:documentation>Tier=3</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
 
   <!-- Additional Vendor Information -->
   <xsd:element name="AdditionalVendorInformation">
     <xsd:annotation>
       <xsd:documentation>Extension=Basic</xsd:documentation>
-      <xsd:documentation>Domain=MicroscopeHardwareSpecifications</xsd:documentation>
+      <xsd:documentation>Domain=VendorSpecifications</xsd:documentation>
       <xsd:documentation>Category=VendorInformation</xsd:documentation>
       <xsd:documentation>Description=This element is intendended to be used as a last-resort solution to capture vendor-specific Additional Information about this hardware component, which cannot be described using either available model elements (Classes or Attributes) or the Map Annotation feature of the schema. The use of this feature should not be intended as a way to hide information that the Imaging Community has designated as essential to ensure rigor and reproducibility. In case this feature is used, the Vendor is fully responsible for this information, including but not limited to, making sure this information is appropriately recorded and kept up to date.</xsd:documentation>
       <xsd:documentation>Tier=3</xsd:documentation>
@@ -10344,7 +10225,7 @@ PlaneInfo (as Plane)
     <!-- top level definition -->
     <xsd:annotation>
       <xsd:documentation>Extension=Basic</xsd:documentation>
-      <xsd:documentation>Domain=MicroscopeHardwareSpecifications</xsd:documentation>
+      <xsd:documentation>Domain=VendorSpecifications</xsd:documentation>
       <xsd:documentation>Category=VendorInformation</xsd:documentation>
       <xsd:documentation>Description=The contents of this element are base64-encoded. These are not CDATA sections, just base64 streams.</xsd:documentation>
       <xsd:documentation>Tier=3</xsd:documentation>
@@ -10389,6 +10270,131 @@ PlaneInfo (as Plane)
   <!-- ================================== -->
   <!--         ACQUISITION SETTINGS       -->
   <!-- ================================== -->
+
+  <!-- Key Pixel storage elements -->
+  <xsd:element name="AdditionalDimensionMap">
+    <xsd:annotation>
+      <xsd:documentation>Extension=Basic</xsd:documentation>
+      <xsd:documentation>Domain=ImageAcquistionSettings</xsd:documentation>
+      <xsd:documentation>Category=ImageDimensions</xsd:documentation>
+      <xsd:documentation>Description=This map defines any additional dimension beyond the canonical 5 dimensions XYZCT. It contains a number of elements for each Plane of data referring to this Additional Dimension.</xsd:documentation>
+      <xsd:documentation>Tier=2</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="TheAdditionalDimension"/>
+        <xsd:element ref="Description"/>
+        <xsd:element ref="AnnotationRef"/>
+      </xsd:sequence>
+      <xsd:attribute name="ID" type="LSID" use="required">
+        <xsd:annotation>
+          <xsd:documentation>Description=A Unique Identifier for this component.</xsd:documentation>
+          <xsd:documentation>Tier=2</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="Name" type="Denomination" use="optional">
+        <xsd:annotation>
+          <xsd:documentation>Description=A user assigned Name for this component.</xsd:documentation>
+          <xsd:documentation>Tier=2</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="Size" type="xsd:integer" use="required">
+        <xsd:annotation>
+          <xsd:documentation>Description=This field captures the number of sample points recorded along this dimension.</xsd:documentation>
+          <xsd:documentation>Tier=2</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="Type" use="required" type="AdditionalDimensionType">
+        <xsd:annotation>
+          <xsd:documentation>Description=This field describes the Type of this Additional Dimension.</xsd:documentation>
+          <xsd:documentation>Tier=2</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="TypeDescription" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>Description=This is a description of the Type used to indicate to an application or user how the data should be interpreted.</xsd:documentation>
+          <xsd:documentation>Tier=2</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="Order" type="xsd:integer" use="required">
+        <xsd:annotation>
+          <xsd:documentation>Description=This field describes the order in which the individual Planes of data referring to this dimension are interleaved in the Image past the canonical 5 dimension XYZCT. The number should be zero based, e.g., 0, 1, 2 etc.</xsd:documentation>
+          <xsd:documentation>Tier=2</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="PresetStepIncrement" type="xsd:float">
+        <xsd:annotation>
+          <xsd:documentation>Description=This field records the preset size of Step Increment between Planes of data along this dimension. The Increment is numbered from 0, with default value of 1. Setting a value for this attribute to -1 indicates non-uniform sampling along this Additional Dimension. In this case the actual Step Increment value associated with each Plane along this Additional Dimension will have to be stored in TheIncrementStamp attribute of TheAdditionalDimension.</xsd:documentation>
+          <xsd:documentation>Tier=2</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="Unit" type="xsd:string" use="required">
+        <xsd:annotation>
+          <xsd:documentation>Description=This field records the Unit used for the metric recorded along this dimension</xsd:documentation>
+          <xsd:documentation>Tier=2</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="TheAdditionalDimension">
+    <xsd:annotation>
+      <xsd:documentation>Extension=Basic</xsd:documentation>
+      <xsd:documentation>Domain=ImageAcquisitionSettings</xsd:documentation>
+      <xsd:documentation>Category=Image</xsd:documentation>
+      <xsd:documentation>Description=This element refers to each individual Plane of data pertaining to a given Additional Dimension.</xsd:documentation>
+      <xsd:documentation>Tier=2</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:attribute name="ID" type="LSID" use="required">
+        <xsd:annotation>
+          <xsd:documentation>Description=A Unique Identifier for this component.</xsd:documentation>
+          <xsd:documentation>Tier=2</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="TheAdditionalDimensionIndex" type="PositiveInt" use="required">
+        <xsd:annotation>
+          <xsd:documentation>Description=This field records the Index of this specific Plane within a vector of Additional Dimension data.</xsd:documentation>
+          <xsd:documentation>Tier=2</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="TheIncrementStamp" type="xsd:float">
+        <xsd:annotation>
+          <xsd:documentation>Description=This field records the actual Step Increment value associated with each Plane of data along this Additional Dimension vector for this Image. While, this field is only required with non-uniform sampling along this Additional Dimension (as indicated by a value of -1 stored in AdditionalDImension/@ActualStepIncrement), it is always allowed.</xsd:documentation>
+          <xsd:documentation>Tier=2</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="NGFFData">
+    <xsd:annotation>
+      <xsd:documentation>Extension=Basic</xsd:documentation>
+      <xsd:documentation>Domain=ImageAcquistionSettings</xsd:documentation>
+      <xsd:documentation>Category=Data</xsd:documentation>
+      <xsd:documentation>Description=This element describes the location of the pixel data in a NGFF storage set.</xsd:documentation>
+      <xsd:documentation>Tier=1</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+
+  <xsd:element name="PlaneTransformationMatrix">
+    <xsd:annotation>
+      <xsd:documentation>Extension=Basic</xsd:documentation>
+      <xsd:documentation>Domain=ImageAcquisitionSettings</xsd:documentation>
+      <xsd:documentation>Category=ImageDimensions</xsd:documentation>
+      <xsd:documentation>Description=This element describes a 4x4 matrix relating the position of this Plane typically with respect to other Planes within this Image or collection of Images (or alternatively to the Microscope's reference frame). This can correct for translations, rotations, scale differences, or other affine distortions between Planes from the same set or between Image Datasets. An example is when multiple cameras are used for e.g. to acquire different Channels for the same Image. See: https://www.openmicroscopy.org/community/viewtopic.php?p=17433.</xsd:documentation>
+      <xsd:documentation>Tier=3</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="Row" type="rowType" maxOccurs="unbounded" minOccurs="1"> </xsd:element>
+      </xsd:sequence>
+      <xsd:attribute name="ID" type="LSID" use="required">
+        <xsd:annotation>
+          <xsd:documentation>Description=A Unique Identifier for this component.</xsd:documentation>
+          <xsd:documentation>Tier=3</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+    </xsd:complexType>
+  </xsd:element>
 
   <!-- Settings -->
   <xsd:element name="MicroscopeSettings">
@@ -10505,7 +10511,6 @@ PlaneInfo (as Plane)
       </xsd:complexContent>
     </xsd:complexType>
   </xsd:element>
-
   <xsd:element name="SamplePositioningSettings">
     <xsd:annotation>
       <xsd:documentation>Extension=Basic</xsd:documentation>
@@ -10571,7 +10576,7 @@ PlaneInfo (as Plane)
       </xsd:complexContent>
     </xsd:complexType>
   </xsd:element>
-  <xsd:element name="AdditionalLensSettings">
+  <xsd:element name="LensSettings">
     <xsd:annotation>
       <xsd:appinfo>
         <xsdfu xmlns="">
@@ -10603,7 +10608,7 @@ PlaneInfo (as Plane)
       </xsd:complexContent>
     </xsd:complexType>
   </xsd:element>
-  <xsd:element name="AdditionalMirrorSettings">
+  <xsd:element name="MirroringDeviceSettings">
     <xsd:annotation>
       <xsd:appinfo>
         <xsdfu xmlns="">
@@ -10661,7 +10666,6 @@ PlaneInfo (as Plane)
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
-
   <xsd:element name="GenericOpticalApertureSettings" substitutionGroup="OpticalApertureSettingsGroup">
     <xsd:annotation>
       <xsd:documentation>Extension=Basic</xsd:documentation>
@@ -10676,7 +10680,6 @@ PlaneInfo (as Plane)
       </xsd:complexContent>
     </xsd:complexType>
   </xsd:element>
-
   <xsd:element name="PrismSettings">
     <xsd:annotation>
       <xsd:appinfo>
@@ -11184,12 +11187,7 @@ PlaneInfo (as Plane)
   <!-- Miscellaneous complex types -->
   <xsd:complexType name="WavelengthRangeType">
     <xsd:sequence>
-      <xsd:element maxOccurs="unbounded" minOccurs="0" name="WavelengthProfile" type="FileAnnotation">
-        <xsd:annotation>
-          <xsd:documentation>Description=This element consists of a file containing the Wavelength profile of this hardware component.</xsd:documentation>
-          <xsd:documentation>Tier=3</xsd:documentation>
-        </xsd:annotation>
-      </xsd:element>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" ref="WavelengthProfileFile"/>
     </xsd:sequence>
     <xsd:attribute name="PeakWavelength" type="xsd:float" use="required">
       <xsd:annotation>
@@ -11224,6 +11222,23 @@ PlaneInfo (as Plane)
         <xsd:documentation>Tier=2</xsd:documentation>
       </xsd:annotation>
     </xsd:attribute>
+  </xsd:complexType>
+  <xsd:complexType name="IlluminationWavelengthRangeType">
+    <xsd:complexContent>
+      <xsd:extension base="WavelengthRangeType">
+        <xsd:attribute name="IlluminationPower" use="required" type="xsd:float">
+          <xsd:annotation>
+            <xsd:documentation>Description=This field records the nominal Power output emitted at Peak Wavelength by this Light Source as advertised by the Manufacturer.</xsd:documentation>
+            <xsd:documentation>Tier=1</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="IlluminationPowerUnit" type="UnitsPower" default="W">
+          <xsd:annotation>
+            <xsd:documentation>Tier=1</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+      </xsd:extension>
+    </xsd:complexContent>
   </xsd:complexType>
   <xsd:complexType name="TransmittanceRangeType">
     <xsd:attribute name="Wavelength" use="required" type="PositiveFloat">
@@ -12194,7 +12209,6 @@ PlaneInfo (as Plane)
       <xsd:enumeration value="Other"/>
     </xsd:restriction>
   </xsd:simpleType>
-
   <xsd:simpleType name="CCDArchitecture">
     <xsd:restriction base="xsd:string">
       <xsd:enumeration value="FrameTransfer"/>
@@ -12203,7 +12217,6 @@ PlaneInfo (as Plane)
       <xsd:enumeration value="Other"/>
     </xsd:restriction>
   </xsd:simpleType>
-
   <xsd:simpleType name="CMOSType">
     <xsd:restriction base="xsd:string">
       <xsd:enumeration value="Conventional"/>
@@ -13278,7 +13291,7 @@ PlaneInfo (as Plane)
     <xsd:complexType>
       <xsd:sequence>
         <xsd:element ref="AnnotationRef"/>
-        <xsd:element ref="WavelengthRange"/>
+        <xsd:element ref="WavelengthRange" maxOccurs="unbounded" minOccurs="0"/>
       </xsd:sequence>
       <xsd:attribute name="ID" type="ElectroOpticalDeviceID" use="required">
         <xsd:annotation>
@@ -14026,9 +14039,6 @@ PlaneInfo (as Plane)
   <xsd:simpleType name="ElectroOpticalDeviceID">
     <xsd:restriction base="LSID"/>
   </xsd:simpleType>
-  <xsd:simpleType name="MicroLensArrayID">
-    <xsd:restriction base="LSID"/>
-  </xsd:simpleType>
 
 
   <!-- Enumeration types -->
@@ -14235,7 +14245,7 @@ PlaneInfo (as Plane)
   <xsd:element name="IntensityCalibrationTool">
     <xsd:annotation>
       <xsd:documentation>Extension=Calibration and Performance</xsd:documentation>
-      <xsd:documentation>Domain=MicrosocpeHardwareSpecifications</xsd:documentation>
+      <xsd:documentation>Domain=MicroscopeHardwareSpecifications</xsd:documentation>
       <xsd:documentation>Category=CalibrationTools</xsd:documentation>
       <xsd:documentation>Description=A tool, such as the Meta-Max calibration toold developed by the 4D Nucleome Imaging Standards Working Group, used to perform an intensity calibration procedure.</xsd:documentation>
       <xsd:documentation>Tier=2</xsd:documentation>
@@ -14292,24 +14302,7 @@ PlaneInfo (as Plane)
     </xsd:annotation>
     <xsd:complexType>
       <xsd:sequence>
-        <xsd:element maxOccurs="unbounded" minOccurs="1" name="OpticalCalibrationImageRef">
-          <xsd:annotation>
-            <xsd:documentation>Description=This is an empty element that refers to an Image (typically a z-stack) obtained by observing the Optical Standard used in this instance and Acquired using the same Instrument and Settings employed to acquire the experimental Image this calibration refers to.</xsd:documentation>
-            <xsd:documentation>Tier=2</xsd:documentation>
-          </xsd:annotation>
-          <xsd:complexType>
-            <xsd:complexContent>
-              <xsd:extension base="Reference">
-                <xsd:attribute name="ID" type="ImageID" use="required">
-                  <xsd:annotation>
-                    <xsd:documentation>Description=A Unique Identifier for this component.</xsd:documentation>
-                    <xsd:documentation>Tier=3</xsd:documentation>
-                  </xsd:annotation>
-                </xsd:attribute>
-              </xsd:extension>
-            </xsd:complexContent>
-          </xsd:complexType>
-        </xsd:element>
+        <xsd:element maxOccurs="unbounded" minOccurs="1" ref="OpticalCalibrationImageRef"/>
         <xsd:element maxOccurs="unbounded" name="PSFEquationFile" type="FileAnnotation" minOccurs="0">
           <xsd:annotation>
             <xsd:documentation>Extension=Calibration and Performance</xsd:documentation>
@@ -14481,23 +14474,7 @@ PlaneInfo (as Plane)
     </xsd:annotation>
     <xsd:complexType>
       <xsd:sequence>
-        <xsd:element maxOccurs="unbounded" name="FlatFieldImageRef">
-          <xsd:annotation>
-            <xsd:documentation>Description=This is an empty element that refers to an Image obtained from a Standard Slide designed to eavluate the Field of View (FOV) dependent variations in the pixel-to-pixel sensitivity of the detector and/or by distortions in the Optical Path.</xsd:documentation>
-            <xsd:documentation>Tier=2</xsd:documentation>
-          </xsd:annotation>
-          <xsd:complexType>
-            <xsd:complexContent>
-              <xsd:extension base="Reference">
-                <xsd:attribute name="ID" type="LSID">
-                  <xsd:annotation>
-                    <xsd:documentation>Tier=3</xsd:documentation>
-                  </xsd:annotation>
-                </xsd:attribute>
-              </xsd:extension>
-            </xsd:complexContent>
-          </xsd:complexType>
-        </xsd:element>
+        <xsd:element maxOccurs="unbounded" minOccurs="1" ref="FlatFieldImageRef"/>
       </xsd:sequence>
       <xsd:attribute name="ID" type="LSID" use="required">
         <xsd:annotation>
@@ -15029,24 +15006,7 @@ PlaneInfo (as Plane)
         <xsd:extension base="IntensityCalibration">
           <xsd:sequence>
             <xsd:element ref="CalibrationMap" maxOccurs="unbounded" minOccurs="0"/>
-            <xsd:element maxOccurs="unbounded" minOccurs="0" name="DetectorCalibrationImageRef">
-              <xsd:annotation>
-                <xsd:documentation>Description=This is an empty element that refers to an Image (typically a z-stack) obtained as part of this Detector Calibration Procedure used in this instance and Acquired using the same Instrument and Settings employed to acquire the experimental Image this calibration refers to.</xsd:documentation>
-                <xsd:documentation>Tier=2</xsd:documentation>
-              </xsd:annotation>
-              <xsd:complexType>
-                <xsd:complexContent>
-                  <xsd:extension base="Reference">
-                    <xsd:attribute name="ID" type="ImageID">
-                      <xsd:annotation>
-                        <xsd:documentation>Description=A Unique Identifier for this component.</xsd:documentation>
-                        <xsd:documentation>Tier=2</xsd:documentation>
-                      </xsd:annotation>
-                    </xsd:attribute>
-                  </xsd:extension>
-                </xsd:complexContent>
-              </xsd:complexType>
-            </xsd:element>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="DetectorCalibrationImageRef"/>
           </xsd:sequence>
         </xsd:extension>
       </xsd:complexContent>
@@ -15308,7 +15268,99 @@ PlaneInfo (as Plane)
   <!-- ==================================== -->
   <!--  MISCELLANEOUS FOUNDATIONAL ELEMENTS -->
   <!-- ==================================== -->
+  <!-- References -->
+  <xsd:element name="FlatFieldImageRef">
+    <xsd:annotation>
+      <xsd:documentation>Description=This is an empty element that refers to an Image obtained from a Standard Slide designed to eavluate the Field of View (FOV) dependent variations in the pixel-to-pixel sensitivity of the detector and/or by distortions in the Optical Path.</xsd:documentation>
+      <xsd:documentation>Tier=2</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:complexContent>
+        <xsd:extension base="Reference">
+          <xsd:attribute name="ID" type="ImageID">
+            <xsd:annotation>
+              <xsd:documentation>Description=A Unique Identifier for this component.</xsd:documentation>
+              <xsd:documentation>Tier=2</xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
+        </xsd:extension>
+      </xsd:complexContent>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="OpticalCalibrationImageRef">
+    <xsd:annotation>
+      <xsd:documentation>Description=This is an empty element that refers to an Image (typically a z-stack) obtained by observing the Optical Standard used in this instance and Acquired using the same Instrument and Settings employed to acquire the experimental Image this calibration refers to.</xsd:documentation>
+      <xsd:documentation>Tier=2</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:complexContent>
+        <xsd:extension base="Reference">
+          <xsd:attribute name="ID" type="ImageID" use="required">
+            <xsd:annotation>
+              <xsd:documentation>Description=A Unique Identifier for this component.</xsd:documentation>
+              <xsd:documentation>Tier=3</xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
+        </xsd:extension>
+      </xsd:complexContent>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="DetectorCalibrationImageRef">
+    <xsd:annotation>
+      <xsd:documentation>Description=This is an empty element that refers to an Image (typically a z-stack) obtained as part of this Detector Calibration Procedure used in this instance and Acquired using the same Instrument and Settings employed to acquire the experimental Image this calibration refers to.</xsd:documentation>
+      <xsd:documentation>Tier=2</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:complexContent>
+        <xsd:extension base="Reference">
+          <xsd:attribute name="ID" type="ImageID">
+            <xsd:annotation>
+              <xsd:documentation>Description=A Unique Identifier for this component.</xsd:documentation>
+              <xsd:documentation>Tier=2</xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
+        </xsd:extension>
+      </xsd:complexContent>
+    </xsd:complexType>
+  </xsd:element>
 
+  <!-- Miscellaneous Complex Types -->
+  <xsd:complexType name="cellType">
+    <xsd:attribute name="CellNr" type="PositiveInt" use="required">
+      <xsd:annotation>
+        <xsd:documentation>Description=The index of this Cell.</xsd:documentation>
+        <xsd:documentation>Tier=2</xsd:documentation>
+      </xsd:annotation>
+    </xsd:attribute>
+    <xsd:attribute name="CellValue" type="xsd:float" use="required">
+      <xsd:annotation>
+        <xsd:documentation>Description=The Value of the metric contained in this Cell.</xsd:documentation>
+        <xsd:documentation>Tier=2</xsd:documentation>
+      </xsd:annotation>
+    </xsd:attribute>
+    <xsd:attribute name="CellValueUnit" type="xsd:string">
+      <xsd:annotation>
+        <xsd:documentation>Tier=2</xsd:documentation>
+      </xsd:annotation>
+    </xsd:attribute>
+  </xsd:complexType>
+  <xsd:complexType name="rowType">
+    <xsd:sequence>
+      <xsd:element name="Cell" type="cellType" maxOccurs="unbounded" minOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation>Tier=3 </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+    <xsd:attribute name="RowNr" type="PositiveInt" use="required">
+      <xsd:annotation>
+        <xsd:documentation>Description=The index of this Row.</xsd:documentation>
+        <xsd:documentation>Tier=2</xsd:documentation>
+      </xsd:annotation>
+    </xsd:attribute>
+  </xsd:complexType>
+
+  <!-- Miscellaneous Simple Types -->
   <xsd:simpleType name="CalibrationSlideType">
     <xsd:restriction base="xsd:string">
       <xsd:enumeration value="ARGO-HM"/>
@@ -15346,40 +15398,6 @@ PlaneInfo (as Plane)
       <xsd:enumeration value="Other"/>
     </xsd:restriction>
   </xsd:simpleType>
-  <xsd:complexType name="cellType">
-    <xsd:attribute name="CellNr" type="PositiveInt" use="required">
-      <xsd:annotation>
-        <xsd:documentation>Description=The index of this Cell.</xsd:documentation>
-        <xsd:documentation>Tier=2</xsd:documentation>
-      </xsd:annotation>
-    </xsd:attribute>
-    <xsd:attribute name="CellValue" type="xsd:float">
-      <xsd:annotation>
-        <xsd:documentation>Description=The Value of the metric contained in this Cell.</xsd:documentation>
-        <xsd:documentation>Tier=2</xsd:documentation>
-      </xsd:annotation>
-    </xsd:attribute>
-    <xsd:attribute name="CellValueUnit" type="xsd:string">
-      <xsd:annotation>
-        <xsd:documentation>Tier=2</xsd:documentation>
-      </xsd:annotation>
-    </xsd:attribute>
-  </xsd:complexType>
-  <xsd:complexType name="rowType">
-    <xsd:sequence>
-      <xsd:element name="Cell" type="cellType" maxOccurs="unbounded">
-        <xsd:annotation>
-          <xsd:documentation>Tier=3 </xsd:documentation>
-        </xsd:annotation>
-      </xsd:element>
-    </xsd:sequence>
-    <xsd:attribute name="RowNr" type="PositiveInt" use="required">
-      <xsd:annotation>
-        <xsd:documentation>Description=The index of this Row.</xsd:documentation>
-        <xsd:documentation>Tier=2</xsd:documentation>
-      </xsd:annotation>
-    </xsd:attribute>
-  </xsd:complexType>
   <xsd:simpleType name="MatrixTypeEnum">
     <xsd:restriction base="xsd:string">
       <xsd:enumeration value="Gain"/>
@@ -15392,4 +15410,5 @@ PlaneInfo (as Plane)
       <xsd:enumeration value=""/>
     </xsd:restriction>
   </xsd:simpleType>
+
 </xsd:schema>

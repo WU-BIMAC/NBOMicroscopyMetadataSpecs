@@ -77,7 +77,7 @@ ImageRef</y:NodeLabel>
           <y:Fill color="#CCCCCC" color2="#DE6B62" transparent="false"/>
           <y:BorderStyle hasColor="false" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#87241C" configuration="com.yworks.entityRelationship.label.name" fontFamily="Dialog" fontSize="20" fontStyle="plain" hasLineColor="false" height="27.5546875" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="t" textColor="#FFFFFF" verticalTextPosition="bottom" visible="true" width="178.677734375" x="18.16113281249909" xml:space="preserve" y="4.0">OpticalCalibration</y:NodeLabel>
-          <y:NodeLabel alignment="left" autoSizePolicy="content" configuration="com.yworks.entityRelationship.label.attributes" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="286.65625" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="180.982421875" x="2.0" xml:space="preserve" y="39.5546875">ID
+          <y:NodeLabel alignment="left" autoSizePolicy="content" configuration="com.yworks.entityRelationship.label.attributes" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="272.5234375" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="180.982421875" x="2.0" xml:space="preserve" y="39.5546875">ID
 Date
 TheoreticalXYSpotSize_FWHM
 MedianXYSpotSize_FWHM
@@ -92,7 +92,6 @@ Z-Dimension
 NyquistRate
 SampleSize
 PSFEquation
-OpticalCalibrationImageRef
 AnnotationRef
 PSFEquationFile [Sub-Element]
 OpticalCalibrationReport 
