@@ -1539,7 +1539,7 @@
       </xsd:attribute>
       <xsd:attribute name="Color" use="optional" type="Color" default="-1">
         <xsd:annotation>
-          <xsd:documentation>Description=This field records the Color used to render this Channel - encoded as RGBA. The default value is "-1" corresponding #FFFFFFFF, so solid white (it is a signed 32 bit value).</xsd:documentation>
+          <xsd:documentation>Description=This field records the Color used to render this Channel - encoded as RGBA. The default value is -1 corresponding #FFFFFFFF, so solid white (it is a signed 32 bit value).</xsd:documentation>
           <xsd:documentation>Tier=1</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
@@ -1814,6 +1814,7 @@
       <xsd:documentation>Category=MicroscopyEssentials</xsd:documentation>
       <xsd:documentation>Description=This is a Microscope in which the object is observed from beneath the stage.</xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
+      <xsd:documentation>Model_Settings=MicroscopeSettings</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
   <xsd:element name="UprightdMicroscopeStand" substitutionGroup="MicroscopeStandGroup">
@@ -1828,6 +1829,7 @@
       <xsd:documentation>Category=MicroscopyEssentials</xsd:documentation>
       <xsd:documentation>Description=This is a Microscope in which the object is observed from above the stage.</xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
+      <xsd:documentation>Model_Settings=MicroscopeSettings</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
 
@@ -1894,6 +1896,7 @@
       <xsd:documentation>Description=An Arc lamp is a discharge lamp that produces light by an electric arc (also called a voltaic arc), which is typically generated between metal electrodes and travels through an inert gas in a glass bulb. The inert gas can be Mercury (He), Xenon (Xe), or a mixture of the two. The choice of the gas is important because its nature determines the spectral behavior of the lamp. Refer to Type for more informations about this aspect.</xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
       <xsd:documentation>Split=[Fluorescence_LightSource]</xsd:documentation>
+      <xsd:documentation>Model_Settings=LightSourceSettings</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
       <xsd:complexContent>
@@ -1925,6 +1928,7 @@
       <xsd:documentation>Description=The GenericExcitationSource element is used to represent a light source as a collection of key/value pairs, stored in a Map. One of the other light source elements should always be used in preference to this if possible.</xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
       <xsd:documentation>Split=[Transmitted_LightSource; Fluorescence_LightSource]</xsd:documentation>
+      <xsd:documentation>Model_Settings=LightSourceSettings</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
       <xsd:complexContent>
@@ -1957,6 +1961,7 @@
       <xsd:documentation>Description=A Filament lamp is an incandescent Light Source with a wire filament (usually tungsten), which is heated by the passage of an electric current to such a high temperature that it glows with visible light (incandescence). The emitted spectrum is continuous, and it approximates that of a black-body radiator.</xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
       <xsd:documentation>Split=[Transmitted_LightSource; Fluorescence_LightSource]</xsd:documentation>
+      <xsd:documentation>Model_Settings=LightSourceSettings</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
       <xsd:complexContent>
@@ -1988,6 +1993,7 @@
       <xsd:documentation>Description=This element describes a Light Source, which emits coherent radiation at high spectral concentrations of radiance and minimal solid angles. This includes proper Light Amplification by Stimulated Emission of Radiation (LASER) sources that emit light through a process of optical amplification based on the stimulated emission of electromagnetic radiation. It also includes Optical Parametric Oscillator (OPO) sources that use a kind of LASER resonator but based on optical gain from parametric amplification in a nonlinear crystal rather than from stimulated emission.</xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
       <xsd:documentation>Split=[Fluorescence_LightSource]</xsd:documentation>
+      <xsd:documentation>Model_Settings=LightSourceSettings</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
       <xsd:complexContent>
@@ -2097,6 +2103,7 @@
       <xsd:documentation>Description=A Light Emitting Diode (LED) is a semiconductor light source that emits light when current flows through it. Electrons in the semiconductor recombine with electron holes, releasing energy in the form of photons. The color of the light (corresponding to the energy of the photons) is determined by the energy required for electrons to cross the band gap of the semiconductor. White light may be obtained by using multiple semiconductors or a layer of light-emitting phosphor on the semiconductor device.</xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
       <xsd:documentation>Split=[Transmitted_LightSource; Fluorescence_LightSource]</xsd:documentation>
+      <xsd:documentation>Model_Settings=LightSourceSettings</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
       <xsd:complexContent>
@@ -2178,7 +2185,7 @@
           </xsd:attribute>
           <xsd:attribute name="ImmersionType" type="ImmersionTypeList" use="required">
             <xsd:annotation>
-              <xsd:documentation>Description=According to ISO 10934-1:2002, an Immersion Liquid is a liquid (commonly immersion oil, water or glycerol) specified as suitable for use in the space between the front of an immersion lens and the object NOTE Because the immersion liquid is considered in the computing of corrections to be part of the lens, its refractive index and dispersion (or Abbe number) are critical. Please refer to ISO 8036-1 for more details on Immersion Oil. This field describes the general category of the Immersion Liquid this Objective is designed for, according to the Manufacturer. If the general category is not "Air", the actual Immersion Liquid that was used during the Acquisition of a specific Image must be specified in Objective Settings.</xsd:documentation>
+              <xsd:documentation>Description=According to ISO 10934-1:2002, an Immersion Liquid is a liquid (commonly immersion oil, water or glycerol) specified as suitable for use in the space between the front of an immersion lens and the object NOTE Because the immersion liquid is considered in the computing of corrections to be part of the lens, its refractive index and dispersion (or Abbe number) are critical. Please refer to ISO 8036-1 for more details on Immersion Oil. This field describes the general category of the Immersion Liquid this Objective is designed for, according to the Manufacturer. If the general category is not Air, the actual Immersion Liquid that was used during the Acquisition of a specific Image must be specified in Objective Settings.</xsd:documentation>
               <xsd:documentation>Tier=1</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
@@ -2250,7 +2257,8 @@
           </xsd:attribute>
           <xsd:attribute name="DippingMedium" type="DippingType">
             <xsd:annotation>
-              <xsd:documentation>Description=In case the Immersion Type for this Objective is designated as "Dipping", this field captures the type of Dipping Medium this Objective is compatible with. Examples include, water-based (biological buffers, culture media, other water-based solutions) organic-based [FocusClear (CLARITY); CUBIC-1, CUBIC-2, CUBIC-R1, CUBIC-R2; 2,2-thiodiethanol (TDE); ethyl cinnamate; Benzyl Benzoate and BB-PEG (PEGASOS); Benzyl Alcohol, Benzyl Benzoate (BABB); dibenzyl ether (DBE); 100% Ethanol].</xsd:documentation>
+              <xsd:documentation>Description=In case the Immersion Type for this Objective is designated as Dipping, this field captures the type of Dipping Medium this Objective is compatible with. Examples include, water-based (biological buffers, culture media, other water-based solutions) organic-based [FocusClear (CLARITY); CUBIC-1, CUBIC-2, CUBIC-R1, CUBIC-R2; 2,2-thiodiethanol (TDE); ethyl cinnamate; Benzyl Benzoate and BB-PEG (PEGASOS); Benzyl Alcohol, Benzyl Benzoate (BABB); dibenzyl ether (DBE); 100% Ethanol].</xsd:documentation>
+              <xsd:documentation>Tier=2</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
           <xsd:attribute name="CorrectionCollar" type="xsd:boolean" use="required">
@@ -2433,7 +2441,7 @@
         </xsd:attribute>
         <xsd:attribute name="Diameter" type="xsd:float">
           <xsd:annotation>
-            <xsd:documentation>Diameter=This field describes the Diameter of this optical element.</xsd:documentation>
+            <xsd:documentation>Description=This field describes the Diameter of this optical element.</xsd:documentation>
             <xsd:documentation>Tier=3</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
@@ -2693,6 +2701,7 @@
       <xsd:documentation>Category=FluorescenceLightPath</xsd:documentation>
       <xsd:documentation>Description=A Dichroic Mirror (also often referred to as Dichroic Beamsplitter or simply as Dichroic) is a Mirror that spectrally separate light by transmitting and reflecting light as a function of wavelength. In the context of fluorescence microscopy, they are typically used to reflect the excitation light, but transmit the emitted fluorescence. Dichroic Mirrors can be categorized in different manners. However, the most important criteria for choosing a Dichoric Mirror are the Transmittance and the Reflectance Wavelength ranges. This element describes a Dichroic positioned in the standard Light Path for one or more Channels available for this Instrument.</xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
+      <xsd:documentation>Model_Settings=MirroringDeviceSettings</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
       <xsd:complexContent>
@@ -2891,6 +2900,7 @@
       <xsd:documentation>Category=Detector</xsd:documentation>
       <xsd:documentation>Description=This element is used to represent a Generic Detector as a collection of Key/Value pairs, which are stored in a Map. One of the other detector elements should always be used in preference to this if possible.</xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
+      <xsd:documentation>Model_Settings=DetectorSettings</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
       <xsd:complexContent>
@@ -3158,13 +3168,13 @@
           </xsd:attribute>
           <xsd:attribute name="CorrectionCollarPosition" type="xsd:string">
             <xsd:annotation>
-              <xsd:documentation>Description=The Correction Collar typically consists of an adjustable ring on the Objective whose position can be modified. This field records the position of the collar during the Acquisition of this Image. Each correction collar has an arbitrary scale or it might be scale-less and instead have fixed positions with qualitative designations (i.e., "Oil", "Water" in case in which the Objective might be corrected for Immersion Liquid).</xsd:documentation>
+              <xsd:documentation>Description=The Correction Collar typically consists of an adjustable ring on the Objective whose position can be modified. This field records the position of the collar during the Acquisition of this Image. Each correction collar has an arbitrary scale or it might be scale-less and instead have fixed positions with qualitative designations (i.e., Oil, Water in case in which the Objective might be corrected for Immersion Liquid).</xsd:documentation>
               <xsd:documentation>Tier=2</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
           <xsd:attribute name="NumericalApertureSetting" type="xsd:string">
             <xsd:annotation>
-              <xsd:documentation>Description=In case the Numerical Aperture (NA) of this Objective is variable (i.e., as for example in case of Objectives that can be used with or without Cover Glass or Objectives that can be "dipped" in different media), this field capture the NA setting that was employed for Image Acquisition. NOTE: please note that often NA regulation in these types of Objectives occurs via a rotating collar whose exact position is difficult to measure and reproduce across different Experiments.</xsd:documentation>
+              <xsd:documentation>Description=In case the Numerical Aperture (NA) of this Objective is variable (i.e., as for example in case of Objectives that can be used with or without Cover Glass or Objectives that can be dipped in different media), this field capture the NA setting that was employed for Image Acquisition. NOTE: please note that often NA regulation in these types of Objectives occurs via a rotating collar whose exact position is difficult to measure and reproduce across different Experiments.</xsd:documentation>
               <xsd:documentation>Tier=2</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
@@ -3183,7 +3193,7 @@
           </xsd:attribute>
           <xsd:attribute name="TemperatureUnit" use="optional" default="°C" type="UnitsTemperature">
             <xsd:annotation>
-              <xsd:documentation>Tier=2 </xsd:documentation>
+              <xsd:documentation>Tier=2</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
           <xsd:attribute name="IrisAperture" type="xsd:float">
@@ -3306,7 +3316,7 @@
       </xsd:attribute>
       <xsd:attribute name="AirPressureUnit" use="optional" default="mbar" type="UnitsPressure">
         <xsd:annotation>
-          <xsd:documentation>Tier=2 </xsd:documentation>
+          <xsd:documentation>Tier=2</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
       <xsd:attribute name="Humidity" use="required" type="PercentFraction">
@@ -3879,6 +3889,9 @@ PlaneInfo (as Plane)
           <plural>MapAnnotations</plural>
         </xsdfu>
       </xsd:appinfo>
+      <xsd:documentation>Extension=Basic</xsd:documentation>
+      <xsd:documentation>Domain=MicroscopeHardwareSpecification</xsd:documentation>
+      <xsd:documentation>Category=ChildElement</xsd:documentation>
       <xsd:documentation>Description=A Map Annotation. The contents of this is a list of Key/Value pairs.</xsd:documentation>
       <xsd:documentation>Tier=3</xsd:documentation>
     </xsd:annotation>
@@ -4853,6 +4866,9 @@ PlaneInfo (as Plane)
       <xsd:element maxOccurs="unbounded" minOccurs="0" ref="MapAnnotation"/>
       <xsd:element minOccurs="0" name="SpecsFile" type="FileAnnotation">
         <xsd:annotation>
+          <xsd:documentation>Extension=Basic</xsd:documentation>
+          <xsd:documentation>Domain=MicroscopeHardwareSpecifications</xsd:documentation>
+          <xsd:documentation>Category=ChildElement</xsd:documentation>
           <xsd:documentation>Description=This element refers to a PDF file that contains the specifications for this hardware component as provided by the Manufacturer.</xsd:documentation>
           <xsd:documentation>Tier=3</xsd:documentation>
         </xsd:annotation>
@@ -7083,7 +7099,7 @@ PlaneInfo (as Plane)
       </xsd:attribute>
       <xsd:attribute name="Organism" type="xsd:string" use="required">
         <xsd:annotation>
-          <xsd:documentation>Description="If this sample is of biological origin, this field records the biological organisn this sample derives from. A biological is a biological entity that consists of one or more cells and is capable of genomic replication (independently or not). The use terms from NCBITaxon (http://purl.obolibrary.org/obo/NCBITaxon_1) is recommended. Note: if the sample is not of biological origin please enter "none".</xsd:documentation>
+          <xsd:documentation>Description=If this sample is of biological origin, this field records the biological organisn this sample derives from. A biological is a biological entity that consists of one or more cells and is capable of genomic replication (independently or not). The use terms from NCBITaxon (http://purl.obolibrary.org/obo/NCBITaxon_1) is recommended. Note: if the sample is not of biological origin please enter none.</xsd:documentation>
           <xsd:documentation>Tier=1</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
@@ -7096,7 +7112,7 @@ PlaneInfo (as Plane)
       <xsd:attribute name="SampleType" type="SampleType">
         <xsd:annotation>
           <xsd:documentation>Description=This field records a term that describes the general category of this Sample.</xsd:documentation>
-          <xsd:documentation>TIer=1</xsd:documentation>
+          <xsd:documentation>Tier=1</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
       <xsd:attribute name="OrganismPart" type="xsd:string">
@@ -7202,7 +7218,7 @@ PlaneInfo (as Plane)
       <xsd:documentation>Extension=Basic</xsd:documentation>
       <xsd:documentation>Domain=Experimental</xsd:documentation>
       <xsd:documentation>Category=SamplePreparation</xsd:documentation>
-      <xsd:documentation>Description=This element refers to the Immersion Liquid that was used with this Objective during the Acquisition of this Image. According to ISO 10934-1:2002, an Immersion Liquid is a liquid (commonly immersion oil, water, glycerol or any media in which the Specimen is submerged during acquisition in case a Cover Glass is not used) specified as suitable for use in the space between the front of an Objective lens and the Cover Glass or the Object itself (i.e., such as is the case for Dipping Objectives). Refer to ISO 8036-1 for more details on Immersion Oil. Please NOTE: Because the Immersion Liquid is considered in the computing of corrections to be part of the lens, its refractive index and dispersion (or Abbe number) are critical. Also please NOTE: In case a Cover Glass is not used during Acquisition the Immersion Liquid is most often referred to as "Dipping Medium". Examples of Dipping Media include, water-based solutions (biological buffers, culture media, other water-based solutions) and organic-based [FocusClear (CLARITY); CUBIC-1, CUBIC-2, CUBIC-R1, CUBIC-R2; 2,2-thiodiethanol (TDE); ethyl cinnamate; Benzyl Benzoate and BB-PEG (PEGASOS); Benzyl Alcohol, Benzyl Benzoate (BABB); dibenzyl ether (DBE); Ethanol].</xsd:documentation>
+      <xsd:documentation>Description=This element refers to the Immersion Liquid that was used with this Objective during the Acquisition of this Image. According to ISO 10934-1:2002, an Immersion Liquid is a liquid (commonly immersion oil, water, glycerol or any media in which the Specimen is submerged during acquisition in case a Cover Glass is not used) specified as suitable for use in the space between the front of an Objective lens and the Cover Glass or the Object itself (i.e., such as is the case for Dipping Objectives). Refer to ISO 8036-1 for more details on Immersion Oil. Please NOTE: Because the Immersion Liquid is considered in the computing of corrections to be part of the lens, its refractive index and dispersion (or Abbe number) are critical. Also please NOTE: In case a Cover Glass is not used during Acquisition the Immersion Liquid is most often referred to as Dipping Medium. Examples of Dipping Media include, water-based solutions (biological buffers, culture media, other water-based solutions) and organic-based [FocusClear (CLARITY); CUBIC-1, CUBIC-2, CUBIC-R1, CUBIC-R2; 2,2-thiodiethanol (TDE); ethyl cinnamate; Benzyl Benzoate and BB-PEG (PEGASOS); Benzyl Alcohol, Benzyl Benzoate (BABB); dibenzyl ether (DBE); Ethanol].</xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
@@ -7312,7 +7328,7 @@ PlaneInfo (as Plane)
           <xsd:attribute name="EmissionWavelength" use="required" type="PositiveFloat">
             <xsd:annotation>
               <xsd:documentation>Description=This field records the Emission Wavelength used for this Channel.</xsd:documentation>
-              <xsd:documentation>Tier=1 </xsd:documentation>
+              <xsd:documentation>Tier=1</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
           <xsd:attribute name="EmissionWavelengthUnit" use="optional" default="nm" type="UnitsLength">
@@ -7378,6 +7394,7 @@ PlaneInfo (as Plane)
       <xsd:documentation>Category=MicroscopyEssentials</xsd:documentation>
       <xsd:documentation>Description=This element describes the Table used to support this Instrument during Image Acquisition.</xsd:documentation>
       <xsd:documentation>Tier=2</xsd:documentation>
+      <xsd:documentation>Model_Settings=MicroscopeTableSettings</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
       <xsd:complexContent>
@@ -7447,6 +7464,7 @@ PlaneInfo (as Plane)
       <xsd:documentation>Category=MicroscopyEssentials</xsd:documentation>
       <xsd:documentation>Description=This element describes an Environmental Control Device available for this Instrument.</xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
+      <xsd:documentation>Model_Settings=ImagingEnvironment</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
       <xsd:complexContent>
@@ -7479,13 +7497,13 @@ PlaneInfo (as Plane)
           </xsd:attribute>
           <xsd:attribute name="HumidityControl" type="HumidityControlMethod" use="required">
             <xsd:annotation>
-              <xsd:documentation>Description=This field captures whether this Environmental Control Device provides Humidity control and what type of control it provides. If no Humidity control is provided please enter "None".</xsd:documentation>
+              <xsd:documentation>Description=This field captures whether this Environmental Control Device provides Humidity control and what type of control it provides. If no Humidity control is provided please enter None.</xsd:documentation>
               <xsd:documentation>Tier=1</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
           <xsd:attribute name="CO2Control" type="CO2ControlMethod" use="required">
             <xsd:annotation>
-              <xsd:documentation>Description=This field captures whether this Environmental Control Device provides CO2 control and what type of control it provides. If no CO2 control is provided please enter "None".</xsd:documentation>
+              <xsd:documentation>Description=This field captures whether this Environmental Control Device provides CO2 control and what type of control it provides. If no CO2 control is provided please enter None.</xsd:documentation>
               <xsd:documentation>Tier=2</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
@@ -7662,7 +7680,7 @@ PlaneInfo (as Plane)
           </xsd:sequence>
           <xsd:attribute name="ID" type="StageInsertID">
             <xsd:annotation>
-              <xsd:documentation>Desription=A Unique Identifier for this component.</xsd:documentation>
+              <xsd:documentation>Description=A Unique Identifier for this component.</xsd:documentation>
               <xsd:documentation>Tier=1</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
@@ -8093,6 +8111,7 @@ PlaneInfo (as Plane)
       <xsd:documentation>Description=This element describes a Light Source device that contains multiple Lasers built into a single box. This element contains Reference(s) to individual Laser components built separately and assembled as part of this device.</xsd:documentation>
       <xsd:documentation>Tier=2</xsd:documentation>
       <xsd:documentation>Split=[Fluorescence_LightSource]</xsd:documentation>
+      <xsd:documentation>Model_Settings=LightSourceSettings</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
       <xsd:complexContent>
@@ -8386,7 +8405,7 @@ PlaneInfo (as Plane)
           <xsd:attribute name="Type" use="required" type="CondenserCategory">
             <xsd:annotation>
               <xsd:documentation>Description=This field captures the general category this Condenser belongs to according to ISO 10934-1:2002. Specifically, this category refers to the type of Correction or Contrast Enhancement Method this Condenser is designed to achieve. According to ISO 10934-1:2002, options include: 1) Abbe, this is a condenser of simple design introduced by Abbe, in which there is only limited correction for spherical aberration and none for chromatic aberration. 2) Achromatic-aplanatic, this is a in which chromatic aberrations and spherical aberrations have been reduced. 3) Cardioid, this is a dark field condenser for transmitted light illumination that has spherical aberration and coma (i.e., aberration in which the image of an off-axis point object is deformed so that the image is shaped like a comet) correction. 4) Dark-field, this is a dark-ground condenser designed for dark-field microscopy, which for reflected-light microscopy might be located within the mount of the objective. 5) Pancratic, this is a condenser containing a variable “zoom” (pancratic) lens which allows the size of the illuminated field at the object to be varied while the illuminated field diaphragm remains of constant size. 6) Phase-contrast, this is condenser designed for phasecontrast microscopy. 6) Universal, this is a condenser designed for multiple contrast methods such as bright field, dark field, phase contrast, differential interference contrast, polarized light and modulation contrast.</xsd:documentation>
-              <xsd:documentation>Tier 2</xsd:documentation>
+              <xsd:documentation>Tier=2</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
         </xsd:extension>
@@ -8818,6 +8837,7 @@ PlaneInfo (as Plane)
       <xsd:documentation>Category=Apertures</xsd:documentation>
       <xsd:documentation>Description=This element describes a Shutter available for this Instrument. Shutters are devices that open and close, and they may be mechanically or electro-mechanically controlled. Shutters are typically used to control the Light that raches the sample (i.e., to limit phototoxicity and photobleaching especially in case of live specimens), or the Detecrtor at any one time. They can also be used for Excitation or Emission Wavelength selection.</xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
+      <xsd:documentation>Model_Settings=ShutterSettings</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
       <xsd:complexContent>
@@ -8870,6 +8890,7 @@ PlaneInfo (as Plane)
           <xsd:attribute name="Multimode" type="xsd:boolean">
             <xsd:annotation>
               <xsd:documentation>Description=This field records whether (True) multiple operation modes are available for this Shutter or not (False). Typical operation modes are are: Fast, Soft and Neutral Density. The Fast mode provides the quickest open and close action sequence for which the shutter is capable. The Soft mode gradually opens and closes the shutter to reduce vibration. Control of light intensity without affecting wavelength is accommodated by a Neutral Density shutter mode (for more details see https://www.microscopyu.com/applications/live-cell-imaging/the-automatic-microscope).</xsd:documentation>
+              <xsd:documentation>Tier=2</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
         </xsd:extension>
@@ -8936,6 +8957,7 @@ PlaneInfo (as Plane)
       <xsd:documentation>Category=Mirrors</xsd:documentation>
       <xsd:documentation>Description=A Dichroic Mirror (also often referred to as Dichroic Beamsplitter or simply as Dichroic) is a Mirror that spectrally separate light by transmitting and reflecting light as a function of wavelength. In the context of fluorescence microscopy, they are typically used to reflect the excitation light, but transmit the emitted fluorescence. Dichroic Mirrors can be categorized in different manners. However, the most important criteria for choosing a Dichoric Mirror are the Transmittance and the Reflectance Wavelength ranges. This element describes a generic Additional Dichroic positioned in the Light Path for one or more Channel available for this Instrument.</xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
+      <xsd:documentation>Model_Settings=MirroringDeviceSettings</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
       <xsd:complexContent>
@@ -8950,6 +8972,7 @@ PlaneInfo (as Plane)
       <xsd:documentation>Category=Mirrors</xsd:documentation>
       <xsd:documentation>Description=This element describes a Mirror that reflects part of the light, regardless of wavelength.</xsd:documentation>
       <xsd:documentation>Tier=2</xsd:documentation>
+      <xsd:documentation>Model_Settings=MirroringDeviceSettings</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
       <xsd:complexContent>
@@ -8998,6 +9021,7 @@ PlaneInfo (as Plane)
       <xsd:documentation>Category=Mirrors</xsd:documentation>
       <xsd:documentation>Description=This element describes a total reflection Mirror.</xsd:documentation>
       <xsd:documentation>Tier=2</xsd:documentation>
+      <xsd:documentation>Model_Settings=MirroringDeviceSettings</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
       <xsd:complexContent>
@@ -9475,6 +9499,7 @@ PlaneInfo (as Plane)
       <xsd:documentation>Category=AdditionalOptics</xsd:documentation>
       <xsd:documentation>Description=This element describes a Prism positioned in the Light Path for one or more Channels available for this Instrument. A Prism is a block of glass or other transparent material with at least two intersecting flat, polished surfaces, used to disperse light or deviate it through an angle. A Prism can be viewed as an ensemble of different rigidly mounted Mirrors, with each face having a permanent orientation with respect to others. A Prism can be employed to deflect or deviate a light beam, rotate or invert an Image, separate polarization states, or disperse light into its component Wavelengths. An Instrument may have several Prisms with different functionality such as Polarizing, Reflecting, or Refracting (or Dispersing). Polarizing Prisms are birefringent crystals that divide incident non-polarized light into separate components polarized orthogonally to each other. Reflecting Prisms are useful for redirecting light beams by total internal reflection. Refracting (or Dispersing) Prisms can be employed to bend and separate light into its component colors. This element can be associated with an optional Optics Turret.</xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
+      <xsd:documentation>Model_Settings=PrismSettings</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
       <xsd:complexContent>
@@ -9551,7 +9576,7 @@ PlaneInfo (as Plane)
           </xsd:attribute>
           <xsd:attribute name="DIC" type="DICPrismType" use="optional">
             <xsd:annotation>
-              <xsd:documentation>Descpription=This field records whether this Prism is used for Differential Interference Contrast (DIC) microscopy and, if so, what DIC-compatible type it is (i.e., deSenarmont, Nomarski or Wollaston).</xsd:documentation>
+              <xsd:documentation>Description=This field records whether this Prism is used for Differential Interference Contrast (DIC) microscopy and, if so, what DIC-compatible type it is (i.e., deSenarmont, Nomarski or Wollaston).</xsd:documentation>
               <xsd:documentation>Tier=1</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
@@ -9563,19 +9588,19 @@ PlaneInfo (as Plane)
           </xsd:attribute>
           <xsd:attribute name="Condenser" type="xsd:boolean" use="required">
             <xsd:annotation>
-              <xsd:documentation>Descpription=This field records whether this Prism is within the Condenser (True) or the Objective (False).</xsd:documentation>
+              <xsd:documentation>Description=This field records whether this Prism is within the Condenser (True) or the Objective (False).</xsd:documentation>
               <xsd:documentation>Tier=2</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
           <xsd:attribute name="OilObjective" type="xsd:boolean" use="required">
             <xsd:annotation>
-              <xsd:documentation>Descpription=This field records whether this Prism is designed to work with oil Objectives (True) or not (False).</xsd:documentation>
+              <xsd:documentation>Description=This field records whether this Prism is designed to work with oil Objectives (True) or not (False).</xsd:documentation>
               <xsd:documentation>Tier=2</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
           <xsd:attribute name="Compound" type="xsd:boolean">
             <xsd:annotation>
-              <xsd:documentation>Descpription=This field records whether this Prism is a Compound Prism (i.e., a set of multiple triangular prism elements placed in contact, and often cemented together to form a solid assembly; True) or a Simple Prism (False).</xsd:documentation>
+              <xsd:documentation>Description=This field records whether this Prism is a Compound Prism (i.e., a set of multiple triangular prism elements placed in contact, and often cemented together to form a solid assembly; True) or a Simple Prism (False).</xsd:documentation>
               <xsd:documentation>Tier=2</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
@@ -9783,6 +9808,7 @@ PlaneInfo (as Plane)
       <xsd:documentation>Category=Detector.Camera</xsd:documentation>
       <xsd:documentation>Description=This element represents a Charged Coupled Device Camera.</xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
+      <xsd:documentation>Model_Settings=CameraSettings</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
       <xsd:complexContent>
@@ -9821,6 +9847,7 @@ PlaneInfo (as Plane)
       <xsd:documentation>Category=Detector.Camera</xsd:documentation>
       <xsd:documentation>Description=This element represents a device used to capture Analog Videos.</xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
+      <xsd:documentation>Model_Settings=CameraSettings</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
       <xsd:complexContent>
@@ -9835,6 +9862,7 @@ PlaneInfo (as Plane)
       <xsd:documentation>Category=Detector.Camera</xsd:documentation>
       <xsd:documentation>Description=This field records a complementary metal–oxide–semiconductor camera</xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
+      <xsd:documentation>Model_Settings=CameraSettings</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
       <xsd:complexContent>
@@ -9856,6 +9884,7 @@ PlaneInfo (as Plane)
       <xsd:documentation>Category=Detector.Camera</xsd:documentation>
       <xsd:documentation>Description=This field records an intensified Camera.</xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
+      <xsd:documentation>Model_Settings=CameraSettings</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
       <xsd:complexContent>
@@ -9953,6 +9982,7 @@ PlaneInfo (as Plane)
       <xsd:documentation>Category=Detector.PointDetector</xsd:documentation>
       <xsd:documentation>Description=A Photomultiplier Tube (PMT) is a photoemissive device in which the absorption of a photon results in the emission of an electron and it is used for the detection of very weak signals. These Detectors work by amplifying the electrons generated by a photocathode exposed to a photon flux. The higher the supplied voltage (PMTVoltage setting), the greater the amplification of the current (PMTGain setting) and thus sensitivity, but also the higher the noise in the acquired image. The amplifier offset (PMTOffset setting) defines black level setting of the image. A PMT has no inherent spatial information of the image.</xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
+      <xsd:documentation>Model_Settings=PointDetectorSettings</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
       <xsd:complexContent>
@@ -9998,13 +10028,14 @@ PlaneInfo (as Plane)
       <xsd:documentation>Category=Detector.PointDetector</xsd:documentation>
       <xsd:documentation>Description=This element represents a Photovoltaic Detector. Most photodiodes used in confocal microscopes are Avalanche Photodiode (APD) which because of the amplification gain have good sensitivities and less dark current.</xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
+      <xsd:documentation>Model_Settings=PointDetectorSettings</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
       <xsd:complexContent>
         <xsd:extension base="PointDetector">
           <xsd:attribute name="Avalanche" type="xsd:boolean">
             <xsd:annotation>
-              <xsd:documentation>Description=This field records whether (True) or not (False) this is an "Avalanche" Photodiode.</xsd:documentation>
+              <xsd:documentation>Description=This field records whether (True) or not (False) this is an Avalanche Photodiode.</xsd:documentation>
               <xsd:documentation>Tier=2</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
@@ -10025,6 +10056,7 @@ PlaneInfo (as Plane)
       <xsd:documentation>Category=Detector.PointDetector</xsd:documentation>
       <xsd:documentation>Description=This element represents a hybrid Photomultiplier and Avalanche Photodiode (APD).</xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
+      <xsd:documentation>Model_Settings=PointDetectorSettings</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
       <xsd:complexContent>
@@ -10801,7 +10833,7 @@ PlaneInfo (as Plane)
           </xsd:attribute>
           <xsd:attribute name="PhotonCounting" type="xsd:boolean" use="optional">
             <xsd:annotation>
-              <xsd:documentation>Descriptioin=This boolean indicates whether this Photomultiplier Tube was operated in photon-counting mode (True) or not (False), during the Acquisition of this Chanel.</xsd:documentation>
+              <xsd:documentation>Description=This boolean indicates whether this Photomultiplier Tube was operated in photon-counting mode (True) or not (False), during the Acquisition of this Channel.</xsd:documentation>
               <xsd:documentation>Tier=1</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
@@ -11253,7 +11285,7 @@ PlaneInfo (as Plane)
         <xsd:documentation>Tier=1</xsd:documentation>
       </xsd:annotation>
     </xsd:attribute>
-    <xsd:attribute name="WavelenthUnit" use="optional" default="nm" type="UnitsLength">
+    <xsd:attribute name="WavelengthUnit" use="optional" default="nm" type="UnitsLength">
       <xsd:annotation>
         <xsd:documentation>Tier=1</xsd:documentation>
       </xsd:annotation>
@@ -11303,7 +11335,7 @@ PlaneInfo (as Plane)
         <xsd:documentation>Tier=1</xsd:documentation>
       </xsd:annotation>
     </xsd:attribute>
-    <xsd:attribute name="WavelenthUnit" use="optional" default="nm" type="UnitsLength">
+    <xsd:attribute name="WavelengthUnit" use="optional" default="nm" type="UnitsLength">
       <xsd:annotation>
         <xsd:documentation>Tier=1</xsd:documentation>
       </xsd:annotation>
@@ -12615,6 +12647,7 @@ PlaneInfo (as Plane)
       <xsd:documentation>Category=SpecialModality</xsd:documentation>
       <xsd:documentation>Description=Total Internal Reflection Fluorescence (TIRF) microscopy is a modality in which fluorescence is excited in a thin layer by an evanescent wave produced by total internal reflection. This element describes a Hardware Module that is used to achieve TIRF microscopy.</xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
+      <xsd:documentation>Model_Settings=TIRFSettings</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
       <xsd:complexContent>
@@ -12638,12 +12671,6 @@ PlaneInfo (as Plane)
           <xsd:attribute name="RIng" type="xsd:boolean" use="required">
             <xsd:annotation>
               <xsd:documentation>Description=This field captures whether this TIRF Hardware Module employs Ring (also known as spinning-spot) TIRF (True) or Spot TIRF (False).</xsd:documentation>
-              <xsd:documentation>Tier=1</xsd:documentation>
-            </xsd:annotation>
-          </xsd:attribute>
-          <xsd:attribute name="HILO" type="xsd:boolean">
-            <xsd:annotation>
-              <xsd:documentation>Description=This field capture whether this TIRF Hardware Module employs Highly Inclined and Laminated Optical (HILO) sheet (True) or "true" TIRF.</xsd:documentation>
               <xsd:documentation>Tier=1</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
@@ -12714,6 +12741,7 @@ PlaneInfo (as Plane)
       <xsd:documentation>Category=Confocal</xsd:documentation>
       <xsd:documentation>Description=A Raster Scanner is typically used for systematic periodic scanning (raster scanning) of the Laser beam or of the Specimen position, either in one or in two dimensions. Refer to https://www.iso.org/standard/69820.html for further details and measurement methods.</xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
+      <xsd:documentation>Model_Settings=ConfocalScannerSettings</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
       <xsd:complexContent>
@@ -12757,6 +12785,7 @@ PlaneInfo (as Plane)
       <xsd:documentation>Category=Confocal</xsd:documentation>
       <xsd:documentation>Description=A Spinning disk confocal scanner is a device in which the scanning of the illuminated and detected spots is performed simultaneously using an opaque disk called a Nipkow disk, which has many ideally identical small holes arranged in Archimedean spirals. Refer to https://www.iso.org/standard/69820.html for further details and measurement methods.</xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
+      <xsd:documentation>Model_Settings=ConfocalScannerSettings</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
       <xsd:complexContent>
@@ -12793,141 +12822,145 @@ PlaneInfo (as Plane)
     <xsd:annotation>
       <xsd:documentation>Description=This is a device that performs spatial, temporal, and spectral modulations of light on the basis of acousto-optic (AO) diffraction. AO diffraction is a phenomenon whereby an acoustic wave propagating in an optically transparent medium, produces a periodic modulation of the index of refraction of the medium via the elasto-optical effect and might therefore diffract portions of an incident light into one or more directions.</xsd:documentation>
     </xsd:annotation>
-    <xsd:sequence>
-      <xsd:element maxOccurs="unbounded" ref="WavelengthRange"/>
-      <xsd:element maxOccurs="unbounded" minOccurs="0" ref="AnnotationRef"/>
-    </xsd:sequence>
-    <xsd:attribute name="ID" type="AcoustoOpticalDeviceID" use="required">
-      <xsd:annotation>
-        <xsd:documentation>Description=A Unique Identifier for this component.</xsd:documentation>
-        <xsd:documentation>Tier=1</xsd:documentation>
-      </xsd:annotation>
-    </xsd:attribute>
-    <xsd:attribute name="Name" type="Denomination" use="optional">
-      <xsd:annotation>
-        <xsd:documentation>Description=A User-defined Name for this component.</xsd:documentation>
-        <xsd:documentation>Tier=1</xsd:documentation>
-      </xsd:annotation>
-    </xsd:attribute>
-    <xsd:attribute name="AttenuationCoefficient" type="xsd:float">
-      <xsd:annotation>
-        <xsd:documentation>Description=This field records the attenuation coeffieient of this optical element. The attenuation coefficient (aka blocking coefficient) is used as a measure of the out-of-band attenuation of an optical filter or dichroic mirror over an extended range of the spectrum. The attenuation coefficient is often defined in units of optical density (OD), wherease OD= -log10(T), and T=Transmittance (0≤T≤1).</xsd:documentation>
-        <xsd:documentation>Tier=2</xsd:documentation>
-      </xsd:annotation>
-    </xsd:attribute>
-    <xsd:attribute name="AttenuationMethod" type="AttenuationMethodType">
-      <xsd:annotation>
-        <xsd:documentation>Description=This field records the mean by which this optical element achieves out-of-band transmission attenuation.</xsd:documentation>
-        <xsd:documentation>Tier=2</xsd:documentation>
-      </xsd:annotation>
-    </xsd:attribute>
-    <xsd:attribute name="ContrastRatio" type="PercentFraction">
-      <xsd:annotation>
-        <xsd:documentation>Description=This field records the reports on the ratio of maximum versus minimum transmittance.</xsd:documentation>
-        <xsd:documentation>Tier=2</xsd:documentation>
-      </xsd:annotation>
-    </xsd:attribute>
-    <xsd:attribute name="Coating" type="xsd:string">
-      <xsd:annotation>
-        <xsd:documentation>Description=An optical Coating consists of one or more thin layers of material deposited on an optical component such as a Lens or Mirror, which alters the way in which the optic reflects and transmits light. This field records the thin-film material used to coat the non linear crystal and reduce surface reflection. </xsd:documentation>
-        <xsd:documentation>Tier=2</xsd:documentation>
-      </xsd:annotation>
-    </xsd:attribute>
-    <xsd:attribute name="TuningAccuracy" type="xsd:float" use="required">
-      <xsd:annotation>
-        <xsd:documentation>Description=This field measures the accuracy with which the wavelength diskriminating capacity of this device can be "tuned" or changed.</xsd:documentation>
-        <xsd:documentation>Tier=3</xsd:documentation>
-      </xsd:annotation>
-    </xsd:attribute>
-    <xsd:attribute name="TuningAccuracyUnit" type="UnitsLength" use="required">
-      <xsd:annotation>
-        <xsd:documentation>Tier=3</xsd:documentation>
-      </xsd:annotation>
-    </xsd:attribute>
-    <xsd:attribute name="Polarization" type="PolarizationMode" use="required">
-      <xsd:annotation>
-        <xsd:documentation>Description=This field records the polarization effect of this optical element. Dichroic beamsplitters (and, in fact, any thin-film interference coating that is used at non-normal angles-of-incidence) will cause some amount of polarization, the precise effect varying greatly with wavelength and with the particular coating design.</xsd:documentation>
-        <xsd:documentation>Tier=3</xsd:documentation>
-      </xsd:annotation>
-    </xsd:attribute>
-    <xsd:attribute name="Bragg" type="xsd:boolean" use="required">
-      <xsd:annotation>
-        <xsd:documentation>Description=This indicates whether this device is operated under Bragg regime (True) or not. In Bragg regime, at one particular incidence angle , only one diffraction order is produced - the others are annihilated by destructive interference.</xsd:documentation>
-      </xsd:annotation>
-    </xsd:attribute>
-    <xsd:attribute name="TuningResolution" type="xsd:float">
-      <xsd:annotation>
-        <xsd:documentation>Description=This field measures the wavelength diskriminating capacity of this device and it is defined as the full width at half-maximum (FWHM) of the main lobe from the selected optical output, and is a function of both wavelength and device configuration.</xsd:documentation>
-        <xsd:documentation>Tier=3</xsd:documentation>
-      </xsd:annotation>
-    </xsd:attribute>
-    <xsd:attribute name="TuningResolutionUnit" type="UnitsLength">
-      <xsd:annotation>
-        <xsd:documentation>Tier=3</xsd:documentation>
-      </xsd:annotation>
-    </xsd:attribute>
-    <xsd:attribute name="TuningRate" type="xsd:float">
-      <xsd:annotation>
-        <xsd:documentation>Description=This field records the time it takes for this device to be tuned without degrading resolution. This time is determined by the velocity of the acoustic wage as it traverses the aperture of this device.</xsd:documentation>
-        <xsd:documentation>Tier=3</xsd:documentation>
-      </xsd:annotation>
-    </xsd:attribute>
-    <xsd:attribute name="TuningRateUnit" type="UnitsTime">
-      <xsd:annotation>
-        <xsd:documentation>Tier=3</xsd:documentation>
-      </xsd:annotation>
-    </xsd:attribute>
-    <xsd:attribute name="AngleOfIncidence" type="xsd:float">
-      <xsd:annotation>
-        <xsd:documentation>Description=This field records the optimal angle of incidence (AOI) for this mirror. The AOI is the angle between the optical axis of the incident light and the axis normal to the surface of the mirror. In specular reflection AOI is by definition equal to the Angle Of Reflection (AOR).</xsd:documentation>
-        <xsd:documentation>Tier=3</xsd:documentation>
-      </xsd:annotation>
-    </xsd:attribute>
-    <xsd:attribute name="AngleOfIncidenceUnit" type="UnitsAngle">
-      <xsd:annotation>
-        <xsd:documentation>Tier=3</xsd:documentation>
-      </xsd:annotation>
-    </xsd:attribute>
-    <xsd:attribute name="AngularAperture" type="xsd:float">
-      <xsd:annotation>
-        <xsd:documentation>Description=This field records the angular aperture is the half-angle of the cone of light entering the this device. It is, therefore, a measure of how much of the incident light actually passes through the device.</xsd:documentation>
-        <xsd:documentation>Tier=3</xsd:documentation>
-      </xsd:annotation>
-    </xsd:attribute>
-    <xsd:attribute name="AngularApertureUnit" type="UnitsAngle">
-      <xsd:annotation>
-        <xsd:documentation>Tier=3</xsd:documentation>
-      </xsd:annotation>
-    </xsd:attribute>
-    <xsd:attribute name="Material" type="AODMaterial">
-      <xsd:annotation>
-        <xsd:documentation>Description=This field describes the transparent crystal or glass material used to build this device, through which the light propagates and whose refractive properties can be modulated by acoustic waves of different frequencies.</xsd:documentation>
-        <xsd:documentation>Tier=3</xsd:documentation>
-      </xsd:annotation>
-    </xsd:attribute>
-    <xsd:attribute name="Design" type="AODDesign">
-      <xsd:annotation>
-        <xsd:documentation>Description=This field describes wheher the acoustic wave is absorbed or reflected by the distal surface of the crystal.</xsd:documentation>
-        <xsd:documentation>Tier=3</xsd:documentation>
-      </xsd:annotation>
-    </xsd:attribute>
-    <xsd:attribute name="Geometry" type="AODGeometry">
-      <xsd:annotation>
-        <xsd:documentation>Description=This field describes the the direction of the applied electric field with respect to the light beam. Longitudinal devices have the electric field in the direction of the light beam, which passes through holes in the electrodes. Transverse devices have the electric field perpendicular to the light beam.</xsd:documentation>
-        <xsd:documentation>Tier=3</xsd:documentation>
-      </xsd:annotation>
-    </xsd:attribute>
-    <xsd:attribute name="OperatingTemperature" type="xsd:float">
-      <xsd:annotation>
-        <xsd:documentation>Description=This field records the ambient temperature at which this device is designed to operate, according to the Manufacturer.</xsd:documentation>
-        <xsd:documentation>Tier=3</xsd:documentation>
-      </xsd:annotation>
-    </xsd:attribute>
-    <xsd:attribute name="OperatingTemperatureUnit" default="°C" type="UnitsTemperature">
-      <xsd:annotation>
-        <xsd:documentation>Tier=3</xsd:documentation>
-      </xsd:annotation>
-    </xsd:attribute>
+    <xsd:complexContent>
+      <xsd:extension base="ManufacturerSpec">
+        <xsd:sequence>
+          <xsd:element ref="AnnotationRef" maxOccurs="1" minOccurs="0"/>
+        </xsd:sequence>
+        <xsd:attribute name="ID" type="AcoustoOpticalDeviceID" use="required">
+          <xsd:annotation>
+            <xsd:documentation>Description=A Unique Identifier for this component.</xsd:documentation>
+            <xsd:documentation>Tier=1</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="Name" type="Denomination" use="optional">
+          <xsd:annotation>
+            <xsd:documentation>Description=A User-defined Name for this component.</xsd:documentation>
+            <xsd:documentation>Tier=1</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="AttenuationCoefficient" type="xsd:float">
+          <xsd:annotation>
+            <xsd:documentation>Description=This field records the attenuation coeffieient of this optical element. The attenuation coefficient (aka blocking coefficient) is used as a measure of the out-of-band attenuation of an optical filter or dichroic mirror over an extended range of the spectrum. The attenuation coefficient is often defined in units of optical density (OD), wherease OD= -log10(T), and T=Transmittance (0≤T≤1).</xsd:documentation>
+            <xsd:documentation>Tier=2</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="AttenuationMethod" type="AttenuationMethodType">
+          <xsd:annotation>
+            <xsd:documentation>Description=This field records the mean by which this optical element achieves out-of-band transmission attenuation.</xsd:documentation>
+            <xsd:documentation>Tier=2</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="ContrastRatio" type="PercentFraction">
+          <xsd:annotation>
+            <xsd:documentation>Description=This field records the reports on the ratio of maximum versus minimum transmittance.</xsd:documentation>
+            <xsd:documentation>Tier=2</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="Coating" type="xsd:string">
+          <xsd:annotation>
+            <xsd:documentation>Description=An optical Coating consists of one or more thin layers of material deposited on an optical component such as a Lens or Mirror, which alters the way in which the optic reflects and transmits light. This field records the thin-film material used to coat the non linear crystal and reduce surface reflection. </xsd:documentation>
+            <xsd:documentation>Tier=2</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="TuningAccuracy" type="xsd:float" use="required">
+          <xsd:annotation>
+            <xsd:documentation>Description=This field measures the accuracy with which the wavelength diskriminating capacity of this device can be tuned or changed.</xsd:documentation>
+            <xsd:documentation>Tier=3</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="TuningAccuracyUnit" type="UnitsLength" use="required">
+          <xsd:annotation>
+            <xsd:documentation>Tier=3</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="Polarization" type="PolarizationMode" use="required">
+          <xsd:annotation>
+            <xsd:documentation>Description=This field records the polarization effect of this optical element. Dichroic beamsplitters (and, in fact, any thin-film interference coating that is used at non-normal angles-of-incidence) will cause some amount of polarization, the precise effect varying greatly with wavelength and with the particular coating design.</xsd:documentation>
+            <xsd:documentation>Tier=3</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="Bragg" type="xsd:boolean" use="required">
+          <xsd:annotation>
+            <xsd:documentation>Description=This indicates whether this device is operated under Bragg regime (True) or not. In Bragg regime, at one particular incidence angle , only one diffraction order is produced - the others are annihilated by destructive interference.</xsd:documentation>
+            <xsd:documentation>Tier=3</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="TuningResolution" type="xsd:float">
+          <xsd:annotation>
+            <xsd:documentation>Description=This field measures the wavelength diskriminating capacity of this device and it is defined as the full width at half-maximum (FWHM) of the main lobe from the selected optical output, and is a function of both wavelength and device configuration.</xsd:documentation>
+            <xsd:documentation>Tier=3</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="TuningResolutionUnit" type="UnitsLength">
+          <xsd:annotation>
+            <xsd:documentation>Tier=3</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="TuningRate" type="xsd:float">
+          <xsd:annotation>
+            <xsd:documentation>Description=This field records the time it takes for this device to be tuned without degrading resolution. This time is determined by the velocity of the acoustic wage as it traverses the aperture of this device.</xsd:documentation>
+            <xsd:documentation>Tier=3</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="TuningRateUnit" type="UnitsTime">
+          <xsd:annotation>
+            <xsd:documentation>Tier=3</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="AngleOfIncidence" type="xsd:float">
+          <xsd:annotation>
+            <xsd:documentation>Description=This field records the optimal angle of incidence (AOI) for this mirror. The AOI is the angle between the optical axis of the incident light and the axis normal to the surface of the mirror. In specular reflection AOI is by definition equal to the Angle Of Reflection (AOR).</xsd:documentation>
+            <xsd:documentation>Tier=3</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="AngleOfIncidenceUnit" type="UnitsAngle">
+          <xsd:annotation>
+            <xsd:documentation>Tier=3</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="AngularAperture" type="xsd:float">
+          <xsd:annotation>
+            <xsd:documentation>Description=This field records the angular aperture is the half-angle of the cone of light entering the this device. It is, therefore, a measure of how much of the incident light actually passes through the device.</xsd:documentation>
+            <xsd:documentation>Tier=3</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="AngularApertureUnit" type="UnitsAngle">
+          <xsd:annotation>
+            <xsd:documentation>Tier=3</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="Material" type="AODMaterial">
+          <xsd:annotation>
+            <xsd:documentation>Description=This field describes the transparent crystal or glass material used to build this device, through which the light propagates and whose refractive properties can be modulated by acoustic waves of different frequencies.</xsd:documentation>
+            <xsd:documentation>Tier=3</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="Design" type="AODDesign">
+          <xsd:annotation>
+            <xsd:documentation>Description=This field describes wheher the acoustic wave is absorbed or reflected by the distal surface of the crystal.</xsd:documentation>
+            <xsd:documentation>Tier=3</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="Geometry" type="AODGeometry">
+          <xsd:annotation>
+            <xsd:documentation>Description=This field describes the the direction of the applied electric field with respect to the light beam. Longitudinal devices have the electric field in the direction of the light beam, which passes through holes in the electrodes. Transverse devices have the electric field perpendicular to the light beam.</xsd:documentation>
+            <xsd:documentation>Tier=3</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="OperatingTemperature" type="xsd:float">
+          <xsd:annotation>
+            <xsd:documentation>Description=This field records the ambient temperature at which this device is designed to operate, according to the Manufacturer.</xsd:documentation>
+            <xsd:documentation>Tier=3</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="OperatingTemperatureUnit" default="°C" type="UnitsTemperature">
+          <xsd:annotation>
+            <xsd:documentation>Tier=3</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+      </xsd:extension>
+    </xsd:complexContent>
   </xsd:complexType>
   <xsd:element name="AcoustoOpticalBeamSplitter" substitutionGroup="AcoustoOpticalDeviceGroup" type="AcoustoOpticalDevice">
     <xsd:annotation>
@@ -12936,6 +12969,7 @@ PlaneInfo (as Plane)
       <xsd:documentation>Category=Advanced</xsd:documentation>
       <xsd:documentation>Description=An AOBS is actually an AOTF used in an imaginative manner by Leica to replace the dichroic mirror usually used to separate the illumination and the detection paths in a confocal fluorescence Microscope. In practice the AOBS is programmed so that it leaves most of the incoming beam of light undeflected, and it only deflects light originating from specific laser lines. The AOBS allows the simultaneous deflection of multiple laser lines simultaneously towards the sample, while at the same time controlling the intensity of each line independently.</xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
+      <xsd:documentation>Model_Settings=AcoustoOpticalBeamSplitterSettings</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
   <xsd:element name="AcoustoOpticalDeflector" substitutionGroup="AcoustoOpticalDeviceGroup" type="AcoustoOpticalDevice">
@@ -12945,6 +12979,7 @@ PlaneInfo (as Plane)
       <xsd:documentation>Category=Advanced</xsd:documentation>
       <xsd:documentation>Description=Acousto-optic deflectors are devices which can be used to deflect a laser beam in one direction by a variable angle, controlled by the frequency of an electrical signal. Essentially, such a device is an acousto-optic modulator which is operated with an electrical drive signal of constant power but a variable frequency. The direction of the diffracted beam is determined by a Bragg condition, which contains the sound wavelength and thus depends on the sound frequency. </xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
+      <xsd:documentation>Model_Settings=AcoustoOpticalDeflectorSettings</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
   <xsd:element name="AcoustoOpticalModulator" substitutionGroup="AcoustoOpticalDeviceGroup">
@@ -12954,6 +12989,7 @@ PlaneInfo (as Plane)
       <xsd:documentation>Category=Advanced</xsd:documentation>
       <xsd:documentation>Description=An acousto-optic modulator (AOM) is an electronically-tunable device which can be used for controlling the direction and/or intensity of a laser beam by an acoustically-induced diffraction grating in a crystal. It is based on the acousto-optic effect, i.e. the modification of the refractive index of some crystal or glass material by the oscillating mechanical strain of a sound wave (photoelastic effect).</xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
+      <xsd:documentation>Model_Settings=AcoustoOpticalModulatorSettings</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
       <xsd:complexContent>
@@ -12975,6 +13011,7 @@ PlaneInfo (as Plane)
       <xsd:documentation>Category=Advanced</xsd:documentation>
       <xsd:documentation>Description=This is kind tuneable filter, whose optical filtering properties can be tuned by virtue of acousto-optical deflection. As such, different wavelengths exits the crystal at different angles depending on the applied radio wave frequency. In an optical system in which the input light beam strikes the crystal at a specific angle and can only re-enter the system at a specific angle, then one can choose the wavelength of the light diffracted at the output angle angle by varying the frequency of the acoustic wave.</xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
+      <xsd:documentation>Model_Settings=AcoustoOpticalTuneableFilterSettings</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
 
@@ -12988,141 +13025,144 @@ PlaneInfo (as Plane)
     <xsd:annotation>
       <xsd:documentation>Description=This is is a device which can be used for controlling the power (→ intensity modulators), phase (→ phase modulators) or polarization of light with an electrical control signal. It typically contains one or two Pockels cells, and possibly additional optical elements such as polarizers.</xsd:documentation>
     </xsd:annotation>
-    <xsd:sequence>
-      <xsd:element maxOccurs="unbounded" minOccurs="0" ref="AnnotationRef"/>
-      <xsd:element maxOccurs="unbounded" ref="WavelengthRange"/>
-    </xsd:sequence>
-    <xsd:attribute name="ID" type="ElectroOpticalDeviceID" use="required">
-      <xsd:annotation>
-        <xsd:documentation>Description=A Unique Identifier for this component.</xsd:documentation>
-        <xsd:documentation>Tier=1</xsd:documentation>
-      </xsd:annotation>
-    </xsd:attribute>
-    <xsd:attribute name="Name" type="Denomination" use="optional">
-      <xsd:annotation>
-        <xsd:documentation>Description=A User-defined Name for this component.</xsd:documentation>
-        <xsd:documentation>Tier=2</xsd:documentation>
-      </xsd:annotation>
-    </xsd:attribute>
-    <xsd:attribute name="AttenuationCoefficient" type="xsd:float">
-      <xsd:annotation>
-        <xsd:documentation>Description=This field records the attenuation coeffieient of this optical element. The attenuation coefficient (aka blocking coefficient) is used as a measure of the out-of-band attenuation of an optical filter or dichroic mirror over an extended range of the spectrum. The attenuation coefficient is often defined in units of optical density (OD), wherease OD= -log10(T), and T=Transmittance (0≤T≤1).</xsd:documentation>
-        <xsd:documentation>Tier=2</xsd:documentation>
-      </xsd:annotation>
-    </xsd:attribute>
-    <xsd:attribute name="AttenuationMethod" type="AttenuationMethodType">
-      <xsd:annotation>
-        <xsd:documentation>Description=This field records the mean by which this optical element achieves out-of-band transmission attenuation.</xsd:documentation>
-        <xsd:documentation>Tier=2</xsd:documentation>
-      </xsd:annotation>
-    </xsd:attribute>
-    <xsd:attribute name="ModulationType" type="ModulationModeList">
-      <xsd:annotation>
-        <xsd:documentation>Description=This field records the describes the type of modulation this devices produces on a beam of light.</xsd:documentation>
-        <xsd:documentation>Tier=2</xsd:documentation>
-      </xsd:annotation>
-    </xsd:attribute>
-    <xsd:attribute name="ContrastRatio" type="PercentFraction">
-      <xsd:annotation>
-        <xsd:documentation>Description=This field records the reports on the ratio of maximum versus minimum transmittance.</xsd:documentation>
-        <xsd:documentation>Tier=2</xsd:documentation>
-      </xsd:annotation>
-    </xsd:attribute>
-    <xsd:attribute name="Coating" type="xsd:string">
-      <xsd:annotation>
-        <xsd:documentation>Description=An optical Coating consists of one or more thin layers of material deposited on an optical component such as a Lens or Mirror, which alters the way in which the optic reflects and transmits light. This field records the thin-film material used to coat the non linear crystal and reduce surface reflection.</xsd:documentation>
-        <xsd:documentation>Tier=2</xsd:documentation>
-      </xsd:annotation>
-    </xsd:attribute>
-    <xsd:attribute name="TuningAccuracy" type="xsd:float" use="required">
-      <xsd:annotation>
-        <xsd:documentation>Description=This field measures the accuracy with which the wavelength diskriminating capacity of this device can be "tuned" or changed.</xsd:documentation>
-        <xsd:documentation>Tier=3</xsd:documentation>
-      </xsd:annotation>
-    </xsd:attribute>
-    <xsd:attribute name="TuningAccuracyUnit" type="UnitsLength" use="required">
-      <xsd:annotation>
-        <xsd:documentation>Tier=3</xsd:documentation>
-      </xsd:annotation>
-    </xsd:attribute>
-    <xsd:attribute name="Polarization" type="PolarizationMode" use="required">
-      <xsd:annotation>
-        <xsd:documentation>Description=This field records the polarization effect of this optical element. Dichroic beamsplitters (and, in fact, any thin-film interference coating that is used at non-normal angles-of-incidence) will cause some amount of polarization, the precise effect varying greatly with wavelength and with the particular coating design.</xsd:documentation>
-        <xsd:documentation>Tier=3</xsd:documentation>
-      </xsd:annotation>
-    </xsd:attribute>
-    <xsd:attribute name="TuningResolution" type="xsd:float">
-      <xsd:annotation>
-        <xsd:documentation>Description=This field measures the wavelength diskriminating capacity of this device and it is defined as the full width at half-maximum (FWHM) of the main lobe from the selected optical output, and is a function of both wavelength and device configuration.</xsd:documentation>
-        <xsd:documentation>Tier=3</xsd:documentation>
-      </xsd:annotation>
-    </xsd:attribute>
-    <xsd:attribute name="TuningResolutionUnit" type="UnitsLength">
-      <xsd:annotation>
-        <xsd:documentation>Tier=3</xsd:documentation>
-      </xsd:annotation>
-    </xsd:attribute>
-    <xsd:attribute name="TuningRate" type="xsd:float">
-      <xsd:annotation>
-        <xsd:documentation>Description=This field records the time it takes for this device to be tuned without degrading resolution. This time is determined by the velocity of the acoustic wage as it traverses the aperture of this device.</xsd:documentation>
-        <xsd:documentation>Tier=3</xsd:documentation>
-      </xsd:annotation>
-    </xsd:attribute>
-    <xsd:attribute name="TuningRateUnit" type="UnitsTime">
-      <xsd:annotation>
-        <xsd:documentation>Tier=3</xsd:documentation>
-      </xsd:annotation>
-    </xsd:attribute>
-    <xsd:attribute name="AngleOfIncidence" type="xsd:float">
-      <xsd:annotation>
-        <xsd:documentation>Description=This field records the optimal angle of incidence (AOI) for this mirror. The AOI is the angle between the optical axis of the incident light and the axis normal to the surface of the mirror. In specular reflection AOI is by definition equal to the Angle Of Reflection (AOR).</xsd:documentation>
-        <xsd:documentation>Tier=3</xsd:documentation>
-      </xsd:annotation>
-    </xsd:attribute>
-    <xsd:attribute name="AngleOfIncidenceUnit" type="UnitsAngle">
-      <xsd:annotation>
-        <xsd:documentation>Tier=3</xsd:documentation>
-      </xsd:annotation>
-    </xsd:attribute>
-    <xsd:attribute name="AngularAperture" type="xsd:float">
-      <xsd:annotation>
-        <xsd:documentation>Description=This field records the angular aperture is the half-angle of the cone of light entering the this device. It is, therefore, a measure of how much of the incident light actually passes through the device.</xsd:documentation>
-        <xsd:documentation>Tier=3</xsd:documentation>
-      </xsd:annotation>
-    </xsd:attribute>
-    <xsd:attribute name="AngularApertureUnit" type="UnitsAngle">
-      <xsd:annotation>
-        <xsd:documentation>Tier=3</xsd:documentation>
-      </xsd:annotation>
-    </xsd:attribute>
-    <xsd:attribute name="OperatingTemperature" type="xsd:float">
-      <xsd:annotation>
-        <xsd:documentation>Description=This field records the ambient temperature at which this device is designed to operate, according to the Manufacturer.</xsd:documentation>
-        <xsd:documentation>Tier=3</xsd:documentation>
-      </xsd:annotation>
-    </xsd:attribute>
-    <xsd:attribute name="OperatingTemperatureUnit" default="°C" type="UnitsTemperature">
-      <xsd:annotation>
-        <xsd:documentation>Tier=3</xsd:documentation>
-      </xsd:annotation>
-    </xsd:attribute>
-    <xsd:attribute name="OperatingHumidity" type="PercentFraction">
-      <xsd:annotation>
-        <xsd:documentation>Description=This field records the ambient humidity at which this device is designed to operate, according to the manufactuer.</xsd:documentation>
-        <xsd:documentation>Tier=3</xsd:documentation>
-      </xsd:annotation>
-    </xsd:attribute>
-    <xsd:attribute name="WarmUpTime" type="xsd:float">
-      <xsd:annotation>
-        <xsd:documentation>Description=This field records the time it takes for this device to reach operating conditions according to the Manufacturer.</xsd:documentation>
-        <xsd:documentation>Tier=3</xsd:documentation>
-      </xsd:annotation>
-    </xsd:attribute>
-    <xsd:attribute name="WarmUpTimeUnit" type="UnitsTime">
-      <xsd:annotation>
-        <xsd:documentation>Tier=3</xsd:documentation>
-      </xsd:annotation>
-    </xsd:attribute>
+    <xsd:complexContent>
+      <xsd:extension base="ManufacturerSpec">
+        <xsd:sequence>
+          <xsd:element ref="AnnotationRef" maxOccurs="1" minOccurs="0"/>
+        </xsd:sequence>
+        <xsd:attribute name="ID" type="ElectroOpticalDeviceID" use="required">
+          <xsd:annotation>
+            <xsd:documentation>Description=A Unique Identifier for this component.</xsd:documentation>
+            <xsd:documentation>Tier=1</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="Name" type="Denomination" use="optional">
+          <xsd:annotation>
+            <xsd:documentation>Description=A User-defined Name for this component.</xsd:documentation>
+            <xsd:documentation>Tier=2</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="AttenuationCoefficient" type="xsd:float">
+          <xsd:annotation>
+            <xsd:documentation>Description=This field records the attenuation coeffieient of this optical element. The attenuation coefficient (aka blocking coefficient) is used as a measure of the out-of-band attenuation of an optical filter or dichroic mirror over an extended range of the spectrum. The attenuation coefficient is often defined in units of optical density (OD), wherease OD= -log10(T), and T=Transmittance (0≤T≤1).</xsd:documentation>
+            <xsd:documentation>Tier=2</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="AttenuationMethod" type="AttenuationMethodType">
+          <xsd:annotation>
+            <xsd:documentation>Description=This field records the mean by which this optical element achieves out-of-band transmission attenuation.</xsd:documentation>
+            <xsd:documentation>Tier=2</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="ModulationType" type="ModulationModeList">
+          <xsd:annotation>
+            <xsd:documentation>Description=This field records the describes the type of modulation this devices produces on a beam of light.</xsd:documentation>
+            <xsd:documentation>Tier=2</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="ContrastRatio" type="PercentFraction">
+          <xsd:annotation>
+            <xsd:documentation>Description=This field records the reports on the ratio of maximum versus minimum transmittance.</xsd:documentation>
+            <xsd:documentation>Tier=2</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="Coating" type="xsd:string">
+          <xsd:annotation>
+            <xsd:documentation>Description=An optical Coating consists of one or more thin layers of material deposited on an optical component such as a Lens or Mirror, which alters the way in which the optic reflects and transmits light. This field records the thin-film material used to coat the non linear crystal and reduce surface reflection.</xsd:documentation>
+            <xsd:documentation>Tier=2</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="TuningAccuracy" type="xsd:float" use="required">
+          <xsd:annotation>
+            <xsd:documentation>Description=This field measures the accuracy with which the wavelength diskriminating capacity of this device can be tuned or changed.</xsd:documentation>
+            <xsd:documentation>Tier=3</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="TuningAccuracyUnit" type="UnitsLength" use="required">
+          <xsd:annotation>
+            <xsd:documentation>Tier=3</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="Polarization" type="PolarizationMode" use="required">
+          <xsd:annotation>
+            <xsd:documentation>Description=This field records the polarization effect of this optical element. Dichroic beamsplitters (and, in fact, any thin-film interference coating that is used at non-normal angles-of-incidence) will cause some amount of polarization, the precise effect varying greatly with wavelength and with the particular coating design.</xsd:documentation>
+            <xsd:documentation>Tier=3</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="TuningResolution" type="xsd:float">
+          <xsd:annotation>
+            <xsd:documentation>Description=This field measures the wavelength diskriminating capacity of this device and it is defined as the full width at half-maximum (FWHM) of the main lobe from the selected optical output, and is a function of both wavelength and device configuration.</xsd:documentation>
+            <xsd:documentation>Tier=3</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="TuningResolutionUnit" type="UnitsLength">
+          <xsd:annotation>
+            <xsd:documentation>Tier=3</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="TuningRate" type="xsd:float">
+          <xsd:annotation>
+            <xsd:documentation>Description=This field records the time it takes for this device to be tuned without degrading resolution. This time is determined by the velocity of the acoustic wage as it traverses the aperture of this device.</xsd:documentation>
+            <xsd:documentation>Tier=3</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="TuningRateUnit" type="UnitsTime">
+          <xsd:annotation>
+            <xsd:documentation>Tier=3</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="AngleOfIncidence" type="xsd:float">
+          <xsd:annotation>
+            <xsd:documentation>Description=This field records the optimal angle of incidence (AOI) for this mirror. The AOI is the angle between the optical axis of the incident light and the axis normal to the surface of the mirror. In specular reflection AOI is by definition equal to the Angle Of Reflection (AOR).</xsd:documentation>
+            <xsd:documentation>Tier=3</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="AngleOfIncidenceUnit" type="UnitsAngle">
+          <xsd:annotation>
+            <xsd:documentation>Tier=3</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="AngularAperture" type="xsd:float">
+          <xsd:annotation>
+            <xsd:documentation>Description=This field records the angular aperture is the half-angle of the cone of light entering the this device. It is, therefore, a measure of how much of the incident light actually passes through the device.</xsd:documentation>
+            <xsd:documentation>Tier=3</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="AngularApertureUnit" type="UnitsAngle">
+          <xsd:annotation>
+            <xsd:documentation>Tier=3</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="OperatingTemperature" type="xsd:float">
+          <xsd:annotation>
+            <xsd:documentation>Description=This field records the ambient temperature at which this device is designed to operate, according to the Manufacturer.</xsd:documentation>
+            <xsd:documentation>Tier=3</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="OperatingTemperatureUnit" default="°C" type="UnitsTemperature">
+          <xsd:annotation>
+            <xsd:documentation>Tier=3</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="OperatingHumidity" type="PercentFraction">
+          <xsd:annotation>
+            <xsd:documentation>Description=This field records the ambient humidity at which this device is designed to operate, according to the manufactuer.</xsd:documentation>
+            <xsd:documentation>Tier=3</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="WarmUpTime" type="xsd:float">
+          <xsd:annotation>
+            <xsd:documentation>Description=This field records the time it takes for this device to reach operating conditions according to the Manufacturer.</xsd:documentation>
+            <xsd:documentation>Tier=3</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="WarmUpTimeUnit" type="UnitsTime">
+          <xsd:annotation>
+            <xsd:documentation>Tier=3</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+      </xsd:extension>
+    </xsd:complexContent>
   </xsd:complexType>
   <xsd:element name="DeformableMirror" substitutionGroup="ElectroOpticalDeviceGroup">
     <xsd:annotation>
@@ -13131,6 +13171,7 @@ PlaneInfo (as Plane)
       <xsd:documentation>Category=LightModulation</xsd:documentation>
       <xsd:documentation>Description=A Deformable Mirror (DM) is a Mechano Electro-Optical Device that has a controllable spatially varying mirror surface to modulate the wavefront of a beam of light impinging on it. This type of device is typically used in adaptive optics.</xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
+      <xsd:documentation>Model_Settings=DeformableMirrorSettings</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
       <xsd:complexContent>
@@ -13191,6 +13232,7 @@ PlaneInfo (as Plane)
       <xsd:documentation>Category=LightModulation</xsd:documentation>
       <xsd:documentation>Description=An Electro-Optical Modulator (EOM) is a device which can be used for controlling the power (→ intensity modulators), phase (→ phase modulators) or polarization of light with an electrical control signal.</xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
+      <xsd:documentation>Model_Settings=ElectroOpticalModulatorSettings</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
       <xsd:complexContent>
@@ -13209,6 +13251,7 @@ PlaneInfo (as Plane)
       <xsd:documentation>Category=LightModulation</xsd:documentation>
       <xsd:documentation>Description=This element describes a liquid crystal tunable filter (LCTF) is an optical filter that uses electronically controlled liquid crystal (LC) elements to transmit a selectable wavelength of light and exclude others.</xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
+      <xsd:documentation>Model_Settings=LiquidCrystalTuneableFilterSettings</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
       <xsd:complexContent>
@@ -13241,6 +13284,7 @@ PlaneInfo (as Plane)
       <xsd:documentation>Category=LightModulation</xsd:documentation>
       <xsd:documentation>Description=A Spatial Light Modulator (SLM) is device that imposes a changeable spatially varying modulation on a beam of light. The modulation can be in Intensity or in Phase or both.</xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
+      <xsd:documentation>Model_Settings=SpatialLightModulatorSettings</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
       <xsd:complexContent>
@@ -13392,6 +13436,7 @@ PlaneInfo (as Plane)
       <xsd:documentation>Category=Apertures</xsd:documentation>
       <xsd:documentation>Description=A Diffraction Grating is an optical component with a periodic structure that splits and diffracts light into several beams travelling in different directions.</xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
+      <xsd:documentation>Model_Settings=DiffractiveGratingSettings</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
       <xsd:complexContent>
@@ -13442,6 +13487,7 @@ PlaneInfo (as Plane)
       <xsd:documentation>Category=Apertures</xsd:documentation>
       <xsd:documentation>Description=This element describes an opaque Masking Plate positioned in the light path to block specific components of the light beam.</xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
+      <xsd:documentation>Model_Settings=MaskingPlateSettings</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
       <xsd:complexContent>
@@ -13496,8 +13542,9 @@ PlaneInfo (as Plane)
       <xsd:documentation>Extension=Advanced+Confocal</xsd:documentation>
       <xsd:documentation>Domain=MicroscopeHardwareSpecifications</xsd:documentation>
       <xsd:documentation>Category=Apertures</xsd:documentation>
-      <xsd:documentation>Description=A pin-like aperture positioned axially to the Light Path, which can act as a spatial filter for a beam of light to "clean up" the output of lasers and / or to suppress out-of-focus light in a confocal Microscope. Specifically, in Confocal Microscopy, such Pinholes are diaphragm typically situated in a plane conjugate with the object, and they restrict the area in the object plane that is illuminated and/or from which light is collected.</xsd:documentation>
+      <xsd:documentation>Description=A pin-like aperture positioned axially to the Light Path, which can act as a spatial filter for a beam of light to clean up the output of lasers and / or to suppress out-of-focus light in a confocal Microscope. Specifically, in Confocal Microscopy, such Pinholes are diaphragm typically situated in a plane conjugate with the object, and they restrict the area in the object plane that is illuminated and/or from which light is collected.</xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
+      <xsd:documentation>Model_Settings=PinHoleSettings</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
       <xsd:complexContent>
@@ -13532,6 +13579,7 @@ PlaneInfo (as Plane)
       <xsd:documentation>Category=Detector.Camera</xsd:documentation>
       <xsd:documentation>Description=A two dimensional sensor for measuring the location of the wavefront, typically used in Adaptive Optics.</xsd:documentation>
       <xsd:documentation>Tier=2</xsd:documentation>
+      <xsd:documentation>Model_Settings=CameraSettings</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
       <xsd:complexContent>
@@ -13597,6 +13645,9 @@ PlaneInfo (as Plane)
   <!-- Ligth path elements -->
   <xsd:element name="TIRFLightPath" type="LightPath_type">
     <xsd:annotation>
+      <xsd:documentation>Extension=Advanced+Confocal</xsd:documentation>
+      <xsd:documentation>Domain=MicroscopeHardwareSpecifications</xsd:documentation>
+      <xsd:documentation>Category=ChildElement</xsd:documentation>
       <xsd:documentation>Description=A description of the Ligth Path utilized for this TIRF experiment.</xsd:documentation>
       <xsd:documentation>Tier=2</xsd:documentation>
     </xsd:annotation>
@@ -13627,7 +13678,7 @@ PlaneInfo (as Plane)
           </xsd:attribute>
           <xsd:attribute name="HILO" type="xsd:boolean">
             <xsd:annotation>
-              <xsd:documentation>Description=This field capture whether (True) or not (False) TIRF illumination for this Experiment was set up at or below the critical angle (63˚; "true" TIRF) or with oblique illumination (i.e., Highly Inclined and Laminated Optical - HILO).</xsd:documentation>
+              <xsd:documentation>Description=This field capture whether (True) or not (False) TIRF illumination for this Experiment was set up at or below the critical angle (63˚; true TIRF) or with oblique illumination (i.e., Highly Inclined and Laminated Optical - HILO).</xsd:documentation>
               <xsd:documentation>Tier=1</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
@@ -13707,7 +13758,7 @@ PlaneInfo (as Plane)
           </xsd:attribute>
           <xsd:attribute name="EffectiveZoom" type="xsd:float" use="required">
             <xsd:annotation>
-              <xsd:documentation>Description=This describes the effective zoom factor, aka "Confocal Zoom" or "Scan Zoom", utilized for the acquisition of this Image (e.g., zoom = 1.3).</xsd:documentation>
+              <xsd:documentation>Description=This describes the effective zoom factor, aka Confocal Zoom or Scan Zoom, utilized for the acquisition of this Image (e.g., zoom = 1.3).</xsd:documentation>
               <xsd:documentation>Tier=1</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
@@ -14417,7 +14468,7 @@ PlaneInfo (as Plane)
       </xsd:attribute>
       <xsd:attribute name="CheckedNA" type="xsd:boolean">
         <xsd:annotation>
-          <xsd:documentation>Description=In case the Numerical Aperture (NA) of the Objective utilized to perform this Optical Calibration is variable (i.e., as for example in case of Objectives that can be used with or without Cover Glass or Objectives that can be "dipped" in different media), this field capture whether (True) or not (False) a manual check was performed to confirm that the Numerical Aperture was set to the Maximum allowable value. This check is necessary because often NA regulation in these types of Objectives occurs via a rotating collar whose exact position is difficult to measure and reproduce across different Experiments. In this context, setting the collar to the Maximum NA position is desirable not only because it is more easy to reproduce and it best to estimate the maximal resolution of the system.</xsd:documentation>
+          <xsd:documentation>Description=In case the Numerical Aperture (NA) of the Objective utilized to perform this Optical Calibration is variable (i.e., as for example in case of Objectives that can be used with or without Cover Glass or Objectives that can be dipped in different media), this field capture whether (True) or not (False) a manual check was performed to confirm that the Numerical Aperture was set to the Maximum allowable value. This check is necessary because often NA regulation in these types of Objectives occurs via a rotating collar whose exact position is difficult to measure and reproduce across different Experiments. In this context, setting the collar to the Maximum NA position is desirable not only because it is more easy to reproduce and it best to estimate the maximal resolution of the system.</xsd:documentation>
           <xsd:documentation>Tier=2</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
@@ -14429,7 +14480,7 @@ PlaneInfo (as Plane)
       </xsd:attribute>
       <xsd:attribute name="NyquistRate" type="xsd:float">
         <xsd:annotation>
-          <xsd:documentation>Description=This field captures the ratio between the Pixel Size and the Nyquist Criterion. The Nyquist-Shannon sampling theorem establishes that "when sampling a signal (e.g., converting from an analog signal to digital), the sampling frequency must be greater than twice the Band Width of the input signal in order to be able to reconstruct the original perfectly from the sampled version" (Whittaker E.T., (1915). Proc. Roy. Soc. Edinburgh Sect. A, 25:181; Shannon C.E., (1949) Proc. IRE, 37:10). The Nyquist Criterion determines the minimal Sampling Density needed to capture ALL information from the Specimen into the Image. It can be shown that if the Sampling Density is higher than the Nyquist Rate (also referred to as Critical Sampling Distance) all information about the object is captured. It is important to note that the Nyquist Rate depends on the Objective Numerical Aperture (NA) and on the Excitation and Emission WaveLengths. The recommended Nyquist Rate is > 2 for conventional light microscopy, and it is 2.5 - 3 for high resolution imaging.</xsd:documentation>
+          <xsd:documentation>Description=This field captures the ratio between the Pixel Size and the Nyquist Criterion. The Nyquist-Shannon sampling theorem establishes that 'when sampling a signal (e.g., converting from an analog signal to digital), the sampling frequency must be greater than twice the Band Width of the input signal in order to be able to reconstruct the original perfectly from the sampled version' (Whittaker E.T., (1915). Proc. Roy. Soc. Edinburgh Sect. A, 25:181; Shannon C.E., (1949) Proc. IRE, 37:10). The Nyquist Criterion determines the minimal Sampling Density needed to capture ALL information from the Specimen into the Image. It can be shown that if the Sampling Density is higher than the Nyquist Rate (also referred to as Critical Sampling Distance) all information about the object is captured. It is important to note that the Nyquist Rate depends on the Objective Numerical Aperture (NA) and on the Excitation and Emission WaveLengths. The recommended Nyquist Rate is > 2 for conventional light microscopy, and it is 2.5 - 3 for high resolution imaging.</xsd:documentation>
           <xsd:documentation>Tier=2</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
