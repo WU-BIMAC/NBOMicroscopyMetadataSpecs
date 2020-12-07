@@ -3090,7 +3090,7 @@
       <xsd:documentation>Extension=Core</xsd:documentation>
       <xsd:documentation>Domain=ImageAcquisitionSettings</xsd:documentation>
       <xsd:documentation>Category=LightPath</xsd:documentation>
-      <xsd:documentation>Description=A Filter Set is typically composed of one Excitation Filter, one Emission Filter and a Dichroic. They might either be pre-assembled by the Manufacturer and purchased as a whole or they can be custom assembled on site depending on the needs of the user.</xsd:documentation>
+      <xsd:documentation>Description=This element represents a FilterSet that was used for the acquisition of this Channel. A Filter Set is typically composed of one Excitation Filter, one Emission Filter and a Dichroic. They might either be pre-assembled by the Manufacturer and purchased as a whole or they can be custom assembled on site depending on the needs of the user.</xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
@@ -4633,27 +4633,19 @@ PlaneInfo (as Plane)
       <xsd:documentation>Reference is an empty complex type that is contained and extended by all the *Ref elements and also the Settings Complex Type. Each *Ref element defines an attribute named ID of simple type *ID and no other information. Each simple type *ID is restricted to the base type LSID with an appropriate pattern.</xsd:documentation>
     </xsd:annotation>
   </xsd:complexType>
-  <xsd:element name="ImageRef">
+  <xsd:element name="ImageRef" type="ImageRef">
     <!-- top level definition -->
     <xsd:annotation>
       <xsd:documentation>Description=The ImageRef element is a reference to an Image element. </xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
     </xsd:annotation>
-    <xsd:complexType>
-      <xsd:complexContent>
-        <xsd:extension base="Reference">
-          <xsd:attribute name="ID" use="required" type="ImageID">
-            <xsd:annotation>
-              <xsd:documentation>Description=A Unique Identifier for this component.</xsd:documentation>
-              <xsd:documentation>Tier=1</xsd:documentation>
-            </xsd:annotation>
-          </xsd:attribute>
-        </xsd:extension>
-      </xsd:complexContent>
-    </xsd:complexType>
   </xsd:element>
   <xsd:element name="MicrobeamManipulationRef">
     <!-- top level definition -->
+    <xsd:annotation>
+      <xsd:documentation>Description=This empty element refers to an optional Microbeam Manipulation that was performed in connection with the Acquisition of this Image (e.g. a microbeam operation, such as a laser-induced photobleaching).</xsd:documentation>
+      <xsd:documentation>Tier=2</xsd:documentation>
+    </xsd:annotation>
     <xsd:complexType>
       <xsd:complexContent>
         <xsd:extension base="Reference">
@@ -4802,8 +4794,6 @@ PlaneInfo (as Plane)
       </xsd:complexContent>
     </xsd:complexType>
   </xsd:element>
-  <xsd:element name="FilterSetRef" type="FilterSetRef">
-    <!-- top level definition --> </xsd:element>
   <xsd:element name="ExcitationFilterRef" type="FilterRef">
     <xsd:annotation>
       <xsd:appinfo>
@@ -4828,6 +4818,18 @@ PlaneInfo (as Plane)
       <xsd:documentation>Tier=1</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
+  <xsd:complexType name="ImageRef">
+    <xsd:complexContent>
+      <xsd:extension base="Reference">
+        <xsd:attribute name="ID" use="required" type="ImageID">
+          <xsd:annotation>
+            <xsd:documentation>Description=A Unique Identifier for this component.</xsd:documentation>
+            <xsd:documentation>Tier=1</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
   <xsd:complexType name="FilterSetRef">
     <xsd:complexContent>
       <xsd:extension base="Reference">
@@ -7861,6 +7863,7 @@ PlaneInfo (as Plane)
       <xsd:documentation>Category=SamplePositioning.Focusing</xsd:documentation>
       <xsd:documentation>Description=This element describes a Focusing Device designed to electronically control a moving a mechanical part of the Microscope such as the Stage (see Stage-APE), or the Microscope Stand itself (e.g. most dissecting Microscopes). An example of such devices is the MFC-2000 Z-Axis Drive and Controller (http://www.asiimaging.com/controllers/mfc-2000-z-axis-drive-and-controller/#tab-id-4).</xsd:documentation>
       <xsd:documentation>Tier=2</xsd:documentation>
+      <xsd:documentation>Model_Settings=SamplePositioningSettings</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
       <xsd:complexContent>
@@ -7888,6 +7891,7 @@ PlaneInfo (as Plane)
       <xsd:documentation>Category=SamplePositioning.Focusing</xsd:documentation>
       <xsd:documentation>Description=A Focusing mechanism is used to obtain maximum sharpness in an Image by changing the distance between a Sample and the optical system forming the Image. In most cases, a Z-axis Focusing mechanism moves the Objective along the optical axis. This element describes a Focusing Device associated with a rotating Objective Turret associated with this Instrument. This type of device is often operated using a rack and pinion mechanism.</xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
+      <xsd:documentation>Model_Settings=SamplePositioningSettings</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
       <xsd:complexContent>
@@ -7902,6 +7906,7 @@ PlaneInfo (as Plane)
       <xsd:documentation>Category=SamplePositioning.Focusing</xsd:documentation>
       <xsd:documentation>Description=A Focusing mechanism is used to obtain maximum sharpness in an Image by changing the distance between a Sample and the optical system forming the Image. In most cases, a Z-axis Focusing mechanism moves the Objective along the optical axis. This element describes an optional objective nano-Focusing Device associated with this Instrument. These devices might be driven using piezoelectric mechanisms or linear motor actuators associated with crossed roller guideways. They typically achieve higher precision, accuracy, and speed than traditional Focusing Devices.</xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
+      <xsd:documentation>Model_Settings=SamplePositioningSettings</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
       <xsd:complexContent>
@@ -8020,6 +8025,7 @@ PlaneInfo (as Plane)
       <xsd:documentation>Category=SamplePositioning.Stage</xsd:documentation>
       <xsd:documentation>Description=This element describes a Stage fitted with ball-screw drives or rack mechanisms (sometimes equipped with precision calibration) to primarily assist in the translational movement of the Sample in the X and Y directions. A Mechanical Stage may be built into the Microscope Stand or it may consist of a removable insert. It may be manually operated, or it might be driven by linear electrodynamic motors, such as for example, in computer-controlled digital Microscopes. In some rare cases, a Mechanical Stage might also be used for Focusing (Z-axis movement), i.e., in simple surveying Microscopes.</xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
+      <xsd:documentation>Model_Settings=SamplePositioningSettings</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
       <xsd:complexContent>
@@ -8034,6 +8040,7 @@ PlaneInfo (as Plane)
       <xsd:documentation>Category=SamplePositioning.Stage</xsd:documentation>
       <xsd:documentation>Description=This describes an optional piezoelectric-driven sample nano-positioning device associated with this Instrument. These devices typically achieve higher precision, accuracy and speed with respect to traditional Mechanical Stages.</xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
+      <xsd:documentation>Model_Settings=SamplePositioningSettings</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
       <xsd:complexContent>
@@ -8570,59 +8577,140 @@ PlaneInfo (as Plane)
       </xsd:complexContent>
     </xsd:complexType>
   </xsd:element>
-
-  <xsd:element name="FilterWheel" substitutionGroup="OpticsHolderGroup">
+  <xsd:element name="FilterWheelGroup" abstract="true" type="FilterWheel" substitutionGroup="OpticsHolderGroup">
+    <xsd:annotation>
+      <xsd:documentation>Description=This element represents a circular holder for multiple individual Filters or Dichroics.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="FilterWheel">
+    <xsd:annotation>
+      <xsd:documentation>Description=This element represents a circular holder for multiple individual Filters or Dichroics.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="OpticsHolder"> </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="ExcitationFilterWheel" substitutionGroup="FilterWheelGroup">
     <xsd:annotation>
       <xsd:documentation>Extension=Basic</xsd:documentation>
       <xsd:documentation>Domain=MicroscopeHardwareSpecifications</xsd:documentation>
       <xsd:documentation>Category=Holders</xsd:documentation>
-      <xsd:documentation>Description=This element represents a circular holder for multiple individual Filters.</xsd:documentation>
+      <xsd:documentation>Description=This element represents a circular holder for multiple individual Excitation Filters.</xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
       <xsd:complexContent>
-        <xsd:extension base="OpticsHolder">
-          <xsd:choice>
-            <xsd:element ref="ExcitationFilterRef" maxOccurs="unbounded" minOccurs="0"/>
-            <xsd:element ref="StandardDichroicRef" maxOccurs="unbounded" minOccurs="0">
-              <xsd:annotation>
-                <xsd:documentation>Description=This field refers to an available Dichroic Mirror, which is part of this Filter Cube.</xsd:documentation>
-                <xsd:documentation>Tier=1</xsd:documentation>
-              </xsd:annotation>
-            </xsd:element>
-            <xsd:element ref="EmissionFilterRef" maxOccurs="unbounded" minOccurs="0"/>
-          </xsd:choice>
+        <xsd:extension base="FilterWheel">
+          <xsd:sequence>
+            <xsd:element ref="ExcitationFilterRef"/>
+          </xsd:sequence>
         </xsd:extension>
       </xsd:complexContent>
     </xsd:complexType>
   </xsd:element>
-
-  <xsd:element name="FilterSlider" substitutionGroup="OpticsHolderGroup">
+  <xsd:element name="DichroicFilterWheel" substitutionGroup="FilterWheelGroup">
     <xsd:annotation>
       <xsd:documentation>Extension=Basic</xsd:documentation>
       <xsd:documentation>Domain=MicroscopeHardwareSpecifications</xsd:documentation>
       <xsd:documentation>Category=Holders</xsd:documentation>
-      <xsd:documentation>Description=This element represents a linear holder for either Filter Cubes or individual Filers.</xsd:documentation>
+      <xsd:documentation>Description=This element represents a circular holder for multiple individual Dichroics.</xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
       <xsd:complexContent>
-        <xsd:extension base="OpticsHolder">
-          <xsd:choice>
-            <xsd:element ref="ExcitationFilterRef" maxOccurs="unbounded" minOccurs="0"/>
-            <xsd:element ref="StandardDichroicRef" maxOccurs="unbounded" minOccurs="0">
-              <xsd:annotation>
-                <xsd:documentation>Description=This field refers to an available Dichroic Mirror, which is part of this Filter Cube.</xsd:documentation>
-                <xsd:documentation>Tier=1</xsd:documentation>
-              </xsd:annotation>
-            </xsd:element>
-            <xsd:element ref="EmissionFilterRef" maxOccurs="unbounded" minOccurs="0"/>
-          </xsd:choice>
+        <xsd:extension base="FilterWheel">
+          <xsd:sequence>
+            <xsd:element ref="StandardDichroicRef"/>
+          </xsd:sequence>
         </xsd:extension>
       </xsd:complexContent>
     </xsd:complexType>
   </xsd:element>
-
+  <xsd:element name="EmissionFilterWheel" substitutionGroup="FilterWheelGroup">
+    <xsd:annotation>
+      <xsd:documentation>Extension=Basic</xsd:documentation>
+      <xsd:documentation>Domain=MicroscopeHardwareSpecifications</xsd:documentation>
+      <xsd:documentation>Category=Holders</xsd:documentation>
+      <xsd:documentation>Description=This element represents a circular holder for multiple individual Emission Filters.</xsd:documentation>
+      <xsd:documentation>Tier=1</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:complexContent>
+        <xsd:extension base="FilterWheel">
+          <xsd:sequence>
+            <xsd:element ref="EmissionFilterRef"/>
+          </xsd:sequence>
+        </xsd:extension>
+      </xsd:complexContent>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="FilterSliderGroup" abstract="true" type="FilterSlider" substitutionGroup="OpticsHolderGroup">
+    <xsd:annotation>
+      <xsd:documentation>Description=This element represents a linear holder for multiple individual Filters or Dichroics.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="FilterSlider">
+    <xsd:annotation>
+      <xsd:documentation>Description=This element represents a linear holder for multiple individual Filters or Dichroics.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="OpticsHolder"> </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="ExcitationFilterSlider" substitutionGroup="FilterSliderGroup">
+    <xsd:annotation>
+      <xsd:documentation>Extension=Basic</xsd:documentation>
+      <xsd:documentation>Domain=MicroscopeHardwareSpecifications</xsd:documentation>
+      <xsd:documentation>Category=Holders</xsd:documentation>
+      <xsd:documentation>Description=This element represents a linear holder for multiple individual Excitation Filters.</xsd:documentation>
+      <xsd:documentation>Tier=1</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:complexContent>
+        <xsd:extension base="FilterSlider">
+          <xsd:sequence>
+            <xsd:element ref="ExcitationFilterRef"/>
+          </xsd:sequence>
+        </xsd:extension>
+      </xsd:complexContent>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="DichroicFilterSlider" substitutionGroup="FilterSliderGroup">
+    <xsd:annotation>
+      <xsd:documentation>Extension=Basic</xsd:documentation>
+      <xsd:documentation>Domain=MicroscopeHardwareSpecifications</xsd:documentation>
+      <xsd:documentation>Category=Holders</xsd:documentation>
+      <xsd:documentation>Description=This element represents a linear holder for multiple individual Dichroics.</xsd:documentation>
+      <xsd:documentation>Tier=1</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:complexContent>
+        <xsd:extension base="FilterSlider">
+          <xsd:sequence>
+            <xsd:element ref="StandardDichroicRef"/>
+          </xsd:sequence>
+        </xsd:extension>
+      </xsd:complexContent>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="EmissionFilterSlider" substitutionGroup="FilterSliderGroup">
+    <xsd:annotation>
+      <xsd:documentation>Extension=Basic</xsd:documentation>
+      <xsd:documentation>Domain=MicroscopeHardwareSpecifications</xsd:documentation>
+      <xsd:documentation>Category=Holders</xsd:documentation>
+      <xsd:documentation>Description=This element represents a linear holder for multiple individual Emission Filters.</xsd:documentation>
+      <xsd:documentation>Tier=1</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:complexContent>
+        <xsd:extension base="FilterSlider">
+          <xsd:sequence>
+            <xsd:element ref="EmissionFilterRef"/>
+          </xsd:sequence>
+        </xsd:extension>
+      </xsd:complexContent>
+    </xsd:complexType>
+  </xsd:element>
   <xsd:element name="OpticsTurret" substitutionGroup="OpticsHolderGroup">
     <xsd:annotation>
       <xsd:documentation>Extension=Basic</xsd:documentation>
@@ -8645,7 +8733,6 @@ PlaneInfo (as Plane)
       </xsd:complexContent>
     </xsd:complexType>
   </xsd:element>
-
 
   <!-- Aperture elements -->
   <xsd:element name="OpticalApertureGroup" abstract="true" type="OpticalAperture">
@@ -8898,7 +8985,6 @@ PlaneInfo (as Plane)
     </xsd:complexType>
   </xsd:element>
 
-
   <!-- Filter elements -->
   <xsd:element name="NeutralDensityFilter" substitutionGroup="FilterGroup">
     <xsd:annotation>
@@ -8941,7 +9027,6 @@ PlaneInfo (as Plane)
       </xsd:complexContent>
     </xsd:complexType>
   </xsd:element>
-
 
   <!-- Mirror elements -->
   <xsd:element name="AdditionalDichroic" substitutionGroup="DichroicGroup">
@@ -9039,7 +9124,6 @@ PlaneInfo (as Plane)
       </xsd:complexContent>
     </xsd:complexType>
   </xsd:element>
-
 
   <!-- Lens elements -->
   <xsd:element name="LensGroup" abstract="true" type="Lens">
@@ -9344,7 +9428,6 @@ PlaneInfo (as Plane)
       </xsd:complexContent>
     </xsd:complexType>
   </xsd:element>
-
 
   <!-- Additional optics elements -->
   <xsd:element name="PolarizationOptics">
@@ -9688,7 +9771,6 @@ PlaneInfo (as Plane)
       </xsd:complexContent>
     </xsd:complexType>
   </xsd:element>
-
 
   <!-- Detector elements -->
   <xsd:element name="CameraGroup" abstract="true" type="Camera" substitutionGroup="DetectorGroup">
@@ -10064,7 +10146,6 @@ PlaneInfo (as Plane)
       </xsd:complexContent>
     </xsd:complexType>
   </xsd:element>
-
 
   <!-- Miscellaneous sub-elements -->
   <xsd:element name="LEDModule">
@@ -10962,19 +11043,14 @@ PlaneInfo (as Plane)
     </xsd:complexType>
   </xsd:element>
   <xsd:element name="LightSourceCouplingRef">
+    <xsd:annotation>
+      <xsd:documentation>Description=This empty element refers to a LightSourceCoupling component used in this Ligth Path.</xsd:documentation>
+      <xsd:documentation>Tier=2</xsd:documentation>
+    </xsd:annotation>
     <xsd:complexType>
       <xsd:complexContent>
         <xsd:extension base="Reference">
           <xsd:attribute name="ID" type="LightSourceCouplingID"/>
-        </xsd:extension>
-      </xsd:complexContent>
-    </xsd:complexType>
-  </xsd:element>
-  <xsd:element name="SampleHolderRef">
-    <xsd:complexType>
-      <xsd:complexContent>
-        <xsd:extension base="Reference">
-          <xsd:attribute name="ID" type="StageInsertID"/>
         </xsd:extension>
       </xsd:complexContent>
     </xsd:complexType>
@@ -10998,6 +11074,10 @@ PlaneInfo (as Plane)
     </xsd:complexType>
   </xsd:element>
   <xsd:element name="SamplePositioningRef">
+    <xsd:annotation>
+      <xsd:documentation>Description= This empty element refers to the Sample Positioning device that was used for the Acquisition of the experimental Image this Mechanical Calibration procedure refers to.</xsd:documentation>
+      <xsd:documentation>Tier=2</xsd:documentation>
+    </xsd:annotation>
     <xsd:complexType>
       <xsd:complexContent>
         <xsd:extension base="Reference">
@@ -11012,6 +11092,10 @@ PlaneInfo (as Plane)
     </xsd:complexType>
   </xsd:element>
   <xsd:element name="FocusStabilizationRef">
+    <xsd:annotation>
+      <xsd:documentation>Description= This empty element refers to the optional Focus Stabilization Device that was used for the Acquisition of the experimental Image this Mechanical Calibration procedure refers to.</xsd:documentation>
+      <xsd:documentation>Tier=2</xsd:documentation>
+    </xsd:annotation>
     <xsd:complexType>
       <xsd:complexContent>
         <xsd:extension base="Reference">
@@ -11342,7 +11426,6 @@ PlaneInfo (as Plane)
     </xsd:attribute>
   </xsd:complexType>
 
-
   <!-- ID types -->
   <xsd:simpleType name="AcquisitionSoftwareID">
     <xsd:restriction base="LSID"/>
@@ -11407,7 +11490,6 @@ PlaneInfo (as Plane)
   <xsd:simpleType name="ReflectanceProfileID">
     <xsd:restriction base="xsd:string"/>
   </xsd:simpleType>
-
 
   <!-- Unit types -->
   <xsd:simpleType name="UnitsConcentration">
@@ -11492,7 +11574,6 @@ PlaneInfo (as Plane)
       <xsd:enumeration value="Other"/>
     </xsd:restriction>
   </xsd:simpleType>
-
 
   <!-- Enumeration types -->
   <xsd:simpleType name="Origin">
@@ -12865,7 +12946,7 @@ PlaneInfo (as Plane)
         </xsd:attribute>
         <xsd:attribute name="TuningAccuracy" type="xsd:float" use="required">
           <xsd:annotation>
-            <xsd:documentation>Description=This field measures the accuracy with which the wavelength diskriminating capacity of this device can be tuned or changed.</xsd:documentation>
+            <xsd:documentation>Description=This field measures the accuracy with which the wavelength discriminating capacity of this device can be tuned or changed.</xsd:documentation>
             <xsd:documentation>Tier=3</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
@@ -12888,7 +12969,7 @@ PlaneInfo (as Plane)
         </xsd:attribute>
         <xsd:attribute name="TuningResolution" type="xsd:float">
           <xsd:annotation>
-            <xsd:documentation>Description=This field measures the wavelength diskriminating capacity of this device and it is defined as the full width at half-maximum (FWHM) of the main lobe from the selected optical output, and is a function of both wavelength and device configuration.</xsd:documentation>
+            <xsd:documentation>Description=This field measures the wavelength discriminating capacity of this device and it is defined as the full width at half-maximum (FWHM) of the main lobe from the selected optical output, and is a function of both wavelength and device configuration.</xsd:documentation>
             <xsd:documentation>Tier=3</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
@@ -13074,7 +13155,7 @@ PlaneInfo (as Plane)
         </xsd:attribute>
         <xsd:attribute name="TuningAccuracy" type="xsd:float" use="required">
           <xsd:annotation>
-            <xsd:documentation>Description=This field measures the accuracy with which the wavelength diskriminating capacity of this device can be tuned or changed.</xsd:documentation>
+            <xsd:documentation>Description=This field measures the accuracy with which the wavelength discriminating capacity of this device can be tuned or changed.</xsd:documentation>
             <xsd:documentation>Tier=3</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
@@ -13091,7 +13172,7 @@ PlaneInfo (as Plane)
         </xsd:attribute>
         <xsd:attribute name="TuningResolution" type="xsd:float">
           <xsd:annotation>
-            <xsd:documentation>Description=This field measures the wavelength diskriminating capacity of this device and it is defined as the full width at half-maximum (FWHM) of the main lobe from the selected optical output, and is a function of both wavelength and device configuration.</xsd:documentation>
+            <xsd:documentation>Description=This field measures the wavelength discriminating capacity of this device and it is defined as the full width at half-maximum (FWHM) of the main lobe from the selected optical output, and is a function of both wavelength and device configuration.</xsd:documentation>
             <xsd:documentation>Tier=3</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
@@ -14090,7 +14171,6 @@ PlaneInfo (as Plane)
   <xsd:simpleType name="ElectroOpticalDeviceID">
     <xsd:restriction base="LSID"/>
   </xsd:simpleType>
-
 
   <!-- Enumeration types -->
   <xsd:simpleType name="MicrobeamManipulationType">
@@ -15320,59 +15400,23 @@ PlaneInfo (as Plane)
   <!--  MISCELLANEOUS FOUNDATIONAL ELEMENTS -->
   <!-- ==================================== -->
   <!-- References -->
-  <xsd:element name="FlatFieldImageRef">
+  <xsd:element name="FlatFieldImageRef" type="ImageRef">
     <xsd:annotation>
       <xsd:documentation>Description=This is an empty element that refers to an Image obtained from a Standard Slide designed to eavluate the Field of View (FOV) dependent variations in the pixel-to-pixel sensitivity of the detector and/or by distortions in the Optical Path.</xsd:documentation>
       <xsd:documentation>Tier=2</xsd:documentation>
     </xsd:annotation>
-    <xsd:complexType>
-      <xsd:complexContent>
-        <xsd:extension base="Reference">
-          <xsd:attribute name="ID" type="ImageID">
-            <xsd:annotation>
-              <xsd:documentation>Description=A Unique Identifier for this component.</xsd:documentation>
-              <xsd:documentation>Tier=2</xsd:documentation>
-            </xsd:annotation>
-          </xsd:attribute>
-        </xsd:extension>
-      </xsd:complexContent>
-    </xsd:complexType>
   </xsd:element>
-  <xsd:element name="OpticalCalibrationImageRef">
+  <xsd:element name="OpticalCalibrationImageRef" type="ImageRef">
     <xsd:annotation>
       <xsd:documentation>Description=This is an empty element that refers to an Image (typically a z-stack) obtained by observing the Optical Standard used in this instance and Acquired using the same Instrument and Settings employed to acquire the experimental Image this calibration refers to.</xsd:documentation>
       <xsd:documentation>Tier=2</xsd:documentation>
     </xsd:annotation>
-    <xsd:complexType>
-      <xsd:complexContent>
-        <xsd:extension base="Reference">
-          <xsd:attribute name="ID" type="ImageID" use="required">
-            <xsd:annotation>
-              <xsd:documentation>Description=A Unique Identifier for this component.</xsd:documentation>
-              <xsd:documentation>Tier=3</xsd:documentation>
-            </xsd:annotation>
-          </xsd:attribute>
-        </xsd:extension>
-      </xsd:complexContent>
-    </xsd:complexType>
   </xsd:element>
-  <xsd:element name="DetectorCalibrationImageRef">
+  <xsd:element name="DetectorCalibrationImageRef" type="ImageRef">
     <xsd:annotation>
       <xsd:documentation>Description=This is an empty element that refers to an Image (typically a z-stack) obtained as part of this Detector Calibration Procedure used in this instance and Acquired using the same Instrument and Settings employed to acquire the experimental Image this calibration refers to.</xsd:documentation>
       <xsd:documentation>Tier=2</xsd:documentation>
     </xsd:annotation>
-    <xsd:complexType>
-      <xsd:complexContent>
-        <xsd:extension base="Reference">
-          <xsd:attribute name="ID" type="ImageID">
-            <xsd:annotation>
-              <xsd:documentation>Description=A Unique Identifier for this component.</xsd:documentation>
-              <xsd:documentation>Tier=2</xsd:documentation>
-            </xsd:annotation>
-          </xsd:attribute>
-        </xsd:extension>
-      </xsd:complexContent>
-    </xsd:complexType>
   </xsd:element>
 
   <!-- Miscellaneous Complex Types -->
@@ -15461,5 +15505,4 @@ PlaneInfo (as Plane)
       <xsd:enumeration value=""/>
     </xsd:restriction>
   </xsd:simpleType>
-
 </xsd:schema>
