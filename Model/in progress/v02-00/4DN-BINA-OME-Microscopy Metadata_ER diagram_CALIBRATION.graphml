@@ -822,45 +822,6 @@ WavelengthRange [Sub-Element]<y:LabelModel><y:ErdAttributesNodeLabelModel/></y:L
       <data key="d4" xml:space="preserve"/>
       <data key="d6">
         <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
-          <y:Geometry height="638.4630690217466" width="990.0590604001222" x="-6082.734164104427" y="-1951.8052018483045"/>
-          <y:Fill color="#FFFFFF" color2="#FFFFFF" transparent="false"/>
-          <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#1C4A87" configuration="CroppingLabel" fontFamily="Dialog" fontSize="32" fontStyle="plain" hasLineColor="false" height="44.6875" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="t" textColor="#FFFFFF" verticalTextPosition="bottom" visible="true" width="119.671875" x="435.19359270006134" xml:space="preserve" y="4.0">Legend</y:NodeLabel>
-          <y:NodeLabel alignment="left" autoSizePolicy="content" backgroundColor="#FFFFFF" configuration="com.yworks.entityRelationship.label.attributes" fontFamily="Dialog" fontSize="16" fontStyle="plain" height="475.09375" horizontalTextPosition="center" iconTextGap="4" lineColor="#FFFFFF" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="898.1328125" x="2.0" xml:space="preserve" y="56.6875">This is a Entity-Relationship diagrammatic representation of a proposed REVISION of the OME Core data model 
-(blue/red boxes) along side a proposed OME BASIC EXTENSION (grey boxes) developed by members of the Imaging
- Working Group of the 4D Nucleome consortium and and by members of the BINA Quality Control and Data
- Management Working Group. 
-
-The Entity-Relationship formalism represents information about a real world situation/object
- (in our case a microscopic INSTRUMENT and an IMAGE acquired using that Instrument) by using three types of 
-model elements: 
-1) Entities = Boxes; 
-2) Relationships = lines connecting boxes; 
-3) Attributes = fields within boxes
-
-When describing  a real life situation/object:
-1) ENTITIES corresponds to NOUNS = the things we want to collect information about.
-2) RELATIONSHIPS corresponds to VERBS = actions/state/occurrence that connect Entities with each other
-3) ATTRIBUTES corresponds to ADJECTIVES = the actual information about each Entity we want to collect
-
-In order to interpret the schema please start from either the &lt;INSTRUMENT&gt; or the &lt;IMAGE&gt; elements for the
-Hardware Specifications and Image Acquisition Settings section respectively. Then follow the blue lines to the 
-connected boxes and think something like: 
-1) An Instrument has a Microscope_Body, might rest on a Microscope_Table, and has a Light_Source etc.; 
-2) An Image was produced as part of a specific Experiment, was collected in a specific Imaging_Environment, 
-was collected using specific Microscope_Settings etc.
-
-For questions or comments please contact: caterina.strambio@umassmed.edu<y:LabelModel><y:ErdAttributesNodeLabelModel/></y:LabelModel><y:ModelParameter><y:ErdAttributesNodeLabelModelParameter/></y:ModelParameter></y:NodeLabel>
-          <y:StyleProperties>
-            <y:Property class="java.lang.Boolean" name="y.view.ShadowNodePainter.SHADOW_PAINTING" value="true"/>
-          </y:StyleProperties>
-        </y:GenericNode>
-      </data>
-    </node>
-    <node id="n28">
-      <data key="d4" xml:space="preserve"/>
-      <data key="d6">
-        <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
           <y:Geometry height="659.9039308246295" width="956.6870485289996" x="-5084.316116382093" y="-1973.2460636511873"/>
           <y:Fill color="#FFFFFF" color2="#FFFFFF" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
@@ -903,7 +864,7 @@ Dashed Grey edges, dashed grey edges signifies "Extends" and they should be read
         </y:GenericNode>
       </data>
     </node>
-    <node id="n29">
+    <node id="n28">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
           <y:Geometry height="35.0" width="100.0" x="-4793.089019441763" y="-1547.596265048825"/>
@@ -924,7 +885,7 @@ Dashed Grey edges, dashed grey edges signifies "Extends" and they should be read
         </y:GenericNode>
       </data>
     </node>
-    <node id="n30">
+    <node id="n29">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
           <y:Geometry height="35.0" width="100.0" x="-4572.7728092223715" y="-1547.596265048825"/>
@@ -945,7 +906,7 @@ Dashed Grey edges, dashed grey edges signifies "Extends" and they should be read
         </y:GenericNode>
       </data>
     </node>
-    <node id="n31">
+    <node id="n30">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
           <y:Geometry height="35.0" width="100.0" x="-4793.089019441763" y="-1502.0257983449155"/>
@@ -966,7 +927,7 @@ Dashed Grey edges, dashed grey edges signifies "Extends" and they should be read
         </y:GenericNode>
       </data>
     </node>
-    <node id="n32">
+    <node id="n31">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
           <y:Geometry height="35.0" width="100.0" x="-4572.7728092223715" y="-1502.6447529684883"/>
@@ -987,7 +948,7 @@ Dashed Grey edges, dashed grey edges signifies "Extends" and they should be read
         </y:GenericNode>
       </data>
     </node>
-    <node id="n33">
+    <node id="n32">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
           <y:Geometry height="35.0" width="100.0" x="-4793.089019441763" y="-1407.1232451096275"/>
@@ -1008,7 +969,7 @@ Dashed Grey edges, dashed grey edges signifies "Extends" and they should be read
         </y:GenericNode>
       </data>
     </node>
-    <node id="n34">
+    <node id="n33">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
           <y:Geometry height="35.0" width="100.0" x="-4572.7728092223715" y="-1407.1232451096275"/>
@@ -1029,7 +990,7 @@ Dashed Grey edges, dashed grey edges signifies "Extends" and they should be read
         </y:GenericNode>
       </data>
     </node>
-    <node id="n35">
+    <node id="n34">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
           <y:Geometry height="35.0" width="100.0" x="-4793.089019441763" y="-1454.8177641271413"/>
@@ -1050,7 +1011,7 @@ Dashed Grey edges, dashed grey edges signifies "Extends" and they should be read
         </y:GenericNode>
       </data>
     </node>
-    <node id="n36">
+    <node id="n35">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
           <y:Geometry height="35.0" width="100.0" x="-4572.7728092223715" y="-1454.8177641271413"/>
@@ -1071,7 +1032,7 @@ Dashed Grey edges, dashed grey edges signifies "Extends" and they should be read
         </y:GenericNode>
       </data>
     </node>
-    <node id="n37">
+    <node id="n36">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
           <y:Geometry height="81.14727053553679" width="205.0" x="-4336.96475237466" y="-2299.529312287864"/>
@@ -1081,6 +1042,45 @@ Dashed Grey edges, dashed grey edges signifies "Extends" and they should be read
 ImageRef</y:NodeLabel>
           <y:NodeLabel alignment="left" autoSizePolicy="content" configuration="com.yworks.entityRelationship.label.attributes" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.1328125" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="75.947265625" x="2.0" xml:space="preserve" y="63.109375">ID (ImageID)
 <y:LabelModel><y:ErdAttributesNodeLabelModel/></y:LabelModel><y:ModelParameter><y:ErdAttributesNodeLabelModelParameter/></y:ModelParameter></y:NodeLabel>
+          <y:StyleProperties>
+            <y:Property class="java.lang.Boolean" name="y.view.ShadowNodePainter.SHADOW_PAINTING" value="true"/>
+          </y:StyleProperties>
+        </y:GenericNode>
+      </data>
+    </node>
+    <node id="n37">
+      <data key="d4" xml:space="preserve"/>
+      <data key="d6">
+        <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
+          <y:Geometry height="638.4630690217466" width="990.0590604001222" x="-6082.734164104427" y="-1951.8052018483045"/>
+          <y:Fill color="#FFFFFF" color2="#FFFFFF" transparent="false"/>
+          <y:BorderStyle color="#000000" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#1C4A87" configuration="CroppingLabel" fontFamily="Dialog" fontSize="32" fontStyle="plain" hasLineColor="false" height="44.6875" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="t" textColor="#FFFFFF" verticalTextPosition="bottom" visible="true" width="119.671875" x="435.19359270006134" xml:space="preserve" y="4.0">Legend</y:NodeLabel>
+          <y:NodeLabel alignment="left" autoSizePolicy="content" backgroundColor="#FFFFFF" configuration="com.yworks.entityRelationship.label.attributes" fontFamily="Dialog" fontSize="16" fontStyle="plain" height="475.09375" horizontalTextPosition="center" iconTextGap="4" lineColor="#FFFFFF" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="898.1328125" x="2.0" xml:space="preserve" y="56.6875">This is a Entity-Relationship diagrammatic representation of a proposed REVISION of the OME Core data model 
+(blue/red boxes) along side a proposed OME BASIC EXTENSION (grey boxes) developed by members of the Imaging
+Working Group of the 4D Nucleome network (https://www.4dnucleome.org) and by members of the BINA Quality 
+Control and Data Management Working Group (https://www.bioimagingna.org/qc-dm-wg). 
+
+The Entity-Relationship formalism represents information about a real world situation/object
+ (in our case a microscopic INSTRUMENT and an IMAGE acquired using that Instrument) by using three types of 
+model elements: 
+1) Entities = Boxes; 
+2) Relationships = lines connecting boxes; 
+3) Attributes = fields within boxes
+
+When describing  a real life situation/object:
+1) ENTITIES corresponds to NOUNS = the things we want to collect information about.
+2) RELATIONSHIPS corresponds to VERBS = actions/state/occurrence that connect Entities with each other
+3) ATTRIBUTES corresponds to ADJECTIVES = the actual information about each Entity we want to collect
+
+In order to interpret the schema please start from either the &lt;INSTRUMENT&gt; or the &lt;IMAGE&gt; elements for the
+Hardware Specifications and Image Acquisition Settings section respectively. Then follow the blue lines to the 
+connected boxes and think something like: 
+1) An Instrument has a Microscope_Body, might rest on a Microscope_Table, and has a Light_Source etc.; 
+2) An Image was produced as part of a specific Experiment, was collected in a specific Imaging_Environment, 
+was collected using specific Microscope_Settings etc.
+
+For questions or comments please contact: caterina.strambio@umassmed.edu<y:LabelModel><y:ErdAttributesNodeLabelModel/></y:LabelModel><y:ModelParameter><y:ErdAttributesNodeLabelModelParameter/></y:ModelParameter></y:NodeLabel>
           <y:StyleProperties>
             <y:Property class="java.lang.Boolean" name="y.view.ShadowNodePainter.SHADOW_PAINTING" value="true"/>
           </y:StyleProperties>
@@ -1535,7 +1535,7 @@ ImageRef</y:NodeLabel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e19" source="n29" target="n30">
+    <edge id="e19" source="n28" target="n29">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -1546,7 +1546,7 @@ ImageRef</y:NodeLabel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e20" source="n31" target="n32">
+    <edge id="e20" source="n30" target="n31">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -1557,7 +1557,7 @@ ImageRef</y:NodeLabel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e21" source="n33" target="n34">
+    <edge id="e21" source="n32" target="n33">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -1568,7 +1568,7 @@ ImageRef</y:NodeLabel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e22" source="n35" target="n36">
+    <edge id="e22" source="n34" target="n35">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -1579,7 +1579,7 @@ ImageRef</y:NodeLabel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e23" source="n19" target="n37">
+    <edge id="e23" source="n19" target="n36">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="54.630472487135194" sy="-14.153349568729482" tx="11.114160686041032" ty="-3.093181198305956">

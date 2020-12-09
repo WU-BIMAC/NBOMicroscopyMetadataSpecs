@@ -1738,7 +1738,7 @@
     <xsd:annotation>
       <xsd:appinfo>
         <xsdfu xmlns="">
-          <plural>Microscopes</plural>
+          <plural>MicroscopeStands</plural>
         </xsdfu>
       </xsd:appinfo>
       <xsd:documentation>Description=This element refers to the core structure of this Microscope, which might also be referred to as Body, Frame, or Platform.</xsd:documentation>
@@ -1749,7 +1749,7 @@
     <xsd:annotation>
       <xsd:appinfo>
         <xsdfu xmlns="">
-          <plural>Microscopes</plural>
+          <plural>MicroscopeStands</plural>
         </xsdfu>
       </xsd:appinfo>
       <xsd:documentation>Description=This element refers to the core structure of this Microscope, which might also be referred to as Body, Frame, or Platform.</xsd:documentation>
@@ -1806,7 +1806,7 @@
     <xsd:annotation>
       <xsd:appinfo>
         <xsdfu xmlns="">
-          <plural>Arcs</plural>
+          <plural>InvertedMicroscopeStands</plural>
         </xsdfu>
       </xsd:appinfo>
       <xsd:documentation>Extension=Basic</xsd:documentation>
@@ -1817,11 +1817,11 @@
       <xsd:documentation>Model_Settings=MicroscopeSettings</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
-  <xsd:element name="UprightdMicroscopeStand" substitutionGroup="MicroscopeStandGroup">
+  <xsd:element name="UprightMicroscopeStand" substitutionGroup="MicroscopeStandGroup">
     <xsd:annotation>
       <xsd:appinfo>
         <xsdfu xmlns="">
-          <plural>Arcs</plural>
+          <plural>UprightMicroscopeStands</plural>
         </xsdfu>
       </xsd:appinfo>
       <xsd:documentation>Extension=Core</xsd:documentation>
@@ -2351,8 +2351,7 @@
   <xsd:element name="FilterGroup" abstract="true" type="Filter">
     <!-- top level definition -->
     <xsd:annotation>
-      <xsd:appinfo>
-        <xsdfu xmlns="">
+      <xsd:appinfo><xsdfu xmlns="">
           <plural>Filters</plural>
         </xsdfu>
       </xsd:appinfo>
@@ -2484,6 +2483,10 @@
   </xsd:complexType>
   <xsd:element name="ExcitationFilter" substitutionGroup="FilterGroup">
     <xsd:annotation>
+      <xsd:appinfo><xsdfu xmlns="">
+          <plural>ExcitationFilters</plural>
+        </xsdfu>
+      </xsd:appinfo>
       <xsd:documentation>Extension=Core</xsd:documentation>
       <xsd:documentation>Domain=MicroscopeHardwareSpecifications</xsd:documentation>
       <xsd:documentation>Category=FluorescenceLightPath</xsd:documentation>
@@ -2498,6 +2501,9 @@
   </xsd:element>
   <xsd:element name="EmissionFilter" substitutionGroup="FilterGroup">
     <xsd:annotation>
+      <xsd:appinfo><xsdfu xmlns="">
+          <plural>EmissionFilters</plural>
+        </xsdfu></xsd:appinfo>
       <xsd:documentation>Extension=Core</xsd:documentation>
       <xsd:documentation>Domain=MicroscopeHardwareSpecifications</xsd:documentation>
       <xsd:documentation>Category=FluorescenceLightPath</xsd:documentation>
@@ -2514,11 +2520,19 @@
   <!-- Mirror elements -->
   <xsd:element name="MirroringDeviceGroup" abstract="true" type="MirroringDevice">
     <xsd:annotation>
+      <xsd:appinfo><xsdfu xmlns="">
+        <plural>MirroringDevices</plural>
+      </xsdfu>
+      </xsd:appinfo>
       <xsd:documentation>Description=This element describes a Mirror positioned in the Light Path for one or more Channels available for this Instrument. An Instrument may have several Mirrors of different types, such as Dichroic, Beamsplitter or Reflector. This element can be associated with an optional Optics Holder, such as a Filter Cube, Filter Turret, Filter Wheel, or Filter Slider.</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
   <xsd:complexType name="MirroringDevice">
     <xsd:annotation>
+      <xsd:appinfo><xsdfu xmlns="">
+        <plural>MirroringDevices</plural>
+      </xsdfu>
+      </xsd:appinfo>
       <xsd:documentation>Description=This element describes a Mirror positioned in the Light Path for one or more Channels available for this Instrument. An Instrument may have several Mirrors of different types, such as Dichroic, Beamsplitter or Reflector. This element can be associated with an optional Optics Holder, such as a Filter Cube, Filter Turret, Filter Wheel, or Filter Slider.</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
@@ -2622,6 +2636,10 @@
   </xsd:element>
   <xsd:complexType name="Dichroic">
     <xsd:annotation>
+      <xsd:appinfo><xsdfu xmlns="">
+        <plural>Dichroics</plural>
+      </xsdfu>
+      </xsd:appinfo>
       <xsd:documentation>Description=A Dichroic Mirror (also often referred to as Dichroic Beamsplitter or simply as Dichroic) is a Mirror that spectrally separate light by transmitting and reflecting light as a function of wavelength. In the context of fluorescence microscopy, they are typically used to reflect the excitation light, but transmit the emitted fluorescence. Dichroic Mirrors can be categorized in different manners. However, the most important criteria for choosing a Dichoric Mirror are the Transmittance and the Reflectance Wavelength ranges.</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
@@ -2696,6 +2714,10 @@
   </xsd:complexType>
   <xsd:element name="StandardDichroic" substitutionGroup="DichroicGroup">
     <xsd:annotation>
+      <xsd:appinfo><xsdfu xmlns="">
+        <plural>StandardDichroics</plural>
+      </xsdfu>
+      </xsd:appinfo>
       <xsd:documentation>Extension=Core</xsd:documentation>
       <xsd:documentation>Domain=MicroscopeHardwareSpecifications</xsd:documentation>
       <xsd:documentation>Category=FluorescenceLightPath</xsd:documentation>
@@ -2724,6 +2746,11 @@
   </xsd:element>
   <xsd:complexType name="Detector">
     <xsd:annotation>
+      <xsd:appinfo>
+        <xsdfu xmlns="">
+          <plural>Detectors</plural>
+        </xsdfu>
+      </xsd:appinfo>
       <xsd:documentation>Description=This element describes a Detector available for this Instrument. An Instrument may have more than one Detector of different types, such as a Photomultiplier, or a Camera. The Detector ID can be used as a reference within the Channel element. The values stored in Detector represent the fixed values, variable values modified during the Acquisition go in DetectorSettings.</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
@@ -2741,7 +2768,7 @@
             <xsd:annotation>
               <xsd:appinfo>
                 <xsdfu xmlns="">
-                  <plural>TransmittanceRanges</plural>
+                  <plural>WavelengthRanges</plural>
                 </xsdfu>
               </xsd:appinfo>
               <xsd:documentation>Domain=MicroscopeHardwareSpecifications</xsd:documentation>
@@ -2942,7 +2969,7 @@
   <!-- ================================== -->
 
   <!-- Ligth path elements -->
-  <xsd:element name="LightPath" type="LightPath_type">
+  <xsd:element name="LightPath" type="LightPath">
     <!-- top level definition -->
     <xsd:annotation>
       <xsd:appinfo>
@@ -2957,7 +2984,7 @@
       <xsd:documentation>Tier=1</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
-  <xsd:complexType name="LightPath_type">
+  <xsd:complexType name="LightPath">
     <xsd:sequence>
       <xsd:element maxOccurs="unbounded" minOccurs="1" ref="LightSourceSettings"/>
       <xsd:element maxOccurs="unbounded" minOccurs="0" ref="LightSourceCouplingRef">
@@ -2970,7 +2997,7 @@
         <xsd:annotation>
           <xsd:appinfo>
             <xsdfu xmlns="">
-              <plural>ExcitationFilters</plural>
+              <plural>LightPaths</plural>
               <parentordered/>
               <manytomany/>
             </xsdfu>
@@ -2987,12 +3014,6 @@
       </xsd:element>
       <xsd:element minOccurs="0" maxOccurs="unbounded" ref="EmissionFilterRef">
         <xsd:annotation>
-          <xsd:appinfo>
-            <xsdfu xmlns="">
-              <plural>EmissionFilters</plural>
-              <manytomany/>
-            </xsdfu>
-          </xsd:appinfo>
           <xsd:documentation>Description=This empty element refers to an EmissionFilter component used in this light path.</xsd:documentation>
           <xsd:documentation>Tier=1</xsd:documentation>
         </xsd:annotation>
@@ -3211,7 +3232,7 @@
     <xsd:annotation>
       <xsd:appinfo>
         <xsdfu xmlns="">
-          <plural>LightSourceSettings</plural>
+          <plural>LightSourceSettingCombinations</plural>
         </xsdfu>
       </xsd:appinfo>
       <xsd:documentation>Extension=Core</xsd:documentation>
@@ -3278,7 +3299,7 @@
     <xsd:annotation>
       <xsd:appinfo>
         <xsdfu xmlns="">
-          <plural>ImagingEnvironments</plural>
+          <plural>ImagingEnvironmentCombinations</plural>
         </xsdfu>
       </xsd:appinfo>
       <xsd:documentation>Domain=ImageAcquisitionSettings</xsd:documentation>
@@ -4796,24 +4817,12 @@ PlaneInfo (as Plane)
   </xsd:element>
   <xsd:element name="ExcitationFilterRef" type="FilterRef">
     <xsd:annotation>
-      <xsd:appinfo>
-        <xsdfu xmlns="">
-          <plural>ExcitationFilters</plural>
-          <manytomany/>
-        </xsdfu>
-      </xsd:appinfo>
       <xsd:documentation>Description=This field refers to an available Excitation Filter, which is part of this Filter Cube.</xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
   <xsd:element name="EmissionFilterRef" type="FilterRef">
     <xsd:annotation>
-      <xsd:appinfo>
-        <xsdfu xmlns="">
-          <plural>EmissionFilters</plural>
-          <manytomany/>
-        </xsdfu>
-      </xsd:appinfo>
       <xsd:documentation>Description=This field refers to an available Emission Filter, which is part of this Filter Cube.</xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
     </xsd:annotation>
@@ -7050,6 +7059,11 @@ PlaneInfo (as Plane)
   <!-- Sample elements -->
   <xsd:element name="Sample">
     <xsd:annotation>
+      <xsd:appinfo>
+        <xsdfu xmlns="">
+          <plural>Samples</plural>
+        </xsdfu>
+      </xsd:appinfo>
       <xsd:documentation>Extension=Basic</xsd:documentation>
       <xsd:documentation>Domain=Experimental</xsd:documentation>
       <xsd:documentation>Category=SamplePreparation</xsd:documentation>
@@ -7151,6 +7165,11 @@ PlaneInfo (as Plane)
   </xsd:element>
   <xsd:element name="SampleHolder">
     <xsd:annotation>
+      <xsd:appinfo>
+        <xsdfu xmlns="">
+          <plural>SampleHolders</plural>
+        </xsdfu>
+      </xsd:appinfo>
       <xsd:documentation>Extension=Basic</xsd:documentation>
       <xsd:documentation>Domain=Experimental</xsd:documentation>
       <xsd:documentation>Category=SamplePreparation</xsd:documentation>
@@ -7178,6 +7197,11 @@ PlaneInfo (as Plane)
   </xsd:element>
   <xsd:element name="CoverGlass">
     <xsd:annotation>
+      <xsd:appinfo>
+        <xsdfu xmlns="">
+          <plural>CoverGlasses</plural>
+        </xsdfu>
+      </xsd:appinfo>
       <xsd:documentation>Extension=Basic</xsd:documentation>
       <xsd:documentation>Domain=Experimental</xsd:documentation>
       <xsd:documentation>Category=SamplePreparation</xsd:documentation>
@@ -7217,6 +7241,11 @@ PlaneInfo (as Plane)
   </xsd:element>
   <xsd:element name="ImmersionLiquid">
     <xsd:annotation>
+      <xsd:appinfo>
+        <xsdfu xmlns="">
+          <plural>ImmersionLiquids</plural>
+        </xsdfu>
+      </xsd:appinfo>
       <xsd:documentation>Extension=Basic</xsd:documentation>
       <xsd:documentation>Domain=Experimental</xsd:documentation>
       <xsd:documentation>Category=SamplePreparation</xsd:documentation>
@@ -7256,6 +7285,11 @@ PlaneInfo (as Plane)
   </xsd:element>
   <xsd:element name="MountingMedium">
     <xsd:annotation>
+      <xsd:appinfo>
+        <xsdfu xmlns="">
+          <plural>MountingMediums</plural>
+        </xsdfu>
+      </xsd:appinfo>
       <xsd:documentation>Extension=Basic</xsd:documentation>
       <xsd:documentation>Domain=Experimental</xsd:documentation>
       <xsd:documentation>Category=SamplePreparation</xsd:documentation>
@@ -7289,6 +7323,11 @@ PlaneInfo (as Plane)
   </xsd:element>
   <xsd:element name="Fluorophore">
     <xsd:annotation>
+      <xsd:appinfo>
+        <xsdfu xmlns="">
+          <plural>Fluorophores</plural>
+        </xsdfu>
+      </xsd:appinfo>
       <xsd:documentation>Extension=Basic</xsd:documentation>
       <xsd:documentation>Domain=Experimental</xsd:documentation>
       <xsd:documentation>Category=SamplePreparation</xsd:documentation>
@@ -7373,6 +7412,11 @@ PlaneInfo (as Plane)
   <!-- Microscopy essential elements -->
   <xsd:element name="AcquisitionSoftware" type="Software_type">
     <xsd:annotation>
+      <xsd:appinfo>
+        <xsdfu xmlns="">
+          <plural>AcquisitionSoftwares</plural>
+        </xsdfu>
+      </xsd:appinfo>
       <xsd:documentation>Extension=Basic</xsd:documentation>
       <xsd:documentation>Domain=MicroscopeSpecifications</xsd:documentation>
       <xsd:documentation>Category=MicroscopyEssentials</xsd:documentation>
@@ -7382,6 +7426,11 @@ PlaneInfo (as Plane)
   </xsd:element>
   <xsd:element name="DependenciesSoftware" type="Software_type">
     <xsd:annotation>
+      <xsd:appinfo>
+        <xsdfu xmlns="">
+          <plural>DependenciesSoftwares</plural>
+        </xsdfu>
+      </xsd:appinfo>
       <xsd:documentation>Extension=Basic</xsd:documentation>
       <xsd:documentation>Domain=MicroscopeSpecifications</xsd:documentation>
       <xsd:documentation>Category=MicroscopyEssentials</xsd:documentation>
@@ -7391,6 +7440,11 @@ PlaneInfo (as Plane)
   </xsd:element>
   <xsd:element name="MicroscopeTable">
     <xsd:annotation>
+      <xsd:appinfo>
+        <xsdfu xmlns="">
+          <plural>MicroscopeTables</plural>
+        </xsdfu>
+      </xsd:appinfo>
       <xsd:documentation>Extension=Basic</xsd:documentation>
       <xsd:documentation>Domain=MicroscopeHardwareSpecifications</xsd:documentation>
       <xsd:documentation>Category=MicroscopyEssentials</xsd:documentation>
@@ -7461,6 +7515,11 @@ PlaneInfo (as Plane)
   </xsd:element>
   <xsd:element name="EnvironmentalControlDevice">
     <xsd:annotation>
+      <xsd:appinfo>
+        <xsdfu xmlns="">
+          <plural>EnvironmentalControlDevices</plural>
+        </xsdfu>
+      </xsd:appinfo>
       <xsd:documentation>Extension=Basic</xsd:documentation>
       <xsd:documentation>Domain=MicroscopeHardwareSpecifications</xsd:documentation>
       <xsd:documentation>Category=MicroscopyEssentials</xsd:documentation>
@@ -7668,6 +7727,11 @@ PlaneInfo (as Plane)
   <!-- Sample holder and Focusing elements -->
   <xsd:element name="StageInsert">
     <xsd:annotation>
+      <xsd:appinfo>
+        <xsdfu xmlns="">
+          <plural>StageInserts</plural>
+        </xsdfu>
+      </xsd:appinfo>
       <xsd:documentation>Extension=Basic</xsd:documentation>
       <xsd:documentation>Domain=MicroscopeHardwareSpecifications</xsd:documentation>
       <xsd:documentation>Category=SamplePositioning.Stage</xsd:documentation>
@@ -7716,11 +7780,21 @@ PlaneInfo (as Plane)
   </xsd:element>
   <xsd:element name="SamplePositioningGroup" abstract="true" type="SamplePositioning">
     <xsd:annotation>
+      <xsd:appinfo>
+        <xsdfu xmlns="">
+          <plural>SamplePositioningDevices</plural>
+        </xsdfu>
+      </xsd:appinfo>
       <xsd:documentation>Description=This element describes a Sample-Optics Positioning device available for this Instrument. An Instrument may have more than one of these devices of different types. For example, a typical setup might include a Mechanical Stage, a Stage Insert, a Turret Objective Focusing, and a Piezoelectric Objective Focusing device.</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
   <xsd:complexType name="SamplePositioning">
     <xsd:annotation>
+      <xsd:appinfo>
+        <xsdfu xmlns="">
+          <plural>SamplePositioningDevices</plural>
+        </xsdfu>
+      </xsd:appinfo>
       <xsd:documentation>Description=This element describes a Sample-Optics Positioning device available for this Instrument. An Instrument may have more than one of these devices of different types. For example, a typical setup might include a Mechanical Stage, a Stage Insert, a Turret Objective Focusing, and a Piezoelectric Objective Focusing device.</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
@@ -7858,6 +7932,11 @@ PlaneInfo (as Plane)
   </xsd:complexType>
   <xsd:element name="ZDrive" substitutionGroup="SamplePositioningGroup">
     <xsd:annotation>
+      <xsd:appinfo>
+        <xsdfu xmlns="">
+          <plural>ZDrives</plural>
+        </xsdfu>
+      </xsd:appinfo>
       <xsd:documentation>Extension=Basic</xsd:documentation>
       <xsd:documentation>Domain=MicroscopeHardwareSpecifications</xsd:documentation>
       <xsd:documentation>Category=SamplePositioning.Focusing</xsd:documentation>
@@ -7873,11 +7952,21 @@ PlaneInfo (as Plane)
   </xsd:element>
   <xsd:element name="FocusingDeviceGroup" abstract="true" type="FocusingDevice" substitutionGroup="SamplePositioningGroup">
     <xsd:annotation>
+      <xsd:appinfo>
+        <xsdfu xmlns="">
+          <plural>FocusingDevices</plural>
+        </xsdfu>
+      </xsd:appinfo>
       <xsd:documentation>Description=A Focusing mechanism is used to obtain maximum sharpness in an Image by changing the distance between a Sample and the optical system forming the Image. In most cases, a Z-axis Focusing mechanism moves the Objective along the optical axis.</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
   <xsd:complexType name="FocusingDevice">
     <xsd:annotation>
+      <xsd:appinfo>
+        <xsdfu xmlns="">
+          <plural>FocusingDevices</plural>
+        </xsdfu>
+      </xsd:appinfo>
       <xsd:documentation>Description=A Focusing mechanism is used to obtain maximum sharpness in an Image by changing the distance between a Sample and the optical system forming the Image. In this case, a Z-axis Focusing mechanism moves the Objective along the optical axis.</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
@@ -7886,6 +7975,11 @@ PlaneInfo (as Plane)
   </xsd:complexType>
   <xsd:element name="TurretObjectiveFocusing" substitutionGroup="FocusingDeviceGroup">
     <xsd:annotation>
+      <xsd:appinfo>
+        <xsdfu xmlns="">
+          <plural>TurretObjectiveFocusingDevices</plural>
+        </xsdfu>
+      </xsd:appinfo>
       <xsd:documentation>Extension=Basic</xsd:documentation>
       <xsd:documentation>Domain=MicroscopeHardwareSpecifications</xsd:documentation>
       <xsd:documentation>Category=SamplePositioning.Focusing</xsd:documentation>
@@ -7901,6 +7995,11 @@ PlaneInfo (as Plane)
   </xsd:element>
   <xsd:element name="IndividualObjectiveFocusing" substitutionGroup="FocusingDeviceGroup">
     <xsd:annotation>
+      <xsd:appinfo>
+        <xsdfu xmlns="">
+          <plural>IndividualObjectiveFocusingDevices</plural>
+        </xsdfu>
+      </xsd:appinfo>
       <xsd:documentation>Extension=Basic</xsd:documentation>
       <xsd:documentation>Domain=MicroscopeHardwareSpecifications</xsd:documentation>
       <xsd:documentation>Category=SamplePositioning.Focusing</xsd:documentation>
@@ -7923,6 +8022,11 @@ PlaneInfo (as Plane)
   </xsd:element>
   <xsd:element abstract="true" name="StageGroup" substitutionGroup="SamplePositioningGroup" type="Stage">
     <xsd:annotation>
+      <xsd:appinfo>
+        <xsdfu xmlns="">
+          <plural>Stages</plural>
+        </xsdfu>
+      </xsd:appinfo>
       <xsd:documentation>Description=This element describes a platform positioned at right angle to the optical axis of this Microscope, which is designed to either directly hold a Specimen Holder containing a Sample to be observed, or a Stage Insert, which itself holds the Sample Holder. In many cases, this device is capable of mechanical movements (as in a Mechanical Stage) to allow easy positioning and rotation of the Sample in the X-, Y-, and Z-axes.</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
@@ -8020,6 +8124,11 @@ PlaneInfo (as Plane)
   </xsd:complexType>
   <xsd:element name="MechanicalStage" substitutionGroup="StageGroup">
     <xsd:annotation>
+      <xsd:appinfo>
+        <xsdfu xmlns="">
+          <plural>MechanicalStages</plural>
+        </xsdfu>
+      </xsd:appinfo>
       <xsd:documentation>Extension=Basic</xsd:documentation>
       <xsd:documentation>Domain=MicroscopeHardwareSpecifications</xsd:documentation>
       <xsd:documentation>Category=SamplePositioning.Stage</xsd:documentation>
@@ -8035,6 +8144,11 @@ PlaneInfo (as Plane)
   </xsd:element>
   <xsd:element name="PiezoElectricStage" substitutionGroup="StageGroup">
     <xsd:annotation>
+      <xsd:appinfo>
+        <xsdfu xmlns="">
+          <plural>PiezoElectricStages</plural>
+        </xsdfu>
+      </xsd:appinfo>
       <xsd:documentation>Extension=Basic</xsd:documentation>
       <xsd:documentation>Domain=MicroscopeHardwareSpecifications</xsd:documentation>
       <xsd:documentation>Category=SamplePositioning.Stage</xsd:documentation>
@@ -8050,6 +8164,11 @@ PlaneInfo (as Plane)
   </xsd:element>
   <xsd:element name="FocusStabilizationDevice">
     <xsd:annotation>
+      <xsd:appinfo>
+        <xsdfu xmlns="">
+          <plural>FocusStabilizationDevices</plural>
+        </xsdfu>
+      </xsd:appinfo>
       <xsd:documentation>Extension=Basic</xsd:documentation>
       <xsd:documentation>Domain=MicroscopeHardwareSpecifications</xsd:documentation>
       <xsd:documentation>Category=SamplePositioning.Focusing</xsd:documentation>
@@ -8112,6 +8231,11 @@ PlaneInfo (as Plane)
   <xsd:element name="MultiLaserEngine" substitutionGroup="LightSourceGroup">
     <!-- top level definition -->
     <xsd:annotation>
+      <xsd:appinfo>
+        <xsdfu xmlns="">
+          <plural>MultiLaserEngineDevices</plural>
+        </xsdfu>
+      </xsd:appinfo>
       <xsd:documentation>Extension=Advanced</xsd:documentation>
       <xsd:documentation>Domain=MicroscopeHardwareSpecifications</xsd:documentation>
       <xsd:documentation>Category=LightSource</xsd:documentation>
@@ -8157,11 +8281,21 @@ PlaneInfo (as Plane)
   </xsd:element>
   <xsd:element name="LightSourceCouplingGroup" abstract="true" type="LightSourceCoupling">
     <xsd:annotation>
+      <xsd:appinfo>
+        <xsdfu xmlns="">
+          <plural>LightSourceCouplingDevices</plural>
+        </xsdfu>
+      </xsd:appinfo>
       <xsd:documentation>Description=This element describes the device(s)/method(s) used to couple the available light source(s) with this microscope body in order to transfer light to the specimen. A typical light-microscope has a light coupling device for each available light source.</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
   <xsd:complexType name="LightSourceCoupling">
     <xsd:annotation>
+      <xsd:appinfo>
+        <xsdfu xmlns="">
+          <plural>LightSourceCouplingDevices</plural>
+        </xsdfu>
+      </xsd:appinfo>
       <xsd:documentation>Description=This element describes the device(s)/method(s) used to couple an available Light Source(s) with this Microscope Stand to transfer light to the specimen. A typical light Microscope has a Light Coupling device for each available Light Source.</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
@@ -8208,6 +8342,11 @@ PlaneInfo (as Plane)
   </xsd:complexType>
   <xsd:element name="FreeBeam" substitutionGroup="LightSourceCouplingGroup">
     <xsd:annotation>
+      <xsd:appinfo>
+        <xsdfu xmlns="">
+          <plural>FreeBeamDevices</plural>
+        </xsdfu>
+      </xsd:appinfo>
       <xsd:documentation>Extension=Basic</xsd:documentation>
       <xsd:documentation>Domain=MicroscopeHardwareSpecifications</xsd:documentation>
       <xsd:documentation>Category=LightSourceCoupling</xsd:documentation>
@@ -8235,6 +8374,11 @@ PlaneInfo (as Plane)
   </xsd:element>
   <xsd:element name="LightGuide" substitutionGroup="LightSourceCouplingGroup">
     <xsd:annotation>
+      <xsd:appinfo>
+        <xsdfu xmlns="">
+          <plural>LightGuideDevices</plural>
+        </xsdfu>
+      </xsd:appinfo>
       <xsd:documentation>Extension=Basic</xsd:documentation>
       <xsd:documentation>Domain=MicroscopeHardwareSpecifications</xsd:documentation>
       <xsd:documentation>Category=LightSourceCoupling</xsd:documentation>
@@ -8319,11 +8463,21 @@ PlaneInfo (as Plane)
   <!-- Optical Assembly elements -->
   <xsd:element name="OpticalAssemblyGroup" abstract="true" type="OpticalAssembly">
     <xsd:annotation>
+      <xsd:appinfo>
+        <xsdfu xmlns="">
+          <plural>OpticalAssemblyDevices</plural>
+        </xsdfu>
+      </xsd:appinfo>
       <xsd:documentation>Description=This is a device that might include one or more Lenses, other Optics and Optics Holders. Optical Devices might be custom built or they might also be available as pre-assembled units. Such devices might be embedded within the Microscope Stand or exist as independent units. Examples include the Condenser and the Microscope Tube.</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
   <xsd:complexType name="OpticalAssembly">
     <xsd:annotation>
+      <xsd:appinfo>
+        <xsdfu xmlns="">
+          <plural>OpticalAssemblyDevices</plural>
+        </xsdfu>
+      </xsd:appinfo>
       <xsd:documentation>Description=This is a device that might include one or more Lenses, other Optics and Optics Holders. Optical Devices might be custom built or they might also be available as pre-assembled units. Such devices might be embedded within the Microscope Stand or exist as independent units. Examples include the Condenser and the Microscope Tube.</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
@@ -8359,6 +8513,11 @@ PlaneInfo (as Plane)
   </xsd:complexType>
   <xsd:element name="BeamCollimator" substitutionGroup="OpticalAssemblyGroup">
     <xsd:annotation>
+      <xsd:appinfo>
+        <xsdfu xmlns="">
+          <plural>BeamCollimatorDevices</plural>
+        </xsdfu>
+      </xsd:appinfo>
       <xsd:documentation>Extension=Basic</xsd:documentation>
       <xsd:documentation>Domain=MicroscopeHardwareSpecifications</xsd:documentation>
       <xsd:documentation>Category=OpticalAssemblies</xsd:documentation>
@@ -8373,6 +8532,11 @@ PlaneInfo (as Plane)
   </xsd:element>
   <xsd:element name="BeamExpander" substitutionGroup="OpticalAssemblyGroup">
     <xsd:annotation>
+      <xsd:appinfo>
+        <xsdfu xmlns="">
+          <plural>BeamExpanderDevices</plural>
+        </xsdfu>
+      </xsd:appinfo>
       <xsd:documentation>Extension=Basic</xsd:documentation>
       <xsd:documentation>Domain=MicroscopeHardwareSpecifications</xsd:documentation>
       <xsd:documentation>Category=OpticalAssemblies</xsd:documentation>
@@ -8394,6 +8558,11 @@ PlaneInfo (as Plane)
   </xsd:element>
   <xsd:element name="Condenser" substitutionGroup="OpticalAssemblyGroup">
     <xsd:annotation>
+      <xsd:appinfo>
+        <xsdfu xmlns="">
+          <plural>Condensers</plural>
+        </xsdfu>
+      </xsd:appinfo>
       <xsd:documentation>Extension=Basic</xsd:documentation>
       <xsd:documentation>Domain=MicroscopeHardwareSpecifications</xsd:documentation>
       <xsd:documentation>Category=OpticalAssemblies</xsd:documentation>
@@ -8421,6 +8590,11 @@ PlaneInfo (as Plane)
   </xsd:element>
   <xsd:element name="MicroscopeTube" substitutionGroup="OpticalAssemblyGroup">
     <xsd:annotation>
+      <xsd:appinfo>
+        <xsdfu xmlns="">
+          <plural>MicroscopeTubes</plural>
+        </xsdfu>
+      </xsd:appinfo>
       <xsd:documentation>Extension=Basic</xsd:documentation>
       <xsd:documentation>Domain=MicroscopeHardwareSpecifications</xsd:documentation>
       <xsd:documentation>Category=OpticalAssemblies</xsd:documentation>
@@ -9447,7 +9621,7 @@ PlaneInfo (as Plane)
               <xsd:annotation>
                 <xsd:appinfo>
                   <xsdfu xmlns="">
-                    <plural>TransmittanceRanges</plural>
+                    <plural>WavelengthRanges</plural>
                   </xsdfu>
                 </xsd:appinfo>
                 <xsd:documentation>Domain=MicroscopeHardwareSpecifications</xsd:documentation>
@@ -9593,7 +9767,7 @@ PlaneInfo (as Plane)
               <xsd:annotation>
                 <xsd:appinfo>
                   <xsdfu xmlns="">
-                    <plural>TransmittanceRanges</plural>
+                    <plural>WavelengthRanges</plural>
                   </xsdfu>
                 </xsd:appinfo>
                 <xsd:documentation>Domain=MicroscopeHardwareSpecifications</xsd:documentation>
@@ -10153,7 +10327,7 @@ PlaneInfo (as Plane)
     <xsd:annotation>
       <xsd:appinfo>
         <xsdfu xmlns="">
-          <plural>TransmittanceRanges</plural>
+          <plural>LEDModules</plural>
         </xsdfu>
       </xsd:appinfo>
       <xsd:documentation>Extension=Basic</xsd:documentation>
@@ -10214,7 +10388,7 @@ PlaneInfo (as Plane)
     <xsd:annotation>
       <xsd:appinfo>
         <xsdfu xmlns="">
-          <plural>TransmittanceRanges</plural>
+          <plural>ReflectanceRanges</plural>
         </xsdfu>
       </xsd:appinfo>
       <xsd:documentation>Extension=Basic</xsd:documentation>
@@ -10693,7 +10867,7 @@ PlaneInfo (as Plane)
     <xsd:annotation>
       <xsd:appinfo>
         <xsdfu xmlns="">
-          <plural>LightSourceSettingsCombinations</plural>
+          <plural>LensSettingsCombinations</plural>
         </xsdfu>
       </xsd:appinfo>
       <xsd:documentation>Extension=Basic</xsd:documentation>
@@ -10725,7 +10899,7 @@ PlaneInfo (as Plane)
     <xsd:annotation>
       <xsd:appinfo>
         <xsdfu xmlns="">
-          <plural>LightSourceSettingsCombinations</plural>
+          <plural>MirroringDeviceSettingsCombinations</plural>
         </xsdfu>
       </xsd:appinfo>
       <xsd:documentation>Extension=Basic</xsd:documentation>
@@ -10797,7 +10971,7 @@ PlaneInfo (as Plane)
     <xsd:annotation>
       <xsd:appinfo>
         <xsdfu xmlns="">
-          <plural>LightSourceSettingsCombinations</plural>
+          <plural>PrismSettingsCombinations</plural>
         </xsdfu>
       </xsd:appinfo>
       <xsd:documentation>Extension=Basic</xsd:documentation>
@@ -10845,7 +11019,7 @@ PlaneInfo (as Plane)
     <xsd:annotation>
       <xsd:appinfo>
         <xsdfu xmlns="">
-          <plural>LightSourceSettingsCombinations</plural>
+          <plural>ShutterSettingsCombinations</plural>
         </xsdfu>
       </xsd:appinfo>
       <xsd:documentation>Extension=Basic</xsd:documentation>
@@ -10892,6 +11066,11 @@ PlaneInfo (as Plane)
   </xsd:element>
   <xsd:element name="PointDetectorSettings" substitutionGroup="DetectorSettingsGroup">
     <xsd:annotation>
+      <xsd:appinfo>
+        <xsdfu xmlns="">
+          <plural>PointDetectorSettingsCombinations</plural>
+        </xsdfu>
+      </xsd:appinfo>
       <xsd:documentation>Extension=Basic</xsd:documentation>
       <xsd:documentation>Domain=ImageAcquisitionSettings</xsd:documentation>
       <xsd:documentation>Category=Settings</xsd:documentation>
@@ -10927,7 +11106,7 @@ PlaneInfo (as Plane)
     <xsd:annotation>
       <xsd:appinfo>
         <xsdfu xmlns="">
-          <plural>DetectorSettingsCombinations</plural>
+          <plural>CameraSettingsCombinations</plural>
         </xsdfu>
       </xsd:appinfo>
       <xsd:documentation>Extension=Basic</xsd:documentation>
@@ -13724,7 +13903,7 @@ PlaneInfo (as Plane)
   <!-- ================================== -->
 
   <!-- Ligth path elements -->
-  <xsd:element name="TIRFLightPath" type="LightPath_type">
+  <xsd:element name="TIRFLightPath" type="LightPath">
     <xsd:annotation>
       <xsd:documentation>Extension=Advanced+Confocal</xsd:documentation>
       <xsd:documentation>Domain=MicroscopeHardwareSpecifications</xsd:documentation>

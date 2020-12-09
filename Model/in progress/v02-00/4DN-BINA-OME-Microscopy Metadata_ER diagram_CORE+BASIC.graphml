@@ -42,8 +42,8 @@
           <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#1C4A87" configuration="CroppingLabel" fontFamily="Dialog" fontSize="32" fontStyle="plain" hasLineColor="false" height="44.6875" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="t" textColor="#FFFFFF" verticalTextPosition="bottom" visible="true" width="119.671875" x="412.7781462697749" xml:space="preserve" y="4.0">Legend</y:NodeLabel>
           <y:NodeLabel alignment="left" autoSizePolicy="content" backgroundColor="#FFFFFF" configuration="com.yworks.entityRelationship.label.attributes" fontFamily="Dialog" fontSize="16" fontStyle="plain" height="475.09375" horizontalTextPosition="center" iconTextGap="4" lineColor="#FFFFFF" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="898.1328125" x="2.0" xml:space="preserve" y="56.6875">This is a Entity-Relationship diagrammatic representation of a proposed REVISION of the OME Core data model 
 (blue/red boxes) along side a proposed OME BASIC EXTENSION (grey boxes) developed by members of the Imaging
- Working Group of the 4D Nucleome consortium and and by members of the BINA Quality Control and Data
- Management Working Group. 
+Working Group of the 4D Nucleome network (https://www.4dnucleome.org) and by members of the BINA Quality 
+Control and Data Management Working Group (https://www.bioimagingna.org/qc-dm-wg). 
 
 The Entity-Relationship formalism represents information about a real world situation/object
  (in our case a microscopic INSTRUMENT and an IMAGE acquired using that Instrument) by using three types of 
