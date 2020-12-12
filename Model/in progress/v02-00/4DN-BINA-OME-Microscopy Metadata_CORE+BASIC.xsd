@@ -1134,7 +1134,7 @@
             <xsd:documentation>Tier=1</xsd:documentation>
           </xsd:annotation>
         </xsd:element>
-        <xsd:element ref="SoftwareRef" maxOccurs="unbounded"/>
+        <xsd:element ref="AcquisitionSoftwareRef" maxOccurs="unbounded"/>
         <xsd:element minOccurs="1" name="AcquisitionDate" type="xsd:dateTime">
           <xsd:annotation>
             <xsd:documentation>Domain=ImageAcquisitionSettingsSettings</xsd:documentation>
@@ -1805,7 +1805,7 @@
       </xsd:appinfo>
       <xsd:documentation>Extension=Basic</xsd:documentation>
       <xsd:documentation>Domain=MicroscopeHardwareSpecifications</xsd:documentation>
-      <xsd:documentation>Category=MicroscopyEssentials</xsd:documentation>
+      <xsd:documentation>Category=MicroscopeStand</xsd:documentation>
       <xsd:documentation>Description=This is a Microscope in which the object is observed from beneath the stage.</xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
       <xsd:documentation>Model_Settings=MicroscopeSettings</xsd:documentation>
@@ -1820,7 +1820,7 @@
       </xsd:appinfo>
       <xsd:documentation>Extension=Core</xsd:documentation>
       <xsd:documentation>Domain=MicroscopeHardwareSpecifications</xsd:documentation>
-      <xsd:documentation>Category=MicroscopyEssentials</xsd:documentation>
+      <xsd:documentation>Category=MicroscopeStand</xsd:documentation>
       <xsd:documentation>Description=This is a Microscope in which the object is observed from above the stage.</xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
       <xsd:documentation>Model_Settings=MicroscopeSettings</xsd:documentation>
@@ -7425,7 +7425,7 @@ PlaneInfo (as Plane)
     <xsd:complexContent>
       <xsd:extension base="ManufacturerSpec">
         <xsd:sequence>
-          <xsd:element maxOccurs="unbounded" minOccurs="0" ref="SoftwareRef"/>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" ref="SoftwareModuleRef"/>
           <xsd:element ref="AnnotationRef" minOccurs="0" maxOccurs="unbounded"/>
         </xsd:sequence>
         <xsd:attribute name="ID" type="LSID" use="required">
@@ -8531,7 +8531,7 @@ PlaneInfo (as Plane)
       </xsd:appinfo>
       <xsd:documentation>Extension=Basic</xsd:documentation>
       <xsd:documentation>Domain=MicroscopeHardwareSpecifications</xsd:documentation>
-      <xsd:documentation>Category=OpticalAssemblies</xsd:documentation>
+      <xsd:documentation>Category=OpticalAssembly</xsd:documentation>
       <xsd:documentation>Description=Beam Collimators are Lens Systems that transform a strongly diverging light beam into a collimated beam, i.e., a beam where light propagates essentially only in one direction, and the beam divergence is weak. Beam Collimators typically contain some kind of Focusing Lens, or sometimes a curved Mirror, and usually some opto-mechanics for stable mounting and possibly adjustment. Beam Expanders can be custom built or they are also available as pre-assembled optical devices.</xsd:documentation>
       <xsd:documentation>Tier=2</xsd:documentation>
     </xsd:annotation>
@@ -8550,7 +8550,7 @@ PlaneInfo (as Plane)
       </xsd:appinfo>
       <xsd:documentation>Extension=Basic</xsd:documentation>
       <xsd:documentation>Domain=MicroscopeHardwareSpecifications</xsd:documentation>
-      <xsd:documentation>Category=OpticalAssemblies</xsd:documentation>
+      <xsd:documentation>Category=OpticalAssembly</xsd:documentation>
       <xsd:documentation>Description=Beam Expanders are Lens Systems whose role is to increase the diameter of a collimated input beam to a larger collimated output beam. Beam Expanders typically are afocal systems in which object rays enter and exit parallel to the optical axis. As such a Beam Expander does not have a focal length. In most cases, Beam Expanders are realized as optical telescopes consisting of two lenses. Beam Expanders can be custom built or they are also available as pre-assembled optical devices.</xsd:documentation>
       <xsd:documentation>Tier=2</xsd:documentation>
     </xsd:annotation>
@@ -8576,7 +8576,7 @@ PlaneInfo (as Plane)
       </xsd:appinfo>
       <xsd:documentation>Extension=Basic</xsd:documentation>
       <xsd:documentation>Domain=MicroscopeHardwareSpecifications</xsd:documentation>
-      <xsd:documentation>Category=OpticalAssemblies</xsd:documentation>
+      <xsd:documentation>Category=OpticalAssembly</xsd:documentation>
       <xsd:documentation>Description=Condensers are Lens Systems located above the Light Source and under the sample in an Upright Microscope, and above the stage and below the Light Source in an Inverted Microscope. They act to gather light from the Light Source and concentrate it into a cone of light that illuminates the specimen. They typically include a Turret system and Diaphragms. The aperture and angle of the light cone must be adjusted (via the size of the Diaphragm) for each different Objective.</xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
     </xsd:annotation>
@@ -8608,7 +8608,7 @@ PlaneInfo (as Plane)
       </xsd:appinfo>
       <xsd:documentation>Extension=Basic</xsd:documentation>
       <xsd:documentation>Domain=MicroscopeHardwareSpecifications</xsd:documentation>
-      <xsd:documentation>Category=OpticalAssemblies</xsd:documentation>
+      <xsd:documentation>Category=OpticalAssembly</xsd:documentation>
       <xsd:documentation>Description=Illumination Tubes are Lens systems, which might be embedded within the Microscope Stand and therefore not immediately accessible. They are essential for infinity-correction and should be regarded as integral parts of the Objective Lens System when magnification and correction are considered.</xsd:documentation>
       <xsd:documentation>Tier=2</xsd:documentation>
     </xsd:annotation>
@@ -8704,12 +8704,6 @@ PlaneInfo (as Plane)
             <xsd:documentation>Tier=3</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
-        <xsd:attribute name="FilterCube" type="xsd:boolean">
-          <xsd:annotation>
-            <xsd:documentation>Description=This field records whether or not this holder holds Filter Cubes (True) or individual Filters (False).</xsd:documentation>
-            <xsd:documentation>Tier=3</xsd:documentation>
-          </xsd:annotation>
-        </xsd:attribute>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
@@ -8748,7 +8742,7 @@ PlaneInfo (as Plane)
     <xsd:annotation>
       <xsd:documentation>Extension=Basic</xsd:documentation>
       <xsd:documentation>Domain=MicroscopeHardwareSpecifications</xsd:documentation>
-      <xsd:documentation>Category=Holders</xsd:documentation>
+      <xsd:documentation>Category=OpticsHolder</xsd:documentation>
       <xsd:documentation>Description=This element represents a circular holder for multiple Filter Cubes.</xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
     </xsd:annotation>
@@ -8779,7 +8773,7 @@ PlaneInfo (as Plane)
     <xsd:annotation>
       <xsd:documentation>Extension=Basic</xsd:documentation>
       <xsd:documentation>Domain=MicroscopeHardwareSpecifications</xsd:documentation>
-      <xsd:documentation>Category=Holders</xsd:documentation>
+      <xsd:documentation>Category=OpticsHolder</xsd:documentation>
       <xsd:documentation>Description=This element represents a circular holder for multiple individual Excitation Filters.</xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
     </xsd:annotation>
@@ -8797,7 +8791,7 @@ PlaneInfo (as Plane)
     <xsd:annotation>
       <xsd:documentation>Extension=Basic</xsd:documentation>
       <xsd:documentation>Domain=MicroscopeHardwareSpecifications</xsd:documentation>
-      <xsd:documentation>Category=Holders</xsd:documentation>
+      <xsd:documentation>Category=OpticsHolder</xsd:documentation>
       <xsd:documentation>Description=This element represents a circular holder for multiple individual Dichroics.</xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
     </xsd:annotation>
@@ -8815,7 +8809,7 @@ PlaneInfo (as Plane)
     <xsd:annotation>
       <xsd:documentation>Extension=Basic</xsd:documentation>
       <xsd:documentation>Domain=MicroscopeHardwareSpecifications</xsd:documentation>
-      <xsd:documentation>Category=Holders</xsd:documentation>
+      <xsd:documentation>Category=OpticsHolder</xsd:documentation>
       <xsd:documentation>Description=This element represents a circular holder for multiple individual Emission Filters.</xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
     </xsd:annotation>
@@ -8846,7 +8840,7 @@ PlaneInfo (as Plane)
     <xsd:annotation>
       <xsd:documentation>Extension=Basic</xsd:documentation>
       <xsd:documentation>Domain=MicroscopeHardwareSpecifications</xsd:documentation>
-      <xsd:documentation>Category=Holders</xsd:documentation>
+      <xsd:documentation>Category=OpticsHolder</xsd:documentation>
       <xsd:documentation>Description=This element represents a linear holder for multiple individual Excitation Filters.</xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
     </xsd:annotation>
@@ -8864,7 +8858,7 @@ PlaneInfo (as Plane)
     <xsd:annotation>
       <xsd:documentation>Extension=Basic</xsd:documentation>
       <xsd:documentation>Domain=MicroscopeHardwareSpecifications</xsd:documentation>
-      <xsd:documentation>Category=Holders</xsd:documentation>
+      <xsd:documentation>Category=OpticsHolder</xsd:documentation>
       <xsd:documentation>Description=This element represents a linear holder for multiple individual Dichroics.</xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
     </xsd:annotation>
@@ -8882,7 +8876,7 @@ PlaneInfo (as Plane)
     <xsd:annotation>
       <xsd:documentation>Extension=Basic</xsd:documentation>
       <xsd:documentation>Domain=MicroscopeHardwareSpecifications</xsd:documentation>
-      <xsd:documentation>Category=Holders</xsd:documentation>
+      <xsd:documentation>Category=OpticsHolder</xsd:documentation>
       <xsd:documentation>Description=This element represents a linear holder for multiple individual Emission Filters.</xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
     </xsd:annotation>
@@ -8900,7 +8894,7 @@ PlaneInfo (as Plane)
     <xsd:annotation>
       <xsd:documentation>Extension=Basic</xsd:documentation>
       <xsd:documentation>Domain=MicroscopeHardwareSpecifications</xsd:documentation>
-      <xsd:documentation>Category=Holders</xsd:documentation>
+      <xsd:documentation>Category=OpticsHolder</xsd:documentation>
       <xsd:documentation>Description=This element represents a circular holder for multiple optical elements.</xsd:documentation>
       <xsd:documentation>Tier=2</xsd:documentation>
     </xsd:annotation>
@@ -8970,7 +8964,7 @@ PlaneInfo (as Plane)
     <xsd:annotation>
       <xsd:documentation>Extension=Basic</xsd:documentation>
       <xsd:documentation>Domain=MicroscopeHardwareSpecifications</xsd:documentation>
-      <xsd:documentation>Category=Apertures</xsd:documentation>
+      <xsd:documentation>Category=Aperture</xsd:documentation>
       <xsd:documentation>Description=This element refers to a central circular stop (i.e., opaque disk) usually used in dark-field microscopy and placed in the front focal Plane of a Condenser to occlude all the direct light which would fall within the aperture of the objective.</xsd:documentation>
       <xsd:documentation>Tier=2</xsd:documentation>
     </xsd:annotation>
@@ -8996,7 +8990,7 @@ PlaneInfo (as Plane)
     <xsd:annotation>
       <xsd:documentation>Extension=Basic</xsd:documentation>
       <xsd:documentation>Domain=MicroscopeHardwareSpecifications</xsd:documentation>
-      <xsd:documentation>Category=Apertures</xsd:documentation>
+      <xsd:documentation>Category=Aperture</xsd:documentation>
       <xsd:documentation>Description=This element (also called Phase Annulus) refers to an annular (ring-like) slit used to produce contrast modulation following Zernike, in which the Image contrast of a phase object is enhanced by altering the phase and amplitude of the direct light with respect to those of the diffracted light. This illuminating aperture Diaphragm is placed in the front focal Plane of the Condenser and acts in conjunction with an appropriate phase plate, usually in the form of an annulus, placed in the back focal Plane of the objective (or in a succeeding Plane conjugate with this).</xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
     </xsd:annotation>
@@ -9039,7 +9033,7 @@ PlaneInfo (as Plane)
     <xsd:annotation>
       <xsd:documentation>Extension=Basic</xsd:documentation>
       <xsd:documentation>Domain=MicroscopeHardwareSpecifications</xsd:documentation>
-      <xsd:documentation>Category=Apertures</xsd:documentation>
+      <xsd:documentation>Category=Aperture</xsd:documentation>
       <xsd:documentation>Description=This element represents a Plate that contains an off-axis slit aperture positioned in the front focal plane of the Condenser. It is used alongside a Hoffman contrast modulator (i.e., optical amplitude spatial filter) present in the back focal plane of the objective or in a succeeding conjugate plane to produce contrast modulation as described by Hoffman (i.e., Hoffman Contrast Modulation, HMC). Hoffman modulation contrast is not hampered by the use of birefringent materials (such as plastic Petri dishes) in the optical pathway, so the technique is more useful for examining specimens in containers constructed with polymeric materials.</xsd:documentation>
       <xsd:documentation>Tier=2</xsd:documentation>
     </xsd:annotation>
@@ -9060,7 +9054,7 @@ PlaneInfo (as Plane)
     <xsd:annotation>
       <xsd:documentation>Extension=Basic</xsd:documentation>
       <xsd:documentation>Domain=MicroscopeHardwareSpecifications</xsd:documentation>
-      <xsd:documentation>Category=Apertures</xsd:documentation>
+      <xsd:documentation>Category=Aperture</xsd:documentation>
       <xsd:documentation>Description=This element represents a Diaphragm, positioned trasversally to the optical axis bounded by multiple leaves, usually metal, arranged so as to provide an opening of variable size, which is adjustable by means of a mechanical control.</xsd:documentation>
       <xsd:documentation>Tier=2</xsd:documentation>
     </xsd:annotation>
@@ -9092,7 +9086,7 @@ PlaneInfo (as Plane)
     <xsd:annotation>
       <xsd:documentation>Extension=Basic</xsd:documentation>
       <xsd:documentation>Domain=MicroscopeHardwareSpecifications</xsd:documentation>
-      <xsd:documentation>Category=Apertures</xsd:documentation>
+      <xsd:documentation>Category=Aperture</xsd:documentation>
       <xsd:documentation>Description=This element represents a stop (i.e., opaque structure) shaped like a ring sector, which is used on the illumination side, to permit unilateral inclined illumination. It was developed to work in combination with Phase Objectives to yield contrast even when light passes through birefringent materials, such as plastic Petri dishes.</xsd:documentation>
       <xsd:documentation>Tier=2</xsd:documentation>
     </xsd:annotation>
@@ -9106,7 +9100,7 @@ PlaneInfo (as Plane)
     <xsd:annotation>
       <xsd:documentation>Extension=Basic</xsd:documentation>
       <xsd:documentation>Domain=MicroscopeHardwareSpecifications</xsd:documentation>
-      <xsd:documentation>Category=Apertures</xsd:documentation>
+      <xsd:documentation>Category=Aperture</xsd:documentation>
       <xsd:documentation>Description=This element describes a Shutter available for this Instrument. Shutters are devices that open and close, and they may be mechanically or electro-mechanically controlled. Shutters are typically used to control the Light that raches the sample (i.e., to limit phototoxicity and photobleaching especially in case of live specimens), or the Detecrtor at any one time. They can also be used for Excitation or Emission Wavelength selection.</xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
       <xsd:documentation>Model_Settings=ShutterSettings</xsd:documentation>
@@ -9175,7 +9169,7 @@ PlaneInfo (as Plane)
     <xsd:annotation>
       <xsd:documentation>Extension=Basic</xsd:documentation>
       <xsd:documentation>Domain=MicroscopeHardwareSpecifications</xsd:documentation>
-      <xsd:documentation>Category=Filters</xsd:documentation>
+      <xsd:documentation>Category=Filter</xsd:documentation>
       <xsd:documentation>Description=An optical Filter is a device designed to selectively control the Wavelengths, color temperature, vibration direction, and/or intensity of the radiation which it transmits or reflects. This element refers to an optical Filter whose purpose is to attenuate the intensity of the transmitted Light independent of the Wavelength.</xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
     </xsd:annotation>
@@ -9202,7 +9196,7 @@ PlaneInfo (as Plane)
     <xsd:annotation>
       <xsd:documentation>Extension=Basic</xsd:documentation>
       <xsd:documentation>Domain=MicroscopeHardwareSpecifications</xsd:documentation>
-      <xsd:documentation>Category=Filters</xsd:documentation>
+      <xsd:documentation>Category=Filter</xsd:documentation>
       <xsd:documentation>Description=An optical Filter is a device designed to selectively control the Wavelengths, color temperature, vibration direction, and/or intensity of the radiation which it transmits or reflects. This element refers to a Generic Filter positioned along the Light Path in addition to the canonical fluorescence Excitation and the Emission Filters.</xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
     </xsd:annotation>
@@ -9224,7 +9218,7 @@ PlaneInfo (as Plane)
       </xsd:appinfo>
       <xsd:documentation>Extension=Basic</xsd:documentation>
       <xsd:documentation>Domain=MicroscopeHardwareSpecifications</xsd:documentation>
-      <xsd:documentation>Category=Mirrors</xsd:documentation>
+      <xsd:documentation>Category=MirroringDevice</xsd:documentation>
       <xsd:documentation>Description=A Dichroic Mirror (also often referred to as Dichroic Beamsplitter or simply as Dichroic) is a Mirror that spectrally separate light by transmitting and reflecting light as a function of wavelength. In the context of fluorescence microscopy, they are typically used to reflect the excitation light, but transmit the emitted fluorescence. Dichroic Mirrors can be categorized in different manners. However, the most important criteria for choosing a Dichoric Mirror are the Transmittance and the Reflectance Wavelength ranges. This element describes a generic Additional Dichroic positioned in the Light Path for one or more Channel available for this Instrument.</xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
       <xsd:documentation>Model_Settings=MirroringDeviceSettings</xsd:documentation>
@@ -9239,7 +9233,7 @@ PlaneInfo (as Plane)
     <xsd:annotation>
       <xsd:documentation>Extension=Basic</xsd:documentation>
       <xsd:documentation>Domain=MicroscopeHardwareSpecifications</xsd:documentation>
-      <xsd:documentation>Category=Mirrors</xsd:documentation>
+      <xsd:documentation>Category=MirroringDevice</xsd:documentation>
       <xsd:documentation>Description=This element describes a Mirror that reflects part of the light, regardless of wavelength.</xsd:documentation>
       <xsd:documentation>Tier=2</xsd:documentation>
       <xsd:documentation>Model_Settings=MirroringDeviceSettings</xsd:documentation>
@@ -9288,7 +9282,7 @@ PlaneInfo (as Plane)
     <xsd:annotation>
       <xsd:documentation>Extension=Basic</xsd:documentation>
       <xsd:documentation>Domain=MicroscopeHardwareSpecifications</xsd:documentation>
-      <xsd:documentation>Category=Mirrors</xsd:documentation>
+      <xsd:documentation>Category=MirroringDevice</xsd:documentation>
       <xsd:documentation>Description=This element describes a total reflection Mirror.</xsd:documentation>
       <xsd:documentation>Tier=2</xsd:documentation>
       <xsd:documentation>Model_Settings=MirroringDeviceSettings</xsd:documentation>
@@ -9519,7 +9513,7 @@ PlaneInfo (as Plane)
     <xsd:annotation>
       <xsd:documentation>Extension=Basic</xsd:documentation>
       <xsd:documentation>Domain=MicroscopeHardwareSpecifications</xsd:documentation>
-      <xsd:documentation>Category=Lenses</xsd:documentation>
+      <xsd:documentation>Category=Lens</xsd:documentation>
       <xsd:documentation>Description=This element refers to any additional Generic Lens positioned in the Light Path for a given Channel.</xsd:documentation>
       <xsd:documentation>Tier=2</xsd:documentation>
     </xsd:annotation>
@@ -9533,7 +9527,7 @@ PlaneInfo (as Plane)
     <xsd:annotation>
       <xsd:documentation>Extension=Basic</xsd:documentation>
       <xsd:documentation>Domain=MicroscopeHardwareSpecifications</xsd:documentation>
-      <xsd:documentation>Category=Lenses</xsd:documentation>
+      <xsd:documentation>Category=Lens</xsd:documentation>
       <xsd:documentation>Description=A Beam Expander Lens is a Lens designed to work in combination with other optical components to form a Beam Expander device. As such, its role is to increase the diameter of a collimated input beam to a larger collimated output beam.</xsd:documentation>
       <xsd:documentation>Tier=2</xsd:documentation>
     </xsd:annotation>
@@ -9547,7 +9541,7 @@ PlaneInfo (as Plane)
     <xsd:annotation>
       <xsd:documentation>Extension=Basic</xsd:documentation>
       <xsd:documentation>Domain=MicroscopeHardwareSpecifications</xsd:documentation>
-      <xsd:documentation>Category=Lenses</xsd:documentation>
+      <xsd:documentation>Category=Lens</xsd:documentation>
       <xsd:documentation>Description=A Beam Collimator Lens is a Lens designed to work in combination with other optical components to form a Beam Collimator device. As such, its role is to transform a strongly diverging light beam into a collimated beam, i.e., a beam where light propagates mainly only in one direction, and the beam divergence is weak.</xsd:documentation>
       <xsd:documentation>Tier=2</xsd:documentation>
     </xsd:annotation>
@@ -9561,7 +9555,7 @@ PlaneInfo (as Plane)
     <xsd:annotation>
       <xsd:documentation>Extension=Basic</xsd:documentation>
       <xsd:documentation>Domain=MicroscopeHardwareSpecifications</xsd:documentation>
-      <xsd:documentation>Category=Lenses</xsd:documentation>
+      <xsd:documentation>Category=Lens</xsd:documentation>
       <xsd:documentation>Description=A Condenser Lens renders a divergent beam from a point source into a parallel or converging beam to illuminate an object. It acts to gather light from the Light Source and concentrate it into a cone of light that illuminates the specimen. The aperture and angle of the light cone must be adjusted (via the size of the diaphragm) for each different objective Lens with different numerical apertures. Conserser Lenses are typically housed within a specific component of the Microscope called the Condenser.</xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
     </xsd:annotation>
@@ -9575,7 +9569,7 @@ PlaneInfo (as Plane)
     <xsd:annotation>
       <xsd:documentation>Extension=Basic</xsd:documentation>
       <xsd:documentation>Domain=MicroscopeHardwareSpecifications</xsd:documentation>
-      <xsd:documentation>Category=Lenses</xsd:documentation>
+      <xsd:documentation>Category=Lens</xsd:documentation>
       <xsd:documentation>Description=This element refers to a Lens positioned at the mount connecting the Light Source Coupling device and the Microscope Stand.</xsd:documentation>
       <xsd:documentation>Tier=2</xsd:documentation>
     </xsd:annotation>
@@ -9589,7 +9583,7 @@ PlaneInfo (as Plane)
     <xsd:annotation>
       <xsd:documentation>Extension=Basic</xsd:documentation>
       <xsd:documentation>Domain=MicroscopeHardwareSpecifications</xsd:documentation>
-      <xsd:documentation>Category=Lenses</xsd:documentation>
+      <xsd:documentation>Category=Lens</xsd:documentation>
       <xsd:documentation>Description=A Relay Lens is often used in combination with other Lenses for transferring an Image into a different optical plane. A typical example of Relay Lens is the Lens positioned at the mount connecting a Detector with the Microscope Stand.</xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
     </xsd:annotation>
@@ -9603,7 +9597,7 @@ PlaneInfo (as Plane)
     <xsd:annotation>
       <xsd:documentation>Extension=Basic</xsd:documentation>
       <xsd:documentation>Domain=MicroscopeHardwareSpecifications</xsd:documentation>
-      <xsd:documentation>Category=Lenses</xsd:documentation>
+      <xsd:documentation>Category=Lens</xsd:documentation>
       <xsd:documentation>Description=A Tube Lens is an intermediate Lens, located within the Microscope's Illumination Tube, which is designed to operate as an essential component of infinity-corrected Objectives, and which should be regarded as an integral part of the Objective lens system when magnification and correction are considered. In some Microscope Tubes, Lenses might be located within the Microscope Stand and might not be immediately accessible.</xsd:documentation>
       <xsd:documentation>Tier=2</xsd:documentation>
     </xsd:annotation>
@@ -10637,7 +10631,7 @@ PlaneInfo (as Plane)
     <xsd:annotation>
       <xsd:documentation>Extension=Basic</xsd:documentation>
       <xsd:documentation>Domain=ImageAcquisitionSettings</xsd:documentation>
-      <xsd:documentation>Category=Image</xsd:documentation>
+      <xsd:documentation>Category=ImageDimensions</xsd:documentation>
       <xsd:documentation>Description=This element refers to each individual Plane of data pertaining to a given Additional Dimension.</xsd:documentation>
       <xsd:documentation>Tier=2</xsd:documentation>
     </xsd:annotation>
@@ -11213,9 +11207,9 @@ PlaneInfo (as Plane)
       </xsd:complexContent>
     </xsd:complexType>
   </xsd:element>
-  <xsd:element name="SoftwareRef" type="SoftwareRef">
+  <xsd:element name="AcquisitionSoftwareRef" type="SoftwareRef">
     <xsd:annotation>
-      <xsd:documentation>Description=This empty element refers to any existing Software that was used during the Acquisition of this Image.</xsd:documentation>
+      <xsd:documentation>Description=This empty element refers to the Software that was used to drive the Microscope during the Image Acquisition.</xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
@@ -11333,7 +11327,7 @@ PlaneInfo (as Plane)
       </xsd:complexContent>
     </xsd:complexType>
   </xsd:element>
-  <xsd:element name="StandardDichroicRef" type="MirrorRef">
+  <xsd:element name="StandardDichroicRef" type="MirroringDeviceRef">
     <!-- top level definition -->
     <xsd:annotation>
       <xsd:documentation>Description=This field refers to an available Dichroic Mirror, which is part of this Filter Cube.</xsd:documentation>
@@ -11352,7 +11346,7 @@ PlaneInfo (as Plane)
       <xsd:documentation>Tier=1</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
-  <xsd:element name="MirrorringDeviceRef" type="MirrorRef">
+  <xsd:element name="MirrorringDeviceRef" type="MirroringDeviceRef">
     <xsd:annotation>
       <xsd:documentation>Description=This refers to an available Mirroring Device, which is part of this Optical Device.</xsd:documentation>
       <xsd:documentation>Tier=2</xsd:documentation>
@@ -11442,7 +11436,7 @@ PlaneInfo (as Plane)
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
-  <xsd:complexType name="MirrorRef">
+  <xsd:complexType name="MirroringDeviceRef">
     <xsd:complexContent>
       <xsd:extension base="Reference">
         <xsd:attribute name="ID" type="MirrorID">
@@ -13610,7 +13604,7 @@ PlaneInfo (as Plane)
     <xsd:annotation>
       <xsd:documentation>Extension=Advanced+Confocal</xsd:documentation>
       <xsd:documentation>Domain=MicroscopeHardwareSpecifications</xsd:documentation>
-      <xsd:documentation>Category=Lenses</xsd:documentation>
+      <xsd:documentation>Category=Lens</xsd:documentation>
       <xsd:documentation>Description=Micro-lens arrays contain multiple micro-lenses forming a one- or two-dimensional array on a supporting substrate.</xsd:documentation>
       <xsd:documentation>Tier=2</xsd:documentation>
     </xsd:annotation>
@@ -13715,7 +13709,7 @@ PlaneInfo (as Plane)
     <xsd:annotation>
       <xsd:documentation>Extension=Advanced+Confocal</xsd:documentation>
       <xsd:documentation>Domain=MicroscopeHardwareSpecifications</xsd:documentation>
-      <xsd:documentation>Category=Apertures</xsd:documentation>
+      <xsd:documentation>Category=Aperture</xsd:documentation>
       <xsd:documentation>Description=A Diffraction Grating is an optical component with a periodic structure that splits and diffracts light into several beams travelling in different directions.</xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
       <xsd:documentation>Model_Settings=DiffractiveGratingSettings</xsd:documentation>
@@ -13766,7 +13760,7 @@ PlaneInfo (as Plane)
     <xsd:annotation>
       <xsd:documentation>Extension=Advanced+Confocal</xsd:documentation>
       <xsd:documentation>Domain=MicroscopeHardwareSpecifications</xsd:documentation>
-      <xsd:documentation>Category=Apertures</xsd:documentation>
+      <xsd:documentation>Category=Aperture</xsd:documentation>
       <xsd:documentation>Description=This element describes an opaque Masking Plate positioned in the light path to block specific components of the light beam.</xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
       <xsd:documentation>Model_Settings=MaskingPlateSettings</xsd:documentation>
@@ -13823,7 +13817,7 @@ PlaneInfo (as Plane)
     <xsd:annotation>
       <xsd:documentation>Extension=Advanced+Confocal</xsd:documentation>
       <xsd:documentation>Domain=MicroscopeHardwareSpecifications</xsd:documentation>
-      <xsd:documentation>Category=Apertures</xsd:documentation>
+      <xsd:documentation>Category=Aperture</xsd:documentation>
       <xsd:documentation>Description=A pin-like aperture positioned axially to the Light Path, which can act as a spatial filter for a beam of light to clean up the output of lasers and / or to suppress out-of-focus light in a confocal Microscope. Specifically, in Confocal Microscopy, such Pinholes are diaphragm typically situated in a plane conjugate with the object, and they restrict the area in the object plane that is illuminated and/or from which light is collected.</xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
       <xsd:documentation>Model_Settings=PinHoleSettings</xsd:documentation>
