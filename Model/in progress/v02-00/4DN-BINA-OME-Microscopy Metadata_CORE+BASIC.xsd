@@ -2103,7 +2103,7 @@
       <xsd:complexContent>
         <xsd:extension base="LightSource">
           <xsd:sequence>
-            <xsd:element ref="LEDModule" maxOccurs="unbounded"/>
+            <xsd:element ref="LEDModule" maxOccurs="unbounded" minOccurs="1"/>
           </xsd:sequence>
           <xsd:attribute name="Type" type="LightEmittingDiodeType" use="required">
             <xsd:annotation>
@@ -8259,7 +8259,7 @@ PlaneInfo (as Plane)
       <xsd:complexContent>
         <xsd:extension base="LightSource">
           <xsd:sequence>
-            <xsd:element maxOccurs="unbounded" ref="Laser"/>
+            <xsd:element maxOccurs="unbounded" ref="LaserRef"/>
           </xsd:sequence>
           <xsd:attribute name="SingleMode" type="xsd:boolean">
             <xsd:annotation>
@@ -8720,7 +8720,7 @@ PlaneInfo (as Plane)
         <xsd:extension base="OpticsHolder">
           <xsd:sequence>
             <xsd:element ref="ExcitationFilterRef" maxOccurs="1" minOccurs="0"/>
-            <xsd:element ref="StandardDichroicRef">
+            <xsd:element ref="StandardDichroicRef" maxOccurs="1" minOccurs="0">
               <xsd:annotation>
                 <xsd:documentation>Description=This field refers to an available Dichroic Mirror, which is part of this Filter Cube.</xsd:documentation>
                 <xsd:documentation>Tier=1</xsd:documentation>
@@ -8750,7 +8750,7 @@ PlaneInfo (as Plane)
       <xsd:complexContent>
         <xsd:extension base="OpticsHolder">
           <xsd:sequence>
-            <xsd:element ref="FilterCubeRef" maxOccurs="unbounded" minOccurs="1"/>
+            <xsd:element ref="FilterCubeRef" maxOccurs="6" minOccurs="1"/>
           </xsd:sequence>
         </xsd:extension>
       </xsd:complexContent>
@@ -8781,7 +8781,7 @@ PlaneInfo (as Plane)
       <xsd:complexContent>
         <xsd:extension base="FilterWheel">
           <xsd:sequence>
-            <xsd:element ref="ExcitationFilterRef"/>
+            <xsd:element ref="ExcitationFilterRef" maxOccurs="unbounded" minOccurs="1"/>
           </xsd:sequence>
         </xsd:extension>
       </xsd:complexContent>
@@ -8799,7 +8799,7 @@ PlaneInfo (as Plane)
       <xsd:complexContent>
         <xsd:extension base="FilterWheel">
           <xsd:sequence>
-            <xsd:element ref="StandardDichroicRef"/>
+            <xsd:element ref="StandardDichroicRef" maxOccurs="unbounded" minOccurs="0"/>
           </xsd:sequence>
         </xsd:extension>
       </xsd:complexContent>
@@ -8817,7 +8817,7 @@ PlaneInfo (as Plane)
       <xsd:complexContent>
         <xsd:extension base="FilterWheel">
           <xsd:sequence>
-            <xsd:element ref="EmissionFilterRef"/>
+            <xsd:element ref="EmissionFilterRef" maxOccurs="unbounded" minOccurs="0"/>
           </xsd:sequence>
         </xsd:extension>
       </xsd:complexContent>
@@ -8848,7 +8848,7 @@ PlaneInfo (as Plane)
       <xsd:complexContent>
         <xsd:extension base="FilterSlider">
           <xsd:sequence>
-            <xsd:element ref="ExcitationFilterRef"/>
+            <xsd:element ref="ExcitationFilterRef" maxOccurs="unbounded" minOccurs="1"/>
           </xsd:sequence>
         </xsd:extension>
       </xsd:complexContent>
@@ -8866,7 +8866,7 @@ PlaneInfo (as Plane)
       <xsd:complexContent>
         <xsd:extension base="FilterSlider">
           <xsd:sequence>
-            <xsd:element ref="StandardDichroicRef"/>
+            <xsd:element ref="StandardDichroicRef" maxOccurs="unbounded" minOccurs="1"/>
           </xsd:sequence>
         </xsd:extension>
       </xsd:complexContent>
@@ -8884,7 +8884,7 @@ PlaneInfo (as Plane)
       <xsd:complexContent>
         <xsd:extension base="FilterSlider">
           <xsd:sequence>
-            <xsd:element ref="EmissionFilterRef"/>
+            <xsd:element ref="EmissionFilterRef" maxOccurs="unbounded" minOccurs="1"/>
           </xsd:sequence>
         </xsd:extension>
       </xsd:complexContent>
@@ -11221,8 +11221,8 @@ PlaneInfo (as Plane)
   </xsd:element>
   <xsd:element name="LaserRef" type="Reference">
     <xsd:annotation>
-      <xsd:documentation>Description=This empty element refers to a Laser component used to as a Pump for the primary Laser.</xsd:documentation>
-      <xsd:documentation>Tier=3</xsd:documentation>
+      <xsd:documentation>Description=This empty element refers to an existing Laser component.</xsd:documentation>
+      <xsd:documentation>Tier=2</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
   <xsd:element name="LightSourceCouplingRef">
