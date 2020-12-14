@@ -15,62 +15,6 @@
   <graph edgedefault="directed" id="G">
     <data key="d0" xml:space="preserve"/>
     <node id="n0">
-      <data key="d4" xml:space="preserve"/>
-      <data key="d6">
-        <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
-          <y:Geometry height="858.0422078948076" width="880.5474927441846" x="2095.446906539345" y="892.4310933180736"/>
-          <y:Fill color="#FFFFFF" color2="#FFFFFF" transparent="false"/>
-          <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#1C4A87" configuration="CroppingLabel" fontFamily="Dialog" fontSize="32" fontStyle="plain" hasLineColor="false" height="44.6875" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="t" textColor="#FFFFFF" verticalTextPosition="bottom" visible="true" width="96.40625" x="392.0706213720923" xml:space="preserve" y="4.0">Notes</y:NodeLabel>
-          <y:NodeLabel alignment="left" autoSizePolicy="content" backgroundColor="#FFFFFF" configuration="com.yworks.entityRelationship.label.attributes" fontFamily="Dialog" fontSize="16" fontStyle="plain" height="795.4375" horizontalTextPosition="center" iconTextGap="4" lineColor="#FFFFFF" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="874.96875" x="2.0" xml:space="preserve" y="56.6875">Blue edges, blue edges represent RELATIONSHIPs between entities. SOLID EDGES are used to connect an 
-Element with a REQUIRED Sub-Element. DASHED EDGED are used to connect an Element with an OPTIONAL 
-Sub-Element. In addition, different CARDINALITIES can be represented as follow:
-
-
-
-
-
-
-
-
-
-
-Black dashed arrows, these arrows simbolize an inheritance relationship similar to what would connect an 
-hypothetical "Feline" parent element with a "Cat" child element. In this example, while the "Cat" element 
-represents a "concrete" entity that exist in the real world, the "Feline" element represents an "abstract" category 
-that is only useful for categorization pruposes. In a similar manner, these arrows connect concrete elemennts 
-that represents actual microscope hardware components, with their Abstract Parent Elements (APE), which are 
-useful for making the model less repetitive. These arrows should be read as follows, a "Laser" IS-A 
-"LightSource".
-
-Dashed grey edges, these edges signify "Extends" and they should be read as follows: "Objective" extends 
-"ManufacturerSpecs". In this example, the concept of extension indicates that Objective is of type 
-"ManufacturerSpecs" but it has additional attributes that are unique to it and distinguishes from other similar 
-"ManufacturerSpecs" extensions.
--
-Units are omitted for simplicity sake.
-
-AnnotationRef, This element always refers to a Comment/Annotation element as described for Channel. 
-However for simplicity sake most Comment/Annotation elements have been omitted and the AnnotationRef 
-has been inserted in the referring element as an attribute.
-
-[Sub-Element], For semplicity sake, when indicated Sub-Elements are listed within the referring element as an 
-attribute.
-
-References, For simplicity sake, when indicated Reference elements (e.g., ImageRef) are listed whithin the 
-referring element as attributes.
-
-Attributes listed after a --- separator have been added to the OME Core as part of the proposed revision.
-Attributes listed after .... and in parenthesis have been removed as part of the proposed revision.
-
-APE, Abstract Parent Entity (see explanation above).<y:LabelModel><y:ErdAttributesNodeLabelModel/></y:LabelModel><y:ModelParameter><y:ErdAttributesNodeLabelModelParameter/></y:ModelParameter></y:NodeLabel>
-          <y:StyleProperties>
-            <y:Property class="java.lang.Boolean" name="y.view.ShadowNodePainter.SHADOW_PAINTING" value="true"/>
-          </y:StyleProperties>
-        </y:GenericNode>
-      </data>
-    </node>
-    <node id="n1">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="1899.9522743026641" width="1275.9687931697574" x="813.4412892627225" y="-149.80729915189363"/>
@@ -88,7 +32,7 @@ APE, Abstract Parent Entity (see explanation above).<y:LabelModel><y:ErdAttribut
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n2">
+    <node id="n1">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
           <y:Geometry height="335.58470343104733" width="230.0" x="1249.9289184808956" y="454.4537005188283"/>
@@ -120,7 +64,7 @@ AnnotationRef<y:LabelModel><y:ErdAttributesNodeLabelModel/></y:LabelModel><y:Mod
         </y:GenericNode>
       </data>
     </node>
-    <node id="n3" yfiles.foldertype="group">
+    <node id="n2" yfiles.foldertype="group">
       <data key="d4" xml:space="preserve"/>
       <data key="d6">
         <y:ProxyAutoBoundsNode>
@@ -148,8 +92,8 @@ AnnotationRef<y:LabelModel><y:ErdAttributesNodeLabelModel/></y:LabelModel><y:Mod
           </y:Realizers>
         </y:ProxyAutoBoundsNode>
       </data>
-      <graph edgedefault="directed" id="n3:">
-        <node id="n3::n0">
+      <graph edgedefault="directed" id="n2:">
+        <node id="n2::n0">
           <data key="d6">
             <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
               <y:Geometry height="65.0" width="210.0" x="1566.0695924356921" y="438.4369772644456"/>
@@ -165,7 +109,7 @@ Deflector</y:NodeLabel>
             </y:GenericNode>
           </data>
         </node>
-        <node id="n3::n1">
+        <node id="n2::n1">
           <data key="d6">
             <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
               <y:Geometry height="65.0" width="210.0" x="1566.0695924356921" y="592.692131464738"/>
@@ -181,7 +125,7 @@ TuneableFilter</y:NodeLabel>
             </y:GenericNode>
           </data>
         </node>
-        <node id="n3::n2">
+        <node id="n2::n2">
           <data key="d6">
             <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
               <y:Geometry height="65.0" width="210.0" x="1566.0695924356921" y="367.05008159900996"/>
@@ -197,7 +141,7 @@ BeamSplitter</y:NodeLabel>
             </y:GenericNode>
           </data>
         </node>
-        <node id="n3::n3">
+        <node id="n2::n3">
           <data key="d6">
             <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
               <y:Geometry height="76.48136286942116" width="210.0" x="1566.0695924356921" y="509.8238729298812"/>
@@ -215,7 +159,7 @@ Modulator</y:NodeLabel>
         </node>
       </graph>
     </node>
-    <node id="n4">
+    <node id="n3">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
           <y:Geometry height="100.0" width="200.0" x="1865.7304286429862" y="582.7923477925128"/>
@@ -234,7 +178,7 @@ WavelenghtProfileFile
         </y:GenericNode>
       </data>
     </node>
-    <node id="n5">
+    <node id="n4">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
           <y:Geometry height="303.1871686286214" width="230.0" x="1249.9289184808956" y="798.5271859810971"/>
@@ -265,7 +209,7 @@ AnnotationRef<y:LabelModel><y:ErdAttributesNodeLabelModel/></y:LabelModel><y:Mod
         </y:GenericNode>
       </data>
     </node>
-    <node id="n6">
+    <node id="n5">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
           <y:Geometry height="85.0" width="200.0" x="1865.7304286429862" y="856.6957956422291"/>
@@ -280,7 +224,7 @@ Material<y:LabelModel><y:ErdAttributesNodeLabelModel/></y:LabelModel><y:ModelPar
         </y:GenericNode>
       </data>
     </node>
-    <node id="n7" yfiles.foldertype="group">
+    <node id="n6" yfiles.foldertype="group">
       <data key="d4" xml:space="preserve"/>
       <data key="d6">
         <y:ProxyAutoBoundsNode>
@@ -308,8 +252,8 @@ Material<y:LabelModel><y:ErdAttributesNodeLabelModel/></y:LabelModel><y:ModelPar
           </y:Realizers>
         </y:ProxyAutoBoundsNode>
       </data>
-      <graph edgedefault="directed" id="n7:">
-        <node id="n7::n0">
+      <graph edgedefault="directed" id="n6:">
+        <node id="n6::n0">
           <data key="d6">
             <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
               <y:Geometry height="85.0" width="210.0" x="1566.0695924356921" y="856.6957956422291"/>
@@ -329,7 +273,7 @@ AnnotationRef<y:LabelModel><y:ErdAttributesNodeLabelModel/></y:LabelModel><y:Mod
             </y:GenericNode>
           </data>
         </node>
-        <node id="n7::n1">
+        <node id="n6::n1">
           <data key="d6">
             <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
               <y:Geometry height="98.167973273381" width="210.0" x="1566.0695924356921" y="947.9565337873108"/>
@@ -345,7 +289,7 @@ MaximumPower<y:LabelModel><y:ErdAttributesNodeLabelModel/></y:LabelModel><y:Mode
             </y:GenericNode>
           </data>
         </node>
-        <node id="n7::n2">
+        <node id="n6::n2">
           <data key="d6">
             <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
               <y:Geometry height="113.47091256449698" width="210.0" x="1566.0695924356921" y="1052.4603393599805"/>
@@ -363,7 +307,7 @@ FrameRate<y:LabelModel><y:ErdAttributesNodeLabelModel/></y:LabelModel><y:ModelPa
             </y:GenericNode>
           </data>
         </node>
-        <node id="n7::n3">
+        <node id="n6::n3">
           <data key="d6">
             <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
               <y:Geometry height="113.47091256449698" width="210.0" x="1566.0695924356921" y="736.9641449326504"/>
@@ -383,7 +327,7 @@ ResponseTime<y:LabelModel><y:ErdAttributesNodeLabelModel/></y:LabelModel><y:Mode
         </node>
       </graph>
     </node>
-    <node id="n8">
+    <node id="n7">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
           <y:Geometry height="100.0" width="200.0" x="1865.7304286429862" y="689.4534430649827"/>
@@ -400,7 +344,7 @@ WavelenghtProfileFile<y:LabelModel><y:ErdAttributesNodeLabelModel/></y:LabelMode
         </y:GenericNode>
       </data>
     </node>
-    <node id="n9" yfiles.foldertype="group">
+    <node id="n8" yfiles.foldertype="group">
       <data key="d4" xml:space="preserve"/>
       <data key="d6">
         <y:ProxyAutoBoundsNode>
@@ -428,8 +372,8 @@ WavelenghtProfileFile<y:LabelModel><y:ErdAttributesNodeLabelModel/></y:LabelMode
           </y:Realizers>
         </y:ProxyAutoBoundsNode>
       </data>
-      <graph edgedefault="directed" id="n9:">
-        <node id="n9::n0">
+      <graph edgedefault="directed" id="n8:">
+        <node id="n8::n0">
           <data key="d6">
             <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
               <y:Geometry height="118.02869071122177" width="210.0" x="1566.069592435692" y="1232.5972675494777"/>
@@ -447,7 +391,7 @@ Ronchi<y:LabelModel><y:ErdAttributesNodeLabelModel/></y:LabelModel><y:ModelParam
             </y:GenericNode>
           </data>
         </node>
-        <node id="n9::n1">
+        <node id="n8::n1">
           <data key="d6">
             <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
               <y:Geometry height="70.0" width="210.0" x="1566.069592435692" y="1497.9840297148658"/>
@@ -462,7 +406,7 @@ Shape<y:LabelModel><y:ErdAttributesNodeLabelModel/></y:LabelModel><y:ModelParame
             </y:GenericNode>
           </data>
         </node>
-        <node id="n9::n2">
+        <node id="n8::n2">
           <data key="d6">
             <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
               <y:Geometry height="144.06756304232317" width="210.0" x="1566.0695924356921" y="1352.2712124666214"/>
@@ -483,7 +427,7 @@ Material<y:LabelModel><y:ErdAttributesNodeLabelModel/></y:LabelModel><y:ModelPar
         </node>
       </graph>
     </node>
-    <node id="n10">
+    <node id="n9">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
           <y:Geometry height="135.0" width="230.0" x="1249.9289184808956" y="1349.0112179687785"/>
@@ -501,7 +445,7 @@ AnnotationRef<y:LabelModel><y:ErdAttributesNodeLabelModel/></y:LabelModel><y:Mod
         </y:GenericNode>
       </data>
     </node>
-    <node id="n11" yfiles.foldertype="group">
+    <node id="n10" yfiles.foldertype="group">
       <data key="d4" xml:space="preserve"/>
       <data key="d6">
         <y:ProxyAutoBoundsNode>
@@ -529,8 +473,8 @@ AnnotationRef<y:LabelModel><y:ErdAttributesNodeLabelModel/></y:LabelModel><y:Mod
           </y:Realizers>
         </y:ProxyAutoBoundsNode>
       </data>
-      <graph edgedefault="directed" id="n11:">
-        <node id="n11::n0">
+      <graph edgedefault="directed" id="n10:">
+        <node id="n10::n0">
           <data key="d6">
             <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
               <y:Geometry height="75.0" width="210.0" x="3377.782926762633" y="87.85583248745834"/>
@@ -552,7 +496,7 @@ TuneableFilterSettings</y:NodeLabel>
             </y:GenericNode>
           </data>
         </node>
-        <node id="n11::n1">
+        <node id="n10::n1">
           <data key="d6">
             <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
               <y:Geometry height="75.0" width="210.0" x="3377.782926762633" y="185.18885214991715"/>
@@ -574,7 +518,7 @@ BeamSplitterSettings</y:NodeLabel>
             </y:GenericNode>
           </data>
         </node>
-        <node id="n11::n2">
+        <node id="n10::n2">
           <data key="d6">
             <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
               <y:Geometry height="75.0" width="210.0" x="3377.782926762633" y="362.3548914748352"/>
@@ -596,7 +540,7 @@ ModulatorSettings</y:NodeLabel>
             </y:GenericNode>
           </data>
         </node>
-        <node id="n11::n3">
+        <node id="n10::n3">
           <data key="d6">
             <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
               <y:Geometry height="75.0" width="210.0" x="3377.782926762633" y="280.88392720475565"/>
@@ -620,7 +564,7 @@ DeflectorSettings</y:NodeLabel>
         </node>
       </graph>
     </node>
-    <node id="n12">
+    <node id="n11">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
           <y:Geometry height="141.60364213131822" width="234.82892409725446" x="3052.3926788161957" y="362.327840476961"/>
@@ -640,7 +584,7 @@ ReflectanceProfileFie [Sub-Element]
         </y:GenericNode>
       </data>
     </node>
-    <node id="n13" yfiles.foldertype="group">
+    <node id="n12" yfiles.foldertype="group">
       <data key="d4" xml:space="preserve"/>
       <data key="d6">
         <y:ProxyAutoBoundsNode>
@@ -668,8 +612,8 @@ ReflectanceProfileFie [Sub-Element]
           </y:Realizers>
         </y:ProxyAutoBoundsNode>
       </data>
-      <graph edgedefault="directed" id="n13:">
-        <node id="n13::n0">
+      <graph edgedefault="directed" id="n12:">
+        <node id="n12::n0">
           <data key="d6">
             <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
               <y:Geometry height="75.0" width="210.0" x="3377.782926762633" y="591.130088292384"/>
@@ -691,7 +635,7 @@ ModulatorSettings</y:NodeLabel>
             </y:GenericNode>
           </data>
         </node>
-        <node id="n13::n1">
+        <node id="n12::n1">
           <data key="d6">
             <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
               <y:Geometry height="75.0" width="210.0" x="3377.782926762633" y="673.5945191360595"/>
@@ -713,7 +657,7 @@ TuneableFilterSettings</y:NodeLabel>
             </y:GenericNode>
           </data>
         </node>
-        <node id="n13::n2">
+        <node id="n12::n2">
           <data key="d6">
             <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
               <y:Geometry height="75.0" width="210.0" x="3377.782926762633" y="508.6656574487089"/>
@@ -735,7 +679,7 @@ Settings</y:NodeLabel>
             </y:GenericNode>
           </data>
         </node>
-        <node id="n13::n3">
+        <node id="n12::n3">
           <data key="d6">
             <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
               <y:Geometry height="75.0" width="210.0" x="3377.782926762633" y="756.0589499797345"/>
@@ -759,7 +703,7 @@ Settings</y:NodeLabel>
         </node>
       </graph>
     </node>
-    <node id="n14">
+    <node id="n13">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
           <y:Geometry height="113.09823003697" width="234.82892409725446" x="3052.3926788161957" y="519.6165424302233"/>
@@ -776,7 +720,7 @@ ReflectanceProfileFie [Sub-Element]<y:LabelModel><y:ErdAttributesNodeLabelModel/
         </y:GenericNode>
       </data>
     </node>
-    <node id="n15">
+    <node id="n14">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
           <y:Geometry height="75.0" width="225.0" x="824.9079605068177" y="1062.2618902727902"/>
@@ -791,7 +735,7 @@ ReflectanceProfileFie [Sub-Element]<y:LabelModel><y:ErdAttributesNodeLabelModel/
         </y:GenericNode>
       </data>
     </node>
-    <node id="n16" yfiles.foldertype="group">
+    <node id="n15" yfiles.foldertype="group">
       <data key="d4" xml:space="preserve"/>
       <data key="d6">
         <y:ProxyAutoBoundsNode>
@@ -819,8 +763,8 @@ ReflectanceProfileFie [Sub-Element]<y:LabelModel><y:ErdAttributesNodeLabelModel/
           </y:Realizers>
         </y:ProxyAutoBoundsNode>
       </data>
-      <graph edgedefault="directed" id="n16:">
-        <node id="n16::n0">
+      <graph edgedefault="directed" id="n15:">
+        <node id="n15::n0">
           <data key="d6">
             <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
               <y:Geometry height="175.0" width="210.0" x="2492.981027918716" y="542.7491010592533"/>
@@ -841,7 +785,7 @@ ReflectanceProfileFie [Sub-Element]<y:LabelModel><y:ErdAttributesNodeLabelModel/
             </y:GenericNode>
           </data>
         </node>
-        <node id="n16::n1">
+        <node id="n15::n1">
           <data key="d6">
             <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
               <y:Geometry height="175.0" width="210.0" x="2506.9338557236815" y="573.6863731482849"/>
@@ -862,7 +806,7 @@ ReflectanceProfileFie [Sub-Element]<y:LabelModel><y:ErdAttributesNodeLabelModel/
             </y:GenericNode>
           </data>
         </node>
-        <node id="n16::n2">
+        <node id="n15::n2">
           <data key="d6">
             <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
               <y:Geometry height="175.0" width="210.0" x="2522.58482560655" y="603.6236452373173"/>
@@ -885,7 +829,7 @@ ReflectanceProfileFie [Sub-Element]<y:LabelModel><y:ErdAttributesNodeLabelModel/
         </node>
       </graph>
     </node>
-    <node id="n17">
+    <node id="n16">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
           <y:Geometry height="100.0" width="200.0" x="2776.843984349008" y="608.6863731482854"/>
@@ -906,7 +850,7 @@ ReflectanceProfileFie [Sub-Element]<y:LabelModel><y:ErdAttributesNodeLabelModel/
         </y:GenericNode>
       </data>
     </node>
-    <node id="n18">
+    <node id="n17">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
           <y:Geometry height="109.60547600153677" width="234.82892409725446" x="3052.3926788161957" y="878.160645747406"/>
@@ -923,7 +867,7 @@ ReflectanceProfileFie [Sub-Element]<y:LabelModel><y:ErdAttributesNodeLabelModel/
         </y:GenericNode>
       </data>
     </node>
-    <node id="n19">
+    <node id="n18">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
           <y:Geometry height="75.0" width="230.0" x="1249.9289184808956" y="1492.5"/>
@@ -944,7 +888,7 @@ ReflectanceProfileFie [Sub-Element]<y:LabelModel><y:ErdAttributesNodeLabelModel/
         </y:GenericNode>
       </data>
     </node>
-    <node id="n20" yfiles.foldertype="group">
+    <node id="n19" yfiles.foldertype="group">
       <data key="d4" xml:space="preserve"/>
       <data key="d6">
         <y:ProxyAutoBoundsNode>
@@ -973,8 +917,8 @@ ReflectanceProfileFie [Sub-Element]<y:LabelModel><y:ErdAttributesNodeLabelModel/
           </y:Realizers>
         </y:ProxyAutoBoundsNode>
       </data>
-      <graph edgedefault="directed" id="n20:">
-        <node id="n20::n0">
+      <graph edgedefault="directed" id="n19:">
+        <node id="n19::n0">
           <data key="d6">
             <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
               <y:Geometry height="86.18691792758864" width="210.0" x="1860.7304286429862" y="1623.4631274122771"/>
@@ -992,7 +936,7 @@ Sensitivity<y:LabelModel><y:ErdAttributesNodeLabelModel/></y:LabelModel><y:Model
         </node>
       </graph>
     </node>
-    <node id="n21" yfiles.foldertype="group">
+    <node id="n20" yfiles.foldertype="group">
       <data key="d4" xml:space="preserve"/>
       <data key="d6">
         <y:ProxyAutoBoundsNode>
@@ -1020,8 +964,8 @@ Sensitivity<y:LabelModel><y:ErdAttributesNodeLabelModel/></y:LabelModel><y:Model
           </y:Realizers>
         </y:ProxyAutoBoundsNode>
       </data>
-      <graph edgedefault="directed" id="n21:">
-        <node id="n21::n0">
+      <graph edgedefault="directed" id="n20:">
+        <node id="n20::n0">
           <data key="d6">
             <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
               <y:Geometry height="75.0" width="210.0" x="1566.069592435692" y="1634.6500453398658"/>
@@ -1036,7 +980,7 @@ Sensitivity<y:LabelModel><y:ErdAttributesNodeLabelModel/></y:LabelModel><y:Model
         </node>
       </graph>
     </node>
-    <node id="n22">
+    <node id="n21">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
           <y:Geometry height="75.0" width="210.0" x="2222.5208422166234" y="376.9829988463997"/>
@@ -1057,7 +1001,7 @@ Sensitivity<y:LabelModel><y:ErdAttributesNodeLabelModel/></y:LabelModel><y:Model
         </y:GenericNode>
       </data>
     </node>
-    <node id="n23">
+    <node id="n22">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
           <y:Geometry height="175.0" width="210.0" x="2222.9806557255615" y="191.1888914552004"/>
@@ -1078,7 +1022,7 @@ AnnotationRef<y:LabelModel><y:ErdAttributesNodeLabelModel/></y:LabelModel><y:Mod
         </y:GenericNode>
       </data>
     </node>
-    <node id="n24">
+    <node id="n23">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
           <y:Geometry height="75.0" width="210.0" x="2224.9944631688713" y="76.98299884639948"/>
@@ -1099,7 +1043,7 @@ AnnotationRef<y:LabelModel><y:ErdAttributesNodeLabelModel/></y:LabelModel><y:Mod
         </y:GenericNode>
       </data>
     </node>
-    <node id="n25" yfiles.foldertype="group">
+    <node id="n24" yfiles.foldertype="group">
       <data key="d4" xml:space="preserve"/>
       <data key="d6">
         <y:ProxyAutoBoundsNode>
@@ -1127,8 +1071,8 @@ AnnotationRef<y:LabelModel><y:ErdAttributesNodeLabelModel/></y:LabelModel><y:Mod
           </y:Realizers>
         </y:ProxyAutoBoundsNode>
       </data>
-      <graph edgedefault="directed" id="n25:">
-        <node id="n25::n0">
+      <graph edgedefault="directed" id="n24:">
+        <node id="n24::n0">
           <data key="d6">
             <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
               <y:Geometry height="175.0" width="237.5048238112422" x="2494.474141047516" y="84.62014337967832"/>
@@ -1143,7 +1087,7 @@ AnnotationRef<y:LabelModel><y:ErdAttributesNodeLabelModel/></y:LabelModel><y:Mod
             </y:GenericNode>
           </data>
         </node>
-        <node id="n25::n1">
+        <node id="n24::n1">
           <data key="d6">
             <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
               <y:Geometry height="175.0" width="237.5048238112422" x="2494.474141047516" y="294.6201433796782"/>
@@ -1166,7 +1110,7 @@ AnnotationRef<y:LabelModel><y:ErdAttributesNodeLabelModel/></y:LabelModel><y:Mod
         </node>
       </graph>
     </node>
-    <node id="n26">
+    <node id="n25">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
           <y:Geometry height="178.2138785446091" width="234.29576767318213" x="3052.782926762633" y="662.8009400064818"/>
@@ -1185,7 +1129,7 @@ Description [Sub-element]<y:LabelModel><y:ErdAttributesNodeLabelModel/></y:Label
         </y:GenericNode>
       </data>
     </node>
-    <node id="n27">
+    <node id="n26">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
           <y:Geometry height="230.31929929661692" width="230.0" x="1249.9289184808956" y="1110.20313664094"/>
@@ -1211,7 +1155,7 @@ AnnotationRef<y:LabelModel><y:ErdAttributesNodeLabelModel/></y:LabelModel><y:Mod
         </y:GenericNode>
       </data>
     </node>
-    <node id="n28">
+    <node id="n27">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
           <y:Geometry height="100.0" width="200.0" x="1865.730428642986" y="1137.5858154460561"/>
@@ -1228,7 +1172,7 @@ WavelenghtProfileFile<y:LabelModel><y:ErdAttributesNodeLabelModel/></y:LabelMode
         </y:GenericNode>
       </data>
     </node>
-    <node id="n29" yfiles.foldertype="group">
+    <node id="n28" yfiles.foldertype="group">
       <data key="d4" xml:space="preserve"/>
       <data key="d6">
         <y:ProxyAutoBoundsNode>
@@ -1256,9 +1200,9 @@ WavelenghtProfileFile<y:LabelModel><y:ErdAttributesNodeLabelModel/></y:LabelMode
           </y:Realizers>
         </y:ProxyAutoBoundsNode>
       </data>
-      <graph edgedefault="directed" id="n29:"/>
+      <graph edgedefault="directed" id="n28:"/>
     </node>
-    <node id="n30">
+    <node id="n29">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
           <y:Geometry height="75.0" width="210.0" x="3377.782926762633" y="914.826661372406"/>
@@ -1274,7 +1218,7 @@ Settings</y:NodeLabel>
         </y:GenericNode>
       </data>
     </node>
-    <node id="n31">
+    <node id="n30">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
           <y:Geometry height="75.0" width="210.0" x="3377.782926762633" y="1075.2421603345435"/>
@@ -1288,7 +1232,7 @@ Settings</y:NodeLabel>
         </y:GenericNode>
       </data>
     </node>
-    <node id="n32">
+    <node id="n31">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
           <y:Geometry height="75.0" width="210.0" x="3377.782926762633" y="995.0344108534746"/>
@@ -1309,7 +1253,7 @@ Settings</y:NodeLabel>
         </y:GenericNode>
       </data>
     </node>
-    <node id="n33">
+    <node id="n32">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
           <y:Geometry height="104.88531831872797" width="225.0" x="3650.97567326677" y="877.3995637717702"/>
@@ -1326,10 +1270,10 @@ Transmittance<y:LabelModel><y:ErdAttributesNodeLabelModel/></y:LabelModel><y:Mod
         </y:GenericNode>
       </data>
     </node>
-    <node id="n34">
+    <node id="n33">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
-          <y:Geometry height="107.37098310856936" width="225.0" x="3650.97567326677" y="987.1179017529563"/>
+          <y:Geometry height="107.37098310856936" width="225.0" x="3653.1402565095236" y="987.1179017529563"/>
           <y:Fill color="#FFFFFF" color2="#FFFFFF" transparent="false"/>
           <y:BorderStyle hasColor="false" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#999999" configuration="com.yworks.entityRelationship.label.name" fontFamily="Dialog" fontSize="18" fontStyle="plain" hasLineColor="false" height="46.3984375" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="t" textColor="#000000" verticalTextPosition="bottom" visible="true" width="190.85546875" x="17.072265625" xml:space="preserve" y="3.9999999999998863">ReflectionWavelength
@@ -1344,7 +1288,7 @@ Reflectance
         </y:GenericNode>
       </data>
     </node>
-    <node id="n35">
+    <node id="n34">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
           <y:Geometry height="139.4375911214389" width="230.0" x="1249.9289184808956" y="306.52732736616787"/>
@@ -1363,7 +1307,7 @@ AnnotationRef<y:LabelModel><y:ErdAttributesNodeLabelModel/></y:LabelModel><y:Mod
         </y:GenericNode>
       </data>
     </node>
-    <node id="n36">
+    <node id="n35">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
           <y:Geometry height="291.64172033193717" width="239.82892409725446" x="3049.8926788161957" y="55.00106032307946"/>
@@ -1393,7 +1337,7 @@ ScanningFrequency<y:LabelModel><y:ErdAttributesNodeLabelModel/></y:LabelModel><y
         </y:GenericNode>
       </data>
     </node>
-    <node id="n37">
+    <node id="n36">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
           <y:Geometry height="105.0" width="225.0" x="3650.97567326677" y="350.3009400064817"/>
@@ -1411,7 +1355,7 @@ Transmittance
         </y:GenericNode>
       </data>
     </node>
-    <node id="n38">
+    <node id="n37">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
           <y:Geometry height="105.0" width="225.0" x="3650.97567326677" y="465.3009400064817"/>
@@ -1429,7 +1373,7 @@ Reflectance
         </y:GenericNode>
       </data>
     </node>
-    <node id="n39">
+    <node id="n38">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
           <y:Geometry height="105.0" width="225.0" x="3650.97567326677" y="633.1724332242395"/>
@@ -1447,7 +1391,7 @@ Transmittance
         </y:GenericNode>
       </data>
     </node>
-    <node id="n40">
+    <node id="n39">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
           <y:Geometry height="105.0" width="225.0" x="3650.97567326677" y="743.0341232045673"/>
@@ -1465,7 +1409,7 @@ Reflectance
         </y:GenericNode>
       </data>
     </node>
-    <node id="n41" yfiles.foldertype="group">
+    <node id="n40" yfiles.foldertype="group">
       <data key="d4" xml:space="preserve"/>
       <data key="d6">
         <y:ProxyAutoBoundsNode>
@@ -1493,8 +1437,8 @@ Reflectance
           </y:Realizers>
         </y:ProxyAutoBoundsNode>
       </data>
-      <graph edgedefault="directed" id="n41:">
-        <node id="n41::n0">
+      <graph edgedefault="directed" id="n40:">
+        <node id="n40::n0">
           <data key="d6">
             <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
               <y:Geometry height="100.01168927696212" width="210.0" x="1565.9703148377253" y="84.93844481679542"/>
@@ -1510,7 +1454,7 @@ VerticalScanningSpeed<y:LabelModel><y:ErdAttributesNodeLabelModel/></y:LabelMode
             </y:GenericNode>
           </data>
         </node>
-        <node id="n41::n1">
+        <node id="n40::n1">
           <data key="d6">
             <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
               <y:Geometry height="102.53529364337493" width="210.0" x="1566.6662418841856" y="194.19227716482973"/>
@@ -1527,7 +1471,7 @@ DiskSpeed<y:LabelModel><y:ErdAttributesNodeLabelModel/></y:LabelModel><y:ModelPa
         </node>
       </graph>
     </node>
-    <node id="n42">
+    <node id="n41">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
           <y:Geometry height="142.91059243111243" width="230.0" x="1249.9289184808956" y="156.1963468411921"/>
@@ -1546,7 +1490,7 @@ AnnotationRef<y:LabelModel><y:ErdAttributesNodeLabelModel/></y:LabelModel><y:Mod
         </y:GenericNode>
       </data>
     </node>
-    <node id="n43">
+    <node id="n42">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
           <y:Geometry height="150.5222281342103" width="215.0" x="942.5" y="644.7388859328948"/>
@@ -1568,7 +1512,7 @@ AnnotationRef<y:LabelModel><y:ErdAttributesNodeLabelModel/></y:LabelModel><y:Mod
         </y:GenericNode>
       </data>
     </node>
-    <node id="n44">
+    <node id="n43">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
           <y:Geometry height="100.0" width="1158.4056133679483" x="2124.6875844152996" y="-126.38479926832913"/>
@@ -1584,7 +1528,7 @@ Image ACQUISITION Settings</y:NodeLabel>
         </y:GenericNode>
       </data>
     </node>
-    <node id="n45">
+    <node id="n44">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
           <y:Geometry height="100.0" width="1160.0" x="834.8262033993026" y="-126.38479926832913"/>
@@ -1600,41 +1544,93 @@ Microscope HARDWARE Specifications</y:NodeLabel>
         </y:GenericNode>
       </data>
     </node>
+    <node id="n45">
+      <data key="d4" xml:space="preserve"/>
+      <data key="d6">
+        <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
+          <y:Geometry height="577.379161963745" width="945.2281675395493" x="2932.9120889699743" y="1175.2546008154632"/>
+          <y:Fill color="#FFFFFF" color2="#FFFFFF" transparent="false"/>
+          <y:BorderStyle color="#000000" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#1C4A87" configuration="CroppingLabel" fontFamily="Dialog" fontSize="32" fontStyle="plain" hasLineColor="false" height="44.6875" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="t" textColor="#FFFFFF" verticalTextPosition="bottom" visible="true" width="119.671875" x="412.7781462697744" xml:space="preserve" y="4.0">Legend</y:NodeLabel>
+          <y:NodeLabel alignment="left" autoSizePolicy="content" backgroundColor="#FFFFFF" configuration="com.yworks.entityRelationship.label.attributes" fontFamily="Dialog" fontSize="16" fontStyle="plain" height="512.78125" horizontalTextPosition="center" iconTextGap="4" lineColor="#FFFFFF" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="937.25" x="2.0" xml:space="preserve" y="56.6875">This is a Entity-Relationship diagrammatic representation of a proposed REVISION of the OME Core data model 
+(blue/red boxes) along side a proposed OME BASIC EXTENSION (grey boxes) developed by members of the Imaging
+Working Group of the 4D Nucleome network (https://www.4dnucleome.org) and by members of the BINA Quality 
+Control and Data Management Working Group (https://www.bioimagingna.org/qc-dm-wg). 
+
+The Entity-Relationship formalism can be utilized to model information about a real-world situation or an actual object 
+(in this case a Microscope INSTRUMENT and an IMAGE acquired using that Instrument) by using three types of model 
+elements: 
+1) ENTITIES, represented by Boxes; 
+2) RELATIONSHIPS, represented by blue lines connecting boxes; and 
+3) ATTRIBUTES, represented by fields within boxes
+
+When describing  a real-life situation or object:
+1) ENTITIES correspond to NOUNS = the items we want to collect information about.
+2) RELATIONSHIPS correspond to VERBS = actions/states/occurrences that connect Entities with each other
+3) ATTRIBUTES correspond to ADJECTIVES = they describe the actual information (in our case metadata) that we want to
+record about each Entity.
+
+In order to interpret the schema please start either from the &lt;INSTRUMENT&gt; element for the Microscope Hardware 
+Specifications section of the diagram or from the &lt;IMAGE&gt; element of the Image Acquisition Settings sections.Then 
+follow the blue lines to the connected boxes and think something like:
+1) An Instrument has a Microscope Body, might rest on a Microscope Table, utilizes a Light Source and magnifies the 
+sample using an Objective. 
+2) Alternatively, an Image was produced as part of a specific Experiment, was collected in a specific Imaging 
+Environment and using specific Microscope Settings and has four Channels.
+
+For questions or comments please contact: caterina.strambio@umassmed.edu<y:LabelModel><y:ErdAttributesNodeLabelModel/></y:LabelModel><y:ModelParameter><y:ErdAttributesNodeLabelModelParameter/></y:ModelParameter></y:NodeLabel>
+          <y:StyleProperties>
+            <y:Property class="java.lang.Boolean" name="y.view.ShadowNodePainter.SHADOW_PAINTING" value="true"/>
+          </y:StyleProperties>
+        </y:GenericNode>
+      </data>
+    </node>
     <node id="n46">
       <data key="d4" xml:space="preserve"/>
       <data key="d6">
         <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
-          <y:Geometry height="576.8466205401458" width="897.0142942633556" x="2985.895698663074" y="1173.2983546106248"/>
+          <y:Geometry height="794.7148396286531" width="826.3215008477314" x="2100.5109031504608" y="956.23765683142"/>
           <y:Fill color="#FFFFFF" color2="#FFFFFF" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#1C4A87" configuration="CroppingLabel" fontFamily="Dialog" fontSize="32" fontStyle="plain" hasLineColor="false" height="44.6875" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="t" textColor="#FFFFFF" verticalTextPosition="bottom" visible="true" width="119.671875" x="388.6712096316778" xml:space="preserve" y="4.0">Legend</y:NodeLabel>
-          <y:NodeLabel alignment="left" autoSizePolicy="content" backgroundColor="#FFFFFF" configuration="com.yworks.entityRelationship.label.attributes" fontFamily="Dialog" fontSize="16" fontStyle="plain" height="512.78125" horizontalTextPosition="center" iconTextGap="4" lineColor="#FFFFFF" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="870.734375" x="2.0" xml:space="preserve" y="56.6875">This is a Entity-Relationship diagrammatic representation of a proposed REVISION of the OME Core data model 
-(blue/red boxes) along side a proposed OME BASIC EXTENSION (grey boxes) developed by members of the 
-Imaging Working Group of the 4D Nucleome network (https://www.4dnucleome.org) and by members of the 
-BINA Quality Control and Data Management Working Group (https://www.bioimagingna.org/qc-dm-wg).  
+          <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#1C4A87" configuration="CroppingLabel" fontFamily="Dialog" fontSize="32" fontStyle="plain" hasLineColor="false" height="44.6875" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="t" textColor="#FFFFFF" verticalTextPosition="bottom" visible="true" width="96.40625" x="364.95762542386547" xml:space="preserve" y="4.0">Notes</y:NodeLabel>
+          <y:NodeLabel alignment="left" autoSizePolicy="content" backgroundColor="#FFFFFF" configuration="com.yworks.entityRelationship.label.attributes" fontFamily="Dialog" fontSize="16" fontStyle="plain" height="720.0625" horizontalTextPosition="center" iconTextGap="4" lineColor="#FFFFFF" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="813.5703125" x="2.0" xml:space="preserve" y="56.6875">Blue edges, blue edges represent RELATIONSHIPs between entities. SOLID EDGES are used to connect 
+an Element with a REQUIRED Sub-Element. DASHED EDGED are used to connect an Element with an 
+OPTIONAL Sub-Element. In addition, different CARDINALITIES can be represented as follow:
 
-The Entity-Relationship formalism represents information about a real world situation/object
- (in our case a microscopic INSTRUMENT and an IMAGE acquired using that Instrument) by using three 
-types of model elements: 
-1) Entities = Boxes; 
-2) Relationships = lines connecting boxes; 
-3) Attributes = fields within boxes
 
-When describing  a real life situation/object:
-1) ENTITIES corresponds to NOUNS = the things we want to collect information about.
-2) RELATIONSHIPS corresponds to VERBS = actions/state/occurrence that connect Entities with each 
-other
-3) ATTRIBUTES corresponds to ADJECTIVES = the actual information about each Entity we want to 
-collect
 
-In order to interpret the schema please start from either the &lt;INSTRUMENT&gt; or the &lt;IMAGE&gt; 
-elements for the Hardware Specifications and Image Acquisition Settings section respectively. Then 
-follow the blue lines to the connected boxes and think something like: 
-1) An Instrument has a MicroscopeStand and a LightSource, and might rest on a MicroscopeTable etc.; 
-2) An Image was produced as part of a specific Experiment, was collected in a specific 
-ImagingEnvironment, was collected using specific MicroscopeSettings etc.
 
-For questions or comments please contact: caterina.strambio@umassmed.edu<y:LabelModel><y:ErdAttributesNodeLabelModel/></y:LabelModel><y:ModelParameter><y:ErdAttributesNodeLabelModelParameter/></y:ModelParameter></y:NodeLabel>
+
+
+
+
+Black dashed arrows, these arrows simbolize an inheritance relationship similar to what would connect 
+a hypothetical "Feline" parent element with a "Cat" child element. In this example, while the "Cat" 
+element represents a "concrete" entity that exist in the real-world, the "Feline" element represents an 
+"abstract" category that is only useful for categorization pruposes. In a similar manner, these arrows 
+connect concrete elements that represents actual microscope hardware components with their Abstract 
+Parent Elements (APE), which are utilized for making the model less repetitive and more efficient to 
+read by software tools. These arrows should be read as follows, a "Laser" IS-A "LightSource". 
+
+Dashed grey edges, these edges signify "Extends" and they should be read as follows: "Objective" 
+extends "ManufacturerSpecs". In this example, the concept of extension indicates that Objective is of 
+type "ManufacturerSpecs" but it has additional attributes that are unique to it and distinguishes from 
+other elements.
+----
+-AnnotationRef, This element always refers to a Comment/Annotation element as described for 
+Channel. However for simplicity most Comment/Annotation elements have been omitted and the 
+AnnotationRef has been inserted in the referring element as an attribute.
+-[Sub-Element], For simplicity and when indicated Sub-Elements are listed within the referring element
+ as an attribute.
+-References, For simplicity and when indicated, Reference elements (e.g., ImageRef) are listed whithin 
+the referring element as attributes.
+-Units were omitted from this diagram for simplicity. However they are essential for reproducibility and 
+they are included in the model and in all its formal representations.
+-Attributes listed after the --- separator have been added to the OME Core as part of the proposed 
+revision. 
+-Attributes listed in parenthesis and after the .... separator have been removed as part of the proposed 
+extension. 
+-APE, Abstract Parent Entity (see explanation above).<y:LabelModel><y:ErdAttributesNodeLabelModel/></y:LabelModel><y:ModelParameter><y:ErdAttributesNodeLabelModelParameter/></y:ModelParameter></y:NodeLabel>
           <y:StyleProperties>
             <y:Property class="java.lang.Boolean" name="y.view.ShadowNodePainter.SHADOW_PAINTING" value="true"/>
           </y:StyleProperties>
@@ -1644,7 +1640,7 @@ For questions or comments please contact: caterina.strambio@umassmed.edu<y:Label
     <node id="n47">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
-          <y:Geometry height="35.0" width="100.0" x="2373.986033299501" y="1012.0118428924468"/>
+          <y:Geometry height="30.0" width="100.0" x="2352.5330211986984" y="1080.9950738755085"/>
           <y:Fill color="#E8EEF7" color2="#C0C0C0" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#999999" configuration="com.yworks.entityRelationship.label.name" fontFamily="Dialog" fontSize="18" fontStyle="plain" hasLineColor="false" height="25.19921875" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="t" textColor="#000000" verticalTextPosition="bottom" visible="true" width="90.80078125" x="4.599609375" xml:space="preserve" y="4.0">Element 1</y:NodeLabel>
@@ -1665,7 +1661,7 @@ For questions or comments please contact: caterina.strambio@umassmed.edu<y:Label
     <node id="n48">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
-          <y:Geometry height="35.0" width="100.0" x="2594.3022435188927" y="1012.0118428924468"/>
+          <y:Geometry height="30.0" width="100.0" x="2572.8492314180903" y="1080.9950738755085"/>
           <y:Fill color="#E8EEF7" color2="#C0C0C0" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#999999" configuration="com.yworks.entityRelationship.label.name" fontFamily="Dialog" fontSize="18" fontStyle="plain" hasLineColor="false" height="25.19921875" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="t" textColor="#000000" verticalTextPosition="bottom" visible="true" width="90.80078125" x="4.599609375" xml:space="preserve" y="4.0">Element 2</y:NodeLabel>
@@ -1686,7 +1682,7 @@ For questions or comments please contact: caterina.strambio@umassmed.edu<y:Label
     <node id="n49">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
-          <y:Geometry height="35.0" width="100.0" x="2373.986033299501" y="1057.5823095963563"/>
+          <y:Geometry height="30.0" width="100.0" x="2352.5330211986984" y="1116.3805272579223"/>
           <y:Fill color="#E8EEF7" color2="#C0C0C0" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#999999" configuration="com.yworks.entityRelationship.label.name" fontFamily="Dialog" fontSize="18" fontStyle="plain" hasLineColor="false" height="25.19921875" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="t" textColor="#000000" verticalTextPosition="bottom" visible="true" width="90.80078125" x="4.599609375" xml:space="preserve" y="4.0">Element 1</y:NodeLabel>
@@ -1707,7 +1703,7 @@ For questions or comments please contact: caterina.strambio@umassmed.edu<y:Label
     <node id="n50">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
-          <y:Geometry height="35.0" width="100.0" x="2594.3022435188927" y="1056.9633549727835"/>
+          <y:Geometry height="30.0" width="100.0" x="2572.8492314180903" y="1115.7615726343495"/>
           <y:Fill color="#E8EEF7" color2="#C0C0C0" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#999999" configuration="com.yworks.entityRelationship.label.name" fontFamily="Dialog" fontSize="18" fontStyle="plain" hasLineColor="false" height="25.19921875" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="t" textColor="#000000" verticalTextPosition="bottom" visible="true" width="90.80078125" x="4.599609375" xml:space="preserve" y="4.0">Element 2</y:NodeLabel>
@@ -1728,7 +1724,7 @@ For questions or comments please contact: caterina.strambio@umassmed.edu<y:Label
     <node id="n51">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
-          <y:Geometry height="35.0" width="100.0" x="2373.986033299501" y="1152.4848628316443"/>
+          <y:Geometry height="30.0" width="100.0" x="2352.5330211986984" y="1187.0786460103357"/>
           <y:Fill color="#E8EEF7" color2="#C0C0C0" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#999999" configuration="com.yworks.entityRelationship.label.name" fontFamily="Dialog" fontSize="18" fontStyle="plain" hasLineColor="false" height="25.19921875" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="t" textColor="#000000" verticalTextPosition="bottom" visible="true" width="90.80078125" x="4.599609375" xml:space="preserve" y="4.0">Element 1</y:NodeLabel>
@@ -1749,7 +1745,7 @@ For questions or comments please contact: caterina.strambio@umassmed.edu<y:Label
     <node id="n52">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
-          <y:Geometry height="35.0" width="100.0" x="2594.3022435188927" y="1152.4848628316443"/>
+          <y:Geometry height="30.0" width="100.0" x="2572.8492314180903" y="1187.0786460103357"/>
           <y:Fill color="#E8EEF7" color2="#C0C0C0" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#999999" configuration="com.yworks.entityRelationship.label.name" fontFamily="Dialog" fontSize="18" fontStyle="plain" hasLineColor="false" height="25.19921875" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="t" textColor="#000000" verticalTextPosition="bottom" visible="true" width="90.80078125" x="4.599609375" xml:space="preserve" y="4.0">Element 2</y:NodeLabel>
@@ -1770,7 +1766,7 @@ For questions or comments please contact: caterina.strambio@umassmed.edu<y:Label
     <node id="n53">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
-          <y:Geometry height="35.0" width="100.0" x="2373.986033299501" y="1104.7903438141304"/>
+          <y:Geometry height="30.0" width="100.0" x="2352.5330211986984" y="1151.0413168966145"/>
           <y:Fill color="#E8EEF7" color2="#C0C0C0" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#999999" configuration="com.yworks.entityRelationship.label.name" fontFamily="Dialog" fontSize="18" fontStyle="plain" hasLineColor="false" height="25.19921875" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="t" textColor="#000000" verticalTextPosition="bottom" visible="true" width="90.80078125" x="4.599609375" xml:space="preserve" y="4.0">Element 1</y:NodeLabel>
@@ -1791,7 +1787,7 @@ For questions or comments please contact: caterina.strambio@umassmed.edu<y:Label
     <node id="n54">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
-          <y:Geometry height="35.0" width="100.0" x="2594.3022435188927" y="1104.7903438141304"/>
+          <y:Geometry height="30.0" width="100.0" x="2572.8492314180903" y="1151.0413168966145"/>
           <y:Fill color="#E8EEF7" color2="#C0C0C0" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#999999" configuration="com.yworks.entityRelationship.label.name" fontFamily="Dialog" fontSize="18" fontStyle="plain" hasLineColor="false" height="25.19921875" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="t" textColor="#000000" verticalTextPosition="bottom" visible="true" width="90.80078125" x="4.599609375" xml:space="preserve" y="4.0">Element 2</y:NodeLabel>
@@ -1809,7 +1805,7 @@ For questions or comments please contact: caterina.strambio@umassmed.edu<y:Label
         </y:GenericNode>
       </data>
     </node>
-    <edge id="e0" source="n2" target="n3">
+    <edge id="e0" source="n1" target="n2">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="-5.780711009015249" sy="-69.08105140399994" tx="19.44377093305775" ty="45.2763162260851"/>
@@ -1829,7 +1825,7 @@ For questions or comments please contact: caterina.strambio@umassmed.edu<y:Label
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e1" source="n2" target="n4">
+    <edge id="e1" source="n1" target="n3">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="-12.970283533893962" sy="66.94974340787712" tx="-1.3729197913494318" ty="-3.596552150283742">
@@ -1851,7 +1847,7 @@ For questions or comments please contact: caterina.strambio@umassmed.edu<y:Label
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e2" source="n7::n0" target="n6">
+    <edge id="e2" source="n6::n0" target="n5">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="65.56992885674708" sy="0.0" tx="-67.10947512384428" ty="0.0"/>
@@ -1870,7 +1866,7 @@ For questions or comments please contact: caterina.strambio@umassmed.edu<y:Label
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e3" source="n5" target="n7">
+    <edge id="e3" source="n4" target="n6">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="-25.267142182824045" ty="11.993951324262639"/>
@@ -1890,7 +1886,7 @@ For questions or comments please contact: caterina.strambio@umassmed.edu<y:Label
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e4" source="n5" target="n8">
+    <edge id="e4" source="n4" target="n7">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="51.981248317321615" sy="-33.046617417244114" tx="0.0" ty="0.0">
@@ -1914,7 +1910,7 @@ For questions or comments please contact: caterina.strambio@umassmed.edu<y:Label
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e5" source="n10" target="n9">
+    <edge id="e5" source="n9" target="n8">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="115.020751953125" sy="0.0" tx="14.985373507704708" ty="27.053577149106786"/>
@@ -1934,7 +1930,7 @@ For questions or comments please contact: caterina.strambio@umassmed.edu<y:Label
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e6" source="n12" target="n37">
+    <edge id="e6" source="n11" target="n36">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="87.4619939096877" sy="29.7933417406" tx="-38.57887937648138" ty="-19.65571844741652">
@@ -1956,7 +1952,7 @@ For questions or comments please contact: caterina.strambio@umassmed.edu<y:Label
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e7" source="n14" target="n40">
+    <edge id="e7" source="n13" target="n39">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="15.825226917906548" sy="28.200605494771935" tx="-105.0217602621774" ty="-9.897793571196189">
@@ -1980,7 +1976,7 @@ For questions or comments please contact: caterina.strambio@umassmed.edu<y:Label
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e8" source="n14" target="n39">
+    <edge id="e8" source="n13" target="n38">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="45.19703589640994" sy="28.200605494771935" tx="-104.9988213781603" ty="10.13089640913131">
@@ -2004,7 +2000,7 @@ For questions or comments please contact: caterina.strambio@umassmed.edu<y:Label
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e9" source="n12" target="n11">
+    <edge id="e9" source="n11" target="n10">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="117.43455735297357" sy="-12.701230540111965" tx="-106.58172417105698" ty="168.65607683386133"/>
@@ -2024,7 +2020,7 @@ For questions or comments please contact: caterina.strambio@umassmed.edu<y:Label
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e10" source="n12" target="n38">
+    <edge id="e10" source="n11" target="n37">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="88.85719872956824" sy="29.169498205777245" tx="-50.320168370053125" ty="0.0">
@@ -2046,7 +2042,7 @@ For questions or comments please contact: caterina.strambio@umassmed.edu<y:Label
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e11" source="n14" target="n13">
+    <edge id="e11" source="n13" target="n12">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="-63.75777418631151" ty="-82.86363845301275"/>
@@ -2066,7 +2062,7 @@ For questions or comments please contact: caterina.strambio@umassmed.edu<y:Label
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e12" source="n15" target="n2">
+    <edge id="e12" source="n14" target="n1">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="110.83101977422777" sy="1.0972720974677941E-4" tx="-114.99991848089553" ty="24.999947765648017">
@@ -2088,7 +2084,7 @@ For questions or comments please contact: caterina.strambio@umassmed.edu<y:Label
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e13" source="n15" target="n5">
+    <edge id="e13" source="n14" target="n4">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="110.83101977422777" sy="1.0972720974677941E-4" tx="-114.99991848089553" ty="-71.12077029540774">
@@ -2110,7 +2106,7 @@ For questions or comments please contact: caterina.strambio@umassmed.edu<y:Label
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e14" source="n15" target="n10">
+    <edge id="e14" source="n14" target="n9">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="110.83101977422777" sy="1.0972720974677941E-4" tx="-114.99991848089553" ty="-0.4452179687784792">
@@ -2132,7 +2128,7 @@ For questions or comments please contact: caterina.strambio@umassmed.edu<y:Label
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="n16::e0" source="n16::n1" target="n16::n0">
+    <edge id="n15::e0" source="n15::n1" target="n15::n0">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -2151,7 +2147,7 @@ For questions or comments please contact: caterina.strambio@umassmed.edu<y:Label
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e15" source="n17" target="n17">
+    <edge id="e15" source="n16" target="n16">
       <data key="d10">
         <y:ArcEdge>
           <y:Path sx="-104.00023031293176" sy="3.7408766343105526E-4" tx="-104.00023031293176" ty="3.7408766343105526E-4">
@@ -2172,7 +2168,7 @@ For questions or comments please contact: caterina.strambio@umassmed.edu<y:Label
         </y:ArcEdge>
       </data>
     </edge>
-    <edge id="e16" source="n16" target="n17">
+    <edge id="e16" source="n15" target="n16">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -2191,7 +2187,7 @@ For questions or comments please contact: caterina.strambio@umassmed.edu<y:Label
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e17" source="n17" target="n12">
+    <edge id="e17" source="n16" target="n11">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="99.99994241362492" sy="4.065236528276728E-4" tx="-117.41418478674564" ty="2.7846386137753143E-4">
@@ -2213,7 +2209,7 @@ For questions or comments please contact: caterina.strambio@umassmed.edu<y:Label
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e18" source="n17" target="n14">
+    <edge id="e18" source="n16" target="n13">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="99.99994241362492" sy="4.065236528276728E-4" tx="-117.41418478674564" ty="2.8255777306185337E-4">
@@ -2235,7 +2231,7 @@ For questions or comments please contact: caterina.strambio@umassmed.edu<y:Label
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e19" source="n17" target="n18">
+    <edge id="e19" source="n16" target="n17">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="99.99994241362492" sy="4.065236528276728E-4" tx="-117.41418478674564" ty="2.5202597885254363E-4">
@@ -2257,7 +2253,7 @@ For questions or comments please contact: caterina.strambio@umassmed.edu<y:Label
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e20" source="n21::n0" target="n20">
+    <edge id="e20" source="n20::n0" target="n19">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="92.60473907834466" sy="-5.385243586375054" tx="-48.79646402446633" ty="19.874231002419265"/>
@@ -2277,7 +2273,7 @@ For questions or comments please contact: caterina.strambio@umassmed.edu<y:Label
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e21" source="n19" target="n21">
+    <edge id="e21" source="n18" target="n20">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="44.64441011343001" sy="0.0" tx="-120.00244140625" ty="0.0">
@@ -2300,7 +2296,7 @@ For questions or comments please contact: caterina.strambio@umassmed.edu<y:Label
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e22" source="n15" target="n19">
+    <edge id="e22" source="n14" target="n18">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="110.83101977422777" sy="1.0972720974677941E-4" tx="-114.99991848089553" ty="0.0">
@@ -2322,7 +2318,7 @@ For questions or comments please contact: caterina.strambio@umassmed.edu<y:Label
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e23" source="n7::n3" target="n7">
+    <edge id="e23" source="n6::n3" target="n6">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -2341,7 +2337,7 @@ For questions or comments please contact: caterina.strambio@umassmed.edu<y:Label
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e24" source="n23" target="n23">
+    <edge id="e24" source="n22" target="n22">
       <data key="d10">
         <y:ArcEdge>
           <y:Path sx="107.5" sy="-6.272762204861188E-4" tx="107.5" ty="-6.272762204861188E-4">
@@ -2362,7 +2358,7 @@ For questions or comments please contact: caterina.strambio@umassmed.edu<y:Label
         </y:ArcEdge>
       </data>
     </edge>
-    <edge id="e25" source="n23" target="n24">
+    <edge id="e25" source="n22" target="n23">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.9127970262652525" sy="-51.88010731244672" tx="-1.101010417044563" ty="10.812689905116713"/>
@@ -2381,7 +2377,7 @@ For questions or comments please contact: caterina.strambio@umassmed.edu<y:Label
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e26" source="n22" target="n23">
+    <edge id="e26" source="n21" target="n22">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="-42.86458169227126" sy="-4.998244844276542" tx="1.0202668368533523" ty="-13.008913513445691">
@@ -2403,7 +2399,7 @@ For questions or comments please contact: caterina.strambio@umassmed.edu<y:Label
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="n25::e0" source="n25::n0" target="n25::n1">
+    <edge id="n24::e0" source="n24::n0" target="n24::n1">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -2422,7 +2418,7 @@ For questions or comments please contact: caterina.strambio@umassmed.edu<y:Label
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e27" source="n25" target="n16">
+    <edge id="e27" source="n24" target="n15">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="7.136714611890966" sy="218.30064013786892" tx="7.136714611890966" ty="43.966221149558464"/>
@@ -2441,7 +2437,7 @@ For questions or comments please contact: caterina.strambio@umassmed.edu<y:Label
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e28" source="n25::n0" target="n22">
+    <edge id="e28" source="n24::n0" target="n21">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="2.4545148875601184" sy="43.70188057117741" tx="-0.8225008966342102" ty="4.929354828430178">
@@ -2464,7 +2460,7 @@ For questions or comments please contact: caterina.strambio@umassmed.edu<y:Label
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e29" source="n26" target="n26">
+    <edge id="e29" source="n25" target="n25">
       <data key="d10">
         <y:ArcEdge>
           <y:Path sx="111.1983548773076" sy="3.1440884461531135E-4" tx="111.1983548773076" ty="3.1440884461531135E-4">
@@ -2485,7 +2481,7 @@ For questions or comments please contact: caterina.strambio@umassmed.edu<y:Label
         </y:ArcEdge>
       </data>
     </edge>
-    <edge id="e30" source="n17" target="n26">
+    <edge id="e30" source="n16" target="n25">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="-33.76652371077489" sy="-0.17578340148133975" tx="-14.950120102051056" ty="-34.38984371810761">
@@ -2507,7 +2503,7 @@ For questions or comments please contact: caterina.strambio@umassmed.edu<y:Label
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e31" source="n15" target="n27">
+    <edge id="e31" source="n14" target="n26">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="110.83101977422777" sy="1.0972720974677941E-4" tx="-114.99991848089553" ty="-24.999786289248505">
@@ -2529,7 +2525,7 @@ For questions or comments please contact: caterina.strambio@umassmed.edu<y:Label
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e32" source="n27" target="n28">
+    <edge id="e32" source="n26" target="n27">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="32.78586498587538" sy="-37.77697084319243" tx="-99.98291015625" ty="0.0"/>
@@ -2548,7 +2544,7 @@ For questions or comments please contact: caterina.strambio@umassmed.edu<y:Label
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e33" source="n18" target="n29">
+    <edge id="e33" source="n17" target="n28">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="-9.358297766714943" sy="2.2737367544323206E-13" tx="-9.839671289333182" ty="-88.73801929280012"/>
@@ -2568,7 +2564,7 @@ For questions or comments please contact: caterina.strambio@umassmed.edu<y:Label
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e34" source="n15" target="n35">
+    <edge id="e34" source="n14" target="n34">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="110.83101977422777" sy="1.0972720974677941E-4" tx="-114.99991848089553" ty="24.999877073112657">
@@ -2590,7 +2586,7 @@ For questions or comments please contact: caterina.strambio@umassmed.edu<y:Label
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e35" source="n17" target="n36">
+    <edge id="e35" source="n16" target="n35">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="99.99994241362492" sy="4.065236528276728E-4" tx="-23.034391549106658" ty="46.9790195174337">
@@ -2612,7 +2608,7 @@ For questions or comments please contact: caterina.strambio@umassmed.edu<y:Label
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e36" source="n18" target="n34">
+    <edge id="e36" source="n17" target="n33">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="-8.847092624036577" sy="-28.597120804693986" tx="0.842252036525224" ty="-4.0283173307716424">
@@ -2636,7 +2632,7 @@ For questions or comments please contact: caterina.strambio@umassmed.edu<y:Label
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e37" source="n18" target="n33">
+    <edge id="e37" source="n17" target="n32">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="-2.189482588908959" sy="-28.597120804693986" tx="0.34511907855676327" ty="12.477591031376505">
@@ -2660,7 +2656,7 @@ For questions or comments please contact: caterina.strambio@umassmed.edu<y:Label
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e38" source="n35" target="n41">
+    <edge id="e38" source="n34" target="n40">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="-10.409803011460099" sy="-11.600971236558735" tx="9.069237926272308" ty="-2.8421709430404007E-14">
@@ -2683,7 +2679,7 @@ For questions or comments please contact: caterina.strambio@umassmed.edu<y:Label
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e39" source="n42" target="n42">
+    <edge id="e39" source="n41" target="n41">
       <data key="d10">
         <y:ArcEdge>
           <y:Path sx="111.1983548773076" sy="2.521260107040912E-4" tx="111.1983548773076" ty="2.521260107040912E-4">
@@ -2704,7 +2700,7 @@ For questions or comments please contact: caterina.strambio@umassmed.edu<y:Label
         </y:ArcEdge>
       </data>
     </edge>
-    <edge id="e40" source="n43" target="n10">
+    <edge id="e40" source="n42" target="n9">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="107.5" sy="0.0" tx="-114.99991848089553" ty="24.55478203122152">
@@ -2717,7 +2713,7 @@ For questions or comments please contact: caterina.strambio@umassmed.edu<y:Label
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e41" source="n43" target="n27">
+    <edge id="e41" source="n42" target="n26">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="107.5" sy="0.0" tx="-114.99991848089553" ty="2.1371075149545504E-4">
@@ -2730,7 +2726,7 @@ For questions or comments please contact: caterina.strambio@umassmed.edu<y:Label
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e42" source="n43" target="n5">
+    <edge id="e42" source="n42" target="n4">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="107.5" sy="0.0" tx="-114.99991848089553" ty="2.2970459224325168E-4">
@@ -2743,7 +2739,7 @@ For questions or comments please contact: caterina.strambio@umassmed.edu<y:Label
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e43" source="n43" target="n2">
+    <edge id="e43" source="n42" target="n1">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="107.5" sy="0.0" tx="-114.99991848089553" ty="-5.223435198331572E-5">
@@ -2756,7 +2752,7 @@ For questions or comments please contact: caterina.strambio@umassmed.edu<y:Label
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e44" source="n43" target="n35">
+    <edge id="e44" source="n42" target="n34">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="107.5" sy="0.0" tx="-114.99991848089553" ty="-1.2292688734305557E-4">
@@ -2769,7 +2765,7 @@ For questions or comments please contact: caterina.strambio@umassmed.edu<y:Label
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e45" source="n15" target="n42">
+    <edge id="e45" source="n14" target="n41">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="110.83101977422777" sy="1.0972720974677941E-4" tx="-64.72657904159064" ty="1.1172580644808079">
@@ -2791,7 +2787,7 @@ For questions or comments please contact: caterina.strambio@umassmed.edu<y:Label
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e46" source="n43" target="n42">
+    <edge id="e46" source="n42" target="n41">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="107.5" sy="0.0" tx="8.188203696430264" ty="12.348356943251673">
@@ -2804,51 +2800,7 @@ For questions or comments please contact: caterina.strambio@umassmed.edu<y:Label
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e47" source="n47" target="n48">
-      <data key="d10">
-        <y:PolyLineEdge>
-          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
-          <y:LineStyle color="#0000FF" type="line" width="2.0"/>
-          <y:Arrows source="crows_foot_one" target="crows_foot_many_mandatory"/>
-          <y:EdgeLabel alignment="center" backgroundColor="#FFFFFF" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" height="18.1328125" horizontalTextPosition="center" iconTextGap="4" lineColor="#000000" modelName="free" modelPosition="anywhere" preferredPlacement="center" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" width="68.892578125" x="23.89794685088782" xml:space="preserve" y="-8.794214195429731">1 to 1 ... ∞<y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" placement="center" side="anywhere" sideReference="relative_to_edge_flow"/></y:EdgeLabel>
-          <y:BendStyle smoothed="false"/>
-        </y:PolyLineEdge>
-      </data>
-    </edge>
-    <edge id="e48" source="n49" target="n50">
-      <data key="d10">
-        <y:PolyLineEdge>
-          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
-          <y:LineStyle color="#0000FF" type="dashed" width="2.0"/>
-          <y:Arrows source="crows_foot_one" target="crows_foot_many_optional"/>
-          <y:EdgeLabel alignment="center" backgroundColor="#FFFFFF" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" height="18.1328125" horizontalTextPosition="center" iconTextGap="4" lineColor="#000000" modelName="free" modelPosition="anywhere" preferredPlacement="center" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" width="68.892578125" x="21.684052559501197" xml:space="preserve" y="-8.827347969770926">1 to 0 ... ∞<y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" placement="center" side="anywhere" sideReference="relative_to_edge_flow"/></y:EdgeLabel>
-          <y:BendStyle smoothed="false"/>
-        </y:PolyLineEdge>
-      </data>
-    </edge>
-    <edge id="e49" source="n51" target="n52">
-      <data key="d10">
-        <y:PolyLineEdge>
-          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
-          <y:LineStyle color="#0000FF" type="line" width="2.0"/>
-          <y:Arrows source="crows_foot_one" target="crows_foot_one"/>
-          <y:EdgeLabel alignment="center" backgroundColor="#FFFFFF" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" height="18.1328125" horizontalTextPosition="center" iconTextGap="4" lineColor="#000000" modelName="free" modelPosition="anywhere" preferredPlacement="center" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" width="38.62890625" x="36.81519256169122" xml:space="preserve" y="-8.66961413734657">1 to 1<y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" placement="center" side="anywhere" sideReference="relative_to_edge_flow"/></y:EdgeLabel>
-          <y:BendStyle smoothed="false"/>
-        </y:PolyLineEdge>
-      </data>
-    </edge>
-    <edge id="e50" source="n53" target="n54">
-      <data key="d10">
-        <y:PolyLineEdge>
-          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
-          <y:LineStyle color="#0000FF" type="dashed" width="2.0"/>
-          <y:Arrows source="crows_foot_one" target="crows_foot_one_optional"/>
-          <y:EdgeLabel alignment="center" backgroundColor="#FFFFFF" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" height="18.1328125" horizontalTextPosition="center" iconTextGap="4" lineColor="#000000" modelName="free" modelPosition="anywhere" preferredPlacement="center" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" width="65.201171875" x="22.42479480385873" xml:space="preserve" y="-9.691256748379828">1 to 0 ... 1<y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" placement="center" side="anywhere" sideReference="relative_to_edge_flow"/></y:EdgeLabel>
-          <y:BendStyle smoothed="false"/>
-        </y:PolyLineEdge>
-      </data>
-    </edge>
-    <edge id="e51" source="n30" target="n13">
+    <edge id="e47" source="n29" target="n12">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -2863,6 +2815,50 @@ For questions or comments please contact: caterina.strambio@umassmed.edu<y:Label
             </y:ModelParameter>
             <y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" frozen="true" placement="anywhere" side="anywhere" sideReference="relative_to_edge_flow"/>
           </y:EdgeLabel>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e48" source="n47" target="n48">
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
+          <y:LineStyle color="#0000FF" type="line" width="2.0"/>
+          <y:Arrows source="crows_foot_one" target="crows_foot_many_mandatory"/>
+          <y:EdgeLabel alignment="center" backgroundColor="#FFFFFF" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" height="18.1328125" horizontalTextPosition="center" iconTextGap="4" lineColor="#000000" modelName="free" modelPosition="anywhere" preferredPlacement="center" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" width="68.892578125" x="23.89805975008494" xml:space="preserve" y="-8.7942595795555">1 to 1 ... ∞<y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" placement="center" side="anywhere" sideReference="relative_to_edge_flow"/></y:EdgeLabel>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e49" source="n49" target="n50">
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
+          <y:LineStyle color="#0000FF" type="dashed" width="2.0"/>
+          <y:Arrows source="crows_foot_one" target="crows_foot_many_optional"/>
+          <y:EdgeLabel alignment="center" backgroundColor="#FFFFFF" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" height="18.1328125" horizontalTextPosition="center" iconTextGap="4" lineColor="#000000" modelName="free" modelPosition="anywhere" preferredPlacement="center" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" width="68.892578125" x="21.68416545869877" xml:space="preserve" y="-8.827348081642413">1 to 0 ... ∞<y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" placement="center" side="anywhere" sideReference="relative_to_edge_flow"/></y:EdgeLabel>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e50" source="n51" target="n52">
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
+          <y:LineStyle color="#0000FF" type="line" width="2.0"/>
+          <y:Arrows source="crows_foot_one" target="crows_foot_one"/>
+          <y:EdgeLabel alignment="center" backgroundColor="#FFFFFF" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" height="18.1328125" horizontalTextPosition="center" iconTextGap="4" lineColor="#000000" modelName="free" modelPosition="anywhere" preferredPlacement="center" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" width="38.62890625" x="36.81530546088925" xml:space="preserve" y="-8.66958095865516">1 to 1<y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" placement="center" side="anywhere" sideReference="relative_to_edge_flow"/></y:EdgeLabel>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e51" source="n53" target="n54">
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
+          <y:LineStyle color="#0000FF" type="dashed" width="2.0"/>
+          <y:Arrows source="crows_foot_one" target="crows_foot_one_optional"/>
+          <y:EdgeLabel alignment="center" backgroundColor="#FFFFFF" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" height="18.1328125" horizontalTextPosition="center" iconTextGap="4" lineColor="#000000" modelName="free" modelPosition="anywhere" preferredPlacement="center" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" width="65.201171875" x="22.424907703056306" xml:space="preserve" y="-9.691260228395777">1 to 0 ... 1<y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" placement="center" side="anywhere" sideReference="relative_to_edge_flow"/></y:EdgeLabel>
           <y:BendStyle smoothed="false"/>
         </y:PolyLineEdge>
       </data>
