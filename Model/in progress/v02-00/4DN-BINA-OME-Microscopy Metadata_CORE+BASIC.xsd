@@ -919,7 +919,7 @@
           <xsd:annotation>
             <xsd:documentation>Domain=Experimental</xsd:documentation>
             <xsd:documentation>Category=SamplePreparation</xsd:documentation>
-            <xsd:documentation>Description=This empty element refers to Experimenter that performed this experiment.</xsd:documentation>
+            <xsd:documentation>Description=This empty element refers to the Scientist (i.e., Experimenter) that performed this experiment.</xsd:documentation>
             <xsd:documentation>Tier=1</xsd:documentation>
           </xsd:annotation>
         </xsd:element>
@@ -3340,7 +3340,7 @@
       </xsd:attribute>
       <xsd:attribute name="CO2Percent" use="required" type="PercentFraction">
         <xsd:annotation>
-          <xsd:documentation>Description=This field records the Carbon Dioxide concentration around the sample [units:none] during the Acquisition of this Image. Expressed as a percentage fraction as a value from 0.0 to 1.0.</xsd:documentation>
+          <xsd:documentation>Description=This field records the Carbon Dioxide concentration (expressed as a % value) around the sample during Acquisition.</xsd:documentation>
           <xsd:documentation>Tier=1</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
@@ -4880,7 +4880,7 @@ PlaneInfo (as Plane)
     </xsd:sequence>
     <xsd:attribute name="Manufacturer" use="required" type="xsd:string">
       <xsd:annotation>
-        <xsd:documentation>Description=This field refers to the company, research group or individual who manufactured this hardware component.</xsd:documentation>
+        <xsd:documentation>Description=This field refers to the company, research group or individual who built or manufactured this hardware component.</xsd:documentation>
         <xsd:documentation>Tier=1</xsd:documentation>
       </xsd:annotation>
     </xsd:attribute>
@@ -7446,9 +7446,9 @@ PlaneInfo (as Plane)
             <xsd:documentation>Tier=1</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
-        <xsd:attribute name="Author" type="xsd:string" use="required">
+        <xsd:attribute name="Developer" type="xsd:string" use="optional">
           <xsd:annotation>
-            <xsd:documentation>Description=This field records the developer of this Software. This could be the Manufacturer if this is a commercial proprietary sofware or the Author(s) if this is an open-source software.</xsd:documentation>
+            <xsd:documentation>Description=This field records the Developer of this Software. In case this is a non-commercial an open-source Software, this refers to the name of the individual or consortium who developed the Software. In the case of a commercial Software, this might refer to the Manufactuer but it can also be used to refer to the individual developer if knonw.</xsd:documentation>
             <xsd:documentation>Tier=1</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
@@ -7512,7 +7512,7 @@ PlaneInfo (as Plane)
       </xsd:appinfo>
       <xsd:documentation>Extension=Basic</xsd:documentation>
       <xsd:documentation>Domain=MicroscopeSpecifications</xsd:documentation>
-      <xsd:documentation>Category=MicroscopyEssentials</xsd:documentation>
+      <xsd:documentation>Category=Software</xsd:documentation>
       <xsd:documentation>Description=This element represents a commercial, or open-source Software, script, macro, plugin or module utilized for driving this Instrument during Image Acquisition.</xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
     </xsd:annotation>
@@ -7526,7 +7526,7 @@ PlaneInfo (as Plane)
       </xsd:appinfo>
       <xsd:documentation>Extension=Basic</xsd:documentation>
       <xsd:documentation>Domain=MicroscopeSpecifications</xsd:documentation>
-      <xsd:documentation>Category=MicroscopyEssentials</xsd:documentation>
+      <xsd:documentation>Category=Software</xsd:documentation>
       <xsd:documentation>Description=This element represents a commercial, or open-source Software, script, macro, plugin or module utilized for any Image Acquisition, Image Analysis or Quality Control task.</xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
     </xsd:annotation>
@@ -7616,7 +7616,7 @@ PlaneInfo (as Plane)
       <xsd:documentation>Extension=Basic</xsd:documentation>
       <xsd:documentation>Domain=MicroscopeHardwareSpecifications</xsd:documentation>
       <xsd:documentation>Category=MicroscopyEssentials</xsd:documentation>
-      <xsd:documentation>Description=This element describes an Environmental Control Device available for this Instrument.</xsd:documentation>
+      <xsd:documentation>Description=This element describes an Environmental Control Device available for this Instrument to maintain a controlled Imaging Environment during Imaging Environment.</xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
       <xsd:documentation>Model_Settings=ImagingEnvironment</xsd:documentation>
     </xsd:annotation>
@@ -7643,9 +7643,9 @@ PlaneInfo (as Plane)
               <xsd:documentation>Tier=1</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="Type" type="EnvironmentalControlType" use="required">
+          <xsd:attribute name="TemperatureControl" type="EnvironmentalControlMethod" use="required">
             <xsd:annotation>
-              <xsd:documentation>Description=This field captures the general category of this Environmental Control Device.</xsd:documentation>
+              <xsd:documentation>Description=This field captures whether this Environmental Control Device provides Temperature control and what type of control it provides. If no Temperature control is provided please enter "None".</xsd:documentation>
               <xsd:documentation>Tier=1</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
@@ -11797,8 +11797,9 @@ PlaneInfo (as Plane)
       <xsd:enumeration value="Other"/>
     </xsd:restriction>
   </xsd:simpleType>
-  <xsd:simpleType name="EnvironmentalControlType">
+  <xsd:simpleType name="EnvironmentalControlMethod">
     <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="None"/>
       <xsd:enumeration value="Cage-incubator enclosure"/>
       <xsd:enumeration value="Objective heather"/>
       <xsd:enumeration value="Stage-top chamber"/>
@@ -15586,7 +15587,7 @@ PlaneInfo (as Plane)
     <xsd:annotation>
       <xsd:documentation>Extension=Calibration and Performance</xsd:documentation>
       <xsd:documentation>Domain=ImageAcquisitionSettings</xsd:documentation>
-      <xsd:documentation>Category=CalibrationProceduret</xsd:documentation>
+      <xsd:documentation>Category=Software</xsd:documentation>
       <xsd:documentation>Description=This element describes a software tool utilized to analyze Calibration metrics obtained from this Calibration Procedure and generate a suitable Calibration Reports. As an example, such a Software tool might analyzes microscopy images of fluorescent Colored Beads in order to quantify the Resolution and Chromatic Registration of a fluorescence microsocope over the full Field of View (FOV). An example of such a tool is PSFj (http://www.knoplab.de/psfj/sample-page/). Alternatively, such a Software tool might be used to extract Intensity Calibration results obtained with a specific Intensity Calibration Tool, such as a Power Meter or MetaMax (https://www.umassmed.edu/grunwaldlab/).</xsd:documentation>
       <xsd:documentation>Tier=2</xsd:documentation>
     </xsd:annotation>
