@@ -1928,6 +1928,7 @@
       <xsd:complexContent>
         <xsd:extension base="LightSource">
           <xsd:sequence>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="IlluminationWavelengthRange"/>
             <xsd:element name="Map" type="Map" minOccurs="0" maxOccurs="1">
               <xsd:annotation>
                 <xsd:documentation>Domain=MicroscopeHardwareSpecifications</xsd:documentation>
@@ -2003,19 +2004,19 @@
               <xsd:documentation>Tier=1</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="Tuneable" use="optional" type="xsd:boolean">
+          <xsd:attribute name="Tuneable" use="required" type="xsd:boolean">
             <xsd:annotation>
               <xsd:documentation>Description=This field records whether (True) or not (False) this Laser is Tunable to different Wavelengths</xsd:documentation>
               <xsd:documentation>Tier=1</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="ModulationMechanism" type="LaserModulation" use="optional">
+          <xsd:attribute name="ModulationMechanism" type="LaserModulation" use="required">
             <xsd:annotation>
               <xsd:documentation>Description=This field captures the Modulation Mechanism used for this Laser.</xsd:documentation>
               <xsd:documentation>Tier=1</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="Pulse" use="optional" type="xsd:boolean">
+          <xsd:attribute name="Pulse" use="required" type="xsd:boolean">
             <xsd:annotation>
               <xsd:documentation>Description=Whether this Laser emits light in the form of optical Pulses (i.e., light flashes; True) or as a Continuous Wave (CW; False).</xsd:documentation>
               <xsd:documentation>Tier=1</xsd:documentation>
@@ -2199,7 +2200,7 @@
               <xsd:documentation>Tier=1</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="LightType" type="ObjectiveLightType" use="required">
+          <xsd:attribute name="LightType" type="ObjectiveLightType" use="optional">
             <xsd:annotation>
               <xsd:documentation>Description=This field specifies whether this Objective is designed for a special Light application (e.g., IR or UV).</xsd:documentation>
               <xsd:documentation>Tier=1</xsd:documentation>
@@ -2247,6 +2248,11 @@
               <xsd:documentation>Tier=2</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
+          <xsd:attribute name="WorkingDistanceUnit" use="optional" default="mm" type="UnitsLength">
+            <xsd:annotation>
+              <xsd:documentation>Tier=2</xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
           <xsd:attribute name="DippingMedium" type="DippingType">
             <xsd:annotation>
               <xsd:documentation>Description=In case the Immersion Type for this Objective is designated as Dipping, this field captures the type of Dipping Medium this Objective is compatible with. Examples include, water-based (biological buffers, culture media, other water-based solutions) organic-based [FocusClear (CLARITY); CUBIC-1, CUBIC-2, CUBIC-R1, CUBIC-R2; 2,2-thiodiethanol (TDE); ethyl cinnamate; Benzyl Benzoate and BB-PEG (PEGASOS); Benzyl Alcohol, Benzyl Benzoate (BABB); dibenzyl ether (DBE); 100% Ethanol].</xsd:documentation>
@@ -2262,11 +2268,6 @@
           <xsd:attribute name="CorrectionCollarType" type="CorrectionCollarTypeList">
             <xsd:annotation>
               <xsd:documentation>Description=This field records the type of Correction Collar with which this Objective is fitted.</xsd:documentation>
-              <xsd:documentation>Tier=2</xsd:documentation>
-            </xsd:annotation>
-          </xsd:attribute>
-          <xsd:attribute name="WorkingDistanceUnit" use="optional" default="mm" type="UnitsLength">
-            <xsd:annotation>
               <xsd:documentation>Tier=2</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
@@ -2418,15 +2419,15 @@
             <xsd:documentation>Tier=2</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
-        <xsd:attribute name="AttenuationCoefficient" type="xsd:float" use="required">
-          <xsd:annotation>
-            <xsd:documentation>Description=This field records the Attenuation Coefficient of this Filter. The Attenuation Coefficient (aka blocking coefficient) is a material property that characterizes the degree of transparency of a Lens. The Attenuation Coefficient is often defined in units of optical density (OD), whereas OD= -log10(T), and T=Transmittance (0≤T≤1).</xsd:documentation>
-            <xsd:documentation>Tier=2</xsd:documentation>
-          </xsd:annotation>
-        </xsd:attribute>
         <xsd:attribute name="AttenuationMethod" type="AttenuationMethodType" use="required">
           <xsd:annotation>
             <xsd:documentation>Description=This field records the mean by which this optical element achieves out-of-band transmission attenuation.</xsd:documentation>
+            <xsd:documentation>Tier=2</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="AttenuationCoefficient" type="xsd:float" use="required">
+          <xsd:annotation>
+            <xsd:documentation>Description=This field records the Attenuation Coefficient (AC) of this optical element. The AC (aka blocking coefficient) is a material property that characterizes the degree to which light is being blocked (i.e., scattered or absorbed) by it. AC is used as a measure of the out-of-band blocking of an optical Lens, Filter, Dichroic mirror over an extended range of the spectrum. AC is often reported in units of optical density (OD), whereas OD= -log10(T), and T=Transmittance (0≤T≤1).</xsd:documentation>
             <xsd:documentation>Tier=3</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
@@ -2672,15 +2673,15 @@
             <xsd:documentation>Tier=2</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
-        <xsd:attribute name="AttenuationCoefficient" type="xsd:float" use="required">
-          <xsd:annotation>
-            <xsd:documentation>Description=This field records the Attenuation Coefficient of this Dichroic. The Attenuation Coefficient (aka blocking coefficient) is a material property that characterizes the degree of transparency of a Lens. The Attenuation Coefficient is often defined in units of optical density (OD), whereas OD= -log10(T), and T=Transmittance (0≤T≤1).</xsd:documentation>
-            <xsd:documentation>Tier=2</xsd:documentation>
-          </xsd:annotation>
-        </xsd:attribute>
         <xsd:attribute name="AttenuationMethod" type="AttenuationMethodType" use="required">
           <xsd:annotation>
             <xsd:documentation>Description=This field records the mean by which this optical element achieves out-of-band transmission attenuation.</xsd:documentation>
+            <xsd:documentation>Tier=2</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="AttenuationCoefficient" type="xsd:float" use="required">
+          <xsd:annotation>
+            <xsd:documentation>Description=This field records the Attenuation Coefficient (AC) of this optical element. The AC (aka blocking coefficient) is a material property that characterizes the degree to which light is being blocked (i.e., scattered or absorbed) by it. AC is used as a measure of the out-of-band blocking of an optical Lens, Filter, Dichroic mirror over an extended range of the spectrum. AC is often reported in units of optical density (OD), whereas OD= -log10(T), and T=Transmittance (0≤T≤1).</xsd:documentation>
             <xsd:documentation>Tier=3</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
@@ -3011,7 +3012,7 @@
         </xsd:annotation>
       </xsd:element>
       <xsd:element maxOccurs="unbounded" minOccurs="0" ref="FilterSet"/>
-      <xsd:element maxOccurs="unbounded" minOccurs="0" ref="AdditionalFilterRef">
+      <xsd:element maxOccurs="unbounded" minOccurs="0" ref="GenericFilterRef">
         <xsd:annotation>
           <xsd:documentation>Description=This empty element refers to an additional Generic Filter component placed in this Light Path.</xsd:documentation>
           <xsd:documentation>Tier=1</xsd:documentation>
@@ -7422,86 +7423,82 @@ PlaneInfo (as Plane)
       </xsd:appinfo>
       <xsd:documentation>Description=This element represents a commercial, or open-source Software, script, macro, plugin or module utilized for any Image Acquisition or Quality Control task related to this Instrument.</xsd:documentation>
     </xsd:annotation>
-    <xsd:complexContent>
-      <xsd:extension base="ManufacturerSpec">
-        <xsd:sequence>
-          <xsd:element maxOccurs="unbounded" minOccurs="0" ref="SoftwareModuleRef"/>
-          <xsd:element ref="AnnotationRef" minOccurs="0" maxOccurs="unbounded"/>
-        </xsd:sequence>
-        <xsd:attribute name="ID" type="LSID" use="required">
-          <xsd:annotation>
-            <xsd:documentation>Description=A Unique Identifier for this component.</xsd:documentation>
-            <xsd:documentation>Tier=1</xsd:documentation>
-          </xsd:annotation>
-        </xsd:attribute>
-        <xsd:attribute name="Name" type="xsd:string" use="required">
-          <xsd:annotation>
-            <xsd:documentation>Description=This field records the Name or any other designation the Author uses for this Software.</xsd:documentation>
-            <xsd:documentation>Tier=1</xsd:documentation>
-          </xsd:annotation>
-        </xsd:attribute>
-        <xsd:attribute name="Version" type="xsd:string" use="required">
-          <xsd:annotation>
-            <xsd:documentation>Description=This field records the Version of this Software.</xsd:documentation>
-            <xsd:documentation>Tier=1</xsd:documentation>
-          </xsd:annotation>
-        </xsd:attribute>
-        <xsd:attribute name="Developer" type="xsd:string" use="optional">
-          <xsd:annotation>
-            <xsd:documentation>Description=This field records the Developer of this Software. In case this is a non-commercial an open-source Software, this refers to the name of the individual or consortium who developed the Software. In the case of a commercial Software, this might refer to the Manufactuer but it can also be used to refer to the individual developer if knonw.</xsd:documentation>
-            <xsd:documentation>Tier=1</xsd:documentation>
-          </xsd:annotation>
-        </xsd:attribute>
-        <xsd:attribute name="WebsiteURL" type="xsd:anyURI" use="required">
-          <xsd:annotation>
-            <xsd:documentation>Description=This field records the URL address of any Website where the Software can be obtained. In case of open-source Software this field should record the URL for the Git repository from which to obtain the source-code.</xsd:documentation>
-            <xsd:documentation>Tier=2</xsd:documentation>
-          </xsd:annotation>
-        </xsd:attribute>
-        <xsd:attribute name="PrimaryPublicationID" type="xsd:string">
-          <xsd:annotation>
-            <xsd:documentation>Description=This field captures the a Unique Identifier for the Primary Publication describing this Software. Examples include, Digital Object Identifier (DOI), PubMed Central Identifier (PMCID), ArXiv.org ID etc.</xsd:documentation>
-            <xsd:documentation>Tier=2</xsd:documentation>
-          </xsd:annotation>
-        </xsd:attribute>
-        <xsd:attribute name="OpenSource" type="xsd:boolean">
-          <xsd:annotation>
-            <xsd:documentation>Description=This records whether this Software is OpenSource (True) or proprietary (False).</xsd:documentation>
-            <xsd:documentation>Tier=2</xsd:documentation>
-          </xsd:annotation>
-        </xsd:attribute>
-        <xsd:attribute name="Macro" type="xsd:boolean">
-          <xsd:annotation>
-            <xsd:documentation>Description=This field records whether this Software is a Macro or a Scprit (True) or is it a full free-standing program.</xsd:documentation>
-            <xsd:documentation>Tier=2</xsd:documentation>
-          </xsd:annotation>
-        </xsd:attribute>
-        <xsd:attribute name="Build" type="xsd:string">
-          <xsd:annotation>
-            <xsd:documentation>Description=The specific build of this Software.</xsd:documentation>
-            <xsd:documentation>Tier=2</xsd:documentation>
-          </xsd:annotation>
-        </xsd:attribute>
-        <xsd:attribute name="Patch" type="xsd:string">
-          <xsd:annotation>
-            <xsd:documentation>Description=This recodes the version for an optional Patch, HotFix or Update used for this Sofware to run this Instrument. A Patch (aka HotFix, or Update) is a set of changes to a computer program or its supporting data designed to update, fix, or improve it. This includes fixing security vulnerabilities, and other bugs, with such patches usually being called bugfixes or bug fixes, and improving the functionality, usability or performance.</xsd:documentation>
-            <xsd:documentation>Tier=2</xsd:documentation>
-          </xsd:annotation>
-        </xsd:attribute>
-        <xsd:attribute name="ReleaseDate" type="xsd:date">
-          <xsd:annotation>
-            <xsd:documentation>Description=The date in which this Software was resleased.</xsd:documentation>
-            <xsd:documentation>Tier=3</xsd:documentation>
-          </xsd:annotation>
-        </xsd:attribute>
-        <xsd:attribute name="Language" type="xsd:string">
-          <xsd:annotation>
-            <xsd:documentation>Description=This records the computer Language in which this Software was developed.</xsd:documentation>
-            <xsd:documentation>Tier=3</xsd:documentation>
-          </xsd:annotation>
-        </xsd:attribute>
-      </xsd:extension>
-    </xsd:complexContent>
+    <xsd:sequence>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" ref="SoftwareModuleRef"/>
+      <xsd:element ref="AnnotationRef" minOccurs="0" maxOccurs="unbounded"/>
+    </xsd:sequence>
+    <xsd:attribute name="ID" type="LSID" use="required">
+      <xsd:annotation>
+        <xsd:documentation>Description=A Unique Identifier for this component.</xsd:documentation>
+        <xsd:documentation>Tier=1</xsd:documentation>
+      </xsd:annotation>
+    </xsd:attribute>
+    <xsd:attribute name="Name" type="xsd:string" use="required">
+      <xsd:annotation>
+        <xsd:documentation>Description=This field records the Name or any other designation the Author uses for this Software.</xsd:documentation>
+        <xsd:documentation>Tier=1</xsd:documentation>
+      </xsd:annotation>
+    </xsd:attribute>
+    <xsd:attribute name="Version" type="xsd:string" use="required">
+      <xsd:annotation>
+        <xsd:documentation>Description=This field records the Version of this Software.</xsd:documentation>
+        <xsd:documentation>Tier=1</xsd:documentation>
+      </xsd:annotation>
+    </xsd:attribute>
+    <xsd:attribute name="Developer" type="xsd:string" use="required">
+      <xsd:annotation>
+        <xsd:documentation>Description=This field records the Developer(s) of this Software. In case this is a non-commercial, open-source Software, this refers to the name of the individual or consortium who developed the Software. In the case of a commercial Software, this might refer to the Commercial entity but it can also be used to refer to the individual developer, if knonw.</xsd:documentation>
+        <xsd:documentation>Tier=1</xsd:documentation>
+      </xsd:annotation>
+    </xsd:attribute>
+    <xsd:attribute name="WebsiteURL" type="xsd:anyURI" use="required">
+      <xsd:annotation>
+        <xsd:documentation>Description=This field records the URL address of any Website where the Software can be obtained. In case of open-source Software this field should record the URL for the Git repository from which to obtain the source-code.</xsd:documentation>
+        <xsd:documentation>Tier=2</xsd:documentation>
+      </xsd:annotation>
+    </xsd:attribute>
+    <xsd:attribute name="PrimaryPublicationID" type="xsd:string">
+      <xsd:annotation>
+        <xsd:documentation>Description=This field captures the a Unique Identifier for the Primary Publication describing this Software. Examples include, Digital Object Identifier (DOI), PubMed Central Identifier (PMCID), ArXiv.org ID etc.</xsd:documentation>
+        <xsd:documentation>Tier=2</xsd:documentation>
+      </xsd:annotation>
+    </xsd:attribute>
+    <xsd:attribute name="OpenSource" type="xsd:boolean">
+      <xsd:annotation>
+        <xsd:documentation>Description=This records whether this Software is OpenSource (True) or proprietary (False).</xsd:documentation>
+        <xsd:documentation>Tier=2</xsd:documentation>
+      </xsd:annotation>
+    </xsd:attribute>
+    <xsd:attribute name="Macro" type="xsd:boolean">
+      <xsd:annotation>
+        <xsd:documentation>Description=This field records whether this Software is a Macro or a Scprit (True) or is it a full free-standing program.</xsd:documentation>
+        <xsd:documentation>Tier=2</xsd:documentation>
+      </xsd:annotation>
+    </xsd:attribute>
+    <xsd:attribute name="Build" type="xsd:string">
+      <xsd:annotation>
+        <xsd:documentation>Description=The specific build of this Software.</xsd:documentation>
+        <xsd:documentation>Tier=2</xsd:documentation>
+      </xsd:annotation>
+    </xsd:attribute>
+    <xsd:attribute name="Patch" type="xsd:string">
+      <xsd:annotation>
+        <xsd:documentation>Description=This recodes the version for an optional Patch, HotFix or Update used for this Sofware to run this Instrument. A Patch (aka HotFix, or Update) is a set of changes to a computer program or its supporting data designed to update, fix, or improve it. This includes fixing security vulnerabilities, and other bugs, with such patches usually being called bugfixes or bug fixes, and improving the functionality, usability or performance.</xsd:documentation>
+        <xsd:documentation>Tier=2</xsd:documentation>
+      </xsd:annotation>
+    </xsd:attribute>
+    <xsd:attribute name="ReleaseDate" type="xsd:date">
+      <xsd:annotation>
+        <xsd:documentation>Description=The date in which this Software was resleased.</xsd:documentation>
+        <xsd:documentation>Tier=3</xsd:documentation>
+      </xsd:annotation>
+    </xsd:attribute>
+    <xsd:attribute name="Language" type="xsd:string">
+      <xsd:annotation>
+        <xsd:documentation>Description=This records the computer Language in which this Software was developed.</xsd:documentation>
+        <xsd:documentation>Tier=3</xsd:documentation>
+      </xsd:annotation>
+    </xsd:attribute>
   </xsd:complexType>
   <xsd:element name="AcquisitionSoftware" substitutionGroup="SoftwareGroup">
     <xsd:annotation>
@@ -7848,7 +7845,7 @@ PlaneInfo (as Plane)
             <xsd:documentation>Tier=1</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
-        <xsd:attribute name="ZRepetability" type="xsd:float" use="optional">
+        <xsd:attribute name="ZRepetability" type="xsd:float" use="required">
           <xsd:annotation>
             <xsd:documentation>Description=This field captures the expected Accuracy with which this Sample Positioning Device is capable of returning to a previously visited Z-axis Position, as specified by the Manufacturer. This metric is important for example for Tiling.</xsd:documentation>
             <xsd:documentation>Tier=1</xsd:documentation>
@@ -7882,18 +7879,18 @@ PlaneInfo (as Plane)
             <xsd:documentation>Tier=2</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
-        <xsd:attribute name="ZReproducibility" type="UnitsLength" use="required">
+        <xsd:attribute name="ZReproducibility" type="xsd:float" use="optional">
           <xsd:annotation>
             <xsd:documentation>Description=This field captures the expected Precision with which this this Sample Positioning Device is capable of maintaining a given Z-axis Position over time during as specified by the Manufacturer. This metric is generally referred to as Reproducibility and it might also be referred to as Focal Drift. This metric is particularly relevant for Stereology systems and for the calibration of Sample Positioning devices.</xsd:documentation>
             <xsd:documentation>Tier=2</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
-        <xsd:attribute name="ZReproducibilityUnit" type="xsd:float">
+        <xsd:attribute name="ZReproducibilityUnit" type="UnitsLength">
           <xsd:annotation>
             <xsd:documentation>Tier=2</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
-        <xsd:attribute name="ZSettlingTime" type="xsd:float" use="required">
+        <xsd:attribute name="ZSettlingTime" type="xsd:float" use="optional">
           <xsd:annotation>
             <xsd:documentation>Description=This field describes the expected time it takes for this Sample Positioning Device to stabilize at the target Z-axis position, as specified by the Manufacturer.</xsd:documentation>
             <xsd:documentation>Tier=2</xsd:documentation>
@@ -7904,7 +7901,7 @@ PlaneInfo (as Plane)
             <xsd:documentation>Tier=2</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
-        <xsd:attribute name="ZResolution" type="xsd:float" use="required">
+        <xsd:attribute name="ZResolution" type="xsd:float" use="optional">
           <xsd:annotation>
             <xsd:documentation>Description=This field describes the Z-axis motion Resolution of this Sample Positioning Device as specified by the Manufacturer.</xsd:documentation>
             <xsd:documentation>Tier=2</xsd:documentation>
@@ -8058,7 +8055,7 @@ PlaneInfo (as Plane)
             <xsd:documentation>Tier=1</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
-        <xsd:attribute name="XYRepetability" type="xsd:float" use="optional">
+        <xsd:attribute name="XYRepetability" type="xsd:float" use="required">
           <xsd:annotation>
             <xsd:documentation>Description=This field captures the expected Accuracy with which this Stage is capable of returning to a previously visited XY-plane Position, as specified by the Manufacturer. This metric is important for example for Tiling.</xsd:documentation>
             <xsd:documentation>Tier=1</xsd:documentation>
@@ -8091,7 +8088,7 @@ PlaneInfo (as Plane)
             <xsd:documentation>Tier=2</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
-        <xsd:attribute name="XYReproducibility" type="xsd:float" use="required">
+        <xsd:attribute name="XYReproducibility" type="xsd:float" use="optional">
           <xsd:annotation>
             <xsd:documentation>Description=This field captures the expected Precision with which this Stage is capable of maintaining a given XY-plane Position over time during as specified by the Manufacturer. This metric is generally referred to as Reproducibility and it might also be referred to as Lateral Drift. This metric is particularly relevant for Stereology systems and for the calibration of Sample Positioning devices.</xsd:documentation>
             <xsd:documentation>Tier=2</xsd:documentation>
@@ -8102,7 +8099,7 @@ PlaneInfo (as Plane)
             <xsd:documentation>Tier=2</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
-        <xsd:attribute name="XYSettlingTime" type="xsd:float" use="required">
+        <xsd:attribute name="XYSettlingTime" type="xsd:float" use="optional">
           <xsd:annotation>
             <xsd:documentation>Description=This field describes the expected time it takes for this Stage to stabilize at the target XY-plane position, as specified by the Manufacturer.</xsd:documentation>
             <xsd:documentation>Tier=2</xsd:documentation>
@@ -8113,7 +8110,7 @@ PlaneInfo (as Plane)
             <xsd:documentation>Tier=2</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
-        <xsd:attribute name="XYResolution" type="xsd:float" use="required">
+        <xsd:attribute name="XYResolution" type="xsd:float" use="optional">
           <xsd:annotation>
             <xsd:documentation>Description=This field describes the XY-plane motion Resolution of this Stage as specified by the Manufacturer.</xsd:documentation>
             <xsd:documentation>Tier=2</xsd:documentation>
@@ -8494,17 +8491,17 @@ PlaneInfo (as Plane)
     <xsd:complexContent>
       <xsd:extension base="ManufacturerSpec">
         <xsd:sequence>
-          <xsd:element maxOccurs="unbounded" minOccurs="0" ref="LensRef"/>
-          <xsd:element maxOccurs="unbounded" minOccurs="0" ref="OpticalApertureRef"/>
-          <xsd:element maxOccurs="unbounded" minOccurs="0" ref="PolarizationOpticsRef"/>
-          <xsd:element maxOccurs="unbounded" minOccurs="0" ref="PrismRef"/>
           <xsd:element name="FilterRef" type="FilterRef" minOccurs="0" maxOccurs="unbounded">
             <xsd:annotation>
-              <xsd:documentation>Description=This refers to an available Filter, which is part of this Optical Device.</xsd:documentation>
+              <xsd:documentation>Description=This refers to an available Filter, which is part of this Optical Assembly.</xsd:documentation>
               <xsd:documentation>Tier=2</xsd:documentation>
             </xsd:annotation>
           </xsd:element>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" ref="LensRef"/>
           <xsd:element maxOccurs="unbounded" minOccurs="0" ref="MirrorringDeviceRef"/>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" ref="OpticalApertureRef"/>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" ref="PolarizationOpticsRef"/>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" ref="PrismRef"/>
           <xsd:element ref="AnnotationRef" maxOccurs="1" minOccurs="0"/>
         </xsd:sequence>
         <xsd:attribute name="ID" type="LSID" use="required">
@@ -8905,6 +8902,7 @@ PlaneInfo (as Plane)
             <xsd:element maxOccurs="unbounded" minOccurs="0" ref="LensRef"/>
             <xsd:element maxOccurs="unbounded" minOccurs="0" ref="MirrorringDeviceRef"/>
             <xsd:element maxOccurs="unbounded" minOccurs="0" ref="OpticalApertureRef"/>
+            <xsd:element ref="FilterRef" maxOccurs="unbounded" minOccurs="0"/>
             <xsd:element maxOccurs="unbounded" minOccurs="0" ref="PrismRef"/>
             <xsd:element maxOccurs="unbounded" minOccurs="0" ref="PolarizationOpticsRef"/>
           </xsd:sequence>
@@ -9337,25 +9335,25 @@ PlaneInfo (as Plane)
             <xsd:documentation>Tier=1</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
-        <xsd:attribute name="LensNA" type="xsd:float" use="required">
+        <xsd:attribute name="LensNA" type="xsd:float" use="optional">
           <xsd:annotation>
             <xsd:documentation>Description=This field captures the Numerical Aperture (NA) of this Lens expressed as a floating-point (real) number. NA is a number that was defined initially by Abbe to characterize Objectives and Condensers. NA can be calculated by the expression n sin alpha, where n is the Refractive Index of the medium between the Lens and the Sample, and alpha is half the Angular Aperture of the Lens. NA is a measure of how much of the illumination that leaves the specimen actually passes through the Lens. The larger the NA, the more information the lens can transmit. Expected range 0.02 - 1.5.</xsd:documentation>
             <xsd:documentation>Tier=1</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
-        <xsd:attribute name="Infinity" type="xsd:boolean" use="required">
+        <xsd:attribute name="RefractiveIndex" type="xsd:float" use="required">
+          <xsd:annotation>
+            <xsd:documentation>Description=This field records the Refractive Index of the material this Lens is made of, as specified by the Manufacturer. The Refractive Index is the ratio of the speed of light (more precisely, the phase velocity) in a vacuum versus that in a given medium.</xsd:documentation>
+            <xsd:documentation>Tier=3</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="Infinity" type="xsd:boolean" use="optional">
           <xsd:annotation>
             <xsd:documentation>Description=This field records whether (True) or not (False) this Lens is infinity corrected. An Infinity-corrected Lens is fixed for an infinite sample to primary Image distance. It needs to be used with a Tube Lens of appropriate focal length to obtain the specified magnification.</xsd:documentation>
             <xsd:documentation>Tier=2</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
-        <xsd:attribute name="RefractiveIndex" type="xsd:float" use="required">
-          <xsd:annotation>
-            <xsd:documentation>Description=This field records the Refractive Index of the material this Lens is made of, as specified by the Manufacturer. The Refractive Index is the ratio of the speed of light (more precisely, the phase velocity) in a vacuum versus that in a given medium.</xsd:documentation>
-            <xsd:documentation>Tier=2</xsd:documentation>
-          </xsd:annotation>
-        </xsd:attribute>
-        <xsd:attribute name="WorkingDistance" type="xsd:float" use="required">
+        <xsd:attribute name="WorkingDistance" type="xsd:float" use="optional">
           <xsd:annotation>
             <xsd:documentation>Description=This field reports the Working Distance of this Lens under normal operating conditions. The Working Distance is the distance (in air, or in the specified immersion liquid) between the front of an Objective and the surface of the cover glass or of the specimen if uncovered.</xsd:documentation>
             <xsd:documentation>Tier=2</xsd:documentation>
@@ -9365,6 +9363,17 @@ PlaneInfo (as Plane)
           <xsd:annotation>
             <xsd:documentation>Description=This field reports the Working Distance of this Lens under normal operating conditions. The Working Distance is the distance (in air, or in the specified immersion liquid) between the front of an Objective and the surface of the cover glass or of the specimen if uncovered.</xsd:documentation>
             <xsd:documentation>Tier=2</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="Diameter" type="xsd:float" use="required">
+          <xsd:annotation>
+            <xsd:documentation>Description=This field records the physical diameter of this Lens.</xsd:documentation>
+            <xsd:documentation>Tier=3</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="DiameterUnit" type="UnitsLength">
+          <xsd:annotation>
+            <xsd:documentation>Tier=3</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
         <xsd:attribute name="Type" type="LensType" use="required">
@@ -9387,7 +9396,7 @@ PlaneInfo (as Plane)
         </xsd:attribute>
         <xsd:attribute name="AttenuationCoefficient" type="xsd:float" use="required">
           <xsd:annotation>
-            <xsd:documentation>Description=This field records the Attenuation Coefficient of this Lens. The Attenuation Coefficient (aka blocking coefficient) is a material property that characterizes the degree of transparency of a Lens. The Attenuation Coefficient is often defined in units of optical density (OD), whereas OD= -log10(T), and T=Transmittance (0≤T≤1).</xsd:documentation>
+            <xsd:documentation>Description=This field records the Attenuation Coefficient (AC) of this optical element. The AC (aka blocking coefficient) is a material property that characterizes the degree to which light is being blocked (i.e., scattered or absorbed) by it. AC is used as a measure of the out-of-band blocking of an optical Lens, Filter, Dichroic mirror over an extended range of the spectrum. AC is often reported in units of optical density (OD), whereas OD= -log10(T), and T=Transmittance (0≤T≤1).</xsd:documentation>
             <xsd:documentation>Tier=3</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
@@ -9431,17 +9440,6 @@ PlaneInfo (as Plane)
           </xsd:annotation>
         </xsd:attribute>
         <xsd:attribute name="BackFocalLengthUnit" type="UnitsLength" default="mm">
-          <xsd:annotation>
-            <xsd:documentation>Tier=3</xsd:documentation>
-          </xsd:annotation>
-        </xsd:attribute>
-        <xsd:attribute name="Diameter" type="xsd:float">
-          <xsd:annotation>
-            <xsd:documentation>Description=This field records the physical diameter of this Lens.</xsd:documentation>
-            <xsd:documentation>Tier=3</xsd:documentation>
-          </xsd:annotation>
-        </xsd:attribute>
-        <xsd:attribute name="DiameterUnit" type="UnitsLength">
           <xsd:annotation>
             <xsd:documentation>Tier=3</xsd:documentation>
           </xsd:annotation>
@@ -9690,15 +9688,21 @@ PlaneInfo (as Plane)
               <xsd:documentation>Tier=1</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="Function" type="PolarizationOpticsFunction" use="optional">
+          <xsd:attribute name="Function" type="PolarizationOpticsFunction" use="required">
             <xsd:annotation>
               <xsd:documentation>Description=This field records whether this Polarization Optics is used to generate (Polarizer) or to analyze (Analyzer) polarized light.</xsd:documentation>
               <xsd:documentation>Tier=1</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="CrossPolarizer" type="xsd:boolean">
+          <xsd:attribute name="CrossPolarizer" type="xsd:boolean" use="required">
             <xsd:annotation>
               <xsd:documentation>Description=This field records whether (True) or not (False) this Polarization Optics is a combination of an Analyzer and a Polarizer positioned orthogonal to each other.</xsd:documentation>
+              <xsd:documentation>Tier=2</xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
+          <xsd:attribute name="DIC" type="xsd:boolean" use="required">
+            <xsd:annotation>
+              <xsd:documentation>Description=This field records whether (True) or not (False) this PolarizationOptics is used for Differential Interference Contrast (DIC) microscopy.</xsd:documentation>
               <xsd:documentation>Tier=2</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
@@ -9711,12 +9715,6 @@ PlaneInfo (as Plane)
           <xsd:attribute name="FaradayIsolator" type="xsd:boolean">
             <xsd:annotation>
               <xsd:documentation>Description=This field records whether (True) or not (False) this PolarizationOptics is a Fraday Isolator. A Faraday Isolator is an optical component which allows light to pass through in only ONE direction and therefore protects laser systems against back reflection. It uses the Faraday magneto-optical effect to turn the polarization of light between various polarizers.</xsd:documentation>
-              <xsd:documentation>Tier=2</xsd:documentation>
-            </xsd:annotation>
-          </xsd:attribute>
-          <xsd:attribute name="DIC" type="xsd:boolean">
-            <xsd:annotation>
-              <xsd:documentation>Description=This field records whether (True) or not (False) this PolarizationOptics is used for Differential Interference Contrast (DIC) microscopy.</xsd:documentation>
               <xsd:documentation>Tier=2</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
@@ -9878,31 +9876,25 @@ PlaneInfo (as Plane)
               <xsd:documentation>Tier=3</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="AngleOfIncidence" type="xsd:float" use="required">
+          <xsd:attribute name="AngleOfIncidence" type="xsd:float" use="optional">
             <xsd:annotation>
               <xsd:documentation>Description=This field records the Angle Of Incidence (AOI) is the angle between a beam of light incident on the Prism surface and the line perpendicular to the surface at the point of incidence, called the normal.</xsd:documentation>
               <xsd:documentation>Tier=3</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="AngleOfIncidenceUnit" type="UnitsAngle" use="required">
+          <xsd:attribute name="AngleOfIncidenceUnit" type="UnitsAngle" use="optional" default="deg">
             <xsd:annotation>
               <xsd:documentation>Tier=3</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="DeviationAngle" type="xsd:float" use="required">
+          <xsd:attribute name="DeviationAngle" type="xsd:float" use="optional">
             <xsd:annotation>
               <xsd:documentation>Description=This field records the Deviation Angle of this Prism. A beam passing through an object like a prism is deflected twice: once entering, and again when exiting. The sum of these two deflections is called the deviation angle and is measured with respect to the incident ray.</xsd:documentation>
               <xsd:documentation>Tier=3</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="DevianceAngleUnit" type="UnitsAngle" use="required">
+          <xsd:attribute name="DevianceAngleUnit" type="UnitsAngle" use="optional" default="deg">
             <xsd:annotation>
-              <xsd:documentation>Tier=3</xsd:documentation>
-            </xsd:annotation>
-          </xsd:attribute>
-          <xsd:attribute name="Design" type="PrismDesign">
-            <xsd:annotation>
-              <xsd:documentation>Description=This field records the shape of the Prism with specific reference to the angles defined by its faces.</xsd:documentation>
               <xsd:documentation>Tier=3</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
@@ -9912,8 +9904,14 @@ PlaneInfo (as Plane)
               <xsd:documentation>Tier=3</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="PrismAngleUnit" type="UnitsAngle">
+          <xsd:attribute name="PrismAngleUnit" type="UnitsAngle" default="deg">
             <xsd:annotation>
+              <xsd:documentation>Tier=3</xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
+          <xsd:attribute name="Design" type="PrismDesign">
+            <xsd:annotation>
+              <xsd:documentation>Description=This field records the shape of the Prism with specific reference to the angles defined by its faces.</xsd:documentation>
               <xsd:documentation>Tier=3</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
@@ -11334,27 +11332,33 @@ PlaneInfo (as Plane)
       <xsd:documentation>Tier=1</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
-  <xsd:element name="AdditionalFilterRef" type="FilterRef">
+  <xsd:element name="FilterRef" type="FilterRef">
     <xsd:annotation>
-      <xsd:documentation>Description=This empty element refers to an additional Generic Filter component placed in this Light Path.</xsd:documentation>
+      <xsd:documentation>Description=This empty element refers to any Generic or Neutral Density Filter component placed in this Light Path.</xsd:documentation>
+      <xsd:documentation>Tier=2</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="GenericFilterRef" type="FilterRef">
+    <xsd:annotation>
+      <xsd:documentation>Description=This empty element refers to any additional Generic Filter component placed in this Light Path.</xsd:documentation>
       <xsd:documentation>Tier=2</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
   <xsd:element name="LensRef" type="LensRef">
     <xsd:annotation>
-      <xsd:documentation>Description=This refers to an available Lens, which is part of this Optical Device.</xsd:documentation>
+      <xsd:documentation>Description=This refers to an available Lens, which is part of this Optical Assembly.</xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
   <xsd:element name="MirrorringDeviceRef" type="MirroringDeviceRef">
     <xsd:annotation>
-      <xsd:documentation>Description=This refers to an available Mirroring Device, which is part of this Optical Device.</xsd:documentation>
+      <xsd:documentation>Description=This refers to an available Mirroring Device, which is part of this Optical Assembly.</xsd:documentation>
       <xsd:documentation>Tier=2</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
   <xsd:element name="OpticalApertureRef" type="OpticalApertureRef">
     <xsd:annotation>
-      <xsd:documentation>Description=This refers to an available Optical Aperture, which is part of this Optical Device.</xsd:documentation>
+      <xsd:documentation>Description=This refers to an available Optical Aperture, which is part of this Optical Assembly.</xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
@@ -11373,13 +11377,13 @@ PlaneInfo (as Plane)
   </xsd:element>
   <xsd:element name="PolarizationOpticsRef" type="PolarizationOpticsRef">
     <xsd:annotation>
-      <xsd:documentation>Description=This refers to an available Polarization Optics, which is part of this Optical Device.</xsd:documentation>
+      <xsd:documentation>Description=This refers to an available Polarization Optics, which is part of this Optical Assembly.</xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
   <xsd:element name="PrismRef" type="PrismRef">
     <xsd:annotation>
-      <xsd:documentation>Description=This empty element refers to a Prism compoent available for this Instrument and, which is placed in the Light Path for this Image Acquisition.</xsd:documentation>
+      <xsd:documentation>Description=This refers to an available Prism, which is part of this Optical Assembly.</xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
@@ -11506,7 +11510,7 @@ PlaneInfo (as Plane)
         <xsd:documentation>Tier=2</xsd:documentation>
       </xsd:annotation>
     </xsd:attribute>
-    <xsd:attribute name="PeakWavelengthUnit" type="UnitsLength">
+    <xsd:attribute name="PeakWavelengthUnit" type="UnitsLength" default="nm">
       <xsd:annotation>
         <xsd:documentation>Tier=2</xsd:documentation>
       </xsd:annotation>
@@ -13116,18 +13120,6 @@ PlaneInfo (as Plane)
             <xsd:documentation>Tier=1</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
-        <xsd:attribute name="AttenuationCoefficient" type="xsd:float">
-          <xsd:annotation>
-            <xsd:documentation>Description=This field records the attenuation coeffieient of this optical element. The attenuation coefficient (aka blocking coefficient) is used as a measure of the out-of-band attenuation of an optical filter or dichroic mirror over an extended range of the spectrum. The attenuation coefficient is often defined in units of optical density (OD), wherease OD= -log10(T), and T=Transmittance (0≤T≤1).</xsd:documentation>
-            <xsd:documentation>Tier=2</xsd:documentation>
-          </xsd:annotation>
-        </xsd:attribute>
-        <xsd:attribute name="AttenuationMethod" type="AttenuationMethodType">
-          <xsd:annotation>
-            <xsd:documentation>Description=This field records the mean by which this optical element achieves out-of-band transmission attenuation.</xsd:documentation>
-            <xsd:documentation>Tier=2</xsd:documentation>
-          </xsd:annotation>
-        </xsd:attribute>
         <xsd:attribute name="ContrastRatio" type="PercentFraction">
           <xsd:annotation>
             <xsd:documentation>Description=This field records the reports on the ratio of maximum versus minimum transmittance.</xsd:documentation>
@@ -13138,6 +13130,18 @@ PlaneInfo (as Plane)
           <xsd:annotation>
             <xsd:documentation>Description=An optical Coating consists of one or more thin layers of material deposited on an optical component such as a Lens or Mirror, which alters the way in which the optic reflects and transmits light. This field records the thin-film material used to coat the non linear crystal and reduce surface reflection. </xsd:documentation>
             <xsd:documentation>Tier=2</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="AttenuationMethod" type="AttenuationMethodType">
+          <xsd:annotation>
+            <xsd:documentation>Description=This field records the mean by which this optical element achieves out-of-band transmission attenuation.</xsd:documentation>
+            <xsd:documentation>Tier=2</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="AttenuationCoefficient" type="xsd:float">
+          <xsd:annotation>
+            <xsd:documentation>Description=This field records the Attenuation Coefficient (AC) of this optical element. The AC (aka blocking coefficient) is a material property that characterizes the degree to which light is being blocked (i.e., scattered or absorbed) by it. AC is used as a measure of the out-of-band blocking of an optical Lens, Filter, Dichroic mirror over an extended range of the spectrum. AC is often reported in units of optical density (OD), whereas OD= -log10(T), and T=Transmittance (0≤T≤1).</xsd:documentation>
+            <xsd:documentation>Tier=3</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
         <xsd:attribute name="TuningAccuracy" type="xsd:float" use="required">
@@ -13319,19 +13323,7 @@ PlaneInfo (as Plane)
             <xsd:documentation>Tier=2</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
-        <xsd:attribute name="AttenuationCoefficient" type="xsd:float">
-          <xsd:annotation>
-            <xsd:documentation>Description=This field records the attenuation coeffieient of this optical element. The attenuation coefficient (aka blocking coefficient) is used as a measure of the out-of-band attenuation of an optical filter or dichroic mirror over an extended range of the spectrum. The attenuation coefficient is often defined in units of optical density (OD), wherease OD= -log10(T), and T=Transmittance (0≤T≤1).</xsd:documentation>
-            <xsd:documentation>Tier=2</xsd:documentation>
-          </xsd:annotation>
-        </xsd:attribute>
-        <xsd:attribute name="AttenuationMethod" type="AttenuationMethodType">
-          <xsd:annotation>
-            <xsd:documentation>Description=This field records the mean by which this optical element achieves out-of-band transmission attenuation.</xsd:documentation>
-            <xsd:documentation>Tier=2</xsd:documentation>
-          </xsd:annotation>
-        </xsd:attribute>
-        <xsd:attribute name="ModulationType" type="ModulationModeList">
+        <xsd:attribute name="ModulationMode" type="ModulationModeList">
           <xsd:annotation>
             <xsd:documentation>Description=This field records the describes the type of modulation this devices produces on a beam of light.</xsd:documentation>
             <xsd:documentation>Tier=2</xsd:documentation>
@@ -13349,6 +13341,18 @@ PlaneInfo (as Plane)
             <xsd:documentation>Tier=2</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
+        <xsd:attribute name="AttenuationMethod" type="AttenuationMethodType">
+          <xsd:annotation>
+            <xsd:documentation>Description=This field records the mean by which this optical element achieves out-of-band transmission attenuation.</xsd:documentation>
+            <xsd:documentation>Tier=2</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="AttenuationCoefficient" type="xsd:float">
+          <xsd:annotation>
+            <xsd:documentation>Description=This field records the Attenuation Coefficient (AC) of this optical element. The AC (aka blocking coefficient) is a material property that characterizes the degree to which light is being blocked (i.e., scattered or absorbed) by it. AC is used as a measure of the out-of-band blocking of an optical Lens, Filter, Dichroic mirror over an extended range of the spectrum. AC is often reported in units of optical density (OD), whereas OD= -log10(T), and T=Transmittance (0≤T≤1).</xsd:documentation>
+            <xsd:documentation>Tier=2</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
         <xsd:attribute name="TuningAccuracy" type="xsd:float" use="required">
           <xsd:annotation>
             <xsd:documentation>Description=This field measures the accuracy with which the wavelength discriminating capacity of this device can be tuned or changed.</xsd:documentation>
@@ -13357,12 +13361,6 @@ PlaneInfo (as Plane)
         </xsd:attribute>
         <xsd:attribute name="TuningAccuracyUnit" type="UnitsLength" use="required">
           <xsd:annotation>
-            <xsd:documentation>Tier=3</xsd:documentation>
-          </xsd:annotation>
-        </xsd:attribute>
-        <xsd:attribute name="Polarization" type="PolarizationMode" use="required">
-          <xsd:annotation>
-            <xsd:documentation>Description=This field records the polarization effect of this optical element. Dichroic beamsplitters (and, in fact, any thin-film interference coating that is used at non-normal angles-of-incidence) will cause some amount of polarization, the precise effect varying greatly with wavelength and with the particular coating design.</xsd:documentation>
             <xsd:documentation>Tier=3</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
