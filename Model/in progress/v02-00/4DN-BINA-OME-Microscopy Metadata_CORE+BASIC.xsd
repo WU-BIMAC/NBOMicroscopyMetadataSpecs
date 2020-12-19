@@ -2171,18 +2171,6 @@
               <xsd:documentation>Tier=1</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="ImmersionType" type="ImmersionTypeList" use="required">
-            <xsd:annotation>
-              <xsd:documentation>Description=According to ISO 10934-1:2002, an Immersion Liquid is a liquid (commonly immersion oil, water or glycerol) specified as suitable for use in the space between the front of an immersion lens and the object NOTE Because the immersion liquid is considered in the computing of corrections to be part of the lens, its refractive index and dispersion (or Abbe number) are critical. Please refer to ISO 8036-1 for more details on Immersion Oil. This field describes the general category of the Immersion Liquid this Objective is designed for, according to the Manufacturer. If the general category is not Air, the actual Immersion Liquid that was used during the Acquisition of a specific Image must be specified in Objective Settings.</xsd:documentation>
-              <xsd:documentation>Tier=1</xsd:documentation>
-            </xsd:annotation>
-          </xsd:attribute>
-          <xsd:attribute name="Correction" use="required" form="unqualified" type="ObjectiveCorrection">
-            <xsd:annotation>
-              <xsd:documentation>Description=This field describes the Immersion medium whose use is recommended by the Manufacturer for this Objective.</xsd:documentation>
-              <xsd:documentation>Tier=1</xsd:documentation>
-            </xsd:annotation>
-          </xsd:attribute>
           <xsd:attribute name="LensNA" use="required" type="xsd:float">
             <xsd:annotation>
               <xsd:documentation>Description=This field captures the nominal Numerical Aperture (NA) of this Objective as specified by the Manufactuer, expressed as a floating-point (real) number (e.g. 1.27 NA). NA is a number that was defined initially by Abbe to characterize Objectives and Condensers. NA can be calculated by the expression n sin alpha, where n is the Refractive Index of the medium between the Lens and the Sample, and alpha is half the Angular Aperture of the Lens. NA is a measure of how much of the illumination that leaves the specimen actually passes through the Lens. The larger the NA, the more information the lens can transmit. Expected range 0.02 - 1.5.</xsd:documentation>
@@ -2195,15 +2183,9 @@
               <xsd:documentation>Tier=1</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="LightType" type="ObjectiveLightType" use="optional">
+          <xsd:attribute name="Correction" use="required" form="unqualified" type="ObjectiveCorrection">
             <xsd:annotation>
-              <xsd:documentation>Description=This field specifies whether this Objective is designed for a special Light application (e.g., IR or UV).</xsd:documentation>
-              <xsd:documentation>Tier=1</xsd:documentation>
-            </xsd:annotation>
-          </xsd:attribute>
-          <xsd:attribute name="DIC" type="xsd:boolean" use="required">
-            <xsd:annotation>
-              <xsd:documentation>Description=This field specifies whether (True) the Objective is designed for Differential Interference Contrast (DIC) or not (False). DIC is a contrast modality due to double-beam interference in which two waves that fall on the object Plane or Image Plane are separated laterally by a distance similar to the minimum resolvable distance.</xsd:documentation>
+              <xsd:documentation>Description=This field describes the Immersion medium whose use is recommended by the Manufacturer for this Objective.</xsd:documentation>
               <xsd:documentation>Tier=1</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
@@ -2213,22 +2195,28 @@
               <xsd:documentation>Tier=1</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
+          <xsd:attribute name="DIC" type="xsd:boolean" use="required">
+            <xsd:annotation>
+              <xsd:documentation>Description=This field specifies whether (True) the Objective is designed for Differential Interference Contrast (DIC) or not (False). DIC is a contrast modality due to double-beam interference in which two waves that fall on the object Plane or Image Plane are separated laterally by a distance similar to the minimum resolvable distance.</xsd:documentation>
+              <xsd:documentation>Tier=1</xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
+          <xsd:attribute name="LightType" type="ObjectiveLightType" use="optional" default="Visible">
+            <xsd:annotation>
+              <xsd:documentation>Description=This field specifies whether this Objective is designed for a special Light application (e.g., IR or UV).</xsd:documentation>
+              <xsd:documentation>Tier=1</xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
+          <xsd:attribute name="ImmersionType" type="ImmersionTypeList" use="required">
+            <xsd:annotation>
+              <xsd:documentation>Description=According to ISO 10934-1:2002, an Immersion Liquid is a liquid (commonly immersion oil, water or glycerol) specified as suitable for use in the space between the front of an immersion lens and the object NOTE Because the immersion liquid is considered in the computing of corrections to be part of the lens, its refractive index and dispersion (or Abbe number) are critical. Please refer to ISO 8036-1 for more details on Immersion Oil. This field describes the general category of the Immersion Liquid this Objective is designed for, according to the Manufacturer. If the general category is not Air, the actual Immersion Liquid that was used during the Acquisition of a specific Image must be specified in Objective Settings.</xsd:documentation>
+              <xsd:documentation>Tier=1</xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
           <xsd:attribute name="InfinityCorrected" type="xsd:boolean" use="required">
             <xsd:annotation>
               <xsd:documentation>Description=This field records whether (True) or not (False) this Objective is infinity corrected. An Infinity-corrected Objective is corrected for an infinite sample to primary image distance and needs to be used with a Tube Lens of appropriate focal length to obtains its nominal magnification.</xsd:documentation>
               <xsd:documentation>Tier=1</xsd:documentation>
-            </xsd:annotation>
-          </xsd:attribute>
-          <xsd:attribute name="PhaseContrastDesignation" type="PhaseContrastDesignationType">
-            <xsd:annotation>
-              <xsd:documentation>Description=If the Objective is designed for Phase, this field specifies the Phase Contrast type designation (see: https://www.microscopyu.com/techniques/phase-contrast/phase-contrast-Microscope-configuration).</xsd:documentation>
-              <xsd:documentation>Tier=2</xsd:documentation>
-            </xsd:annotation>
-          </xsd:attribute>
-          <xsd:attribute name="CalibratedMagnification" type="xsd:float">
-            <xsd:annotation>
-              <xsd:documentation>Description=This field captures the Magnification of the Objective as measured via a calibration process- i.e., '59.987' for a 60x lens.</xsd:documentation>
-              <xsd:documentation>Tier=2</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
           <xsd:attribute name="Iris" use="required" type="xsd:boolean">
@@ -2248,12 +2236,6 @@
               <xsd:documentation>Tier=2</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="DippingMedium" type="DippingType">
-            <xsd:annotation>
-              <xsd:documentation>Description=In case the Immersion Type for this Objective is designated as Dipping, this field captures the type of Dipping Medium this Objective is compatible with. Examples include, water-based (biological buffers, culture media, other water-based solutions) organic-based [FocusClear (CLARITY); CUBIC-1, CUBIC-2, CUBIC-R1, CUBIC-R2; 2,2-thiodiethanol (TDE); ethyl cinnamate; Benzyl Benzoate and BB-PEG (PEGASOS); Benzyl Alcohol, Benzyl Benzoate (BABB); dibenzyl ether (DBE); 100% Ethanol].</xsd:documentation>
-              <xsd:documentation>Tier=2</xsd:documentation>
-            </xsd:annotation>
-          </xsd:attribute>
           <xsd:attribute name="CorrectionCollar" type="xsd:boolean" use="required">
             <xsd:annotation>
               <xsd:documentation>Description=This field records whether (True) or not (False) the Objective was fitted with a Correction Collar. When using high NA dry Objectives (NA 0.8 or greater), cover glass thickness variations of only a few micrometers, immersion medium, and temperature changes result in dramatic image degradation due to aberration. To compensate for these errors, the more highly corrected Objectives are equipped with a Correction Collar mechanism, which is provided to adjust the central lens group position to compensate for deviations from correct optical path length due to changes in Cover Glass Thickness, the nature of the Immersion Liquid, different Numerical Apertures, and Temperature.</xsd:documentation>
@@ -2266,9 +2248,33 @@
               <xsd:documentation>Tier=2</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
+          <xsd:attribute name="PhaseContrastDesignation" type="PhaseContrastDesignationType">
+            <xsd:annotation>
+              <xsd:documentation>Description=If the Objective is designed for Phase, this field specifies the Phase Contrast type designation (see: https://www.microscopyu.com/techniques/phase-contrast/phase-contrast-Microscope-configuration).</xsd:documentation>
+              <xsd:documentation>Tier=2</xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
+          <xsd:attribute name="DippingMedium" type="DippingType">
+            <xsd:annotation>
+              <xsd:documentation>Description=In case the Immersion Type for this Objective is designated as Dipping, this field captures the type of Dipping Medium this Objective is compatible with. Examples include, water-based (biological buffers, culture media, other water-based solutions) organic-based [FocusClear (CLARITY); CUBIC-1, CUBIC-2, CUBIC-R1, CUBIC-R2; 2,2-thiodiethanol (TDE); ethyl cinnamate; Benzyl Benzoate and BB-PEG (PEGASOS); Benzyl Alcohol, Benzyl Benzoate (BABB); dibenzyl ether (DBE); 100% Ethanol].</xsd:documentation>
+              <xsd:documentation>Tier=2</xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
+          <xsd:attribute name="CalibratedMagnification" type="xsd:float">
+            <xsd:annotation>
+              <xsd:documentation>Description=This field captures the Magnification of the Objective as measured via a calibration process- i.e., '59.987' for a 60x lens.</xsd:documentation>
+              <xsd:documentation>Tier=2</xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
           <xsd:attribute name="ImageDistance" type="xsd:float">
             <xsd:annotation>
               <xsd:documentation>Description=This field records the distance in air between the rear principal Plane of this Objective and the primary Image Plane.</xsd:documentation>
+              <xsd:documentation>Tier=3</xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
+          <xsd:attribute name="ObjectiveViewField" type="xsd:float" use="optional">
+            <xsd:annotation>
+              <xsd:documentation>Description=This field records the maximal diameter of the view field allowed by this Objective, expressed in mm, and measured at the intermediate Image Plane. NB: The field of view is influenced by the magnification and diameter of the ocular (eyepiece) field diaphragm, but also by the limits imposed by the design of the Objective.</xsd:documentation>
               <xsd:documentation>Tier=3</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
@@ -2321,12 +2327,6 @@
           </xsd:attribute>
           <xsd:attribute default="mm" name="ParfocalizingDistanceUnit" type="UnitsLength" use="optional">
             <xsd:annotation>
-              <xsd:documentation>Tier=3</xsd:documentation>
-            </xsd:annotation>
-          </xsd:attribute>
-          <xsd:attribute name="ObjectiveViewField" type="xsd:float" use="optional">
-            <xsd:annotation>
-              <xsd:documentation>Description=This field records the maximal diameter of the view field allowed by this Objective, expressed in mm, and measured at the intermediate Image Plane. NB: The field of view is influenced by the magnification and diameter of the ocular (eyepiece) field diaphragm, but also by the limits imposed by the design of the Objective.</xsd:documentation>
               <xsd:documentation>Tier=3</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
@@ -3290,11 +3290,11 @@
           <plural>ImagingEnvironmentCombinations</plural>
         </xsdfu>
       </xsd:appinfo>
+      <xsd:documentation>Extension=Core</xsd:documentation>
       <xsd:documentation>Domain=ImageAcquisitionSettings</xsd:documentation>
       <xsd:documentation>Category=SampleConditions</xsd:documentation>
       <xsd:documentation>Description=This element describes the environment in which the biological sample was maintained during the Acquisition of this Image.</xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
-      <xsd:documentation>Extension=Core</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
       <xsd:sequence>
@@ -3306,6 +3306,12 @@
           </xsd:annotation>
         </xsd:element>
       </xsd:sequence>
+      <xsd:attribute name="ID" type="EnvironmentalControlDeviceID">
+        <xsd:annotation>
+          <xsd:documentation>Description=This is the Unique Identifier of the Environmental Control Device used in this case.</xsd:documentation>
+          <xsd:documentation>Tier=1</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
       <xsd:attribute name="Temperature" use="required" type="xsd:float">
         <xsd:annotation>
           <xsd:documentation>Description=The field records the Temperature the Acquisition of this Image was performed at.</xsd:documentation>
@@ -7089,16 +7095,16 @@ PlaneInfo (as Plane)
           <xsd:documentation>Tier=1</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
+      <xsd:attribute name="SampleType" type="SampleType" use="required">
+        <xsd:annotation>
+          <xsd:documentation>Description=If of Biological Origin, this field records a term that describes the general category of this Sample.</xsd:documentation>
+          <xsd:documentation>Tier=1</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
       <xsd:attribute name="LiveSample" type="xsd:boolean" use="required">
         <xsd:annotation>
           <xsd:documentation>Description=This field captures whether (True) or not (False) this Sample was living during Image Acquisition.</xsd:documentation>
           <xsd:documentation>Tier=1</xsd:documentation>
-        </xsd:annotation>
-      </xsd:attribute>
-      <xsd:attribute name="MetrologySample" type="xsd:boolean" use="required">
-        <xsd:annotation>
-          <xsd:documentation>Description=This field captures whether (True) or not (False) this is a Metrology Sample (i.e., a Sample that is used specifcially to calibrate and assess the performance of the Instrument utilized for this experimental Image Acquisition.</xsd:documentation>
-          <xsd:documentation>Tier=2</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
       <xsd:attribute name="Organism" type="xsd:string" use="required">
@@ -7110,12 +7116,6 @@ PlaneInfo (as Plane)
       <xsd:attribute name="OrganismTermAccession" type="xsd:anyURI">
         <xsd:annotation>
           <xsd:documentation>Description=This field records the Accession ID for the term used to describe the Organism. The use of the NCBITaxon ontology (http://purl.obolibrary.org/obo/NCBITaxon_1) is recommended.</xsd:documentation>
-          <xsd:documentation>Tier=1</xsd:documentation>
-        </xsd:annotation>
-      </xsd:attribute>
-      <xsd:attribute name="SampleType" type="SampleType">
-        <xsd:annotation>
-          <xsd:documentation>Description=This field records a term that describes the general category of this Sample.</xsd:documentation>
           <xsd:documentation>Tier=1</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
@@ -7141,6 +7141,12 @@ PlaneInfo (as Plane)
         <xsd:annotation>
           <xsd:documentation>Description=This field records the the Accession ID for the term used to describe method that was used to prepare this sample. A subclass of the Fbbi:00000001 (http://purl.obolibrary.org/obo/FBbi_00000001) term from the Biological Imaging Methods Ontology (FBbi; https://www.ebi.ac.uk/ols/ontologies/fbbi) is recommended.</xsd:documentation>
           <xsd:documentation>Tier=1</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="MetrologySample" type="xsd:boolean" use="required">
+        <xsd:annotation>
+          <xsd:documentation>Description=This field captures whether (True) or not (False) this is a Metrology Sample (i.e., a Sample that is used specifcially to calibrate and assess the performance of the Instrument utilized for this experimental Image Acquisition.</xsd:documentation>
+          <xsd:documentation>Tier=2</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
       <xsd:attribute name="FacingTheObjective" type="FacingTheObjectiveChoice">
@@ -11635,10 +11641,10 @@ PlaneInfo (as Plane)
   <xsd:simpleType name="SoftwareID">
     <xsd:restriction base="LSID"/>
   </xsd:simpleType>
-  <xsd:simpleType name="LaserID">
+  <xsd:simpleType name="TIRFSettingsID">
     <xsd:restriction base="LSID"/>
   </xsd:simpleType>
-  <xsd:simpleType name="TIRFSettingsID">
+  <xsd:simpleType name="EnvironmentalControlDeviceID">
     <xsd:restriction base="LSID"/>
   </xsd:simpleType>
   <xsd:simpleType name="MicroscopeTableID">
@@ -11648,6 +11654,9 @@ PlaneInfo (as Plane)
     <xsd:restriction base="LSID"/>
   </xsd:simpleType>
   <xsd:simpleType name="MicroscopeTubeID">
+    <xsd:restriction base="LSID"/>
+  </xsd:simpleType>
+  <xsd:simpleType name="LaserID">
     <xsd:restriction base="LSID"/>
   </xsd:simpleType>
   <xsd:simpleType name="LightSourceCouplingID">
