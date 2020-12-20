@@ -15135,7 +15135,7 @@ PlaneInfo (as Plane)
       <xsd:documentation>Extension=Calibration and Performance</xsd:documentation>
       <xsd:documentation>Domain=ImageAcquisitionSettings</xsd:documentation>
       <xsd:documentation>Category=CalibrationSamples</xsd:documentation>
-      <xsd:documentation>Description=This element describes a preparation of Multi-colored Fluorescent Beads (also referred to as Microspheres) used to facilitate the optical calibration of fluorescence microscopes, and associated image-processing equipments. These Microspheres are usually made of glass or plastic and they stained with one or more fluorescent dyes.</xsd:documentation>
+      <xsd:documentation>Description=This element describes a preparation of multi-Colored Fluorescent Beads (also referred to as  Microspheres) used to facilitate the optical calibration of conventional fluorescence microscopes, confocal laser scanning microscopes, and associated image-processing equipments. These Beads are usually made of glass or plastic microspheres stained with one or more fluorescent dyes.</xsd:documentation>
       <xsd:documentation>Tier=2</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
@@ -15254,7 +15254,7 @@ PlaneInfo (as Plane)
       <xsd:documentation>Extension=Calibration and Performance</xsd:documentation>
       <xsd:documentation>Domain=ImageAcquisitionSettings</xsd:documentation>
       <xsd:documentation>Category=CalibrationProcedure</xsd:documentation>
-      <xsd:documentation>Description=This element describes a procedure used to measure and calibrate the Wavelength and Irradiance of the Excitation Light Source used to Acquire this experimental Image.</xsd:documentation>
+      <xsd:documentation>Description=This element describes the procedure used to measure and calibrate the Wavelength and Irradiance of the Excitation Light Source used to Acquire this experimental Image and the resulting calibration measurements.</xsd:documentation>
       <xsd:documentation>Tier=2</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
