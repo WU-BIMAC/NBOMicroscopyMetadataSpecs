@@ -3015,7 +3015,7 @@
       </xsd:element>
       <xsd:element maxOccurs="unbounded" minOccurs="0" ref="LensSettings"/>
       <xsd:element maxOccurs="unbounded" minOccurs="0" ref="MirroringDeviceSettings"/>
-      <xsd:element maxOccurs="unbounded" minOccurs="0" ref="OpticalApertureRef"/>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" ref="ApertureRef"/>
       <xsd:element maxOccurs="unbounded" minOccurs="0" ref="OpticalAssemblyRef"/>
       <xsd:element maxOccurs="unbounded" minOccurs="0" ref="OpticalApertureSettingsGroup"/>
       <xsd:element name="PolarizationOpticsRef" type="PolarizationOpticsRef" maxOccurs="unbounded" minOccurs="0">
@@ -8499,8 +8499,8 @@ PlaneInfo (as Plane)
             </xsd:annotation>
           </xsd:element>
           <xsd:element maxOccurs="unbounded" minOccurs="0" ref="LensRef"/>
-          <xsd:element maxOccurs="unbounded" minOccurs="0" ref="MirrorringDeviceRef"/>
-          <xsd:element maxOccurs="unbounded" minOccurs="0" ref="OpticalApertureRef"/>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" ref="MirroringDeviceRef"/>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" ref="ApertureRef"/>
           <xsd:element maxOccurs="unbounded" minOccurs="0" ref="PolarizationOpticsRef"/>
           <xsd:element maxOccurs="unbounded" minOccurs="0" ref="PrismRef"/>
           <xsd:element ref="AnnotationRef" maxOccurs="1" minOccurs="0"/>
@@ -8901,8 +8901,8 @@ PlaneInfo (as Plane)
         <xsd:extension base="OpticsHolder">
           <xsd:sequence>
             <xsd:element maxOccurs="unbounded" minOccurs="0" ref="LensRef"/>
-            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="MirrorringDeviceRef"/>
-            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="OpticalApertureRef"/>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="MirroringDeviceRef"/>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="ApertureRef"/>
             <xsd:element ref="FilterRef" maxOccurs="unbounded" minOccurs="0"/>
             <xsd:element maxOccurs="unbounded" minOccurs="0" ref="PrismRef"/>
             <xsd:element maxOccurs="unbounded" minOccurs="0" ref="PolarizationOpticsRef"/>
@@ -11351,13 +11351,13 @@ PlaneInfo (as Plane)
       <xsd:documentation>Tier=1</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
-  <xsd:element name="MirrorringDeviceRef" type="MirroringDeviceRef">
+  <xsd:element name="MirroringDeviceRef" type="MirroringDeviceRef">
     <xsd:annotation>
       <xsd:documentation>Description=This refers to an available Mirroring Device, which is part of this Optical Assembly.</xsd:documentation>
       <xsd:documentation>Tier=2</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
-  <xsd:element name="OpticalApertureRef" type="OpticalApertureRef">
+  <xsd:element name="ApertureRef" type="ApertureRef">
     <xsd:annotation>
       <xsd:documentation>Description=This refers to an available Optical Aperture, which is part of this Optical Assembly.</xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
@@ -11464,7 +11464,7 @@ PlaneInfo (as Plane)
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
-  <xsd:complexType name="OpticalApertureRef">
+  <xsd:complexType name="ApertureRef">
     <xsd:complexContent>
       <xsd:extension base="Reference">
         <xsd:attribute name="ID" type="OpticalApertureID" use="required">
