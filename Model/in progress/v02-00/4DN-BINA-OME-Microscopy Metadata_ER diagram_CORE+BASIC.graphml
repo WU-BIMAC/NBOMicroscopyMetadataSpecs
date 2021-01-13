@@ -145,28 +145,27 @@ Name<y:LabelModel><y:ErdAttributesNodeLabelModel/></y:LabelModel><y:ModelParamet
           <y:Fill color="#E8EEF7" color2="#3177D4" transparent="false"/>
           <y:BorderStyle hasColor="false" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#E2394E" configuration="com.yworks.entityRelationship.label.name" fontFamily="Dialog" fontSize="20" fontStyle="plain" hasLineColor="false" height="27.5546875" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="t" textColor="#FFFFFF" verticalTextPosition="bottom" visible="true" width="94.3515625" x="67.82421875" xml:space="preserve" y="4.0">Objective</y:NodeLabel>
-          <y:NodeLabel alignment="left" autoSizePolicy="content" configuration="com.yworks.entityRelationship.label.attributes" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="357.3203125" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="156.853515625" x="2.0" xml:space="preserve" y="39.5546875">ID
-LensNA
+          <y:NodeLabel alignment="left" autoSizePolicy="content" configuration="com.yworks.entityRelationship.label.attributes" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="343.1875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="156.853515625" x="2.0" xml:space="preserve" y="39.5546875">ID
 Magnification
+CalibratedMagnification
+LensNA
 Correction
 ImmersionType
 Iris
 WorkingDistance
-CalibratedMagnification
 AnnotationRef
 --
 Name
 ContrastModulation
 DIC
 LightType
+DippingMedium
 InfinityCorrected
 CorrectionCollar
 CorrectionCollarType
 PhaseContrastDesignation
-DippingMedium
 ObjectiveViewField
 ImageDistance
-ObjectDistance
 FrontFocalLength
 BackFocalLenght
 ParfocalizingDistance<y:LabelModel><y:ErdAttributesNodeLabelModel/></y:LabelModel><y:ModelParameter><y:ErdAttributesNodeLabelModelParameter/></y:ModelParameter></y:NodeLabel>
@@ -612,7 +611,7 @@ Transmittance<y:LabelModel><y:ErdAttributesNodeLabelModel/></y:LabelModel><y:Mod
           <y:Fill color="#E8EEF7" color2="#C0C0C0" transparent="false"/>
           <y:BorderStyle color="#666666" type="dashed" width="2.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#999999" configuration="com.yworks.entityRelationship.label.name" fontFamily="Dialog" fontSize="18" fontStyle="plain" hasLineColor="false" height="25.19921875" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="t" textColor="#000000" verticalTextPosition="bottom" visible="true" width="86.51171875" x="69.244140625" xml:space="preserve" y="4.0">Lens-APE</y:NodeLabel>
-          <y:NodeLabel alignment="left" autoSizePolicy="content" configuration="com.yworks.entityRelationship.label.attributes" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="329.0546875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="135.126953125" x="2.0" xml:space="preserve" y="37.19921875">ID
+          <y:NodeLabel alignment="left" autoSizePolicy="content" configuration="com.yworks.entityRelationship.label.attributes" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="314.921875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="135.126953125" x="2.0" xml:space="preserve" y="37.19921875">ID
 Name
 Magnification
 LensNA
@@ -625,7 +624,6 @@ Composite
 Geometry
 AttenuationCoefficient
 ImageDistance
-ObjectDistance
 FrontFocalLength
 BackFocalLenght
 AbbeNumber
