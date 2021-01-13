@@ -9477,7 +9477,7 @@ PlaneInfo (as Plane)
     <xsd:annotation>
       <xsd:documentation>Extension=Basic</xsd:documentation>
       <xsd:documentation>Domain=MicroscopeHardwareSpecifications</xsd:documentation>
-      <xsd:documentation>Category=Magnification</xsd:documentation>
+      <xsd:documentation>Category=Lens</xsd:documentation>
       <xsd:documentation>Description=A Magnification Changer (also known as Optovar because one of the first magnification changing devices was developed by Zeiss and given this proprietary Name) provides additional magnification that can be beneficial when a desired field of view is required for the imaging sensor. Magnification Changers are placed before the Tube Lens within the infinity space of the optical system. Typical magnification increments are 1.25x, 1.6x, and 2x.</xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
     </xsd:annotation>
