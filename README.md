@@ -17,7 +17,7 @@ Here we present the 4DN-BINA Microscopy Metadata Guidelines, which is a tiered s
 
 1. MICROSCOPE HARDWARE Specifications
 2. IMAGE ACQUISITION Settings
-3. OPTICAL, FIELD, EXCITATION POWER and WAVELENGTH, and DETECTOR CALIBRATION Procedures
+3. OPTICAL, EXCITATION POWER and WAVELENGTH, MECHANICAL and DETECTOR CALIBRATION Procedures
 
 # Proposed Revision of the OME Core Model vs. a suite of 4DN-BINA-OME Extensions
 To facilitate future adaptation and expansion of the guidelines, the proposed 4DN-BINA-OME model is organized on the basis of the core vs. extension ontology concepts. As such the proposal posits the following four components (see Figures 1 and 2):
@@ -41,7 +41,8 @@ In order to foster the wide usability of the guidelines, the proposal aim at pro
 
 # Tier System Proposal
 <p align="center">
-  <img src="https://github.com/WU-BIMAC/MicroscopyMetadata4DNGuidelines/blob/master/Tier%20System/in%20progress/v02-00/4DN-Metadata%20Tier%20System_2020-11-03_v02-00.png" title="Figure 2: Tier System">
+  <img
+src="https://github.com/WU-BIMAC/MicroscopyMetadata4DNGuidelines/blob/master/Tier%20System/in%20progress/v02-00/4DN-Metadata%20Tier%20System_2020-12-14_v02-00.png" title="Figure 2: Tier System">
 </p>
 
 # Repository content and documentation
