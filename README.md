@@ -20,8 +20,10 @@ Here we present the 4DN-BINA Microscopy Metadata (Figure 1) guidelines, which is
 3. OPTICAL, EXCITATION POWER and WAVELENGTH, MECHANICAL and DETECTOR CALIBRATION Procedures
 
 <p align="center">
-  <img src=" " title="Figure 1: Microscopy Metadata">
+  <img src="https://github.com/WU-BIMAC/MicroscopyMetadata4DNGuidelines/blob/master/Graphics/Figure-1_MM.png" title="Figure 1: Microscopy Metadata">
 </p>
+
+**Figure 1: Imaging Experiment Workflows and Microscopy Metadata**
 
 # Proposed Revision of the OME Core Model vs. a suite of 4DN-BINA-OME Extensions
 To facilitate future adaptation and expansion of the guidelines, the proposed 4DN-BINA-OME model is organized on the basis of the core vs. extension ontology concepts. As such the proposal posits the following four components (see Figures 2 and 3):
@@ -32,22 +34,27 @@ To facilitate future adaptation and expansion of the guidelines, the proposed 4D
 4. A 4DN-BINA-OME Calibration extension
 
 <p align="center">
-  <img src="https://github.com/WU-BIMAC/MicroscopyMetadata4DNGuidelines/blob/master/Core%20vs.%20Extension%20ontology%20concept/4DN-BINA-OME%20CORE%2BCALIBRATION%2BBASIC%2BADV%2BCONF%20EXTENSION_Instrument_v04.png" title="Figure 2: OME Image Core ontology vs. 4DN-BINA-OME Extensions">
+  <img src="https://github.com/WU-BIMAC/MicroscopyMetadata4DNGuidelines/blob/master/Graphics/4DN-BINA-OME%20CORE%2BCALIBRATION%2BBASIC%2BADV%2BCONF%20EXTENSION_Instrument_v04.png" title="Figure 2A: OME Image Core ontology vs. 4DN-BINA-OME Extensions">
 </p>
 
 <p align="center">
-  <img src="https://github.com/WU-BIMAC/MicroscopyMetadata4DNGuidelines/blob/master/Core%20vs.%20Extension%20ontology%20concept/4DN-BINA-OME%20CORE%2BCALIBRATION%2BBASIC%2BADV%2BCONF%20EXTENSION_Image_v05.png" title="Figure 3: OME Image Core ontology vs. 4DN-BINA-OME Extensions">
+  <img src="https://github.com/WU-BIMAC/MicroscopyMetadata4DNGuidelines/blob/master/Graphics/4DN-BINA-OME%20CORE%2BCALIBRATION%2BBASIC%2BADV%2BCONF%20EXTENSION_Image_v05.png" title="Figure 2B: OME Image Core ontology vs. 4DN-BINA-OME Extensions">
 </p>
+
+**Figure 2: OME Image Core ontology vs. 4DN-BINA-OME Extensions**
 
 In addition to extending the [OME data model](https://docs.openmicroscopy.org/ome-model/5.6.1/developers/model-overview.html) and maintaining full-compatibility with it, the main advance provided by the 4DN-BINA-OME guidelines is to posit the subdivision of imaging experiments among a set of five Tiers representing increasing imaging and analytical complexity levels. As a consequence, these guidelines not only provide an OME-based comprehensive list of metadata key-value pairs that should be recorded, but also details which subset of the full list should be recorded depending on the specific Tier the experiment belongs to. In so doing the guidelines lie the foundation for the birth of a microscopy data standard that could serve the same purpose the Encode guidelines serve in the genomic community.
 
 In order to foster the wide usability of the guidelines, the proposal aim at providing detailed explanations of why these values matter. Finally, in order to aide their adoption by software developers, the guidelines are expressed in the Extensible Markup Language (XML) Schema Definition ([XSD](https://www.w3.org/XML/Schema)) format that can be utilized to generate code for both traditional databases and other software utilizing the data model.
 
 # Tier System Proposal
+
 <p align="center">
   <img
-src="https://github.com/WU-BIMAC/MicroscopyMetadata4DNGuidelines/blob/master/Tier%20System/in%20progress/v02-00/4DN-Metadata%20Tier%20System_2020-12-14_v02-00.png" title="Figure 4: Tier System">
+src="https://github.com/WU-BIMAC/MicroscopyMetadata4DNGuidelines/blob/master/Tier%20System/in%20progress/v02-00/4DN-Metadata%20Tier%20System_2020-12-14_v02-00.png" title="Figure 3: Tier System">
 </p>
+
+**Figure 3: Tier System**
 
 # Repository content and documentation
 The proposed Microscopy Metadata guidelines are available as follows:
