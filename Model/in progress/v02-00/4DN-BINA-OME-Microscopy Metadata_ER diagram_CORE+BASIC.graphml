@@ -7828,7 +7828,7 @@ extends) <y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" 
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="27.38454835322773" ty="-16.340360901003805"/>
           <y:LineStyle color="#0000FF" type="dashed" width="2.0"/>
-          <y:Arrows source="crows_foot_one" target="crows_foot_many_optional"/>
+          <y:Arrows source="crows_foot_one" target="crows_foot_one_optional"/>
           <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="-8.964360305781156" y="27.099988502766337">
             <y:LabelModel>
               <y:SmartEdgeLabelModel autoRotationEnabled="false" defaultAngle="0.0" defaultDistance="10.0"/>
