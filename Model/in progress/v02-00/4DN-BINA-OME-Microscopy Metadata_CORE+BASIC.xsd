@@ -3367,7 +3367,7 @@
         </xsd:attribute>
         <xsd:attribute name="AmplificationGain" type="xsd:float" use="required">
           <xsd:annotation>
-            <xsd:documentation>Description=This field reports the Amplification Gain that was applied during the Acquisition of this Image. Amplification Gain in general measures of the ability of a Detector to add energy to the input light signal therefore increasing its power or amplitude. Higher Amplification Gain levels amplify the signal and result in greater brightness, contrast and background signal. Examples include: 1) the Electron Multiplication (EM) gain (as opposed to the inherent Analog Gain) for an EMCCD camera. 2) The Gain introduced by the Micro-Channel Plate in an Intensified CCD or CMOS camera. 3) The amplification of the electron current provided by a Photomultiplier Tube, and measured as the ratio of the input photoelectron current emitted by the photocatode and the current reaching the anode. 4) The signal amplification provided by an Avalache Photo Diode (APD).</xsd:documentation>
+            <xsd:documentation>Description=This field reports the Amplification Gain (i.e., electronic gain as apposed to the inherent Gain) that was set during the Acquisition of this Image. Amplification Gain in general measures of the ability of a Detector to add energy to the input light signal therefore increasing its power or amplitude. Higher Amplification Gain levels amplify the signal and result in greater brightness, contrast and background signal. Examples include: 1) the Electron Multiplication (EM) gain (as opposed to the inherent Analog Gain) for an EMCCD camera. 2) The Gain introduced by the Micro-Channel Plate in an Intensified CCD or CMOS camera. 3) The amplification of the electron current provided by a Photomultiplier Tube, and measured as the ratio of the input photoelectron current emitted by the photocatode and the current reaching the anode. 4) The signal amplification provided by an Avalache Photo Diode (APD).</xsd:documentation>
             <xsd:documentation>Tier=1</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
@@ -3381,6 +3381,12 @@
           <xsd:annotation>
             <xsd:documentation>Description=This field describes the way in which the Voltage Offset of the Detector is reported. It typically is expressed as an Arbitrary-units number, a Scaled percent (-100 to 100), or a a Voltage.</xsd:documentation>
             <xsd:documentation>Tier=3</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="Zoom" type="xsd:float">
+          <xsd:annotation>
+            <xsd:documentation>Description=The Zoom also known a "Confocal Zoom" or "Scan Zoom" that was set for this PointDetector during the acquisition of this Image.</xsd:documentation>
+            <xsd:documentation>Tier=1</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
       </xsd:extension>
