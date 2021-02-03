@@ -11514,7 +11514,7 @@ PlaneInfo (as Plane)
     </xsd:attribute>
     <xsd:attribute name="CutOn" use="required" type="PositiveFloat">
       <xsd:annotation>
-        <xsd:documentation>Description=CutOn is the Wavelength below which the response rate is below 50%.</xsd:documentation>
+        <xsd:documentation>Description=CutOn is the Wavelength below which the response rate is below 50%. In case a CutOn Wavelength is not available, such as in the case of a ShortPass configuration, please enter 000.</xsd:documentation>
         <xsd:documentation>Tier=2</xsd:documentation>
       </xsd:annotation>
     </xsd:attribute>
@@ -11525,7 +11525,7 @@ PlaneInfo (as Plane)
     </xsd:attribute>
     <xsd:attribute name="CutOff" use="required" type="PositiveFloat">
       <xsd:annotation>
-        <xsd:documentation>Description=CutOff is the Wavelength above which the response rate is below 50%.</xsd:documentation>
+        <xsd:documentation>Description=CutOff is the Wavelength above which the response rate is below 50%. In case a CutOff Wavelength is not available, such as in the case of a LongPass configuration, please enter 000.</xsd:documentation>
         <xsd:documentation>Tier=2</xsd:documentation>
       </xsd:annotation>
     </xsd:attribute>
@@ -11561,7 +11561,7 @@ PlaneInfo (as Plane)
     </xsd:attribute>
     <xsd:attribute name="FWHMBandwidth" use="required" type="PositiveFloat">
       <xsd:annotation>
-        <xsd:documentation>Description=This field records the width of this Transmittance Range (also known as Transmission band). Specifically, the Full Width at Half Maximum (FWHM) represents the bandwidth of the Wavelength spectrum curve measured between those points whose transmission amplitude is 50% of the maximum.</xsd:documentation>
+        <xsd:documentation>Description=This field records the width of this Transmittance Range (also known as Transmission band). Specifically, the Full Width at Half Maximum (FWHM) represents the bandwidth of the Wavelength spectrum curve measured between those points whose transmission amplitude is 50% of the maximum. In case bandwidth is not available, such as in the case of a LongPass, Notch or ShortPass configuration, please enter 000.</xsd:documentation>
         <xsd:documentation>Tier=1</xsd:documentation>
       </xsd:annotation>
     </xsd:attribute>
@@ -11586,7 +11586,7 @@ PlaneInfo (as Plane)
     </xsd:attribute>
     <xsd:attribute name="FWHMBandwidth" use="required" type="PositiveFloat">
       <xsd:annotation>
-        <xsd:documentation>Description=This field records the width of this Reflectance Range (also known as Reflection band). Specifically, the Full Width at Half Maximum (FWHM) represents the bandwidth of the Wavelength spectrum curve measured between those points whose transmission amplitude is 50% of the maximum.</xsd:documentation>
+        <xsd:documentation>Description=This field records the width of this Reflectance Range (also known as Reflection band). Specifically, the Full Width at Half Maximum (FWHM) represents the bandwidth of the Wavelength spectrum curve measured between those points whose transmission amplitude is 50% of the maximum. In case bandwidth is not available, such as in the case of a LongPass, Notch or ShortPass configuration, please enter 000.</xsd:documentation>
         <xsd:documentation>Tier=3</xsd:documentation>
       </xsd:annotation>
     </xsd:attribute>
@@ -11605,13 +11605,13 @@ PlaneInfo (as Plane)
   <xsd:complexType name="WavelengthRangeSettingsType">
     <xsd:attribute name="CutOn" use="required" type="PositiveFloat">
       <xsd:annotation>
-        <xsd:documentation>Description=This field records the Wavelength(s) below which there is less than 50% Transmittance for this optical element.</xsd:documentation>
+        <xsd:documentation>Description=This field records the Wavelength(s) below which there is less than 50% Transmittance for this optical element. In case a CutOn Wavelength is not available, such as in the case of a ShortPass configuration, please enter 000.</xsd:documentation>
         <xsd:documentation>Tier=1</xsd:documentation>
       </xsd:annotation>
     </xsd:attribute>
     <xsd:attribute name="CutOff" use="required" type="PositiveFloat">
       <xsd:annotation>
-        <xsd:documentation>Description=This field records the Wavelength(s) above which there is less than 50% Transmittance for this optical element.</xsd:documentation>
+        <xsd:documentation>Description=This field records the Wavelength(s) above which there is less than 50% Transmittance for this optical element. In case a CutOff Wavelength is not available, such as in the case of a LongPass configuration, please enter 000.</xsd:documentation>
         <xsd:documentation>Tier=1</xsd:documentation>
       </xsd:annotation>
     </xsd:attribute>
