@@ -15296,7 +15296,7 @@ PlaneInfo (as Plane)
               <xsd:documentation>Tier=2</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="PowerLinearity" type="xsd:float">
+          <xsd:attribute name="IlluminationLinearity" type="xsd:float">
             <xsd:annotation>
               <xsd:documentation>Description=This field captures the Linear Correlation Coefficient of observed Output Illumination Power response to different input Power settings, as measured at the back of the Objective.</xsd:documentation>
               <xsd:documentation>Tier=2</xsd:documentation>
