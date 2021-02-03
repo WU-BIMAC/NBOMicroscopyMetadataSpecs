@@ -13817,14 +13817,14 @@ PlaneInfo (as Plane)
       </xsd:complexContent>
     </xsd:complexType>
   </xsd:element>
-  <xsd:element name="PinHole" substitutionGroup="OpticalApertureGroup">
+  <xsd:element name="Pinhole" substitutionGroup="OpticalApertureGroup">
     <xsd:annotation>
       <xsd:documentation>Extension=Advanced+Confocal</xsd:documentation>
       <xsd:documentation>Domain=MicroscopeHardwareSpecifications</xsd:documentation>
       <xsd:documentation>Category=Aperture</xsd:documentation>
       <xsd:documentation>Description=A pin-like aperture positioned axially to the Light Path, which can act as a spatial filter for a beam of light to clean up the output of lasers and / or to suppress out-of-focus light in a confocal Microscope. Specifically, in Confocal Microscopy, such Pinholes are diaphragm typically situated in a plane conjugate with the object, and they restrict the area in the object plane that is illuminated and/or from which light is collected.</xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
-      <xsd:documentation>Model_Settings=PinHoleSettings</xsd:documentation>
+      <xsd:documentation>Model_Settings=PinholeSettings</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
       <xsd:complexContent>
@@ -14292,7 +14292,7 @@ PlaneInfo (as Plane)
       <xsd:documentation>Tier=2</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
-  <xsd:element name="PinHoleSettings" substitutionGroup="OpticalApertureSettingsGroup">
+  <xsd:element name="PinholeSettings" substitutionGroup="OpticalApertureSettingsGroup">
     <xsd:annotation>
       <xsd:documentation>Extension=Advanced+Confocal</xsd:documentation>
       <xsd:documentation>Domain=ImageAcquisitionSettings</xsd:documentation>
