@@ -14244,7 +14244,16 @@ PlaneInfo (as Plane)
       <xsd:documentation>Tier=1</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
-  <xsd:element name="LiquidCrystalTuneableFilterSettings" substitutionGroup="ElectroOpticalDeviceSettingsGroup" type="ElectroOpticalDeviceSettings">
+  <xsd:element name="PockelCellSettings" substitutionGroup="ElectroOpticalDeviceSettingsGroup" type="ElectroOpticalDeviceSettings">
+    <xsd:annotation>
+      <xsd:documentation>Extension=Advanced+Confocal</xsd:documentation>
+      <xsd:documentation>Domain=ImageAcquisitionSettings</xsd:documentation>
+      <xsd:documentation>Category=Settings</xsd:documentation>
+      <xsd:documentation>Description=This element holds the Setting applied to a PockelCell used  during the Acquisiton of this Channel as well as a reference (the ID attribute) to the PockelCell in question.</xsd:documentation>
+      <xsd:documentation>Tier=2</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="LiquidCrystalTuneableFilterSettings" substitutionGroup="ElectroOpticalDeviceSettingsGroup">
     <xsd:annotation>
       <xsd:documentation>Extension=Advanced+Confocal</xsd:documentation>
       <xsd:documentation>Domain=ImageAcquisitionSettings</xsd:documentation>
@@ -14252,6 +14261,18 @@ PlaneInfo (as Plane)
       <xsd:documentation>Description=This element holds the Setting applied to a Liquid Crystal Tunable Filter (LCTF) used during the Acquisition of this Channel as well as a reference (the ID attribute) to the LCTF in question.</xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
     </xsd:annotation>
+    <xsd:complexType>
+      <xsd:complexContent>
+        <xsd:extension base="ElectroOpticalDeviceSettings">
+          <xsd:attribute name="PolarizationRotation" type="xsd:float">
+            <xsd:annotation>
+              <xsd:documentation>Description=A Pockels cell is a device consisting of an electro-optic crystal (with some electrodes attached to it) through which a light beam can propagate. The phase delay in the crystal (→ Pockels effect) can be modulated by applying a variable electric voltage. Alignment of the crystal axis with the light beam axis is critical. This field records the polarization rotation applied to the beam during the acquisition of this Channel.</xsd:documentation>
+              <xsd:documentation>Tier=2</xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
+        </xsd:extension>
+      </xsd:complexContent>
+    </xsd:complexType>
   </xsd:element>
   <xsd:element name="SpatialLightModulatorSettings" substitutionGroup="ElectroOpticalDeviceSettingsGroup" type="ElectroOpticalDeviceSettings">
     <xsd:annotation>
