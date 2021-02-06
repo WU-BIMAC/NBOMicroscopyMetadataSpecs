@@ -1148,6 +1148,7 @@
         <xsd:element minOccurs="1" ref="MicroscopeSettings" maxOccurs="1"/>
         <xsd:element minOccurs="0" ref="MicroscopeTableSettings"/>
         <xsd:element maxOccurs="1" minOccurs="1" ref="ObjectiveSettings"/>
+        <xsd:element minOccurs="0" ref="StageLabel"/>
         <xsd:element maxOccurs="unbounded" minOccurs="0" ref="SamplePositioningSettings"/>
         <xsd:element maxOccurs="unbounded" minOccurs="0" ref="OpticalCalibration"/>
         <xsd:element maxOccurs="unbounded" minOccurs="0" ref="DetectorCalibration"/>
@@ -3201,6 +3202,56 @@
           </xsd:attribute>
         </xsd:extension>
       </xsd:complexContent>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="StageLabel">
+    <xsd:annotation>
+      <xsd:documentation>Extension=Core</xsd:documentation>
+      <xsd:documentation>Domain=ImageAcquisitionSettings</xsd:documentation>
+      <xsd:documentation>Category=Settings</xsd:documentation>
+      <xsd:documentation>Description=The StageLabel is used to specify the Name and Position for a Stage position in the Microscope's reference frame.</xsd:documentation>
+      <xsd:documentation>Tier=2</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:attribute name="Name" type="xsd:string" use="required">
+        <xsd:annotation>
+          <xsd:documentation>Description=A User-defined Name for this Stage Label.</xsd:documentation>
+          <xsd:documentation>Tier=2</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="X" type="xsd:float">
+        <xsd:annotation>
+          <xsd:documentation>Description=The X position of this StageLabel.</xsd:documentation>
+          <xsd:documentation>Tier=2</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="XUnits" type="UnitsLength">
+        <xsd:annotation>
+          <xsd:documentation>Tier=2</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="Y" type="xsd:float">
+        <xsd:annotation>
+          <xsd:documentation>Description=The Y position of this StageLabel.</xsd:documentation>
+          <xsd:documentation>Tier=2</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="YUnits" type="UnitsLength">
+        <xsd:annotation>
+          <xsd:documentation>Tier=2</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="Z" type="xsd:float">
+        <xsd:annotation>
+          <xsd:documentation>Description=The Z position of this StageLabel.</xsd:documentation>
+          <xsd:documentation>Tier=2</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="ZUnits" type="UnitsLength">
+        <xsd:annotation>
+          <xsd:documentation>Tier=2</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
     </xsd:complexType>
   </xsd:element>
   <xsd:element name="LightSourceSettings">
