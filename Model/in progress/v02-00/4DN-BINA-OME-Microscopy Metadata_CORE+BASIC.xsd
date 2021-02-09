@@ -1877,6 +1877,12 @@
             <xsd:documentation>Tier=2</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
+        <xsd:attribute name="PurchaseDate" type="xsd:date">
+          <xsd:annotation>
+            <xsd:documentation>Description=This field records the Date in which this Light Source was purchased.</xsd:documentation>
+            <xsd:documentation>Tier=2</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
@@ -14686,6 +14692,12 @@ PlaneInfo (as Plane)
               <xsd:documentation>Tier=3</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
+          <xsd:attribute name="LastCalibrationDate" type="xsd:date">
+            <xsd:annotation>
+              <xsd:documentation>Description=This field records the Date in which the most recent Calibration Procedure of this Calibration Tool was performed.</xsd:documentation>
+              <xsd:documentation>Tier=2</xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
         </xsd:extension>
       </xsd:complexContent>
     </xsd:complexType>
@@ -15294,6 +15306,12 @@ PlaneInfo (as Plane)
         <xsd:documentation>Tier=2</xsd:documentation>
       </xsd:annotation>
     </xsd:attribute>
+    <xsd:attribute name="SampleSize" type="PositiveInt">
+      <xsd:annotation>
+        <xsd:documentation>Description=This field captures the Size of the Sample that was used to calculate the reported Intensity Calibration metrics. For example, this might represent the number of Illumination Power measurements that were utilized to calculate the Illumination Stability of a given Light Source.</xsd:documentation>
+        <xsd:documentation>Tier=2</xsd:documentation>
+      </xsd:annotation>
+    </xsd:attribute>
     <xsd:attribute name="Method" type="xsd:string" use="required">
       <xsd:annotation>
         <xsd:documentation>Description=This field records a Description of Method used for this calibration procedure.</xsd:documentation>
@@ -15317,6 +15335,29 @@ PlaneInfo (as Plane)
     <xsd:complexType>
       <xsd:complexContent>
         <xsd:extension base="IntensityCalibration">
+          <xsd:attribute name="UsedAcoustoOpticalDevice" type="xsd:boolean">
+            <xsd:annotation>
+              <xsd:documentation>Description=This field records whether (True) or not (False) an Acousto-Optical Device was utilized during this Calibration Procedure.</xsd:documentation>
+              <xsd:documentation>Tier=2</xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
+          <xsd:attribute name="NominalEx-Wavelength" type="xsd:float" use="optional">
+            <xsd:annotation>
+              <xsd:documentation>Description=In case this is different from the Excitation Wavelength of the Channel this Calibration Procedure is associated with, this field records the Nominal Peak Excitation Wavelength  that is employed during this Procedure.</xsd:documentation>
+              <xsd:documentation>Tier=2</xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
+          <xsd:attribute name="NominalEx-WavelengthUnit" type="UnitsLength" default="nm">
+            <xsd:annotation>
+              <xsd:documentation>Tier=2</xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
+          <xsd:attribute name="PercentageNominalPower" type="xsd:float" use="required">
+            <xsd:annotation>
+              <xsd:documentation>Description=This field records the input % Nominal Power utilized during this Calibration Procedure</xsd:documentation>
+              <xsd:documentation>Tier=2</xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
           <xsd:attribute name="ObservedEx-Wavelength" type="xsd:float" use="required">
             <xsd:annotation>
               <xsd:documentation>Description=This field records the observed Peak Excitation Wavelength at the Back Objective as measured by using this Calibration Procedure.</xsd:documentation>
@@ -15356,15 +15397,9 @@ PlaneInfo (as Plane)
               <xsd:documentation>Tier=2</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="MediumTermIlluminationStability" type="xsd:float">
-            <xsd:annotation>
-              <xsd:documentation>Description=According to ISO 21073:2019, Illumination Stability is defined as the percentage deviation of Minimum and Maximum Illumination Powers from the Average Power during the time interval considered. Specifically, SATB [%] = 100x {1-[(Pmax-Pmin)/Pmax+Pmin]}, where Pmax is the maximum laser power recorded during the time interval; and Pmin is the minimum laser power recorded during the time interval. This field records the Medium Term Illumination Stability recorded during this Calibration Procedure by measuring Illumination Power every 30 s for one second for a time interval of 120 min of continuous illumination.</xsd:documentation>
-              <xsd:documentation>Tier=2</xsd:documentation>
-            </xsd:annotation>
-          </xsd:attribute>
           <xsd:attribute name="LongTermIlluminationStability" type="xsd:float">
             <xsd:annotation>
-              <xsd:documentation>Description=According to ISO 21073:2019, Illumination Stability is defined as the percentage deviation of Minimum and Maximum Illumination Powers from the Average Power during the time interval considered. Specifically, SATB [%] = 100x {1-[(Pmax-Pmin)/Pmax+Pmin]}, where Pmax is the maximum laser power recorded during the time interval; and Pmin is the minimum laser power recorded during the time interval. This field records the Long Term Illumination Stability recorded during this Calibration Procedure by measuring Illumination Power for one second for a time interval of several weeks or months.</xsd:documentation>
+              <xsd:documentation>Description=According to ISO 21073:2019, Illumination Stability is defined as the percentage deviation of Minimum and Maximum Illumination Powers from the Average Power during the time interval considered. Specifically, SATB [%] = 100x {1-[(Pmax-Pmin)/Pmax+Pmin]}, where Pmax is the maximum laser power recorded during the time interval; and Pmin is the minimum laser power recorded during the time interval. This field records the Long Term Illumination Stability recorded during this Calibration Procedure by measuring Illumination Power every 30 s for one second for a time interval of 120 min of continuous illumination.</xsd:documentation>
               <xsd:documentation>Tier=2</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
@@ -15374,7 +15409,7 @@ PlaneInfo (as Plane)
               <xsd:documentation>Tier=2</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="ObservedExcitationIrradiance" type="xsd:float" use="required">
+          <xsd:attribute name="ObservedExcitationIrradiance" type="xsd:float" use="optional">
             <xsd:annotation>
               <xsd:documentation>Description=Observed mean excitation light irradiance (radiant power per unit area) as measured at the sample plane over the Field of View (FOV).</xsd:documentation>
               <xsd:documentation>Tier=3</xsd:documentation>
@@ -15385,7 +15420,7 @@ PlaneInfo (as Plane)
               <xsd:documentation>Tier=3</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="ObservedExcitationVariance" type="xsd:float" use="required">
+          <xsd:attribute name="ObservedExcitationVariance" type="xsd:float" use="optional">
             <xsd:annotation>
               <xsd:documentation>Description=Observed excitation light irradiance (radiant power per unit area) variation over the Field of View (FOV).</xsd:documentation>
               <xsd:documentation>Tier=3</xsd:documentation>
