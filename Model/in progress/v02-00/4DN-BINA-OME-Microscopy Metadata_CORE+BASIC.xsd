@@ -1871,15 +1871,21 @@
             <xsd:documentation>Tier=1</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
-        <xsd:attribute name="PowerMode" type="PowerMode">
-          <xsd:annotation>
-            <xsd:documentation>Description=The statistic used by the Manufacturer to report the nominal Power output.</xsd:documentation>
-            <xsd:documentation>Tier=2</xsd:documentation>
-          </xsd:annotation>
-        </xsd:attribute>
         <xsd:attribute name="PurchaseDate" type="xsd:date">
           <xsd:annotation>
             <xsd:documentation>Description=This field records the Date in which this Light Source was purchased.</xsd:documentation>
+            <xsd:documentation>Tier=2</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="IlluminationPowerReportingStatistic" type="LightSourceIlluminationPowerReportingStatistic">
+          <xsd:annotation>
+            <xsd:documentation>Description=This field reports the statistic used by the Manufacturer to report the nominal Illumination Power output emitted by this Light Source at Peak Wavelength.</xsd:documentation>
+            <xsd:documentation>Tier=2</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="IlluminationPowerReportingPosition" type="LightSourceIlluminationPowerReportingStatistic">
+          <xsd:annotation>
+            <xsd:documentation>Description=This field records the Position where the reported Illumination Intensity value was obtained as reported by the Manufacturer.</xsd:documentation>
             <xsd:documentation>Tier=2</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
@@ -2085,6 +2091,12 @@
             <xsd:annotation>
               <xsd:documentation>Description=This field captures the optical frequency multiplication factor that may be specified for this Laser.</xsd:documentation>
               <xsd:documentation>Tier=3</xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
+          <xsd:attribute name="UsedAcoustoOpticalDevice" type="xsd:boolean">
+            <xsd:annotation>
+              <xsd:documentation>Description=This field records whether (True) or not (False) an AcoustoOptical Device was utilized during this Calibration Procedure.</xsd:documentation>
+              <xsd:documentation>Tier=2</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
         </xsd:extension>
@@ -3294,21 +3306,15 @@
               <xsd:documentation>Tier=1</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="IlluminationIntensity" type="xsd:float" use="required">
+          <xsd:attribute name="IlluminationPowerSettings" type="xsd:float" use="required">
             <xsd:annotation>
-              <xsd:documentation>Description=This field records the nominal Illumination Intensity (also known as Illumination Power or Power Output) that was set for the Acquisition of this Image or was reported by the Image Acquisition Software.</xsd:documentation>
+              <xsd:documentation>Description=This field records the nominal Illumination Power (also known as Power Output or Illumination Intensity) that was set for the Acquisition of this Image or was reported by the Image Acquisition Software, as advertised by the Manufacturer. Depending on the system this might be reported as a % value.</xsd:documentation>
               <xsd:documentation>Tier=1</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute default="W" name="IlluminationIntensityUnit" type="UnitsPower">
+          <xsd:attribute default="mW" name="lluminationPowerSettingsUnit" type="UnitsPower">
             <xsd:annotation>
               <xsd:documentation>Tier=1</xsd:documentation>
-            </xsd:annotation>
-          </xsd:attribute>
-          <xsd:attribute name="IntensityReportingPosition" type="LightSourceIntensityReportingPosition" use="required">
-            <xsd:annotation>
-              <xsd:documentation>Description=This field records the Position where the reported Illumination Intensity value was obtained as reported by the Manufacturer.</xsd:documentation>
-              <xsd:documentation>Tier=2</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
           <xsd:attribute name="Attenuation" use="optional" type="PercentFraction">
@@ -3321,6 +3327,12 @@
             <xsd:annotation>
               <xsd:documentation>Description=This field records the Method that was used to Attenuate the Laser beam during the acquisition of this Image.</xsd:documentation>
               <xsd:documentation>Tier=3</xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
+          <xsd:attribute name="UsedAcoustoOpticalDevice" type="xsd:boolean">
+            <xsd:annotation>
+              <xsd:documentation>Description=In case a Laser was used for this Image Acquisition, this field records whether (True) or not (False) an AcoustoOptical Device was employed for intensity modulation.</xsd:documentation>
+              <xsd:documentation>Tier=2</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
         </xsd:extension>
@@ -6402,6 +6414,7 @@ PlaneInfo (as Plane)
           </xsd:appinfo>
         </xsd:annotation>
       </xsd:enumeration>
+      <xsd:enumeration value="%"/>
     </xsd:restriction>
   </xsd:simpleType>
   <xsd:simpleType name="UnitsPressure">
@@ -11597,11 +11610,11 @@ PlaneInfo (as Plane)
       <xsd:extension base="WavelengthRangeType">
         <xsd:attribute name="IlluminationPower" use="required" type="xsd:float">
           <xsd:annotation>
-            <xsd:documentation>Description=This field records the nominal Power output emitted at Peak Wavelength by this Light Source as advertised by the Manufacturer.</xsd:documentation>
+            <xsd:documentation>Description=This field records the nominal Illumination Power (also known as Power Output or Illumination Intensity) emitted at Peak Wavelength by this Light Source, as advertised by the Manufacturer.</xsd:documentation>
             <xsd:documentation>Tier=1</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
-        <xsd:attribute name="IlluminationPowerUnit" type="UnitsPower" default="W">
+        <xsd:attribute name="IlluminationPowerUnit" type="UnitsPower" default="mW">
           <xsd:annotation>
             <xsd:documentation>Tier=1</xsd:documentation>
           </xsd:annotation>
@@ -11897,7 +11910,7 @@ PlaneInfo (as Plane)
       <xsd:enumeration value="Other"/>
     </xsd:restriction>
   </xsd:simpleType>
-  <xsd:simpleType name="PowerMode">
+  <xsd:simpleType name="LightSourceIlluminationPowerReportingStatistic">
     <xsd:restriction base="xsd:string">
       <xsd:enumeration value="Average"/>
       <xsd:enumeration value="Maximum"/>
@@ -12856,7 +12869,7 @@ PlaneInfo (as Plane)
       <xsd:enumeration value="Other"/>
     </xsd:restriction>
   </xsd:simpleType>
-  <xsd:simpleType name="LightSourceIntensityReportingPosition">
+  <xsd:simpleType name="LightSourceIlluminationPowerReportingPosition">
     <xsd:restriction base="xsd:string">
       <xsd:enumeration value="Back of the Objective"/>
       <xsd:enumeration value="Back of the Microscope Stand"/>
@@ -15335,9 +15348,9 @@ PlaneInfo (as Plane)
     <xsd:complexType>
       <xsd:complexContent>
         <xsd:extension base="IntensityCalibration">
-          <xsd:attribute name="UsedAcoustoOpticalDevice" type="xsd:boolean">
+          <xsd:attribute name="SpinningDiskInLightPath" type="xsd:boolean">
             <xsd:annotation>
-              <xsd:documentation>Description=This field records whether (True) or not (False) an Acousto-Optical Device was utilized during this Calibration Procedure.</xsd:documentation>
+              <xsd:documentation>Description=In case of a Spinning Disk Confocal Microscope, this field records whether (True) or not (False)  the Spinning Disk was placed in the Light Path during this Calibration Procedure.</xsd:documentation>
               <xsd:documentation>Tier=2</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
@@ -15352,12 +15365,6 @@ PlaneInfo (as Plane)
               <xsd:documentation>Tier=2</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="PercentageNominalPower" type="xsd:float" use="required">
-            <xsd:annotation>
-              <xsd:documentation>Description=This field records the input % Nominal Power utilized during this Calibration Procedure</xsd:documentation>
-              <xsd:documentation>Tier=2</xsd:documentation>
-            </xsd:annotation>
-          </xsd:attribute>
           <xsd:attribute name="ObservedEx-Wavelength" type="xsd:float" use="required">
             <xsd:annotation>
               <xsd:documentation>Description=This field records the observed Peak Excitation Wavelength at the Back Objective as measured by using this Calibration Procedure.</xsd:documentation>
@@ -15369,37 +15376,43 @@ PlaneInfo (as Plane)
               <xsd:documentation>Tier=2</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="ObservedPowerAtObjective" type="xsd:float" use="required">
+          <xsd:attribute name="PercentageNominalPowerSettings" type="xsd:float" use="required">
             <xsd:annotation>
-              <xsd:documentation>Description=This field records the observed Excitation Light Power at the Back Objective as measured by using this Calibration Procedure.</xsd:documentation>
+              <xsd:documentation>Description=This field records the input % Nominal Illumination Power that was set during this Calibration Procedure as by the Manufacturer.</xsd:documentation>
               <xsd:documentation>Tier=2</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="ObservedPowerAtObjectiveUnit" type="UnitsPower">
+          <xsd:attribute name="ObservedIlluminationPowerAtObjective" type="xsd:float" use="optional">
+            <xsd:annotation>
+              <xsd:documentation>Description=This field records the observed excitation Illumination Power (also known as Power Output or Illumination Intensity) as recorded  at the Back of the Objective by using this Calibration Procedure.</xsd:documentation>
+              <xsd:documentation>Tier=2</xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
+          <xsd:attribute name="ObservedIlluminationPowerAtObjectiveUnit" type="UnitsPower" default="mW">
             <xsd:annotation>
               <xsd:documentation>Tier=2</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="ObservedPowerAtSample" type="xsd:float" use="required">
+          <xsd:attribute name="ObseredIlluminationPowerAtSample" type="xsd:float" use="required">
             <xsd:annotation>
-              <xsd:documentation>Description=This field records the observed Excitation Light Power at the Sample (i.e., Front of the Objective) as measured by using this Calibration Procedure.</xsd:documentation>
+              <xsd:documentation>Description=This field records the observed excitation Illumination Power (also known as Power Output or Illumination Intensity) as recorded  at the Sample (also referred to as the Front of the Objective) by using this Calibration Procedure.</xsd:documentation>
               <xsd:documentation>Tier=2</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="ObservedPowerAtSampleUnit" type="UnitsPower">
+          <xsd:attribute name="ObseredIlluminationPowerAtSampleUnit" type="UnitsPower" default="mW">
             <xsd:annotation>
               <xsd:documentation>Tier=2</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
           <xsd:attribute name="ShortTermIlluminationStability" type="xsd:float">
             <xsd:annotation>
-              <xsd:documentation>Description=According to ISO 21073:2019, Illumination Stability is defined as the percentage deviation of Minimum and Maximum Illumination Powers from the Average Power during the time interval considered. Specifically, SATB [%] = 100x {1-[(Pmax-Pmin)/Pmax+Pmin]}, where Pmax is the maximum laser power recorded during the time interval; and Pmin is the minimum laser power recorded during the time interval. This field records the Short Term Illumination Stability recorded during this Calibration Procedure by measuring Illumination Power every second for a time interval of 5 min of continuous illumination.</xsd:documentation>
+              <xsd:documentation>Description=According to ISO 21073:2019, Illumination Stability is defined as the percentage deviation of Minimum and Maximum Illumination Power from the Average Power during the time interval considered. Specifically, SATB [%] = 100x {1-[(Pmax-Pmin)/Pmax+Pmin]}, where Pmax is the maximum laser power recorded during the time interval; and Pmin is the minimum laser power recorded during the time interval. This field records the Short Term Illumination Stability recorded during this Calibration Procedure by measuring Illumination Power every second for a time interval of 5 min of continuous illumination.</xsd:documentation>
               <xsd:documentation>Tier=2</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
           <xsd:attribute name="LongTermIlluminationStability" type="xsd:float">
             <xsd:annotation>
-              <xsd:documentation>Description=According to ISO 21073:2019, Illumination Stability is defined as the percentage deviation of Minimum and Maximum Illumination Powers from the Average Power during the time interval considered. Specifically, SATB [%] = 100x {1-[(Pmax-Pmin)/Pmax+Pmin]}, where Pmax is the maximum laser power recorded during the time interval; and Pmin is the minimum laser power recorded during the time interval. This field records the Long Term Illumination Stability recorded during this Calibration Procedure by measuring Illumination Power every 30 s for one second for a time interval of 120 min of continuous illumination.</xsd:documentation>
+              <xsd:documentation>Description=According to ISO 21073:2019, Illumination Stability is defined as the percentage deviation of Minimum and Maximum Illumination Power from the Average Power during the time interval considered. Specifically, SATB [%] = 100x {1-[(Pmax-Pmin)/Pmax+Pmin]}, where Pmax is the maximum laser power recorded during the time interval; and Pmin is the minimum laser power recorded during the time interval. This field records the Long Term Illumination Stability recorded during this Calibration Procedure by measuring Illumination Power every 30 s for one second for a time interval of 120 min of continuous illumination.</xsd:documentation>
               <xsd:documentation>Tier=2</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
