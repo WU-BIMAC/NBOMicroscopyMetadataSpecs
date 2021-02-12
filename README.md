@@ -25,7 +25,7 @@ Here we present the 4DN-BINA Microscopy Metadata (Figure 1) guidelines, which is
 
 **Figure 1: Imaging Experiment Workflows and Microscopy Metadata**
 
-# Proposed Revision of the OME Core Model vs. a suite of 4DN-BINA-OME Extensions
+# Proposed Suite of 4DN-BINA Extensions of the OME Data-Model
 To facilitate future adaptation and expansion of the guidelines, the proposed 4DN-BINA-OME model is organized on the basis of the core vs. extension ontology concepts. As such the proposal posits the following four components (see Figures 2 and 3):
 
 1. A proposed revision of the OME Core Model
