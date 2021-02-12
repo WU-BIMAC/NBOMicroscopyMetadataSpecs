@@ -2,7 +2,7 @@
 
 **STAND BY FOR THE UPCOMING MAJOR REVISION THAT WAS AUTHORED BY THE [BINA Quality Control and Data Management Working Group](https://www.bioimagingna.org/qc-dm-wg)**
 
-# 4D Nucleome + Bioimaging North America Microscopy OME Metadata Guidelines
+# 4D Nucleome + Bioimaging North America Microscopy + OME Metadata Specifications
 
 Adequate record keeping is essential for most experiments as it is necessary in order to evaluate results, share data and allow experiments to be repeated. Keeping notes on microscopy experiments should be relatively unchallenging in this regard, as the microscope is a machine equipped with a limited number of known parts and settings.
 
