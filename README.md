@@ -20,7 +20,7 @@ Here we present the 4DN-BINA Microscopy Metadata (Figure 1) guidelines, which is
 3. OPTICAL, EXCITATION POWER and WAVELENGTH, MECHANICAL and DETECTOR CALIBRATION Procedures
 
 <p align="center">
-  <img src="https://github.com/WU-BIMAC/MicroscopyMetadata4DNGuidelines/blob/master/Graphics/Figure-1_MM.png" title="Figure 1: Microscopy Metadata">
+  <img src="https://github.com/WU-BIMAC/MicroscopyMetadata4DNGuidelines/blob/master/Graphics/Figure-1_MM+model elements.png" title="Figure 1: Image Metadata versus Microscopy Metadata">
 </p>
 
 **Figure 1: Imaging Experiment Workflows and Microscopy Metadata**
