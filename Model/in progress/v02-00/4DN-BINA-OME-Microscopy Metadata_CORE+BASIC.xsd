@@ -1094,7 +1094,7 @@
         </xsdfu>
       </xsd:appinfo>
       <xsd:documentation>Extension=Core</xsd:documentation>
-      <xsd:documentation>Domain=ImageAcquisitionSettingsSettings</xsd:documentation>
+      <xsd:documentation>Domain=ImageAcquisitionSettings</xsd:documentation>
       <xsd:documentation>Category=Image</xsd:documentation>
       <xsd:documentation>Description=This element describes the actual Image that was acquired and its meta-data. The elements that are references (ending in Ref or Settings) refer to elements defined outside of the Image element. Ref elements are simple links, while Settings elements are links with additional values. If any of the required Image attributes or elements are missing, its guaranteed to be an invalid document.</xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
@@ -1128,7 +1128,7 @@
           </xsd:annotation>
         </xsd:element>
         <xsd:element maxOccurs="unbounded" minOccurs="0" ref="StageInsertRef"/>
-        <xsd:element maxOccurs="unbounded" minOccurs="0" ref="FocusStabilizationRef">
+        <xsd:element maxOccurs="unbounded" minOccurs="0" ref="FocusStabilizationDeviceRef">
           <xsd:annotation>
             <xsd:documentation>Description=This empty element refers to the optional Focus Stabilization device that was used for the Acquisition of this Image.</xsd:documentation>
             <xsd:documentation>Tier=1</xsd:documentation>
@@ -1137,7 +1137,7 @@
         <xsd:element ref="AcquisitionSoftwareRef" maxOccurs="unbounded"/>
         <xsd:element minOccurs="1" name="AcquisitionDate" type="xsd:dateTime">
           <xsd:annotation>
-            <xsd:documentation>Domain=ImageAcquisitionSettingsSettings</xsd:documentation>
+            <xsd:documentation>Domain=ImageAcquisitionSettings</xsd:documentation>
             <xsd:documentation>Category=SamplePreparation</xsd:documentation>
             <xsd:documentation>Description=The Date in which this Image was Acquired. The element contains an xsd:dateTime string based on the ISO 8601 format (i.e. 1988-04-07T18:39:09.359).</xsd:documentation>
             <xsd:documentation>Tier=1</xsd:documentation>
@@ -1148,11 +1148,11 @@
         <xsd:element minOccurs="1" ref="MicroscopeSettings" maxOccurs="1"/>
         <xsd:element minOccurs="0" ref="MicroscopeTableSettings"/>
         <xsd:element maxOccurs="1" minOccurs="1" ref="ObjectiveSettings"/>
-        <xsd:element minOccurs="0" ref="StageLabel"/>
+        <xsd:element minOccurs="0" ref="StageLabel" maxOccurs="1"/>
         <xsd:element maxOccurs="unbounded" minOccurs="0" ref="SamplePositioningSettings"/>
         <xsd:element maxOccurs="unbounded" minOccurs="0" ref="OpticalCalibration"/>
         <xsd:element maxOccurs="unbounded" minOccurs="0" ref="DetectorCalibration"/>
-        <xsd:element ref="Pixels"/>
+        <xsd:element ref="Pixels" maxOccurs="1" minOccurs="1"/>
         <xsd:element ref="AnnotationRef" minOccurs="0" maxOccurs="unbounded">
           <xsd:annotation>
             <xsd:appinfo>
@@ -11328,7 +11328,7 @@ PlaneInfo (as Plane)
       </xsd:complexContent>
     </xsd:complexType>
   </xsd:element>
-  <xsd:element name="FocusStabilizationRef">
+  <xsd:element name="FocusStabilizationDeviceRef">
     <xsd:annotation>
       <xsd:documentation>Description= This empty element refers to the optional Focus Stabilization Device that was used for the Acquisition of the experimental Image this Mechanical Calibration procedure refers to.</xsd:documentation>
       <xsd:documentation>Tier=2</xsd:documentation>
@@ -15520,7 +15520,7 @@ PlaneInfo (as Plane)
             <xsd:documentation>Tier=2</xsd:documentation>
           </xsd:annotation>
         </xsd:element>
-        <xsd:element minOccurs="0" ref="FocusStabilizationRef">
+        <xsd:element minOccurs="0" ref="FocusStabilizationDeviceRef">
           <xsd:annotation>
             <xsd:documentation>Description= This empty element refers to the optional Focus Stabilization Device that was used for the Acquisition of the experimental Image this Mechanical Calibration procedure refers to.</xsd:documentation>
             <xsd:documentation>Tier=2</xsd:documentation>
