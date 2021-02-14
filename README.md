@@ -2,7 +2,7 @@
 
 **STAND BY FOR THE UPCOMING MAJOR REVISION THAT WAS AUTHORED BY THE [BINA Quality Control and Data Management Working Group](https://www.bioimagingna.org/qc-dm-wg)**
 
-# 4D Nucleome + Bioimaging North America Microscopy OME Metadata Guidelines
+# 4D Nucleome + Bioimaging North America Microscopy Metadata Tiered guidelines extending the OME Data Model
 
 Adequate record keeping is essential for most experiments as it is necessary in order to evaluate results, share data and allow experiments to be repeated. Keeping notes on microscopy experiments should be relatively unchallenging in this regard, as the microscope is a machine equipped with a limited number of known parts and settings.
 
@@ -20,7 +20,7 @@ Here we present the 4DN-BINA Microscopy Metadata (Figure 1) guidelines, which is
 3. OPTICAL, EXCITATION POWER and WAVELENGTH, MECHANICAL and DETECTOR CALIBRATION Procedures
 
 <p align="center">
-  <img src="https://github.com/WU-BIMAC/MicroscopyMetadata4DNGuidelines/blob/master/Graphics/Figure-1_MM+model elements.png" title="Figure 1: Image Metadata versus Microscopy Metadata">
+  <img src="https://github.com/WU-BIMAC/MicroscopyMetadata4DNGuidelines/blob/master/Graphics/Figure-1_v03_MM+model elements.png" title="Figure 1: Image Metadata versus Microscopy Metadata">
 </p>
 
 **Figure 1: Imaging Experiment Workflows and Microscopy Metadata**
@@ -51,7 +51,7 @@ In order to foster the wide usability of the guidelines, the proposal aim at pro
 
 <p align="center">
   <img
-src="https://github.com/WU-BIMAC/MicroscopyMetadata4DNGuidelines/blob/master/Tier%20System/in%20progress/v02-00/4DN-Metadata%20Tier%20System_2020-12-14_v02-00.png" title="Figure 3: Tier System">
+src="https://github.com/WU-BIMAC/MicroscopyMetadata4DNGuidelines/blob/master/Graphics/Figure-3_v05.png" title="Figure 3: Tier System">
 </p>
 
 **Figure 3: Tier System**
