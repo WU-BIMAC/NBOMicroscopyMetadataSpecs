@@ -2852,7 +2852,7 @@
         </xsd:attribute>
         <xsd:attribute name="ReadOutNoise" type="xsd:float" use="required">
           <xsd:annotation>
-            <xsd:documentation>Description=This field captures the Read Out Noise associated with this Detector, as specified by the Manufacturer. Read Out Noise is a constant amount of noise and it includes thermal noise build-up and clock induced charge added by CCD chip, the readout amplifier and surrounding electronics. It is generally expressed in photo-electrons (i.e., e- root-mean-square).</xsd:documentation>
+            <xsd:documentation>Description=This field captures the Read-out Noise associated with this Detector, as specified by the Manufacturer. Read-out Noise is a constant amount of noise and it includes thermal noise build-up and clock induced charge added by the CCD chip, the readout amplifier and surrounding electronics. It is generally expressed in photo-electrons (i.e., e- root-mean-square).</xsd:documentation>
             <xsd:documentation>Tier=2</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
@@ -14883,9 +14883,15 @@ PlaneInfo (as Plane)
           <xsd:documentation>Tier=3</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
-      <xsd:attribute name="Asymmetry" type="xsd:float">
+      <xsd:attribute name="LateralAsymmetry" type="xsd:float">
         <xsd:annotation>
-          <xsd:documentation>Description=This field reports the mean +/- standard deviation over the Field of View (FOV) of the observed Point Spread Function (PSF) Asymmetry (i.e. the ratio of the minimum lateral FWMH over the maximum lateral FWHM). It indicates the presence of optical aberrations. Ideally this measurement should be reflective of multiple individual Point Emitter observations across the Field of View (FOV). However, if a single measurement is taken, it is essential that this be taken from the center of the Objective FOV.</xsd:documentation>
+          <xsd:documentation>Description=This field reports the mean +/- standard deviation over the Field of View (FOV) of the observed Point Spread Function (PSF) Lateral Asymmetry (i.e. the ratio of the minimum lateral FWMH over the maximum lateral FWHM). It indicates the presence of optical aberrations. Ideally this measurement should be reflective of multiple individual Point Emitter observations across the Field of View (FOV). However, if a single measurement is taken, it is essential that this be taken from the center of the Objective FOV.</xsd:documentation>
+          <xsd:documentation>Tier=3</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="AxialAsymmetry" type="xsd:float">
+        <xsd:annotation>
+          <xsd:documentation>Description=This field reports the mean +/- standard deviation over the Field of View (FOV) of the observed Point Spread Function (PSF) Axial Asymmetry (i.e. the ratio of the minimum axial FWMH over the maximum axial FWHM; also referred to as Spherical Aberration). It indicates the presence of optical aberrations. Ideally this measurement should be reflective of multiple individual Point Emitter observations across the Field of View (FOV). However, if a single measurement is taken, it is essential that this be taken from the center of the Objective FOV.</xsd:documentation>
           <xsd:documentation>Tier=3</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
