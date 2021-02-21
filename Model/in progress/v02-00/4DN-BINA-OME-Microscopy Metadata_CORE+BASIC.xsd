@@ -2315,13 +2315,13 @@
               <xsd:documentation>Tier=3</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="BackFocalLenght" type="xsd:float" use="optional">
+          <xsd:attribute name="BackFocalLength" type="xsd:float" use="optional">
             <xsd:annotation>
               <xsd:documentation>Description=This field records the distance (f') measured along the optical axis from the rear principal Plane of this Lens to the rear focal Plane (F').</xsd:documentation>
               <xsd:documentation>Tier=3</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute default="mm" name="BackFocalLenghtUnit" type="UnitsLength" use="optional">
+          <xsd:attribute default="mm" name="BackFocalLengthUnit" type="UnitsLength" use="optional">
             <xsd:annotation>
               <xsd:documentation>Tier=3</xsd:documentation>
             </xsd:annotation>
@@ -13834,7 +13834,7 @@ PlaneInfo (as Plane)
       <xsd:attribute name="OpticalDistanceUnit" type="UnitsLength">
         <xsd:annotation>
           <xsd:documentation>Tier=3</xsd:documentation>
-          <xsd:documentation>Description=Use this unit for both Focal Lenght fields.</xsd:documentation>
+          <xsd:documentation>Description=Use this unit for both Focal Length fields.</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
     </xsd:complexType>
