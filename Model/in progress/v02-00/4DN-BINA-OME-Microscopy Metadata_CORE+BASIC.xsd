@@ -2285,13 +2285,13 @@
               <xsd:documentation>Tier=2</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="ObjectiveViewField" type="xsd:float" use="optional">
+          <xsd:attribute name="ObjectiveViewField" type="xsd:float" use="required">
             <xsd:annotation>
               <xsd:documentation>Description=This field records the maximal diameter of the view field allowed by this Objective, expressed in mm, and measured at the intermediate Image Plane. NB: The field of view is influenced by the magnification and diameter of the ocular (eyepiece) field diaphragm, but also by the limits imposed by the design of the Objective.</xsd:documentation>
               <xsd:documentation>Tier=3</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="ImageDistance" type="xsd:float">
+          <xsd:attribute name="ImageDistance" type="xsd:float" use="required">
             <xsd:annotation>
               <xsd:documentation>Description=This field records the distance in air between the rear principal Plane of this Objective and the primary Image Plane.</xsd:documentation>
               <xsd:documentation>Tier=3</xsd:documentation>
