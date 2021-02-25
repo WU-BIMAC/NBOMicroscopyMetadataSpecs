@@ -1144,11 +1144,11 @@
           </xsd:annotation>
         </xsd:element>
         <xsd:element maxOccurs="1" minOccurs="0" ref="Description"/>
-        <xsd:element ref="ImagingEnvironment" minOccurs="0" maxOccurs="1"/>
-        <xsd:element minOccurs="1" ref="MicroscopeSettings" maxOccurs="1"/>
-        <xsd:element minOccurs="0" ref="MicroscopeTableSettings"/>
+        <xsd:element ref="ImagingEnvironment" minOccurs="0" maxOccurs="unbounded"/>
+        <xsd:element minOccurs="1" ref="MicroscopeStandSettings" maxOccurs="1"/>
+        <xsd:element minOccurs="0" ref="MicroscopeTableSettings" maxOccurs="unbounded"/>
         <xsd:element maxOccurs="1" minOccurs="1" ref="ObjectiveSettings"/>
-        <xsd:element minOccurs="0" ref="StageLabel" maxOccurs="1"/>
+        <xsd:element minOccurs="0" ref="StageLabel" maxOccurs="unbounded"/>
         <xsd:element maxOccurs="unbounded" minOccurs="0" ref="SamplePositioningSettings"/>
         <xsd:element maxOccurs="unbounded" minOccurs="0" ref="OpticalCalibration"/>
         <xsd:element maxOccurs="unbounded" minOccurs="0" ref="DetectorCalibration"/>
@@ -1275,18 +1275,18 @@
           <xsd:documentation>Tier=1</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
-      <xsd:attribute name="PhysicalSizeZ" use="required" type="PositiveFloat">
+      <xsd:attribute name="PhysicalSizeZ" use="optional" type="PositiveFloat">
         <xsd:annotation>
           <xsd:documentation>Description=This field records the real world Physical distance between the individual Z-Planes recorded for this Image. This measure is sometimes referred to as Z Pixel or Voxel Size.</xsd:documentation>
           <xsd:documentation>Tier=1</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
-      <xsd:attribute name="PhysicalSizeZUnit" use="optional" default="µm" type="UnitsLength">
+      <xsd:attribute name="PhysicalSizeZUnit" use="optional" default="nm" type="UnitsLength">
         <xsd:annotation>
           <xsd:documentation>Tier=1</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
-      <xsd:attribute name="TimeIncrement" use="required" type="PositiveFloat">
+      <xsd:attribute name="TimeIncrement" use="optional" type="PositiveFloat">
         <xsd:annotation>
           <xsd:documentation>Description=In cases in which a time series is acquired with a global timing specification setting, this field describes the time between each sequential plane (or frame) in the series (i.e., from the start of time point 1 to the start of time point 2). Examples include, a video stream or a multi-dimensional Acquisition routine. Note that, this field is not intended to substitute the Timestamp attribute recorded in Plane. Also note that in case this field is not relevant e.g. a time lapse Acquisition with irregular increments, the value -1 should be used to indicate that only the Timestamps (in the Plane element) are valid.</xsd:documentation>
           <xsd:documentation>Tier=1</xsd:documentation>
@@ -1401,12 +1401,12 @@
           <xsd:documentation>Tier=1</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
-      <xsd:attribute name="ExposureTimeUnit" use="optional" default="s" type="UnitsTime">
+      <xsd:attribute name="ExposureTimeUnit" use="optional" default="ms" type="UnitsTime">
         <xsd:annotation>
           <xsd:documentation>Tier=2</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
-      <xsd:attribute name="PixelDwellTime" type="xsd:float" use="required">
+      <xsd:attribute name="PixelDwellTime" type="xsd:float" use="optional">
         <xsd:annotation>
           <xsd:documentation>Description=This value typically refers to the settings applied to the Confocal Scanner during Acquisition, and it assumes that Pixel Dwell Time was set uniformly throughout the Plane. The Pixel Dwell Time represents the time this Confocal Scanner was set to dwell upon each pixel during the acquisition of this Plane (e.g. 1.58 µsec/pixel). The higher the Pixel Dwell Time the slower is the scan speed, the higher the sensitivity but also the potential photobleaching.</xsd:documentation>
           <xsd:documentation>Tier=1</xsd:documentation>
@@ -1809,7 +1809,7 @@
       <xsd:documentation>Category=MicroscopeStand</xsd:documentation>
       <xsd:documentation>Description=This is a Microscope in which the object is observed from beneath the stage.</xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
-      <xsd:documentation>Model_Settings=MicroscopeSettings</xsd:documentation>
+      <xsd:documentation>Model_Settings=MicroscopeStandSettings</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
   <xsd:element name="UprightMicroscopeStand" substitutionGroup="MicroscopeStandGroup">
@@ -1824,7 +1824,7 @@
       <xsd:documentation>Category=MicroscopeStand</xsd:documentation>
       <xsd:documentation>Description=This is a Microscope in which the object is observed from above the stage.</xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
-      <xsd:documentation>Model_Settings=MicroscopeSettings</xsd:documentation>
+      <xsd:documentation>Model_Settings=MicroscopeStandSettings</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
 
@@ -1883,7 +1883,7 @@
             <xsd:documentation>Tier=2</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
-        <xsd:attribute name="IlluminationPowerReportingPosition" type="LightSourceIlluminationPowerReportingStatistic">
+        <xsd:attribute name="IlluminationPowerReportingPosition" type="LightSourceIlluminationPowerReportingPosition">
           <xsd:annotation>
             <xsd:documentation>Description=This field records the Position where the reported Illumination Intensity value was obtained as reported by the Manufacturer.</xsd:documentation>
             <xsd:documentation>Tier=2</xsd:documentation>
@@ -2065,9 +2065,9 @@
               <xsd:documentation>Tier=3</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="RepetitionRate" use="required" type="xsd:float">
+          <xsd:attribute name="RepetitionRate" use="optional" type="xsd:float">
             <xsd:annotation>
-              <xsd:documentation>Description=This field (also known as Pulse Frequency) describes the frequency of laser pulses if Pulse is True. The default unit is Hz.</xsd:documentation>
+              <xsd:documentation>Description=In the case this is a pulsed Laser (Pulse is True), this field (also known as Pulse Frequency) describes the frequency of laser pulses. The default unit is Hz.</xsd:documentation>
               <xsd:documentation>Tier=3</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
@@ -2076,9 +2076,9 @@
               <xsd:documentation>Tier=3</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="PulseDuration" type="xsd:float" use="required">
+          <xsd:attribute name="PulseDuration" type="xsd:float" use="optional">
             <xsd:annotation>
-              <xsd:documentation>Description=Describes the duration of each Laser pulse if Pulse is True.</xsd:documentation>
+              <xsd:documentation>Description=In the case this is a pulsed Laser (Pulse is True), this field describes the duration of each Laser pulse.</xsd:documentation>
               <xsd:documentation>Tier=3</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
@@ -2087,7 +2087,7 @@
               <xsd:documentation>Tier=3</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="FrequencyMultiplication" use="required" type="PositiveInt">
+          <xsd:attribute name="FrequencyMultiplication" use="optional" type="xsd:float">
             <xsd:annotation>
               <xsd:documentation>Description=This field captures the optical frequency multiplication factor that may be specified for this Laser.</xsd:documentation>
               <xsd:documentation>Tier=3</xsd:documentation>
@@ -2774,7 +2774,7 @@
             <xsd:complexType>
               <xsd:attribute name="PeakWavelength" type="xsd:float">
                 <xsd:annotation>
-                  <xsd:documentation>Description=This field records the Wavelength associated with the peak response rate of this device. </xsd:documentation>
+                  <xsd:documentation>Description=This field records the nominal Wavelength associated with the peak response rate of this device. </xsd:documentation>
                   <xsd:documentation>Tier=2</xsd:documentation>
                 </xsd:annotation>
               </xsd:attribute>
@@ -3295,17 +3295,6 @@
               <xsd:documentation>Tier=1</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="Wavelength" use="required" type="PositiveFloat">
-            <xsd:annotation>
-              <xsd:documentation>Description=This field records the nominal Wavelength of the excitation Light utilized in this case.</xsd:documentation>
-              <xsd:documentation>Tier=1</xsd:documentation>
-            </xsd:annotation>
-          </xsd:attribute>
-          <xsd:attribute name="WavelengthUnit" use="optional" default="nm" type="UnitsLength">
-            <xsd:annotation>
-              <xsd:documentation>Tier=1</xsd:documentation>
-            </xsd:annotation>
-          </xsd:attribute>
           <xsd:attribute name="IlluminationPowerSettings" type="xsd:float" use="required">
             <xsd:annotation>
               <xsd:documentation>Description=This field records the nominal Illumination Power (also known as Power Output or Illumination Intensity) that was set for the Acquisition of this Image or was reported by the Image Acquisition Software, as advertised by the Manufacturer. Depending on the system this might be reported as a % value.</xsd:documentation>
@@ -3369,14 +3358,26 @@
           <xsd:documentation>Tier=1</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
-      <xsd:attribute name="Temperature" use="required" type="xsd:float">
+      <xsd:attribute name="Temperature" use="required" type="xsd:string">
         <xsd:annotation>
-          <xsd:documentation>Description=The field records the Temperature the Acquisition of this Image was performed at.</xsd:documentation>
+          <xsd:documentation>Description=The field records the Temperature at which this Image Acquisition was performed. Allowed values include a number or the phrase "Room Temperature".</xsd:documentation>
           <xsd:documentation>Tier=1</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
       <xsd:attribute name="TemperatureUnit" use="optional" default="°C" type="UnitsTemperature">
         <xsd:annotation>
+          <xsd:documentation>Tier=1</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="CO2Percent" use="required" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>Description=The field records the Carbon Dioxide concentration (expressed as a % value) at which this Image Acquisition was performed. Allowed values include a number or the phrase "Ambient Conditions".</xsd:documentation>
+          <xsd:documentation>Tier=1</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="Humidity" use="required" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>Description=The field records the Humidity (expressed as a % value) at which this Image Acquisition was performed. Allowed values include a number or the phrase "Ambient Humidity".</xsd:documentation>
           <xsd:documentation>Tier=1</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
@@ -3389,18 +3390,6 @@
       <xsd:attribute name="AirPressureUnit" use="optional" default="mbar" type="UnitsPressure">
         <xsd:annotation>
           <xsd:documentation>Tier=2</xsd:documentation>
-        </xsd:annotation>
-      </xsd:attribute>
-      <xsd:attribute name="Humidity" use="required" type="PercentFraction">
-        <xsd:annotation>
-          <xsd:documentation>Description=The field records then Humidity the Acquisition of this Image was performed at.</xsd:documentation>
-          <xsd:documentation>Tier=1</xsd:documentation>
-        </xsd:annotation>
-      </xsd:attribute>
-      <xsd:attribute name="CO2Percent" use="required" type="PercentFraction">
-        <xsd:annotation>
-          <xsd:documentation>Description=This field records the Carbon Dioxide concentration (expressed as a % value) around the sample during Acquisition.</xsd:documentation>
-          <xsd:documentation>Tier=1</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
       <xsd:attribute name="O2Percent" type="PercentFraction">
@@ -9753,7 +9742,7 @@ PlaneInfo (as Plane)
               <xsd:complexType>
                 <xsd:attribute name="PeakWavelength" type="xsd:float">
                   <xsd:annotation>
-                    <xsd:documentation>Description=This field records the Wavelength associated with the peak response rate of this device. </xsd:documentation>
+                    <xsd:documentation>Description=This field records the nominal Wavelength associated with the peak response rate of this device. </xsd:documentation>
                     <xsd:documentation>Tier=3</xsd:documentation>
                   </xsd:annotation>
                 </xsd:attribute>
@@ -9899,7 +9888,7 @@ PlaneInfo (as Plane)
               <xsd:complexType>
                 <xsd:attribute name="PeakWavelength" type="xsd:float">
                   <xsd:annotation>
-                    <xsd:documentation>Description=This field records the Wavelength associated with the peak response rate of this device. </xsd:documentation>
+                    <xsd:documentation>Description=This field records the nominal Wavelength associated with the peak response rate of this device. </xsd:documentation>
                     <xsd:documentation>Tier=3</xsd:documentation>
                   </xsd:annotation>
                 </xsd:attribute>
@@ -10804,66 +10793,17 @@ PlaneInfo (as Plane)
   </xsd:element>
 
   <!-- Settings -->
-  <xsd:element name="MicroscopeSettings">
+  <xsd:element name="MicroscopeStandSettings">
     <xsd:annotation>
       <xsd:documentation>Extension=Basic</xsd:documentation>
       <xsd:documentation>Domain=ImageAcquisitionSettings</xsd:documentation>
       <xsd:documentation>Category=Settings</xsd:documentation>
-      <xsd:documentation>Description=This element refers to the Microscope used to acquire this Image and it holds the Settings that were applied to the Microscope during this Acquisition.</xsd:documentation>
+      <xsd:documentation>Description=This element refers to the Microscope Stand used to acquire this Image and it holds the Settings that were applied to the Microscope Stand during this Acquisition.</xsd:documentation>
       <xsd:documentation>Tier=2</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
       <xsd:complexContent>
         <xsd:extension base="Settings">
-          <xsd:sequence>
-            <xsd:element name="ObjectiveRef">
-              <xsd:annotation>
-                <xsd:documentation>Description=This empty element refers to the existing Objective component used in this case.</xsd:documentation>
-                <xsd:documentation>Tier=2</xsd:documentation>
-              </xsd:annotation>
-              <xsd:complexType>
-                <xsd:complexContent>
-                  <xsd:extension base="Reference">
-                    <xsd:attribute name="ID" type="ObjectiveID">
-                      <xsd:annotation>
-                        <xsd:documentation>Tier=3</xsd:documentation>
-                      </xsd:annotation>
-                    </xsd:attribute>
-                  </xsd:extension>
-                </xsd:complexContent>
-              </xsd:complexType>
-            </xsd:element>
-            <xsd:element name="MagnificationChangerRef" minOccurs="0">
-              <xsd:annotation>
-                <xsd:documentation>Description=This empty element refers to the existing Magnification Changer component used in this case.</xsd:documentation>
-                <xsd:documentation>Tier=2</xsd:documentation>
-              </xsd:annotation>
-              <xsd:complexType>
-                <xsd:complexContent>
-                  <xsd:extension base="Reference">
-                    <xsd:attribute name="ID" type="MagnificationChangerID">
-                      <xsd:annotation>
-                        <xsd:documentation>Tier=3</xsd:documentation>
-                      </xsd:annotation>
-                    </xsd:attribute>
-                  </xsd:extension>
-                </xsd:complexContent>
-              </xsd:complexType>
-            </xsd:element>
-            <xsd:element minOccurs="0" name="MicroscopeTubeRef">
-              <xsd:annotation>
-                <xsd:documentation>Description=This empty element refers to the existing Microscope Tube component used in this case.</xsd:documentation>
-                <xsd:documentation>Tier=3</xsd:documentation>
-              </xsd:annotation>
-              <xsd:complexType>
-                <xsd:complexContent>
-                  <xsd:extension base="Reference">
-                    <xsd:attribute name="ID" type="MicroscopeTubeID"/>
-                  </xsd:extension>
-                </xsd:complexContent>
-              </xsd:complexType>
-            </xsd:element>
-          </xsd:sequence>
           <xsd:attribute name="ID" type="MicroscopeID">
             <xsd:annotation>
               <xsd:documentation>Description=This is the Unique Identifier of the Microscope used in this case.</xsd:documentation>
@@ -11635,7 +11575,7 @@ PlaneInfo (as Plane)
     </xsd:sequence>
     <xsd:attribute name="PeakWavelength" type="xsd:float" use="required">
       <xsd:annotation>
-        <xsd:documentation>Description=This field records the Wavelength associated with the peak response rate of this device. </xsd:documentation>
+        <xsd:documentation>Description=This field records the nominal Wavelength associated with the peak response rate of this device. </xsd:documentation>
         <xsd:documentation>Tier=2</xsd:documentation>
       </xsd:annotation>
     </xsd:attribute>
