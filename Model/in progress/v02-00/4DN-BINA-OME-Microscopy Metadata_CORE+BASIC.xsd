@@ -8515,7 +8515,15 @@ PlaneInfo (as Plane)
       <xsd:complexContent>
         <xsd:extension base="LightSourceCoupling">
           <xsd:sequence>
-            <xsd:element maxOccurs="unbounded" ref="WavelengthRange" minOccurs="1"/>
+            <xsd:element maxOccurs="unbounded" ref="WavelengthRange" minOccurs="1">
+              <xsd:annotation>
+                <xsd:documentation>Extension=Basic</xsd:documentation>
+                <xsd:documentation>Domain=MicroscopeHardwareSpecifications</xsd:documentation>
+                <xsd:documentation>Category=ChildElement</xsd:documentation>
+                <xsd:documentation>Description=This element records a range of Wavelengths this component is designed for, according to the Manufacturer. Multiple of this element may be used.</xsd:documentation>
+                <xsd:documentation>Tier=3</xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
           </xsd:sequence>
           <xsd:attribute name="Type" type="LightGuideType" use="required">
             <xsd:annotation>
