@@ -2007,7 +2007,7 @@
       <xsd:complexContent>
         <xsd:extension base="LightSource">
           <xsd:sequence>
-            <xsd:element maxOccurs="unbounded" ref="IlluminationWavelengthRange"/>
+            <xsd:element maxOccurs="unbounded" ref="IlluminationWavelengthRange" minOccurs="0"/>
             <xsd:element maxOccurs="unbounded" minOccurs="0" ref="AcoustoOpticalDeviceRef"/>
             <xsd:element minOccurs="0" ref="Pump"/>
           </xsd:sequence>
@@ -12471,7 +12471,7 @@ PlaneInfo (as Plane)
     <xsd:restriction base="xsd:string">
       <xsd:enumeration value="Absorption"/>
       <xsd:enumeration value="Reflection"/>
-      <xsd:enumeration value="Rifraction"/>
+      <xsd:enumeration value="refraction"/>
       <xsd:enumeration value="Other"/>
     </xsd:restriction>
   </xsd:simpleType>
@@ -14507,7 +14507,7 @@ PlaneInfo (as Plane)
     <xsd:restriction base="xsd:string">
       <xsd:enumeration value="Absorption"/>
       <xsd:enumeration value="Reflection"/>
-      <xsd:enumeration value="Rifraction"/>
+      <xsd:enumeration value="refraction"/>
       <xsd:enumeration value="Other"/>
     </xsd:restriction>
   </xsd:simpleType>
