@@ -8515,7 +8515,7 @@ PlaneInfo (as Plane)
       <xsd:complexContent>
         <xsd:extension base="LightSourceCoupling">
           <xsd:sequence>
-            <xsd:element maxOccurs="unbounded" ref="WavelengthRange" minOccurs="1">
+            <xsd:element maxOccurs="unbounded" ref="WavelengthRange" minOccurs="0">
               <xsd:annotation>
                 <xsd:documentation>Extension=Basic</xsd:documentation>
                 <xsd:documentation>Domain=MicroscopeHardwareSpecifications</xsd:documentation>

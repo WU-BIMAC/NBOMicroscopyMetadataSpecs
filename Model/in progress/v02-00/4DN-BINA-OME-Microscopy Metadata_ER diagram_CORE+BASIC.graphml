@@ -5302,14 +5302,14 @@ Z<y:LabelModel><y:ErdAttributesNodeLabelModel/></y:LabelModel><y:ModelParameter>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="39.951709073746315" sy="4.890151297088778" tx="70.5106168770335" ty="3.6239409556210376"/>
-          <y:LineStyle color="#0000FF" type="line" width="2.0"/>
-          <y:Arrows source="crows_foot_one" target="crows_foot_one"/>
-          <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="-8.910532021865947" y="27.092224819787134">
+          <y:LineStyle color="#0000FF" type="dashed" width="2.0"/>
+          <y:Arrows source="crows_foot_one" target="crows_foot_many_optional"/>
+          <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="-8.911386168992976" y="27.100059872731435">
             <y:LabelModel>
               <y:SmartEdgeLabelModel autoRotationEnabled="false" defaultAngle="0.0" defaultDistance="10.0"/>
             </y:LabelModel>
             <y:ModelParameter>
-              <y:SmartEdgeLabelModelParameter angle="0.0" distance="27.09213478834097" distanceToCenter="false" position="right" ratio="-13.931343334319402" segment="0"/>
+              <y:SmartEdgeLabelModelParameter angle="6.283185307179586" distance="27.099969841285237" distanceToCenter="false" position="right" ratio="-13.93219748144668" segment="-1"/>
             </y:ModelParameter>
             <y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" frozen="true" placement="anywhere" side="anywhere" sideReference="relative_to_edge_flow"/>
           </y:EdgeLabel>
@@ -5714,14 +5714,14 @@ Z<y:LabelModel><y:ErdAttributesNodeLabelModel/></y:LabelModel><y:ModelParameter>
             <y:Point x="-5467.631816099016" y="-3558.1026466484914"/>
             <y:Point x="-5468.375276785829" y="-3733.5593687363207"/>
           </y:Path>
-          <y:LineStyle color="#0000FF" type="line" width="2.0"/>
-          <y:Arrows source="crows_foot_one" target="crows_foot_many_mandatory"/>
-          <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="-15.519192872330677" y="29.008313257876125">
+          <y:LineStyle color="#0000FF" type="dashed" width="2.0"/>
+          <y:Arrows source="crows_foot_one" target="crows_foot_many_optional"/>
+          <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="58.82777963897479" y="-148.08586373878552">
             <y:LabelModel>
               <y:SmartEdgeLabelModel autoRotationEnabled="false" defaultAngle="0.0" defaultDistance="10.0"/>
             </y:LabelModel>
             <y:ModelParameter>
-              <y:SmartEdgeLabelModelParameter angle="0.0" distance="29.04932528718905" distanceToCenter="false" position="right" ratio="-13.395022445295194" segment="0"/>
+              <y:SmartEdgeLabelModelParameter angle="6.283185307179586" distance="27.099969841285237" distanceToCenter="false" position="right" ratio="-13.93219748144668" segment="-1"/>
             </y:ModelParameter>
             <y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" frozen="true" placement="anywhere" side="anywhere" sideReference="relative_to_edge_flow"/>
           </y:EdgeLabel>
@@ -5733,14 +5733,14 @@ Z<y:LabelModel><y:ErdAttributesNodeLabelModel/></y:LabelModel><y:ModelParameter>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="78.60185530036051" ty="34.04170859691021"/>
-          <y:LineStyle color="#0000FF" type="line" width="2.0"/>
-          <y:Arrows source="crows_foot_one" target="crows_foot_many_mandatory"/>
-          <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="30.19704559663569" y="60.11103587199932">
+          <y:LineStyle color="#0000FF" type="dashed" width="2.0"/>
+          <y:Arrows source="crows_foot_one" target="crows_foot_many_optional"/>
+          <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="-8.940683043992976" y="27.100056138897344">
             <y:LabelModel>
               <y:SmartEdgeLabelModel autoRotationEnabled="false" defaultAngle="0.0" defaultDistance="10.0"/>
             </y:LabelModel>
             <y:ModelParameter>
-              <y:SmartEdgeLabelModelParameter angle="0.0" distance="60.110949574387114" distanceToCenter="false" position="right" ratio="0.2565382796113721" segment="2"/>
+              <y:SmartEdgeLabelModelParameter angle="6.283185307179586" distance="27.099969841285237" distanceToCenter="false" position="right" ratio="-13.93219748144668" segment="-1"/>
             </y:ModelParameter>
             <y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" frozen="true" placement="anywhere" side="anywhere" sideReference="relative_to_edge_flow"/>
           </y:EdgeLabel>
