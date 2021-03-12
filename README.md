@@ -4,6 +4,8 @@
 
 # 4D Nucleome + Bioimaging North America Microscopy Metadata Tiered guidelines extending the OME Data Model
 
+Please contribute to the in-progress revision by filing issues against the current V02-00 draft of the model. Click on "Issues" above, the "New Issue" button, and select whether you are submitting a new feature proposal or want to propose a change to the current proposal.
+
 Adequate record keeping is essential for most experiments as it is necessary in order to evaluate results, share data and allow experiments to be repeated. Keeping notes on microscopy experiments should be relatively unchallenging in this regard, as the microscope is a machine equipped with a limited number of known parts and settings.
 
 Metadata automatically recorded by microscopes from different companies vary widely and pose a substantial challenge for microscope users to create a good faith record of their work. Similarly, the complexity and aim of experiments using microscopes varies leading to different reporting requirements from the simple description of a sample to the need to document the complexities of sub-diffraction resolution imaging in living cells and beyond.
