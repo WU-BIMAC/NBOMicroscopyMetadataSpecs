@@ -5198,6 +5198,7 @@ PlaneInfo (as Plane)
           </xsd:appinfo>
         </xsd:annotation>
       </xsd:enumeration>
+      <xsd:enumeration value="int12"/>
       <xsd:enumeration value="int32">
         <xsd:annotation>
           <xsd:documentation>32 bit signed integer.</xsd:documentation>
@@ -5218,6 +5219,7 @@ PlaneInfo (as Plane)
           </xsd:appinfo>
         </xsd:annotation>
       </xsd:enumeration>
+      <xsd:enumeration value="uint12"/>
       <xsd:enumeration value="uint16">
         <xsd:annotation>
           <xsd:documentation>16 bit unsigned integer.</xsd:documentation>
