@@ -1,6 +1,7 @@
 **A White Paper entitled "Minimum Information guidelines for fluorescence microscopy: increasing the value, quality, and fidelity of image data", which describes v01 of the guideline proposal was published on on ArXiv.org and can be found at: https://arxiv.org/abs/1910.11370**
 
 **STAND BY FOR THE UPCOMING MAJOR REVISION THAT WAS AUTHORED BY THE [BINA Quality Control and Data Management Working Group](https://www.bioimagingna.org/qc-dm-wg)**
+
 Please contribute to the in-progress revision by filing issues against the current V02-00 draft of the model. Click on "Issues" above, the "New Issue" button, and select whether you are submitting a new feature proposal or want to propose a change to the current proposal.
 
 # 4D Nucleome + Bioimaging North America Microscopy Metadata Tiered guidelines extending the OME Data Model
