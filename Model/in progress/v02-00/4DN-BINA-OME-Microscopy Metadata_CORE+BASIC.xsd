@@ -12473,7 +12473,7 @@ PlaneInfo (as Plane)
     <xsd:restriction base="xsd:string">
       <xsd:enumeration value="Absorption"/>
       <xsd:enumeration value="Reflection"/>
-      <xsd:enumeration value="refraction"/>
+      <xsd:enumeration value="Refraction"/>
       <xsd:enumeration value="Other"/>
     </xsd:restriction>
   </xsd:simpleType>
@@ -14509,7 +14509,7 @@ PlaneInfo (as Plane)
     <xsd:restriction base="xsd:string">
       <xsd:enumeration value="Absorption"/>
       <xsd:enumeration value="Reflection"/>
-      <xsd:enumeration value="refraction"/>
+      <xsd:enumeration value="Refraction"/>
       <xsd:enumeration value="Other"/>
     </xsd:restriction>
   </xsd:simpleType>
