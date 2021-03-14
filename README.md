@@ -2,6 +2,8 @@
 
 **STAND BY FOR THE UPCOMING MAJOR REVISION THAT WAS AUTHORED BY THE [BINA Quality Control and Data Management Working Group](https://www.bioimagingna.org/qc-dm-wg)**
 
+Please contribute to the in-progress revision by filing issues against the current V02-00 draft of the model. Click on "Issues" above, the "New Issue" button, and select whether you are submitting a new feature proposal or want to propose a change to the current proposal.
+
 # 4D Nucleome + Bioimaging North America Microscopy Metadata Tiered guidelines extending the OME Data Model
 
 Adequate record keeping is essential for most experiments as it is necessary in order to evaluate results, share data and allow experiments to be repeated. Keeping notes on microscopy experiments should be relatively unchallenging in this regard, as the microscope is a machine equipped with a limited number of known parts and settings.

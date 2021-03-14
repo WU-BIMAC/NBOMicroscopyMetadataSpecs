@@ -2,7 +2,7 @@
 name: New feature request
 about: Propose a new metadata category, element, or field
 title: Last_Name -- Summary statement
-labels: ''
+labels: enhancement
 assignees: ''
 
 ---
