@@ -1403,7 +1403,7 @@
       </xsd:attribute>
       <xsd:attribute name="ExposureTimeUnit" use="optional" default="ms" type="UnitsTime">
         <xsd:annotation>
-          <xsd:documentation>Tier=2</xsd:documentation>
+          <xsd:documentation>Tier=1</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
       <xsd:attribute name="PixelDwellTime" type="xsd:float" use="optional">
@@ -7492,18 +7492,18 @@ PlaneInfo (as Plane)
           </xsd:attribute>
           <xsd:attribute name="Concentration" use="optional" type="xsd:float">
             <xsd:annotation>
-              <xsd:documentation>Description=This field records the Concentration of this Fluorophore that was used to stain the Sample and was imaged in this Channel.</xsd:documentation>
+              <xsd:documentation>Description=If applicable (e.g., in the case of direct incubation of the sample  with a specific label such as DAPI or Mitotracker Red), this field records the Concentration of this Fluorophore that was used to stain the Sample and that was imaged in this Channel.</xsd:documentation>
+              <xsd:documentation>Tier=1</xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
+          <xsd:attribute name="ConcentrationUnit" type="UnitsConcentration">
+            <xsd:annotation>
               <xsd:documentation>Tier=1</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
           <xsd:attribute name="FBBaseID" type="xsd:string">
             <xsd:annotation>
               <xsd:documentation>Description=In case the Fluorophore is a Fluorescent Protein, this field records its FPBaseID (FPBase.org).</xsd:documentation>
-              <xsd:documentation>Tier=1</xsd:documentation>
-            </xsd:annotation>
-          </xsd:attribute>
-          <xsd:attribute name="ConcentrationUnit" type="UnitsConcentration">
-            <xsd:annotation>
               <xsd:documentation>Tier=1</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
@@ -11236,7 +11236,7 @@ PlaneInfo (as Plane)
           </xsd:attribute>
           <xsd:attribute name="OperatingTemperature" type="xsd:float">
             <xsd:annotation>
-              <xsd:documentation>Description=This field represents the effective temperature the sensor is regulated to during the Acquisition of this image.</xsd:documentation>
+              <xsd:documentation>Description=This field represents the effective temperature the sensor was kept at during the Acquisition of this image.</xsd:documentation>
               <xsd:documentation>Tier=3</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
@@ -12736,20 +12736,21 @@ PlaneInfo (as Plane)
   <xsd:simpleType name="FluorescentLabelType">
     <xsd:restriction base="xsd:string">
       <!-- Nucleic Acid labelling -->
+      <!-- Protein labelling -->
+      <!-- Other -->
       <xsd:enumeration value="Nucleic Acid_Aptamer motif"/>
       <xsd:enumeration value="Nucleic Acid_Bacteriophage-derived RNA tag"/>
       <xsd:enumeration value="Nucleic Acid_Chemical Modification"/>
-      <xsd:enumeration value="Nucleic Acid_dCad9"/>
-      <xsd:enumeration value="Nucleic Acid_Forced Intercalation"/>
+      <xsd:enumeration value="Nucleic Acid_dCas9"/>
       <xsd:enumeration value="Nucleic Acid_Molecular Beacon"/>
-      <!-- Protein labelling -->
-      <xsd:enumeration value="Protein_BiarsenicalDye"/>
+      <xsd:enumeration value="Nucleic Acid_Organic dye"/>
+      <xsd:enumeration value="Protein_Biarsenical dye"/>
       <xsd:enumeration value="Protein_Biological fluorophore"/>
       <xsd:enumeration value="Protein_Fluorescent protein"/>
-      <xsd:enumeration value="Protein_Immunological probe"/>
-      <xsd:enumeration value="Protein_Organic dyes"/>
+      <xsd:enumeration value="Protein_Organic dye_Aspecific"/>
+      <xsd:enumeration value="Protein_Organic dye_Immunological targeting"/>
+      <xsd:enumeration value="Protein_Organic dye_Specific"/>
       <xsd:enumeration value="Protein_Self-Labelling EnzymeTag"/>
-      <!-- Other -->
       <xsd:enumeration value="Quantum Dots"/>
       <xsd:enumeration value="None"/>
       <xsd:enumeration value="Other"/>
