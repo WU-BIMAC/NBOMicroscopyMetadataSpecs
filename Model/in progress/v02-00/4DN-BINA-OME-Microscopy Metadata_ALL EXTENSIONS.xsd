@@ -1171,7 +1171,7 @@
       </xsd:attribute>
       <xsd:attribute name="AcquisitionDate" type="xsd:date">
         <xsd:annotation>
-          <xsd:documentation>Description=The Date in which this Image was Acquired. The element contains an xsd:dateTime string based on the ISO 8601 format (i.e. 1988-04-07T18:39:09.359).</xsd:documentation>
+          <xsd:documentation>Description=The Date in which this Image was Acquired.</xsd:documentation>
           <xsd:documentation>Tier=1</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
