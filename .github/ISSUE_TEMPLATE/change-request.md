@@ -2,8 +2,8 @@
 name: Change request
 about: Propose a change to an existing element or field
 title: Last_Name -- Summary statement
-labels: ''
-assignees: ''
+labels: enhancement
+assignees: strambc
 
 ---
 
