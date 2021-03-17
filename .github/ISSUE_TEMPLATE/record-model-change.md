@@ -13,7 +13,7 @@ assignees: ''
 - Enter an issue title above following the pattern:
 
 > your_last_name -- summary statement
-E.g.: Strambio -- Objective/Correction enumeration value C-Acroplan to C-Achroplan
+> E.g.: Strambio -- Objective/Correction enumeration value C-Acroplan to C-Achroplan
 
 
 Current Element name: __
