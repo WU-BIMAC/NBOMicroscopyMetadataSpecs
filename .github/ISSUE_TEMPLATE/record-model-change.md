@@ -12,7 +12,7 @@ assignees: ''
 - Enter only relevant changes while leaving all unchanged items blank
 - Enter an issue title above following the pattern:
 
-> your_last_name -- summary statement
+> your_last_name -- summary statement <b/>
 > E.g.: Strambio -- Objective/Correction enumeration value C-Acroplan to C-Achroplan
 
 
