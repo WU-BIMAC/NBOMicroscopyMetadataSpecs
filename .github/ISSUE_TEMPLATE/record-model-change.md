@@ -1,5 +1,5 @@
 ---
-name: Report change
+name: Alert for model change
 about: Report an approved change to an existing element or field
 title: ALERT MODEL CHANGE --> Summary statement
 labels: ''
