@@ -16,26 +16,26 @@ assignees: ''
 E.g.: Strambio -- Objective/Correction enumeration value C-Acroplan to C-Achroplan
 
 
-Current Element name: __ <br/>
+**Current Element name:** __ <br/>
 New Element name: __
 
-Current Field name: __
+**Current Field name:** __ <br/>
 New Field name: __
 
-Current Field description: __
+Current Field description: __ <br/>
 New Field description: __
 
-Current Data type: __
+Current Data type: __ <br/>
 New Data type: __
 
-Current Element cardinality: __
+Current Element cardinality: __ <br/>
 New Element cardinality: __
 
-Current Element cardinality: __
+Current Element cardinality: __ <br/>
 New Element cardinality: __
 
-Source of change (e.g., #XXX issue with change request):
+Source of change (e.g., #XXX issue with change request): <br/>
 your input here
 
-Full description of the proposed addition (enough detail to implement):
+Full description of the proposed addition (enough detail to implement): <br/>
 your input here
