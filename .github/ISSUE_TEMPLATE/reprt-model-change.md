@@ -1,5 +1,5 @@
 ---
-name: Reprt model change
+name: Report model change
 about: Report an approved change to an existing element or field
 title: ALERT MODEL CHANGE --> Summary statement
 labels: Model change
