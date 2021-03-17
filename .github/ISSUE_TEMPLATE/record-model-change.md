@@ -16,7 +16,7 @@ assignees: ''
 E.g.: Strambio -- Objective/Correction enumeration value C-Acroplan to C-Achroplan
 
 
-Current Element name: __
+Current Element name: __ <br/>
 New Element name: __
 
 Current Field name: __
