@@ -7,12 +7,13 @@ assignees: ''
 
 ---
 
-Report an approved change to existing metadata model structure, elements, fields names, descriptions, data types, cardinality, optional level, and/or enumeration values.
-Please complete the form below and enter an issue title above following the pattern:
+**Report an approved change to existing metadata model structure, elements, fields names, descriptions, data types, cardinality, optional level, and/or enumeration values.**
+-Please complete the form below by entering the relevant Current Element and Field names. 
+-Enter only relevant changes while leaving all unchanged items blank
+-Enter an issue title above following the pattern:
 your_last_name -- summary statement
 E.g.: Strambio -- Objective/Correction enumeration value C-Acroplan to C-Achroplan
 
-Please fill in Current Element and Field name and enter only relevant changes while leaving all unchanged items blank
 
 Current Element name: __
 New Element name: __
