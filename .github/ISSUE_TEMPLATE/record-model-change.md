@@ -1,7 +1,7 @@
 ---
 name: Report change
 about: Report an approved change to an existing element or field
-title: ALERT MODEL CHANGE -- Summary statement
+title: ALERT MODEL CHANGE --> Summary statement
 labels: ''
 assignees: ''
 
@@ -12,8 +12,8 @@ assignees: ''
 - Enter only relevant changes while leaving all unchanged items blank
 - Enter an issue title above following the pattern:
 
-> your_last_name -- summary statement <br/>
-E.g.: Strambio -- Objective/Correction enumeration value C-Acroplan to C-Achroplan
+> ALERT MODEL CHANGE --> summary statement <br/>
+E.g.: ALERT MODEL CHANGE --> Objective/Correction enumeration value C-Acroplan to C-Achroplan
 
 **Current Element name:** __ <br/>
 New Element name: __
