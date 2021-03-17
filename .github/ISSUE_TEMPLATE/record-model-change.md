@@ -1,7 +1,7 @@
 ---
 name: Report change
 about: Report an approved change to an existing element or field
-title: Last_Name -- Summary statement
+title: ALERT MODEL CHANGE -- Summary statement
 labels: ''
 assignees: ''
 
