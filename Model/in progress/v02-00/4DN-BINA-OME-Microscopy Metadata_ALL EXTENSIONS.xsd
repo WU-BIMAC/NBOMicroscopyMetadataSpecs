@@ -2262,7 +2262,7 @@
           </xsd:attribute>
           <xsd:attribute name="CorrectionCollarType" type="CorrectionCollarTypeList">
             <xsd:annotation>
-              <xsd:documentation>Description=This field records the type of Correction Collar with which this Objective is fitted.</xsd:documentation>
+              <xsd:documentation>Description=This field records the type of Correction Collar with which this Objective is fitted. In case the Objective has more than one Correction Collar please enter "Multi" and provide more details in Description.</xsd:documentation>
               <xsd:documentation>Tier=2</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
@@ -12224,6 +12224,7 @@ PlaneInfo (as Plane)
       <xsd:enumeration value="Immersion Liquid"/>
       <xsd:enumeration value="Numerical Aperture"/>
       <xsd:enumeration value="Temperature"/>
+      <xsd:enumeration value="Multi"/>
     </xsd:restriction>
   </xsd:simpleType>
   <xsd:simpleType name="ImmersionTypeList">
@@ -14128,7 +14129,7 @@ PlaneInfo (as Plane)
           </xsd:attribute>
           <xsd:attribute name="EffectiveZoom" type="xsd:float" use="required">
             <xsd:annotation>
-              <xsd:documentation>Description=This describes the effective zoom factor, aka Confocal Zoom or Scan Zoom, utilized for the acquisition of this Image (e.g., zoom = 1.3).</xsd:documentation>
+              <xsd:documentation>Description=This field describes the Effective Zoom factor that was utilized for the acquisition of this Image (e.g., zoom = 1.3). In confocal microscopy, it is possible to set a given hardware-based Zoom factor, aka "Confocal Zoom" or "Scan Zoom", by reducing the angle at which the scanning mirrors operate. As a result, the scanned area will be reduced in size, which (because the pixel areas associated with the scan are kept constant) will decrease the effective size of the portion of the sample that is projected on each pixel thus increasing the effective resolving power of the system. For example, with a 512x512 pixel area, and with a 40x objective, zoom 1 we result in a pixel size of 732nm, while zoom 10 will reduce the pixel size to 73nm).In confocal microscopy, it is possible to set a given hardware-based Zoom factor, aka "Confocal Zoom" or "Scan Zoom", by reducing the angle at which the scanning mirrors operate. As a result, the scanned area will be reduced in size, which (because the pixel areas associated with the scan are kept constant) will decrease the effective size of the portion of the sample that is projected on each pixel thus increasing the effective resolving power of the system. For example, with a 512x512 pixel area, and with a 40x objective, zoom 1 we result in a pixel size of 732nm, while zoom 10 will reduce the pixel size to 73nm).</xsd:documentation>
               <xsd:documentation>Tier=1</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
