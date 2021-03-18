@@ -18,10 +18,10 @@ Element name(s): ___
 
 Field name(s): ___
 
-Justification for the addition (brief and compelling):
+**Justification for the addition (brief and compelling):**
 your input here
 
-Full description of the proposed addition (enough detail to implement):
+**Full description of the proposed addition (enough detail to implement):**
 your input here
 
 **- New Extension/Domain/Category name(s) (optional):** __
