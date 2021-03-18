@@ -2,8 +2,8 @@
 name: New feature request
 about: Propose a new metadata category, element, or field
 title: Last_Name -- Summary statement
-labels: enhancement
-assignees: ''
+labels: Request for new feature, enhancement
+assignees: strambc
 
 ---
 
