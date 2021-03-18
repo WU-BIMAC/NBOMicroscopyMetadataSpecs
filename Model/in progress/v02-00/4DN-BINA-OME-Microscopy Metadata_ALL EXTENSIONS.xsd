@@ -11953,10 +11953,11 @@ PlaneInfo (as Plane)
   <xsd:simpleType name="LaserType">
     <xsd:restriction base="xsd:string">
       <xsd:enumeration value="Chemical"/>
+      <xsd:enumeration value="DiodePumpedSolidState (DPSS)"/>
       <xsd:enumeration value="Dye"/>
       <xsd:enumeration value="Gas"/>
       <xsd:enumeration value="MetalVapor"/>
-      <xsd:enumeration value="OpticalParametricOscillator"/>
+      <xsd:enumeration value="OpticalParametricOscillator (OPS)"/>
       <xsd:enumeration value="SolidState"/>
       <xsd:enumeration value="SemiconductorLaserDiode"/>
       <xsd:enumeration value="Other"/>
