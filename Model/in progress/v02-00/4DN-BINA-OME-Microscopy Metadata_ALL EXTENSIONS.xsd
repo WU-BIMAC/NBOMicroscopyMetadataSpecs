@@ -2425,7 +2425,7 @@
             <xsd:documentation>Tier=2</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
-        <xsd:attribute name="AttenuationCoefficient" type="xsd:float" use="required">
+        <xsd:attribute name="AttenuationCoefficient" type="xsd:float" use="optional">
           <xsd:annotation>
             <xsd:documentation>Description=This field records the Attenuation Coefficient (AC) of this optical element. The AC (aka blocking coefficient) is a material property that characterizes the degree to which light is being blocked (i.e., scattered or absorbed) by it. AC is used as a measure of the out-of-band blocking of an optical Lens, Filter, Dichroic mirror over an extended range of the spectrum. AC is often reported in units of optical density (OD), whereas OD= -log10(T), and T=Transmittance (0≤T≤1).</xsd:documentation>
             <xsd:documentation>Tier=3</xsd:documentation>
@@ -2551,7 +2551,7 @@
             <xsd:documentation>Tier=3</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
-        <xsd:attribute name="Diameter" type="xsd:float">
+        <xsd:attribute name="Diameter" type="xsd:float" use="optional">
           <xsd:annotation>
             <xsd:documentation>Description=This field describes the Diameter of this optical element.</xsd:documentation>
             <xsd:documentation>Tier=3</xsd:documentation>
@@ -2661,12 +2661,6 @@
             <xsd:documentation>Tier=1</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
-        <xsd:attribute name="FilterHolderPosition" use="optional" type="xsd:nonNegativeInteger">
-          <xsd:annotation>
-            <xsd:documentation>Description=This field records the position of this element in a Filter Holder of any kind, such as a Filter Slider, Turret or Wheel.</xsd:documentation>
-            <xsd:documentation>Tier=2</xsd:documentation>
-          </xsd:annotation>
-        </xsd:attribute>
         <xsd:attribute name="Technology" type="FilterTechnologyType">
           <xsd:annotation>
             <xsd:documentation>Description=This field records the filtering Technology utilized for this optical element. The main types of technologies used in fluorescence analysis are Absorption (aka colored) glass, Polymer or Thin-film coating.</xsd:documentation>
@@ -2679,7 +2673,7 @@
             <xsd:documentation>Tier=2</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
-        <xsd:attribute name="AttenuationCoefficient" type="xsd:float" use="required">
+        <xsd:attribute name="AttenuationCoefficient" type="xsd:float" use="optional">
           <xsd:annotation>
             <xsd:documentation>Description=This field records the Attenuation Coefficient (AC) of this optical element. The AC (aka blocking coefficient) is a material property that characterizes the degree to which light is being blocked (i.e., scattered or absorbed) by it. AC is used as a measure of the out-of-band blocking of an optical Lens, Filter, Dichroic mirror over an extended range of the spectrum. AC is often reported in units of optical density (OD), whereas OD= -log10(T), and T=Transmittance (0≤T≤1).</xsd:documentation>
             <xsd:documentation>Tier=3</xsd:documentation>
@@ -8533,7 +8527,7 @@ PlaneInfo (as Plane)
               <xsd:documentation>Tier=2</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="RefractiveIndex" type="xsd:float" use="required">
+          <xsd:attribute name="RefractiveIndex" type="xsd:float" use="optional">
             <xsd:annotation>
               <xsd:documentation>Description=This field records the Refractive Index of the material used to construct this Light Guide.</xsd:documentation>
               <xsd:documentation>Tier=3</xsd:documentation>
@@ -9066,7 +9060,7 @@ PlaneInfo (as Plane)
             <xsd:documentation>Tier=1</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
-        <xsd:attribute name="OpticsHolderPosition" type="xsd:positiveInteger" use="required">
+        <xsd:attribute name="OpticsHolderPosition" type="xsd:positiveInteger" use="optional">
           <xsd:annotation>
             <xsd:documentation>Description=This field records the position of this Optical Aperture in a Optics Turret.</xsd:documentation>
             <xsd:documentation>Tier=2</xsd:documentation>
@@ -9469,7 +9463,7 @@ PlaneInfo (as Plane)
             <xsd:documentation>Tier=1</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
-        <xsd:attribute name="RefractiveIndex" type="xsd:float" use="required">
+        <xsd:attribute name="RefractiveIndex" type="xsd:float" use="optional">
           <xsd:annotation>
             <xsd:documentation>Description=This field records the Refractive Index of the material this Lens is made of, as specified by the Manufacturer. The Refractive Index is the ratio of the speed of light (more precisely, the phase velocity) in a vacuum versus that in a given medium.</xsd:documentation>
             <xsd:documentation>Tier=3</xsd:documentation>
@@ -9493,7 +9487,7 @@ PlaneInfo (as Plane)
             <xsd:documentation>Tier=2</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
-        <xsd:attribute name="Diameter" type="xsd:float" use="required">
+        <xsd:attribute name="Diameter" type="xsd:float" use="optional">
           <xsd:annotation>
             <xsd:documentation>Description=This field records the physical diameter of this Lens.</xsd:documentation>
             <xsd:documentation>Tier=3</xsd:documentation>
@@ -9516,13 +9510,13 @@ PlaneInfo (as Plane)
             <xsd:documentation>Tier=3</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
-        <xsd:attribute name="Geometry" type="LensGeometry" use="required">
+        <xsd:attribute name="Geometry" type="LensGeometry" use="optional">
           <xsd:annotation>
             <xsd:documentation>Description=The geometrical shape of this lens' surface(s).</xsd:documentation>
             <xsd:documentation>Tier=3</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
-        <xsd:attribute name="AttenuationCoefficient" type="xsd:float" use="required">
+        <xsd:attribute name="AttenuationCoefficient" type="xsd:float" use="optional">
           <xsd:annotation>
             <xsd:documentation>Description=This field records the Attenuation Coefficient (AC) of this optical element. The AC (aka blocking coefficient) is a material property that characterizes the degree to which light is being blocked (i.e., scattered or absorbed) by it. AC is used as a measure of the out-of-band blocking of an optical Lens, Filter, Dichroic mirror over an extended range of the spectrum. AC is often reported in units of optical density (OD), whereas OD= -log10(T), and T=Transmittance (0≤T≤1).</xsd:documentation>
             <xsd:documentation>Tier=3</xsd:documentation>
@@ -9981,7 +9975,7 @@ PlaneInfo (as Plane)
               <xsd:documentation>Tier=2</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="RefractiveIndex" type="xsd:float" use="required">
+          <xsd:attribute name="RefractiveIndex" type="xsd:float" use="optional">
             <xsd:annotation>
               <xsd:documentation>Description=This field records the Refractive Index of the material this Prism is made of, as specified by the Manufacturer.</xsd:documentation>
               <xsd:documentation>Tier=3</xsd:documentation>
