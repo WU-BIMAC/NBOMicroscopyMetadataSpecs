@@ -2545,9 +2545,21 @@
             <xsd:documentation>Tier=1</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
+        <xsd:attribute name="OpticsHolderPosition" type="xsd:positiveInteger">
+          <xsd:annotation>
+            <xsd:documentation>Description=This field records the position of this Mirroring Device in a Optics Holder of any kind, such as a Slider, Turret or Wheel.</xsd:documentation>
+            <xsd:documentation>Tier=2</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
         <xsd:attribute name="MirrorType" type="MirrorType" use="required">
           <xsd:annotation>
             <xsd:documentation>Description=This field records the general category of this Mirror.</xsd:documentation>
+            <xsd:documentation>Tier=3</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="Geometry" type="MirrorGeometry">
+          <xsd:annotation>
+            <xsd:documentation>Description=This field records the geometrical shape of the surface(s) of this Mirror.</xsd:documentation>
             <xsd:documentation>Tier=3</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
@@ -2558,6 +2570,17 @@
           </xsd:annotation>
         </xsd:attribute>
         <xsd:attribute name="DiameterUnit" type="UnitsLength">
+          <xsd:annotation>
+            <xsd:documentation>Tier=3</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="RadiusOfCurvature" type="xsd:float">
+          <xsd:annotation>
+            <xsd:documentation>Description=The radius of curvature of this Mirror. A spherical lens or Mirror surface has a center of curvature located either along or decentered from the system local optical axis. The vertex of the lens surface is located on the local optical axis. The distance from the vertex to the center of curvature is the radius of curvature of the surface.</xsd:documentation>
+            <xsd:documentation>Tier=3</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="RadiusOfCurvatureUnit" type="UnitsLength">
           <xsd:annotation>
             <xsd:documentation>Tier=3</xsd:documentation>
           </xsd:annotation>
@@ -2578,32 +2601,15 @@
             </xsd:restriction>
           </xsd:simpleType>
         </xsd:attribute>
-        <xsd:attribute name="Geometry" type="MirrorGeometry">
-          <xsd:annotation>
-            <xsd:documentation>Description=This field records the geometrical shape of the surface(s) of this Mirror.</xsd:documentation>
-            <xsd:documentation>Tier=3</xsd:documentation>
-          </xsd:annotation>
-        </xsd:attribute>
-        <xsd:attribute name="RadiusOfCurvature" type="xsd:float">
-          <xsd:annotation>
-            <xsd:documentation>Description=The radius of curvature of this Mirror. A spherical lens or Mirror surface has a center of curvature located either along or decentered from the system local optical axis. The vertex of the lens surface is located on the local optical axis. The distance from the vertex to the center of curvature is the radius of curvature of the surface.</xsd:documentation>
-            <xsd:documentation>Tier=3</xsd:documentation>
-          </xsd:annotation>
-        </xsd:attribute>
-        <xsd:attribute name="RadiusOfCurvatureUnit" type="UnitsLength">
-          <xsd:annotation>
-            <xsd:documentation>Tier=3</xsd:documentation>
-          </xsd:annotation>
-        </xsd:attribute>
         <xsd:attribute name="SubstrateType" type="xsd:string">
           <xsd:annotation>
             <xsd:documentation>Description=This field records the type of Substrate that is used for this Mirror. It is typically a ground and polished piece of optical glass.</xsd:documentation>
             <xsd:documentation>Tier=3</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
-        <xsd:attribute name="SubstrateMaterial" type="SubstrateMaterialName">
+        <xsd:attribute name="SubstrateMaterial" type="OpticalMaterialName">
           <xsd:annotation>
-            <xsd:documentation>Description=This field records the polarization effect of this optical element. Any thin-film interference Coating that is used at non-normal angles-of-incidence will cause some amount of polarization, the precise effect varying greatly with wavelength and with the particular Coating design.</xsd:documentation>
+            <xsd:documentation>Description=This field records the chemical composition or the designation of the substrate of this Mirroring Device. The substrate is typically composed of a glass material with low autofluorescence, such as UV-grade fused silica or Borofloat.</xsd:documentation>
             <xsd:documentation>Tier=3</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
@@ -2611,12 +2617,6 @@
           <xsd:annotation>
             <xsd:documentation>Description=If available, this field records the international Glass Code of the material that constitutes this Mirror. The Glass Code designation is based on U.S. military standard MIL-G-174, and it consists of a six-digit number specifying the glass according to its Refractive Index nd at the Fraunhofer d- (or D3-) line, and its Abbe Number Vd also taken at that line. The resulting Glass Code is the value of nd-1 rounded to three digits, followed by Vd rounded to three digits, with all decimal points ignored. For example, BK7 has nd = 1.5168 and Vd = 64.17, giving a six-digit Glass Code of 517642.</xsd:documentation>
             <xsd:documentation>Tier=3</xsd:documentation>
-          </xsd:annotation>
-        </xsd:attribute>
-        <xsd:attribute name="OpticsHolderPosition" type="xsd:positiveInteger">
-          <xsd:annotation>
-            <xsd:documentation>Description=This field records the position of this Mirroring Device in a Optics Holder of any kind, such as a Slider, Turret or Wheel.</xsd:documentation>
-            <xsd:documentation>Tier=2</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
       </xsd:extension>
@@ -8453,7 +8453,13 @@ PlaneInfo (as Plane)
             <xsd:documentation>Tier=2</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
-        <xsd:attribute name="Transmittance" type="xsd:float" use="required">
+        <xsd:attribute name="Attenuation" type="xsd:float" use="required">
+          <xsd:annotation>
+            <xsd:documentation>Description=This field reports a measure of the capacity of this Light Source Coupling device to attenuate the Illumination Power of the light passing through measured at the Peak Wavelength and expressed in dB/km. </xsd:documentation>
+            <xsd:documentation>Tier=3</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="Transmittance" type="xsd:float" use="optional">
           <xsd:annotation>
             <xsd:documentation>Description=The maximum amount of light this Light Source Coupling device is capable of transmitting at the Peak Wavelength. It is represented as a fractional value from 0.0 to 1.0.</xsd:documentation>
             <xsd:documentation>Tier=3</xsd:documentation>
@@ -9463,28 +9469,28 @@ PlaneInfo (as Plane)
             <xsd:documentation>Tier=1</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
-        <xsd:attribute name="RefractiveIndex" type="xsd:float" use="optional">
-          <xsd:annotation>
-            <xsd:documentation>Description=This field records the Refractive Index of the material this Lens is made of, as specified by the Manufacturer. The Refractive Index is the ratio of the speed of light (more precisely, the phase velocity) in a vacuum versus that in a given medium.</xsd:documentation>
-            <xsd:documentation>Tier=3</xsd:documentation>
-          </xsd:annotation>
-        </xsd:attribute>
         <xsd:attribute name="Infinity" type="xsd:boolean" use="optional">
           <xsd:annotation>
             <xsd:documentation>Description=This field records whether (True) or not (False) this Lens is infinity corrected. An Infinity-corrected Lens is fixed for an infinite sample to primary Image distance. It needs to be used with a Tube Lens of appropriate focal length to obtain the specified magnification.</xsd:documentation>
             <xsd:documentation>Tier=2</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
-        <xsd:attribute name="WorkingDistance" type="xsd:float" use="optional">
+        <xsd:attribute name="Composite" type="xsd:boolean" use="required">
           <xsd:annotation>
-            <xsd:documentation>Description=This field reports the Working Distance of this Lens under normal operating conditions. The Working Distance is the distance (in air, or in the specified immersion liquid) between the front of an Objective and the surface of the cover glass or of the specimen if uncovered.</xsd:documentation>
-            <xsd:documentation>Tier=2</xsd:documentation>
+            <xsd:documentation>Description=This field records whether this Lens is Composite (i.e., composed of multiple Lenses; True) or Simple (False).</xsd:documentation>
+            <xsd:documentation>Tier=3</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
-        <xsd:attribute default="mm" name="WorkingDistanceUnit" type="UnitsLength">
+        <xsd:attribute name="Shape" type="LensShapeType" use="required">
           <xsd:annotation>
-            <xsd:documentation>Description=This field reports the Working Distance of this Lens under normal operating conditions. The Working Distance is the distance (in air, or in the specified immersion liquid) between the front of an Objective and the surface of the cover glass or of the specimen if uncovered.</xsd:documentation>
-            <xsd:documentation>Tier=2</xsd:documentation>
+            <xsd:documentation>Description=This field records the shape of the profile (e.g., concave vs. convex) of this Lens. Please this attribute is often used to classify Lenses into categories.</xsd:documentation>
+            <xsd:documentation>Tier=3</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="Geometry" type="LensGeometry" use="optional">
+          <xsd:annotation>
+            <xsd:documentation>Description=The geometrical shape of this lens' surface(s).</xsd:documentation>
+            <xsd:documentation>Tier=3</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
         <xsd:attribute name="Diameter" type="xsd:float" use="optional">
@@ -9498,21 +9504,9 @@ PlaneInfo (as Plane)
             <xsd:documentation>Tier=3</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
-        <xsd:attribute name="Type" type="LensType" use="required">
+        <xsd:attribute name="Coating" type="xsd:string">
           <xsd:annotation>
-            <xsd:documentation>Description=This field records the general category to which this Lens belongs.</xsd:documentation>
-            <xsd:documentation>Tier=3</xsd:documentation>
-          </xsd:annotation>
-        </xsd:attribute>
-        <xsd:attribute name="Composite" type="xsd:boolean" use="required">
-          <xsd:annotation>
-            <xsd:documentation>Description=This field records whether this Lens is Composite (True) or Simple (False).</xsd:documentation>
-            <xsd:documentation>Tier=3</xsd:documentation>
-          </xsd:annotation>
-        </xsd:attribute>
-        <xsd:attribute name="Geometry" type="LensGeometry" use="optional">
-          <xsd:annotation>
-            <xsd:documentation>Description=The geometrical shape of this lens' surface(s).</xsd:documentation>
+            <xsd:documentation>Description=An optical Coating consists of one or more thin layers of material deposited on an optical component such as a Lens or Mirror, which alters the way in which the optic reflects and transmits light. This field records the optical Coating used for this Lens.</xsd:documentation>
             <xsd:documentation>Tier=3</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
@@ -9520,6 +9514,18 @@ PlaneInfo (as Plane)
           <xsd:annotation>
             <xsd:documentation>Description=This field records the Attenuation Coefficient (AC) of this optical element. The AC (aka blocking coefficient) is a material property that characterizes the degree to which light is being blocked (i.e., scattered or absorbed) by it. AC is used as a measure of the out-of-band blocking of an optical Lens, Filter, Dichroic mirror over an extended range of the spectrum. AC is often reported in units of optical density (OD), whereas OD= -log10(T), and T=Transmittance (0≤T≤1).</xsd:documentation>
             <xsd:documentation>Tier=3</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="WorkingDistance" type="xsd:float" use="optional">
+          <xsd:annotation>
+            <xsd:documentation>Description=This field reports the Working Distance of this Lens under normal operating conditions. The Working Distance is the distance (in air, or in the specified immersion liquid) between the front of an Objective and the surface of the cover glass or of the specimen if uncovered.</xsd:documentation>
+            <xsd:documentation>Tier=2</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute default="mm" name="WorkingDistanceUnit" type="UnitsLength">
+          <xsd:annotation>
+            <xsd:documentation>Description=This field reports the Working Distance of this Lens under normal operating conditions. The Working Distance is the distance (in air, or in the specified immersion liquid) between the front of an Objective and the surface of the cover glass or of the specimen if uncovered.</xsd:documentation>
+            <xsd:documentation>Tier=2</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
         <xsd:attribute name="ImageDistance" type="xsd:float" use="optional">
@@ -9555,12 +9561,6 @@ PlaneInfo (as Plane)
             <xsd:documentation>Tier=3</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
-        <xsd:attribute name="AbbeNumber" type="xsd:float" use="optional">
-          <xsd:annotation>
-            <xsd:documentation>Description=This field records the Abbe number of this Lens. The Abbe Number is a measure of the material's dispersion (variation of Refractive Index versus Wavelength), with high values indicating low dispersion.</xsd:documentation>
-            <xsd:documentation>Tier=3</xsd:documentation>
-          </xsd:annotation>
-        </xsd:attribute>
         <xsd:attribute name="RadiusOfCurvature" type="xsd:float">
           <xsd:annotation>
             <xsd:documentation>Description=This field records the Radius of Curvature of this Lens. A spherical Lens or Mirror surface has a center of curvature located either along or decentered from the system local optical axis. The vertex of the lens surface is located on the local optical axis. The distance from the vertex to the center of curvature is the Radius of Curvature of the surface.</xsd:documentation>
@@ -9572,21 +9572,27 @@ PlaneInfo (as Plane)
             <xsd:documentation>Tier=3</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
-        <xsd:attribute name="MaterialName" type="LensMaterialName">
+        <xsd:attribute name="MaterialName" type="OpticalMaterialName">
           <xsd:annotation>
             <xsd:documentation>Description=This field records the chemical composition or the nonproprietary trade designation of the Material this Lens is made of.</xsd:documentation>
             <xsd:documentation>Tier=3</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
-        <xsd:attribute name="Coating" type="xsd:string">
+        <xsd:attribute name="GlassCode" type="xsd:string">
           <xsd:annotation>
-            <xsd:documentation>Description=An optical Coating consists of one or more thin layers of material deposited on an optical component such as a Lens or Mirror, which alters the way in which the optic reflects and transmits light. This field records the optical Coating used for this Lens.</xsd:documentation>
+            <xsd:documentation>Description=If available, this field records the international Glass Code of the material that constitutes this Lens. The Glass Code designation is based on U.S. military standard MIL-G-174, and it consists of a six-digit number specifying the glass according to its Refractive Index nd at the Fraunhofer d- (or D3-) line, and its Abbe Number Vd also taken at that line. The resulting Glass Code is the value of nd-1 rounded to three digits, followed by Vd rounded to three digits, with all decimal points ignored. For example, BK7 has nd = 1.5168 and Vd = 64.17, giving a six-digit Glass Code of 517642.</xsd:documentation>
             <xsd:documentation>Tier=3</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
-        <xsd:attribute name="GlassCode" type="xsd:short">
+        <xsd:attribute name="RefractiveIndex" type="xsd:float" use="optional">
           <xsd:annotation>
-            <xsd:documentation>Description=If available, this field records the international Glass Code of the material that constitutes this Lens. The Glass Code designation is based on U.S. military standard MIL-G-174, and it consists of a six-digit number specifying the glass according to its Refractive Index nd at the Fraunhofer d- (or D3-) line, and its Abbe Number Vd also taken at that line. The resulting Glass Code is the value of nd-1 rounded to three digits, followed by Vd rounded to three digits, with all decimal points ignored. For example, BK7 has nd = 1.5168 and Vd = 64.17, giving a six-digit Glass Code of 517642.</xsd:documentation>
+            <xsd:documentation>Description=This field records the Refractive Index of the material this Lens is made of, as specified by the Manufacturer. The Refractive Index is the ratio of the speed of light (more precisely, the phase velocity) in a vacuum versus that in a given medium.</xsd:documentation>
+            <xsd:documentation>Tier=3</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="AbbeNumber" type="xsd:float" use="optional">
+          <xsd:annotation>
+            <xsd:documentation>Description=This field records the Abbe number of this Lens. The Abbe Number is a measure of the material's dispersion (variation of Refractive Index versus Wavelength), with high values indicating low dispersion.</xsd:documentation>
             <xsd:documentation>Tier=3</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
@@ -9847,7 +9853,7 @@ PlaneInfo (as Plane)
               <xsd:documentation>Tier=3</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="MaterialName" type="PolarizationOpticsMaterialName">
+          <xsd:attribute name="MaterialName" type="OpticalMaterialName">
             <xsd:annotation>
               <xsd:documentation>Description=This field records the chemical composition or the nonproprietary trade designation of the Material this Polarization Optics is made of.</xsd:documentation>
               <xsd:documentation>Tier=3</xsd:documentation>
@@ -10032,7 +10038,7 @@ PlaneInfo (as Plane)
               <xsd:documentation>Tier=3</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="MaterialName" type="PrismMaterialName" use="optional">
+          <xsd:attribute name="MaterialName" type="OpticalMaterialName" use="optional">
             <xsd:annotation>
               <xsd:documentation>Description=This field records the chemical composition or the nonproprietary trade designation of the Material this Prism is made of.</xsd:documentation>
               <xsd:documentation>Tier=3</xsd:documentation>
@@ -12292,7 +12298,7 @@ PlaneInfo (as Plane)
       <xsd:enumeration value="Other"/>
     </xsd:restriction>
   </xsd:simpleType>
-  <xsd:simpleType name="LensType">
+  <xsd:simpleType name="LensShapeType">
     <xsd:restriction base="xsd:string">
       <xsd:enumeration value="Amici-Bertrand"/>
       <xsd:enumeration value="Biconvex"/>
@@ -12326,16 +12332,42 @@ PlaneInfo (as Plane)
       <xsd:enumeration value="Other"/>
     </xsd:restriction>
   </xsd:simpleType>
-  <xsd:simpleType name="LensMaterialName">
+  <xsd:simpleType name="OpticalMaterialName">
     <xsd:restriction base="xsd:string">
       <xsd:enumeration value="alpha-Barium Borate"/>
-      <xsd:enumeration value="N-BK7 (Borosilicate Crown)"/>
-      <xsd:enumeration value="Calcium Fluoride"/>
-      <xsd:enumeration value="UV-Grade Fused Silica (UVFS)"/>
+      <xsd:enumeration value="Barium Crown (BAK/N-BAK)"/>
+      <xsd:enumeration value="Barium Flint (BAF/N-BAF)"/>
+      <xsd:enumeration value="Barium Heavy Flint (BASF/N-BASF)"/>
+      <xsd:enumeration value="Barium Light Flint (BALF/N-BALF)"/>
+      <xsd:enumeration value="Borofloat"/>
+      <xsd:enumeration value="Boron Crown (BK/N-BK)"/>
+      <xsd:enumeration value="Calcite"/>
+      <xsd:enumeration value="Calcium Fluoride (CaF2"/>
+      <xsd:enumeration value="Crown (K/N-K)"/>
+      <xsd:enumeration value="Crown Flint (KF/N-NK)"/>
+      <xsd:enumeration value="Crystal Quartz"/>
+      <xsd:enumeration value="Dense Crown (SK/N-SK)"/>
+      <xsd:enumeration value="Dense Flint (SF/N-SF)"/>
+      <xsd:enumeration value="Extra Dense Crown (SSK/N-SSK)"/>
+      <xsd:enumeration value="Extra Ligh Flint (LLF)"/>
+      <xsd:enumeration value="Flint (F/N-F)"/>
+      <xsd:enumeration value="Fluorine Crown (FK/N-FK)"/>
       <xsd:enumeration value="Germanium"/>
-      <xsd:enumeration value="Magnesium Fluoride"/>
-      <xsd:enumeration value="N-SF11 (Dense Flint)"/>
+      <xsd:enumeration value="Lanthanum Crown (LAK/N-LAK)"/>
+      <xsd:enumeration value="Lanthanum Dense Flint (LASF/N-LASF)"/>
+      <xsd:enumeration value="Lanthanum Flint (LAFN/N-LAF)"/>
+      <xsd:enumeration value="Light Flint (LF)"/>
+      <xsd:enumeration value="Magnesium Fluoride (MgF2)"/>
+      <xsd:enumeration value="Phosphate Crown (PK/N-PK)"/>
+      <xsd:enumeration value="Phosphate Dense (PSK/N-PSK)"/>
       <xsd:enumeration value="Polytetrafluoroethylene (PFTE)"/>
+      <xsd:enumeration value="Rutile (TiO2)"/>
+      <xsd:enumeration value="Short Flint Special (KZFS/N-KZFS)"/>
+      <xsd:enumeration value="Silicon (Si)"/>
+      <xsd:enumeration value="UV-Grade Fused Silica (UVFS)"/>
+      <xsd:enumeration value="Yttrium Orthovanadate (YVO4)"/>
+      <xsd:enumeration value="Zerodur (Lithium Aluminum Ailicon Oxide)"/>
+      <xsd:enumeration value="Zinc Crown (ZK/N-ZK)"/>
       <xsd:enumeration value="Zinc Selenide (ZnSe)"/>
       <xsd:enumeration value="Other"/>
     </xsd:restriction>
@@ -12386,19 +12418,6 @@ PlaneInfo (as Plane)
       <xsd:enumeration value="Other"/>
     </xsd:restriction>
   </xsd:simpleType>
-  <xsd:simpleType name="PrismMaterialName">
-    <xsd:restriction base="xsd:string">
-      <xsd:enumeration value="Calcium Fluoride"/>
-      <xsd:enumeration value="F2 (Flint)"/>
-      <xsd:enumeration value="N-BK7 (Borosilicate Crown)"/>
-      <xsd:enumeration value="N-SF11 (Dense Flint)"/>
-      <xsd:enumeration value="Rutile (TiO2)"/>
-      <xsd:enumeration value="UV-Grade Fused Silica (UVFS)"/>
-      <xsd:enumeration value="Yttrium Orthovanadate (YVO4)"/>
-      <xsd:enumeration value="Zinc Selenide (ZnSe)"/>
-      <xsd:enumeration value="Other"/>
-    </xsd:restriction>
-  </xsd:simpleType>
   <xsd:simpleType name="PolarizationOpticsFunction">
     <xsd:restriction base="xsd:string">
       <xsd:enumeration value="Polarizer"/>
@@ -12432,18 +12451,6 @@ PlaneInfo (as Plane)
       <xsd:enumeration value="Full Wave"/>
       <xsd:enumeration value="Half Wave"/>
       <xsd:enumeration value="Quarter Wave"/>
-      <xsd:enumeration value="Other"/>
-    </xsd:restriction>
-  </xsd:simpleType>
-  <xsd:simpleType name="PolarizationOpticsMaterialName">
-    <xsd:restriction base="xsd:string">
-      <xsd:enumeration value="alpha-Barium Borate"/>
-      <xsd:enumeration value="Calcite"/>
-      <xsd:enumeration value="Calcium Fluoride"/>
-      <xsd:enumeration value="N-BK7 (Borosilicate Crown)"/>
-      <xsd:enumeration value="Rutile (TiO2)"/>
-      <xsd:enumeration value="Yttrium Orthovanadate (YVO4)"/>
-      <xsd:enumeration value="Zinc Selenide (ZnSe)"/>
       <xsd:enumeration value="Other"/>
     </xsd:restriction>
   </xsd:simpleType>
@@ -12523,16 +12530,7 @@ PlaneInfo (as Plane)
       <xsd:enumeration value="Other"/>
     </xsd:restriction>
   </xsd:simpleType>
-  <xsd:simpleType name="SubstrateMaterialName">
-    <xsd:restriction base="xsd:string">
-      <xsd:enumeration value="Calcium Fluoride"/>
-      <xsd:enumeration value="N-BK7 (Borosilicate Crown)"/>
-      <xsd:enumeration value="UV-Grade Fused Silica (UVFS)"/>
-      <xsd:enumeration value="Zerodur (Lithium Aluminum Ailicon Oxide)"/>
-      <xsd:enumeration value="Zinc Selenide (ZnSe)"/>
-      <xsd:enumeration value="Other"/>
-    </xsd:restriction>
-  </xsd:simpleType>
+
   <xsd:simpleType name="DichroicType">
     <xsd:restriction base="xsd:string">
       <xsd:enumeration value="Bandpass"/>
@@ -13743,13 +13741,13 @@ PlaneInfo (as Plane)
       </xsd:attribute>
       <xsd:attribute name="LensletShape" type="LensletShape">
         <xsd:annotation>
-          <xsd:documentation>Description=This field records the shape of the individual Lenslets composing this Micro Lens Array.</xsd:documentation>
+          <xsd:documentation>Description=This field records the geometrical shape (e.g., round vs. square) of the individual Lenslets composing this Micro Lens Array.</xsd:documentation>
           <xsd:documentation>Tier=2</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
-      <xsd:attribute name="LensletType" type="LensType">
+      <xsd:attribute name="LensletProfileShape" type="LensShapeType">
         <xsd:annotation>
-          <xsd:documentation>Description=This field describes the type of the individual Lenslets that compose this Micro Lens Array.</xsd:documentation>
+          <xsd:documentation>Description=This field describes the shape of the profile (e.g., concave vs. convex) of the individual Lenslets that compose this Micro Lens Array.</xsd:documentation>
           <xsd:documentation>Tier=2</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
@@ -13765,7 +13763,7 @@ PlaneInfo (as Plane)
           <xsd:documentation>Tier=3</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
-      <xsd:attribute name="SustrateMaterial" type="SubstrateMaterialName">
+      <xsd:attribute name="SustrateMaterial" type="OpticalMaterialName">
         <xsd:annotation>
           <xsd:documentation>Description=This field records the chemical composition or the nonproprietary trade designation of the substrate of this Micro Lens Array. The substrate is typically composed of a glass material with low autofluorescence, such as UV-grade fused silica.</xsd:documentation>
           <xsd:documentation>Tier=3</xsd:documentation>
