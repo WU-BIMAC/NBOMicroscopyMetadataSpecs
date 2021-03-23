@@ -2545,7 +2545,7 @@
             <xsd:documentation>Tier=1</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
-        <xsd:attribute name="OpticsHolderPosition" type="xsd:positiveInteger">
+        <xsd:attribute name="OpticsHolderPosition" type="xsd:string" use="optional">
           <xsd:annotation>
             <xsd:documentation>Description=This field records the position of this Mirroring Device in a Optics Holder of any kind, such as a Slider, Turret or Wheel.</xsd:documentation>
             <xsd:documentation>Tier=2</xsd:documentation>
@@ -8853,7 +8853,7 @@ PlaneInfo (as Plane)
             </xsd:element>
             <xsd:element ref="EmissionFilterRef" maxOccurs="1" minOccurs="0"/>
           </xsd:sequence>
-          <xsd:attribute name="OpticsHolderPosition" type="xsd:positiveInteger">
+          <xsd:attribute name="OpticsHolderPosition" type="xsd:string" use="optional">
             <xsd:annotation>
               <xsd:documentation>Description=When relevant, this field records the position of this Filter Cube in a Optics Holder.</xsd:documentation>
               <xsd:documentation>Tier=2</xsd:documentation>
@@ -9066,7 +9066,7 @@ PlaneInfo (as Plane)
             <xsd:documentation>Tier=1</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
-        <xsd:attribute name="OpticsHolderPosition" type="xsd:positiveInteger" use="optional">
+        <xsd:attribute name="OpticsHolderPosition" type="xsd:string" use="optional">
           <xsd:annotation>
             <xsd:documentation>Description=This field records the position of this Optical Aperture in a Optics Turret.</xsd:documentation>
             <xsd:documentation>Tier=2</xsd:documentation>
@@ -9457,7 +9457,7 @@ PlaneInfo (as Plane)
             <xsd:documentation>Tier=1</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
-        <xsd:attribute name="Magnification" type="xsd:positiveInteger" use="required">
+        <xsd:attribute name="Magnification" type="xsd:float" use="required">
           <xsd:annotation>
             <xsd:documentation>Description=This field records the nominal Magnification provided by this Lens as specified by the Manufacturer.</xsd:documentation>
             <xsd:documentation>Tier=1</xsd:documentation>
@@ -9483,7 +9483,7 @@ PlaneInfo (as Plane)
         </xsd:attribute>
         <xsd:attribute name="Shape" type="LensShapeType" use="required">
           <xsd:annotation>
-            <xsd:documentation>Description=This field records the shape of the profile (e.g., concave vs. convex) of this Lens. Please this attribute is often used to classify Lenses into categories.</xsd:documentation>
+            <xsd:documentation>Description=This field records the shape of the profile (e.g., concave vs. convex) of this Lens. Please note that this attribute is often used to classify Lenses into categories.</xsd:documentation>
             <xsd:documentation>Tier=3</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
@@ -9574,7 +9574,7 @@ PlaneInfo (as Plane)
         </xsd:attribute>
         <xsd:attribute name="MaterialName" type="OpticalMaterialName">
           <xsd:annotation>
-            <xsd:documentation>Description=This field records the chemical composition or the nonproprietary trade designation of the Material this Lens is made of.</xsd:documentation>
+            <xsd:documentation>Description=This field records the chemical composition or designation of the Material this Lens is made of.</xsd:documentation>
             <xsd:documentation>Tier=3</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
@@ -9855,7 +9855,7 @@ PlaneInfo (as Plane)
           </xsd:attribute>
           <xsd:attribute name="MaterialName" type="OpticalMaterialName">
             <xsd:annotation>
-              <xsd:documentation>Description=This field records the chemical composition or the nonproprietary trade designation of the Material this Polarization Optics is made of.</xsd:documentation>
+              <xsd:documentation>Description=This field records the chemical composition or designation of the Material this Polarization Optics is made of.</xsd:documentation>
               <xsd:documentation>Tier=3</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
@@ -10040,7 +10040,7 @@ PlaneInfo (as Plane)
           </xsd:attribute>
           <xsd:attribute name="MaterialName" type="OpticalMaterialName" use="optional">
             <xsd:annotation>
-              <xsd:documentation>Description=This field records the chemical composition or the nonproprietary trade designation of the Material this Prism is made of.</xsd:documentation>
+              <xsd:documentation>Description=This field records the chemical composition or designation of the Material this Prism is made of.</xsd:documentation>
               <xsd:documentation>Tier=3</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
@@ -13765,7 +13765,7 @@ PlaneInfo (as Plane)
       </xsd:attribute>
       <xsd:attribute name="SustrateMaterial" type="OpticalMaterialName">
         <xsd:annotation>
-          <xsd:documentation>Description=This field records the chemical composition or the nonproprietary trade designation of the substrate of this Micro Lens Array. The substrate is typically composed of a glass material with low autofluorescence, such as UV-grade fused silica.</xsd:documentation>
+          <xsd:documentation>Description=This field records the chemical composition or designation of the substrate of this Micro Lens Array. The substrate is typically composed of a glass material with low autofluorescence, such as UV-grade fused silica.</xsd:documentation>
           <xsd:documentation>Tier=3</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
