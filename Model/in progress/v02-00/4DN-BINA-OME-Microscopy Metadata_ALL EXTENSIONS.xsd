@@ -8823,10 +8823,10 @@ PlaneInfo (as Plane)
             <xsd:documentation>Tier=3</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
-        <xsd:attribute name="NrOfSlots" type="xsd:integer" use="optional" default="6">
+        <xsd:attribute name="NrOfSlots" type="xsd:integer" use="optional">
           <xsd:annotation>
             <xsd:documentation>Description=This field records how many Slots this Optics Holder has.</xsd:documentation>
-            <xsd:documentation>Tier=3</xsd:documentation>
+            <xsd:documentation>Tier=2</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
       </xsd:extension>
