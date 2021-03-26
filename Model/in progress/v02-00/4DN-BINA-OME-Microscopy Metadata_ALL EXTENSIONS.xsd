@@ -7959,13 +7959,13 @@ PlaneInfo (as Plane)
             <xsd:documentation>Tier=1</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
-        <xsd:attribute name="ZRepetability" type="xsd:float" use="required">
+        <xsd:attribute name="ZRepeatability" type="xsd:float" use="required">
           <xsd:annotation>
             <xsd:documentation>Description=This field captures the expected Accuracy with which this Sample Positioning Device is capable of returning to a previously visited Z-axis Position, as specified by the Manufacturer. This metric is important for example for Tiling.</xsd:documentation>
             <xsd:documentation>Tier=1</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
-        <xsd:attribute default="nm" name="ZRepetabilityUnit" type="UnitsLength">
+        <xsd:attribute default="nm" name="ZRepeatabilityUnit" type="UnitsLength">
           <xsd:annotation>
             <xsd:documentation>Tier=1</xsd:documentation>
           </xsd:annotation>
@@ -8169,13 +8169,13 @@ PlaneInfo (as Plane)
             <xsd:documentation>Tier=1</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
-        <xsd:attribute name="XYRepetability" type="xsd:float" use="required">
+        <xsd:attribute name="XYRepeatability" type="xsd:float" use="required">
           <xsd:annotation>
             <xsd:documentation>Description=This field captures the expected Accuracy with which this Stage is capable of returning to a previously visited XY-plane Position, as specified by the Manufacturer. This metric is important for example for Tiling.</xsd:documentation>
             <xsd:documentation>Tier=1</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
-        <xsd:attribute default="nm" name="XYRepetabilityUnit" type="UnitsLength">
+        <xsd:attribute default="nm" name="XYRepeatabilityUnit" type="UnitsLength">
           <xsd:annotation>
             <xsd:documentation>Tier=1</xsd:documentation>
           </xsd:annotation>
@@ -12341,6 +12341,7 @@ PlaneInfo (as Plane)
       <xsd:enumeration value="Barium Light Flint (BALF/N-BALF)"/>
       <xsd:enumeration value="Borofloat"/>
       <xsd:enumeration value="Boron Crown (BK/N-BK)"/>
+      <xsd:enumeration value="Borosilicate"/>
       <xsd:enumeration value="Calcite"/>
       <xsd:enumeration value="Calcium Fluoride (CaF2"/>
       <xsd:enumeration value="Crown (K/N-K)"/>
@@ -12361,6 +12362,7 @@ PlaneInfo (as Plane)
       <xsd:enumeration value="Phosphate Crown (PK/N-PK)"/>
       <xsd:enumeration value="Phosphate Dense (PSK/N-PSK)"/>
       <xsd:enumeration value="Polytetrafluoroethylene (PFTE)"/>
+      <xsd:enumeration value="Pyrex"/>
       <xsd:enumeration value="Rutile (TiO2)"/>
       <xsd:enumeration value="Short Flint Special (KZFS/N-KZFS)"/>
       <xsd:enumeration value="Silicon (Si)"/>
