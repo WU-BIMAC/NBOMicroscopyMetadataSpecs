@@ -1508,13 +1508,13 @@
       </xsd:attribute>
       <xsd:attribute name="IlluminationType" use="required" type="ImagingMethodList">
         <xsd:annotation>
-          <xsd:documentation>Description=This filed describes the Light Microscopy Illumination method performed in this case. Allowable terms were obtained from the Biological Imaging Methods Ontology (Fbbi; https://www.ebi.ac.uk/ols/ontologies/fbbi) Light Microscopy term (http://purl.obolibrary.org/obo/FBbi_00000345).</xsd:documentation>
+          <xsd:documentation>Description=This field describes the Light Microscopy Illumination method performed in this case. Allowable terms were obtained from the Biological Imaging Methods Ontology (Fbbi; https://www.ebi.ac.uk/ols/ontologies/fbbi) Light Microscopy term (http://purl.obolibrary.org/obo/FBbi_00000345).</xsd:documentation>
           <xsd:documentation>Tier=1</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
       <xsd:attribute name="IlluminationTypeTermAcession" type="xsd:anyURI">
         <xsd:annotation>
-          <xsd:documentation>Description=This field records the Accession ID for the term used to describe the Illumination Type. A sub-classes of EFO:0000635 (http://www.ebi.ac.uk/efo/EFO_0000635) is recommended.</xsd:documentation>
+          <xsd:documentation>Description=This field records the Accession ID for the term used to describe the Illumination Type. A sub-classes of Light Microscopy term (http://purl.obolibrary.org/obo/FBbi_00000345) is recommended.</xsd:documentation>
           <xsd:documentation>Tier=1</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
