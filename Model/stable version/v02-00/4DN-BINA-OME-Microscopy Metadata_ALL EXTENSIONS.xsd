@@ -1506,21 +1506,15 @@
           <xsd:documentation>Tier=1</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
-      <xsd:attribute name="ImagingMethod" use="required" type="ImagingMethodList">
+      <xsd:attribute name="IlluminationType" use="required" type="ImagingMethodList">
         <xsd:annotation>
-          <xsd:documentation>Description=This filed describes the type of Light Microscopy Imaging Method performed in this case. Allowable terms were obtained from the Biological Imaging Methods Ontology (Fbbi; https://www.ebi.ac.uk/ols/ontologies/fbbi) Light Microscopy term (http://purl.obolibrary.org/obo/FBbi_00000345).</xsd:documentation>
+          <xsd:documentation>Description=This filed describes the Light Microscopy Illumination method performed in this case. Allowable terms were obtained from the Biological Imaging Methods Ontology (Fbbi; https://www.ebi.ac.uk/ols/ontologies/fbbi) Light Microscopy term (http://purl.obolibrary.org/obo/FBbi_00000345).</xsd:documentation>
           <xsd:documentation>Tier=1</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
-      <xsd:attribute name="ImagingMethodTermAcession" type="xsd:anyURI">
+      <xsd:attribute name="IlluminationTypeTermAcession" type="xsd:anyURI">
         <xsd:annotation>
-          <xsd:documentation>Description=This field records the Accession ID for the term used to describe the Imaging Method. A sub-classes of EFO:0000635 (http://www.ebi.ac.uk/efo/EFO_0000635) is recommended.</xsd:documentation>
-          <xsd:documentation>Tier=1</xsd:documentation>
-        </xsd:annotation>
-      </xsd:attribute>
-      <xsd:attribute name="IlluminationType" use="required" type="ChannelIlluminationType">
-        <xsd:annotation>
-          <xsd:documentation>Description=This field records the method of Illumination used to capture the Channel.</xsd:documentation>
+          <xsd:documentation>Description=This field records the Accession ID for the term used to describe the Illumination Type. A sub-classes of EFO:0000635 (http://www.ebi.ac.uk/efo/EFO_0000635) is recommended.</xsd:documentation>
           <xsd:documentation>Tier=1</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
@@ -12687,20 +12681,22 @@ PlaneInfo (as Plane)
   </xsd:simpleType>
   <xsd:simpleType name="ImagingMethodList">
     <xsd:restriction base="xsd:string">
-      <xsd:enumeration value="FourDPlus"/>
+      <xsd:enumeration value="4DPlus"/>
       <xsd:enumeration value="Coherent Anti-Stokes Raman Scattering (CARS)"/>
       <xsd:enumeration value="Confocal_Fluorescence_array-raster-scan"/>
       <xsd:enumeration value="Confocal_Fluorescence_single-spot-raster-scan"/>
       <xsd:enumeration value="Confocal_Fluorescence_slit-raster-scan"/>
       <xsd:enumeration value="Confocal_Fluorescence_spinning disk"/>
       <xsd:enumeration value="Confocal_Fluorescence_swept-field"/>
+      <xsd:enumeration value="Confocal_Fluorescence_Two-photon laser scanning microscopy"/>
+      <xsd:enumeration value="Confocal_Fluorescence_Multi-photon laser scanning microscopy"/>
       <xsd:enumeration value="Fluorescence Correlation Spectroscopy (FCS)"/>
       <xsd:enumeration value="Light Sheet Fluorescence Microscopy (LSFM)"/>
-      <xsd:enumeration value="Multi-photon"/>
       <xsd:enumeration value="Near Field Scanning Optical Microscopy (NSOM)"/>
       <xsd:enumeration value="Optical coherence tomography (OCT)"/>
       <xsd:enumeration value="Second-Harmonic Imaging Microscopy (SHIM)"/>
       <xsd:enumeration value="Spectral Imaging"/>
+      <xsd:enumeration value="SPIM (Selective or Single Plane Illumination Microscopy) "/>
       <!-- Ground State Depletion Scanning -->
       <xsd:enumeration value="Super-Resolution_GSD (Ground State Depletion Scanning)"/>
       <!-- Defocussed Oorientation and Position Imaging -->
@@ -12717,7 +12713,17 @@ PlaneInfo (as Plane)
       <xsd:enumeration value="Super-Resolution_STED (Stimulated Emission Depletion)"/>
       <!-- Structured Illumination Microscopy -->
       <xsd:enumeration value="Super-Resolution_SIM (Structured Illumination Microscopy)"/>
-      <xsd:enumeration value="Widefield_Fluorescence"/>
+      <xsd:enumeration value="TIRF (Total Total Internal Reflection Fluorescence)"/>
+      <xsd:enumeration value="Transmitted_Bright-field"/>
+      <xsd:enumeration value="Transmitted_Dark-field"/>
+      <xsd:enumeration value="Transmitted_Dark-field_Evanescent wave scattering"/>
+      <xsd:enumeration value="Transmitted_Differential Intensity Contrast (DIC; Nomarski)"/>
+      <xsd:enumeration value="Transmitted_Hoffman modulation"/>
+      <xsd:enumeration value="Transmitted_Phase contrast (Zernicke)"/>
+      <xsd:enumeration value="Transmitted_Polarization"/>
+      <xsd:enumeration value="Transmitted_Oblique illumination"/>
+      <xsd:enumeration value="Transmitted_Varel contrast"/>
+      <xsd:enumeration value="Wide-field_Fluorescence"/>
       <!-- Fluorescence lifetime imaging (FLIM) -->
       <xsd:enumeration value="Widefield_Fluorescence_FLIM (Fluorescence Lifetime Imaging)"/>
       <xsd:enumeration value="Widefield_Fluorescence_FLIP (Fluorescence Loss in Photobleaching)"/>
@@ -12851,32 +12857,21 @@ PlaneInfo (as Plane)
       <xsd:enumeration value="XYTZC"/>
     </xsd:restriction>
   </xsd:simpleType>
-  <xsd:simpleType name="ChannelIlluminationType">
-    <xsd:restriction base="xsd:string">
-      <xsd:enumeration value="Confocal"/>
-      <xsd:enumeration value="Epifluorescence"/>
-      <xsd:enumeration value="Light Sheet"/>
-      <xsd:enumeration value="NonLinear"/>
-      <xsd:enumeration value="Oblique"/>
-      <xsd:enumeration value="TIRF"/>
-      <xsd:enumeration value="Transmitted"/>
-      <xsd:enumeration value="Other"/>
-    </xsd:restriction>
-  </xsd:simpleType>
   <xsd:simpleType name="ChannelContrastMethod">
     <xsd:restriction base="xsd:string">
-      <xsd:enumeration value="Brightfield"/>
       <!-- Dark Field Imaging -->
-      <xsd:enumeration value="Darkfield"/>
       <!-- Differential Interference Contrast -->
+      <!-- Hoffman Modulation Contrast (HMC) -->
+      <!-- Polarization Microscopy -->
+      <xsd:enumeration value="Brightfield"/>
+      <xsd:enumeration value="Darkfield"/>
       <xsd:enumeration value="Differential Intensity Contrast (DIC)"/>
       <xsd:enumeration value="Fluorescence"/>
-      <!-- Hoffman Modulation Contrast (HMC) -->
       <xsd:enumeration value="HoffmanModulation"/>
       <xsd:enumeration value="ObliqueIllumination"/>
       <xsd:enumeration value="PhaseContrast"/>
-      <!-- Polarization Microscopy -->
       <xsd:enumeration value="PolarizedLight"/>
+      <xsd:enumeration value="VarelConrast"/>
       <xsd:enumeration value="Other"/>
     </xsd:restriction>
   </xsd:simpleType>
