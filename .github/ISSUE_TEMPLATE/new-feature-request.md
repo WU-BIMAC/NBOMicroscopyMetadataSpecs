@@ -37,3 +37,4 @@ your input here
 
 - New Field data type: __
 - New Field requirement level: __
+- New Field enumeration value(s): __
