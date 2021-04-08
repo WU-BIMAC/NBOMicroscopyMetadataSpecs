@@ -10,12 +10,12 @@ Version v2.00 the current stable version of the model and it represents  a major
 Summary of Changes
 ******************
 
-1. Introduced the sub-division of the initially proposed of the 4DN Extension of the OME model into three separate extensions:
+1. **Introduced the sub-division of the initially proposed of the 4DN Extension of the OME model into three separate extensions:
     - Core and Basic
     - Advanced and Confocal
     - Calibration and Performance
 
-2. Simplified the Tier system from 5 to 3 tier levels.
+2. **Simplified the Tier system from 5 to 3 tier levels.
 
 3. Introduced Acquisition Software and Software Modules.
 
