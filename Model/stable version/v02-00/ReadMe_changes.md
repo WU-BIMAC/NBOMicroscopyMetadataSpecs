@@ -12,17 +12,17 @@ This version of the model is a major overhaul with several important revisions t
 Summary of Changes
 ******************
 
-## Introduced the sub-division of the initially proposed of the 4DN Extension of the OME model into three separate extensions:
+1. Introduced the sub-division of the initially proposed of the 4DN Extension of the OME model into three separate extensions:
 
-1 - Core and Basic
-2 - Advanced and Confocal
-3 - Calibration and Performance
+  1. Core and Basic
+  2. Advanced and Confocal
+  3. Calibration and Performance
 
-## Simplified the Tier system from 5 to 3 tier levels.
+2. Simplified the Tier system from 5 to 3 tier levels.
 
-* Introduced Acquisition Software and Software Modules.
+3. Introduced Acquisition Software and Software Modules.
 
-* Introduced multiple new hardware components including:
+4. Introduced multiple new hardware components including:
 
 - Apertures (Iris Aperture, Shutter, Phase Ring, PinHole, Diffraction Grating, etc.,)
 - Optical Assemblies (Microscope Tube, Condenser etc.,)
