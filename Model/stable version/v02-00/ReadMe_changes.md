@@ -13,9 +13,9 @@ Summary of Changes
 ******************
 
 1. Introduced the sub-division of the initially proposed of the 4DN Extension of the OME model into three separate extensions:
-  - Core and Basic
-  - Advanced and Confocal
-  - Calibration and Performance
+    - Core and Basic
+    - Advanced and Confocal
+    - Calibration and Performance
 
 2. Simplified the Tier system from 5 to 3 tier levels.
 
