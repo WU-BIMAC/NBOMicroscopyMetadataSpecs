@@ -13,26 +13,23 @@ Summary of Changes
 ******************
 
 1. Introduced the sub-division of the initially proposed of the 4DN Extension of the OME model into three separate extensions:
-
-  1. Core and Basic
-  2. Advanced and Confocal
-  3. Calibration and Performance
+  - Core and Basic
+  - Advanced and Confocal
+  - Calibration and Performance
 
 2. Simplified the Tier system from 5 to 3 tier levels.
 
 3. Introduced Acquisition Software and Software Modules.
 
 4. Introduced multiple new hardware components including:
+  - Apertures (Iris Aperture, Shutter, Phase Ring, PinHole, Diffraction Grating, etc.,)
+  - Optical Assemblies (Microscope Tube, Condenser etc.,)
+  - Optics Holders (Filter Wheel, Filter Slider, etc.,)
+  - Confocal Scanners (Spinning Disk, Raster Scanner, etc.,)
+  - Acousto-Optical Devices (AOBS, AOTF, etc.,)
+  - Electro-Optical Devices (Liquid Crystal Tunable Filter, Deformable Mirror, etc.,)
 
-- Apertures (Iris Aperture, Shutter, Phase Ring, PinHole, Diffraction Grating, etc.,)
-- Optical Assemblies (Microscope Tube, Condenser etc.,)
-- Optics Holders (Filter Wheel, Filter Slider, etc.,)
-- Confocal Scanners (Spinning Disk, Raster Scanner, etc.,)
-- Acousto-Optical Devices (AOBS, AOTF, etc.,)
-- Electro-Optical Devices (Liquid Crystal Tunable Filter, Deformable Mirror, etc.,)
-
-* Introduced several improvements in the image acquisition settings model:
-
-- Sample and Sample related elements (Sample Holder, Cover Glass, etc.,)
-- Fluorophore and Immersion Liquid
-- Several new Settings elements (MicroscopeTableSettings, PrismSettings, ShutterSettings, etc.,)
+5. Introduced several improvements in the image acquisition settings model:
+  - Sample and Sample related elements (Sample Holder, Cover Glass, etc.,)
+  - Fluorophore and Immersion Liquid
+  - Several new Settings elements (MicroscopeTableSettings, PrismSettings, ShutterSettings, etc.,)
