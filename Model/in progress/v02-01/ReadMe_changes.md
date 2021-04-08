@@ -1,6 +1,8 @@
-Microscopy Metadata Guidelines
-------------------------------
-This is Developed by the 4D Nucleome (4DN) Imaging Working Group (IWG) and the Bioimaging North America (BINA) Quality-Control and Data Management Working Group (QC-DM-WG) to extend the OME Data MOdel.
+Microscopy Metadata Specifications
+----------------------------------
+These specifications are being developed as a community effort initially led by the 4D Nucleome (4DN) Imaging Working Group (IWG) and the Bioimaging North America (BINA) Quality-Control and Data Management Working Group (QC-DM-WG) to extend the OME Data MOdel.
+The next version of the Specifications are being developed in collaboration with the Quality Assessment and Reproducibility
+for Instruments & Images in Light Microscopy ([**QUAREP-LiMi**](https://quarep.org/))
 
 The proposed prefix for this namespace is **NBO** for 4d**N** **B**ina **O**me
 
