@@ -12,13 +12,13 @@ This version of the model is a major overhaul with several important revisions t
 Summary of Changes
 ******************
 
-* Introduced the sub-division of the initially proposed of the 4DN Extension of the OME model into three separate extensions:
+## Introduced the sub-division of the initially proposed of the 4DN Extension of the OME model into three separate extensions:
 
 1 - Core and Basic
 2 - Advanced and Confocal
 3 - Calibration and Performance
 
-* Simplified the Tier system from 5 to 3 tier levels.
+## Simplified the Tier system from 5 to 3 tier levels.
 
 * Introduced Acquisition Software and Software Modules.
 
