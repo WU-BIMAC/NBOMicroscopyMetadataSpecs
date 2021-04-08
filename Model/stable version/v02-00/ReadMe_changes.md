@@ -22,14 +22,14 @@ Summary of Changes
 3. Introduced Acquisition Software and Software Modules.
 
 4. Introduced multiple new hardware components including:
-  - Apertures (Iris Aperture, Shutter, Phase Ring, PinHole, Diffraction Grating, etc.,)
-  - Optical Assemblies (Microscope Tube, Condenser etc.,)
-  - Optics Holders (Filter Wheel, Filter Slider, etc.,)
-  - Confocal Scanners (Spinning Disk, Raster Scanner, etc.,)
-  - Acousto-Optical Devices (AOBS, AOTF, etc.,)
-  - Electro-Optical Devices (Liquid Crystal Tunable Filter, Deformable Mirror, etc.,)
+    - Apertures (Iris Aperture, Shutter, Phase Ring, PinHole, Diffraction Grating, etc.,)
+    - Optical Assemblies (Microscope Tube, Condenser etc.,)
+    - Optics Holders (Filter Wheel, Filter Slider, etc.,)
+    - Confocal Scanners (Spinning Disk, Raster Scanner, etc.,)
+    - Acousto-Optical Devices (AOBS, AOTF, etc.,)
+    - Electro-Optical Devices (Liquid Crystal Tunable Filter, Deformable Mirror, etc.,)
 
 5. Introduced several improvements in the image acquisition settings model:
-  - Sample and Sample related elements (Sample Holder, Cover Glass, etc.,)
-  - Fluorophore and Immersion Liquid
-  - Several new Settings elements (MicroscopeTableSettings, PrismSettings, ShutterSettings, etc.,)
+    - Sample and Sample related elements (Sample Holder, Cover Glass, etc.,)
+    - Fluorophore and Immersion Liquid
+    - Several new Settings elements (MicroscopeTableSettings, PrismSettings, ShutterSettings, etc.,)
