@@ -4,7 +4,7 @@ These specifications are being developed as a community effort initially led by 
 
 The proposed prefix for this namespace is **NBO** for 4d**N** **B**ina **O**me
 
-Version v2.00 the current stable version of the model and it represents  a major overhaul with significant revisions that were introduced as a result of several months of evaluation, feedback collection and correction of v01.07 by the members of the BINA [**QC-DM-WG**](https://www.bioimagingna.org/qc-dm-wg)).
+Version v2.00 the current stable version of the model and it represents  a major overhaul with significant revisions that were introduced as a result of several months of evaluation, feedback collection and correction of v01.07 by the members of the BINA [**QC-DM-WG**](https://www.bioimagingna.org/qc-dm-wg).
 
 ******************
 Summary of Changes
