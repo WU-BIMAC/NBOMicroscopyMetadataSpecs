@@ -1,10 +1,14 @@
-<!--
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-#	Microscope Metadata 4DN Guidelines proposal
+#	Microscopy Metadata 4DN-BINA-OME Guidelines and Model proposal
 #
 # This is a proposal put forth by the 4D Nucleome (4DN) Imaging Standards Working 
-# Group for an extension of the OME data model schema which was originally released 
+# Group and by the Bioimaging North America (BINA) Quality Control and Data Management Working Group
+# for a suite of extensions of the OME data model schema which was originally released 
 # in June 2016 by the Open Microscopy Environment 
+#
+# The proposed prefix for this namespace is NBO for 4dN Bina Ome 
+#
+#  **********************
 # Copyright (C) 2002 - 2016 Open Microscopy Environment
 #       Massachusetts Institute of Technology,
 #       National Institutes of Health,
@@ -12,12 +16,15 @@
 #       University of Wisconsin at Madison
 # 	
 #  **********************
-# The authors of this proposal are: David Grunwald, Mathias Hammer, Maximiliaan Huisman, Alex Rigano, and Caterina Strambio-De-Castillia
+# The authors of this proposal are: 
+# UMMS: Alex Rigano and Caterina Strambio-e-Castillia
+# 4DN: Mathias Hammer, Maximiliaan Huisman, Farzin Farzam, Renu Gopinathan, Carlas Smith, and David Grunwald
+# BINA: Ulrike Boehm, James Chambers, Nathalie Gaudreault, Alison North, Arturo Pimentel, Damir Sudar, Peter Bajcsy, Claire Brown, Alex Corbett, Orestis Faklaris, Judith Lacoste, Alex Laude, Glyn Nelson, and Roland Nitschke
 # For information contact: caterina.strambio@umassmed.edu
 #
 # Modifications from the original file are issues with
-#	Copyright (C) 2012 - 2019 OMEGA Project
-#		University of Massachusetts Medical School
+#	Copyright (C) 2017 - 2021 WU-BIMAC
+#	University of Massachusetts Medical School
 #
 #  **********************
 # This work is licensed under the
@@ -32,4 +39,3 @@
 # or contact:
 #       Caterina Strambio De Castillia, caterina.strambio@umassmed.edu
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
--->
