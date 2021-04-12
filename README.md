@@ -4,7 +4,7 @@
 
 Please contribute to the in-progress revision by filing issues against the current V02-01 draft of the model. Click [**here**](Model/in%20progress/v02-01) for a shortcut to the model directory. To create an issue, click on "Issues" above, the "New Issue" button, and select whether you are submitting a proposed new feature/element or want to propose a change to elements of the current proposal.
 
-# 4D Nucleome + Bioimaging North America Microscopy Metadata Tiered specifications extending the OME Data Model
+# 4D Nucleome + Bioimaging North America Microscopy Metadata Tiered Specifications extending the OME Data Model
 
 Adequate record keeping is essential for most experiments as it is necessary in order to evaluate results, share data and allow experiments to be repeated. Keeping notes on microscopy experiments should be relatively unchallenging in this regard, as the microscope is a machine equipped with a limited number of known parts and settings.
 
