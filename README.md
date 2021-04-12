@@ -1,6 +1,6 @@
 **A White Paper entitled "Minimum Information guidelines for fluorescence microscopy: increasing the value, quality, and fidelity of image data", which describes v01 of the guideline proposal was published on on ArXiv.org and can be found at: https://arxiv.org/abs/1910.11370**
 
-**The  LATEST VERSION of the 4DN-BINA-OME (NBO) Microscopy Metadata Specificaitions that was authored in collaboration with [BINA Quality Control and Data Management Working Group](https://www.bioimagingna.org/qc-dm-wg) was now released! and is found [here](https://github.com/WU-BIMAC/NBOMicroscopyMetadataSpecs/tree/master/Model/stable%20version/v02-00)**
+**The  LATEST VERSION of the 4DN-BINA-OME (NBO) Microscopy Metadata Specificaitions that was authored in collaboration with [BINA Quality Control and Data Management Working Group](https://www.bioimagingna.org/qc-dm-wg) is now released and is found [here](https://github.com/WU-BIMAC/NBOMicroscopyMetadataSpecs/tree/master/Model/stable%20version/v02-00)!**
 
 Please contribute to the in-progress revision by filing issues against the current V02-01 draft of the model. Click [**here**](Model/in%20progress/v02-01) for a shortcut to the model directory. To create an issue, click on "Issues" above, the "New Issue" button, and select whether you are submitting a proposed new feature/element or want to propose a change to elements of the current proposal.
 
