@@ -22,7 +22,7 @@ Here we present the 4DN-BINA Microscopy Metadata (Figure 1) guidelines, which is
 3. OPTICAL, EXCITATION POWER and WAVELENGTH, MECHANICAL and DETECTOR CALIBRATION Procedures
 
 <p align="center">
-  <img src="https://github.com/WU-BIMAC/MicroscopyMetadata4DNGuidelines/blob/master/Graphics/Figure-1_v03_MM+model elements.png" title="Figure 1: Image Metadata versus Microscopy Metadata">
+  <img src="https://github.com/WU-BIMAC/NBOMicroscopyMetadataSpecs/blob/master/Graphics/Figure-1_v03_MM+model elements.png" title="Figure 1: Image Metadata versus Microscopy Metadata">
 </p>
 
 **Figure 1: Imaging Experiment Workflows and Microscopy Metadata**
@@ -36,11 +36,11 @@ To facilitate future adaptation and expansion of the guidelines, the proposed 4D
 4. A 4DN-BINA-OME Calibration extension
 
 <p align="center">
-  <img src="https://github.com/WU-BIMAC/MicroscopyMetadata4DNGuidelines/blob/master/Graphics/4DN-BINA-OME%20CORE%2BCALIBRATION%2BBASIC%2BADV%2BCONF%20EXTENSION_Instrument_v04.png" title="Figure 2A: OME Image Core ontology vs. 4DN-BINA-OME Extensions">
+  <img src="https://github.com/WU-BIMAC/NBOMicroscopyMetadataSpecs/blob/master/Graphics/4DN-BINA-OME%20CORE%2BCALIBRATION%2BBASIC%2BADV%2BCONF%20EXTENSION_Instrument_v04.png" title="Figure 2A: OME Image Core ontology vs. 4DN-BINA-OME Extensions">
 </p>
 
 <p align="center">
-  <img src="https://github.com/WU-BIMAC/MicroscopyMetadata4DNGuidelines/blob/master/Graphics/4DN-BINA-OME%20CORE%2BCALIBRATION%2BBASIC%2BADV%2BCONF%20EXTENSION_Image_v05.png" title="Figure 2B: OME Image Core ontology vs. 4DN-BINA-OME Extensions">
+  <img src="https://github.com/WU-BIMAC/NBOMicroscopyMetadataSpecs/blob/master/Graphics/4DN-BINA-OME%20CORE%2BCALIBRATION%2BBASIC%2BADV%2BCONF%20EXTENSION_Image_v05.png" title="Figure 2B: OME Image Core ontology vs. 4DN-BINA-OME Extensions">
 </p>
 
 **Figure 2: OME Image Core ontology vs. 4DN-BINA-OME Extensions**
@@ -53,7 +53,7 @@ In order to foster the wide usability of the guidelines, the proposal aim at pro
 
 <p align="center">
   <img
-src="https://github.com/WU-BIMAC/MicroscopyMetadata4DNGuidelines/blob/master/Graphics/Figure-3_v05.png" title="Figure 3: Tier System">
+src="https://github.com/WU-BIMAC/NBOMicroscopyMetadataSpecs/blob/master/Graphics/Figure-3_v05.png" title="Figure 3: Tier System">
 </p>
 
 **Figure 3: Tier System**
