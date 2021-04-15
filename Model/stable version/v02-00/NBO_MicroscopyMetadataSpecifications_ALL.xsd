@@ -7645,7 +7645,7 @@ PlaneInfo (as Plane)
       </xsd:appinfo>
       <xsd:documentation>Extension=Basic</xsd:documentation>
       <xsd:documentation>Domain=MicroscopeHardwareSpecifications</xsd:documentation>
-      <xsd:documentation>Category=MicroscopyEssentials</xsd:documentation>
+      <xsd:documentation>Category=MicroscopyAccessories</xsd:documentation>
       <xsd:documentation>Description=This element describes the Table used to support this Instrument during Image Acquisition.</xsd:documentation>
       <xsd:documentation>Tier=2</xsd:documentation>
       <xsd:documentation>Model_Settings=MicroscopeTableSettings</xsd:documentation>
@@ -7720,7 +7720,7 @@ PlaneInfo (as Plane)
       </xsd:appinfo>
       <xsd:documentation>Extension=Basic</xsd:documentation>
       <xsd:documentation>Domain=MicroscopeHardwareSpecifications</xsd:documentation>
-      <xsd:documentation>Category=MicroscopyEssentials</xsd:documentation>
+      <xsd:documentation>Category=MicroscopyAccessories</xsd:documentation>
       <xsd:documentation>Description=This element describes an Environmental Control Device available for this Instrument to maintain a controlled Imaging Environment during Imaging Environment.</xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
       <xsd:documentation>Model_Settings=ImagingEnvironment</xsd:documentation>
