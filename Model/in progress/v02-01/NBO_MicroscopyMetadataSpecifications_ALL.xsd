@@ -1393,7 +1393,7 @@
           <xsd:documentation>Tier=1</xsd:documentation>
         </xsd:annotation>
       </xsd:attribute>
-      <xsd:attribute name="ExposureTime" use="required" type="xsd:float">
+      <xsd:attribute name="ExposureTime" use="optional" type="xsd:float">
         <xsd:annotation>
           <xsd:documentation>Description=This field records the duration of the Exposure utilized to acquire this Plane.</xsd:documentation>
           <xsd:documentation>Tier=1</xsd:documentation>
