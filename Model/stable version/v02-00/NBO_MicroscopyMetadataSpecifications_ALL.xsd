@@ -2908,7 +2908,7 @@
       <xsd:documentation>Category=Detector</xsd:documentation>
       <xsd:documentation>Description=This element is used to represent a Generic Detector as a collection of Key/Value pairs, which are stored in a Map. One of the other detector elements should always be used in preference to this if possible.</xsd:documentation>
       <xsd:documentation>Tier=1</xsd:documentation>
-      <xsd:documentation>Model_Settings=DetectorSettings</xsd:documentation>
+      <xsd:documentation>Model_Settings=GenericDetectorSettings</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
       <xsd:complexContent>
