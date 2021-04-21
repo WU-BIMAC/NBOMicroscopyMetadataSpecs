@@ -2188,12 +2188,6 @@
               <xsd:documentation>Tier=1</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="CalibratedMagnification" type="xsd:float">
-            <xsd:annotation>
-              <xsd:documentation>Description=This field captures the Magnification of the Objective as measured via a calibration process- i.e., '59.987' for a 60x lens.</xsd:documentation>
-              <xsd:documentation>Tier=2</xsd:documentation>
-            </xsd:annotation>
-          </xsd:attribute>
           <xsd:attribute name="LensNA" use="required" type="xsd:float">
             <xsd:annotation>
               <xsd:documentation>Description=This field captures the nominal Numerical Aperture (NA) of this Objective as specified by the Manufactuer, expressed as a floating-point (real) number (e.g. 1.27 NA). NA is a number that was defined initially by Abbe to characterize Objectives and Condensers. NA can be calculated by the expression n sin alpha, where n is the Refractive Index of the medium between the Lens and the Sample, and alpha is half the Angular Aperture of the Lens. NA is a measure of how much of the illumination that leaves the specimen actually passes through the Lens. The larger the NA, the more information the lens can transmit. Expected range 0.02 - 1.5.</xsd:documentation>
@@ -2203,6 +2197,18 @@
           <xsd:attribute name="Correction" use="required" form="unqualified" type="ObjectiveCorrection">
             <xsd:annotation>
               <xsd:documentation>Description=This field captures the type of optical correction (i.e. chromatic correction, or flatness correction, etc.) associated with this Objective.</xsd:documentation>
+              <xsd:documentation>Tier=1</xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
+          <xsd:attribute name="ImmersionType" type="ImmersionTypeList" use="required">
+            <xsd:annotation>
+              <xsd:documentation>Description=According to ISO 10934-1:2002, an Immersion Liquid is a liquid (commonly immersion oil, water or glycerol) specified as suitable for use in the space between the front of an immersion lens and the object NOTE Because the immersion liquid is considered in the computing of corrections to be part of the lens, its refractive index and dispersion (or Abbe number) are critical. Please refer to ISO 8036-1 for more details on Immersion Oil. This field describes the general category of the Immersion Liquid this Objective is designed for, according to the Manufacturer. If the general category is not Air, the actual Immersion Liquid that was used during the Acquisition of a specific Image must be specified in Objective Settings.</xsd:documentation>
+              <xsd:documentation>Tier=1</xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
+          <xsd:attribute name="InfinityCorrected" type="xsd:boolean" use="required">
+            <xsd:annotation>
+              <xsd:documentation>Description=This field records whether (True) or not (False) this Objective is infinity corrected. An Infinity-corrected Objective is corrected for an infinite sample to primary image distance and needs to be used with a Tube Lens of appropriate focal length to obtains its nominal magnification.</xsd:documentation>
               <xsd:documentation>Tier=1</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
@@ -2218,15 +2224,9 @@
               <xsd:documentation>Tier=1</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="LightType" type="ObjectiveLightType" use="optional" default="Visible">
+          <xsd:attribute name="LightType" type="ObjectiveLightType" default="Visible">
             <xsd:annotation>
               <xsd:documentation>Description=This field specifies whether this Objective is designed for a special Light application (e.g., IR or UV).</xsd:documentation>
-              <xsd:documentation>Tier=1</xsd:documentation>
-            </xsd:annotation>
-          </xsd:attribute>
-          <xsd:attribute name="ImmersionType" type="ImmersionTypeList" use="required">
-            <xsd:annotation>
-              <xsd:documentation>Description=According to ISO 10934-1:2002, an Immersion Liquid is a liquid (commonly immersion oil, water or glycerol) specified as suitable for use in the space between the front of an immersion lens and the object NOTE Because the immersion liquid is considered in the computing of corrections to be part of the lens, its refractive index and dispersion (or Abbe number) are critical. Please refer to ISO 8036-1 for more details on Immersion Oil. This field describes the general category of the Immersion Liquid this Objective is designed for, according to the Manufacturer. If the general category is not Air, the actual Immersion Liquid that was used during the Acquisition of a specific Image must be specified in Objective Settings.</xsd:documentation>
               <xsd:documentation>Tier=1</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
@@ -2236,15 +2236,14 @@
               <xsd:documentation>Tier=2</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="InfinityCorrected" type="xsd:boolean" use="required">
+          <xsd:attribute name="WorkingDistance" use="required" type="xsd:float">
             <xsd:annotation>
-              <xsd:documentation>Description=This field records whether (True) or not (False) this Objective is infinity corrected. An Infinity-corrected Objective is corrected for an infinite sample to primary image distance and needs to be used with a Tube Lens of appropriate focal length to obtains its nominal magnification.</xsd:documentation>
-              <xsd:documentation>Tier=1</xsd:documentation>
+              <xsd:documentation>Description=This field reports the Working Distance of this Objective under normal operating conditions. The Working Distance is the distance (in air, or in the specified immersion liquid) between the front of an Objective and the surface of the cover glass or of the specimen if uncovered.</xsd:documentation>
+              <xsd:documentation>Tier=2</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="Iris" use="required" type="xsd:boolean">
+          <xsd:attribute name="WorkingDistanceUnit" use="optional" default="mm" type="UnitsLength">
             <xsd:annotation>
-              <xsd:documentation>Description=This field records whether (True) or not (False) the Objective was fitted with an Iris. Manufacturers offer high NA Objectives, which are equipped with an internal Iris Diaphragm that increases image contrast during digital imaging to compensate for image flare artifacts due to light emitted from areas outside the focal plane. Opening or closing the Iris Diaphragm determines the size of the Objective rear aperture yielding a variable NA range between 0.5 and the Objective's upper limit.</xsd:documentation>
               <xsd:documentation>Tier=2</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
@@ -2266,14 +2265,15 @@
               <xsd:documentation>Tier=2</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="WorkingDistance" use="required" type="xsd:float">
+          <xsd:attribute name="CalibratedMagnification" type="xsd:float">
             <xsd:annotation>
-              <xsd:documentation>Description=This field reports the Working Distance of this Objective under normal operating conditions. The Working Distance is the distance (in air, or in the specified immersion liquid) between the front of an Objective and the surface of the cover glass or of the specimen if uncovered.</xsd:documentation>
+              <xsd:documentation>Description=This field captures the Magnification of the Objective as measured via a calibration process- i.e., '59.987' for a 60x lens.</xsd:documentation>
               <xsd:documentation>Tier=2</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
-          <xsd:attribute name="WorkingDistanceUnit" use="optional" default="mm" type="UnitsLength">
+          <xsd:attribute name="Iris" use="optional" type="xsd:boolean">
             <xsd:annotation>
+              <xsd:documentation>Description=This field records whether (True) or not (False) the Objective was fitted with an Iris. Manufacturers offer high NA Objectives, which are equipped with an internal Iris Diaphragm that increases image contrast during digital imaging to compensate for image flare artifacts due to light emitted from areas outside the focal plane. Opening or closing the Iris Diaphragm determines the size of the Objective rear aperture yielding a variable NA range between 0.5 and the Objective's upper limit.</xsd:documentation>
               <xsd:documentation>Tier=2</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
