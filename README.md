@@ -2,7 +2,7 @@
 
 **The  LATEST VERSION of the 4D<ins>N</ins>-<ins>B</ins>INA-<ins>O</ins>ME (NBO) Microscopy Metadata Specifications that was authored in collaboration with [BINA Quality Control and Data Management Working Group](https://www.bioimagingna.org/qc-dm-wg) is now released and is found [here](https://github.com/WU-BIMAC/NBOMicroscopyMetadataSpecs/tree/master/Model/stable%20version/v02-00)!**
 
-Development is continuing. Please contribute to the new V02-01 draft of the model. Click [**here**](Model/in%20progress/v02-01) for a shortcut to the model directory. To create an issue, click on "Issues" above, the "New Issue" button, and select whether you are submitting a proposed new feature/element or want to propose a change to elements of the current proposal.
+**Development is continuing!** Please contribute to the new V02-10 draft of the model. Click [**here**](Model/in%20progress/v02-10) for a shortcut to the model directory. To create an issue, click on "Issues" above, the "New Issue" button, and select whether you are submitting a proposed new feature/element or want to propose a change to elements of the current proposal.
 
 # 4D Nucleome + Bioimaging North America Microscopy Metadata Tiered Specifications extending the OME Data Model
 
