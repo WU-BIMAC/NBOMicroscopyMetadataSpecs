@@ -5,7 +5,7 @@ These specifications are being developed as a community effort initially led by 
 The proposed prefix for this namespace is **NBO** for 4d**N** **B**ina **O**me
 
 
-Version v2.0 the current stable version of the model and it represents  a major overhaul with significant revisions that were introduced as a result of several months of evaluation, feedback collection and correction of v01.07 by the members of the BINA [**QC-DM-WG**](https://www.bioimagingna.org/qc-dm-wg).
+**Version v2.0 the current stable version** of the model and it represents  a major overhaul with significant revisions that were introduced as a result of several months of evaluation, feedback collection and correction of v01.07 by the members of the BINA [**QC-DM-WG**](https://www.bioimagingna.org/qc-dm-wg).
 
 ******************
 Summary of Changes
@@ -13,7 +13,7 @@ Summary of Changes
 
 _v2.01 is a minor release that corrects some errors that were found in v2.00._
 
-**Major changes introduced in v02.00 are as follows**
+**Major changes introduced in v02.0 are as follows**
 
 1. Introduced the sub-division of the initially proposed of the 4DN Extension of the OME model into three separate extensions:
     - Core and Basic
