@@ -1,4 +1,4 @@
-- **The  LATEST VERSION of the 4D<ins>N</ins>-<ins>B</ins>INA-<ins>O</ins>ME (NBO) Microscopy Metadata Specifications that was authored in collaboration with [BINA Quality Control and Data Management Working Group](https://www.bioimagingna.org/qc-dm-wg) is now released and is found [here](https://github.com/WU-BIMAC/NBOMicroscopyMetadataSpecs/tree/master/Model/stable%20version/v02-01)!**
+- The  LATEST VERSION of the **4D<ins>N</ins>-<ins>B</ins>INA-<ins>O</ins>ME (NBO) Microscopy Metadata Specifications** that was authored in collaboration with [BINA Quality Control and Data Management Working Group](https://www.bioimagingna.org/qc-dm-wg) is now released and is found [here](https://github.com/WU-BIMAC/NBOMicroscopyMetadataSpecs/tree/master/Model/stable%20version/v02-01)!
 
 - For a thorought description of the 4DN-BINA-OME (NBO) Microscopy Metadata Specifications consult our recently posted manuscript **"Towards community-driven metadata standards for light microscopy: tiered specifications extending the OME model"**, which is available on BioRxiv.org at: https://www.biorxiv.org/node/1919775.external-links.html
 
