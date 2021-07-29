@@ -54,8 +54,7 @@ In order to foster the wide usability of the guidelines, the proposal aim at pro
 # Tier System Proposal
 
 <p align="center">
-  <img
-src="https://github.com/WU-BIMAC/NBOMicroscopyMetadataSpecs/blob/master/Graphics/Figure-3_v05.png" title="Figure 3: Tier System">
+  <img src="https://github.com/WU-BIMAC/NBOMicroscopyMetadataSpecs/blob/master/Graphics/Figure-3_v05.png" title="Figure 3: Tier System">
 </p>
 
 **Figure 3: Tier System**
