@@ -163,24 +163,4 @@ keywords:
 license: GPL-3.0-or-later
 version: '2.01'
 date-released: '2021-04-12'
-references:
-  - authors:
-      - name: "The Dependency Project"
-    date-released: "2021-07-26"
-    doi: 10.5281/zenodo.x1234567
-    repository-code: "https://github.com/dependency-project/dependency"
-    title: Dependency
-    type: software
-    version: 0.13.4
-  - authors:
-      - family-names: Bielefeld
-        given-names: Arthur
-        name-particle: von
-    doi: 10.9999/hardscifi-lang.42132
-    issue: 13
-    journal: "Journal of Hard Science Fiction"
-    scope: "Cite this paper if you want to reference the general concepts of the software."
-    title: "Towards a 100% accuracy syntax parser for all languages"
-    type: article
-    volume: 42
-    year: 2099
+
