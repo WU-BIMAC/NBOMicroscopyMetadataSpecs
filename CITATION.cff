@@ -2,127 +2,92 @@
 # Visit https://bit.ly/cffinit to generate yours today!
 
 cff-version: 1.2.0
-title: 4DN-BINA-OME Microscopy Metadata Specifications
+title: Micro-Meta App - Electron implementation
 message: >-
-If you use the 4D Nucleome (4DN) - Bioimaging North America (BINA) - Open Microscopy Environment (OME) (NBO 	  namespace) light Microscopy Metadata Specifications, please cite the standard as indicated in the scope of each reference
-authors:    
-  - family-names: Maximiliaan
-    given-names: Huisman
-    orcid: 'https://orcid.org/0000-0003-3363-8791'
+  If you use this software please cite both the
+  software using the metadata indicated below, and
+  the papers as indicated in the scope of each
+  reference
+authors:
+  - given-names: Alessandro
+    family-names: Rigano
+    email: alessandro.rigano@umassmed.edu
     affiliation: >-
-    RNA Therapeutic Institute, UMass Chan Medical School, Worcester MA 01605, USA
-  - family-names: Mathias
-    given-names: Hammer
+      Program in Molecular Medicine, UMass Chan
+      Medical School, Worcester MA 01605, USA
+  - given-names: Balashov
+    family-names: Alexander
     affiliation: >-
-    RNA Therapeutic Institute, UMass Chan Medical School, Worcester MA 01605, USA
-  - family-names: Rigano
-    given-names: Alessandro
+      Department of Biomedical Informatics, Harvard
+      Medical School, Boston, MA 02115, USA
+  - affiliation: >-
+      Department of Biomedical Informatics, Harvard
+      Medical School, Boston, MA 02115, USA
+    given-names: Shannon
+    family-names: Ehmsen
+  - given-names: Serkan Utku
+    family-names: Ozturk
+    orcid: 'https://orcid.org/0000-0001-8835-787X'
     affiliation: >-
-    Program in Molecular Medicine, UMass Chan Medical School, Worcester MA 01605, USA
-  - family-names: Boehm
-    given-names: Ulrike
-    orcid: 'https://orcid.org/0000-0001-7471-2244'
+      Karya SMD + Department of Biomedical
+      Informatics, Harvard Medical School, Boston, MA
+      02115, USA
+  - given-names: Alver
+    family-names: Burak
+    orcid: >-
+      https://orcid.org/https://orcid.org/0000-0002-5019-7652
     affiliation: >-
-    Janelia Research Campus, Howard Hughes Medical Institute, Ashburn, VA 20147, USA
-  - family-names: Chambers
-    given-names: James
-    orcid: 'https://orcid.org/0000-0003-3883-8215'
-    affiliation: >-
-    Institute for Applied Life Sciences, University of Massachusetts, Amherst, MA 01003, USA
-  - family-names: Gaudreault
-    given-names: Nathalie
-    affiliation: >-
-    Allen Institute for Cell Science, Seattle, WA 98109, USA
-  - family-names: North
-    given-names: Alison J.
-    orcid: 'https://orcid.org/0000-0002-0577-7949'
-    affiliation: >-
-    The Rockefeller University, New York, NY 10065, USA
-  - family-names: Pimentel
-    given-names: Arturo
-    orcid: 'https://orcid.org/0000-0001-8569-0466'
-    affiliation: >-
-    Instituto de Biotecnologıa, Universidad Nacional Autonoma de Mexico, Cuernavaca, Morelos, 62210, México
-  - family-names: Sudar
-    given-names: Damir
-    orcid: 'https://orcid.org/0000-0002-2510-7272'
-    affiliation: >-
-    Quantitative Imaging Systems LLC, Portland, OR 97209, USA
-  - family-names: Bajcsy
-    given-names: Peter
-    orcid: 'https://orcid.org/0000-0002-6968-2615'
-    affiliation: >-
-    National Institute of Standards and Technology, Gaithersburg, MD 20899, USA
-  - family-names: Brown
-    given-names: Claire M. 
-    orcid: 'https://orcid.org/0000-0003-1622-663X'
-    affiliation: >-
-    Advanced BioImaging Facility (ABIF), McGill University, Montreal, Quebec, H3G 0B1, Canada
-  - family-names: Corbett
-    given-names: Alexander D. 
-    orcid: 'https://orcid.org/0000-0003-1645-5475'
-    affiliation: >-
-    Department of Physics and Astronomy, University of Exeter, Exeter, EX4 4QL, UK
-  - family-names: Faklaris
-    given-names: Orestis
-    orcid: 'https://orcid.org/0000-0001-5965-5405'
-    affiliation: >-
-    Biocampus, CNRS UMS 3426, Montpellier 34293, France
-  - family-names: Lacoste
-    given-names: Judith
-    affiliation: >-
-    MIA Cellavie Inc., Montreal, Quebec, H1K 4G6, Canada
-  - family-names: Laude
-    given-names: Alex
-    orcid: 'https://orcid.org/0000-0002-3853-1187'
-    affiliation: >-
-    Bioimaging Unit, Newcastle University, Newcastle upon Tyne, NE2 4HH, UK
-  - family-names: Nelson
-    given-names: Glyn
-    orcid: 'http://orcid.org/0000-0002-1895-4772'
-    affiliation: >-
-    Bioimaging Unit, Newcastle University, Newcastle upon Tyne, NE2 4HH, UK
-  - family-names: Nitschke
-    given-names: Roland
-    orcid: 'https://orcid.org/0000-0002-9397-8475'
-    affiliation: >-
-    Life Imaging Center and BIOSS Centre for Biological Signaling Studies, Albert-Ludwigs-University Freiburg, Freiburg, 79104, Germany
-  - family-names: Farzam
-    given-names: Farzin
-    affiliation: >-
-    RNA Therapeutic Institute, UMass Chan Medical School, Worcester MA 01605, USA
-  - family-names: Carlas
-    given-names: Smith
-    affiliation: >-
-    Dutch Optics Center, Technische Universiteit Delft, Delft, 2600 AA, The Netherlands
-  - family-names: David
-    given-names: Grunwald
-    affiliation: >-
-    RNA Therapeutic Institute, UMass Chan Medical School, Worcester MA 01605, USA
-  - family-names: Strambio-De-Castillia
+      Department of Biomedical Informatics, Harvard
+      Medical School, Boston, MA 02115, USA
+  - affiliation: >-
+      Program in Molecular Medicine, UMass Chan
+      Medical School, Worcester MA 01605, USA
+    orcid: >-
+      https://orcid.org/https://orcid.org/0000-0002-1069-1816
+    family-names: Strambio-De-Castillia
     given-names: Caterina
     email: caterina.strambio@umassmed.edu
-    orcid: 'https://orcid.org/0000-0002-1069-1816'
-    affiliation: >-
-    Program in Molecular Medicine, UMass Chan Medical School, Worcester MA 01605, USA
-repository-code: 'https://github.com/WU-BIMAC/NBOMicroscopyMetadataSpecs'
-url: 'https://doi.org/10.5281/zenodo.4710731'
+repository-code: 'https://github.com/WU-BIMAC/MicroMetaApp-Electron'
+url: 'https://wu-bimac.github.io/MicroMetaApp.github.io/'
+repository-artifact: >-
+  https://github.com/WU-BIMAC/MicroMetaApp-Electron/releases/latest
 abstract: >-
-This is a proposal put forth by the 4D Nucleome (4DN) Imaging Standards Working Group and by the Bioimaging North America (BINA) Quality Control and Data Management Working Group for a suite of extensions of the OME data model schema which was originally released in June 2016 by the Open Microscopy Environment
+  Micro-Meta App is an intuitive Graphical User
+  Interface (GUI)-based open-source software that
+  helps scientists to interactively build graphical
+  representations of microscope hardware by
+  dragging-and-dropping individual components onto
+  the workspace and entering the relevant attribute
+  values based on the 4D Nucleome (4DN) - BioImaging
+  North America (BINA) Microscopy Metadata guidelines
+  that scale experimental complexity. From this,
+  Micro-Meta App automatically generates structured
+  Microscope files that can be saved locally,
+  consumed by existing data portals, shared with
+  other scientists, and used repeatedly whenever the
+  same microscope is used to produce image data.
+  Thus, when the image acquisition settings utilized
+  to produce a given image dataset need to be
+  recorded, the user selects the desired image data
+  alongside the relevant Microscope file. Then,
+  Micro-Meta App imports the relevant metadata from
+  the header of image data files to be annotated and
+  interactively guides the user through the
+  collection of all missing attributes. Finally, the
+  App generates a Settings-file, which coupled with
+  the Microscope-file contains comprehensive
+  descriptions of the conditions utilized to produce
+  individual microscopy datasets.
 keywords:
-  - quality-control
-  - 4D-Nucleome
-  - reproducibility
-  - calibration
+  - metadata
   - microscopy
-  - guidelines
   - standards
-  - data-model
-  - Microscope-hardware-specifications
-  - Image-acquisition-settings
-  - data-provenance
-  - data-management
-  - metadata-standards
+  - data model
+  - OME
+  - open science
+  - reproducibility
+  - quality control
+  - data provenance
 license: GPL-3.0-or-later
-version: v02.01
-date-released: '2021-04-12'
+version: 1.1.0-b1-1 stable beta
+date-released: '2021-04-29'
