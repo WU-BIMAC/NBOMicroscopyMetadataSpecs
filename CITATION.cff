@@ -4,125 +4,162 @@
 cff-version: 1.2.0
 title: 4DN-BINA-OME Microscopy Metadata Specifications
 message: >-
-If you use the 4D Nucleome (4DN) - Bioimaging North America (BINA) - Open Microscopy Environment (OME) (NBO 	  namespace) light Microscopy Metadata Specifications, please cite the standard as indicated in the scope of each reference
-authors:    
-  - family-names: Maximiliaan
-    given-names: Huisman
+  If you use this specifications, please cite it using the
+  metadata from this file.
+type: software
+authors:
+  - given-names: Mathias
+    affiliation: >-
+      RNA Therapeutic Institute, UMass Chan Medical
+      School, Worcester MA 01605, USA
+    family-names: Hammer
+  - given-names: Huisman
+    affiliation: ' RNA Therapeutic Institute, UMass Chan Medical School, Worcester MA 01605, USA'
     orcid: 'https://orcid.org/0000-0003-3363-8791'
+    family-names: Maximiliaan
+  - given-names: Alessandro
+    family-names: Rigano
+    email: alessandro.rigano@umassmed.edu
     affiliation: >-
-RNA Therapeutic Institute, UMass Chan Medical School, Worcester MA 01605, USA
-  - family-names: Mathias
-    given-names: Hammer
+      Program in Molecular Medicine, UMass Chan
+      Medical School, Worcester MA 01605, USA
+  - given-names: Ulrike
     affiliation: >-
-RNA Therapeutic Institute, UMass Chan Medical School, Worcester MA 01605, USA
-  - family-names: Rigano
-    given-names: Alessandro
-    affiliation: >-
-Program in Molecular Medicine, UMass Chan Medical School, Worcester MA 01605, USA
-  - family-names: Boehm
-    given-names: Ulrike
+      Janelia Research Campus, Howard Hughes Medical
+      Institute, Ashburn, VA 20147, USA
     orcid: 'https://orcid.org/0000-0001-7471-2244'
+    family-names: Boehm
+  - given-names: James
     affiliation: >-
-Janelia Research Campus, Howard Hughes Medical Institute, Ashburn, VA 20147, USA
-  - family-names: Chambers
-    given-names: James
+      Institute for Applied Life Sciences, University
+      of Massachusetts, Amherst, MA 01003, USA
     orcid: 'https://orcid.org/0000-0003-3883-8215'
+    family-names: Chambers
+  - given-names: Nathalie
     affiliation: >-
-Institute for Applied Life Sciences, University of Massachusetts, Amherst, MA 01003, USA
-  - family-names: Gaudreault
-    given-names: Nathalie
+      Allen Institute for Cell Science, Seattle, WA
+      98109, USA
+    family-names: Gaudreault
+    orcid: 'https://orcid.org/0000-0002-9220-5366'
+  - given-names: Alison J.
     affiliation: >-
-Allen Institute for Cell Science, Seattle, WA 98109, USA
-  - family-names: North
-    given-names: Alison J.
+      The Rockefeller University, New York, NY 10065,
+      USA
     orcid: 'https://orcid.org/0000-0002-0577-7949'
+    family-names: North
+  - given-names: Arturo
     affiliation: >-
-The Rockefeller University, New York, NY 10065, USA
-  - family-names: Pimentel
-    given-names: Arturo
+      Instituto de Biotecnologıa, Universidad
+      Nacional Autonoma de Mexico, Cuernavaca,
+      Morelos, 62210, México
     orcid: 'https://orcid.org/0000-0001-8569-0466'
+    family-names: Pimentel
+  - given-names: Damir
     affiliation: >-
-Instituto de Biotecnologıa, Universidad Nacional Autonoma de Mexico, Cuernavaca, Morelos, 62210, México
-  - family-names: Sudar
-    given-names: Damir
+      Quantitative Imaging Systems LLC, Portland, OR
+      97209, USA
     orcid: 'https://orcid.org/0000-0002-2510-7272'
+    family-names: 'Sudar '
+  - given-names: Peter
     affiliation: >-
-Quantitative Imaging Systems LLC, Portland, OR 97209, USA
-  - family-names: Bajcsy
-    given-names: Peter
+      National Institute of Standards and Technology,
+      Gaithersburg, MD 20899, USA
     orcid: 'https://orcid.org/0000-0002-6968-2615'
+    family-names: 'Bajcsy '
+  - given-names: Claire M.
     affiliation: >-
-National Institute of Standards and Technology, Gaithersburg, MD 20899, USA
-  - family-names: Brown
-    given-names: Claire M. 
+      Advanced BioImaging Facility (ABIF), McGill
+      University, Montreal, Quebec, H3G 0B1, Canada
     orcid: 'https://orcid.org/0000-0003-1622-663X'
+    family-names: Brown
+  - given-names: Alexander D.
     affiliation: >-
-Advanced BioImaging Facility (ABIF), McGill University, Montreal, Quebec, H3G 0B1, Canada
-  - family-names: Corbett
-    given-names: Alexander D. 
+      Department of Physics and Astronomy, University
+      of Exeter, Exeter, EX4 4QL, UK
     orcid: 'https://orcid.org/0000-0003-1645-5475'
+    family-names: Corbett
+  - given-names: Orestis
     affiliation: >-
-Department of Physics and Astronomy, University of Exeter, Exeter, EX4 4QL, UK
-  - family-names: Faklaris
-    given-names: Orestis
+      Biocampus, CNRS UMS 3426, Montpellier 34293,
+      France
     orcid: 'https://orcid.org/0000-0001-5965-5405'
+    family-names: Faklaris
+  - given-names: Judith
     affiliation: >-
-Biocampus, CNRS UMS 3426, Montpellier 34293, France
-  - family-names: Lacoste
-    given-names: Judith
+      MIA Cellavie Inc., Montreal, Quebec, H1K 4G6,
+      Canada
+    family-names: Lacoste
+    orcid: 'https://orcid.org/0000-0002-8783-8599'
+  - given-names: Alex
     affiliation: >-
-MIA Cellavie Inc., Montreal, Quebec, H1K 4G6, Canada
-  - family-names: Laude
-    given-names: Alex
+      Bioimaging Unit, Newcastle University,
+      Newcastle upon Tyne, NE2 4HH, UK
     orcid: 'https://orcid.org/0000-0002-3853-1187'
+    family-names: Laude
+  - given-names: Glyn
     affiliation: >-
-Bioimaging Unit, Newcastle University, Newcastle upon Tyne, NE2 4HH, UK
-  - family-names: Nelson
-    given-names: Glyn
-    orcid: 'http://orcid.org/0000-0002-1895-4772'
+      Bioimaging Unit, Newcastle University,
+      Newcastle upon Tyne, NE2 4HH, UK
+    orcid: 'https://orcid.org/0000-0002-1895-4772'
+    family-names: Nelson
+  - given-names: Roland
     affiliation: >-
-Bioimaging Unit, Newcastle University, Newcastle upon Tyne, NE2 4HH, UK
-  - family-names: Nitschke
-    given-names: Roland
+      Life Imaging Center and BIOSS Centre for
+      Biological Signaling Studies,
+      Albert-Ludwigs-University Freiburg, Freiburg,
+      79104, Germany
     orcid: 'https://orcid.org/0000-0002-9397-8475'
+    family-names: Nitschke
+  - given-names: Farzin
     affiliation: >-
-Life Imaging Center and BIOSS Centre for Biological Signaling Studies, Albert-Ludwigs-University Freiburg, Freiburg, 79104, Germany
-  - family-names: Farzam
-    given-names: Farzin
+      RNA Therapeutic Institute, UMass Chan Medical
+      School, Worcester MA 01605, USA
+    family-names: Farzam
+  - given-names: Carlas S.
     affiliation: >-
-RNA Therapeutic Institute, UMass Chan Medical School, Worcester MA 01605, USA
-  - family-names: Carlas
-    given-names: Smith
+      Dutch Optics Center, Technische Universiteit
+      Delft, Delft, 2600 AA, The Netherlands
+    family-names: Smith
+    orcid: 'https://orcid.org/0000-0003-0591-5093'
+  - given-names: 'David '
     affiliation: >-
-Dutch Optics Center, Technische Universiteit Delft, Delft, 2600 AA, The Netherlands
-  - family-names: David
-    given-names: Grunwald
-    affiliation: >-
-RNA Therapeutic Institute, UMass Chan Medical School, Worcester MA 01605, USA
-  - family-names: Strambio-De-Castillia
+      RNA Therapeutic Institute, UMass Chan Medical
+      School, Worcester MA 01605, USA
+    family-names: Grunwald
+    orcid: 'https://orcid.org/0000-0001-9067-804X'
+  - affiliation: >-
+      Program in Molecular Medicine, UMass Chan
+      Medical School, Worcester MA 01605, USA
+    orcid: >-
+      https://orcid.org/https://orcid.org/0000-0002-1069-1816
+    family-names: Strambio-De-Castillia
     given-names: Caterina
     email: caterina.strambio@umassmed.edu
-    orcid: 'https://orcid.org/0000-0002-1069-1816'
-    affiliation: >-
-Program in Molecular Medicine, UMass Chan Medical School, Worcester MA 01605, USA
-repository-code: 'https://github.com/WU-BIMAC/NBOMicroscopyMetadataSpecs'
+repository-code: >-
+  https://github.com/WU-BIMAC/NBOMicroscopyMetadataSpecs
 url: 'https://doi.org/10.5281/zenodo.4710731'
 abstract: >-
-This is a proposal put forth by the 4D Nucleome (4DN) Imaging Standards Working Group and by the Bioimaging North America (BINA) Quality Control and Data Management Working Group for a suite of extensions of the OME data model schema which was originally released in June 2016 by the Open Microscopy Environment
+  This is a proposal put forth by the 4D Nucleome
+  (4DN) Imaging Standards Working Group and by the
+  Bioimaging North America (BINA) Quality Control and
+  Data Management Working Group for a suite of
+  extensions of the OME data model schema which was
+  originally released in June 2016 by the Open
+  Microscopy Environment
 keywords:
-  - quality-control
-  - 4D-Nucleome
-  - reproducibility
-  - calibration
+  - metadata
   - microscopy
-  - guidelines
   - standards
-  - data-model
+  - data model
+  - OME
+  - open science
+  - reproducibility
+  - quality control
+  - data provenance
+  - 4D Nucleome
   - Microscope-hardware-specifications
   - Image-acquisition-settings
-  - data-provenance
-  - data-management
-  - metadata-standards
+  - metadata specifications
 license: GPL-3.0-or-later
-version: v02.01
+version: '2.01'
 date-released: '2021-04-12'
