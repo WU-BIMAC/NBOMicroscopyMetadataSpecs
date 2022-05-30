@@ -1,4 +1,4 @@
-# Contributing to Micro-Meta App
+# Contributing to NBO Microscopy Metadata Specs
 
 **This README file gives instructions for testing your code before opening a PR, please ensure you read these.**
 
