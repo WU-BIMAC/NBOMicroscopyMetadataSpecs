@@ -1887,7 +1887,10 @@
   <xsd:element name="Arc" substitutionGroup="LightSourceGroup">
     <!-- top level definition -->
     <xsd:annotation>
-      <xsd:appinfo><xsdfu xmlns=""> <plural>Arcs</plural> </xsdfu>
+      <xsd:appinfo>
+        <xsdfu xmlns="">
+          <plural>Arcs</plural>
+        </xsdfu>
       </xsd:appinfo>
       <xsd:documentation>Extension=Core</xsd:documentation>
       <xsd:documentation>Domain=MicroscopeHardwareSpecifications</xsd:documentation>
@@ -2338,7 +2341,8 @@
   <xsd:element name="FilterGroup" abstract="true" type="Filter">
     <!-- top level definition -->
     <xsd:annotation>
-      <xsd:appinfo><xsdfu xmlns="">
+      <xsd:appinfo>
+        <xsdfu xmlns="">
           <plural>Filters</plural>
         </xsdfu>
       </xsd:appinfo>
@@ -2470,7 +2474,8 @@
   </xsd:complexType>
   <xsd:element name="ExcitationFilter" substitutionGroup="FilterGroup">
     <xsd:annotation>
-      <xsd:appinfo><xsdfu xmlns="">
+      <xsd:appinfo>
+        <xsdfu xmlns="">
           <plural>ExcitationFilters</plural>
         </xsdfu>
       </xsd:appinfo>
@@ -2488,9 +2493,11 @@
   </xsd:element>
   <xsd:element name="EmissionFilter" substitutionGroup="FilterGroup">
     <xsd:annotation>
-      <xsd:appinfo><xsdfu xmlns="">
+      <xsd:appinfo>
+        <xsdfu xmlns="">
           <plural>EmissionFilters</plural>
-        </xsdfu></xsd:appinfo>
+        </xsdfu>
+      </xsd:appinfo>
       <xsd:documentation>Extension=Core</xsd:documentation>
       <xsd:documentation>Domain=MicroscopeHardwareSpecifications</xsd:documentation>
       <xsd:documentation>Category=FluorescenceLightPath</xsd:documentation>
@@ -2507,18 +2514,20 @@
   <!-- Mirror elements -->
   <xsd:element name="MirroringDeviceGroup" abstract="true" type="MirroringDevice">
     <xsd:annotation>
-      <xsd:appinfo><xsdfu xmlns="">
-        <plural>MirroringDevices</plural>
-      </xsdfu>
+      <xsd:appinfo>
+        <xsdfu xmlns="">
+          <plural>MirroringDevices</plural>
+        </xsdfu>
       </xsd:appinfo>
       <xsd:documentation>Description=This element describes a Mirror positioned in the Light Path for one or more Channels available for this Instrument. An Instrument may have several Mirrors of different types, such as Dichroic, Beamsplitter or Reflector. This element can be associated with an optional Optics Holder, such as a Filter Cube, Filter Turret, Filter Wheel, or Filter Slider.</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
   <xsd:complexType name="MirroringDevice">
     <xsd:annotation>
-      <xsd:appinfo><xsdfu xmlns="">
-        <plural>MirroringDevices</plural>
-      </xsdfu>
+      <xsd:appinfo>
+        <xsdfu xmlns="">
+          <plural>MirroringDevices</plural>
+        </xsdfu>
       </xsd:appinfo>
       <xsd:documentation>Description=This element describes a Mirror positioned in the Light Path for one or more Channels available for this Instrument. An Instrument may have several Mirrors of different types, such as Dichroic, Beamsplitter or Reflector. This element can be associated with an optional Optics Holder, such as a Filter Cube, Filter Turret, Filter Wheel, or Filter Slider.</xsd:documentation>
     </xsd:annotation>
@@ -2623,9 +2632,10 @@
   </xsd:element>
   <xsd:complexType name="Dichroic">
     <xsd:annotation>
-      <xsd:appinfo><xsdfu xmlns="">
-        <plural>Dichroics</plural>
-      </xsdfu>
+      <xsd:appinfo>
+        <xsdfu xmlns="">
+          <plural>Dichroics</plural>
+        </xsdfu>
       </xsd:appinfo>
       <xsd:documentation>Description=A Dichroic Mirror (also often referred to as Dichroic Beamsplitter or simply as Dichroic) is a Mirror that spectrally separate light by transmitting and reflecting light as a function of wavelength. In the context of fluorescence microscopy, they are typically used to reflect the excitation light, but transmit the emitted fluorescence. Dichroic Mirrors can be categorized in different manners. However, the most important criteria for choosing a Dichoric Mirror are the Transmittance and the Reflectance Wavelength ranges.</xsd:documentation>
     </xsd:annotation>
@@ -2695,9 +2705,10 @@
   </xsd:complexType>
   <xsd:element name="StandardDichroic" substitutionGroup="DichroicGroup">
     <xsd:annotation>
-      <xsd:appinfo><xsdfu xmlns="">
-        <plural>StandardDichroics</plural>
-      </xsdfu>
+      <xsd:appinfo>
+        <xsdfu xmlns="">
+          <plural>StandardDichroics</plural>
+        </xsdfu>
       </xsd:appinfo>
       <xsd:documentation>Extension=Core</xsd:documentation>
       <xsd:documentation>Domain=MicroscopeHardwareSpecifications</xsd:documentation>
@@ -7480,7 +7491,7 @@ PlaneInfo (as Plane)
           </xsd:attribute>
           <xsd:attribute name="Concentration" use="optional" type="xsd:float">
             <xsd:annotation>
-              <xsd:documentation>Description=If applicable (e.g., in the case of direct incubation of the sample  with a specific label such as DAPI or Mitotracker Red), this field records the Concentration of this Fluorophore that was used to stain the Sample and that was imaged in this Channel.</xsd:documentation>
+              <xsd:documentation>Description=If applicable (e.g., in the case of direct incubation of the sample with a specific label such as DAPI or Mitotracker Red), this field records the Concentration of this Fluorophore that was used to stain the Sample and that was imaged in this Channel.</xsd:documentation>
               <xsd:documentation>Tier=1</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
@@ -9241,7 +9252,7 @@ PlaneInfo (as Plane)
           </xsd:attribute>
           <xsd:attribute name="Function" type="ShutterFunction">
             <xsd:annotation>
-              <xsd:documentation>Description=This field records whether this Shutter is used for the control of illumination (especially relevant for live imaging), the selection of Excitation or Emission wavelenghts or the control of the Light that reaches the Detector.</xsd:documentation>
+              <xsd:documentation>Description=This field records whether this Shutter is used for the control of illumination (especially relevant for live imaging), the selection of Excitation or Emission wavelengths or the control of the Light that reaches the Detector.</xsd:documentation>
               <xsd:documentation>Tier=2</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
@@ -10515,9 +10526,10 @@ PlaneInfo (as Plane)
   <xsd:element name="TransmissionWavelengthRangeSettings">
     <!-- top level definition -->
     <xsd:annotation>
-      <xsd:appinfo><xsdfu xmlns="">
-	<plural>TransmissionWavelengthRangeSettings</plural>
-</xsdfu>
+      <xsd:appinfo>
+        <xsdfu xmlns="">
+          <plural>TransmissionWavelengthRangeSettings</plural>
+        </xsdfu>
       </xsd:appinfo>
       <xsd:documentation>Extension=Basic</xsd:documentation>
       <xsd:documentation>Domain=ImageAcquisitionSettings</xsd:documentation>
@@ -14328,7 +14340,7 @@ PlaneInfo (as Plane)
       <xsd:documentation>Extension=Advanced+Confocal</xsd:documentation>
       <xsd:documentation>Domain=ImageAcquisitionSettings</xsd:documentation>
       <xsd:documentation>Category=Settings</xsd:documentation>
-      <xsd:documentation>Description=This element holds the Setting applied to a PockelCell used  during the Acquisiton of this Channel as well as a reference (the ID attribute) to the PockelCell in question.</xsd:documentation>
+      <xsd:documentation>Description=This element holds the Setting applied to a PockelCell used during the Acquisiton of this Channel as well as a reference (the ID attribute) to the PockelCell in question.</xsd:documentation>
       <xsd:documentation>Tier=2</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
@@ -15281,7 +15293,7 @@ PlaneInfo (as Plane)
       <xsd:documentation>Extension=Calibration and Performance</xsd:documentation>
       <xsd:documentation>Domain=ImageAcquisitionSettings</xsd:documentation>
       <xsd:documentation>Category=CalibrationSamples</xsd:documentation>
-      <xsd:documentation>Description=This element describes a preparation of multi-Colored Fluorescent Beads (also referred to as  Microspheres) used to facilitate the optical calibration of conventional fluorescence microscopes, confocal laser scanning microscopes, and associated image-processing equipments. These Beads are usually made of glass or plastic microspheres stained with one or more fluorescent dyes.</xsd:documentation>
+      <xsd:documentation>Description=This element describes a preparation of multi-Colored Fluorescent Beads (also referred to as Microspheres) used to facilitate the optical calibration of conventional fluorescence microscopes, confocal laser scanning microscopes, and associated image-processing equipments. These Beads are usually made of glass or plastic microspheres stained with one or more fluorescent dyes.</xsd:documentation>
       <xsd:documentation>Tier=2</xsd:documentation>
     </xsd:annotation>
     <xsd:complexType>
@@ -15414,13 +15426,13 @@ PlaneInfo (as Plane)
         <xsd:extension base="IntensityCalibration">
           <xsd:attribute name="SpinningDiskInLightPath" type="xsd:boolean">
             <xsd:annotation>
-              <xsd:documentation>Description=In case of a Spinning Disk Confocal Microscope, this field records whether (True) or not (False)  the Spinning Disk was placed in the Light Path during this Calibration Procedure.</xsd:documentation>
+              <xsd:documentation>Description=In case of a Spinning Disk Confocal Microscope, this field records whether (True) or not (False) the Spinning Disk was placed in the Light Path during this Calibration Procedure.</xsd:documentation>
               <xsd:documentation>Tier=2</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
           <xsd:attribute name="NominalEx-Wavelength" type="xsd:float" use="optional">
             <xsd:annotation>
-              <xsd:documentation>Description=In case this is different from the Excitation Wavelength of the Channel this Calibration Procedure is associated with, this field records the Nominal Peak Excitation Wavelength  that is employed during this Procedure.</xsd:documentation>
+              <xsd:documentation>Description=In case this is different from the Excitation Wavelength of the Channel this Calibration Procedure is associated with, this field records the Nominal Peak Excitation Wavelength that is employed during this Procedure.</xsd:documentation>
               <xsd:documentation>Tier=2</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
@@ -15448,7 +15460,7 @@ PlaneInfo (as Plane)
           </xsd:attribute>
           <xsd:attribute name="ObservedIlluminationPowerAtBackOfObjective" type="xsd:float" use="optional">
             <xsd:annotation>
-              <xsd:documentation>Description=This field records the observed excitation Illumination Power (also known as Power Output or Illumination Intensity) as recorded  at the back focal plane of the Objective by using this Calibration Procedure. In order to collect this metric it is necessary to remove the Objective.</xsd:documentation>
+              <xsd:documentation>Description=This field records the observed excitation Illumination Power (also known as Power Output or Illumination Intensity) as recorded at the back focal plane of the Objective by using this Calibration Procedure. In order to collect this metric it is necessary to remove the Objective.</xsd:documentation>
               <xsd:documentation>Tier=2</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
@@ -15459,7 +15471,7 @@ PlaneInfo (as Plane)
           </xsd:attribute>
           <xsd:attribute name="ObseredIlluminationPowerAtSample" type="xsd:float" use="required">
             <xsd:annotation>
-              <xsd:documentation>Description=This field records the observed excitation Illumination Power (also known as Power Output or Illumination Intensity) as recorded  at the Sample (also referred to as the Front of the Objective) by using this Calibration Procedure. This metric is typically recorded with the Objective in place.</xsd:documentation>
+              <xsd:documentation>Description=This field records the observed excitation Illumination Power (also known as Power Output or Illumination Intensity) as recorded at the Sample (also referred to as the Front of the Objective) by using this Calibration Procedure. This metric is typically recorded with the Objective in place.</xsd:documentation>
               <xsd:documentation>Tier=2</xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
