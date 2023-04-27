@@ -8,8 +8,8 @@ The **4D<ins>N</ins>-<ins>B</ins>INA-<ins>O</ins>ME (NBO) Microscopy Metadata Sp
 
 > **Learn More!** If you are a newby and you want to learn more about the importannce of metadata and quality control to ensure full reproducibility, quality and scientific value in light microscopy, please take a look at our recently posted overview manuscript entitled **"A perspective on Microscopy Metadata: data provenance and quality control"**, which is available on [ArXiv.org](https://arxiv.org/abs/1910.11370).
 
-**Development is continuing!** Please contribute to the new V02-10 draft of the model. Click [**here**](Model/in%20progress/v02-10) for a shortcut to the model directory. To create an issue, click on "Issues" above, the "New Issue" button, and select whether you are submitting a proposed new feature/element or want to propose a change to elements of the current proposal.
-
+**Development is continuing!** Please contribute to the new V02-10 draft of the model. Click [**here**](Model/in%20progress/v02-10) for a shortcut to the model directory. To create an issue, click on "Issues" above, the "New Issue" button, and select whether you are submitting a proposed new feature/element or want to propose a change to elements of the current version of the model.
+ver
 # 4D Nucleome + Bioimaging North America Microscopy Metadata Tiered Specifications extending the OME Data Model
 
 Adequate record keeping is essential for most experiments as it is necessary in order to evaluate results, share data and allow experiments to be repeated. Keeping notes on microscopy experiments should be relatively unchallenging in this regard, as the microscope is a machine equipped with a limited number of known parts and settings.
@@ -21,7 +21,7 @@ The OME model forms the basis of the [BioFormats library](https://www.openmicros
 
 Despite the this very successful efforts, there remains a substantial gap between the OME data model and its wide adoption by the wide bio-imaging community as a bona fide Microscopy Data and Metadata Standard, dictating the set of metadata descriptors to be recorded or published with imaging datasets.
 
-Here we present the 4DN-BINA Microscopy Metadata (Figure 1) guidelines, which is a tiered system of guidelines (Figure 3) that was developed by the [4D Nucleome (4DN) initiative](https://www.4dnucleome.org/) Imaging Standards Working Group and by the [BINA Quality Control and Data Management Working Group](https://www.bioimagingna.org/qc-dm-wg) for documenting the provenance and the quality of microscopy image data. In particular the proposal describes metadata standards for capturing: 
+Here we present the 4DN-BINA Microscopy Metadata (Figure 1) guidelines, which is a tiered system of guidelines (Figure 3) that was developed by the [4D Nucleome (4DN) initiative](https://www.4dnucleome.org/) Imaging Standards Working Group and by the [BINA Quality Control and Data Management Working Group](https://www.bioimagingna.org/qc-dm-wg) for documenting the provenance and the quality of microscopy image data. In particular the model describes metadata standards for capturing: 
 
 1. MICROSCOPE HARDWARE Specifications
 2. IMAGE ACQUISITION Settings
@@ -34,7 +34,7 @@ Here we present the 4DN-BINA Microscopy Metadata (Figure 1) guidelines, which is
 **Figure 1: Imaging Experiment Workflows and Microscopy Metadata**
 
 # Proposed Suite of 4DN-BINA Extensions of the OME Data-Model
-To facilitate future adaptation and expansion of the guidelines, the proposed 4DN-BINA-OME model is organized on the basis of the core vs. extension ontology concepts. As such the proposal posits the following four components (see Figures 2 and 3):
+To facilitate future adaptation and expansion of the guidelines, the proposed 4DN-BINA-OME model is organized on the basis of the core vs. extension ontology concepts. As such the model consists of the following four components (see Figures 2 and 3):
 
 1. A proposed revision of the OME Core Model
 2. A 4DN-BINA-OME Basic extension
